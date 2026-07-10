@@ -2184,6 +2184,42 @@
   },
   {
     "year": 2019,
+    "title": "Lebanon's Banking System Collapses; Country Defaults for the First Time",
+    "verdict": "PARTIAL",
+    "reason": "Core event fully corroborated by multiple independent authoritative sources: Lebanon's liquidity crisis became visible in August 2019 (black-market rate diverging from the 1997-set 1,507.5 LBP/USD peg) and deepened after the October 17, 2019 protests, with banks unilaterally imposing ad hoc capital controls and restricting dollar withdrawals despite no formal capital-control law (confirmed via Wikipedia 'Lebanese liquidity crisis' page, citing period sources). On March 7, 2020, PM Hassan Diab announced Lebanon would not repay the $1.2bn Eurobond due March 9, triggering the country's first-ever sovereign default — this exact detail (PM name, amount, 'first in history') is corroborated by RT, Al Arabiya, and Executive Magazine. Poverty: ESCWA/UN reporting shows poverty reached 74% (income) to 82% (multidimensional) of the population by September 2021, so 'more than two-thirds' is directionally correct (actually an understatement). Currency: multiple sources (PBS, World Bank coverage, 961) describe the pound as having lost 'about/more than 98%' of its value versus the peg — a figure widely used to describe the overall crisis, though most precisely dated to 2022-2023 rather than strictly 'early 2022' (January 2022 black-market rate of ~27,600-30,000 LBP/USD implies closer to ~93-95% loss at that specific point). GDP: the description's '$55B to $35B' figure roughly matches the widely-cited World Bank estimate for 2020 (GDP fell from ~$55B in 2018 to ~$33B in 2020), but by 'early 2022' — the point the sentence attaches it to — nominal GDP had actually fallen much further, to roughly $21-23 billion (Trading Economics/World Bank data: 2021 ≈ $23.1B, 2022 ≈ $21.0B). So the GDP figure is materially understated/mistimed for the stated period (overstates 2022 GDP by roughly 40-60%), even though it is an accurate figure for an earlier point (2020) in the same crisis. Because the headline event (banking collapse, capital controls, peg break, first-ever sovereign default in March 2020) is precisely confirmed for country=Lebanon, year=2019 (onset), but one quantitative supporting detail (GDP level attributed to 'early 2022') is off by a material margin relative to the actual contemporaneous figure, this is a PARTIAL rather than a clean TRUE.",
+    "verify_count": 2,
+    "consensus_verdict": "PARTIAL",
+    "consensus_status": "downgraded",
+    "needs_tiebreak": false,
+    "source_independence": "independent",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "PARTIAL",
+        "reason": "Core event fully corroborated by multiple independent authoritative sources: Lebanon's liquidity crisis became visible in August 2019 (black-market rate diverging from the 1997-set 1,507.5 LBP/USD peg) and deepened after the October 17, 2019 protests, with banks unilaterally imposing ad hoc capital controls and restricting dollar withdrawals despite no formal capital-control law (confirmed via Wikipedia 'Lebanese liquidity crisis' page, citing period sources). On March 7, 2020, PM Hassan Diab announced Lebanon would not repay the $1.2bn Eurobond due March 9, triggering the country's first-ever sovereign default — this exact detail (PM name, amount, 'first in history') is corroborated by RT, Al Arabiya, and Executive Magazine. Poverty: ESCWA/UN reporting shows poverty reached 74% (income) to 82% (multidimensional) of the population by September 2021, so 'more than two-thirds' is directionally correct (actually an understatement). Currency: multiple sources (PBS, World Bank coverage, 961) describe the pound as having lost 'about/more than 98%' of its value versus the peg — a figure widely used to describe the overall crisis, though most precisely dated to 2022-2023 rather than strictly 'early 2022' (January 2022 black-market rate of ~27,600-30,000 LBP/USD implies closer to ~93-95% loss at that specific point). GDP: the description's '$55B to $35B' figure roughly matches the widely-cited World Bank estimate for 2020 (GDP fell from ~$55B in 2018 to ~$33B in 2020), but by 'early 2022' — the point the sentence attaches it to — nominal GDP had actually fallen much further, to roughly $21-23 billion (Trading Economics/World Bank data: 2021 ≈ $23.1B, 2022 ≈ $21.0B). So the GDP figure is materially understated/mistimed for the stated period (overstates 2022 GDP by roughly 40-60%), even though it is an accurate figure for an earlier point (2020) in the same crisis. Because the headline event (banking collapse, capital controls, peg break, first-ever sovereign default in March 2020) is precisely confirmed for country=Lebanon, year=2019 (onset), but one quantitative supporting detail (GDP level attributed to 'early 2022') is off by a material margin relative to the actual contemporaneous figure, this is a PARTIAL rather than a clean TRUE.",
+        "source": "https://www.worldbank.org/en/news/press-release/2021/05/01/lebanon-sinking-into-one-of-the-most-severe-global-crises-episodes",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-09",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Independently confirmed across Bloomberg, World Bank, Al Jazeera, Al Arabiya, Gulf News, and Wikipedia. Liquidity crisis became apparent Aug 2019 as black-market/official FX rates diverged; after the Oct 17, 2019 protests began, banks closed then reopened with unlawful ad hoc dollar-withdrawal restrictions/capital controls (first in Lebanon's history), breaking the 1,507.5 LBP/USD peg de facto. In March 2020, PM Hassan Diab announced Lebanon would not repay a $1.2B Eurobond, triggering the country's first-ever sovereign default (confirmed by Bloomberg, Al Arabiya, Gulf News, WSWS) and cross-default on ~$90B in debt. World Bank data confirms GDP collapsed from ~$55B (2018) toward ~$33-35B (2020) — the description's figure is accurate but more precisely a 2020 data point than 'early 2022' (by 2021-22 GDP was actually lower, ~$21-23B). Currency-loss claim ('~98% by early 2022') is a modest overstatement — sourced reporting puts it at 'more than 95%' as of Jan 2022, with 98% reached later in 2022-23; same order of magnitude, correct direction. Poverty claim ('two-thirds') is confirmed and if anything conservative — UN/World Bank cite 74-80% poverty by 2021. These are minor timing/rounding imprecisions within a well-documented cascading crisis, not wrong-actor or wrong-scope errors; core event, country, and year hold.",
+        "source": "https://en.wikipedia.org/wiki/Lebanese_liquidity_crisis",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-09",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://www.worldbank.org/en/news/press-release/2021/05/01/lebanon-sinking-into-one-of-the-most-severe-global-crises-episodes"
+  },
+  {
+    "year": 2019,
     "title": "October Revolution and Eruption of Financial Crisis",
     "verdict": "TRUE",
     "reason": "Confirmed: October 17, 2019 protests triggered by WhatsApp tax. Slogan 'killun yaani killun' (all of them means all of them) confirmed. Largest protests in Lebanese history. Simultaneous financial crisis, capital controls, pound devaluation all confirmed.",

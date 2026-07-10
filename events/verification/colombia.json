@@ -1108,6 +1108,42 @@
     "source": "https://en.wikipedia.org/wiki/Andr%C3%A9s_Pastrana_Arango"
   },
   {
+    "year": 1998,
+    "title": "UPAC Mortgage System Collapse Triggers Banking Crisis",
+    "verdict": "TRUE",
+    "reason": "Multiple independent sources corroborate all material claims. The UPAC mortgage system (created 1972, so 26 years old in 1998) was indexed via the DTF rate after a 1995 formula change by the Central Bank; a 1998 spike in DTF caused mortgage payments to balloon while borrower repayment capacity collapsed, per El Tiempo/Portafolio archives and the IADB paper on the mortgage financing crisis. Granahorrar, one of the largest CAVs (savings-and-housing corporations) and the first entity created under UPAC in 1972, was intervened by the Superintendencia Bancaria/Fogafin on the night of October 2-3, 1998 (a Friday-to-Saturday intervention, capitalization order issued 11:50pm Oct 2), confirmed by El Tiempo and Wikipedia/corroborating court records. The broader crisis subsequently swept in Caja Agraria (liquidated, replaced by the smaller Banco Agrario) and Banco Central Hipotecario (closed), per academic sources (Junguito/Caballero, Yale SOM case study on Fogafin capitalizations). Macroeconomic outcomes match precisely: Banco de la República's own working paper (borra157, 'The Colombian Banking Crisis: Macroeconomic Consequences and What to Expect') and related citations report GDP contraction of ~4% (description says 4.2%, within normal reporting variance) in 1999 and unemployment peaking at 20.4% (>20%). The Fogafin cost figure of 9.7% of GDP is directly attributed in secondary literature to Caballero Argáez and Urrutia Montoya (2006). All year, country, actors, mechanism, and magnitudes check out as materially accurate.",
+    "verify_count": 2,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "double_confirmed",
+    "needs_tiebreak": false,
+    "source_independence": "independent",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Multiple independent, authoritative sources corroborate every material claim. The DTF rate (to which UPAC mortgage payments were indexed) spiked in 1998 (from ~24% in Jan 1998 to ~36% in July 1998 per academic sources), causing a surge in mortgage defaults as households' debt-service capacity collapsed — this is widely documented as the trigger of Colombia's worst-ever financial crisis. Granahorrar, the largest/oldest CAV (housing-savings entity) and the first institution created under the UPAC system in 1972 (so 1998 marks ~26 years of UPAC operation, matching the description), was intervened by the government on October 2-3, 1998 — confirmed with exact date detail from multiple sources including a dedicated case-history site. Caja Agraria (liquidated via Nov 1999 Superintendency resolution) and Banco Central Hipotecario (intervened after a 1998 corruption scandal, later liquidated in 2001) both collapsed as part of the same crisis cascade, alongside other institutions (Banco del Estado, Arfin, Andino, del Pacifico) — a total of ~35 financial institutions were intervened/liquidated. GDP contracted 4.2% in 1999 (Colombia's worst recession on record) is confirmed by Banco de la Republica research and academic sources (Caballero Argáez and Urrutia Montoya 2006, cited via a Becker Friedman Institute/Yale Journal of Financial Crises case study I fetched directly). Unemployment exceeding 20% during this period is likewise confirmed. The Fogafin crisis-resolution cost of 9.7% of GDP is an exact match, sourced to the same Caballero Argáez and Urrutia Montoya (2006) academic citation, verified via direct fetch of the BFI Manifold 'Case of Colombia' case study page. All key facts (year, country, mechanism, named institutions, magnitudes) align with no material discrepancy.",
+        "source": "https://manifold.bfi.uchicago.edu/read/case-of-colombia/section/c2f4865a-0e0f-4749-8d46-76c59599bd91",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-09",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Multiple independent sources corroborate all material claims. The UPAC mortgage system (created 1972, so 26 years old in 1998) was indexed via the DTF rate after a 1995 formula change by the Central Bank; a 1998 spike in DTF caused mortgage payments to balloon while borrower repayment capacity collapsed, per El Tiempo/Portafolio archives and the IADB paper on the mortgage financing crisis. Granahorrar, one of the largest CAVs (savings-and-housing corporations) and the first entity created under UPAC in 1972, was intervened by the Superintendencia Bancaria/Fogafin on the night of October 2-3, 1998 (a Friday-to-Saturday intervention, capitalization order issued 11:50pm Oct 2), confirmed by El Tiempo and Wikipedia/corroborating court records. The broader crisis subsequently swept in Caja Agraria (liquidated, replaced by the smaller Banco Agrario) and Banco Central Hipotecario (closed), per academic sources (Junguito/Caballero, Yale SOM case study on Fogafin capitalizations). Macroeconomic outcomes match precisely: Banco de la República's own working paper (borra157, 'The Colombian Banking Crisis: Macroeconomic Consequences and What to Expect') and related citations report GDP contraction of ~4% (description says 4.2%, within normal reporting variance) in 1999 and unemployment peaking at 20.4% (>20%). The Fogafin cost figure of 9.7% of GDP is directly attributed in secondary literature to Caballero Argáez and Urrutia Montoya (2006). All year, country, actors, mechanism, and magnitudes check out as materially accurate.",
+        "source": "https://www.banrep.gov.co/docum/ftp/borra157.pdf",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-09",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://www.banrep.gov.co/docum/ftp/borra157.pdf"
+  },
+  {
     "year": 1999,
     "title": "Armenia Earthquake Kills Over 1,000 in Coffee Region",
     "verdict": "TRUE",

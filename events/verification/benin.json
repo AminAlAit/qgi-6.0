@@ -1,0 +1,38 @@
+[
+  {
+    "year": 1988,
+    "title": "Benin's Entire Banking System Collapses and Is Liquidated",
+    "verdict": "TRUE",
+    "reason": "Multiple independent sources corroborate this event materially as described. (1) A French Senate document and a World Bank report confirm the Caisse Nationale de Crédit Agricole (CNCA) was dissolved/liquidated by decree No. 87-184 of November 16, 1987, wiping out CFA 565 million in rural cooperative-network deposits — matching the description exactly. (2) A World Bank report on state-owned banks in transition/Africa and a separate World Bank rural-credit document both confirm that Benin's banking system crisis \"collapse... in 1988 and early 1989\" triggered structural adjustment, and that all three remaining state-owned commercial banks (CNCA successor institutions, Banque Commerciale du Bénin, and Banque Béninoise de Développement) were liquidated in 1989 under an IMF/World Bank-backed program. (3) The Swarthmore Global Nonviolent Action Database, an independent academic-history source, states plainly \"in 1988 the state owned banks crashed,\" directly supporting the 1988 dating used in the event title even though the formal liquidation decrees followed in 1989 (the event description itself is internally consistent on this: crisis reached its head by end-1988, formal three-bank liquidation in 1989). (4) Web-search synthesis drawing on the well-known Caprio-Klingebiel systemic banking crisis dataset (as cited in IMF Working Paper WP/04/55, \"Banking in Sub-Saharan Africa: What Went Wrong?\") states that Benin's 1988 crisis left about 80% of the banking system's loan portfolio nonperforming (very close to the \"78%\" cited) and that resolution costs were equivalent to 17% of GDP — matching the description's NPL and GDP-loss figures almost exactly. No single source is off-limits (none were listed as prior-pass domains for this fresh blind pass), and the claim is corroborated by at least three independent domains (World Bank, French Senate, Swarthmore GNAD) plus consistent secondary literature. I could not independently verify the closing detail \"five private commercial banks\" rebuilt the sector, but this is a minor coda not central to the core claim, and every other material fact (actors, magnitudes, mechanism, timing) checks out.",
+    "verify_count": 2,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "double_confirmed",
+    "needs_tiebreak": false,
+    "source_independence": "weak",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Multiple independent, authoritative sources corroborate the core facts and even the precise figures cited in the description. A World Bank Staff Appraisal Report (Second Rural Savings and Loan Cooperative Rehabilitation Project) states verbatim: \"The Government's decision in 1987 to liquidate CNCA, and the consequent loss of the network's deposits (CFAF 565 million) with this institution, pushed the movement into bankruptcy\" — an exact match to the CNCA 1987 liquidation and CFA 565 million figure in the event. A separate World Bank document (Report No. 15061) confirms \"the collapse of the public-owned banking system in 1988 and 1989,\" names the three failed state banks (Caisse Nationale de Credit Agricole, Banque Commerciale du Benin, Banque Beninoise de Developpement), and confirms five new private commercial banks (Financial Bank, BOA-Benin, Ecobank, BIB, Credit Lyonnais Benin) replaced them under the new Banking Commission created October 1990 — matching the \"five private commercial banks\" rebuild. IMF Working Paper WP/04/55 (\"Banking in Sub-Saharan Africa: What Went Wrong?\", citing World Bank 1991b) states that in Benin \"78 percent of banking system loans [were] nonperforming at end-1988, equivalent to 17 percent of GDP\" — an exact match to both the 78% NPL and 17% GDP loss figures in the description. The only soft spot: sources differ slightly on the precise liquidation year of the last remaining bank (one source — German Wikipedia — dates Banque Commerciale du Benin's liquidation to 1990 rather than 1989), but the World Bank's own official document frames the collapse/liquidation process as occurring across \"1988 and 1989,\" consistent with the description, and the load-bearing quantitative claims (CFA 565m, 78% NPL, 17% of GDP, five private banks) all check out exactly against independent World Bank/IMF sources. Country, year, and the material substance of the event hold.",
+        "source": "https://documents1.worldbank.org/curated/en/605121468010887923/txt/multi-page.txt",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-09",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Multiple independent sources corroborate this event materially as described. (1) A French Senate document and a World Bank report confirm the Caisse Nationale de Crédit Agricole (CNCA) was dissolved/liquidated by decree No. 87-184 of November 16, 1987, wiping out CFA 565 million in rural cooperative-network deposits — matching the description exactly. (2) A World Bank report on state-owned banks in transition/Africa and a separate World Bank rural-credit document both confirm that Benin's banking system crisis \"collapse... in 1988 and early 1989\" triggered structural adjustment, and that all three remaining state-owned commercial banks (CNCA successor institutions, Banque Commerciale du Bénin, and Banque Béninoise de Développement) were liquidated in 1989 under an IMF/World Bank-backed program. (3) The Swarthmore Global Nonviolent Action Database, an independent academic-history source, states plainly \"in 1988 the state owned banks crashed,\" directly supporting the 1988 dating used in the event title even though the formal liquidation decrees followed in 1989 (the event description itself is internally consistent on this: crisis reached its head by end-1988, formal three-bank liquidation in 1989). (4) Web-search synthesis drawing on the well-known Caprio-Klingebiel systemic banking crisis dataset (as cited in IMF Working Paper WP/04/55, \"Banking in Sub-Saharan Africa: What Went Wrong?\") states that Benin's 1988 crisis left about 80% of the banking system's loan portfolio nonperforming (very close to the \"78%\" cited) and that resolution costs were equivalent to 17% of GDP — matching the description's NPL and GDP-loss figures almost exactly. No single source is off-limits (none were listed as prior-pass domains for this fresh blind pass), and the claim is corroborated by at least three independent domains (World Bank, French Senate, Swarthmore GNAD) plus consistent secondary literature. I could not independently verify the closing detail \"five private commercial banks\" rebuilt the sector, but this is a minor coda not central to the core claim, and every other material fact (actors, magnitudes, mechanism, timing) checks out.",
+        "source": "https://documents1.worldbank.org/curated/en/605121468010887923/txt/multi-page.txt",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-09",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://documents1.worldbank.org/curated/en/605121468010887923/txt/multi-page.txt"
+  }
+]

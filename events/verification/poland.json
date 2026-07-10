@@ -1,31 +1,6 @@
 [
   {
     "year": 1950,
-    "title": "Six-Year Plan and Stalinist Industrialization",
-    "verdict": "TRUE",
-    "reason": "The Six-Year Plan (1950-1955) was accepted by the Sejm on July 21, 1950, focusing on Soviet-style heavy industrialization including projects like Nowa Huta steelworks; a Stalinist constitution was also adopted in this period cementing the one-party state.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "The Six-Year Plan (1950-1955) was accepted by the Sejm on July 21, 1950, focusing on Soviet-style heavy industrialization including projects like Nowa Huta steelworks; a Stalinist constitution was also adopted in this period cementing the one-party state.",
-        "source": "https://en.wikipedia.org/wiki/Six-Year_Plan",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/Six-Year_Plan"
-  },
-  {
-    "year": 1950,
     "title": "Forced Collectivization and Rural Resistance",
     "verdict": "TRUE",
     "reason": "Poland's forced collectivization campaign intensified from 1948 and met fierce resistance; by 1951 only 0.8% of arable land was collectivized, making Poland uniquely resistant among Eastern Bloc states, ultimately retaining private farming.",
@@ -48,6 +23,31 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/Collectivization_in_the_Polish_People%27s_Republic"
+  },
+  {
+    "year": 1950,
+    "title": "Six-Year Plan and Stalinist Industrialization",
+    "verdict": "TRUE",
+    "reason": "The Six-Year Plan (1950-1955) was accepted by the Sejm on July 21, 1950, focusing on Soviet-style heavy industrialization including projects like Nowa Huta steelworks; a Stalinist constitution was also adopted in this period cementing the one-party state.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "The Six-Year Plan (1950-1955) was accepted by the Sejm on July 21, 1950, focusing on Soviet-style heavy industrialization including projects like Nowa Huta steelworks; a Stalinist constitution was also adopted in this period cementing the one-party state.",
+        "source": "https://en.wikipedia.org/wiki/Six-Year_Plan",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Six-Year_Plan"
   },
   {
     "year": 1951,
@@ -151,31 +151,6 @@
   },
   {
     "year": 1956,
-    "title": "Poznan June Uprising — Workers Shot in Streets",
-    "verdict": "PARTIAL",
-    "reason": "The June 28, 1956 Poznan uprising is confirmed with approximately 100,000 participants and military suppression with tanks; the casualty figure of 'at least 57' is within the documented range (official figures cite 67 killed), and the factory is correctly identified, but the description says 'Cegielski Factory' while it was officially named 'Joseph Stalin Metal Industries' at the time.",
-    "verify_count": 1,
-    "consensus_verdict": "PARTIAL",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "PARTIAL",
-        "reason": "The June 28, 1956 Poznan uprising is confirmed with approximately 100,000 participants and military suppression with tanks; the casualty figure of 'at least 57' is within the documented range (official figures cite 67 killed), and the factory is correctly identified, but the description says 'Cegielski Factory' while it was officially named 'Joseph Stalin Metal Industries' at the time.",
-        "source": "https://en.wikipedia.org/wiki/1956_Pozna%C5%84_protests",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/1956_Pozna%C5%84_protests"
-  },
-  {
-    "year": 1956,
     "title": "Polish October — Gomulka Returns, Soviet Confrontation Averted",
     "verdict": "TRUE",
     "reason": "Gomulka was elected First Secretary on October 21, 1956, following a direct confrontation with Khrushchev who had deployed troops toward Warsaw; Khrushchev backed down after Gomulka persuaded him, and the aftermath included abandonment of forced collectivization and greater press freedom.",
@@ -198,6 +173,31 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/Polish_October"
+  },
+  {
+    "year": 1956,
+    "title": "Poznan June Uprising — Workers Shot in Streets",
+    "verdict": "PARTIAL",
+    "reason": "The June 28, 1956 Poznan uprising is confirmed with approximately 100,000 participants and military suppression with tanks; the casualty figure of 'at least 57' is within the documented range (official figures cite 67 killed), and the factory is correctly identified, but the description says 'Cegielski Factory' while it was officially named 'Joseph Stalin Metal Industries' at the time.",
+    "verify_count": 1,
+    "consensus_verdict": "PARTIAL",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "PARTIAL",
+        "reason": "The June 28, 1956 Poznan uprising is confirmed with approximately 100,000 participants and military suppression with tanks; the casualty figure of 'at least 57' is within the documented range (official figures cite 67 killed), and the factory is correctly identified, but the description says 'Cegielski Factory' while it was officially named 'Joseph Stalin Metal Industries' at the time.",
+        "source": "https://en.wikipedia.org/wiki/1956_Pozna%C5%84_protests",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/1956_Pozna%C5%84_protests"
   },
   {
     "year": 1957,
@@ -801,31 +801,6 @@
   },
   {
     "year": 1991,
-    "title": "Warsaw Pact Dissolved — Poland Seeks NATO",
-    "verdict": "TRUE",
-    "reason": "The Warsaw Pact was formally dissolved July 1, 1991; Poland immediately declared NATO membership its primary strategic goal and co-founded the Visegrad Group in February 1991 to advance European and NATO integration.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "The Warsaw Pact was formally dissolved July 1, 1991; Poland immediately declared NATO membership its primary strategic goal and co-founded the Visegrad Group in February 1991 to advance European and NATO integration.",
-        "source": "https://en.wikipedia.org/wiki/Warsaw_Pact",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/Warsaw_Pact"
-  },
-  {
-    "year": 1991,
     "title": "First Fully Free Elections — 29-Party Fragmentation",
     "verdict": "TRUE",
     "reason": "The October 27, 1991 parliamentary elections were Poland's first fully free elections with 29 parties winning Sejm seats and no party exceeding 13% of votes; five different governments in four years followed, reflecting the described democratic consolidation challenges.",
@@ -850,10 +825,10 @@
     "source": "https://en.wikipedia.org/wiki/1991_Polish_parliamentary_election"
   },
   {
-    "year": 1993,
-    "title": "Russian Troops Withdraw — Full Sovereignty Regained",
+    "year": 1991,
+    "title": "Warsaw Pact Dissolved — Poland Seeks NATO",
     "verdict": "TRUE",
-    "reason": "The Northern Group of Armed Forces (Soviet/Russian troops stationed in Poland since 1945) completed withdrawal in 1993 under agreements from 1991-1992, ending nearly five decades of Soviet military presence on Polish territory.",
+    "reason": "The Warsaw Pact was formally dissolved July 1, 1991; Poland immediately declared NATO membership its primary strategic goal and co-founded the Visegrad Group in February 1991 to advance European and NATO integration.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -863,8 +838,8 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "The Northern Group of Armed Forces (Soviet/Russian troops stationed in Poland since 1945) completed withdrawal in 1993 under agreements from 1991-1992, ending nearly five decades of Soviet military presence on Polish territory.",
-        "source": "https://en.wikipedia.org/wiki/Northern_Group_of_Forces",
+        "reason": "The Warsaw Pact was formally dissolved July 1, 1991; Poland immediately declared NATO membership its primary strategic goal and co-founded the Visegrad Group in February 1991 to advance European and NATO integration.",
+        "source": "https://en.wikipedia.org/wiki/Warsaw_Pact",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
           "date": null,
@@ -872,7 +847,43 @@
         }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/Northern_Group_of_Forces"
+    "source": "https://en.wikipedia.org/wiki/Warsaw_Pact"
+  },
+  {
+    "year": 1992,
+    "title": "Poland's Bad-Debt Banking Crisis: 40% of Loan Portfolios Turn Sour",
+    "verdict": "TRUE",
+    "reason": "Confirmed via multiple independent sources. Library of Congress country study (countrystudies.us) confirms Poland's nine state-owned commercial banks were formed in 1988 from NBP branches and converted to joint-stock companies in October 1991. World Bank working paper abstracts (Gray & Holle 1996; Montes-Negret & Papi 1997) confirm Poland's Enterprise and Bank Restructuring Program (EBRP) was adopted by Parliament in 1993, forcing state banks through a bank-led conciliation process to restructure or liquidate bad corporate debtors — matching the description precisely. The specific magnitude claim (~2,000 troubled companies accounting for ~40% of the aggregate loan portfolio of the nine state banks in 1992) was found via search indexing of the IMF Finance & Development (1994) article \"Dealing with the Bad Debt Problem in Transition Economies,\" which states this almost verbatim. Direct WebFetch of the IMF eLibrary page was blocked by a 403 (bot protection), but the URL is genuine (appeared organically in search results, not fabricated) and its content was independently corroborated by the consistent narrative across Library of Congress and World Bank sources. Year, country, actors, and magnitude all check out; this is a well-documented episode in the transition-economics literature on Eastern European post-communist banking crises.",
+    "verify_count": 2,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "double_confirmed",
+    "needs_tiebreak": false,
+    "source_independence": "weak",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Independently corroborated by an IMF Finance & Development (1994) article, which states nearly verbatim: \"the objective is to restructure and privatize about 2,000 financially troubled companies, which accounted for about 40 percent of the aggregate loan portfolio of nine state-owned banks in 1992\" — matching the event's magnitude (2,000 companies, 40%, nine state banks, 1992) almost word-for-word. Multiple independent World Bank/academic sources (Gray & Holle 1996 \"Bank-led restructuring in Poland: the conciliation process in action\"; Baer & Gray \"Debt as a Control Device in Transitional Economies: The Experiences of Hungary and Poland\"; Montes-Negret & Papi \"The Polish Experience with Bank and Enterprise Restructuring\") corroborate that Poland's parliament adopted the Enterprise and Bank Restructuring Program (EBRP) in 1993, which forced the nine state commercial banks (split from NBP in 1989) into a bank-led \"conciliation\" workout process to restructure or liquidate bad state-enterprise debtors. All material facts (year, country, actors, magnitude, mechanism) check out across multiple independent, authoritative sources (IMF, World Bank working papers, peer-reviewed Economics of Transition journal).",
+        "source": "https://www.elibrary.imf.org/view/journals/022/0031/002/article-A013-en.xml",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-09",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Confirmed via multiple independent sources. Library of Congress country study (countrystudies.us) confirms Poland's nine state-owned commercial banks were formed in 1988 from NBP branches and converted to joint-stock companies in October 1991. World Bank working paper abstracts (Gray & Holle 1996; Montes-Negret & Papi 1997) confirm Poland's Enterprise and Bank Restructuring Program (EBRP) was adopted by Parliament in 1993, forcing state banks through a bank-led conciliation process to restructure or liquidate bad corporate debtors — matching the description precisely. The specific magnitude claim (~2,000 troubled companies accounting for ~40% of the aggregate loan portfolio of the nine state banks in 1992) was found via search indexing of the IMF Finance & Development (1994) article \"Dealing with the Bad Debt Problem in Transition Economies,\" which states this almost verbatim. Direct WebFetch of the IMF eLibrary page was blocked by a 403 (bot protection), but the URL is genuine (appeared organically in search results, not fabricated) and its content was independently corroborated by the consistent narrative across Library of Congress and World Bank sources. Year, country, actors, and magnitude all check out; this is a well-documented episode in the transition-economics literature on Eastern European post-communist banking crises.",
+        "source": "https://www.elibrary.imf.org/view/journals/022/0031/002/article-A013-en.xml",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-09",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://www.elibrary.imf.org/view/journals/022/0031/002/article-A013-en.xml"
   },
   {
     "year": 1993,
@@ -898,6 +909,31 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/1993_Polish_parliamentary_election"
+  },
+  {
+    "year": 1993,
+    "title": "Russian Troops Withdraw — Full Sovereignty Regained",
+    "verdict": "TRUE",
+    "reason": "The Northern Group of Armed Forces (Soviet/Russian troops stationed in Poland since 1945) completed withdrawal in 1993 under agreements from 1991-1992, ending nearly five decades of Soviet military presence on Polish territory.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "The Northern Group of Armed Forces (Soviet/Russian troops stationed in Poland since 1945) completed withdrawal in 1993 under agreements from 1991-1992, ending nearly five decades of Soviet military presence on Polish territory.",
+        "source": "https://en.wikipedia.org/wiki/Northern_Group_of_Forces",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Northern_Group_of_Forces"
   },
   {
     "year": 1997,
@@ -1351,9 +1387,9 @@
   },
   {
     "year": 2022,
-    "title": "Russia Invades Ukraine — Poland Becomes NATO's Logistics Hub",
+    "title": "Baltic Pipe Opens — Poland Achieves Independence from Russian Gas",
     "verdict": "TRUE",
-    "reason": "Russia's February 24, 2022 invasion transformed Poland into a frontline NATO state and primary logistics hub for Western military aid to Ukraine; Poland raised defense spending to approximately 4% of GDP (confirmed at 4.7% by 2025), the highest in NATO proportionally.",
+    "reason": "The Baltic Pipe was officially launched on September 27, 2022, providing Poland with Norwegian gas; combined with the Swinoujscie LNG terminal, Poland terminated dependence on Russian Gazprom supplies that had been cut in April 2022.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -1363,8 +1399,8 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "Russia's February 24, 2022 invasion transformed Poland into a frontline NATO state and primary logistics hub for Western military aid to Ukraine; Poland raised defense spending to approximately 4% of GDP (confirmed at 4.7% by 2025), the highest in NATO proportionally.",
-        "source": "https://en.wikipedia.org/wiki/Russian_invasion_of_Ukraine",
+        "reason": "The Baltic Pipe was officially launched on September 27, 2022, providing Poland with Norwegian gas; combined with the Swinoujscie LNG terminal, Poland terminated dependence on Russian Gazprom supplies that had been cut in April 2022.",
+        "source": "https://www.euronews.com/2022/09/27/baltic-pipe-norway-poland-gas-pipeline-opens-in-key-move-to-cut-dependency-on-russia",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
           "date": null,
@@ -1372,7 +1408,7 @@
         }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/Russian_invasion_of_Ukraine"
+    "source": "https://www.euronews.com/2022/09/27/baltic-pipe-norway-poland-gas-pipeline-opens-in-key-move-to-cut-dependency-on-russia"
   },
   {
     "year": 2022,
@@ -1401,9 +1437,9 @@
   },
   {
     "year": 2022,
-    "title": "Baltic Pipe Opens — Poland Achieves Independence from Russian Gas",
+    "title": "Russia Invades Ukraine — Poland Becomes NATO's Logistics Hub",
     "verdict": "TRUE",
-    "reason": "The Baltic Pipe was officially launched on September 27, 2022, providing Poland with Norwegian gas; combined with the Swinoujscie LNG terminal, Poland terminated dependence on Russian Gazprom supplies that had been cut in April 2022.",
+    "reason": "Russia's February 24, 2022 invasion transformed Poland into a frontline NATO state and primary logistics hub for Western military aid to Ukraine; Poland raised defense spending to approximately 4% of GDP (confirmed at 4.7% by 2025), the highest in NATO proportionally.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -1413,8 +1449,8 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "The Baltic Pipe was officially launched on September 27, 2022, providing Poland with Norwegian gas; combined with the Swinoujscie LNG terminal, Poland terminated dependence on Russian Gazprom supplies that had been cut in April 2022.",
-        "source": "https://www.euronews.com/2022/09/27/baltic-pipe-norway-poland-gas-pipeline-opens-in-key-move-to-cut-dependency-on-russia",
+        "reason": "Russia's February 24, 2022 invasion transformed Poland into a frontline NATO state and primary logistics hub for Western military aid to Ukraine; Poland raised defense spending to approximately 4% of GDP (confirmed at 4.7% by 2025), the highest in NATO proportionally.",
+        "source": "https://en.wikipedia.org/wiki/Russian_invasion_of_Ukraine",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
           "date": null,
@@ -1422,7 +1458,7 @@
         }
       }
     ],
-    "source": "https://www.euronews.com/2022/09/27/baltic-pipe-norway-poland-gas-pipeline-opens-in-key-move-to-cut-dependency-on-russia"
+    "source": "https://en.wikipedia.org/wiki/Russian_invasion_of_Ukraine"
   },
   {
     "year": 2023,

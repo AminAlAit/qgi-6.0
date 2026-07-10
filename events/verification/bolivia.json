@@ -892,6 +892,42 @@
   },
   {
     "year": 1994,
+    "title": "Banco Sur and Banco Cochabamba Forced Liquidation",
+    "verdict": "TRUE",
+    "reason": "Multiple independent sources confirm Bolivia's Superintendencia de Bancos y Entidades Financieras forcibly closed/liquidated Banco Sur S.A. and Banco de Cochabamba S.A. in late November 1994 (one source pins the order to November 24, 1994; a contemporary Colombian newspaper report dated November 29, 1994 covers the intervention and closure days after). Multiple sources corroborate the $400 million system-wide deposit loss within roughly five months, covered in cash by the Banco Central de Bolivia (BCB), and describe the causes as mismanagement, falsified documentation, and phantom/shell companies used to obtain credit (including a specific $14M case involving a fictitious Santa Cruz housing project). A presidential Decreto Supremo N° 23881, dated October 11, 1994, was independently confirmed to establish the emergency mechanism authorizing the Central Bank to reimburse depositors during forced bank liquidations -- matching the 'October 1994 presidential decree' detail. The only figure I could not independently pin to an exact match was the specific $256 million Central Bank liability figure for these two banks alone (one source cites the BCB as creditor for 'more than 200 million dollars' combined across BIDESA+Sur+Cochabamba, which is in the same ballpark but not a verbatim match); this is not contradicted, just not verbatim-confirmed, and does not undermine the core narrative. Country, year, actors, mechanism, and causal narrative all check out materially as described.",
+    "verify_count": 2,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "double_confirmed",
+    "needs_tiebreak": false,
+    "source_independence": "independent",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Multiple independent Bolivian sources corroborate the core facts. Bolivia's Superintendencia de Bancos y Entidades Financieras forcibly closed/liquidated Banco Sur S.A. and Banco de Cochabamba S.A. on November 24, 1994 (eabolivia.com, ABI, ANF/noticiasfides.com all cite this date). The liquidation produced a system-wide deposit loss of exactly $400 million within five months, which the Central Bank of Bolivia (BCB) covered in cash — confirmed verbatim in the eabolivia.com article (\"una pérdida de depósitos en el sistema financiero de cuatrocientos millones de dólares... cubiertos en efectivo por el Banco Central\"). The banks' insolvency involved falsified documentation and phantom/shell companies used to channel Central Bank-backed credit (documented specifically for a $14M \"Primero de Mayo\" housing project in Santa Cruz, consistent with the broader \"falsified documents and phantom companies\" description). A presidential decree in October 1994 — Decreto Supremo Nº 23881, dated October 11, 1994 — authorized the Central Bank to provide resources for returning deposits from liquidating financial entities, exactly matching the \"emergency mechanisms\" detail. The one figure I could not pin to the exact $256 million cited (Central Bank-assumed liabilities) is in the right order of magnitude — other sources cite BCB extraconcursal/subrogated-deposit liabilities in the $240-290 million range (243M, 288.8M, 290.2M depending on scope/date/number of entities counted), so this is very plausibly a legitimate specific figure from a source I didn't directly access (e.g., a BCB annual report), not a fabrication. Given exact corroboration on date, actors, mechanism, $400M headline figure, cash-coverage method, falsified-document/phantom-company detail, and the October 1994 decree, this event is verified as materially accurate.",
+        "source": "https://www.eabolivia.com/economia/14288-banco-sur-y-cochabamba-generaron-perdida-de-us-400-mm.html",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-09",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Multiple independent sources confirm Bolivia's Superintendencia de Bancos y Entidades Financieras forcibly closed/liquidated Banco Sur S.A. and Banco de Cochabamba S.A. in late November 1994 (one source pins the order to November 24, 1994; a contemporary Colombian newspaper report dated November 29, 1994 covers the intervention and closure days after). Multiple sources corroborate the $400 million system-wide deposit loss within roughly five months, covered in cash by the Banco Central de Bolivia (BCB), and describe the causes as mismanagement, falsified documentation, and phantom/shell companies used to obtain credit (including a specific $14M case involving a fictitious Santa Cruz housing project). A presidential Decreto Supremo N° 23881, dated October 11, 1994, was independently confirmed to establish the emergency mechanism authorizing the Central Bank to reimburse depositors during forced bank liquidations -- matching the 'October 1994 presidential decree' detail. The only figure I could not independently pin to an exact match was the specific $256 million Central Bank liability figure for these two banks alone (one source cites the BCB as creditor for 'more than 200 million dollars' combined across BIDESA+Sur+Cochabamba, which is in the same ballpark but not a verbatim match); this is not contradicted, just not verbatim-confirmed, and does not undermine the core narrative. Country, year, actors, mechanism, and causal narrative all check out materially as described.",
+        "source": "https://www.eltiempo.com/archivo/documento/mam-256537",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-09",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://www.eltiempo.com/archivo/documento/mam-256537"
+  },
+  {
+    "year": 1994,
     "title": "Capitalization Reform Privatizes State Enterprises",
     "verdict": "TRUE",
     "reason": "1994 capitalization of YPFB, ENTEL, Lloyd Aereo Boliviano confirmed under Sanchez de Lozada.",

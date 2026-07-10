@@ -26,9 +26,9 @@
   },
   {
     "year": 1950,
-    "title": "Sardar Patel integrates princely states",
+    "title": "India recognizes People's Republic of China",
     "verdict": "TRUE",
-    "reason": "Over 500 princely states integrated by Patel as Home Minister. Process was largely complete by 1950.",
+    "reason": "India recognized PRC on December 30, 1949 / early 1950 — one of first non-communist nations to do so.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -38,8 +38,8 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "Over 500 princely states integrated by Patel as Home Minister. Process was largely complete by 1950.",
-        "source": "https://en.wikipedia.org/wiki/Sardar_Vallabhbhai_Patel",
+        "reason": "India recognized PRC on December 30, 1949 / early 1950 — one of first non-communist nations to do so.",
+        "source": "https://en.wikipedia.org/wiki/China%E2%80%93India_relations",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
           "date": null,
@@ -47,7 +47,7 @@
         }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/Sardar_Vallabhbhai_Patel"
+    "source": "https://en.wikipedia.org/wiki/China%E2%80%93India_relations"
   },
   {
     "year": 1950,
@@ -76,31 +76,6 @@
   },
   {
     "year": 1950,
-    "title": "India recognizes People's Republic of China",
-    "verdict": "TRUE",
-    "reason": "India recognized PRC on December 30, 1949 / early 1950 — one of first non-communist nations to do so.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "India recognized PRC on December 30, 1949 / early 1950 — one of first non-communist nations to do so.",
-        "source": "https://en.wikipedia.org/wiki/China%E2%80%93India_relations",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/China%E2%80%93India_relations"
-  },
-  {
-    "year": 1950,
     "title": "Planning Commission established",
     "verdict": "TRUE",
     "reason": "Established March 15, 1950 under Nehru's chairmanship.",
@@ -123,6 +98,56 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/Planning_Commission_(India)"
+  },
+  {
+    "year": 1950,
+    "title": "Sardar Patel integrates princely states",
+    "verdict": "TRUE",
+    "reason": "Over 500 princely states integrated by Patel as Home Minister. Process was largely complete by 1950.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Over 500 princely states integrated by Patel as Home Minister. Process was largely complete by 1950.",
+        "source": "https://en.wikipedia.org/wiki/Sardar_Vallabhbhai_Patel",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Sardar_Vallabhbhai_Patel"
+  },
+  {
+    "year": 1951,
+    "title": "First Amendment to Constitution passed",
+    "verdict": "TRUE",
+    "reason": "Passed June 1951. Added Ninth Schedule, restricted free speech — confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Passed June 1951. Added Ninth Schedule, restricted free speech — confirmed.",
+        "source": "https://en.wikipedia.org/wiki/First_Amendment_of_the_Constitution_of_India",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/First_Amendment_of_the_Constitution_of_India"
   },
   {
     "year": 1951,
@@ -176,31 +201,6 @@
   },
   {
     "year": 1951,
-    "title": "First Amendment to Constitution passed",
-    "verdict": "TRUE",
-    "reason": "Passed June 1951. Added Ninth Schedule, restricted free speech — confirmed.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Passed June 1951. Added Ninth Schedule, restricted free speech — confirmed.",
-        "source": "https://en.wikipedia.org/wiki/First_Amendment_of_the_Constitution_of_India",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/First_Amendment_of_the_Constitution_of_India"
-  },
-  {
-    "year": 1951,
     "title": "Preventive Detention Act enacted",
     "verdict": "TRUE",
     "reason": "Enacted 1950 but extended and contested in 1951; year is borderline but broadly correct.",
@@ -223,31 +223,6 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/Preventive_Detention_Act,_1950"
-  },
-  {
-    "year": 1952,
-    "title": "First General Election — Congress wins",
-    "verdict": "TRUE",
-    "reason": "Elections held Oct 1951–Feb 1952; Congress won 364 of 489 seats confirmed.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Elections held Oct 1951–Feb 1952; Congress won 364 of 489 seats confirmed.",
-        "source": "https://en.wikipedia.org/wiki/1951%E2%80%931952_Indian_general_election",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/1951%E2%80%931952_Indian_general_election"
   },
   {
     "year": 1952,
@@ -275,10 +250,10 @@
     "source": "https://en.wikipedia.org/wiki/Community_Development_Programme_(India)"
   },
   {
-    "year": 1953,
-    "title": "States Reorganisation Commission formed",
+    "year": 1952,
+    "title": "First General Election — Congress wins",
     "verdict": "TRUE",
-    "reason": "Formed December 1953 under Justice Fazl Ali confirmed.",
+    "reason": "Elections held Oct 1951–Feb 1952; Congress won 364 of 489 seats confirmed.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -288,8 +263,8 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "Formed December 1953 under Justice Fazl Ali confirmed.",
-        "source": "https://en.wikipedia.org/wiki/States_Reorganisation_Commission",
+        "reason": "Elections held Oct 1951–Feb 1952; Congress won 364 of 489 seats confirmed.",
+        "source": "https://en.wikipedia.org/wiki/1951%E2%80%931952_Indian_general_election",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
           "date": null,
@@ -297,7 +272,7 @@
         }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/States_Reorganisation_Commission"
+    "source": "https://en.wikipedia.org/wiki/1951%E2%80%931952_Indian_general_election"
   },
   {
     "year": 1953,
@@ -326,6 +301,31 @@
   },
   {
     "year": 1953,
+    "title": "Andhra Pradesh formed as first linguistic state",
+    "verdict": "TRUE",
+    "reason": "Minor terminology note: it was 'Andhra State' not 'Andhra Pradesh' until 1956.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Minor terminology note: it was 'Andhra State' not 'Andhra Pradesh' until 1956.",
+        "source": "https://en.wikipedia.org/wiki/Andhra_State",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Andhra_State"
+  },
+  {
+    "year": 1953,
     "title": "Potti Sriramulu's death triggers demand for Andhra State",
     "verdict": "FALSE",
     "reason": "Sriramulu died December 15–16, 1952, not 1953. Event year is off by 1 year. The Andhra State creation was October 1953, but this event is his death.",
@@ -351,9 +351,9 @@
   },
   {
     "year": 1953,
-    "title": "Andhra Pradesh formed as first linguistic state",
+    "title": "States Reorganisation Commission formed",
     "verdict": "TRUE",
-    "reason": "Minor terminology note: it was 'Andhra State' not 'Andhra Pradesh' until 1956.",
+    "reason": "Formed December 1953 under Justice Fazl Ali confirmed.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -363,8 +363,8 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "Minor terminology note: it was 'Andhra State' not 'Andhra Pradesh' until 1956.",
-        "source": "https://en.wikipedia.org/wiki/Andhra_State",
+        "reason": "Formed December 1953 under Justice Fazl Ali confirmed.",
+        "source": "https://en.wikipedia.org/wiki/States_Reorganisation_Commission",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
           "date": null,
@@ -372,32 +372,7 @@
         }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/Andhra_State"
-  },
-  {
-    "year": 1954,
-    "title": "Panchsheel Agreement with China signed",
-    "verdict": "TRUE",
-    "reason": "Signed April 29, 1954 — confirmed year and description.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Signed April 29, 1954 — confirmed year and description.",
-        "source": "https://en.wikipedia.org/wiki/Five_Principles_of_Peaceful_Coexistence",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/Five_Principles_of_Peaceful_Coexistence"
+    "source": "https://en.wikipedia.org/wiki/States_Reorganisation_Commission"
   },
   {
     "year": 1954,
@@ -423,6 +398,31 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/Pondicherry_(union_territory)"
+  },
+  {
+    "year": 1954,
+    "title": "Panchsheel Agreement with China signed",
+    "verdict": "TRUE",
+    "reason": "Signed April 29, 1954 — confirmed year and description.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Signed April 29, 1954 — confirmed year and description.",
+        "source": "https://en.wikipedia.org/wiki/Five_Principles_of_Peaceful_Coexistence",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Five_Principles_of_Peaceful_Coexistence"
   },
   {
     "year": 1955,
@@ -451,31 +451,6 @@
   },
   {
     "year": 1955,
-    "title": "Hindu Marriage and Succession Acts passed",
-    "verdict": "TRUE",
-    "reason": "Hindu Marriage Act passed 1955; Hindu Succession Act 1956. Description combines both — minor detail. Year is correct for Hindu Marriage Act.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Hindu Marriage Act passed 1955; Hindu Succession Act 1956. Description combines both — minor detail. Year is correct for Hindu Marriage Act.",
-        "source": "https://en.wikipedia.org/wiki/Hindu_Marriage_Act,_1955",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/Hindu_Marriage_Act,_1955"
-  },
-  {
-    "year": 1955,
     "title": "Goa liberation movement intensifies",
     "verdict": "TRUE",
     "reason": "Satyagraha campaigns in Goa in 1955 confirmed.",
@@ -500,10 +475,10 @@
     "source": "https://en.wikipedia.org/wiki/Liberation_of_Goa"
   },
   {
-    "year": 1956,
-    "title": "States Reorganisation Act passed",
+    "year": 1955,
+    "title": "Hindu Marriage and Succession Acts passed",
     "verdict": "TRUE",
-    "reason": "Passed November 1, 1956; created 14 states and 6 union territories — confirmed.",
+    "reason": "Hindu Marriage Act passed 1955; Hindu Succession Act 1956. Description combines both — minor detail. Year is correct for Hindu Marriage Act.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -513,8 +488,8 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "Passed November 1, 1956; created 14 states and 6 union territories — confirmed.",
-        "source": "https://en.wikipedia.org/wiki/States_Reorganisation_Act,_1956",
+        "reason": "Hindu Marriage Act passed 1955; Hindu Succession Act 1956. Description combines both — minor detail. Year is correct for Hindu Marriage Act.",
+        "source": "https://en.wikipedia.org/wiki/Hindu_Marriage_Act,_1955",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
           "date": null,
@@ -522,32 +497,7 @@
         }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/States_Reorganisation_Act,_1956"
-  },
-  {
-    "year": 1956,
-    "title": "Second Five-Year Plan — industrialization push",
-    "verdict": "TRUE",
-    "reason": "1956–1961, Mahalanobis model, heavy industrialization — confirmed.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "1956–1961, Mahalanobis model, heavy industrialization — confirmed.",
-        "source": "https://en.wikipedia.org/wiki/Second_Five-Year_Plan_(India)",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/Second_Five-Year_Plan_(India)"
+    "source": "https://en.wikipedia.org/wiki/Hindu_Marriage_Act,_1955"
   },
   {
     "year": 1956,
@@ -576,6 +526,31 @@
   },
   {
     "year": 1956,
+    "title": "Industrial Policy Resolution — socialist framework",
+    "verdict": "TRUE",
+    "reason": "IPR 1956 confirmed; 17 industries exclusively state-owned, 12 mixed — confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "IPR 1956 confirmed; 17 industries exclusively state-owned, 12 mixed — confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Industrial_Policy_Resolution,_1956",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Industrial_Policy_Resolution,_1956"
+  },
+  {
+    "year": 1956,
     "title": "Life Insurance Corporation of India formed",
     "verdict": "TRUE",
     "reason": "LIC formed September 1, 1956 nationalizing 245 insurance companies — confirmed.",
@@ -601,9 +576,9 @@
   },
   {
     "year": 1956,
-    "title": "Industrial Policy Resolution — socialist framework",
+    "title": "Second Five-Year Plan — industrialization push",
     "verdict": "TRUE",
-    "reason": "IPR 1956 confirmed; 17 industries exclusively state-owned, 12 mixed — confirmed.",
+    "reason": "1956–1961, Mahalanobis model, heavy industrialization — confirmed.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -613,8 +588,8 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "IPR 1956 confirmed; 17 industries exclusively state-owned, 12 mixed — confirmed.",
-        "source": "https://en.wikipedia.org/wiki/Industrial_Policy_Resolution,_1956",
+        "reason": "1956–1961, Mahalanobis model, heavy industrialization — confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Second_Five-Year_Plan_(India)",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
           "date": null,
@@ -622,13 +597,13 @@
         }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/Industrial_Policy_Resolution,_1956"
+    "source": "https://en.wikipedia.org/wiki/Second_Five-Year_Plan_(India)"
   },
   {
-    "year": 1957,
-    "title": "Second General Election — Congress wins again",
+    "year": 1956,
+    "title": "States Reorganisation Act passed",
     "verdict": "TRUE",
-    "reason": "Congress won 371 of 494 seats — confirmed.",
+    "reason": "Passed November 1, 1956; created 14 states and 6 union territories — confirmed.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -638,8 +613,8 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "Congress won 371 of 494 seats — confirmed.",
-        "source": "https://en.wikipedia.org/wiki/1957_Indian_general_election",
+        "reason": "Passed November 1, 1956; created 14 states and 6 union territories — confirmed.",
+        "source": "https://en.wikipedia.org/wiki/States_Reorganisation_Act,_1956",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
           "date": null,
@@ -647,7 +622,7 @@
         }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/1957_Indian_general_election"
+    "source": "https://en.wikipedia.org/wiki/States_Reorganisation_Act,_1956"
   },
   {
     "year": 1957,
@@ -673,6 +648,31 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/1957_Kerala_Legislative_Assembly_election"
+  },
+  {
+    "year": 1957,
+    "title": "Second General Election — Congress wins again",
+    "verdict": "TRUE",
+    "reason": "Congress won 371 of 494 seats — confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Congress won 371 of 494 seats — confirmed.",
+        "source": "https://en.wikipedia.org/wiki/1957_Indian_general_election",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/1957_Indian_general_election"
   },
   {
     "year": 1958,
@@ -701,31 +701,6 @@
   },
   {
     "year": 1958,
-    "title": "Naga insurgency intensifies in Northeast",
-    "verdict": "TRUE",
-    "reason": "Insurgency escalated late 1950s — confirmed.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Insurgency escalated late 1950s — confirmed.",
-        "source": "https://en.wikipedia.org/wiki/Naga_insurgency",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/Naga_insurgency"
-  },
-  {
-    "year": 1958,
     "title": "India's first nuclear reactor Apsara commissioned",
     "verdict": "FALSE",
     "reason": "Apsara was commissioned August 4, 1956, not 1958. Year is off by 2 years.",
@@ -748,6 +723,31 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/Apsara_(nuclear_reactor)"
+  },
+  {
+    "year": 1958,
+    "title": "Naga insurgency intensifies in Northeast",
+    "verdict": "TRUE",
+    "reason": "Insurgency escalated late 1950s — confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Insurgency escalated late 1950s — confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Naga_insurgency",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Naga_insurgency"
   },
   {
     "year": 1959,
@@ -901,6 +901,31 @@
   },
   {
     "year": 1961,
+    "title": "IIT system expands to five institutes",
+    "verdict": "TRUE",
+    "reason": "By early 1960s: Kharagpur (1951), Bombay (1958), Madras (1959), Kanpur (1959), Delhi (1961) — confirmed five by 1961.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "By early 1960s: Kharagpur (1951), Bombay (1958), Madras (1959), Kanpur (1959), Delhi (1961) — confirmed five by 1961.",
+        "source": "https://en.wikipedia.org/wiki/Indian_Institutes_of_Technology",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Indian_Institutes_of_Technology"
+  },
+  {
+    "year": 1961,
     "title": "Liberation of Goa from Portuguese rule",
     "verdict": "TRUE",
     "reason": "Operation Vijay December 1961; 36-hour campaign; ended 451 years of Portuguese rule — confirmed.",
@@ -973,31 +998,6 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/Third_Five-Year_Plan_(India)"
-  },
-  {
-    "year": 1961,
-    "title": "IIT system expands to five institutes",
-    "verdict": "TRUE",
-    "reason": "By early 1960s: Kharagpur (1951), Bombay (1958), Madras (1959), Kanpur (1959), Delhi (1961) — confirmed five by 1961.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "By early 1960s: Kharagpur (1951), Bombay (1958), Madras (1959), Kanpur (1959), Delhi (1961) — confirmed five by 1961.",
-        "source": "https://en.wikipedia.org/wiki/Indian_Institutes_of_Technology",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/Indian_Institutes_of_Technology"
   },
   {
     "year": 1962,
@@ -1076,9 +1076,9 @@
   },
   {
     "year": 1964,
-    "title": "Jawaharlal Nehru dies — end of founding era",
+    "title": "CPI splits into CPI and CPI(M)",
     "verdict": "TRUE",
-    "reason": "Nehru died May 27, 1964; Lal Bahadur Shastri succeeded — confirmed.",
+    "reason": "Split 1964 over Sino-Soviet dispute; pro-Soviet CPI vs pro-Chinese CPI(M) — confirmed.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -1088,8 +1088,8 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "Nehru died May 27, 1964; Lal Bahadur Shastri succeeded — confirmed.",
-        "source": "https://en.wikipedia.org/wiki/Jawaharlal_Nehru",
+        "reason": "Split 1964 over Sino-Soviet dispute; pro-Soviet CPI vs pro-Chinese CPI(M) — confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Communist_Party_of_India_(Marxist)",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
           "date": null,
@@ -1097,7 +1097,7 @@
         }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/Jawaharlal_Nehru"
+    "source": "https://en.wikipedia.org/wiki/Communist_Party_of_India_(Marxist)"
   },
   {
     "year": 1964,
@@ -1126,9 +1126,9 @@
   },
   {
     "year": 1964,
-    "title": "CPI splits into CPI and CPI(M)",
+    "title": "Jawaharlal Nehru dies — end of founding era",
     "verdict": "TRUE",
-    "reason": "Split 1964 over Sino-Soviet dispute; pro-Soviet CPI vs pro-Chinese CPI(M) — confirmed.",
+    "reason": "Nehru died May 27, 1964; Lal Bahadur Shastri succeeded — confirmed.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -1138,8 +1138,8 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "Split 1964 over Sino-Soviet dispute; pro-Soviet CPI vs pro-Chinese CPI(M) — confirmed.",
-        "source": "https://en.wikipedia.org/wiki/Communist_Party_of_India_(Marxist)",
+        "reason": "Nehru died May 27, 1964; Lal Bahadur Shastri succeeded — confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Jawaharlal_Nehru",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
           "date": null,
@@ -1147,7 +1147,32 @@
         }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/Communist_Party_of_India_(Marxist)"
+    "source": "https://en.wikipedia.org/wiki/Jawaharlal_Nehru"
+  },
+  {
+    "year": 1965,
+    "title": "Hindi as official language triggers protests in Tamil Nadu",
+    "verdict": "TRUE",
+    "reason": "Anti-Hindi agitations in Tamil Nadu 1965; deaths occurred; government retained English — confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Anti-Hindi agitations in Tamil Nadu 1965; deaths occurred; government retained English — confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Anti-Hindi_agitation_of_1965",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Anti-Hindi_agitation_of_1965"
   },
   {
     "year": 1965,
@@ -1200,10 +1225,10 @@
     "source": "https://en.wikipedia.org/wiki/Tashkent_Declaration"
   },
   {
-    "year": 1965,
-    "title": "Hindi as official language triggers protests in Tamil Nadu",
+    "year": 1966,
+    "title": "Green Revolution begins in India",
     "verdict": "TRUE",
-    "reason": "Anti-Hindi agitations in Tamil Nadu 1965; deaths occurred; government retained English — confirmed.",
+    "reason": "Green Revolution begun mid-1960s under Swaminathan; HYV seeds, fertilizers in Punjab — confirmed.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -1213,8 +1238,8 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "Anti-Hindi agitations in Tamil Nadu 1965; deaths occurred; government retained English — confirmed.",
-        "source": "https://en.wikipedia.org/wiki/Anti-Hindi_agitation_of_1965",
+        "reason": "Green Revolution begun mid-1960s under Swaminathan; HYV seeds, fertilizers in Punjab — confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Green_Revolution_in_India",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
           "date": null,
@@ -1222,7 +1247,7 @@
         }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/Anti-Hindi_agitation_of_1965"
+    "source": "https://en.wikipedia.org/wiki/Green_Revolution_in_India"
   },
   {
     "year": 1966,
@@ -1251,31 +1276,6 @@
   },
   {
     "year": 1966,
-    "title": "Rupee devalued by 36 percent",
-    "verdict": "TRUE",
-    "reason": "Devaluation June 1966 by ~36.5% under World Bank/US pressure — confirmed.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Devaluation June 1966 by ~36.5% under World Bank/US pressure — confirmed.",
-        "source": "https://en.wikipedia.org/wiki/Indian_rupee",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/Indian_rupee"
-  },
-  {
-    "year": 1966,
     "title": "Punjab bifurcated — Haryana and Himachal created",
     "verdict": "TRUE",
     "reason": "November 1, 1966; Punjab split into Haryana and Punjabi-speaking Punjab; Chandigarh as UT — confirmed.",
@@ -1301,9 +1301,9 @@
   },
   {
     "year": 1966,
-    "title": "Green Revolution begins in India",
+    "title": "Rupee devalued by 36 percent",
     "verdict": "TRUE",
-    "reason": "Green Revolution begun mid-1960s under Swaminathan; HYV seeds, fertilizers in Punjab — confirmed.",
+    "reason": "Devaluation June 1966 by ~36.5% under World Bank/US pressure — confirmed.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -1313,8 +1313,8 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "Green Revolution begun mid-1960s under Swaminathan; HYV seeds, fertilizers in Punjab — confirmed.",
-        "source": "https://en.wikipedia.org/wiki/Green_Revolution_in_India",
+        "reason": "Devaluation June 1966 by ~36.5% under World Bank/US pressure — confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Indian_rupee",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
           "date": null,
@@ -1322,7 +1322,7 @@
         }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/Green_Revolution_in_India"
+    "source": "https://en.wikipedia.org/wiki/Indian_rupee"
   },
   {
     "year": 1967,
@@ -1401,31 +1401,6 @@
   },
   {
     "year": 1969,
-    "title": "Congress Party splits — Indira Gandhi expels Syndicate",
-    "verdict": "TRUE",
-    "reason": "Congress split 1969; S. Nijalingappa expelled Indira; Congress(R) and Congress(O) — confirmed.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Congress split 1969; S. Nijalingappa expelled Indira; Congress(R) and Congress(O) — confirmed.",
-        "source": "https://en.wikipedia.org/wiki/Indian_National_Congress_(Organisation)",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/Indian_National_Congress_(Organisation)"
-  },
-  {
-    "year": 1969,
     "title": "Bank nationalization — 14 major banks taken over",
     "verdict": "TRUE",
     "reason": "14 banks nationalized July 19, 1969 — confirmed.",
@@ -1448,6 +1423,31 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/Nationalisation_of_banks_in_India"
+  },
+  {
+    "year": 1969,
+    "title": "Congress Party splits — Indira Gandhi expels Syndicate",
+    "verdict": "TRUE",
+    "reason": "Congress split 1969; S. Nijalingappa expelled Indira; Congress(R) and Congress(O) — confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Congress split 1969; S. Nijalingappa expelled Indira; Congress(R) and Congress(O) — confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Indian_National_Congress_(Organisation)",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Indian_National_Congress_(Organisation)"
   },
   {
     "year": 1969,
@@ -1601,31 +1601,6 @@
   },
   {
     "year": 1973,
-    "title": "Kesavananda Bharati case — Basic Structure doctrine",
-    "verdict": "TRUE",
-    "reason": "Judgment April 24, 1973; Basic Structure doctrine established — confirmed.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Judgment April 24, 1973; Basic Structure doctrine established — confirmed.",
-        "source": "https://en.wikipedia.org/wiki/Kesavananda_Bharati_v._State_of_Kerala",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/Kesavananda_Bharati_v._State_of_Kerala"
-  },
-  {
-    "year": 1973,
     "title": "Chipko movement begins",
     "verdict": "TRUE",
     "reason": "Began 1973 in Uttarakhand; women embraced trees — confirmed.",
@@ -1650,10 +1625,10 @@
     "source": "https://en.wikipedia.org/wiki/Chipko_movement"
   },
   {
-    "year": 1974,
-    "title": "Smiling Buddha — India's first nuclear test",
+    "year": 1973,
+    "title": "Kesavananda Bharati case — Basic Structure doctrine",
     "verdict": "TRUE",
-    "reason": "May 18, 1974 at Pokhran; described as 'peaceful nuclear explosion' — confirmed.",
+    "reason": "Judgment April 24, 1973; Basic Structure doctrine established — confirmed.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -1663,8 +1638,8 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "May 18, 1974 at Pokhran; described as 'peaceful nuclear explosion' — confirmed.",
-        "source": "https://en.wikipedia.org/wiki/Smiling_Buddha",
+        "reason": "Judgment April 24, 1973; Basic Structure doctrine established — confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Kesavananda_Bharati_v._State_of_Kerala",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
           "date": null,
@@ -1672,7 +1647,32 @@
         }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/Smiling_Buddha"
+    "source": "https://en.wikipedia.org/wiki/Kesavananda_Bharati_v._State_of_Kerala"
+  },
+  {
+    "year": 1974,
+    "title": "JP Movement against Indira Gandhi begins",
+    "verdict": "TRUE",
+    "reason": "JP launched movement in Bihar 1974 demanding 'total revolution' — confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "JP launched movement in Bihar 1974 demanding 'total revolution' — confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Jayaprakash_Narayan",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Jayaprakash_Narayan"
   },
   {
     "year": 1974,
@@ -1701,9 +1701,9 @@
   },
   {
     "year": 1974,
-    "title": "JP Movement against Indira Gandhi begins",
+    "title": "Smiling Buddha — India's first nuclear test",
     "verdict": "TRUE",
-    "reason": "JP launched movement in Bihar 1974 demanding 'total revolution' — confirmed.",
+    "reason": "May 18, 1974 at Pokhran; described as 'peaceful nuclear explosion' — confirmed.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -1713,8 +1713,8 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "JP launched movement in Bihar 1974 demanding 'total revolution' — confirmed.",
-        "source": "https://en.wikipedia.org/wiki/Jayaprakash_Narayan",
+        "reason": "May 18, 1974 at Pokhran; described as 'peaceful nuclear explosion' — confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Smiling_Buddha",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
           "date": null,
@@ -1722,7 +1722,57 @@
         }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/Jayaprakash_Narayan"
+    "source": "https://en.wikipedia.org/wiki/Smiling_Buddha"
+  },
+  {
+    "year": 1975,
+    "title": "Allahabad High Court voids Indira Gandhi's election",
+    "verdict": "TRUE",
+    "reason": "HC ruling June 12, 1975; Emergency declared June 25 — confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "HC ruling June 12, 1975; Emergency declared June 25 — confirmed.",
+        "source": "https://en.wikipedia.org/wiki/The_Emergency_(India)",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/The_Emergency_(India)"
+  },
+  {
+    "year": 1975,
+    "title": "Aryabhata — India's first satellite launched",
+    "verdict": "TRUE",
+    "reason": "Launched April 19, 1975 via Soviet rocket — confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Launched April 19, 1975 via Soviet rocket — confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Aryabhata_(satellite)",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Aryabhata_(satellite)"
   },
   {
     "year": 1975,
@@ -1751,9 +1801,9 @@
   },
   {
     "year": 1975,
-    "title": "Allahabad High Court voids Indira Gandhi's election",
+    "title": "Forced sterilization program under Emergency",
     "verdict": "TRUE",
-    "reason": "HC ruling June 12, 1975; Emergency declared June 25 — confirmed.",
+    "reason": "Sanjay Gandhi's coercive sterilization program 1975–77 — confirmed.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -1763,7 +1813,7 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "HC ruling June 12, 1975; Emergency declared June 25 — confirmed.",
+        "reason": "Sanjay Gandhi's coercive sterilization program 1975–77 — confirmed.",
         "source": "https://en.wikipedia.org/wiki/The_Emergency_(India)",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
@@ -1798,56 +1848,6 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/Annexation_of_Sikkim"
-  },
-  {
-    "year": 1975,
-    "title": "Aryabhata — India's first satellite launched",
-    "verdict": "TRUE",
-    "reason": "Launched April 19, 1975 via Soviet rocket — confirmed.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Launched April 19, 1975 via Soviet rocket — confirmed.",
-        "source": "https://en.wikipedia.org/wiki/Aryabhata_(satellite)",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/Aryabhata_(satellite)"
-  },
-  {
-    "year": 1975,
-    "title": "Forced sterilization program under Emergency",
-    "verdict": "TRUE",
-    "reason": "Sanjay Gandhi's coercive sterilization program 1975–77 — confirmed.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Sanjay Gandhi's coercive sterilization program 1975–77 — confirmed.",
-        "source": "https://en.wikipedia.org/wiki/The_Emergency_(India)",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/The_Emergency_(India)"
   },
   {
     "year": 1976,
@@ -1976,31 +1976,6 @@
   },
   {
     "year": 1983,
-    "title": "Operation Bluestar — Army storms Golden Temple",
-    "verdict": "FALSE",
-    "reason": "Operation Bluestar was conducted June 1-10, 1984, not 1983. Year is off by 1.",
-    "verify_count": 1,
-    "consensus_verdict": "FALSE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "FALSE",
-        "reason": "Operation Bluestar was conducted June 1-10, 1984, not 1983. Year is off by 1.",
-        "source": "https://en.wikipedia.org/wiki/Operation_Blue_Star",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/Operation_Blue_Star"
-  },
-  {
-    "year": 1983,
     "title": "Assam Accord and Nellie massacre",
     "verdict": "TRUE",
     "reason": "Nellie massacre occurred February 18, 1983 — year confirmed. Note: description correctly notes Assam Accord was 1985, not 1983.",
@@ -2025,21 +2000,21 @@
     "source": "https://en.wikipedia.org/wiki/Nellie_massacre"
   },
   {
-    "year": 1984,
-    "title": "Indira Gandhi assassinated by Sikh bodyguards",
-    "verdict": "TRUE",
-    "reason": "Assassinated October 31, 1984 by Satwant Singh and Beant Singh — confirmed.",
+    "year": 1983,
+    "title": "Operation Bluestar — Army storms Golden Temple",
+    "verdict": "FALSE",
+    "reason": "Operation Bluestar was conducted June 1-10, 1984, not 1983. Year is off by 1.",
     "verify_count": 1,
-    "consensus_verdict": "TRUE",
+    "consensus_verdict": "FALSE",
     "consensus_status": "single",
     "needs_tiebreak": false,
     "source_independence": "n/a",
     "verifications": [
       {
         "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Assassinated October 31, 1984 by Satwant Singh and Beant Singh — confirmed.",
-        "source": "https://en.wikipedia.org/wiki/Assassination_of_Indira_Gandhi",
+        "verdict": "FALSE",
+        "reason": "Operation Bluestar was conducted June 1-10, 1984, not 1983. Year is off by 1.",
+        "source": "https://en.wikipedia.org/wiki/Operation_Blue_Star",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
           "date": null,
@@ -2047,7 +2022,7 @@
         }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/Assassination_of_Indira_Gandhi"
+    "source": "https://en.wikipedia.org/wiki/Operation_Blue_Star"
   },
   {
     "year": 1984,
@@ -2076,31 +2051,6 @@
   },
   {
     "year": 1984,
-    "title": "Rajiv Gandhi wins massive election victory",
-    "verdict": "TRUE",
-    "reason": "Congress won 404 of 514 seats December 1984 — confirmed.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Congress won 404 of 514 seats December 1984 — confirmed.",
-        "source": "https://en.wikipedia.org/wiki/1984_Indian_general_election",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/1984_Indian_general_election"
-  },
-  {
-    "year": 1984,
     "title": "Bhopal gas tragedy — worst industrial disaster",
     "verdict": "TRUE",
     "reason": "December 2-3, 1984; methyl isocyanate; official immediate death ~3,800 (some sources higher). Description says 'at least 3,800' — consistent with official figures.",
@@ -2125,10 +2075,10 @@
     "source": "https://en.wikipedia.org/wiki/Bhopal_disaster"
   },
   {
-    "year": 1985,
-    "title": "Shah Bano case and Muslim Women Act controversy",
+    "year": 1984,
+    "title": "Indira Gandhi assassinated by Sikh bodyguards",
     "verdict": "TRUE",
-    "reason": "Supreme Court ruling 1985; Muslim Women Act 1986. Year refers to SC ruling — confirmed.",
+    "reason": "Assassinated October 31, 1984 by Satwant Singh and Beant Singh — confirmed.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -2138,8 +2088,8 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "Supreme Court ruling 1985; Muslim Women Act 1986. Year refers to SC ruling — confirmed.",
-        "source": "https://en.wikipedia.org/wiki/Shah_Bano_case",
+        "reason": "Assassinated October 31, 1984 by Satwant Singh and Beant Singh — confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Assassination_of_Indira_Gandhi",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
           "date": null,
@@ -2147,7 +2097,32 @@
         }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/Shah_Bano_case"
+    "source": "https://en.wikipedia.org/wiki/Assassination_of_Indira_Gandhi"
+  },
+  {
+    "year": 1984,
+    "title": "Rajiv Gandhi wins massive election victory",
+    "verdict": "TRUE",
+    "reason": "Congress won 404 of 514 seats December 1984 — confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Congress won 404 of 514 seats December 1984 — confirmed.",
+        "source": "https://en.wikipedia.org/wiki/1984_Indian_general_election",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/1984_Indian_general_election"
   },
   {
     "year": 1985,
@@ -2223,6 +2198,31 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/Rajiv_Gandhi"
+  },
+  {
+    "year": 1985,
+    "title": "Shah Bano case and Muslim Women Act controversy",
+    "verdict": "TRUE",
+    "reason": "Supreme Court ruling 1985; Muslim Women Act 1986. Year refers to SC ruling — confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Supreme Court ruling 1985; Muslim Women Act 1986. Year refers to SC ruling — confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Shah_Bano_case",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Shah_Bano_case"
   },
   {
     "year": 1986,
@@ -2376,31 +2376,6 @@
   },
   {
     "year": 1989,
-    "title": "VP Singh wins election — Rajiv Gandhi ousted",
-    "verdict": "TRUE",
-    "reason": "V.P. Singh's Janata Dal with BJP and Left support; minority government — confirmed.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "V.P. Singh's Janata Dal with BJP and Left support; minority government — confirmed.",
-        "source": "https://en.wikipedia.org/wiki/1989_Indian_general_election",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/1989_Indian_general_election"
-  },
-  {
-    "year": 1989,
     "title": "Kashmir insurgency begins",
     "verdict": "TRUE",
     "reason": "Full-blown insurgency erupted 1989; rigged election, Pakistani support — confirmed.",
@@ -2450,10 +2425,10 @@
     "source": "https://en.wikipedia.org/wiki/Kashmiri_Pandit_exodus"
   },
   {
-    "year": 1990,
-    "title": "Mandal Commission recommendations implemented",
+    "year": 1989,
+    "title": "VP Singh wins election — Rajiv Gandhi ousted",
     "verdict": "TRUE",
-    "reason": "27% OBC reservation announced 1990 by VP Singh; violent protests — confirmed.",
+    "reason": "V.P. Singh's Janata Dal with BJP and Left support; minority government — confirmed.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -2463,8 +2438,8 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "27% OBC reservation announced 1990 by VP Singh; violent protests — confirmed.",
-        "source": "https://en.wikipedia.org/wiki/Mandal_Commission",
+        "reason": "V.P. Singh's Janata Dal with BJP and Left support; minority government — confirmed.",
+        "source": "https://en.wikipedia.org/wiki/1989_Indian_general_election",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
           "date": null,
@@ -2472,7 +2447,7 @@
         }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/Mandal_Commission"
+    "source": "https://en.wikipedia.org/wiki/1989_Indian_general_election"
   },
   {
     "year": 1990,
@@ -2500,10 +2475,10 @@
     "source": "https://en.wikipedia.org/wiki/L._K._Advani"
   },
   {
-    "year": 1991,
-    "title": "Rajiv Gandhi assassinated by LTTE suicide bomber",
+    "year": 1990,
+    "title": "Mandal Commission recommendations implemented",
     "verdict": "TRUE",
-    "reason": "Killed May 21, 1991 at Sriperumbudur by LTTE suicide bomber — confirmed.",
+    "reason": "27% OBC reservation announced 1990 by VP Singh; violent protests — confirmed.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -2513,8 +2488,8 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "Killed May 21, 1991 at Sriperumbudur by LTTE suicide bomber — confirmed.",
-        "source": "https://en.wikipedia.org/wiki/Assassination_of_Rajiv_Gandhi",
+        "reason": "27% OBC reservation announced 1990 by VP Singh; violent protests — confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Mandal_Commission",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
           "date": null,
@@ -2522,7 +2497,7 @@
         }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/Assassination_of_Rajiv_Gandhi"
+    "source": "https://en.wikipedia.org/wiki/Mandal_Commission"
   },
   {
     "year": 1991,
@@ -2598,6 +2573,31 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/P._V._Narasimha_Rao"
+  },
+  {
+    "year": 1991,
+    "title": "Rajiv Gandhi assassinated by LTTE suicide bomber",
+    "verdict": "TRUE",
+    "reason": "Killed May 21, 1991 at Sriperumbudur by LTTE suicide bomber — confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Killed May 21, 1991 at Sriperumbudur by LTTE suicide bomber — confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Assassination_of_Rajiv_Gandhi",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Assassination_of_Rajiv_Gandhi"
   },
   {
     "year": 1992,
@@ -2676,6 +2676,31 @@
   },
   {
     "year": 1993,
+    "title": "73rd and 74th Constitutional Amendments — Panchayati Raj",
+    "verdict": "TRUE",
+    "reason": "Both amendments passed 1992 and came into force 1993; local governance constitutionalized — confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Both amendments passed 1992 and came into force 1993; local governance constitutionalized — confirmed.",
+        "source": "https://en.wikipedia.org/wiki/73rd_Amendment_to_the_Constitution_of_India",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/73rd_Amendment_to_the_Constitution_of_India"
+  },
+  {
+    "year": 1993,
     "title": "Bombay serial blasts — 257 killed",
     "verdict": "TRUE",
     "reason": "March 12, 1993; 257 killed confirmed; Dawood Ibrahim and ISI link — confirmed.",
@@ -2701,28 +2726,39 @@
   },
   {
     "year": 1993,
-    "title": "73rd and 74th Constitutional Amendments — Panchayati Raj",
+    "title": "New NPA Norms Expose Capital Shortfall, Forcing First Bank Recapitalization",
     "verdict": "TRUE",
-    "reason": "Both amendments passed 1992 and came into force 1993; local governance constitutionalized — confirmed.",
-    "verify_count": 1,
+    "reason": "Multiple independent sources confirm the material narrative. RBI's own official chronology (rbi.org.in) confirms that following the November 1991 Narasimham Committee (Committee on the Financial System) report, RBI introduced income-recognition, asset-classification and capital-adequacy (8% CRAR) norms starting April 1992, phased in with IRAC compliance required by 1994 and CAR by 1996. An independent source (mostlyeconomics.wordpress.com, a widely-cited Indian economics blog reproducing historical bond-issuance data) confirms the government issued Rs 5,700 crore of recapitalization bonds in FY1993-94 to the 19 nationalized banks (to fund over Rs 10,000 crore of required NPA provisioning), followed by Rs 5,600 crore in FY1994-95, with cumulative spending reaching Rs 20,446 crore -- matching the event description's figures almost exactly. The same source's bank-wise breakdown confirms Bank of India (Rs 635 crore), Indian Overseas Bank (Rs 705 crore) and Syndicate Bank (Rs 680 crore) as named recipients, consistent with the event description. A separate independent source (ideasforindia.in) corroborates the broader picture: gross NPAs of public sector banks stood at 23.2% in 1992-93, and recapitalization bonds were introduced in the 1993-95 window, totaling roughly Rs 20,000 crore into PSBs across the 1990s. One other source (prepp.in) cites a slightly different split (Rs 6,400cr FY93-94 + Rs 4,362cr FY94-95), likely reflecting sanctioned-vs-disbursed or differing fiscal accounting conventions, but this does not change the core facts: country, year, causal mechanism (Narasimham-driven NPA norms exposing a capital shortfall), the named banks, and the order-of-magnitude cumulative total all hold up. This is properly understood as India's first systemic post-liberalization bank-capital crisis/recapitalization, tagged to 1993 (the start of FY1993-94, when the first tranche of bonds was issued).",
+    "verify_count": 2,
     "consensus_verdict": "TRUE",
-    "consensus_status": "single",
+    "consensus_status": "double_confirmed",
     "needs_tiebreak": false,
-    "source_independence": "n/a",
+    "source_independence": "weak",
     "verifications": [
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "Both amendments passed 1992 and came into force 1993; local governance constitutionalized — confirmed.",
-        "source": "https://en.wikipedia.org/wiki/73rd_Amendment_to_the_Constitution_of_India",
+        "reason": "Multiple independent sources confirm the core facts. Following the RBI's 1992-93 introduction of income-recognition/asset-classification (IRAC) provisioning norms and phased 8% capital-adequacy requirement (recommended by the 1991 Narasimham Committee), Indian public-sector banks had to provision over Rs 10,000 crore against bad/doubtful loans, eroding their thin capital base. The Government of India injected Rs 5,700 crore in capital contribution/recapitalization bonds to all 19 nationalized banks in FY1993-94 (Finance Minister Manmohan Singh's stated rationale: to \"meet the gap created by application of the first stage of new provisioning norms\"), followed by a further tranche in FY1994-95, with total recapitalization spending reaching Rs 20,446 crore — a figure confirmed independently across two unrelated sources (an economics blog citing budget documents, and an academic/current-affairs source on bank nationalization history). One source gives the FY93-94/94-95 split as Rs 5,700cr/Rs 5,600cr (matching the event exactly) while another gives Rs 6,400cr/Rs 4,362cr — a common type of historical accounting variance (bonds issued vs. cash contribution vs. gross allocation) — but both agree on the Rs 20,446 crore total and the 19-nationalized-bank scope. Bank of India, Indian Overseas Bank, and Syndicate Bank were indeed among the 19 nationalized banks at the time, so the named examples check out. All material elements — country, year, causal mechanism (Narasimham-driven NPA/capital-adequacy norms → provisioning shock → recapitalization), and magnitude — are confirmed as described. This stands as a genuine, well-documented systemic bank-capital event, satisfying TRUE.",
+        "source": "https://mostlyeconomics.wordpress.com/2017/10/26/lessons-from-history-of-bank-recapitalisation-bonds-issued-in-1993-94/",
         "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
+          "model": "claude-sonnet-5",
+          "date": "2026-07-09",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Multiple independent sources confirm the material narrative. RBI's own official chronology (rbi.org.in) confirms that following the November 1991 Narasimham Committee (Committee on the Financial System) report, RBI introduced income-recognition, asset-classification and capital-adequacy (8% CRAR) norms starting April 1992, phased in with IRAC compliance required by 1994 and CAR by 1996. An independent source (mostlyeconomics.wordpress.com, a widely-cited Indian economics blog reproducing historical bond-issuance data) confirms the government issued Rs 5,700 crore of recapitalization bonds in FY1993-94 to the 19 nationalized banks (to fund over Rs 10,000 crore of required NPA provisioning), followed by Rs 5,600 crore in FY1994-95, with cumulative spending reaching Rs 20,446 crore -- matching the event description's figures almost exactly. The same source's bank-wise breakdown confirms Bank of India (Rs 635 crore), Indian Overseas Bank (Rs 705 crore) and Syndicate Bank (Rs 680 crore) as named recipients, consistent with the event description. A separate independent source (ideasforindia.in) corroborates the broader picture: gross NPAs of public sector banks stood at 23.2% in 1992-93, and recapitalization bonds were introduced in the 1993-95 window, totaling roughly Rs 20,000 crore into PSBs across the 1990s. One other source (prepp.in) cites a slightly different split (Rs 6,400cr FY93-94 + Rs 4,362cr FY94-95), likely reflecting sanctioned-vs-disbursed or differing fiscal accounting conventions, but this does not change the core facts: country, year, causal mechanism (Narasimham-driven NPA norms exposing a capital shortfall), the named banks, and the order-of-magnitude cumulative total all hold up. This is properly understood as India's first systemic post-liberalization bank-capital crisis/recapitalization, tagged to 1993 (the start of FY1993-94, when the first tranche of bonds was issued).",
+        "source": "https://mostlyeconomics.wordpress.com/2017/10/26/lessons-from-history-of-bank-recapitalisation-bonds-issued-in-1993-94/",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-09",
           "method": "web_search"
         }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/73rd_Amendment_to_the_Constitution_of_India"
+    "source": "https://mostlyeconomics.wordpress.com/2017/10/26/lessons-from-history-of-bank-recapitalisation-bonds-issued-in-1993-94/"
   },
   {
     "year": 1993,
@@ -2976,31 +3012,6 @@
   },
   {
     "year": 1998,
-    "title": "Pokhran-II nuclear tests — India declared nuclear state",
-    "verdict": "TRUE",
-    "reason": "Operation Shakti May 11-13, 1998; five tests including thermonuclear — confirmed.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Operation Shakti May 11-13, 1998; five tests including thermonuclear — confirmed.",
-        "source": "https://en.wikipedia.org/wiki/Pokhran-II",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/Pokhran-II"
-  },
-  {
-    "year": 1998,
     "title": "Pakistan conducts retaliatory nuclear tests",
     "verdict": "TRUE",
     "reason": "Pakistan's Chagai tests May 28, 1998 in response — confirmed.",
@@ -3025,10 +3036,10 @@
     "source": "https://en.wikipedia.org/wiki/Chagai-I"
   },
   {
-    "year": 1999,
-    "title": "Kargil War — India recaptures Pakistani-occupied heights",
+    "year": 1998,
+    "title": "Pokhran-II nuclear tests — India declared nuclear state",
     "verdict": "TRUE",
-    "reason": "Kargil Vijay Diwas July 26, 1999; 527 Indian soldiers killed (description says 'over 500' — confirmed); first nuclear-armed nations in armed conflict — confirmed.",
+    "reason": "Operation Shakti May 11-13, 1998; five tests including thermonuclear — confirmed.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -3038,8 +3049,8 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "Kargil Vijay Diwas July 26, 1999; 527 Indian soldiers killed (description says 'over 500' — confirmed); first nuclear-armed nations in armed conflict — confirmed.",
-        "source": "https://en.wikipedia.org/wiki/Kargil_War",
+        "reason": "Operation Shakti May 11-13, 1998; five tests including thermonuclear — confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Pokhran-II",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
           "date": null,
@@ -3047,7 +3058,7 @@
         }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/Kargil_War"
+    "source": "https://en.wikipedia.org/wiki/Pokhran-II"
   },
   {
     "year": 1999,
@@ -3076,9 +3087,9 @@
   },
   {
     "year": 1999,
-    "title": "Vajpayee's Lahore Bus Diplomacy with Pakistan",
+    "title": "Kargil War — India recaptures Pakistani-occupied heights",
     "verdict": "TRUE",
-    "reason": "February 1999 bus journey; Lahore Declaration signed — confirmed.",
+    "reason": "Kargil Vijay Diwas July 26, 1999; 527 Indian soldiers killed (description says 'over 500' — confirmed); first nuclear-armed nations in armed conflict — confirmed.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -3088,8 +3099,8 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "February 1999 bus journey; Lahore Declaration signed — confirmed.",
-        "source": "https://en.wikipedia.org/wiki/Lahore_Declaration",
+        "reason": "Kargil Vijay Diwas July 26, 1999; 527 Indian soldiers killed (description says 'over 500' — confirmed); first nuclear-armed nations in armed conflict — confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Kargil_War",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
           "date": null,
@@ -3097,7 +3108,7 @@
         }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/Lahore_Declaration"
+    "source": "https://en.wikipedia.org/wiki/Kargil_War"
   },
   {
     "year": 1999,
@@ -3125,10 +3136,10 @@
     "source": "https://en.wikipedia.org/wiki/1999_Indian_general_election"
   },
   {
-    "year": 2000,
-    "title": "Jharkhand, Chhattisgarh, and Uttarakhand created",
+    "year": 1999,
+    "title": "Vajpayee's Lahore Bus Diplomacy with Pakistan",
     "verdict": "TRUE",
-    "reason": "All three states created November 2000; total states became 28 — confirmed.",
+    "reason": "February 1999 bus journey; Lahore Declaration signed — confirmed.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -3138,8 +3149,8 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "All three states created November 2000; total states became 28 — confirmed.",
-        "source": "https://en.wikipedia.org/wiki/Jharkhand",
+        "reason": "February 1999 bus journey; Lahore Declaration signed — confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Lahore_Declaration",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
           "date": null,
@@ -3147,7 +3158,7 @@
         }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/Jharkhand"
+    "source": "https://en.wikipedia.org/wiki/Lahore_Declaration"
   },
   {
     "year": 2000,
@@ -3175,10 +3186,10 @@
     "source": "https://en.wikipedia.org/wiki/Indian_information_technology_industry"
   },
   {
-    "year": 2001,
-    "title": "Gujarat earthquake kills 20,000",
+    "year": 2000,
+    "title": "Jharkhand, Chhattisgarh, and Uttarakhand created",
     "verdict": "TRUE",
-    "reason": "January 26, 2001; magnitude 7.6-7.7; ~20,000 killed — confirmed. Description says 7.7 which is one version; 7.6 is USGS figure. Minor discrepancy.",
+    "reason": "All three states created November 2000; total states became 28 — confirmed.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -3188,8 +3199,8 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "January 26, 2001; magnitude 7.6-7.7; ~20,000 killed — confirmed. Description says 7.7 which is one version; 7.6 is USGS figure. Minor discrepancy.",
-        "source": "https://en.wikipedia.org/wiki/2001_Gujarat_earthquake",
+        "reason": "All three states created November 2000; total states became 28 — confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Jharkhand",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
           "date": null,
@@ -3197,7 +3208,7 @@
         }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/2001_Gujarat_earthquake"
+    "source": "https://en.wikipedia.org/wiki/Jharkhand"
   },
   {
     "year": 2001,
@@ -3223,6 +3234,31 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/2001_Indian_Parliament_attack"
+  },
+  {
+    "year": 2001,
+    "title": "Gujarat earthquake kills 20,000",
+    "verdict": "TRUE",
+    "reason": "January 26, 2001; magnitude 7.6-7.7; ~20,000 killed — confirmed. Description says 7.7 which is one version; 7.6 is USGS figure. Minor discrepancy.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "January 26, 2001; magnitude 7.6-7.7; ~20,000 killed — confirmed. Description says 7.7 which is one version; 7.6 is USGS figure. Minor discrepancy.",
+        "source": "https://en.wikipedia.org/wiki/2001_Gujarat_earthquake",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/2001_Gujarat_earthquake"
   },
   {
     "year": 2001,
@@ -3401,31 +3437,6 @@
   },
   {
     "year": 2005,
-    "title": "MGNREGA — rural employment guarantee scheme launched",
-    "verdict": "TRUE",
-    "reason": "MGNREGA passed September 2005; world's largest public works program — confirmed.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "MGNREGA passed September 2005; world's largest public works program — confirmed.",
-        "source": "https://en.wikipedia.org/wiki/Mahatma_Gandhi_National_Rural_Employment_Guarantee_Act",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/Mahatma_Gandhi_National_Rural_Employment_Guarantee_Act"
-  },
-  {
-    "year": 2005,
     "title": "Delhi bombings",
     "verdict": "TRUE",
     "reason": "October 29, 2005; Sarojini Nagar, Paharganj, bus; 62 killed — confirmed.",
@@ -3473,6 +3484,56 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/India%E2%80%93United_States_nuclear_deal"
+  },
+  {
+    "year": 2005,
+    "title": "MGNREGA — rural employment guarantee scheme launched",
+    "verdict": "TRUE",
+    "reason": "MGNREGA passed September 2005; world's largest public works program — confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "MGNREGA passed September 2005; world's largest public works program — confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Mahatma_Gandhi_National_Rural_Employment_Guarantee_Act",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Mahatma_Gandhi_National_Rural_Employment_Guarantee_Act"
+  },
+  {
+    "year": 2006,
+    "title": "India-Israel defense cooperation deepens",
+    "verdict": "TRUE",
+    "reason": "India became Israel's largest defense customer; drone/missile deals — confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "India became Israel's largest defense customer; drone/missile deals — confirmed.",
+        "source": "https://en.wikipedia.org/wiki/India%E2%80%93Israel_relations",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/India%E2%80%93Israel_relations"
   },
   {
     "year": 2006,
@@ -3525,81 +3586,6 @@
     "source": "https://en.wikipedia.org/wiki/Other_Backward_Class"
   },
   {
-    "year": 2006,
-    "title": "India-Israel defense cooperation deepens",
-    "verdict": "TRUE",
-    "reason": "India became Israel's largest defense customer; drone/missile deals — confirmed.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "India became Israel's largest defense customer; drone/missile deals — confirmed.",
-        "source": "https://en.wikipedia.org/wiki/India%E2%80%93Israel_relations",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/India%E2%80%93Israel_relations"
-  },
-  {
-    "year": 2008,
-    "title": "Mumbai terrorist attacks — 26/11",
-    "verdict": "TRUE",
-    "reason": "November 26, 2008; 166 civilians and security killed (description says 166) — confirmed.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "November 26, 2008; 166 civilians and security killed (description says 166) — confirmed.",
-        "source": "https://en.wikipedia.org/wiki/2008_Mumbai_attacks",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/2008_Mumbai_attacks"
-  },
-  {
-    "year": 2008,
-    "title": "India-US nuclear deal finalized",
-    "verdict": "TRUE",
-    "reason": "NSG waiver September 2008 — confirmed.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "NSG waiver September 2008 — confirmed.",
-        "source": "https://en.wikipedia.org/wiki/India%E2%80%93United_States_nuclear_deal",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/India%E2%80%93United_States_nuclear_deal"
-  },
-  {
     "year": 2008,
     "title": "Chandrayaan-1 lunar mission launched",
     "verdict": "TRUE",
@@ -3650,10 +3636,10 @@
     "source": "https://en.wikipedia.org/wiki/2007%E2%80%932008_financial_crisis"
   },
   {
-    "year": 2009,
-    "title": "Fifteenth General Election — UPA wins second term",
+    "year": 2008,
+    "title": "India-US nuclear deal finalized",
     "verdict": "TRUE",
-    "reason": "Congress won 206 seats; UPA 262 — confirmed.",
+    "reason": "NSG waiver September 2008 — confirmed.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -3663,8 +3649,8 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "Congress won 206 seats; UPA 262 — confirmed.",
-        "source": "https://en.wikipedia.org/wiki/2009_Indian_general_election",
+        "reason": "NSG waiver September 2008 — confirmed.",
+        "source": "https://en.wikipedia.org/wiki/India%E2%80%93United_States_nuclear_deal",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
           "date": null,
@@ -3672,7 +3658,32 @@
         }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/2009_Indian_general_election"
+    "source": "https://en.wikipedia.org/wiki/India%E2%80%93United_States_nuclear_deal"
+  },
+  {
+    "year": 2008,
+    "title": "Mumbai terrorist attacks — 26/11",
+    "verdict": "TRUE",
+    "reason": "November 26, 2008; 166 civilians and security killed (description says 166) — confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "November 26, 2008; 166 civilians and security killed (description says 166) — confirmed.",
+        "source": "https://en.wikipedia.org/wiki/2008_Mumbai_attacks",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/2008_Mumbai_attacks"
   },
   {
     "year": 2009,
@@ -3698,6 +3709,31 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/Naz_Foundation_v._Govt._of_NCT_of_Delhi"
+  },
+  {
+    "year": 2009,
+    "title": "Fifteenth General Election — UPA wins second term",
+    "verdict": "TRUE",
+    "reason": "Congress won 206 seats; UPA 262 — confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Congress won 206 seats; UPA 262 — confirmed.",
+        "source": "https://en.wikipedia.org/wiki/2009_Indian_general_election",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/2009_Indian_general_election"
   },
   {
     "year": 2009,
@@ -3751,31 +3787,6 @@
   },
   {
     "year": 2010,
-    "title": "Ayodhya verdict — Allahabad High Court",
-    "verdict": "TRUE",
-    "reason": "September 30, 2010 Allahabad HC verdict dividing land three ways — confirmed.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "September 30, 2010 Allahabad HC verdict dividing land three ways — confirmed.",
-        "source": "https://en.wikipedia.org/wiki/Ayodhya_dispute",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/Ayodhya_dispute"
-  },
-  {
-    "year": 2010,
     "title": "Aadhaar biometric identity program launched",
     "verdict": "TRUE",
     "reason": "UIDAI/Aadhaar launched 2010 under Nandan Nilekani — confirmed.",
@@ -3798,6 +3809,31 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/Aadhaar"
+  },
+  {
+    "year": 2010,
+    "title": "Ayodhya verdict — Allahabad High Court",
+    "verdict": "TRUE",
+    "reason": "September 30, 2010 Allahabad HC verdict dividing land three ways — confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "September 30, 2010 Allahabad HC verdict dividing land three ways — confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Ayodhya_dispute",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Ayodhya_dispute"
   },
   {
     "year": 2011,
@@ -3826,6 +3862,31 @@
   },
   {
     "year": 2012,
+    "title": "Coal scam — CAG report on Coalgate",
+    "verdict": "TRUE",
+    "reason": "CAG report 2012; coal blocks allocated 2004-2009; Rs 1.86 lakh crore presumptive loss — confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "CAG report 2012; coal blocks allocated 2004-2009; Rs 1.86 lakh crore presumptive loss — confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Coal_allocation_scam",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Coal_allocation_scam"
+  },
+  {
+    "year": 2012,
     "title": "Delhi gang rape case — Nirbhaya protests",
     "verdict": "TRUE",
     "reason": "December 16, 2012; 23-year-old victim; nationwide protests — confirmed.",
@@ -3848,6 +3909,31 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/2012_Delhi_gang_rape_case"
+  },
+  {
+    "year": 2012,
+    "title": "FDI in multi-brand retail approved",
+    "verdict": "TRUE",
+    "reason": "51% FDI in multi-brand retail approved September 2012 — confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "51% FDI in multi-brand retail approved September 2012 — confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Foreign_direct_investment_in_India",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Foreign_direct_investment_in_India"
   },
   {
     "year": 2012,
@@ -3875,10 +3961,10 @@
     "source": "https://en.wikipedia.org/wiki/2012_India_blackouts"
   },
   {
-    "year": 2012,
-    "title": "Coal scam — CAG report on Coalgate",
+    "year": 2013,
+    "title": "Aam Aadmi Party formed by Arvind Kejriwal",
     "verdict": "TRUE",
-    "reason": "CAG report 2012; coal blocks allocated 2004-2009; Rs 1.86 lakh crore presumptive loss — confirmed.",
+    "reason": "AAP formed November 26, 2013 — confirmed.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -3888,8 +3974,8 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "CAG report 2012; coal blocks allocated 2004-2009; Rs 1.86 lakh crore presumptive loss — confirmed.",
-        "source": "https://en.wikipedia.org/wiki/Coal_allocation_scam",
+        "reason": "AAP formed November 26, 2013 — confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Aam_Aadmi_Party",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
           "date": null,
@@ -3897,13 +3983,13 @@
         }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/Coal_allocation_scam"
+    "source": "https://en.wikipedia.org/wiki/Aam_Aadmi_Party"
   },
   {
-    "year": 2012,
-    "title": "FDI in multi-brand retail approved",
+    "year": 2013,
+    "title": "Land Acquisition Act reformed",
     "verdict": "TRUE",
-    "reason": "51% FDI in multi-brand retail approved September 2012 — confirmed.",
+    "reason": "New LARR Act 2013 replacing 1894 law; 70-80% consent requirement — confirmed.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -3913,8 +3999,8 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "51% FDI in multi-brand retail approved September 2012 — confirmed.",
-        "source": "https://en.wikipedia.org/wiki/Foreign_direct_investment_in_India",
+        "reason": "New LARR Act 2013 replacing 1894 law; 70-80% consent requirement — confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Right_to_Fair_Compensation_and_Transparency_in_Land_Acquisition,_Rehabilitation_and_Resettlement_Act,_2013",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
           "date": null,
@@ -3922,7 +4008,32 @@
         }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/Foreign_direct_investment_in_India"
+    "source": "https://en.wikipedia.org/wiki/Right_to_Fair_Compensation_and_Transparency_in_Land_Acquisition,_Rehabilitation_and_Resettlement_Act,_2013"
+  },
+  {
+    "year": 2013,
+    "title": "National Food Security Act passed",
+    "verdict": "TRUE",
+    "reason": "Passed July 2013; 67% population covered (~800 million) — confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Passed July 2013; 67% population covered (~800 million) — confirmed.",
+        "source": "https://en.wikipedia.org/wiki/National_Food_Security_Act,_2013",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/National_Food_Security_Act,_2013"
   },
   {
     "year": 2013,
@@ -3975,131 +4086,6 @@
     "source": "https://en.wikipedia.org/wiki/2013_North_India_floods"
   },
   {
-    "year": 2013,
-    "title": "Aam Aadmi Party formed by Arvind Kejriwal",
-    "verdict": "TRUE",
-    "reason": "AAP formed November 26, 2013 — confirmed.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "AAP formed November 26, 2013 — confirmed.",
-        "source": "https://en.wikipedia.org/wiki/Aam_Aadmi_Party",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/Aam_Aadmi_Party"
-  },
-  {
-    "year": 2013,
-    "title": "National Food Security Act passed",
-    "verdict": "TRUE",
-    "reason": "Passed July 2013; 67% population covered (~800 million) — confirmed.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Passed July 2013; 67% population covered (~800 million) — confirmed.",
-        "source": "https://en.wikipedia.org/wiki/National_Food_Security_Act,_2013",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/National_Food_Security_Act,_2013"
-  },
-  {
-    "year": 2013,
-    "title": "Land Acquisition Act reformed",
-    "verdict": "TRUE",
-    "reason": "New LARR Act 2013 replacing 1894 law; 70-80% consent requirement — confirmed.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "New LARR Act 2013 replacing 1894 law; 70-80% consent requirement — confirmed.",
-        "source": "https://en.wikipedia.org/wiki/Right_to_Fair_Compensation_and_Transparency_in_Land_Acquisition,_Rehabilitation_and_Resettlement_Act,_2013",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/Right_to_Fair_Compensation_and_Transparency_in_Land_Acquisition,_Rehabilitation_and_Resettlement_Act,_2013"
-  },
-  {
-    "year": 2014,
-    "title": "Modi's BJP wins landslide — first majority in 30 years",
-    "verdict": "TRUE",
-    "reason": "BJP won 282 seats; Modi sworn in May 26, 2014; first outright majority since 1984 — confirmed.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "BJP won 282 seats; Modi sworn in May 26, 2014; first outright majority since 1984 — confirmed.",
-        "source": "https://en.wikipedia.org/wiki/2014_Indian_general_election",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/2014_Indian_general_election"
-  },
-  {
-    "year": 2014,
-    "title": "Mangalyaan — Mars Orbiter Mission success",
-    "verdict": "TRUE",
-    "reason": "September 24, 2014 Mars orbit insertion; $74 million cost; first Asian nation, fourth overall; first attempt success — confirmed.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "September 24, 2014 Mars orbit insertion; $74 million cost; first Asian nation, fourth overall; first attempt success — confirmed.",
-        "source": "https://en.wikipedia.org/wiki/Mars_Orbiter_Mission",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/Mars_Orbiter_Mission"
-  },
-  {
     "year": 2014,
     "title": "Jan Dhan Yojana financial inclusion scheme",
     "verdict": "TRUE",
@@ -4148,6 +4134,56 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/Make_in_India"
+  },
+  {
+    "year": 2014,
+    "title": "Mangalyaan — Mars Orbiter Mission success",
+    "verdict": "TRUE",
+    "reason": "September 24, 2014 Mars orbit insertion; $74 million cost; first Asian nation, fourth overall; first attempt success — confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "September 24, 2014 Mars orbit insertion; $74 million cost; first Asian nation, fourth overall; first attempt success — confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Mars_Orbiter_Mission",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Mars_Orbiter_Mission"
+  },
+  {
+    "year": 2014,
+    "title": "Modi's BJP wins landslide — first majority in 30 years",
+    "verdict": "TRUE",
+    "reason": "BJP won 282 seats; Modi sworn in May 26, 2014; first outright majority since 1984 — confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "BJP won 282 seats; Modi sworn in May 26, 2014; first outright majority since 1984 — confirmed.",
+        "source": "https://en.wikipedia.org/wiki/2014_Indian_general_election",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/2014_Indian_general_election"
   },
   {
     "year": 2015,
@@ -4251,31 +4287,6 @@
   },
   {
     "year": 2016,
-    "title": "Uri attack and surgical strikes across LoC",
-    "verdict": "TRUE",
-    "reason": "Uri attack September 18, 2016 killed 19 soldiers; surgical strikes September 29 — confirmed.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Uri attack September 18, 2016 killed 19 soldiers; surgical strikes September 29 — confirmed.",
-        "source": "https://en.wikipedia.org/wiki/2016_Uri_attack",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/2016_Uri_attack"
-  },
-  {
-    "year": 2016,
     "title": "GST Bill passed in Parliament",
     "verdict": "TRUE",
     "reason": "101st Constitutional Amendment passed August 2016 — confirmed.",
@@ -4300,10 +4311,10 @@
     "source": "https://en.wikipedia.org/wiki/Goods_and_Services_Tax_(India)"
   },
   {
-    "year": 2017,
-    "title": "GST launched — One Nation, One Tax",
+    "year": 2016,
+    "title": "Uri attack and surgical strikes across LoC",
     "verdict": "TRUE",
-    "reason": "Launched July 1, 2017; 0-28% rates — confirmed.",
+    "reason": "Uri attack September 18, 2016 killed 19 soldiers; surgical strikes September 29 — confirmed.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -4313,8 +4324,8 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "Launched July 1, 2017; 0-28% rates — confirmed.",
-        "source": "https://en.wikipedia.org/wiki/Goods_and_Services_Tax_(India)",
+        "reason": "Uri attack September 18, 2016 killed 19 soldiers; surgical strikes September 29 — confirmed.",
+        "source": "https://en.wikipedia.org/wiki/2016_Uri_attack",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
           "date": null,
@@ -4322,7 +4333,7 @@
         }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/Goods_and_Services_Tax_(India)"
+    "source": "https://en.wikipedia.org/wiki/2016_Uri_attack"
   },
   {
     "year": 2017,
@@ -4375,10 +4386,10 @@
     "source": "https://en.wikipedia.org/wiki/2017_China%E2%80%93India_standoff"
   },
   {
-    "year": 2018,
-    "title": "Supreme Court decriminalizes homosexuality",
+    "year": 2017,
+    "title": "GST launched — One Nation, One Tax",
     "verdict": "TRUE",
-    "reason": "September 6, 2018; five-judge bench; Section 377 struck down — confirmed.",
+    "reason": "Launched July 1, 2017; 0-28% rates — confirmed.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -4388,8 +4399,8 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "September 6, 2018; five-judge bench; Section 377 struck down — confirmed.",
-        "source": "https://en.wikipedia.org/wiki/Navtej_Singh_Johar_v._Union_of_India",
+        "reason": "Launched July 1, 2017; 0-28% rates — confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Goods_and_Services_Tax_(India)",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
           "date": null,
@@ -4397,7 +4408,7 @@
         }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/Navtej_Singh_Johar_v._Union_of_India"
+    "source": "https://en.wikipedia.org/wiki/Goods_and_Services_Tax_(India)"
   },
   {
     "year": 2018,
@@ -4450,10 +4461,10 @@
     "source": "https://en.wikipedia.org/wiki/Nirav_Modi_scandal"
   },
   {
-    "year": 2019,
-    "title": "Pulwama attack and Balakot airstrikes",
+    "year": 2018,
+    "title": "Supreme Court decriminalizes homosexuality",
     "verdict": "TRUE",
-    "reason": "February 14, 2019; 40 CRPF killed; Balakot airstrike February 26 — confirmed.",
+    "reason": "September 6, 2018; five-judge bench; Section 377 struck down — confirmed.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -4463,8 +4474,8 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "February 14, 2019; 40 CRPF killed; Balakot airstrike February 26 — confirmed.",
-        "source": "https://en.wikipedia.org/wiki/2019_Pulwama_attack",
+        "reason": "September 6, 2018; five-judge bench; Section 377 struck down — confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Navtej_Singh_Johar_v._Union_of_India",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
           "date": null,
@@ -4472,32 +4483,7 @@
         }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/2019_Pulwama_attack"
-  },
-  {
-    "year": 2019,
-    "title": "Modi's BJP wins second term — even bigger majority",
-    "verdict": "TRUE",
-    "reason": "BJP-NDA won 353 seats — confirmed.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "BJP-NDA won 353 seats — confirmed.",
-        "source": "https://en.wikipedia.org/wiki/2019_Indian_general_election",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/2019_Indian_general_election"
+    "source": "https://en.wikipedia.org/wiki/Navtej_Singh_Johar_v._Union_of_India"
   },
   {
     "year": 2019,
@@ -4526,6 +4512,31 @@
   },
   {
     "year": 2019,
+    "title": "Ayodhya Supreme Court verdict",
+    "verdict": "TRUE",
+    "reason": "November 9, 2019; unanimous verdict; Hindu side won; alternate land for mosque — confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "November 9, 2019; unanimous verdict; Hindu side won; alternate land for mosque — confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Ayodhya_dispute",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Ayodhya_dispute"
+  },
+  {
+    "year": 2019,
     "title": "Citizenship Amendment Act passed",
     "verdict": "TRUE",
     "reason": "Passed December 2019; non-Muslim minorities from three countries; protests — confirmed.",
@@ -4551,9 +4562,9 @@
   },
   {
     "year": 2019,
-    "title": "Ayodhya Supreme Court verdict",
+    "title": "India reaffirms nuclear no-first-use policy with caveats",
     "verdict": "TRUE",
-    "reason": "November 9, 2019; unanimous verdict; Hindu side won; alternate land for mosque — confirmed.",
+    "reason": "Defense Minister Rajnath Singh's statement August 2019 about NFU flexibility — confirmed.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -4563,8 +4574,8 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "November 9, 2019; unanimous verdict; Hindu side won; alternate land for mosque — confirmed.",
-        "source": "https://en.wikipedia.org/wiki/Ayodhya_dispute",
+        "reason": "Defense Minister Rajnath Singh's statement August 2019 about NFU flexibility — confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Nuclear_weapons_and_India",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
           "date": null,
@@ -4572,7 +4583,7 @@
         }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/Ayodhya_dispute"
+    "source": "https://en.wikipedia.org/wiki/Nuclear_weapons_and_India"
   },
   {
     "year": 2019,
@@ -4601,9 +4612,9 @@
   },
   {
     "year": 2019,
-    "title": "India reaffirms nuclear no-first-use policy with caveats",
+    "title": "Modi's BJP wins second term — even bigger majority",
     "verdict": "TRUE",
-    "reason": "Defense Minister Rajnath Singh's statement August 2019 about NFU flexibility — confirmed.",
+    "reason": "BJP-NDA won 353 seats — confirmed.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -4613,8 +4624,8 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "Defense Minister Rajnath Singh's statement August 2019 about NFU flexibility — confirmed.",
-        "source": "https://en.wikipedia.org/wiki/Nuclear_weapons_and_India",
+        "reason": "BJP-NDA won 353 seats — confirmed.",
+        "source": "https://en.wikipedia.org/wiki/2019_Indian_general_election",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
           "date": null,
@@ -4622,13 +4633,13 @@
         }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/Nuclear_weapons_and_India"
+    "source": "https://en.wikipedia.org/wiki/2019_Indian_general_election"
   },
   {
-    "year": 2020,
-    "title": "COVID-19 pandemic — India's largest lockdown",
+    "year": 2019,
+    "title": "Pulwama attack and Balakot airstrikes",
     "verdict": "TRUE",
-    "reason": "March 24, 2020 lockdown; 4-hour notice; migrant exodus — confirmed.",
+    "reason": "February 14, 2019; 40 CRPF killed; Balakot airstrike February 26 — confirmed.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -4638,8 +4649,8 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "March 24, 2020 lockdown; 4-hour notice; migrant exodus — confirmed.",
-        "source": "https://en.wikipedia.org/wiki/COVID-19_pandemic_in_India",
+        "reason": "February 14, 2019; 40 CRPF killed; Balakot airstrike February 26 — confirmed.",
+        "source": "https://en.wikipedia.org/wiki/2019_Pulwama_attack",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
           "date": null,
@@ -4647,57 +4658,7 @@
         }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/COVID-19_pandemic_in_India"
-  },
-  {
-    "year": 2020,
-    "title": "Galwan Valley clash with China — 20 soldiers killed",
-    "verdict": "TRUE",
-    "reason": "June 15-16, 2020; 20 Indian soldiers killed; first combat deaths on China border since 1975 — confirmed.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "June 15-16, 2020; 20 Indian soldiers killed; first combat deaths on China border since 1975 — confirmed.",
-        "source": "https://en.wikipedia.org/wiki/2020_Galwan_Valley_skirmish",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/2020_Galwan_Valley_skirmish"
-  },
-  {
-    "year": 2020,
-    "title": "Farm laws passed — farmer protests begin",
-    "verdict": "TRUE",
-    "reason": "Three farm laws passed September 2020; farmer protests at Delhi borders — confirmed.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Three farm laws passed September 2020; farmer protests at Delhi borders — confirmed.",
-        "source": "https://en.wikipedia.org/wiki/2020_Indian_agriculture_acts",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/2020_Indian_agriculture_acts"
+    "source": "https://en.wikipedia.org/wiki/2019_Pulwama_attack"
   },
   {
     "year": 2020,
@@ -4751,6 +4712,81 @@
   },
   {
     "year": 2020,
+    "title": "COVID-19 pandemic — India's largest lockdown",
+    "verdict": "TRUE",
+    "reason": "March 24, 2020 lockdown; 4-hour notice; migrant exodus — confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "March 24, 2020 lockdown; 4-hour notice; migrant exodus — confirmed.",
+        "source": "https://en.wikipedia.org/wiki/COVID-19_pandemic_in_India",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/COVID-19_pandemic_in_India"
+  },
+  {
+    "year": 2020,
+    "title": "Farm laws passed — farmer protests begin",
+    "verdict": "TRUE",
+    "reason": "Three farm laws passed September 2020; farmer protests at Delhi borders — confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Three farm laws passed September 2020; farmer protests at Delhi borders — confirmed.",
+        "source": "https://en.wikipedia.org/wiki/2020_Indian_agriculture_acts",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/2020_Indian_agriculture_acts"
+  },
+  {
+    "year": 2020,
+    "title": "Galwan Valley clash with China — 20 soldiers killed",
+    "verdict": "TRUE",
+    "reason": "June 15-16, 2020; 20 Indian soldiers killed; first combat deaths on China border since 1975 — confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "June 15-16, 2020; 20 Indian soldiers killed; first combat deaths on China border since 1975 — confirmed.",
+        "source": "https://en.wikipedia.org/wiki/2020_Galwan_Valley_skirmish",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/2020_Galwan_Valley_skirmish"
+  },
+  {
+    "year": 2020,
     "title": "National Education Policy 2020 announced",
     "verdict": "TRUE",
     "reason": "NEP 2020; 5+3+3+4 structure; mother tongue instruction — confirmed.",
@@ -4773,6 +4809,31 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/National_Education_Policy_2020"
+  },
+  {
+    "year": 2021,
+    "title": "Covaxin and Covishield vaccination drive",
+    "verdict": "TRUE",
+    "reason": "Launched January 2021; 1 billion doses by October 2021 — confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Launched January 2021; 1 billion doses by October 2021 — confirmed.",
+        "source": "https://en.wikipedia.org/wiki/COVID-19_vaccination_in_India",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/COVID-19_vaccination_in_India"
   },
   {
     "year": 2021,
@@ -4801,9 +4862,9 @@
   },
   {
     "year": 2021,
-    "title": "Covaxin and Covishield vaccination drive",
+    "title": "COVID-19 Vaccine Maitri initiative",
     "verdict": "TRUE",
-    "reason": "Launched January 2021; 1 billion doses by October 2021 — confirmed.",
+    "reason": "~66 million doses to 90+ countries; halted during second wave — confirmed.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -4813,8 +4874,8 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "Launched January 2021; 1 billion doses by October 2021 — confirmed.",
-        "source": "https://en.wikipedia.org/wiki/COVID-19_vaccination_in_India",
+        "reason": "~66 million doses to 90+ countries; halted during second wave — confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Vaccine_Maitri",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
           "date": null,
@@ -4822,7 +4883,7 @@
         }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/COVID-19_vaccination_in_India"
+    "source": "https://en.wikipedia.org/wiki/Vaccine_Maitri"
   },
   {
     "year": 2021,
@@ -4876,31 +4937,6 @@
   },
   {
     "year": 2021,
-    "title": "COVID-19 Vaccine Maitri initiative",
-    "verdict": "TRUE",
-    "reason": "~66 million doses to 90+ countries; halted during second wave — confirmed.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "~66 million doses to 90+ countries; halted during second wave — confirmed.",
-        "source": "https://en.wikipedia.org/wiki/Vaccine_Maitri",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/Vaccine_Maitri"
-  },
-  {
-    "year": 2021,
     "title": "Uttarakhand glacier burst — disaster kills 200",
     "verdict": "TRUE",
     "reason": "February 7, 2021; Chamoli district; ~200 killed/missing — confirmed.",
@@ -4926,81 +4962,6 @@
   },
   {
     "year": 2022,
-    "title": "BJP wins UP for second term — Modi consolidates ahead of 2024",
-    "verdict": "TRUE",
-    "reason": "BJP won UP March 2022; Yogi returned as CM — confirmed.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "BJP won UP March 2022; Yogi returned as CM — confirmed.",
-        "source": "https://en.wikipedia.org/wiki/2022_Uttar_Pradesh_Legislative_Assembly_election",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/2022_Uttar_Pradesh_Legislative_Assembly_election"
-  },
-  {
-    "year": 2022,
-    "title": "India becomes fifth-largest economy globally",
-    "verdict": "TRUE",
-    "reason": "India overtook UK in 2022 GDP rankings — confirmed.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "India overtook UK in 2022 GDP rankings — confirmed.",
-        "source": "https://en.wikipedia.org/wiki/Economy_of_India",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/Economy_of_India"
-  },
-  {
-    "year": 2022,
-    "title": "Russia-Ukraine war — India's strategic autonomy tested",
-    "verdict": "TRUE",
-    "reason": "India abstained on UN votes; increased Russian oil purchases — confirmed.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "India abstained on UN votes; increased Russian oil purchases — confirmed.",
-        "source": "https://en.wikipedia.org/wiki/Russia%E2%80%93Ukraine_war",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/Russia%E2%80%93Ukraine_war"
-  },
-  {
-    "year": 2022,
     "title": "Agnipath military short-term recruitment scheme",
     "verdict": "TRUE",
     "reason": "Announced June 2022; 4-year Agniveer contracts; protests — confirmed.",
@@ -5023,6 +4984,31 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/Agnipath_scheme"
+  },
+  {
+    "year": 2022,
+    "title": "BJP wins UP for second term — Modi consolidates ahead of 2024",
+    "verdict": "TRUE",
+    "reason": "BJP won UP March 2022; Yogi returned as CM — confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "BJP won UP March 2022; Yogi returned as CM — confirmed.",
+        "source": "https://en.wikipedia.org/wiki/2022_Uttar_Pradesh_Legislative_Assembly_election",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/2022_Uttar_Pradesh_Legislative_Assembly_election"
   },
   {
     "year": 2022,
@@ -5076,6 +5062,31 @@
   },
   {
     "year": 2022,
+    "title": "India becomes fifth-largest economy globally",
+    "verdict": "TRUE",
+    "reason": "India overtook UK in 2022 GDP rankings — confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "India overtook UK in 2022 GDP rankings — confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Economy_of_India",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Economy_of_India"
+  },
+  {
+    "year": 2022,
     "title": "India's UPI payments system reaches record volumes",
     "verdict": "TRUE",
     "reason": "UPI exceeded 7 billion transactions/month by late 2022 — confirmed.",
@@ -5098,6 +5109,31 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/Unified_Payments_Interface"
+  },
+  {
+    "year": 2022,
+    "title": "Russia-Ukraine war — India's strategic autonomy tested",
+    "verdict": "TRUE",
+    "reason": "India abstained on UN votes; increased Russian oil purchases — confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "India abstained on UN votes; increased Russian oil purchases — confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Russia%E2%80%93Ukraine_war",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Russia%E2%80%93Ukraine_war"
   },
   {
     "year": 2022,
@@ -5126,6 +5162,31 @@
   },
   {
     "year": 2023,
+    "title": "Chandrayaan-3 lands on Moon's south pole",
+    "verdict": "TRUE",
+    "reason": "August 23, 2023; first country to land on Moon's south pole; Vikram and Pragyan operated ~2 weeks — confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "August 23, 2023; first country to land on Moon's south pole; Vikram and Pragyan operated ~2 weeks — confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Chandrayaan-3",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Chandrayaan-3"
+  },
+  {
+    "year": 2023,
     "title": "G20 Summit hosted in New Delhi",
     "verdict": "TRUE",
     "reason": "September 9-10, 2023; African Union included as permanent member — confirmed.",
@@ -5151,9 +5212,9 @@
   },
   {
     "year": 2023,
-    "title": "Chandrayaan-3 lands on Moon's south pole",
+    "title": "India joins Artemis Accords for space cooperation",
     "verdict": "TRUE",
-    "reason": "August 23, 2023; first country to land on Moon's south pole; Vikram and Pragyan operated ~2 weeks — confirmed.",
+    "reason": "India signed Artemis Accords June 2023 during Modi's US visit — confirmed.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -5163,8 +5224,8 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "August 23, 2023; first country to land on Moon's south pole; Vikram and Pragyan operated ~2 weeks — confirmed.",
-        "source": "https://en.wikipedia.org/wiki/Chandrayaan-3",
+        "reason": "India signed Artemis Accords June 2023 during Modi's US visit — confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Artemis_Accords",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
           "date": null,
@@ -5172,7 +5233,7 @@
         }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/Chandrayaan-3"
+    "source": "https://en.wikipedia.org/wiki/Artemis_Accords"
   },
   {
     "year": 2023,
@@ -5225,35 +5286,10 @@
     "source": "https://en.wikipedia.org/wiki/Women%27s_Reservation_Bill,_2023"
   },
   {
-    "year": 2023,
-    "title": "India joins Artemis Accords for space cooperation",
-    "verdict": "TRUE",
-    "reason": "India signed Artemis Accords June 2023 during Modi's US visit — confirmed.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "India signed Artemis Accords June 2023 during Modi's US visit — confirmed.",
-        "source": "https://en.wikipedia.org/wiki/Artemis_Accords",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/Artemis_Accords"
-  },
-  {
     "year": 2024,
-    "title": "Ram temple consecrated in Ayodhya",
+    "title": "Budget introduces significant capital gains tax changes",
     "verdict": "TRUE",
-    "reason": "January 22, 2024 consecration ceremony with PM Modi — confirmed.",
+    "reason": "STCG raised 15 to 20%; LTCG raised 10 to 12.5% — confirmed.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -5263,8 +5299,8 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "January 22, 2024 consecration ceremony with PM Modi — confirmed.",
-        "source": "https://en.wikipedia.org/wiki/Ayodhya_Ram_Mandir",
+        "reason": "STCG raised 15 to 20%; LTCG raised 10 to 12.5% — confirmed.",
+        "source": "https://en.wikipedia.org/wiki/2024_Indian_Union_Budget",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
           "date": null,
@@ -5272,7 +5308,7 @@
         }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/Ayodhya_Ram_Mandir"
+    "source": "https://en.wikipedia.org/wiki/2024_Indian_Union_Budget"
   },
   {
     "year": 2024,
@@ -5301,31 +5337,6 @@
   },
   {
     "year": 2024,
-    "title": "Wayanad landslide — worst disaster in Kerala history",
-    "verdict": "TRUE",
-    "reason": "July 30, 2024; Mundakkai and Chooralmala; 300+ killed — confirmed.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "July 30, 2024; Mundakkai and Chooralmala; 300+ killed — confirmed.",
-        "source": "https://en.wikipedia.org/wiki/2024_Wayanad_landslides",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/2024_Wayanad_landslides"
-  },
-  {
-    "year": 2024,
     "title": "India conducts Agni-V MIRV test — Mission Divyastra",
     "verdict": "TRUE",
     "reason": "Mission Divyastra MIRV test March 2024 — confirmed.",
@@ -5348,6 +5359,65 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/Agni-V"
+  },
+  {
+    "year": 2024,
+    "title": "India surpasses China in FDI inflows",
+    "verdict": "FALSE",
+    "reason": "The core claim does not hold on any standard/authoritative FDI-inflows measure. UNCTAD's World Investment Report 2025 (the internationally standard FDI benchmark, corroborated independently via insightsonindia.com's summary of it) puts India's 2024 FDI inflows at ~$27.6-28 billion (15th globally, essentially flat/down slightly from $28.1B in 2023), while China's 2024 FDI inflows were $116 billion (4th globally, down 29% from $163B in 2023 but still ~4x India's total). Even India's own generous domestic accounting (DPIIT), which uses a broader methodology and India's fiscal year (Apr 2024-Mar 2025), shows $81.04 billion — a genuine record for India, but still well short of China's $116B for calendar 2024. The only metric where India plausibly outperformed China in 2024 is a narrower, different measure — fDi Markets/Financial Times greenfield-project announcement/pipeline data (India led on announced greenfield project capex/count as China's project activity fell) — but that is investment-pipeline/announcement data, not realized 'FDI inflows,' and conflating the two is the apparent source of this event's claim. Since the title and description specifically assert India surpassed China in actual FDI inflows, and every inflow-basis dataset found (UNCTAD, OECD-referenced, DPIIT) shows China's inflows remained several times larger than India's in 2024, the claim as stated is false. Country and year are otherwise correctly matched to genuine underlying trends (China's FDI decline, India's rising FDI/manufacturing narrative), so this is a case of a real backdrop being overstated into a false headline claim rather than a wrong-year event.",
+    "verify_count": 4,
+    "consensus_verdict": "FALSE",
+    "consensus_status": "contested_resolved",
+    "needs_tiebreak": false,
+    "source_independence": "independent",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "FALSE",
+        "reason": "By the standard, internationally-recognized measure of FDI inflows (UNCTAD's World Investment Report 2025, BoP-based), China received USD 116 billion in FDI in 2024 (ranked 4th globally, down 29% from $163B in 2023) versus India's USD 27.6 billion (ranked 15th globally, itself down 1.9% from $28.1B in 2023) — China took in more than 4x India's inflows, the opposite of 'surpassing.' India's inflows were not a record either: World Bank/UNCTAD data show a slight year-on-year decline, and on India's own domestic fiscal-year accounting (FY2024-25), while gross FDI equity inflows rose 14% to $81B (a 3-year high, not an all-time record), NET FDI collapsed ~96% to just $0.35B — the lowest level in at least two decades — due to record repatriation/divestment ($51.5B) and a jump in outward FDI. The only place India plausibly outpaced China in 2024 was in a narrower, non-standard metric — announced greenfield project capital expenditure (India's committed greenfield capex rose to ~$110B, making it the 3rd-largest global recipient of greenfield project announcements) — but that is forward-looking committed investment, not realized 'FDI inflows,' and no mainstream source frames it as India 'surpassing China in FDI inflows.' The core factual claim as stated does not hold under the primary measure; if anything the data show the reverse for actual inflows.",
+        "source": "https://affairscloud.com/india-ranks-15th-among-top-fdi-destinations-with-usd-27-6-billion-inflows-in-2024-unctad/",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Multiple independent 2024/2025 sources (UNCTAD World Investment Report 2025 data as reported by fDi Intelligence/fDi Markets, Business Standard, FT Locations, India Business Trade) confirm the hedged claim \"surpassing China in some measures.\" On the headline UNCTAD balance-of-payments FDI inflow figure, China ($116bn, rank 4) still exceeded India ($27.6bn, rank 15) in 2024 — so India did NOT surpass China on that single aggregate measure. However, on greenfield-investment measures — the metric most tied to the \"China+1 manufacturing/tech diversification\" narrative in the description — India clearly surpassed China in 2024: India became the 2nd/3rd-largest global recipient of greenfield FDI project capital expenditure (~$108-110bn, up >25%, surpassing Germany and the UK), while China's inbound FDI fell 29% for a second straight year and its greenfield project growth fell 10%. FT Locations explicitly states \"India emerged as the main recipient in Asia in terms of international private equity investment, followed by China,\" and multiple outlets frame 2024 as the year India's greenfield/manufacturing FDI activity outpaced China's amid China+1 diversification. Given the description's own hedge (\"in some measures,\" not \"overall FDI\"), this matches the documented, multiply-corroborated reality for calendar year 2024. Country and year confirmed correct.",
+        "source": "https://www.ftlocations.com/knowledge-hub/blog/fdi-in-asia-resilient-growth-and-shifting-priorities",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 3,
+        "verdict": "PARTIAL",
+        "reason": "The underlying 2024 trend is real — China's FDI collapsed sharply (China+1 diversification, capital flight) while India remained relatively resilient — but the two specific claims in the description don't hold up against the primary/standard sources. (1) \"Record FDI inflows\": false. India's FY2024-25 FDI was $81.04B (DPIIT/PIB), up 14% YoY, but this is BELOW India's actual all-time record of $83.57-84.83B set in FY2021-22 — so 2024 was a multi-year high, not a record. (2) \"Surpassing China\": true only on one narrow technical measure, false on the standard/primary one. On the World Bank/IMF net-FDI-inflows (BoP) indicator, India ($27.14B, 2024) did exceed China ($18.56B, 2024) — a real, checkable data point, driven mainly by China's record capital outflow rather than an India surge. But on the measure the world actually uses to rank countries' FDI attractiveness — UNCTAD's World Investment Report 2025 — China remained far ahead of India in 2024: China ranked 4th globally with ~$116B in inflows (down 29% from $163B in 2023) versus India ranked 15th with ~$28B (essentially flat YoY). So on the headline/standard comparison, China still dwarfed India roughly 4-to-1; India did not \"surpass\" China in any broadly reported sense. Country and year are correct and a real, related 2024 phenomenon occurred, but \"record\" is wrong and \"surpassing China\" only survives on a cherry-picked/obscure metric, not the mainstream one — a material magnitude/scope miss.",
+        "source": "https://unctad.org/system/files/official-document/wir2025_ch01_en.pdf",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-05",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 4,
+        "verdict": "FALSE",
+        "reason": "The core claim does not hold on any standard/authoritative FDI-inflows measure. UNCTAD's World Investment Report 2025 (the internationally standard FDI benchmark, corroborated independently via insightsonindia.com's summary of it) puts India's 2024 FDI inflows at ~$27.6-28 billion (15th globally, essentially flat/down slightly from $28.1B in 2023), while China's 2024 FDI inflows were $116 billion (4th globally, down 29% from $163B in 2023 but still ~4x India's total). Even India's own generous domestic accounting (DPIIT), which uses a broader methodology and India's fiscal year (Apr 2024-Mar 2025), shows $81.04 billion — a genuine record for India, but still well short of China's $116B for calendar 2024. The only metric where India plausibly outperformed China in 2024 is a narrower, different measure — fDi Markets/Financial Times greenfield-project announcement/pipeline data (India led on announced greenfield project capex/count as China's project activity fell) — but that is investment-pipeline/announcement data, not realized 'FDI inflows,' and conflating the two is the apparent source of this event's claim. Since the title and description specifically assert India surpassed China in actual FDI inflows, and every inflow-basis dataset found (UNCTAD, OECD-referenced, DPIIT) shows China's inflows remained several times larger than India's in 2024, the claim as stated is false. Country and year are otherwise correctly matched to genuine underlying trends (China's FDI decline, India's rising FDI/manufacturing narrative), so this is a case of a real backdrop being overstated into a false headline claim rather than a wrong-year event.",
+        "source": "https://www.insightsonindia.com/2025/06/21/world-investment-report-2025/",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-07",
+          "method": "web_search"
+        }
+      }
+    ],
+    "had_dissent": true,
+    "source": "https://www.insightsonindia.com/2025/06/21/world-investment-report-2025/"
   },
   {
     "year": 2024,
@@ -5376,31 +5446,6 @@
   },
   {
     "year": 2024,
-    "title": "Budget introduces significant capital gains tax changes",
-    "verdict": "TRUE",
-    "reason": "STCG raised 15 to 20%; LTCG raised 10 to 12.5% — confirmed.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "STCG raised 15 to 20%; LTCG raised 10 to 12.5% — confirmed.",
-        "source": "https://en.wikipedia.org/wiki/2024_Indian_Union_Budget",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/2024_Indian_Union_Budget"
-  },
-  {
-    "year": 2024,
     "title": "Naxalite movement sees significant decline",
     "verdict": "TRUE",
     "reason": "2024 saw record counter-insurgency kills in Chhattisgarh; geographic shrinkage confirmed.",
@@ -5425,10 +5470,10 @@
     "source": "https://en.wikipedia.org/wiki/Naxalite%E2%80%93Maoist_insurgency"
   },
   {
-    "year": 2025,
-    "title": "Pahalgam terrorist attack kills tourists",
+    "year": 2024,
+    "title": "Ram temple consecrated in Ayodhya",
     "verdict": "TRUE",
-    "reason": "April 22, 2025; 26 civilians (tourists) killed; Pahalgam, J&K — confirmed.",
+    "reason": "January 22, 2024 consecration ceremony with PM Modi — confirmed.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -5438,8 +5483,8 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "April 22, 2025; 26 civilians (tourists) killed; Pahalgam, J&K — confirmed.",
-        "source": "https://en.wikipedia.org/wiki/Pahalgam_attack",
+        "reason": "January 22, 2024 consecration ceremony with PM Modi — confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Ayodhya_Ram_Mandir",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
           "date": null,
@@ -5447,7 +5492,57 @@
         }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/Pahalgam_attack"
+    "source": "https://en.wikipedia.org/wiki/Ayodhya_Ram_Mandir"
+  },
+  {
+    "year": 2024,
+    "title": "Wayanad landslide — worst disaster in Kerala history",
+    "verdict": "TRUE",
+    "reason": "July 30, 2024; Mundakkai and Chooralmala; 300+ killed — confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "July 30, 2024; Mundakkai and Chooralmala; 300+ killed — confirmed.",
+        "source": "https://en.wikipedia.org/wiki/2024_Wayanad_landslides",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/2024_Wayanad_landslides"
+  },
+  {
+    "year": 2025,
+    "title": "Delhi elections — AAP loses to BJP",
+    "verdict": "TRUE",
+    "reason": "February 2025; BJP ended AAP dominance; Kejriwal personally lost — confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "February 2025; BJP ended AAP dominance; Kejriwal personally lost — confirmed.",
+        "source": "https://en.wikipedia.org/wiki/2025_Delhi_Legislative_Assembly_election",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/2025_Delhi_Legislative_Assembly_election"
   },
   {
     "year": 2025,
@@ -5551,9 +5646,9 @@
   },
   {
     "year": 2025,
-    "title": "Delhi elections — AAP loses to BJP",
+    "title": "India-US tariff negotiations under Trump administration",
     "verdict": "TRUE",
-    "reason": "February 2025; BJP ended AAP dominance; Kejriwal personally lost — confirmed.",
+    "reason": "India-US trade negotiations under Trump tariff regime in 2025 — confirmed.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -5563,8 +5658,8 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "February 2025; BJP ended AAP dominance; Kejriwal personally lost — confirmed.",
-        "source": "https://en.wikipedia.org/wiki/2025_Delhi_Legislative_Assembly_election",
+        "reason": "India-US trade negotiations under Trump tariff regime in 2025 — confirmed.",
+        "source": "https://en.wikipedia.org/wiki/India%E2%80%93United_States_trade_relations",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
           "date": null,
@@ -5572,7 +5667,7 @@
         }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/2025_Delhi_Legislative_Assembly_election"
+    "source": "https://en.wikipedia.org/wiki/India%E2%80%93United_States_trade_relations"
   },
   {
     "year": 2025,
@@ -5601,9 +5696,9 @@
   },
   {
     "year": 2025,
-    "title": "India-US tariff negotiations under Trump administration",
+    "title": "Pahalgam terrorist attack kills tourists",
     "verdict": "TRUE",
-    "reason": "India-US trade negotiations under Trump tariff regime in 2025 — confirmed.",
+    "reason": "April 22, 2025; 26 civilians (tourists) killed; Pahalgam, J&K — confirmed.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -5613,8 +5708,8 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "India-US trade negotiations under Trump tariff regime in 2025 — confirmed.",
-        "source": "https://en.wikipedia.org/wiki/India%E2%80%93United_States_trade_relations",
+        "reason": "April 22, 2025; 26 civilians (tourists) killed; Pahalgam, J&K — confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Pahalgam_attack",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
           "date": null,
@@ -5622,65 +5717,6 @@
         }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/India%E2%80%93United_States_trade_relations"
-  },
-  {
-    "year": 2024,
-    "title": "India surpasses China in FDI inflows",
-    "verdict": "FALSE",
-    "reason": "The core claim does not hold on any standard/authoritative FDI-inflows measure. UNCTAD's World Investment Report 2025 (the internationally standard FDI benchmark, corroborated independently via insightsonindia.com's summary of it) puts India's 2024 FDI inflows at ~$27.6-28 billion (15th globally, essentially flat/down slightly from $28.1B in 2023), while China's 2024 FDI inflows were $116 billion (4th globally, down 29% from $163B in 2023 but still ~4x India's total). Even India's own generous domestic accounting (DPIIT), which uses a broader methodology and India's fiscal year (Apr 2024-Mar 2025), shows $81.04 billion — a genuine record for India, but still well short of China's $116B for calendar 2024. The only metric where India plausibly outperformed China in 2024 is a narrower, different measure — fDi Markets/Financial Times greenfield-project announcement/pipeline data (India led on announced greenfield project capex/count as China's project activity fell) — but that is investment-pipeline/announcement data, not realized 'FDI inflows,' and conflating the two is the apparent source of this event's claim. Since the title and description specifically assert India surpassed China in actual FDI inflows, and every inflow-basis dataset found (UNCTAD, OECD-referenced, DPIIT) shows China's inflows remained several times larger than India's in 2024, the claim as stated is false. Country and year are otherwise correctly matched to genuine underlying trends (China's FDI decline, India's rising FDI/manufacturing narrative), so this is a case of a real backdrop being overstated into a false headline claim rather than a wrong-year event.",
-    "verify_count": 4,
-    "consensus_verdict": "FALSE",
-    "consensus_status": "contested_resolved",
-    "needs_tiebreak": false,
-    "source_independence": "independent",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "FALSE",
-        "reason": "By the standard, internationally-recognized measure of FDI inflows (UNCTAD's World Investment Report 2025, BoP-based), China received USD 116 billion in FDI in 2024 (ranked 4th globally, down 29% from $163B in 2023) versus India's USD 27.6 billion (ranked 15th globally, itself down 1.9% from $28.1B in 2023) — China took in more than 4x India's inflows, the opposite of 'surpassing.' India's inflows were not a record either: World Bank/UNCTAD data show a slight year-on-year decline, and on India's own domestic fiscal-year accounting (FY2024-25), while gross FDI equity inflows rose 14% to $81B (a 3-year high, not an all-time record), NET FDI collapsed ~96% to just $0.35B — the lowest level in at least two decades — due to record repatriation/divestment ($51.5B) and a jump in outward FDI. The only place India plausibly outpaced China in 2024 was in a narrower, non-standard metric — announced greenfield project capital expenditure (India's committed greenfield capex rose to ~$110B, making it the 3rd-largest global recipient of greenfield project announcements) — but that is forward-looking committed investment, not realized 'FDI inflows,' and no mainstream source frames it as India 'surpassing China in FDI inflows.' The core factual claim as stated does not hold under the primary measure; if anything the data show the reverse for actual inflows.",
-        "source": "https://affairscloud.com/india-ranks-15th-among-top-fdi-destinations-with-usd-27-6-billion-inflows-in-2024-unctad/",
-        "verifier": {
-          "model": "claude-sonnet-5",
-          "date": "2026-07-03",
-          "method": "web_search"
-        }
-      },
-      {
-        "pass_n": 2,
-        "verdict": "TRUE",
-        "reason": "Multiple independent 2024/2025 sources (UNCTAD World Investment Report 2025 data as reported by fDi Intelligence/fDi Markets, Business Standard, FT Locations, India Business Trade) confirm the hedged claim \"surpassing China in some measures.\" On the headline UNCTAD balance-of-payments FDI inflow figure, China ($116bn, rank 4) still exceeded India ($27.6bn, rank 15) in 2024 — so India did NOT surpass China on that single aggregate measure. However, on greenfield-investment measures — the metric most tied to the \"China+1 manufacturing/tech diversification\" narrative in the description — India clearly surpassed China in 2024: India became the 2nd/3rd-largest global recipient of greenfield FDI project capital expenditure (~$108-110bn, up >25%, surpassing Germany and the UK), while China's inbound FDI fell 29% for a second straight year and its greenfield project growth fell 10%. FT Locations explicitly states \"India emerged as the main recipient in Asia in terms of international private equity investment, followed by China,\" and multiple outlets frame 2024 as the year India's greenfield/manufacturing FDI activity outpaced China's amid China+1 diversification. Given the description's own hedge (\"in some measures,\" not \"overall FDI\"), this matches the documented, multiply-corroborated reality for calendar year 2024. Country and year confirmed correct.",
-        "source": "https://www.ftlocations.com/knowledge-hub/blog/fdi-in-asia-resilient-growth-and-shifting-priorities",
-        "verifier": {
-          "model": "claude-sonnet-5",
-          "date": "2026-07-03",
-          "method": "web_search"
-        }
-      },
-      {
-        "pass_n": 3,
-        "verdict": "PARTIAL",
-        "reason": "The underlying 2024 trend is real — China's FDI collapsed sharply (China+1 diversification, capital flight) while India remained relatively resilient — but the two specific claims in the description don't hold up against the primary/standard sources. (1) \"Record FDI inflows\": false. India's FY2024-25 FDI was $81.04B (DPIIT/PIB), up 14% YoY, but this is BELOW India's actual all-time record of $83.57-84.83B set in FY2021-22 — so 2024 was a multi-year high, not a record. (2) \"Surpassing China\": true only on one narrow technical measure, false on the standard/primary one. On the World Bank/IMF net-FDI-inflows (BoP) indicator, India ($27.14B, 2024) did exceed China ($18.56B, 2024) — a real, checkable data point, driven mainly by China's record capital outflow rather than an India surge. But on the measure the world actually uses to rank countries' FDI attractiveness — UNCTAD's World Investment Report 2025 — China remained far ahead of India in 2024: China ranked 4th globally with ~$116B in inflows (down 29% from $163B in 2023) versus India ranked 15th with ~$28B (essentially flat YoY). So on the headline/standard comparison, China still dwarfed India roughly 4-to-1; India did not \"surpass\" China in any broadly reported sense. Country and year are correct and a real, related 2024 phenomenon occurred, but \"record\" is wrong and \"surpassing China\" only survives on a cherry-picked/obscure metric, not the mainstream one — a material magnitude/scope miss.",
-        "source": "https://unctad.org/system/files/official-document/wir2025_ch01_en.pdf",
-        "verifier": {
-          "model": "claude-sonnet-5",
-          "date": "2026-07-05",
-          "method": "web_search"
-        }
-      },
-      {
-        "pass_n": 4,
-        "verdict": "FALSE",
-        "reason": "The core claim does not hold on any standard/authoritative FDI-inflows measure. UNCTAD's World Investment Report 2025 (the internationally standard FDI benchmark, corroborated independently via insightsonindia.com's summary of it) puts India's 2024 FDI inflows at ~$27.6-28 billion (15th globally, essentially flat/down slightly from $28.1B in 2023), while China's 2024 FDI inflows were $116 billion (4th globally, down 29% from $163B in 2023 but still ~4x India's total). Even India's own generous domestic accounting (DPIIT), which uses a broader methodology and India's fiscal year (Apr 2024-Mar 2025), shows $81.04 billion — a genuine record for India, but still well short of China's $116B for calendar 2024. The only metric where India plausibly outperformed China in 2024 is a narrower, different measure — fDi Markets/Financial Times greenfield-project announcement/pipeline data (India led on announced greenfield project capex/count as China's project activity fell) — but that is investment-pipeline/announcement data, not realized 'FDI inflows,' and conflating the two is the apparent source of this event's claim. Since the title and description specifically assert India surpassed China in actual FDI inflows, and every inflow-basis dataset found (UNCTAD, OECD-referenced, DPIIT) shows China's inflows remained several times larger than India's in 2024, the claim as stated is false. Country and year are otherwise correctly matched to genuine underlying trends (China's FDI decline, India's rising FDI/manufacturing narrative), so this is a case of a real backdrop being overstated into a false headline claim rather than a wrong-year event.",
-        "source": "https://www.insightsonindia.com/2025/06/21/world-investment-report-2025/",
-        "verifier": {
-          "model": "claude-sonnet-5",
-          "date": "2026-07-07",
-          "method": "web_search"
-        }
-      }
-    ],
-    "had_dissent": true,
-    "source": "https://www.insightsonindia.com/2025/06/21/world-investment-report-2025/"
+    "source": "https://en.wikipedia.org/wiki/Pahalgam_attack"
   }
 ]

@@ -351,31 +351,6 @@
   },
   {
     "year": 1988,
-    "title": "Yugoslav Hyperinflation Reaches Crisis Levels",
-    "verdict": "TRUE",
-    "reason": "Event states 'approximately 250% in 1988'. Annual inflation was building through 1988 and exploded to ~2,700% in 1989. The 250% figure for 1988 is plausible as a transitional estimate; sources confirm inflation crisis was severe in 1988. Minor note: hyperinflation properly exploded in 1989-1994, but 1988 crisis conditions confirmed.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Event states 'approximately 250% in 1988'. Annual inflation was building through 1988 and exploded to ~2,700% in 1989. The 250% figure for 1988 is plausible as a transitional estimate; sources confirm inflation crisis was severe in 1988. Minor note: hyperinflation properly exploded in 1989-1994, but 1988 crisis conditions confirmed.",
-        "source": "https://en.wikipedia.org/wiki/Hyperinflation_in_Yugoslavia",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/Hyperinflation_in_Yugoslavia"
-  },
-  {
-    "year": 1988,
     "title": "Anti-Bureaucratic Revolution — Milošević Topples Provincial Leaderships",
     "verdict": "TRUE",
     "reason": "Anti-bureaucratic revolution ('Yogurt Revolution') 1988-1989. Vojvodina, Kosovo, and Montenegro leaderships toppled and replaced with Milosevic loyalists. Facts confirmed.",
@@ -400,10 +375,10 @@
     "source": "https://en.wikipedia.org/wiki/Anti-bureaucratic_revolution"
   },
   {
-    "year": 1989,
-    "title": "Milošević Gazimestan Speech — Nationalist Maximalism at Kosovo Battle Commemoration",
+    "year": 1988,
+    "title": "Yugoslav Hyperinflation Reaches Crisis Levels",
     "verdict": "TRUE",
-    "reason": "Speech June 28, 1989; crowd estimated at ~1 million (range 500,000 to 2 million). Event says 'estimated one million people' — confirmed. Kosovo autonomy revoked same year confirmed.",
+    "reason": "Event states 'approximately 250% in 1988'. Annual inflation was building through 1988 and exploded to ~2,700% in 1989. The 250% figure for 1988 is plausible as a transitional estimate; sources confirm inflation crisis was severe in 1988. Minor note: hyperinflation properly exploded in 1989-1994, but 1988 crisis conditions confirmed.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -413,8 +388,8 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "Speech June 28, 1989; crowd estimated at ~1 million (range 500,000 to 2 million). Event says 'estimated one million people' — confirmed. Kosovo autonomy revoked same year confirmed.",
-        "source": "https://en.wikipedia.org/wiki/Gazimestan_speech",
+        "reason": "Event states 'approximately 250% in 1988'. Annual inflation was building through 1988 and exploded to ~2,700% in 1989. The 250% figure for 1988 is plausible as a transitional estimate; sources confirm inflation crisis was severe in 1988. Minor note: hyperinflation properly exploded in 1989-1994, but 1988 crisis conditions confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Hyperinflation_in_Yugoslavia",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
           "date": null,
@@ -422,7 +397,7 @@
         }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/Gazimestan_speech"
+    "source": "https://en.wikipedia.org/wiki/Hyperinflation_in_Yugoslavia"
   },
   {
     "year": 1989,
@@ -448,6 +423,31 @@
       }
     ],
     "source": "https://balkaninsight.com/2020/03/23/autonomy-abolished-how-milosevic-launched-kosovos-descent-into-war/"
+  },
+  {
+    "year": 1989,
+    "title": "Milošević Gazimestan Speech — Nationalist Maximalism at Kosovo Battle Commemoration",
+    "verdict": "TRUE",
+    "reason": "Speech June 28, 1989; crowd estimated at ~1 million (range 500,000 to 2 million). Event says 'estimated one million people' — confirmed. Kosovo autonomy revoked same year confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Speech June 28, 1989; crowd estimated at ~1 million (range 500,000 to 2 million). Event says 'estimated one million people' — confirmed. Kosovo autonomy revoked same year confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Gazimestan_speech",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Gazimestan_speech"
   },
   {
     "year": 1990,
@@ -501,6 +501,31 @@
   },
   {
     "year": 1992,
+    "title": "Bosnian War — Serbia-Backed Bosnian Serb Forces Conduct Ethnic Cleansing",
+    "verdict": "TRUE",
+    "reason": "Bosnian War began April 1992. Serbia-backed ethnic cleansing campaign confirmed by ICTY findings. ICJ found Serbia failed to prevent genocide (2007 ruling). Facts confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Bosnian War began April 1992. Serbia-backed ethnic cleansing campaign confirmed by ICTY findings. ICJ found Serbia failed to prevent genocide (2007 ruling). Facts confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Srebrenica_massacre",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Srebrenica_massacre"
+  },
+  {
+    "year": 1992,
     "title": "Federal Republic of Yugoslavia Proclaimed — UN Sanctions Imposed",
     "verdict": "TRUE",
     "reason": "FRY proclaimed April 27, 1992. UN Resolution 757 adopted May 30, 1992 (event says 'May 1992' — confirmed). Facts correct.",
@@ -525,29 +550,40 @@
     "source": "https://en.wikipedia.org/wiki/United_Nations_Security_Council_Resolution_757"
   },
   {
-    "year": 1992,
-    "title": "Bosnian War — Serbia-Backed Bosnian Serb Forces Conduct Ethnic Cleansing",
-    "verdict": "TRUE",
-    "reason": "Bosnian War began April 1992. Serbia-backed ethnic cleansing campaign confirmed by ICTY findings. ICJ found Serbia failed to prevent genocide (2007 ruling). Facts confirmed.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
+    "year": 1993,
+    "title": "Dafiment Bank Pyramid Scheme Collapses, Wiping Out Serbian Depositors",
+    "verdict": "PARTIAL",
+    "reason": "Core event confirmed by multiple independent sources: Dafiment Bank was founded Oct. 1991 by Dafina Milanović with tacit backing/protection from Milošević's government (NBS/NBJ reportedly supplied weekly cash and short-term liquidity loans per Vreme's \"Milošević invented Dafiment Bank\"); it operated as a classic Ponzi scheme paying depositors from new deposits amid hyperinflation and UN sanctions during the Yugoslav wars; it began restricting withdrawals in spring 1993 (Washington Post, April 2 1993, describes bank runs; CS Monitor, March 19 1993, describes depositors besieging a Belgrade soccer stadium) and collapsed by mid-1993, wiping out tens of thousands of depositors including many pensioners who lost life savings; the near-simultaneous collapse of Jugoskandik (Jezdimir Vasiljević fled Belgrade March 7 1993) compounded the shock to Serbia's banking system — this is corroborated almost verbatim by IWPR, Balkan Insight-derived reporting, and a peer-reviewed economics paper (Popović 2022, Panoeconomicus). However, one material quantitative detail does not hold up: the description states interest rates \"as high as 45% a month,\" but every credible/independent source I found gives different figures — IWPR (2005) and the peer-reviewed Panoeconomicus paper both cite 11%–15%/month on hard-currency accounts and 75%–195% (one source: up to 200%)/month on dinar accounts, none of which line up with \"45%\" as the peak rate; it falls in a no-man's-land between the two currency-specific bands reported by independent sources. The total-owed figure (\"roughly 150 million German marks\") is within the wide range reported across sources (150M–450M+ marks depending on source and whether Dafiment alone or combined with Jugoskandik), so that detail is plausible but not tightly confirmed. Year and country are solid; the interest-rate magnitude is the one detail that doesn't verify.",
+    "verify_count": 2,
+    "consensus_verdict": "PARTIAL",
+    "consensus_status": "downgraded",
     "needs_tiebreak": false,
-    "source_independence": "n/a",
+    "source_independence": "weak",
     "verifications": [
       {
         "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Bosnian War began April 1992. Serbia-backed ethnic cleansing campaign confirmed by ICTY findings. ICJ found Serbia failed to prevent genocide (2007 ruling). Facts confirmed.",
-        "source": "https://en.wikipedia.org/wiki/Srebrenica_massacre",
+        "verdict": "PARTIAL",
+        "reason": "Core event confirmed by multiple independent sources: Dafiment Bank was founded Oct. 1991 by Dafina Milanović with tacit backing/protection from Milošević's government (NBS/NBJ reportedly supplied weekly cash and short-term liquidity loans per Vreme's \"Milošević invented Dafiment Bank\"); it operated as a classic Ponzi scheme paying depositors from new deposits amid hyperinflation and UN sanctions during the Yugoslav wars; it began restricting withdrawals in spring 1993 (Washington Post, April 2 1993, describes bank runs; CS Monitor, March 19 1993, describes depositors besieging a Belgrade soccer stadium) and collapsed by mid-1993, wiping out tens of thousands of depositors including many pensioners who lost life savings; the near-simultaneous collapse of Jugoskandik (Jezdimir Vasiljević fled Belgrade March 7 1993) compounded the shock to Serbia's banking system — this is corroborated almost verbatim by IWPR, Balkan Insight-derived reporting, and a peer-reviewed economics paper (Popović 2022, Panoeconomicus). However, one material quantitative detail does not hold up: the description states interest rates \"as high as 45% a month,\" but every credible/independent source I found gives different figures — IWPR (2005) and the peer-reviewed Panoeconomicus paper both cite 11%–15%/month on hard-currency accounts and 75%–195% (one source: up to 200%)/month on dinar accounts, none of which line up with \"45%\" as the peak rate; it falls in a no-man's-land between the two currency-specific bands reported by independent sources. The total-owed figure (\"roughly 150 million German marks\") is within the wide range reported across sources (150M–450M+ marks depending on source and whether Dafiment alone or combined with Jugoskandik), so that detail is plausible but not tightly confirmed. Year and country are solid; the interest-rate magnitude is the one detail that doesn't verify.",
+        "source": "https://iwpr.net/global-voices/new-twist-serbian-bank-scandal",
         "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
+          "model": "claude-sonnet-5",
+          "date": "2026-07-09",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Multiple independent sources corroborate the core facts: Dafina Milanović's Dafiment Bank was registered/founded in October 1991 (nova.rs), operated with tacit backing/origination by Slobodan Milošević's government (IWPR: \"set up by Milanovic with the help of the authorities\"; Vreme: \"Milošević invented Dafiment Bank,\" with a vice-governor tasked to operationalize it), and paid extraordinarily high interest rates during hyperinflation and wartime sanctions (IWPR cites 11-15% for hard currency and 75-195% for dinar accounts; other Serbian sources cite different but similarly extreme figures — the specific \"45% a month\" figure in the event isn't verbatim in any single source but is well within the documented range of rates offered over the bank's life). The bank restricted withdrawals amid a depositor run beginning spring 1993 (Washington Post, dated April 2, 1993: \"Serb Banks Face Run by Depositors\") and collapsed by mid-1993 (bankruptcy dated May 1, 1993 per Serbian press; Milanović attempted to flee July 14, 1993). Multiple sources converge on ~150 million marks owed to depositors at shutdown (IWPR/aggregated summary: \"when it shut down, it owed its depositors about 150 million [marks]\"), consistent with \"tens of thousands\" to ~150,000 depositors, many pensioners, losing life savings. The near-simultaneous collapse of the second pyramid bank Jugoskandik (Jezdimir Vasiljević fled March 7, 1993) is independently confirmed via Wikipedia/Grokipedia summary of Vasiljević, describing the two collapses as a compounded \"disastrous blow to the Serbian economy.\" All core elements — country (Serbia), year (1993), actor, mechanism, government backing, scale, and the compounding Jugoskandik collapse — check out materially as described.",
+        "source": "https://iwpr.net/global-voices/new-twist-serbian-bank-scandal",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-09",
           "method": "web_search"
         }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/Srebrenica_massacre"
+    "source": "https://iwpr.net/global-voices/new-twist-serbian-bank-scandal"
   },
   {
     "year": 1993,
@@ -601,31 +637,6 @@
   },
   {
     "year": 1995,
-    "title": "Srebrenica Genocide — Serbia-Backed Forces Execute 8,000 Bosniaks",
-    "verdict": "TRUE",
-    "reason": "July 1995, ~8,000 Bosniak men and boys killed. ICTY and ICJ rulings of genocide confirmed. ICJ 2007 ruling found Serbia failed obligation to prevent. Facts confirmed.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "July 1995, ~8,000 Bosniak men and boys killed. ICTY and ICJ rulings of genocide confirmed. ICJ 2007 ruling found Serbia failed obligation to prevent. Facts confirmed.",
-        "source": "https://en.wikipedia.org/wiki/Srebrenica_massacre",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/Srebrenica_massacre"
-  },
-  {
-    "year": 1995,
     "title": "Dayton Accords Signed — Milošević Trades Bosnian Serb Interests for Sanctions Relief",
     "verdict": "TRUE",
     "reason": "Initialed November 21, 1995 in Dayton, Ohio (not 'Ohio' generically — Wright-Patterson AFB). Signed in Paris December 14, 1995. Milosevic represented Bosnian Serb interests. Facts confirmed.",
@@ -650,10 +661,10 @@
     "source": "https://en.wikipedia.org/wiki/Dayton_Agreement"
   },
   {
-    "year": 1996,
-    "title": "Serbia-Montenegro Recognized — UN Sanctions Suspended",
+    "year": 1995,
+    "title": "Srebrenica Genocide — Serbia-Backed Forces Execute 8,000 Bosniaks",
     "verdict": "TRUE",
-    "reason": "UN sanctions suspended late 1995 / lifted 1996 post-Dayton. OSCE admission 1996 confirmed. Facts correct.",
+    "reason": "July 1995, ~8,000 Bosniak men and boys killed. ICTY and ICJ rulings of genocide confirmed. ICJ 2007 ruling found Serbia failed obligation to prevent. Facts confirmed.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -663,8 +674,8 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "UN sanctions suspended late 1995 / lifted 1996 post-Dayton. OSCE admission 1996 confirmed. Facts correct.",
-        "source": "https://en.wikipedia.org/wiki/Sanctions_against_Yugoslavia",
+        "reason": "July 1995, ~8,000 Bosniak men and boys killed. ICTY and ICJ rulings of genocide confirmed. ICJ 2007 ruling found Serbia failed obligation to prevent. Facts confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Srebrenica_massacre",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
           "date": null,
@@ -672,7 +683,7 @@
         }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/Sanctions_against_Yugoslavia"
+    "source": "https://en.wikipedia.org/wiki/Srebrenica_massacre"
   },
   {
     "year": 1996,
@@ -698,6 +709,31 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/1996%E2%80%931997_Serbian_protests"
+  },
+  {
+    "year": 1996,
+    "title": "Serbia-Montenegro Recognized — UN Sanctions Suspended",
+    "verdict": "TRUE",
+    "reason": "UN sanctions suspended late 1995 / lifted 1996 post-Dayton. OSCE admission 1996 confirmed. Facts correct.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "UN sanctions suspended late 1995 / lifted 1996 post-Dayton. OSCE admission 1996 confirmed. Facts correct.",
+        "source": "https://en.wikipedia.org/wiki/Sanctions_against_Yugoslavia",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Sanctions_against_Yugoslavia"
   },
   {
     "year": 1997,
@@ -751,31 +787,6 @@
   },
   {
     "year": 1999,
-    "title": "NATO Bombing Campaign — 78 Days of Air Strikes Force Serbian Withdrawal from Kosovo",
-    "verdict": "TRUE",
-    "reason": "NATO campaign March 24 to June 10, 1999 (78 days). Milošević accepted Resolution 1244 June 10. Facts confirmed.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "NATO campaign March 24 to June 10, 1999 (78 days). Milošević accepted Resolution 1244 June 10. Facts confirmed.",
-        "source": "https://en.wikipedia.org/wiki/NATO_bombing_of_Yugoslavia",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/NATO_bombing_of_Yugoslavia"
-  },
-  {
-    "year": 1999,
     "title": "Kosovo Under UN Administration — 200,000 Serbs Flee Province",
     "verdict": "TRUE",
     "reason": "~200,000-280,000 Kosovo Serbs and non-Albanians fled post-June 1999. Event figure of 200,000 is within the documented range. Facts confirmed.",
@@ -825,6 +836,31 @@
     "source": "https://www.icty.org/en/press/president-milosevic-and-four-other-senior-fry-officials-indicted-murder-persecution-and"
   },
   {
+    "year": 1999,
+    "title": "NATO Bombing Campaign — 78 Days of Air Strikes Force Serbian Withdrawal from Kosovo",
+    "verdict": "TRUE",
+    "reason": "NATO campaign March 24 to June 10, 1999 (78 days). Milošević accepted Resolution 1244 June 10. Facts confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "NATO campaign March 24 to June 10, 1999 (78 days). Milošević accepted Resolution 1244 June 10. Facts confirmed.",
+        "source": "https://en.wikipedia.org/wiki/NATO_bombing_of_Yugoslavia",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/NATO_bombing_of_Yugoslavia"
+  },
+  {
     "year": 2000,
     "title": "Bulldozer Revolution — Milošević Ousted After Disputed Election",
     "verdict": "TRUE",
@@ -848,31 +884,6 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/Overthrow_of_Slobodan_Milo%C5%A1evi%C4%87"
-  },
-  {
-    "year": 2001,
-    "title": "Milošević Arrested and Transferred to The Hague",
-    "verdict": "TRUE",
-    "reason": "Arrested April 1, 2001. Transferred to ICTY June 28-29, 2001. Died in Hague cell March 2006 before conclusion of trial. Kostunica's objections confirmed. Facts correct.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Arrested April 1, 2001. Transferred to ICTY June 28-29, 2001. Died in Hague cell March 2006 before conclusion of trial. Kostunica's objections confirmed. Facts correct.",
-        "source": "https://www.icty.org/en/content/arrest-and-transfer",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://www.icty.org/en/content/arrest-and-transfer"
   },
   {
     "year": 2001,
@@ -900,10 +911,10 @@
     "source": "https://en.wikipedia.org/wiki/Serbia"
   },
   {
-    "year": 2003,
-    "title": "Serbia-Montenegro State Union Replaces FRY",
+    "year": 2001,
+    "title": "Milošević Arrested and Transferred to The Hague",
     "verdict": "TRUE",
-    "reason": "Constitutional Charter adopted February 4, 2003 (event date correct). Belgrade Agreement was signed March 14, 2002. Javier Solana brokered the deal. Facts confirmed.",
+    "reason": "Arrested April 1, 2001. Transferred to ICTY June 28-29, 2001. Died in Hague cell March 2006 before conclusion of trial. Kostunica's objections confirmed. Facts correct.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -913,8 +924,8 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "Constitutional Charter adopted February 4, 2003 (event date correct). Belgrade Agreement was signed March 14, 2002. Javier Solana brokered the deal. Facts confirmed.",
-        "source": "https://en.wikipedia.org/wiki/Serbia_and_Montenegro",
+        "reason": "Arrested April 1, 2001. Transferred to ICTY June 28-29, 2001. Died in Hague cell March 2006 before conclusion of trial. Kostunica's objections confirmed. Facts correct.",
+        "source": "https://www.icty.org/en/content/arrest-and-transfer",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
           "date": null,
@@ -922,7 +933,32 @@
         }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/Serbia_and_Montenegro"
+    "source": "https://www.icty.org/en/content/arrest-and-transfer"
+  },
+  {
+    "year": 2003,
+    "title": "Operation Sabre — Crackdown on Organized Crime Following Djindjić Murder",
+    "verdict": "TRUE",
+    "reason": "Operation Sabre launched after Djindjic assassination; mass arrests of organized crime figures confirmed. Facts correct.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Operation Sabre launched after Djindjic assassination; mass arrests of organized crime figures confirmed. Facts correct.",
+        "source": "https://en.wikipedia.org/wiki/Assassination_of_Zoran_%C4%90in%C4%91i%C4%87",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Assassination_of_Zoran_%C4%90in%C4%91i%C4%87"
   },
   {
     "year": 2003,
@@ -951,9 +987,9 @@
   },
   {
     "year": 2003,
-    "title": "Operation Sabre — Crackdown on Organized Crime Following Djindjić Murder",
+    "title": "Serbia-Montenegro State Union Replaces FRY",
     "verdict": "TRUE",
-    "reason": "Operation Sabre launched after Djindjic assassination; mass arrests of organized crime figures confirmed. Facts correct.",
+    "reason": "Constitutional Charter adopted February 4, 2003 (event date correct). Belgrade Agreement was signed March 14, 2002. Javier Solana brokered the deal. Facts confirmed.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -963,8 +999,8 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "Operation Sabre launched after Djindjic assassination; mass arrests of organized crime figures confirmed. Facts correct.",
-        "source": "https://en.wikipedia.org/wiki/Assassination_of_Zoran_%C4%90in%C4%91i%C4%87",
+        "reason": "Constitutional Charter adopted February 4, 2003 (event date correct). Belgrade Agreement was signed March 14, 2002. Javier Solana brokered the deal. Facts confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Serbia_and_Montenegro",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
           "date": null,
@@ -972,7 +1008,7 @@
         }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/Assassination_of_Zoran_%C4%90in%C4%91i%C4%87"
+    "source": "https://en.wikipedia.org/wiki/Serbia_and_Montenegro"
   },
   {
     "year": 2004,
@@ -1126,56 +1162,6 @@
   },
   {
     "year": 2008,
-    "title": "Kosovo Declares Unilateral Independence — Belgrade Protests Erupt",
-    "verdict": "TRUE",
-    "reason": "Independence declared February 17, 2008. Belgrade protests and embassy attacks (US, Croatian embassies) on February 17 and February 21. Facts confirmed.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Independence declared February 17, 2008. Belgrade protests and embassy attacks (US, Croatian embassies) on February 17 and February 21. Facts confirmed.",
-        "source": "https://en.wikipedia.org/wiki/2008_Kosovo_declaration_of_independence",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/2008_Kosovo_declaration_of_independence"
-  },
-  {
-    "year": 2008,
-    "title": "Serbia-Russia Strategic Partnership Deepens — Gas and Geopolitics",
-    "verdict": "TRUE",
-    "reason": "South Stream agreement signed January 25, 2008. NIS deal (Gazprom acquired 51% stake) finalized December 24, 2008. Event says 'January 2008 giving Gazprom NIS majority stake' — the NIS final contract was December 2008, but the initial agreement was January 2008. Minor imprecision on timing of NIS deal closure.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "South Stream agreement signed January 25, 2008. NIS deal (Gazprom acquired 51% stake) finalized December 24, 2008. Event says 'January 2008 giving Gazprom NIS majority stake' — the NIS final contract was December 2008, but the initial agreement was January 2008. Minor imprecision on timing of NIS deal closure.",
-        "source": "https://en.wikipedia.org/wiki/Naftna_Industrija_Srbije",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/Naftna_Industrija_Srbije"
-  },
-  {
-    "year": 2008,
     "title": "EU-Serbia Stabilization and Association Agreement Signed",
     "verdict": "TRUE",
     "reason": "SAA signed April 29, 2008 in Luxembourg (event says 'April 2008'). Confirmed. Ratification conditions on ICTY cooperation confirmed.",
@@ -1201,6 +1187,31 @@
   },
   {
     "year": 2008,
+    "title": "Kosovo Declares Unilateral Independence — Belgrade Protests Erupt",
+    "verdict": "TRUE",
+    "reason": "Independence declared February 17, 2008. Belgrade protests and embassy attacks (US, Croatian embassies) on February 17 and February 21. Facts confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Independence declared February 17, 2008. Belgrade protests and embassy attacks (US, Croatian embassies) on February 17 and February 21. Facts confirmed.",
+        "source": "https://en.wikipedia.org/wiki/2008_Kosovo_declaration_of_independence",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/2008_Kosovo_declaration_of_independence"
+  },
+  {
+    "year": 2008,
     "title": "Radovan Karadžić Arrested in Belgrade — Fugitive Caught After 13 Years",
     "verdict": "TRUE",
     "reason": "Arrested July 21, 2008 in Batajnica, Belgrade, under alias 'Dr. Dragan David Dabic' working as alternative medicine practitioner. Indicted for genocide at Srebrenica and siege of Sarajevo. Convicted to life imprisonment. Facts confirmed.",
@@ -1223,6 +1234,31 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/Radovan_Karad%C5%BEi%C4%87"
+  },
+  {
+    "year": 2008,
+    "title": "Serbia-Russia Strategic Partnership Deepens — Gas and Geopolitics",
+    "verdict": "TRUE",
+    "reason": "South Stream agreement signed January 25, 2008. NIS deal (Gazprom acquired 51% stake) finalized December 24, 2008. Event says 'January 2008 giving Gazprom NIS majority stake' — the NIS final contract was December 2008, but the initial agreement was January 2008. Minor imprecision on timing of NIS deal closure.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "South Stream agreement signed January 25, 2008. NIS deal (Gazprom acquired 51% stake) finalized December 24, 2008. Event says 'January 2008 giving Gazprom NIS majority stake' — the NIS final contract was December 2008, but the initial agreement was January 2008. Minor imprecision on timing of NIS deal closure.",
+        "source": "https://en.wikipedia.org/wiki/Naftna_Industrija_Srbije",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Naftna_Industrija_Srbije"
   },
   {
     "year": 2009,
@@ -1526,31 +1562,6 @@
   },
   {
     "year": 2020,
-    "title": "COVID-19 Pandemic — State of Emergency Declared, Army Deployed",
-    "verdict": "TRUE",
-    "reason": "State of emergency declared March 15, 2020 (first since 1999 NATO bombing confirmed). Army deployed to hospitals. Elections held June 21, 2020. Facts confirmed.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "State of emergency declared March 15, 2020 (first since 1999 NATO bombing confirmed). Army deployed to hospitals. Elections held June 21, 2020. Facts confirmed.",
-        "source": "https://en.wikipedia.org/wiki/COVID-19_pandemic_in_Serbia",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/COVID-19_pandemic_in_Serbia"
-  },
-  {
-    "year": 2020,
     "title": "Anti-Government Protests After Election — Crowds Storm Parliament",
     "verdict": "TRUE",
     "reason": "Protests erupted July 7-8, 2020; crowds entered parliament building. Triggered by COVID curfew reimposition after June 2020 elections. Facts confirmed.",
@@ -1573,6 +1584,31 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/2020_Serbian_protests"
+  },
+  {
+    "year": 2020,
+    "title": "COVID-19 Pandemic — State of Emergency Declared, Army Deployed",
+    "verdict": "TRUE",
+    "reason": "State of emergency declared March 15, 2020 (first since 1999 NATO bombing confirmed). Army deployed to hospitals. Elections held June 21, 2020. Facts confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "State of emergency declared March 15, 2020 (first since 1999 NATO bombing confirmed). Army deployed to hospitals. Elections held June 21, 2020. Facts confirmed.",
+        "source": "https://en.wikipedia.org/wiki/COVID-19_pandemic_in_Serbia",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/COVID-19_pandemic_in_Serbia"
   },
   {
     "year": 2021,
@@ -1676,9 +1712,9 @@
   },
   {
     "year": 2023,
-    "title": "Ribnikar School Shooting — Serbia's First Mass School Killing",
+    "title": "December Elections Disputed — 'Serbia Against Violence' Protests Begin",
     "verdict": "TRUE",
-    "reason": "May 3, 2023 confirmed. Shooter was 13 years old. 9 students + 1 security guard killed initially (10th victim, a critically injured girl, died May 15). Event says '9 fellow students and one security guard' — confirmed as the initial count (later 10 total). Mladenovac attack two days later killed 8-9 people. Civil society response confirmed. Facts correct.",
+    "reason": "December 17, 2023 elections confirmed. Voter busing allegations (40,000+ unregistered Belgrade voters) confirmed by OSCE. Serbia Against Violence coalition protests began December 18. Facts confirmed.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -1688,8 +1724,8 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "May 3, 2023 confirmed. Shooter was 13 years old. 9 students + 1 security guard killed initially (10th victim, a critically injured girl, died May 15). Event says '9 fellow students and one security guard' — confirmed as the initial count (later 10 total). Mladenovac attack two days later killed 8-9 people. Civil society response confirmed. Facts correct.",
-        "source": "https://en.wikipedia.org/wiki/Belgrade_school_shooting",
+        "reason": "December 17, 2023 elections confirmed. Voter busing allegations (40,000+ unregistered Belgrade voters) confirmed by OSCE. Serbia Against Violence coalition protests began December 18. Facts confirmed.",
+        "source": "https://en.wikipedia.org/wiki/2023_Serbian_parliamentary_election",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
           "date": null,
@@ -1697,7 +1733,7 @@
         }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/Belgrade_school_shooting"
+    "source": "https://en.wikipedia.org/wiki/2023_Serbian_parliamentary_election"
   },
   {
     "year": 2023,
@@ -1726,9 +1762,9 @@
   },
   {
     "year": 2023,
-    "title": "December Elections Disputed — 'Serbia Against Violence' Protests Begin",
+    "title": "Ribnikar School Shooting — Serbia's First Mass School Killing",
     "verdict": "TRUE",
-    "reason": "December 17, 2023 elections confirmed. Voter busing allegations (40,000+ unregistered Belgrade voters) confirmed by OSCE. Serbia Against Violence coalition protests began December 18. Facts confirmed.",
+    "reason": "May 3, 2023 confirmed. Shooter was 13 years old. 9 students + 1 security guard killed initially (10th victim, a critically injured girl, died May 15). Event says '9 fellow students and one security guard' — confirmed as the initial count (later 10 total). Mladenovac attack two days later killed 8-9 people. Civil society response confirmed. Facts correct.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -1738,8 +1774,8 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "December 17, 2023 elections confirmed. Voter busing allegations (40,000+ unregistered Belgrade voters) confirmed by OSCE. Serbia Against Violence coalition protests began December 18. Facts confirmed.",
-        "source": "https://en.wikipedia.org/wiki/2023_Serbian_parliamentary_election",
+        "reason": "May 3, 2023 confirmed. Shooter was 13 years old. 9 students + 1 security guard killed initially (10th victim, a critically injured girl, died May 15). Event says '9 fellow students and one security guard' — confirmed as the initial count (later 10 total). Mladenovac attack two days later killed 8-9 people. Civil society response confirmed. Facts correct.",
+        "source": "https://en.wikipedia.org/wiki/Belgrade_school_shooting",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
           "date": null,
@@ -1747,7 +1783,7 @@
         }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/2023_Serbian_parliamentary_election"
+    "source": "https://en.wikipedia.org/wiki/Belgrade_school_shooting"
   },
   {
     "year": 2024,

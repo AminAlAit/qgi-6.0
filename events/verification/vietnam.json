@@ -1586,6 +1586,42 @@
     "source": "https://en.wikipedia.org/wiki/Shipbuilding_Industry_Corporation"
   },
   {
+    "year": 2012,
+    "title": "Tycoon's Arrest Sparks Bank Run and Exposes Systemic Bad-Debt Crisis",
+    "verdict": "TRUE",
+    "reason": "Core narrative strongly corroborated by multiple independent, authoritative outlets. Nguyen Duc Kien (co-founder/former vice chairman of ACB) was arrested in Hanoi on August 20, 2012 on economic-violation charges (Wikipedia, France24, CNBC, Bloomberg, CNN all agree on date/actor/bank). This triggered a multi-day stock rout — VN-Index fell on successive sessions (~3.5-4.7% single-day drops reported by CNBC/NamVietNews/VietnamPlus, plus a further 1.6% on Aug 22 and 3.4% on the Hanoi HNX-Index), consistent in magnitude with the description's ~9.2% weekly cumulative slide (exact weekly % not independently pinned to the decimal, but daily drops compound into that range). A genuine bank run on ACB is directly confirmed: France24 quotes ACB's Deputy CEO Do Minh Toan stating depositors withdrew 5 trillion dong ($240 million) from ACB on August 22, 2012, matching the description almost verbatim, with the central bank pumping emergency liquidity (13 trillion dong Wednesday, 4 trillion Thursday) to stabilize the bank. The systemic bad-debt exposure is also confirmed: a later State Bank of Vietnam reassessment found a 17.21%/17.2% NPL ratio as of September 30, 2012 (vs. banks' own low-single-digit self-reported figures, ~4% per industry data), a figure corroborated by multiple sources including PM Nguyen Tan Dung's own 2014 statement that NPLs were \"as high as 17 percent\" in 2012. VAMC's 2013 creation to absorb bad debt is well-established historical fact. No off-limits domains were used (list was empty for this pass); all corroboration came from independent primary reporting (France24, CNBC, Bloomberg, CNN, VietnamPlus, VIR) plus Wikipedia as a tertiary cross-check.",
+    "verify_count": 2,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "double_confirmed",
+    "needs_tiebreak": false,
+    "source_independence": "weak",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "All material elements confirmed by independent sources. Nguyen Duc Kien, co-founder of Asia Commercial Bank (ACB), was arrested in Hanoi on August 20, 2012 (Wikipedia, confirmed directly by fetch). This triggered a bank run: depositors withdrew roughly 5 trillion dong (~$240 million) from ACB, corroborated by multiple sources tracing to Reuters/France24 wire reporting, with the State Bank providing emergency liquidity in response. France24 (via search results) explicitly states the arrest was \"triggering a 9.2 percent slide in the stock market that week\" — an exact match to the description's figure — plus daily VN-Index/HNX-Index drops (VN-Index -5% on Aug 21, ACB shares -18.6% that week) corroborated by CNBC and VietnamPlus reporting from the time. The bad-debt exposure is also confirmed: a later State Bank reassessment found a system-wide NPL ratio of 17.21% as of September 30, 2012 (vs. banks' own contemporaneous reporting of ~4.4-4.47%), matching the description precisely, and this episode is widely credited with prompting the government to establish the Vietnam Asset Management Company (VAMC) in 2013 to absorb bad debts — confirmed via VAMC's official founding documents (Decision 1459/QD-SBV, 27 June 2013). No discrepancies found in year, country, actors, or magnitudes.",
+        "source": "https://www.france24.com/en/20120823-vietnam-bank-turmoil-sotck-arrest-founder-deposits-fraud-acb",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-09",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Core narrative strongly corroborated by multiple independent, authoritative outlets. Nguyen Duc Kien (co-founder/former vice chairman of ACB) was arrested in Hanoi on August 20, 2012 on economic-violation charges (Wikipedia, France24, CNBC, Bloomberg, CNN all agree on date/actor/bank). This triggered a multi-day stock rout — VN-Index fell on successive sessions (~3.5-4.7% single-day drops reported by CNBC/NamVietNews/VietnamPlus, plus a further 1.6% on Aug 22 and 3.4% on the Hanoi HNX-Index), consistent in magnitude with the description's ~9.2% weekly cumulative slide (exact weekly % not independently pinned to the decimal, but daily drops compound into that range). A genuine bank run on ACB is directly confirmed: France24 quotes ACB's Deputy CEO Do Minh Toan stating depositors withdrew 5 trillion dong ($240 million) from ACB on August 22, 2012, matching the description almost verbatim, with the central bank pumping emergency liquidity (13 trillion dong Wednesday, 4 trillion Thursday) to stabilize the bank. The systemic bad-debt exposure is also confirmed: a later State Bank of Vietnam reassessment found a 17.21%/17.2% NPL ratio as of September 30, 2012 (vs. banks' own low-single-digit self-reported figures, ~4% per industry data), a figure corroborated by multiple sources including PM Nguyen Tan Dung's own 2014 statement that NPLs were \"as high as 17 percent\" in 2012. VAMC's 2013 creation to absorb bad debt is well-established historical fact. No off-limits domains were used (list was empty for this pass); all corroboration came from independent primary reporting (France24, CNBC, Bloomberg, CNN, VietnamPlus, VIR) plus Wikipedia as a tertiary cross-check.",
+        "source": "https://www.france24.com/en/20120823-vietnam-bank-turmoil-sotck-arrest-founder-deposits-fraud-acb",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-09",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://www.france24.com/en/20120823-vietnam-bank-turmoil-sotck-arrest-founder-deposits-fraud-acb"
+  },
+  {
     "year": 2013,
     "title": "New Constitution Adopted; TPP Negotiations Active",
     "verdict": "TRUE",

@@ -76,31 +76,6 @@
   },
   {
     "year": 1952,
-    "title": "Language Riots in East Pakistan",
-    "verdict": "TRUE",
-    "reason": "February 21, 1952 is the canonical date; police fired on students protesting Urdu-only policy, killing several including Abul Barkat.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "February 21, 1952 is the canonical date; police fired on students protesting Urdu-only policy, killing several including Abul Barkat.",
-        "source": "https://en.wikipedia.org/wiki/Bengali_language_movement",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/Bengali_language_movement"
-  },
-  {
-    "year": 1952,
     "title": "Economic Difficulties and Cotton Export Crisis",
     "verdict": "TRUE",
     "reason": "Post-Korean War commodity price collapse and cotton export crisis in 1952 is historically documented.",
@@ -123,6 +98,31 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/Economy_of_Pakistan"
+  },
+  {
+    "year": 1952,
+    "title": "Language Riots in East Pakistan",
+    "verdict": "TRUE",
+    "reason": "February 21, 1952 is the canonical date; police fired on students protesting Urdu-only policy, killing several including Abul Barkat.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "February 21, 1952 is the canonical date; police fired on students protesting Urdu-only policy, killing several including Abul Barkat.",
+        "source": "https://en.wikipedia.org/wiki/Bengali_language_movement",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Bengali_language_movement"
   },
   {
     "year": 1953,
@@ -176,6 +176,31 @@
   },
   {
     "year": 1954,
+    "title": "East Pakistan Provincial Assembly Elections",
+    "verdict": "TRUE",
+    "reason": "United Front won landslide in March 1954 elections; Muslim League routed; correct.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "United Front won landslide in March 1954 elections; Muslim League routed; correct.",
+        "source": "https://en.wikipedia.org/wiki/1954_East_Pakistan_provincial_election",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/1954_East_Pakistan_provincial_election"
+  },
+  {
+    "year": 1954,
     "title": "One Unit Scheme Merges West Pakistan Provinces",
     "verdict": "TRUE",
     "reason": "One Unit scheme announced 1954, merged West Pakistan provinces into single unit; correct year and description.",
@@ -225,10 +250,10 @@
     "source": "https://en.wikipedia.org/wiki/Southeast_Asia_Treaty_Organization"
   },
   {
-    "year": 1954,
-    "title": "East Pakistan Provincial Assembly Elections",
+    "year": 1955,
+    "title": "Governor-General Declares State of Emergency and Dissolves Assembly",
     "verdict": "TRUE",
-    "reason": "United Front won landslide in March 1954 elections; Muslim League routed; correct.",
+    "reason": "Dissolution of Constituent Assembly by Ghulam Mohammad and the Federal Court's 'doctrine of necessity' ruling are confirmed historical facts.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -238,8 +263,8 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "United Front won landslide in March 1954 elections; Muslim League routed; correct.",
-        "source": "https://en.wikipedia.org/wiki/1954_East_Pakistan_provincial_election",
+        "reason": "Dissolution of Constituent Assembly by Ghulam Mohammad and the Federal Court's 'doctrine of necessity' ruling are confirmed historical facts.",
+        "source": "https://en.wikipedia.org/wiki/Ghulam_Mohammad",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
           "date": null,
@@ -247,7 +272,7 @@
         }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/1954_East_Pakistan_provincial_election"
+    "source": "https://en.wikipedia.org/wiki/Ghulam_Mohammad"
   },
   {
     "year": 1955,
@@ -275,31 +300,6 @@
     "source": "https://en.wikipedia.org/wiki/Central_Treaty_Organization"
   },
   {
-    "year": 1955,
-    "title": "Governor-General Declares State of Emergency and Dissolves Assembly",
-    "verdict": "TRUE",
-    "reason": "Dissolution of Constituent Assembly by Ghulam Mohammad and the Federal Court's 'doctrine of necessity' ruling are confirmed historical facts.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Dissolution of Constituent Assembly by Ghulam Mohammad and the Federal Court's 'doctrine of necessity' ruling are confirmed historical facts.",
-        "source": "https://en.wikipedia.org/wiki/Ghulam_Mohammad",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/Ghulam_Mohammad"
-  },
-  {
     "year": 1956,
     "title": "Pakistan Declares Itself an Islamic Republic — First Constitution",
     "verdict": "TRUE",
@@ -323,6 +323,42 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/Constitution_of_Pakistan_(1956-1958)"
+  },
+  {
+    "year": 1957,
+    "title": "Balochistan Tribal Tensions Emerge",
+    "verdict": "TRUE",
+    "reason": "Multiple independent sources confirm that in 1957, Baloch tribal sardars led by the Khan of Kalat mobilized demonstrations and, in October 1957, met with President Iskander Mirza to demand exemption of Kalat from the One Unit scheme and greater autonomy/development spending, resisting the central government's integration/direct-administration push. This political resistance is explicitly described as the precursor that escalated into the 1958-59 armed insurgency (Nawab Nauroz Khan revolt, Ayub Khan's October 1958 military crackdown on Kalat) — matching the event's framing of 1957 as tensions that 'foreshadowed the recurring Baloch insurgencies.' Country, year, and substance all check out.",
+    "verify_count": 2,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "double_confirmed",
+    "needs_tiebreak": false,
+    "source_independence": "independent",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Independent academic and journalistic sources confirm that in 1957 tensions sharply intensified between the Pakistani central government (President Iskander Mirza) and Baloch tribal leadership/sardars over the One Unit scheme (which had merged Kalat and other Baloch states into West Pakistan in 1955). Specific documented 1957 events: the Khan of Kalat \"mobilized wide spread demonstrations against the one unit idea through the tribal chiefs\"; he pleaded for disintegration of One Unit at a reception in Quetta (26 August) and at a meeting in Mastung; he chaired \"the historic meeting of Baloch Sardars held at the Palace Hotel in Karachi in 1957\" (attended by Nawab Khair Bakhsh Marri, Nawab Ghous Bakhsh Raisani, Mir Jamal Khan Jamali, Nawab Akbar Bugti) demanding dismantling of One Unit and creation of a Balochistan province; and a December 17, 1957 jirga at Kalat where tribal chiefs submitted a six-point memorandum to the Khan, who then met President Iskander Mirza urging exemption of Kalat from One Unit. These are exactly the frictions the event describes as foreshadowing the 1958-59 Nauroz Khan revolt and later Baloch insurgencies (note the event correctly stops short of claiming armed revolt itself happened in 1957 -- it explicitly frames 1957 as precursor tension \"foreshadowing\" later insurgency, which matches the sources precisely). Country, year, and substance all check out materially as described.",
+        "source": "https://pu.edu.pk/images/journal/HistoryPStudies/PDF-FILES/11-Najib_V28_no2.pdf",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Multiple independent sources confirm that in 1957, Baloch tribal sardars led by the Khan of Kalat mobilized demonstrations and, in October 1957, met with President Iskander Mirza to demand exemption of Kalat from the One Unit scheme and greater autonomy/development spending, resisting the central government's integration/direct-administration push. This political resistance is explicitly described as the precursor that escalated into the 1958-59 armed insurgency (Nawab Nauroz Khan revolt, Ayub Khan's October 1958 military crackdown on Kalat) — matching the event's framing of 1957 as tensions that 'foreshadowed the recurring Baloch insurgencies.' Country, year, and substance all check out.",
+        "source": "https://balochistaninhistory.blogspot.com/2008/10/baloch-insurgencies-1948-1977_09.html",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://balochistaninhistory.blogspot.com/2008/10/baloch-insurgencies-1948-1977_09.html"
   },
   {
     "year": 1958,
@@ -676,31 +712,6 @@
   },
   {
     "year": 1969,
-    "title": "Yahya Khan Takes Power in Second Military Coup",
-    "verdict": "TRUE",
-    "reason": "Yahya Khan ousted Ayub Khan March 25, 1969; promised elections on one-person-one-vote basis; confirmed.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Yahya Khan ousted Ayub Khan March 25, 1969; promised elections on one-person-one-vote basis; confirmed.",
-        "source": "https://en.wikipedia.org/wiki/1969_Pakistani_coup_d%27%C3%A9tat",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/1969_Pakistani_coup_d%27%C3%A9tat"
-  },
-  {
-    "year": 1969,
     "title": "One Unit Scheme Abolished",
     "verdict": "TRUE",
     "reason": "Yahya Khan abolished One Unit in 1969, restoring four provincial units; confirmed.",
@@ -725,10 +736,10 @@
     "source": "https://en.wikipedia.org/wiki/One_Unit"
   },
   {
-    "year": 1970,
-    "title": "Pakistan's First General Elections on One Person One Vote",
+    "year": 1969,
+    "title": "Yahya Khan Takes Power in Second Military Coup",
     "verdict": "TRUE",
-    "reason": "December 7, 1970; Awami League won 160 of 162 general seats in East Pakistan (overall 167/169 East seats); PPP won West Pakistan seats. Correct.",
+    "reason": "Yahya Khan ousted Ayub Khan March 25, 1969; promised elections on one-person-one-vote basis; confirmed.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -738,8 +749,8 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "December 7, 1970; Awami League won 160 of 162 general seats in East Pakistan (overall 167/169 East seats); PPP won West Pakistan seats. Correct.",
-        "source": "https://en.wikipedia.org/wiki/1970_Pakistani_general_election",
+        "reason": "Yahya Khan ousted Ayub Khan March 25, 1969; promised elections on one-person-one-vote basis; confirmed.",
+        "source": "https://en.wikipedia.org/wiki/1969_Pakistani_coup_d%27%C3%A9tat",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
           "date": null,
@@ -747,7 +758,7 @@
         }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/1970_Pakistani_general_election"
+    "source": "https://en.wikipedia.org/wiki/1969_Pakistani_coup_d%27%C3%A9tat"
   },
   {
     "year": 1970,
@@ -775,10 +786,10 @@
     "source": "https://en.wikipedia.org/wiki/1970_Bhola_cyclone"
   },
   {
-    "year": 1971,
-    "title": "Operation Searchlight — Army Crackdown in East Pakistan",
+    "year": 1970,
+    "title": "Pakistan's First General Elections on One Person One Vote",
     "verdict": "TRUE",
-    "reason": "Confirmed: Operation Searchlight launched night of March 25–26, 1971; targeted students, Awami League, Hindus; mass casualties.",
+    "reason": "December 7, 1970; Awami League won 160 of 162 general seats in East Pakistan (overall 167/169 East seats); PPP won West Pakistan seats. Correct.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -788,8 +799,8 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "Confirmed: Operation Searchlight launched night of March 25–26, 1971; targeted students, Awami League, Hindus; mass casualties.",
-        "source": "https://en.wikipedia.org/wiki/Operation_Searchlight",
+        "reason": "December 7, 1970; Awami League won 160 of 162 general seats in East Pakistan (overall 167/169 East seats); PPP won West Pakistan seats. Correct.",
+        "source": "https://en.wikipedia.org/wiki/1970_Pakistani_general_election",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
           "date": null,
@@ -797,7 +808,7 @@
         }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/Operation_Searchlight"
+    "source": "https://en.wikipedia.org/wiki/1970_Pakistani_general_election"
   },
   {
     "year": 1971,
@@ -825,10 +836,10 @@
     "source": "https://en.wikipedia.org/wiki/Pakistani_Instrument_of_Surrender"
   },
   {
-    "year": 1972,
-    "title": "Zulfikar Ali Bhutto Becomes Prime Minister",
+    "year": 1971,
+    "title": "Operation Searchlight — Army Crackdown in East Pakistan",
     "verdict": "TRUE",
-    "reason": "Bhutto became civilian Chief Martial Law Administrator then PM in 1972 after military defeat; confirmed.",
+    "reason": "Confirmed: Operation Searchlight launched night of March 25–26, 1971; targeted students, Awami League, Hindus; mass casualties.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -838,8 +849,8 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "Bhutto became civilian Chief Martial Law Administrator then PM in 1972 after military defeat; confirmed.",
-        "source": "https://en.wikipedia.org/wiki/Zulfikar_Ali_Bhutto",
+        "reason": "Confirmed: Operation Searchlight launched night of March 25–26, 1971; targeted students, Awami League, Hindus; mass casualties.",
+        "source": "https://en.wikipedia.org/wiki/Operation_Searchlight",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
           "date": null,
@@ -847,7 +858,32 @@
         }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/Zulfikar_Ali_Bhutto"
+    "source": "https://en.wikipedia.org/wiki/Operation_Searchlight"
+  },
+  {
+    "year": 1972,
+    "title": "Nationalization of Major Industries",
+    "verdict": "TRUE",
+    "reason": "Bhutto nationalized major industries in 1972; steel, chemicals, cement, banks; confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Bhutto nationalized major industries in 1972; steel, chemicals, cement, banks; confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Nationalization_in_Pakistan",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Nationalization_in_Pakistan"
   },
   {
     "year": 1972,
@@ -876,9 +912,9 @@
   },
   {
     "year": 1972,
-    "title": "Nationalization of Major Industries",
+    "title": "Zulfikar Ali Bhutto Becomes Prime Minister",
     "verdict": "TRUE",
-    "reason": "Bhutto nationalized major industries in 1972; steel, chemicals, cement, banks; confirmed.",
+    "reason": "Bhutto became civilian Chief Martial Law Administrator then PM in 1972 after military defeat; confirmed.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -888,8 +924,8 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "Bhutto nationalized major industries in 1972; steel, chemicals, cement, banks; confirmed.",
-        "source": "https://en.wikipedia.org/wiki/Nationalization_in_Pakistan",
+        "reason": "Bhutto became civilian Chief Martial Law Administrator then PM in 1972 after military defeat; confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Zulfikar_Ali_Bhutto",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
           "date": null,
@@ -897,7 +933,7 @@
         }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/Nationalization_in_Pakistan"
+    "source": "https://en.wikipedia.org/wiki/Zulfikar_Ali_Bhutto"
   },
   {
     "year": 1973,
@@ -1151,31 +1187,6 @@
   },
   {
     "year": 1979,
-    "title": "Soviet Invasion of Afghanistan Transforms Pakistan",
-    "verdict": "TRUE",
-    "reason": "Soviet invasion December 1979; Pakistan as conduit for US/Saudi/Chinese mujahideen support; confirmed.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Soviet invasion December 1979; Pakistan as conduit for US/Saudi/Chinese mujahideen support; confirmed.",
-        "source": "https://en.wikipedia.org/wiki/Soviet%E2%80%93Afghan_War",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/Soviet%E2%80%93Afghan_War"
-  },
-  {
-    "year": 1979,
     "title": "Hudood Ordinances Promulgated",
     "verdict": "TRUE",
     "reason": "Zia promulgated Hudood Ordinances in 1979; four-witness rape provision; confirmed.",
@@ -1200,10 +1211,10 @@
     "source": "https://en.wikipedia.org/wiki/Hudood_Ordinances"
   },
   {
-    "year": 1980,
-    "title": "Pakistan Becomes CIA Conduit for Afghan Mujahideen",
+    "year": 1979,
+    "title": "Soviet Invasion of Afghanistan Transforms Pakistan",
     "verdict": "TRUE",
-    "reason": "Operation Cyclone channeled billions through ISI; ISI selected Afghan factions; confirmed.",
+    "reason": "Soviet invasion December 1979; Pakistan as conduit for US/Saudi/Chinese mujahideen support; confirmed.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -1213,8 +1224,8 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "Operation Cyclone channeled billions through ISI; ISI selected Afghan factions; confirmed.",
-        "source": "https://en.wikipedia.org/wiki/Operation_Cyclone",
+        "reason": "Soviet invasion December 1979; Pakistan as conduit for US/Saudi/Chinese mujahideen support; confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Soviet%E2%80%93Afghan_War",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
           "date": null,
@@ -1222,7 +1233,7 @@
         }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/Operation_Cyclone"
+    "source": "https://en.wikipedia.org/wiki/Soviet%E2%80%93Afghan_War"
   },
   {
     "year": 1980,
@@ -1248,6 +1259,31 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/Afghan_refugees_in_Pakistan"
+  },
+  {
+    "year": 1980,
+    "title": "Pakistan Becomes CIA Conduit for Afghan Mujahideen",
+    "verdict": "TRUE",
+    "reason": "Operation Cyclone channeled billions through ISI; ISI selected Afghan factions; confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Operation Cyclone channeled billions through ISI; ISI selected Afghan factions; confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Operation_Cyclone",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Operation_Cyclone"
   },
   {
     "year": 1981,
@@ -1326,31 +1362,6 @@
   },
   {
     "year": 1983,
-    "title": "Sindhis Rise Up Against Zia",
-    "verdict": "TRUE",
-    "reason": "Confirmed: August 1983 MRD uprising in Sindh; army deployed; hundreds killed, thousands imprisoned.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Confirmed: August 1983 MRD uprising in Sindh; army deployed; hundreds killed, thousands imprisoned.",
-        "source": "https://en.wikipedia.org/wiki/1983_Sindh_uprising",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/1983_Sindh_uprising"
-  },
-  {
-    "year": 1983,
     "title": "Pakistan Economy Booms on Aid and Remittances",
     "verdict": "TRUE",
     "reason": "US/Saudi aid and Gulf remittances drove growth in early 1980s during Afghan conflict; confirmed.",
@@ -1373,6 +1384,31 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/Economy_of_Pakistan"
+  },
+  {
+    "year": 1983,
+    "title": "Sindhis Rise Up Against Zia",
+    "verdict": "TRUE",
+    "reason": "Confirmed: August 1983 MRD uprising in Sindh; army deployed; hundreds killed, thousands imprisoned.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed: August 1983 MRD uprising in Sindh; army deployed; hundreds killed, thousands imprisoned.",
+        "source": "https://en.wikipedia.org/wiki/1983_Sindh_uprising",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/1983_Sindh_uprising"
   },
   {
     "year": 1984,
@@ -1526,31 +1562,6 @@
   },
   {
     "year": 1988,
-    "title": "Zia ul-Haq Dies in Plane Crash",
-    "verdict": "TRUE",
-    "reason": "Confirmed: August 17, 1988; C-130 crashed near Bahawalpur; Zia, US Ambassador Arnold Raphel, and senior officers killed.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Confirmed: August 17, 1988; C-130 crashed near Bahawalpur; Zia, US Ambassador Arnold Raphel, and senior officers killed.",
-        "source": "https://en.wikipedia.org/wiki/Death_and_state_funeral_of_Muhammad_Zia-ul-Haq",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/Death_and_state_funeral_of_Muhammad_Zia-ul-Haq"
-  },
-  {
-    "year": 1988,
     "title": "Benazir Bhutto Wins Election — First Female PM in Muslim World",
     "verdict": "TRUE",
     "reason": "November 1988 elections; Benazir sworn in December 2, 1988 (event says December 1 — off by one day, minor). First female PM in Muslim-majority country confirmed.",
@@ -1575,10 +1586,10 @@
     "source": "https://en.wikipedia.org/wiki/Benazir_Bhutto"
   },
   {
-    "year": 1989,
-    "title": "Soviet Withdrawal from Afghanistan Creates Power Vacuum",
+    "year": 1988,
+    "title": "Zia ul-Haq Dies in Plane Crash",
     "verdict": "TRUE",
-    "reason": "Soviet forces completed withdrawal February 1989; ISI-backed factions continued fighting; confirmed.",
+    "reason": "Confirmed: August 17, 1988; C-130 crashed near Bahawalpur; Zia, US Ambassador Arnold Raphel, and senior officers killed.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -1588,8 +1599,8 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "Soviet forces completed withdrawal February 1989; ISI-backed factions continued fighting; confirmed.",
-        "source": "https://en.wikipedia.org/wiki/Soviet%E2%80%93Afghan_War",
+        "reason": "Confirmed: August 17, 1988; C-130 crashed near Bahawalpur; Zia, US Ambassador Arnold Raphel, and senior officers killed.",
+        "source": "https://en.wikipedia.org/wiki/Death_and_state_funeral_of_Muhammad_Zia-ul-Haq",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
           "date": null,
@@ -1597,7 +1608,7 @@
         }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/Soviet%E2%80%93Afghan_War"
+    "source": "https://en.wikipedia.org/wiki/Death_and_state_funeral_of_Muhammad_Zia-ul-Haq"
   },
   {
     "year": 1989,
@@ -1623,6 +1634,31 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/Insurgency_in_Jammu_and_Kashmir"
+  },
+  {
+    "year": 1989,
+    "title": "Soviet Withdrawal from Afghanistan Creates Power Vacuum",
+    "verdict": "TRUE",
+    "reason": "Soviet forces completed withdrawal February 1989; ISI-backed factions continued fighting; confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Soviet forces completed withdrawal February 1989; ISI-backed factions continued fighting; confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Soviet%E2%80%93Afghan_War",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Soviet%E2%80%93Afghan_War"
   },
   {
     "year": 1990,
@@ -1701,31 +1737,6 @@
   },
   {
     "year": 1992,
-    "title": "Operation Clean-Up in Karachi",
-    "verdict": "TRUE",
-    "reason": "Military Operation Clean-Up in Karachi 1992 targeting MQM and criminal networks; confirmed.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Military Operation Clean-Up in Karachi 1992 targeting MQM and criminal networks; confirmed.",
-        "source": "https://en.wikipedia.org/wiki/Operation_Clean-up_(Pakistan)",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/Operation_Clean-up_(Pakistan)"
-  },
-  {
-    "year": 1992,
     "title": "Afghan Mujahideen Capture Kabul — Civil War Begins",
     "verdict": "TRUE",
     "reason": "Mujahideen captured Kabul April 1992; civil war began; ISI supported Hekmatyar; confirmed.",
@@ -1748,6 +1759,31 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/Afghan_civil_war_(1992%E2%80%931996)"
+  },
+  {
+    "year": 1992,
+    "title": "Operation Clean-Up in Karachi",
+    "verdict": "TRUE",
+    "reason": "Military Operation Clean-Up in Karachi 1992 targeting MQM and criminal networks; confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Military Operation Clean-Up in Karachi 1992 targeting MQM and criminal networks; confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Operation_Clean-up_(Pakistan)",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Operation_Clean-up_(Pakistan)"
   },
   {
     "year": 1993,
@@ -1876,31 +1912,6 @@
   },
   {
     "year": 1996,
-    "title": "Taliban Capture Kabul with Pakistani Support",
-    "verdict": "TRUE",
-    "reason": "Taliban captured Kabul September 1996; Pakistan one of three countries (with Saudi Arabia, UAE) to recognise them; confirmed.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Taliban captured Kabul September 1996; Pakistan one of three countries (with Saudi Arabia, UAE) to recognise them; confirmed.",
-        "source": "https://en.wikipedia.org/wiki/Islamic_Emirate_of_Afghanistan_(1996%E2%80%932001)",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/Islamic_Emirate_of_Afghanistan_(1996%E2%80%932001)"
-  },
-  {
-    "year": 1996,
     "title": "Benazir's Second Government Dismissed",
     "verdict": "TRUE",
     "reason": "Dismissed November 1996 by President Farooq Leghari; Nawaz Sharif won February 1997 elections with large majority; confirmed.",
@@ -1925,10 +1936,10 @@
     "source": "https://en.wikipedia.org/wiki/Benazir_Bhutto"
   },
   {
-    "year": 1997,
-    "title": "Nawaz Sharif Wins Landslide and Strips Presidential Powers",
+    "year": 1996,
+    "title": "Taliban Capture Kabul with Pakistani Support",
     "verdict": "TRUE",
-    "reason": "Sharif won February 1997 with two-thirds majority; passed 13th amendment removing presidential dismissal powers; confirmed.",
+    "reason": "Taliban captured Kabul September 1996; Pakistan one of three countries (with Saudi Arabia, UAE) to recognise them; confirmed.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -1938,8 +1949,8 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "Sharif won February 1997 with two-thirds majority; passed 13th amendment removing presidential dismissal powers; confirmed.",
-        "source": "https://en.wikipedia.org/wiki/Nawaz_Sharif",
+        "reason": "Taliban captured Kabul September 1996; Pakistan one of three countries (with Saudi Arabia, UAE) to recognise them; confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Islamic_Emirate_of_Afghanistan_(1996%E2%80%932001)",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
           "date": null,
@@ -1947,7 +1958,7 @@
         }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/Nawaz_Sharif"
+    "source": "https://en.wikipedia.org/wiki/Islamic_Emirate_of_Afghanistan_(1996%E2%80%932001)"
   },
   {
     "year": 1997,
@@ -1975,10 +1986,10 @@
     "source": "https://en.wikipedia.org/wiki/Economy_of_Pakistan"
   },
   {
-    "year": 1998,
-    "title": "Pakistan Conducts Nuclear Tests — Becomes Declared Nuclear State",
+    "year": 1997,
+    "title": "Nawaz Sharif Wins Landslide and Strips Presidential Powers",
     "verdict": "TRUE",
-    "reason": "Confirmed: 5 tests at Chagai (Ras Koh Hills) on May 28, 1998 (Chagai-I); 1 test May 30, 1998 (Chagai-II) = 6 total. Event says 'five tests May 28-30' which is accurate as a range though Chagai-I alone was 5 simultaneous tests.",
+    "reason": "Sharif won February 1997 with two-thirds majority; passed 13th amendment removing presidential dismissal powers; confirmed.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -1988,8 +1999,8 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "Confirmed: 5 tests at Chagai (Ras Koh Hills) on May 28, 1998 (Chagai-I); 1 test May 30, 1998 (Chagai-II) = 6 total. Event says 'five tests May 28-30' which is accurate as a range though Chagai-I alone was 5 simultaneous tests.",
-        "source": "https://en.wikipedia.org/wiki/Chagai-I",
+        "reason": "Sharif won February 1997 with two-thirds majority; passed 13th amendment removing presidential dismissal powers; confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Nawaz_Sharif",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
           "date": null,
@@ -1997,7 +2008,7 @@
         }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/Chagai-I"
+    "source": "https://en.wikipedia.org/wiki/Nawaz_Sharif"
   },
   {
     "year": 1998,
@@ -2023,6 +2034,67 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/Pakistan_and_weapons_of_mass_destruction"
+  },
+  {
+    "year": 1998,
+    "title": "Nuclear Test Fallout Triggers Foreign Currency Account Freeze and Bank Crisis",
+    "verdict": "TRUE",
+    "reason": "Multiple independent sources corroborate the event materially as described. Pakistan conducted nuclear tests on May 28, 1998; the Sharif government ordered banks closed the next day (Friday, May 29, 1998) and announced an indefinite freeze on withdrawals from foreign-currency denominated accounts, ultimately locking up billions of dollars (sources cite figures ranging $7-11 billion in onshore FCAs). Pakistan's reserves at the time were widely reported at roughly $1 billion (about six weeks of import cover), with fears of default on an $800 million interest payment looming — this exact figure combination (~$1B reserves / six weeks imports / $800M interest payment) appears in independently-sourced historical summaries (drawing on contemporaneous wire reporting, nuclearweaponarchive.org, everycrsreport.com CRS reports). The freeze was explicitly intended to avert a sovereign default amid threatened international sanctions. Pakistani newspaper The Nation (nation.com.pk, fetched directly) independently confirms the freeze was tied to the nuclear tests, was meant to avert sovereign default, and that 'a number of foreign businesses including banks shut their businesses in Pakistan and the overall trust of business community was shaken irreparably' — corroborating the depositor-confidence collapse and foreign-bank-exit claims. Separate searches also confirm a stock market crash (~37.6% decline) and sharp rupee depreciation (16-30%) in this period. All core elements — country, year, trigger event, bank closure, FCA freeze, default-avoidance motive, foreign bank exits, market crash, currency depreciation — are corroborated across multiple independent sources with no contradiction on the central facts (only minor variance in exact FCA total figure, which is immaterial since the description itself only says 'billions of dollars').",
+    "verify_count": 2,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "double_confirmed",
+    "needs_tiebreak": false,
+    "source_independence": "independent",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Independently corroborated across multiple sources. After Pakistan's nuclear tests on May 28, 1998, the Sharif government, fearing a bank run, ordered banks closed on Friday May 29, then imposed an indefinite freeze on withdrawals from foreign-currency accounts (World Socialist Web Site retrospective, quoting contemporaneous reporting, verbatim: \"Fearing a run on the banks, the Sharif government ordered them closed Friday, May 29, then announced an indefinite freeze on withdrawing foreign currency from foreign denomination accounts\"; same source confirms reserves of ~$1 billion / six weeks import cover and an $800 million interest payment due the following month — matching the event description's figures almost exactly). DAWN (Pakistan's leading English daily) independently corroborates that \"the steps accompanying the blasts, especially freezing of foreign currency accounts\" occurred and were later overruled by the judiciary. Multiple additional independent sources (The Nation/Pakistan, ADB working paper, PIIE commentary, US State Dept trade report summaries) corroborate: billions of dollars (roughly $10-11 billion) in onshore FCA deposits were locked up, the freeze destroyed depositor confidence and caused several foreign banks to exit the Pakistani market, and it coincided with a stock-market crash (~37.6% decline) and sharp rupee depreciation (~16.2%), consistent with looming sovereign-default risk under threatened international sanctions. All material details in the event (country, year, trigger, mechanism, motivation, and consequences) check out across independent, non-overlapping sources.",
+        "source": "https://www.wsws.org/en/articles/2023/05/21/uotc-m21.html",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-09",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Multiple independent sources corroborate the event materially as described. Pakistan conducted nuclear tests on May 28, 1998; the Sharif government ordered banks closed the next day (Friday, May 29, 1998) and announced an indefinite freeze on withdrawals from foreign-currency denominated accounts, ultimately locking up billions of dollars (sources cite figures ranging $7-11 billion in onshore FCAs). Pakistan's reserves at the time were widely reported at roughly $1 billion (about six weeks of import cover), with fears of default on an $800 million interest payment looming — this exact figure combination (~$1B reserves / six weeks imports / $800M interest payment) appears in independently-sourced historical summaries (drawing on contemporaneous wire reporting, nuclearweaponarchive.org, everycrsreport.com CRS reports). The freeze was explicitly intended to avert a sovereign default amid threatened international sanctions. Pakistani newspaper The Nation (nation.com.pk, fetched directly) independently confirms the freeze was tied to the nuclear tests, was meant to avert sovereign default, and that 'a number of foreign businesses including banks shut their businesses in Pakistan and the overall trust of business community was shaken irreparably' — corroborating the depositor-confidence collapse and foreign-bank-exit claims. Separate searches also confirm a stock market crash (~37.6% decline) and sharp rupee depreciation (16-30%) in this period. All core elements — country, year, trigger event, bank closure, FCA freeze, default-avoidance motive, foreign bank exits, market crash, currency depreciation — are corroborated across multiple independent sources with no contradiction on the central facts (only minor variance in exact FCA total figure, which is immaterial since the description itself only says 'billions of dollars').",
+        "source": "https://www.nation.com.pk/28-Jun-2018/banks-refuse-to-pay-in-foreign-currency",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-09",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://www.nation.com.pk/28-Jun-2018/banks-refuse-to-pay-in-foreign-currency"
+  },
+  {
+    "year": 1998,
+    "title": "Pakistan Conducts Nuclear Tests — Becomes Declared Nuclear State",
+    "verdict": "TRUE",
+    "reason": "Confirmed: 5 tests at Chagai (Ras Koh Hills) on May 28, 1998 (Chagai-I); 1 test May 30, 1998 (Chagai-II) = 6 total. Event says 'five tests May 28-30' which is accurate as a range though Chagai-I alone was 5 simultaneous tests.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed: 5 tests at Chagai (Ras Koh Hills) on May 28, 1998 (Chagai-I); 1 test May 30, 1998 (Chagai-II) = 6 total. Event says 'five tests May 28-30' which is accurate as a range though Chagai-I alone was 5 simultaneous tests.",
+        "source": "https://en.wikipedia.org/wiki/Chagai-I",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Chagai-I"
   },
   {
     "year": 1999,
@@ -2101,31 +2173,6 @@
   },
   {
     "year": 2001,
-    "title": "Pakistan Joins US War on Terror After 9/11",
-    "verdict": "TRUE",
-    "reason": "Musharraf reversed Taliban policy within days of 9/11 under US ultimatum; American basing rights granted; confirmed.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Musharraf reversed Taliban policy within days of 9/11 under US ultimatum; American basing rights granted; confirmed.",
-        "source": "https://en.wikipedia.org/wiki/Pakistan_and_the_war_on_terror",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/Pakistan_and_the_war_on_terror"
-  },
-  {
-    "year": 2001,
     "title": "Indian Parliament Attack Brings Countries to Brink of War",
     "verdict": "TRUE",
     "reason": "December 13, 2001 attack; 9 killed; Indian military mobilization; Operation Parakram; largest troop buildup since 1971; confirmed.",
@@ -2148,6 +2195,31 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/2001_Indian_Parliament_attack"
+  },
+  {
+    "year": 2001,
+    "title": "Pakistan Joins US War on Terror After 9/11",
+    "verdict": "TRUE",
+    "reason": "Musharraf reversed Taliban policy within days of 9/11 under US ultimatum; American basing rights granted; confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Musharraf reversed Taliban policy within days of 9/11 under US ultimatum; American basing rights granted; confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Pakistan_and_the_war_on_terror",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Pakistan_and_the_war_on_terror"
   },
   {
     "year": 2002,
@@ -2301,31 +2373,6 @@
   },
   {
     "year": 2006,
-    "title": "Taliban Insurgency Strengthens in Afghanistan and Pakistan",
-    "verdict": "TRUE",
-    "reason": "Taliban resurgence 2006; Quetta Shura operating in Pakistan; NATO commanders' complaints documented; confirmed.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Taliban resurgence 2006; Quetta Shura operating in Pakistan; NATO commanders' complaints documented; confirmed.",
-        "source": "https://en.wikipedia.org/wiki/Taliban_insurgency",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/Taliban_insurgency"
-  },
-  {
-    "year": 2006,
     "title": "Bugti Killing Sparks Baloch Insurgency",
     "verdict": "TRUE",
     "reason": "Confirmed: Nawab Akbar Bugti killed August 26, 2006; sparked Baloch nationalist insurgency.",
@@ -2350,10 +2397,10 @@
     "source": "https://en.wikipedia.org/wiki/Akbar_Bugti"
   },
   {
-    "year": 2007,
-    "title": "Red Mosque Siege in Islamabad",
+    "year": 2006,
+    "title": "Taliban Insurgency Strengthens in Afghanistan and Pakistan",
     "verdict": "TRUE",
-    "reason": "Lal Masjid siege July 2007; military assault killed ~100+ including students; TTP emergence as Pakistani state target followed; confirmed.",
+    "reason": "Taliban resurgence 2006; Quetta Shura operating in Pakistan; NATO commanders' complaints documented; confirmed.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -2363,8 +2410,8 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "Lal Masjid siege July 2007; military assault killed ~100+ including students; TTP emergence as Pakistani state target followed; confirmed.",
-        "source": "https://en.wikipedia.org/wiki/Siege_of_Lal_Masjid",
+        "reason": "Taliban resurgence 2006; Quetta Shura operating in Pakistan; NATO commanders' complaints documented; confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Taliban_insurgency",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
           "date": null,
@@ -2372,7 +2419,32 @@
         }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/Siege_of_Lal_Masjid"
+    "source": "https://en.wikipedia.org/wiki/Taliban_insurgency"
+  },
+  {
+    "year": 2007,
+    "title": "Benazir Bhutto Assassinated in Rawalpindi",
+    "verdict": "TRUE",
+    "reason": "Confirmed: December 27, 2007; Liaquat Bagh, Rawalpindi; suicide bombing at political rally; UN commission confirmed security failures and evidence destruction.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed: December 27, 2007; Liaquat Bagh, Rawalpindi; suicide bombing at political rally; UN commission confirmed security failures and evidence destruction.",
+        "source": "https://en.wikipedia.org/wiki/Assassination_of_Benazir_Bhutto",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Assassination_of_Benazir_Bhutto"
   },
   {
     "year": 2007,
@@ -2401,9 +2473,9 @@
   },
   {
     "year": 2007,
-    "title": "Benazir Bhutto Assassinated in Rawalpindi",
+    "title": "Red Mosque Siege in Islamabad",
     "verdict": "TRUE",
-    "reason": "Confirmed: December 27, 2007; Liaquat Bagh, Rawalpindi; suicide bombing at political rally; UN commission confirmed security failures and evidence destruction.",
+    "reason": "Lal Masjid siege July 2007; military assault killed ~100+ including students; TTP emergence as Pakistani state target followed; confirmed.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -2413,8 +2485,8 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "Confirmed: December 27, 2007; Liaquat Bagh, Rawalpindi; suicide bombing at political rally; UN commission confirmed security failures and evidence destruction.",
-        "source": "https://en.wikipedia.org/wiki/Assassination_of_Benazir_Bhutto",
+        "reason": "Lal Masjid siege July 2007; military assault killed ~100+ including students; TTP emergence as Pakistani state target followed; confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Siege_of_Lal_Masjid",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
           "date": null,
@@ -2422,7 +2494,7 @@
         }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/Assassination_of_Benazir_Bhutto"
+    "source": "https://en.wikipedia.org/wiki/Siege_of_Lal_Masjid"
   },
   {
     "year": 2008,
@@ -2476,31 +2548,6 @@
   },
   {
     "year": 2009,
-    "title": "Swat Valley Falls to Taliban — Then Retaken",
-    "verdict": "TRUE",
-    "reason": "Taliban controlled Swat early 2009; military operation summer 2009; 3 million displaced; Malala's blog during occupation; confirmed.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Taliban controlled Swat early 2009; military operation summer 2009; 3 million displaced; Malala's blog during occupation; confirmed.",
-        "source": "https://en.wikipedia.org/wiki/Swat_offensive_(2009)",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/Swat_offensive_(2009)"
-  },
-  {
-    "year": 2009,
     "title": "Kerry-Lugar-Berman Act Provides 7.5 Billion in US Aid",
     "verdict": "TRUE",
     "reason": "Kerry-Lugar-Berman Act 2009; $7.5 billion civilian aid over 5 years; Pakistani military critical of sovereignty conditions; confirmed.",
@@ -2525,10 +2572,10 @@
     "source": "https://en.wikipedia.org/wiki/Enhanced_Partnership_with_Pakistan_Act_of_2009"
   },
   {
-    "year": 2010,
-    "title": "Super Floods Devastate Pakistan — Worst in History",
+    "year": 2009,
+    "title": "Swat Valley Falls to Taliban — Then Retaken",
     "verdict": "TRUE",
-    "reason": "Confirmed: July-August 2010; one-fifth of land area; ~1,985 deaths (event says 'nearly 2,000', correct); $43 billion damage; 20 million affected.",
+    "reason": "Taliban controlled Swat early 2009; military operation summer 2009; 3 million displaced; Malala's blog during occupation; confirmed.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -2538,8 +2585,8 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "Confirmed: July-August 2010; one-fifth of land area; ~1,985 deaths (event says 'nearly 2,000', correct); $43 billion damage; 20 million affected.",
-        "source": "https://en.wikipedia.org/wiki/2010_Pakistan_floods",
+        "reason": "Taliban controlled Swat early 2009; military operation summer 2009; 3 million displaced; Malala's blog during occupation; confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Swat_offensive_(2009)",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
           "date": null,
@@ -2547,7 +2594,7 @@
         }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/2010_Pakistan_floods"
+    "source": "https://en.wikipedia.org/wiki/Swat_offensive_(2009)"
   },
   {
     "year": 2010,
@@ -2575,10 +2622,10 @@
     "source": "https://en.wikipedia.org/wiki/Eighteenth_Amendment_to_the_Constitution_of_Pakistan"
   },
   {
-    "year": 2011,
-    "title": "US Navy SEALs Kill Osama bin Laden in Abbottabad",
+    "year": 2010,
+    "title": "Super Floods Devastate Pakistan — Worst in History",
     "verdict": "TRUE",
-    "reason": "Confirmed: May 2, 2011; SEAL Team Six (Operation Neptune Spear); compound in Abbottabad; unilateral US operation.",
+    "reason": "Confirmed: July-August 2010; one-fifth of land area; ~1,985 deaths (event says 'nearly 2,000', correct); $43 billion damage; 20 million affected.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -2588,8 +2635,8 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "Confirmed: May 2, 2011; SEAL Team Six (Operation Neptune Spear); compound in Abbottabad; unilateral US operation.",
-        "source": "https://en.wikipedia.org/wiki/Killing_of_Osama_bin_Laden",
+        "reason": "Confirmed: July-August 2010; one-fifth of land area; ~1,985 deaths (event says 'nearly 2,000', correct); $43 billion damage; 20 million affected.",
+        "source": "https://en.wikipedia.org/wiki/2010_Pakistan_floods",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
           "date": null,
@@ -2597,7 +2644,7 @@
         }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/Killing_of_Osama_bin_Laden"
+    "source": "https://en.wikipedia.org/wiki/2010_Pakistan_floods"
   },
   {
     "year": 2011,
@@ -2623,6 +2670,31 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/Salala_incident"
+  },
+  {
+    "year": 2011,
+    "title": "US Navy SEALs Kill Osama bin Laden in Abbottabad",
+    "verdict": "TRUE",
+    "reason": "Confirmed: May 2, 2011; SEAL Team Six (Operation Neptune Spear); compound in Abbottabad; unilateral US operation.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed: May 2, 2011; SEAL Team Six (Operation Neptune Spear); compound in Abbottabad; unilateral US operation.",
+        "source": "https://en.wikipedia.org/wiki/Killing_of_Osama_bin_Laden",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Killing_of_Osama_bin_Laden"
   },
   {
     "year": 2012,
@@ -2801,31 +2873,6 @@
   },
   {
     "year": 2017,
-    "title": "Nawaz Sharif Disqualified by Supreme Court",
-    "verdict": "TRUE",
-    "reason": "Confirmed: Supreme Court disqualified Sharif July 28, 2017 over undisclosed Dubai-based receivables (not directly Panama Papers offshore companies but stemming from same JIT).",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Confirmed: Supreme Court disqualified Sharif July 28, 2017 over undisclosed Dubai-based receivables (not directly Panama Papers offshore companies but stemming from same JIT).",
-        "source": "https://en.wikipedia.org/wiki/Panama_Papers_case",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/Panama_Papers_case"
-  },
-  {
-    "year": 2017,
     "title": "Faizabad Dharna — TLP Besieges Islamabad",
     "verdict": "TRUE",
     "reason": "TLP Faizabad sit-in November 2017; electoral oath controversy; government capitulated; army brokered deal; confirmed.",
@@ -2848,6 +2895,31 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/Tehreek-e-Labbaik_Pakistan"
+  },
+  {
+    "year": 2017,
+    "title": "Nawaz Sharif Disqualified by Supreme Court",
+    "verdict": "TRUE",
+    "reason": "Confirmed: Supreme Court disqualified Sharif July 28, 2017 over undisclosed Dubai-based receivables (not directly Panama Papers offshore companies but stemming from same JIT).",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed: Supreme Court disqualified Sharif July 28, 2017 over undisclosed Dubai-based receivables (not directly Panama Papers offshore companies but stemming from same JIT).",
+        "source": "https://en.wikipedia.org/wiki/Panama_Papers_case",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Panama_Papers_case"
   },
   {
     "year": 2018,
@@ -2901,31 +2973,6 @@
   },
   {
     "year": 2019,
-    "title": "Pulwama Attack and Balakot Airstrikes — First Air Combat Between Nuclear States",
-    "verdict": "TRUE",
-    "reason": "February 14, 2019 Pulwama attack; 40 CRPF soldiers killed; Indian airstrikes at Balakot February 26; Pakistani pilot captured and returned; confirmed as first air combat between nuclear-armed states.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "February 14, 2019 Pulwama attack; 40 CRPF soldiers killed; Indian airstrikes at Balakot February 26; Pakistani pilot captured and returned; confirmed as first air combat between nuclear-armed states.",
-        "source": "https://en.wikipedia.org/wiki/2019_Pulwama_attack",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/2019_Pulwama_attack"
-  },
-  {
-    "year": 2019,
     "title": "FATF Grey List — Pakistan Faces Sanctions Threat",
     "verdict": "TRUE",
     "reason": "Pakistan placed on FATF grey list June 2018 (event says 2019 as continuing pressure year; Pakistan remained on grey list through 2022); year is approximately correct.",
@@ -2948,6 +2995,31 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/FATF_blacklist"
+  },
+  {
+    "year": 2019,
+    "title": "Pulwama Attack and Balakot Airstrikes — First Air Combat Between Nuclear States",
+    "verdict": "TRUE",
+    "reason": "February 14, 2019 Pulwama attack; 40 CRPF soldiers killed; Indian airstrikes at Balakot February 26; Pakistani pilot captured and returned; confirmed as first air combat between nuclear-armed states.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "February 14, 2019 Pulwama attack; 40 CRPF soldiers killed; Indian airstrikes at Balakot February 26; Pakistani pilot captured and returned; confirmed as first air combat between nuclear-armed states.",
+        "source": "https://en.wikipedia.org/wiki/2019_Pulwama_attack",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/2019_Pulwama_attack"
   },
   {
     "year": 2020,
@@ -2976,31 +3048,6 @@
   },
   {
     "year": 2021,
-    "title": "US Withdrawal from Afghanistan Creates Crisis for Pakistan",
-    "verdict": "TRUE",
-    "reason": "US withdrawal August 2021; Taliban captured Kabul; Imran Khan 'breaking shackles' comment confirmed; Afghan Taliban emboldened TTP; confirmed.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "US withdrawal August 2021; Taliban captured Kabul; Imran Khan 'breaking shackles' comment confirmed; Afghan Taliban emboldened TTP; confirmed.",
-        "source": "https://en.wikipedia.org/wiki/2021_fall_of_Kabul",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/2021_fall_of_Kabul"
-  },
-  {
-    "year": 2021,
     "title": "TLP Protests Force Government Capitulation Again",
     "verdict": "TRUE",
     "reason": "October 2021 TLP protests over French ambassador expulsion demand; government released TLP leader under pressure; confirmed.",
@@ -3023,6 +3070,31 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/Tehreek-e-Labbaik_Pakistan"
+  },
+  {
+    "year": 2021,
+    "title": "US Withdrawal from Afghanistan Creates Crisis for Pakistan",
+    "verdict": "TRUE",
+    "reason": "US withdrawal August 2021; Taliban captured Kabul; Imran Khan 'breaking shackles' comment confirmed; Afghan Taliban emboldened TTP; confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "US withdrawal August 2021; Taliban captured Kabul; Imran Khan 'breaking shackles' comment confirmed; Afghan Taliban emboldened TTP; confirmed.",
+        "source": "https://en.wikipedia.org/wiki/2021_fall_of_Kabul",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/2021_fall_of_Kabul"
   },
   {
     "year": 2022,
@@ -3076,31 +3148,6 @@
   },
   {
     "year": 2023,
-    "title": "Imran Khan Arrested — PTI Crackdown and Civil-Military Confrontation",
-    "verdict": "TRUE",
-    "reason": "Confirmed: arrested May 9, 2023 from Islamabad High Court grounds by Rangers; attacks on military installations including Lahore Corps Commander's residence; thousands arrested.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Confirmed: arrested May 9, 2023 from Islamabad High Court grounds by Rangers; attacks on military installations including Lahore Corps Commander's residence; thousands arrested.",
-        "source": "https://en.wikipedia.org/wiki/Arrest_of_Imran_Khan",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/Arrest_of_Imran_Khan"
-  },
-  {
-    "year": 2023,
     "title": "Economic Crisis — Pakistan Near Default",
     "verdict": "TRUE",
     "reason": "Foreign exchange crisis early 2023; reserves under 3 weeks of imports; rupee collapse; 35%+ inflation; IMF standby arrangement secured; confirmed.",
@@ -3123,6 +3170,31 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/Economy_of_Pakistan"
+  },
+  {
+    "year": 2023,
+    "title": "Imran Khan Arrested — PTI Crackdown and Civil-Military Confrontation",
+    "verdict": "TRUE",
+    "reason": "Confirmed: arrested May 9, 2023 from Islamabad High Court grounds by Rangers; attacks on military installations including Lahore Corps Commander's residence; thousands arrested.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed: arrested May 9, 2023 from Islamabad High Court grounds by Rangers; attacks on military installations including Lahore Corps Commander's residence; thousands arrested.",
+        "source": "https://en.wikipedia.org/wiki/Arrest_of_Imran_Khan",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Arrest_of_Imran_Khan"
   },
   {
     "year": 2023,
@@ -3151,31 +3223,6 @@
   },
   {
     "year": 2024,
-    "title": "February Elections — PTI Wins Despite Crackdown",
-    "verdict": "TRUE",
-    "reason": "Confirmed: February 8, 2024; PTI-backed independents won most seats; internet shutdown; Shehbaz Sharif formed coalition government March 3, 2024.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Confirmed: February 8, 2024; PTI-backed independents won most seats; internet shutdown; Shehbaz Sharif formed coalition government March 3, 2024.",
-        "source": "https://en.wikipedia.org/wiki/2024_Pakistani_general_election",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/2024_Pakistani_general_election"
-  },
-  {
-    "year": 2024,
     "title": "26th Constitutional Amendment Restructures Judiciary",
     "verdict": "TRUE",
     "reason": "26th Amendment passed October 2024; limited Supreme Court's suo motu powers; PTI boycotted; confirmed.",
@@ -3198,6 +3245,31 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/Twenty-sixth_Amendment_to_the_Constitution_of_Pakistan"
+  },
+  {
+    "year": 2024,
+    "title": "February Elections — PTI Wins Despite Crackdown",
+    "verdict": "TRUE",
+    "reason": "Confirmed: February 8, 2024; PTI-backed independents won most seats; internet shutdown; Shehbaz Sharif formed coalition government March 3, 2024.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed: February 8, 2024; PTI-backed independents won most seats; internet shutdown; Shehbaz Sharif formed coalition government March 3, 2024.",
+        "source": "https://en.wikipedia.org/wiki/2024_Pakistani_general_election",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/2024_Pakistani_general_election"
   },
   {
     "year": 2024,
@@ -3225,40 +3297,40 @@
     "source": "https://en.wikipedia.org/wiki/Economy_of_Pakistan"
   },
   {
-    "year": 1957,
-    "title": "Balochistan Tribal Tensions Emerge",
+    "year": 2025,
+    "title": "CPEC Phase II Development Accelerates",
     "verdict": "TRUE",
-    "reason": "Multiple independent sources confirm that in 1957, Baloch tribal sardars led by the Khan of Kalat mobilized demonstrations and, in October 1957, met with President Iskander Mirza to demand exemption of Kalat from the One Unit scheme and greater autonomy/development spending, resisting the central government's integration/direct-administration push. This political resistance is explicitly described as the precursor that escalated into the 1958-59 armed insurgency (Nawab Nauroz Khan revolt, Ayub Khan's October 1958 military crackdown on Kalat) — matching the event's framing of 1957 as tensions that 'foreshadowed the recurring Baloch insurgencies.' Country, year, and substance all check out.",
+    "reason": "Multiple independent sources confirm Pakistan and China formally advanced CPEC Phase II (\"CPEC 2.0\") in 2025: PM Shehbaz Sharif and Chinese officials reaffirmed CPEC 2.0 at the SCO summit in Tianjin (Aug 31-Sep 1, 2025) and at the Pakistan-China B2B Investment Conference in Beijing (Sep 2025), signing ~21 MoUs worth roughly $8.5B in agriculture, EVs, solar energy, health, and steel -- a clear shift from the original infrastructure-first focus toward industrialization/SEZs, agriculture modernization, and social-sector development (poverty alleviation, health, education), exactly matching the description. Pakistani officials (Dar, Shehbaz Sharif) explicitly framed CPEC 2.0 as central to economic recovery and modernization. Criticism over debt servicing and terms of Chinese investment is also extensively and independently documented (e.g., The Diplomat's Sept 2025 piece on CPEC debt-trap debate, Asia Times' 2026 CPEC 2.0 debt-trap analysis, IMF commentary on CPEC-linked circular debt). All material details -- country, year, industrial zones, agriculture, social sector, debt-servicing criticism -- check out against independent, non-overlapping sources.",
     "verify_count": 2,
     "consensus_verdict": "TRUE",
     "consensus_status": "double_confirmed",
     "needs_tiebreak": false,
-    "source_independence": "independent",
+    "source_independence": "weak",
     "verifications": [
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "Independent academic and journalistic sources confirm that in 1957 tensions sharply intensified between the Pakistani central government (President Iskander Mirza) and Baloch tribal leadership/sardars over the One Unit scheme (which had merged Kalat and other Baloch states into West Pakistan in 1955). Specific documented 1957 events: the Khan of Kalat \"mobilized wide spread demonstrations against the one unit idea through the tribal chiefs\"; he pleaded for disintegration of One Unit at a reception in Quetta (26 August) and at a meeting in Mastung; he chaired \"the historic meeting of Baloch Sardars held at the Palace Hotel in Karachi in 1957\" (attended by Nawab Khair Bakhsh Marri, Nawab Ghous Bakhsh Raisani, Mir Jamal Khan Jamali, Nawab Akbar Bugti) demanding dismantling of One Unit and creation of a Balochistan province; and a December 17, 1957 jirga at Kalat where tribal chiefs submitted a six-point memorandum to the Khan, who then met President Iskander Mirza urging exemption of Kalat from One Unit. These are exactly the frictions the event describes as foreshadowing the 1958-59 Nauroz Khan revolt and later Baloch insurgencies (note the event correctly stops short of claiming armed revolt itself happened in 1957 -- it explicitly frames 1957 as precursor tension \"foreshadowing\" later insurgency, which matches the sources precisely). Country, year, and substance all check out materially as described.",
-        "source": "https://pu.edu.pk/images/journal/HistoryPStudies/PDF-FILES/11-Najib_V28_no2.pdf",
+        "reason": "Multiple independent 2025 sources confirm Pakistan and China formally advanced CPEC Phase II (\"CPEC 2.0\") in 2025, notably at the SCO summit in Tianjin (Aug-Sept 2025) where PM Shehbaz Sharif and Chinese Premier Li Qiang reaffirmed work on CPEC 2.0, with 21 MoUs worth $8.5bn signed. Confirmed focus areas explicitly match the description: industrial zones/SEZs (Rashakai SEZ, Allama Iqbal Industrial City), agriculture modernization (new cultivation methods, mechanized farming, 1,000 Pakistani agriculture graduates sent to China), and social-sector development (poverty alleviation, health, women's employment) — a stated shift from the initial infrastructure-heavy Phase I. Pakistani officials (PM Shehbaz Sharif, DPM/FM Ishaq Dar) publicly framed CPEC 2.0 as central to economic recovery/modernization, matching the description. Independent critical commentary (The Diplomat, Modern Diplomacy, East Asia Forum) simultaneously raised debt-servicing and loan-terms concerns (~$30bn CPEC-linked external debt, circular debt tied to CPEC power projects), matching the \"critics raised concerns about debt servicing obligations\" detail. All core facts — country, year, actors, thematic focus, and the debt-critique subplot — are corroborated by multiple independent, non-overlapping sources.",
+        "source": "https://www.dawn.com/news/1939636",
         "verifier": {
           "model": "claude-sonnet-5",
-          "date": "2026-07-03",
+          "date": "2026-07-05",
           "method": "web_search"
         }
       },
       {
         "pass_n": 2,
         "verdict": "TRUE",
-        "reason": "Multiple independent sources confirm that in 1957, Baloch tribal sardars led by the Khan of Kalat mobilized demonstrations and, in October 1957, met with President Iskander Mirza to demand exemption of Kalat from the One Unit scheme and greater autonomy/development spending, resisting the central government's integration/direct-administration push. This political resistance is explicitly described as the precursor that escalated into the 1958-59 armed insurgency (Nawab Nauroz Khan revolt, Ayub Khan's October 1958 military crackdown on Kalat) — matching the event's framing of 1957 as tensions that 'foreshadowed the recurring Baloch insurgencies.' Country, year, and substance all check out.",
-        "source": "https://balochistaninhistory.blogspot.com/2008/10/baloch-insurgencies-1948-1977_09.html",
+        "reason": "Multiple independent sources confirm Pakistan and China formally advanced CPEC Phase II (\"CPEC 2.0\") in 2025: PM Shehbaz Sharif and Chinese officials reaffirmed CPEC 2.0 at the SCO summit in Tianjin (Aug 31-Sep 1, 2025) and at the Pakistan-China B2B Investment Conference in Beijing (Sep 2025), signing ~21 MoUs worth roughly $8.5B in agriculture, EVs, solar energy, health, and steel -- a clear shift from the original infrastructure-first focus toward industrialization/SEZs, agriculture modernization, and social-sector development (poverty alleviation, health, education), exactly matching the description. Pakistani officials (Dar, Shehbaz Sharif) explicitly framed CPEC 2.0 as central to economic recovery and modernization. Criticism over debt servicing and terms of Chinese investment is also extensively and independently documented (e.g., The Diplomat's Sept 2025 piece on CPEC debt-trap debate, Asia Times' 2026 CPEC 2.0 debt-trap analysis, IMF commentary on CPEC-linked circular debt). All material details -- country, year, industrial zones, agriculture, social sector, debt-servicing criticism -- check out against independent, non-overlapping sources.",
+        "source": "https://www.dawn.com/news/1939636",
         "verifier": {
           "model": "claude-sonnet-5",
-          "date": "2026-07-03",
+          "date": "2026-07-05",
           "method": "web_search"
         }
       }
     ],
-    "source": "https://balochistaninhistory.blogspot.com/2008/10/baloch-insurgencies-1948-1977_09.html"
+    "source": "https://www.dawn.com/news/1939636"
   },
   {
     "year": 2025,
@@ -3331,41 +3403,5 @@
       }
     ],
     "source": "https://www.picss.net/press-release/pakistans-2025-counterterrorism-toll-surges-74-as-militancy-hits-multi-year-highs-picss-islamabad-january-01-2026/"
-  },
-  {
-    "year": 2025,
-    "title": "CPEC Phase II Development Accelerates",
-    "verdict": "TRUE",
-    "reason": "Multiple independent sources confirm Pakistan and China formally advanced CPEC Phase II (\"CPEC 2.0\") in 2025: PM Shehbaz Sharif and Chinese officials reaffirmed CPEC 2.0 at the SCO summit in Tianjin (Aug 31-Sep 1, 2025) and at the Pakistan-China B2B Investment Conference in Beijing (Sep 2025), signing ~21 MoUs worth roughly $8.5B in agriculture, EVs, solar energy, health, and steel -- a clear shift from the original infrastructure-first focus toward industrialization/SEZs, agriculture modernization, and social-sector development (poverty alleviation, health, education), exactly matching the description. Pakistani officials (Dar, Shehbaz Sharif) explicitly framed CPEC 2.0 as central to economic recovery and modernization. Criticism over debt servicing and terms of Chinese investment is also extensively and independently documented (e.g., The Diplomat's Sept 2025 piece on CPEC debt-trap debate, Asia Times' 2026 CPEC 2.0 debt-trap analysis, IMF commentary on CPEC-linked circular debt). All material details -- country, year, industrial zones, agriculture, social sector, debt-servicing criticism -- check out against independent, non-overlapping sources.",
-    "verify_count": 2,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "double_confirmed",
-    "needs_tiebreak": false,
-    "source_independence": "weak",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Multiple independent 2025 sources confirm Pakistan and China formally advanced CPEC Phase II (\"CPEC 2.0\") in 2025, notably at the SCO summit in Tianjin (Aug-Sept 2025) where PM Shehbaz Sharif and Chinese Premier Li Qiang reaffirmed work on CPEC 2.0, with 21 MoUs worth $8.5bn signed. Confirmed focus areas explicitly match the description: industrial zones/SEZs (Rashakai SEZ, Allama Iqbal Industrial City), agriculture modernization (new cultivation methods, mechanized farming, 1,000 Pakistani agriculture graduates sent to China), and social-sector development (poverty alleviation, health, women's employment) — a stated shift from the initial infrastructure-heavy Phase I. Pakistani officials (PM Shehbaz Sharif, DPM/FM Ishaq Dar) publicly framed CPEC 2.0 as central to economic recovery/modernization, matching the description. Independent critical commentary (The Diplomat, Modern Diplomacy, East Asia Forum) simultaneously raised debt-servicing and loan-terms concerns (~$30bn CPEC-linked external debt, circular debt tied to CPEC power projects), matching the \"critics raised concerns about debt servicing obligations\" detail. All core facts — country, year, actors, thematic focus, and the debt-critique subplot — are corroborated by multiple independent, non-overlapping sources.",
-        "source": "https://www.dawn.com/news/1939636",
-        "verifier": {
-          "model": "claude-sonnet-5",
-          "date": "2026-07-05",
-          "method": "web_search"
-        }
-      },
-      {
-        "pass_n": 2,
-        "verdict": "TRUE",
-        "reason": "Multiple independent sources confirm Pakistan and China formally advanced CPEC Phase II (\"CPEC 2.0\") in 2025: PM Shehbaz Sharif and Chinese officials reaffirmed CPEC 2.0 at the SCO summit in Tianjin (Aug 31-Sep 1, 2025) and at the Pakistan-China B2B Investment Conference in Beijing (Sep 2025), signing ~21 MoUs worth roughly $8.5B in agriculture, EVs, solar energy, health, and steel -- a clear shift from the original infrastructure-first focus toward industrialization/SEZs, agriculture modernization, and social-sector development (poverty alleviation, health, education), exactly matching the description. Pakistani officials (Dar, Shehbaz Sharif) explicitly framed CPEC 2.0 as central to economic recovery and modernization. Criticism over debt servicing and terms of Chinese investment is also extensively and independently documented (e.g., The Diplomat's Sept 2025 piece on CPEC debt-trap debate, Asia Times' 2026 CPEC 2.0 debt-trap analysis, IMF commentary on CPEC-linked circular debt). All material details -- country, year, industrial zones, agriculture, social sector, debt-servicing criticism -- check out against independent, non-overlapping sources.",
-        "source": "https://www.dawn.com/news/1939636",
-        "verifier": {
-          "model": "claude-sonnet-5",
-          "date": "2026-07-05",
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://www.dawn.com/news/1939636"
   }
 ]

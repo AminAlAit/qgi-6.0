@@ -476,6 +476,42 @@
   },
   {
     "year": 2008,
+    "title": "Copper Price Collapse Triggers Bank Failure and Blanket Deposit Guarantee",
+    "verdict": "PARTIAL",
+    "reason": "Core narrative confirmed by multiple sources: mid-2008 copper price collapse hit Mongolia's mining-dependent economy; Anod Bank (Mongolia's 4th-largest bank) was put under Bank of Mongolia conservatorship/receivership at the end of 2008 amid falsified accounts; the government introduced a blanket guarantee on all commercial bank deposits on 25 November 2008 specifically to avert a run after Anod's failure; a second lender, Zoos Bank, was placed into receivership in November 2009 (sources give Nov 20 or Nov 24, 2009) after breaching loan-concentration limits and posting large losses. However, one material detail is wrong: the two failed banks' assets were combined into a new state-owned bank called 'State Bank' (established 24 Nov 2009), NOT 'Savings Bank.' 'Savings Bank' was a separate, pre-existing 5th-largest Mongolian bank that itself failed independently in 2013 and was absorbed INTO State Bank at that later date — it is a distinct institution from the one created out of Anod/Zoos assets. This is a real actor/entity mix-up (conflating two different banks), not a peripheral typo, so the event is real and year/country hold but this material detail is wrong, warranting PARTIAL rather than TRUE. The 'informal dollar peg' / FX-reserves-drain framing is consistent with well-documented 2008 Mongolia crisis literature (heavy reserve defense, currency depreciation, deposit flight cited in World Bank reporting) though I could not find a primary source using that exact phrase.",
+    "verify_count": 2,
+    "consensus_verdict": "PARTIAL",
+    "consensus_status": "double_negative",
+    "needs_tiebreak": false,
+    "source_independence": "independent",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "PARTIAL",
+        "reason": "Core narrative confirmed independently: copper prices collapsed roughly from over $8,000/ton to under $4,000/ton in mid-to-late 2008; the Bank of Mongolia burned through foreign reserves defending its de facto USD peg; Anod Bank (Mongolia's 4th-largest lender, its books allegedly falsified) was taken under Bank of Mongolia conservatorship at the end of December 2008; Parliament/government responded with a blanket guarantee on all commercial bank deposits from November 25, 2008 to stop a bank run; a second lender, Zoos Bank, was placed into receivership on November 20, 2009 after breaching single-borrower lending limits. All of that is materially accurate for Mongolia, 2008 (with Zoos Bank spilling into Nov 2009, as the description itself notes). However, one detail is wrong: the description says the two failed banks' assets were 'combined into a new state-owned Savings Bank' — in fact they were combined into a newly formed 'State Bank' (established November 24, 2009). 'Savings Bank' was a separate, pre-existing 5th-largest Mongolian bank that failed independently in 2013 (due to a bad loan to its parent, Just Group) and was only then merged INTO State Bank — a different bank, different failure, different year. This is a genuine entity mix-up (conflating State Bank with the later, unrelated Savings Bank), not just a naming nuance, so I'm marking PARTIAL rather than TRUE.",
+        "source": "https://www.bloomberg.com/news/articles/2009-12-11/mongolia-s-central-bank-takes-over-second-lender",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-09",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "PARTIAL",
+        "reason": "Core narrative confirmed by multiple sources: mid-2008 copper price collapse hit Mongolia's mining-dependent economy; Anod Bank (Mongolia's 4th-largest bank) was put under Bank of Mongolia conservatorship/receivership at the end of 2008 amid falsified accounts; the government introduced a blanket guarantee on all commercial bank deposits on 25 November 2008 specifically to avert a run after Anod's failure; a second lender, Zoos Bank, was placed into receivership in November 2009 (sources give Nov 20 or Nov 24, 2009) after breaching loan-concentration limits and posting large losses. However, one material detail is wrong: the two failed banks' assets were combined into a new state-owned bank called 'State Bank' (established 24 Nov 2009), NOT 'Savings Bank.' 'Savings Bank' was a separate, pre-existing 5th-largest Mongolian bank that itself failed independently in 2013 and was absorbed INTO State Bank at that later date — it is a distinct institution from the one created out of Anod/Zoos assets. This is a real actor/entity mix-up (conflating two different banks), not a peripheral typo, so the event is real and year/country hold but this material detail is wrong, warranting PARTIAL rather than TRUE. The 'informal dollar peg' / FX-reserves-drain framing is consistent with well-documented 2008 Mongolia crisis literature (heavy reserve defense, currency depreciation, deposit flight cited in World Bank reporting) though I could not find a primary source using that exact phrase.",
+        "source": "https://documents1.worldbank.org/curated/en/555771468053413107/txt/525580WP0MN0Mo10Box345572B01PUBLIC1.txt",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-09",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://documents1.worldbank.org/curated/en/555771468053413107/txt/525580WP0MN0Mo10Box345572B01PUBLIC1.txt"
+  },
+  {
+    "year": 2008,
     "title": "Mongolia Wins Its First-Ever Olympic Gold Medal in Judo",
     "verdict": "TRUE",
     "reason": "Confirmed via multiple independent sources (ESPN, Wikipedia, Olympics.com). On August 10, 2008, Naidangiin Tuvshinbayar (Tuvshinbayar Naidan) won the men's 100kg judo final at the Beijing Olympics, defeating Kazakhstan's Askhat Zhitkeyev (waza-ari plus two yuko), giving Mongolia its first-ever Olympic gold medal. Prior to this, Mongolia held the record for most Olympic medals (15) won without a gold. Beijing 2008 was confirmed as Mongolia's most successful Olympics overall, with two golds (judo - Tuvshinbayar; boxing - Enkhbat Badar-Uugan a few days later) and two silvers. All material details in the description (date, athletes, weight class, opponent's nationality, \"first-ever gold\" claim, \"most successful Olympics\" with 2 gold/2 silver tally, and prior no-gold medal record) check out against independent sourcing.",

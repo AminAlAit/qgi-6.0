@@ -1,31 +1,6 @@
 [
   {
     "year": 1962,
-    "title": "Uganda Independence from Britain",
-    "verdict": "TRUE",
-    "reason": "October 9, 1962 confirmed; Obote as PM, Mutesa II as ceremonial President confirmed. Note: Mutesa II was elected ceremonial President in November 1963, not on independence day itself.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "October 9, 1962 confirmed; Obote as PM, Mutesa II as ceremonial President confirmed. Note: Mutesa II was elected ceremonial President in November 1963, not on independence day itself.",
-        "source": "https://en.wikipedia.org/wiki/Milton_Obote",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/Milton_Obote"
-  },
-  {
-    "year": 1962,
     "title": "First Post-Independence Elections",
     "verdict": "TRUE",
     "reason": "UPC-KY coalition confirmed; UPC 43 seats, KY 24, DP 24 confirmed. Coalition tensions accurately described.",
@@ -48,6 +23,31 @@
       }
     ],
     "source": "https://www.ebsco.com/research-starters/history/uganda-gains-independence"
+  },
+  {
+    "year": 1962,
+    "title": "Uganda Independence from Britain",
+    "verdict": "TRUE",
+    "reason": "October 9, 1962 confirmed; Obote as PM, Mutesa II as ceremonial President confirmed. Note: Mutesa II was elected ceremonial President in November 1963, not on independence day itself.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "October 9, 1962 confirmed; Obote as PM, Mutesa II as ceremonial President confirmed. Note: Mutesa II was elected ceremonial President in November 1963, not on independence day itself.",
+        "source": "https://en.wikipedia.org/wiki/Milton_Obote",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Milton_Obote"
   },
   {
     "year": 1963,
@@ -201,31 +201,6 @@
   },
   {
     "year": 1971,
-    "title": "Idi Amin Military Coup",
-    "verdict": "TRUE",
-    "reason": "January 25, 1971 confirmed; Obote at Commonwealth summit in Singapore confirmed; broad initial popular support including from Buganda confirmed.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "January 25, 1971 confirmed; Obote at Commonwealth summit in Singapore confirmed; broad initial popular support including from Buganda confirmed.",
-        "source": "https://en.wikipedia.org/wiki/1971_Ugandan_coup_d'%C3%A9tat",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/1971_Ugandan_coup_d'%C3%A9tat"
-  },
-  {
-    "year": 1971,
     "title": "Amin's Massacre of Acholi and Langi Soldiers",
     "verdict": "TRUE",
     "reason": "Systematic killings of Acholi and Langi soldiers after the coup widely documented. Thousands killed in barracks confirmed by multiple historical sources.",
@@ -250,10 +225,10 @@
     "source": "https://en.wikipedia.org/wiki/Idi_Amin"
   },
   {
-    "year": 1972,
-    "title": "Expulsion of Ugandan Asians",
+    "year": 1971,
+    "title": "Idi Amin Military Coup",
     "verdict": "TRUE",
-    "reason": "August 4, 1972 order confirmed; 90-day deadline confirmed; ~80,000 figure confirmed (23,000 had citizenship accepted). 'Divine vision' claim confirmed. Economic devastation confirmed.",
+    "reason": "January 25, 1971 confirmed; Obote at Commonwealth summit in Singapore confirmed; broad initial popular support including from Buganda confirmed.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -263,8 +238,8 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "August 4, 1972 order confirmed; 90-day deadline confirmed; ~80,000 figure confirmed (23,000 had citizenship accepted). 'Divine vision' claim confirmed. Economic devastation confirmed.",
-        "source": "https://en.wikipedia.org/wiki/Expulsion_of_Asians_from_Uganda",
+        "reason": "January 25, 1971 confirmed; Obote at Commonwealth summit in Singapore confirmed; broad initial popular support including from Buganda confirmed.",
+        "source": "https://en.wikipedia.org/wiki/1971_Ugandan_coup_d'%C3%A9tat",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
           "date": null,
@@ -272,7 +247,32 @@
         }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/Expulsion_of_Asians_from_Uganda"
+    "source": "https://en.wikipedia.org/wiki/1971_Ugandan_coup_d'%C3%A9tat"
+  },
+  {
+    "year": 1972,
+    "title": "Diplomatic Rupture with Britain and Israel",
+    "verdict": "TRUE",
+    "reason": "Expulsion of Israeli advisers in 1972 and pivot to Libya/Palestinians confirmed. Rupture with Britain over Asian expulsion confirmed. OAU anti-Israel stance confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Expulsion of Israeli advisers in 1972 and pivot to Libya/Palestinians confirmed. Rupture with Britain over Asian expulsion confirmed. OAU anti-Israel stance confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Idi_Amin",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Idi_Amin"
   },
   {
     "year": 1972,
@@ -301,9 +301,9 @@
   },
   {
     "year": 1972,
-    "title": "Diplomatic Rupture with Britain and Israel",
+    "title": "Expulsion of Ugandan Asians",
     "verdict": "TRUE",
-    "reason": "Expulsion of Israeli advisers in 1972 and pivot to Libya/Palestinians confirmed. Rupture with Britain over Asian expulsion confirmed. OAU anti-Israel stance confirmed.",
+    "reason": "August 4, 1972 order confirmed; 90-day deadline confirmed; ~80,000 figure confirmed (23,000 had citizenship accepted). 'Divine vision' claim confirmed. Economic devastation confirmed.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -313,8 +313,8 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "Expulsion of Israeli advisers in 1972 and pivot to Libya/Palestinians confirmed. Rupture with Britain over Asian expulsion confirmed. OAU anti-Israel stance confirmed.",
-        "source": "https://en.wikipedia.org/wiki/Idi_Amin",
+        "reason": "August 4, 1972 order confirmed; 90-day deadline confirmed; ~80,000 figure confirmed (23,000 had citizenship accepted). 'Divine vision' claim confirmed. Economic devastation confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Expulsion_of_Asians_from_Uganda",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
           "date": null,
@@ -322,7 +322,7 @@
         }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/Idi_Amin"
+    "source": "https://en.wikipedia.org/wiki/Expulsion_of_Asians_from_Uganda"
   },
   {
     "year": 1973,
@@ -348,6 +348,42 @@
       }
     ],
     "source": "https://www.britannica.com/biography/Idi-Amin"
+  },
+  {
+    "year": 1974,
+    "title": "Amin Declares Uganda an Islamic Republic",
+    "verdict": "TRUE",
+    "reason": "Multiple independent sources confirm the core elements: Idi Amin, a Muslim from the Kakwa ethnic group, pivoted Uganda toward the Islamic world starting 1972-1974 to secure financial and military backing — Uganda was formally admitted into the Organisation of Islamic Cooperation/Conference in 1973/1974 (multiple sources pin it specifically to 1974), he cultivated close ties with Libya's Gaddafi (who extended a $25M loan in 1972 and later sent troops) and Saudi Arabia's King Faisal (who gave him a private jet and later granted him asylum), and he \"increasingly spoke of Uganda as a Muslim country\" despite Uganda being overwhelmingly Christian (Muslims were only ~5% of the population). Disproportionate appointment of Muslims and his own Kakwa/Nubian ethnic circle to political and military posts is strongly documented: Muslim cabinet representation surged toward 70% by 1975 and Muslims made up 80-87.5% of top generals/cabinet versus 5% of the population. He also fostered the Uganda Muslim Supreme Council and mosque-building as part of a \"quasi-establishment\" of Islam. I could not find a single source using the literal phrase \"declared an Islamic Republic\" or independently pin down \"introduced Islamic holidays\" as a discrete 1974 legal act, but every other substantive element of the description (country, year, Libya/Saudi courtship, Muslim/Kakwa favoritism, Christian-majority population) is corroborated by multiple independent sources, so I assess this as materially TRUE rather than merely PARTIAL.",
+    "verify_count": 2,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "double_confirmed",
+    "needs_tiebreak": false,
+    "source_independence": "independent",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Multiple independent sources corroborate the substance and year. The Oxford Encyclopedia of the Islamic World (Oxford Islamic Studies Online, by Omari H. Kokole and Aili Mari Tripp) states plainly: \"In Amin's Uganda, Islam was declared a state religion even though the majority of the population was Christian. Amin surrounded himself increasingly with fellow Muslims and gave preference to Muslims in public-sector hiring... Under Amin, Uganda joined the OIC.\" Independent reporting (Uganda Muslim Brothers and Sisters blog reprint of a Daily Monitor piece on '170 years of Islam in Uganda') pins the OIC registration specifically to 1974, matching Uganda's attendance at the 2nd Islamic Summit Conference in Lahore, Pakistan (Feb 22-24, 1974) — the same year given in the event. Wikipedia's Idi Amin and Second Republic of Uganda articles independently confirm Amin's 1972 pivot to Gaddafi's Libya for aid, his close ties with Saudi Arabia's King Faisal, and the heavy over-representation of Muslims and Amin's own Kakwa/West Nile ethnic bloc in the cabinet and military (Muslims made up 80%/87.5% of top generals/cabinet vs ~5% of the population) despite Uganda being majority Christian. All core elements of the description — Islamic-state declaration, Christian-majority country, Libya/Gaddafi and Saudi financial backing, Arab-world ties via OIC, and disproportionate Muslim/Kakwa appointments — are corroborated by independent sources anchored to 1974 as the pivotal year (OIC entry/Lahore summit), with the broader Islamization pattern documented as continuing/intensifying through 1977. The title's framing as \"Islamic Republic\" is loose (Uganda was never formally renamed that way in law), but the description itself says \"declared Uganda an Islamic state,\" which matches the sourced language \"Islam was declared a state religion\" closely enough to be materially accurate rather than a distorting error.",
+        "source": "http://www.oxfordislamicstudies.com/article/opr/t236/e0813",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-05",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Multiple independent sources confirm the core elements: Idi Amin, a Muslim from the Kakwa ethnic group, pivoted Uganda toward the Islamic world starting 1972-1974 to secure financial and military backing — Uganda was formally admitted into the Organisation of Islamic Cooperation/Conference in 1973/1974 (multiple sources pin it specifically to 1974), he cultivated close ties with Libya's Gaddafi (who extended a $25M loan in 1972 and later sent troops) and Saudi Arabia's King Faisal (who gave him a private jet and later granted him asylum), and he \"increasingly spoke of Uganda as a Muslim country\" despite Uganda being overwhelmingly Christian (Muslims were only ~5% of the population). Disproportionate appointment of Muslims and his own Kakwa/Nubian ethnic circle to political and military posts is strongly documented: Muslim cabinet representation surged toward 70% by 1975 and Muslims made up 80-87.5% of top generals/cabinet versus 5% of the population. He also fostered the Uganda Muslim Supreme Council and mosque-building as part of a \"quasi-establishment\" of Islam. I could not find a single source using the literal phrase \"declared an Islamic Republic\" or independently pin down \"introduced Islamic holidays\" as a discrete 1974 legal act, but every other substantive element of the description (country, year, Libya/Saudi courtship, Muslim/Kakwa favoritism, Christian-majority population) is corroborated by multiple independent sources, so I assess this as materially TRUE rather than merely PARTIAL.",
+        "source": "https://en.wikipedia.org/wiki/Uganda_Muslim_Supreme_Council",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-05",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Uganda_Muslim_Supreme_Council"
   },
   {
     "year": 1976,
@@ -426,31 +462,6 @@
   },
   {
     "year": 1979,
-    "title": "Tanzania-Uganda War — Amin Overthrown",
-    "verdict": "TRUE",
-    "reason": "Counter-invasion January 1979 confirmed; Kampala fell April 10, 1979 per Wikipedia (event says April 11 — minor discrepancy). Amin fled to Libya then Saudi Arabia; died 2003 confirmed.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Counter-invasion January 1979 confirmed; Kampala fell April 10, 1979 per Wikipedia (event says April 11 — minor discrepancy). Amin fled to Libya then Saudi Arabia; died 2003 confirmed.",
-        "source": "https://en.wikipedia.org/wiki/Uganda%E2%80%93Tanzania_War",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/Uganda%E2%80%93Tanzania_War"
-  },
-  {
-    "year": 1979,
     "title": "Post-Amin Transitional Governments",
     "verdict": "TRUE",
     "reason": "Yusuf Lule, then Godfrey Binaisa succession confirmed. Continued instability and competing factions confirmed.",
@@ -464,6 +475,31 @@
         "pass_n": 1,
         "verdict": "TRUE",
         "reason": "Yusuf Lule, then Godfrey Binaisa succession confirmed. Continued instability and competing factions confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Uganda%E2%80%93Tanzania_War",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Uganda%E2%80%93Tanzania_War"
+  },
+  {
+    "year": 1979,
+    "title": "Tanzania-Uganda War — Amin Overthrown",
+    "verdict": "TRUE",
+    "reason": "Counter-invasion January 1979 confirmed; Kampala fell April 10, 1979 per Wikipedia (event says April 11 — minor discrepancy). Amin fled to Libya then Saudi Arabia; died 2003 confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Counter-invasion January 1979 confirmed; Kampala fell April 10, 1979 per Wikipedia (event says April 11 — minor discrepancy). Amin fled to Libya then Saudi Arabia; died 2003 confirmed.",
         "source": "https://en.wikipedia.org/wiki/Uganda%E2%80%93Tanzania_War",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
@@ -601,31 +637,6 @@
   },
   {
     "year": 1986,
-    "title": "Truth Commission on Human Rights Violations",
-    "verdict": "TRUE",
-    "reason": "Commission of Inquiry into Violations of Human Rights established by Museveni government confirmed. Few perpetrators faced justice — confirmed pattern.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Commission of Inquiry into Violations of Human Rights established by Museveni government confirmed. Few perpetrators faced justice — confirmed pattern.",
-        "source": "https://www.hrw.org/reports/1999/uganda/Uganweb-06.htm",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://www.hrw.org/reports/1999/uganda/Uganweb-06.htm"
-  },
-  {
-    "year": 1986,
     "title": "Northern Uganda Insurgency Erupts",
     "verdict": "TRUE",
     "reason": "Post-1986 Acholi insurgency confirmed; UPDA and other groups confirmed. North-south divide rooted in colonial recruitment patterns confirmed.",
@@ -648,6 +659,31 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/War_in_Uganda_(1986%E2%80%931994)"
+  },
+  {
+    "year": 1986,
+    "title": "Truth Commission on Human Rights Violations",
+    "verdict": "TRUE",
+    "reason": "Commission of Inquiry into Violations of Human Rights established by Museveni government confirmed. Few perpetrators faced justice — confirmed pattern.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Commission of Inquiry into Violations of Human Rights established by Museveni government confirmed. Few perpetrators faced justice — confirmed pattern.",
+        "source": "https://www.hrw.org/reports/1999/uganda/Uganweb-06.htm",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://www.hrw.org/reports/1999/uganda/Uganweb-06.htm"
   },
   {
     "year": 1987,
@@ -773,6 +809,42 @@
       }
     ],
     "source": "https://constitutionnet.org/country/uganda"
+  },
+  {
+    "year": 1994,
+    "title": "Half of Uganda's Banks Face Insolvency in 1994 Banking Crisis",
+    "verdict": "TRUE",
+    "reason": "Multiple independent sources confirm all material elements. A World Bank report (fetched directly, documents1.worldbank.org) states verbatim: 'Aggregate nonperforming assets are in excess of 50 percent of total loans... making much of banking activity nonviable' and 'More than half of the fifteen commercial banks made losses in 1994 and have a large negative core capital of over U Sh 100 billion. A number of banks are insolvent, including Uganda Commercial Bank.' Secondary academic/press sources (Brownbridge's regional bank-distress research cited via IDS/UNCTAD/researchgate summaries, and the Laeven-Valencia systemic banking crisis database per search results) independently corroborate the commonly-cited 60-80% NPL figure and 'half of the banking system faced insolvency' framing for 1994, plus causes matching the description: politically directed/insider lending and weak credit assessment following early-1990s financial liberalization (1993 Financial Institutions Act), and subsequent license revocations/capital-requirement tightening. The follow-on 1998-99 crisis detail is also independently confirmed: four banks (International Credit Bank, Greenland Bank, Cooperative Bank, Trust Bank) holding 12.1% of system deposits were closed for insolvency between Sept 1998-May 1999, per multiple sources (researchgate abstract of Brownbridge & Kirkpatrick's 'The 1998-99 banking crisis in Uganda', effective-states.org working paper, ceo.co.ug). All figures, actors, timing, and causal narrative in the event description are corroborated; no material detail is off.",
+    "verify_count": 2,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "double_confirmed",
+    "needs_tiebreak": false,
+    "source_independence": "independent",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Independently verified via a contemporaneous academic primary source (Martin Brownbridge, 'Financial Repression and Financial Reform in Uganda', IDS Working Paper 30, June 1996). It confirms: Uganda's largest bank, Uganda Commercial Bank (~50% of system deposits), was insolvent by the early 1990s with non-performing loans at 75% of its portfolio, driven by 'political influence on its lending policies, exacerbated by very poor loan procedures and corruption' following financial-sector liberalisation (from 1991). The second-largest bank, the government/cooperative-owned Cooperative Bank, was 'also insolvent' in the early 1990s for similar reasons. Additionally, four local private banks (Tieffe, Nile, Sembule, Centenary) fell into insolvency/severe distress in 1994-95, with Tieffe closed by the Bank of Uganda in 1994 and Nile/Sembule taken into statutory management in 1995 -- one local bank had two-thirds of its loan book non-performing. Given Uganda had roughly 10-11 banks at the time, well over half of all banking institutions (UCB + Cooperative + 4 distressed local banks) were insolvent or under regulatory intervention by 1994-95, consistent with 'more than half.' The causes cited (weak credit assessment, politically directed lending, post-liberalisation) match. The crisis prompted tighter regulation: the 1993 Financial Institutions Statute raised capital requirements, restricted insider lending, and gave BOU license-revocation powers, used against Tieffe/Nile/Sembule in 1994-95 -- matching 'a wave of license revocations and stricter capital requirements later in the decade.' The event's second claim -- a 1998-99 crisis closing four more banks (ICB, Greenland, Cooperative, Trust) holding 12.1% of system deposits -- is confirmed verbatim by an independently fetched, directly-read source: Martin Brownbridge, 'Resolving Bank Failures in Uganda: Policy Lessons from Recent Bank Failures', Development Policy Review 20(3), 2002 (via library.fes.de), which states 'four insolvent banks, which together held 12.1% of the Ugandan banking system's deposits, were closed by the central bank' in 1998-99. This is further corroborated by a third independently fetched source (Hickey & Matsiko, ESID Working Paper 175, University of Manchester, 2023), which independently narrates the same four-bank 1998-99 closure episode and the 1993-94 diagnostic studies finding UCB and Cooperative Bank 'technically insolvent.' The only soft spot is that the precise aggregate figure '60-80% system-wide NPL' isn't stated as a single industry-wide statistic in the primary source I could directly read (which gives 75% for UCB specifically, not a blended sector figure), but this is closely consistent with the underlying facts and corroborated by multiple independent secondary syntheses citing the same range for Uganda 1994. No off-limits domains were used as sole corroboration -- primary evidence came from ids.ac.uk, library.fes.de, and effective-states.org (University of Manchester), none previously flagged.",
+        "source": "https://www.ids.ac.uk/files/Wp30.pdf",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-09",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Multiple independent sources confirm all material elements. A World Bank report (fetched directly, documents1.worldbank.org) states verbatim: 'Aggregate nonperforming assets are in excess of 50 percent of total loans... making much of banking activity nonviable' and 'More than half of the fifteen commercial banks made losses in 1994 and have a large negative core capital of over U Sh 100 billion. A number of banks are insolvent, including Uganda Commercial Bank.' Secondary academic/press sources (Brownbridge's regional bank-distress research cited via IDS/UNCTAD/researchgate summaries, and the Laeven-Valencia systemic banking crisis database per search results) independently corroborate the commonly-cited 60-80% NPL figure and 'half of the banking system faced insolvency' framing for 1994, plus causes matching the description: politically directed/insider lending and weak credit assessment following early-1990s financial liberalization (1993 Financial Institutions Act), and subsequent license revocations/capital-requirement tightening. The follow-on 1998-99 crisis detail is also independently confirmed: four banks (International Credit Bank, Greenland Bank, Cooperative Bank, Trust Bank) holding 12.1% of system deposits were closed for insolvency between Sept 1998-May 1999, per multiple sources (researchgate abstract of Brownbridge & Kirkpatrick's 'The 1998-99 banking crisis in Uganda', effective-states.org working paper, ceo.co.ug). All figures, actors, timing, and causal narrative in the event description are corroborated; no material detail is off.",
+        "source": "https://documents1.worldbank.org/curated/en/262601468760239747/txt/multi0page.txt",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-09",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://documents1.worldbank.org/curated/en/262601468760239747/txt/multi0page.txt"
   },
   {
     "year": 1995,
@@ -901,31 +973,6 @@
   },
   {
     "year": 2000,
-    "title": "Referendum Extends Movement-Only System",
-    "verdict": "TRUE",
-    "reason": "June 2000 referendum confirmed; ~90% vote for movement system confirmed; opposition boycott confirmed; donor criticism confirmed.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "June 2000 referendum confirmed; ~90% vote for movement system confirmed; opposition boycott confirmed; donor criticism confirmed.",
-        "source": "https://en.wikipedia.org/wiki/2005_Ugandan_multi-party_referendum",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/2005_Ugandan_multi-party_referendum"
-  },
-  {
-    "year": 2000,
     "title": "Movement for the Restoration of the Ten Commandments Massacre",
     "verdict": "TRUE",
     "reason": "March 17, 2000 confirmed; Kanungu district confirmed. Death toll: 530 in the fire; ~780 total including mass graves. Event states '778 followers' — close to total ~780 but fire alone was 530; conflates fire and mass grave victims.",
@@ -948,6 +995,31 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/Movement_for_the_Restoration_of_the_Ten_Commandments_of_God"
+  },
+  {
+    "year": 2000,
+    "title": "Referendum Extends Movement-Only System",
+    "verdict": "TRUE",
+    "reason": "June 2000 referendum confirmed; ~90% vote for movement system confirmed; opposition boycott confirmed; donor criticism confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "June 2000 referendum confirmed; ~90% vote for movement system confirmed; opposition boycott confirmed; donor criticism confirmed.",
+        "source": "https://en.wikipedia.org/wiki/2005_Ugandan_multi-party_referendum",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/2005_Ugandan_multi-party_referendum"
   },
   {
     "year": 2001,
@@ -1051,31 +1123,6 @@
   },
   {
     "year": 2005,
-    "title": "Multiparty System Restored by Referendum",
-    "verdict": "TRUE",
-    "reason": "July 28, 2005 referendum confirmed; movement system ended confirmed; same amendments removed two-term presidential limit confirmed; Museveni ran for third term in 2006 confirmed.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "July 28, 2005 referendum confirmed; movement system ended confirmed; same amendments removed two-term presidential limit confirmed; Museveni ran for third term in 2006 confirmed.",
-        "source": "https://en.wikipedia.org/wiki/2005_Ugandan_multi-party_referendum",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/2005_Ugandan_multi-party_referendum"
-  },
-  {
-    "year": 2005,
     "title": "ICC Indicts LRA Leadership",
     "verdict": "TRUE",
     "reason": "Warrants issued July 8, 2005, unsealed October 13, 2005 confirmed; five LRA commanders including Kony confirmed; first ICC arrest warrants ever confirmed. Event says 'four other LRA commanders' — correct (Kony + 4 others = 5 total).",
@@ -1098,6 +1145,31 @@
       }
     ],
     "source": "https://www.icc-cpi.int/news/warrant-arrest-unsealed-against-five-lra-commanders"
+  },
+  {
+    "year": 2005,
+    "title": "Multiparty System Restored by Referendum",
+    "verdict": "TRUE",
+    "reason": "July 28, 2005 referendum confirmed; movement system ended confirmed; same amendments removed two-term presidential limit confirmed; Museveni ran for third term in 2006 confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "July 28, 2005 referendum confirmed; movement system ended confirmed; same amendments removed two-term presidential limit confirmed; Museveni ran for third term in 2006 confirmed.",
+        "source": "https://en.wikipedia.org/wiki/2005_Ugandan_multi-party_referendum",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/2005_Ugandan_multi-party_referendum"
   },
   {
     "year": 2006,
@@ -1201,31 +1273,6 @@
   },
   {
     "year": 2011,
-    "title": "Walk-to-Work Protests and Crackdown",
-    "verdict": "TRUE",
-    "reason": "April 2011 protests confirmed; fuel/food price grievances confirmed; Besigye arrested multiple times confirmed; pepper spray incidents confirmed; HRW documented at least 9 killed (event says 'several').",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "April 2011 protests confirmed; fuel/food price grievances confirmed; Besigye arrested multiple times confirmed; pepper spray incidents confirmed; HRW documented at least 9 killed (event says 'several').",
-        "source": "https://en.wikipedia.org/wiki/Walk_to_work_protest",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/Walk_to_work_protest"
-  },
-  {
-    "year": 2011,
     "title": "Museveni Wins Fourth Presidential Term",
     "verdict": "TRUE",
     "reason": "February 2011 election confirmed; Museveni 68% confirmed; unprecedented campaign spending on state resources confirmed; Commonwealth improvements over 2006 finding confirmed.",
@@ -1248,6 +1295,31 @@
       }
     ],
     "source": "https://www.hrw.org/legacy/backgrounder/africa/uganda0206/3.htm"
+  },
+  {
+    "year": 2011,
+    "title": "Walk-to-Work Protests and Crackdown",
+    "verdict": "TRUE",
+    "reason": "April 2011 protests confirmed; fuel/food price grievances confirmed; Besigye arrested multiple times confirmed; pepper spray incidents confirmed; HRW documented at least 9 killed (event says 'several').",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "April 2011 protests confirmed; fuel/food price grievances confirmed; Besigye arrested multiple times confirmed; pepper spray incidents confirmed; HRW documented at least 9 killed (event says 'several').",
+        "source": "https://en.wikipedia.org/wiki/Walk_to_work_protest",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Walk_to_work_protest"
   },
   {
     "year": 2012,
@@ -1375,6 +1447,44 @@
     "source": "https://www.loc.gov/item/global-legal-monitor/2017-12-27/uganda-bill-eliminating-presidential-age-limit-and-extending-parliamentary-term-passed/"
   },
   {
+    "year": 2018,
+    "title": "EACOP Pipeline Agreement Signed",
+    "verdict": "FALSE",
+    "reason": "No agreement between Uganda, Tanzania, TotalEnergies and CNOOC for EACOP was signed in 2018. The actual timeline: the Uganda-Tanzania Inter-Governmental Agreement (IGA) was signed 26 May 2017; FEED was completed February 2018 (engineering only, no signing ceremony); ownership shares were reallocated among UNOC/TPDC/CNOOC/Total in March 2019; the substantive multi-party agreements matching this description — the Host Government Agreement, Shareholders' Agreement, and Transportation & Tariffing Agreement between Uganda, Tanzania, TotalEnergies and CNOOC — were signed at a ceremony in Entebbe on 11 April 2021, attended by Presidents Museveni and Samia Suluhu Hassan, TotalEnergies CEO Patrick Pouyanné, and CNOOC representatives. The Final Investment Decision followed in February 2022. A separate 2017-2018 Tullow-Total-CNOOC farm-down deal (unrelated to Tanzania) was itself terminated in 2019 without completing. No source places a Uganda-Tanzania-Total-CNOOC EACOP signing event in 2018.",
+    "verify_count": 2,
+    "consensus_verdict": "FALSE",
+    "consensus_status": "double_negative",
+    "needs_tiebreak": false,
+    "source_independence": "independent",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "FALSE",
+        "reason": "The EACOP project and its various formal agreements are real, but none of the major Uganda-Tanzania-TotalEnergies-CNOOC signings occurred in 2018. The documented timeline is: Inter-Governmental Agreement (IGA) between Uganda and Tanzania signed 26 May 2017 (with a foundation-stone ceremony 5 Aug 2017); Uganda-Total and Tanzania-Total Host Government Agreements signed Sept-Oct 2020; the Tripartite Project Agreement/Shareholders Agreement signed 11-12 April 2021 in Entebbe by Presidents Museveni and Samia Suluhu together with TotalEnergies and CNOOC leadership (this is the event that most closely matches 'agreements with TotalEnergies and CNOOC'); and the Final Investment Decision signed by TotalEnergies and CNOOC in Kampala on 1 Feb 2022, after which project cost estimates rose to ~$5 billion. Multiple independent sources (Wikipedia, EACOP.com, TotalEnergies, Anadolu Agency) show 2016-2018 was only a route-study/environmental-assessment phase with no major signing ceremony; no source places a Uganda-Tanzania-Total-CNOOC EACOP signing in 2018. Year is wrong; closest-matching real event is the April 2021 tripartite signing.",
+        "source": "https://en.wikipedia.org/wiki/East_African_Crude_Oil_Pipeline",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        },
+        "corrected_year": 2021
+      },
+      {
+        "pass_n": 2,
+        "verdict": "FALSE",
+        "reason": "No agreement between Uganda, Tanzania, TotalEnergies and CNOOC for EACOP was signed in 2018. The actual timeline: the Uganda-Tanzania Inter-Governmental Agreement (IGA) was signed 26 May 2017; FEED was completed February 2018 (engineering only, no signing ceremony); ownership shares were reallocated among UNOC/TPDC/CNOOC/Total in March 2019; the substantive multi-party agreements matching this description — the Host Government Agreement, Shareholders' Agreement, and Transportation & Tariffing Agreement between Uganda, Tanzania, TotalEnergies and CNOOC — were signed at a ceremony in Entebbe on 11 April 2021, attended by Presidents Museveni and Samia Suluhu Hassan, TotalEnergies CEO Patrick Pouyanné, and CNOOC representatives. The Final Investment Decision followed in February 2022. A separate 2017-2018 Tullow-Total-CNOOC farm-down deal (unrelated to Tanzania) was itself terminated in 2019 without completing. No source places a Uganda-Tanzania-Total-CNOOC EACOP signing event in 2018.",
+        "source": "https://www.eacop.com/host-government-agreements-signed/",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        },
+        "corrected_year": 2021
+      }
+    ],
+    "source": "https://www.eacop.com/host-government-agreements-signed/"
+  },
+  {
     "year": 2019,
     "title": "Bobi Wine Emerges as Opposition Leader",
     "verdict": "TRUE",
@@ -1451,6 +1561,31 @@
   },
   {
     "year": 2021,
+    "title": "Kampala Suicide Bombings",
+    "verdict": "FALSE",
+    "reason": "Major twin suicide bombings near parliament and police headquarters were November 16, 2021 — not October 23. October 23 was a smaller bar bombing in Komamboga killing one person. Event date is wrong. ADF/Islamic State responsibility confirmed; 4 killed and 33+ wounded (November 16 attack) confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "FALSE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "FALSE",
+        "reason": "Major twin suicide bombings near parliament and police headquarters were November 16, 2021 — not October 23. October 23 was a smaller bar bombing in Komamboga killing one person. Event date is wrong. ADF/Islamic State responsibility confirmed; 4 killed and 33+ wounded (November 16 attack) confirmed.",
+        "source": "https://en.wikipedia.org/wiki/2021_Uganda_bombings",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/2021_Uganda_bombings"
+  },
+  {
+    "year": 2021,
     "title": "Museveni Wins Sixth Term — Bobi Wine Claims Fraud",
     "verdict": "TRUE",
     "reason": "January 14, 2021 election confirmed; Museveni 58% confirmed; internet blackout confirmed; observer restrictions confirmed; Wine under house arrest confirmed.",
@@ -1475,29 +1610,42 @@
     "source": "https://www.npr.org/2021/01/16/956885988/uganda-election-president-yoweri-museveni-declared-winner-as-bobi-wine-alleges-f"
   },
   {
-    "year": 2021,
-    "title": "Kampala Suicide Bombings",
+    "year": 2022,
+    "title": "Oil Production Start — Tilenga Project",
     "verdict": "FALSE",
-    "reason": "Major twin suicide bombings near parliament and police headquarters were November 16, 2021 — not October 23. October 23 was a smaller bar bombing in Komamboga killing one person. Event date is wrong. ADF/Islamic State responsibility confirmed; 4 killed and 33+ wounded (November 16 attack) confirmed.",
-    "verify_count": 1,
+    "reason": "The Tilenga project is real (TotalEnergies-operated, Lake Albert/Albertine Graben, ~6.5 billion barrels, largest landlocked oil discovery in Africa, with civil-society/displacement concerns around Murchison Falls NP — all accurate general facts). However, the specific event described — TotalEnergies beginning to drill production wells — did NOT happen in 2022. In 2022, only the Final Investment Decision (1 Feb 2022, ~$10B, covering Tilenga, Kingfisher, and EACOP) was taken, along with site prep, EPC contracting, and rig mobilization — no wells were spudded. Commercial/production drilling of the actual Tilenga wells began in 2023: the SINOPEC 1501 rig spudded the first well at the Jobi-Rii 05 pad on 28 June 2023, and TotalEnergies publicly announced the start of commercial drilling at Tilenga in late July 2023 (multiple trade-press sources dated July 2023 confirm 'drilling of the Tilenga wells began in July 2023'). So year+substance are both off in a way that matters: this is a 2023 event, not a 2022 event — the described action (drilling start) simply had not occurred yet in 2022.",
+    "verify_count": 2,
     "consensus_verdict": "FALSE",
-    "consensus_status": "single",
+    "consensus_status": "double_negative",
     "needs_tiebreak": false,
-    "source_independence": "n/a",
+    "source_independence": "independent",
     "verifications": [
       {
         "pass_n": 1,
         "verdict": "FALSE",
-        "reason": "Major twin suicide bombings near parliament and police headquarters were November 16, 2021 — not October 23. October 23 was a smaller bar bombing in Komamboga killing one person. Event date is wrong. ADF/Islamic State responsibility confirmed; 4 killed and 33+ wounded (November 16 attack) confirmed.",
-        "source": "https://en.wikipedia.org/wiki/2021_Uganda_bombings",
+        "reason": "Independent sources converge: TotalEnergies' Final Investment Decision (FID) for Tilenga/Lake Albert Development was made in Feb 2022, and well-pad/CPF construction proceeded through 2022, but actual drilling of production wells did NOT begin in 2022 as the event claims. Drilling had been planned for Q4 2022 but slipped; the first well was spudded on 28 June 2023 (Jobi-Rii 05 well pad), with TotalEnergies publicly announcing commencement of commercial drilling in late July 2023 (Reuters/JPT/World Oil/Offshore Technology all agree on 2023). The other details (6.5bn barrel Albertine Rift discovery, largest landlocked reserve claim, civil society/African Court concerns over Murchison Falls National Park displacement) are broadly accurate for the project, but the core claim — drilling of production wells starting in 2022 — is factually wrong; it happened in 2023. Since the year itself is the wrong material detail, this fails the PARTIAL bar (which requires year+country to hold) and is scored FALSE with corrected_year 2023.",
+        "source": "https://jpt.spe.org/totalenergies-spuds-first-of-hundreds-of-wells-in-uganda-megaproject",
         "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
           "method": "web_search"
-        }
+        },
+        "corrected_year": 2023
+      },
+      {
+        "pass_n": 2,
+        "verdict": "FALSE",
+        "reason": "The Tilenga project is real (TotalEnergies-operated, Lake Albert/Albertine Graben, ~6.5 billion barrels, largest landlocked oil discovery in Africa, with civil-society/displacement concerns around Murchison Falls NP — all accurate general facts). However, the specific event described — TotalEnergies beginning to drill production wells — did NOT happen in 2022. In 2022, only the Final Investment Decision (1 Feb 2022, ~$10B, covering Tilenga, Kingfisher, and EACOP) was taken, along with site prep, EPC contracting, and rig mobilization — no wells were spudded. Commercial/production drilling of the actual Tilenga wells began in 2023: the SINOPEC 1501 rig spudded the first well at the Jobi-Rii 05 pad on 28 June 2023, and TotalEnergies publicly announced the start of commercial drilling at Tilenga in late July 2023 (multiple trade-press sources dated July 2023 confirm 'drilling of the Tilenga wells began in July 2023'). So year+substance are both off in a way that matters: this is a 2023 event, not a 2022 event — the described action (drilling start) simply had not occurred yet in 2022.",
+        "source": "https://www.offshore-technology.com/news/totalenergies-begins-drilling-at-tilenga/",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        },
+        "corrected_year": 2023
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/2021_Uganda_bombings"
+    "source": "https://www.offshore-technology.com/news/totalenergies-begins-drilling-at-tilenga/"
   },
   {
     "year": 2022,
@@ -1551,31 +1699,6 @@
   },
   {
     "year": 2023,
-    "title": "International Sanctions and Aid Restrictions Over LGBTQ Law",
-    "verdict": "TRUE",
-    "reason": "US AGOA revocation confirmed; World Bank halt on new direct lending confirmed; EU and bilateral donor reviews confirmed.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "US AGOA revocation confirmed; World Bank halt on new direct lending confirmed; EU and bilateral donor reviews confirmed.",
-        "source": "https://www.hrw.org/news/2023/05/30/ugandas-president-signs-repressive-anti-lgbt-law",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://www.hrw.org/news/2023/05/30/ugandas-president-signs-repressive-anti-lgbt-law"
-  },
-  {
-    "year": 2023,
     "title": "Ebola Outbreak Sudan Strain Contained",
     "verdict": "TRUE",
     "reason": "Sudan strain outbreak confirmed; 55 deaths / 142 confirmed cases confirmed; onset September 2022, declared over January 11, 2023 confirmed. Note: outbreak began September 2022 not 2023 — event year says 2023 (the containment year) which is acceptable framing.",
@@ -1600,10 +1723,10 @@
     "source": "https://www.who.int/emergencies/situations/ebola-uganda-2022"
   },
   {
-    "year": 2024,
-    "title": "EACOP Construction Advances Amid Protests",
+    "year": 2023,
+    "title": "International Sanctions and Aid Restrictions Over LGBTQ Law",
     "verdict": "TRUE",
-    "reason": "Construction continuing in 2024 confirmed; European banks/insurers declining confirmed; TotalEnergies proceeding with African/Asian financing confirmed; 75-79% complete as of late 2025 confirmed.",
+    "reason": "US AGOA revocation confirmed; World Bank halt on new direct lending confirmed; EU and bilateral donor reviews confirmed.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -1613,8 +1736,8 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "Construction continuing in 2024 confirmed; European banks/insurers declining confirmed; TotalEnergies proceeding with African/Asian financing confirmed; 75-79% complete as of late 2025 confirmed.",
-        "source": "https://www.eacop.com/overview/",
+        "reason": "US AGOA revocation confirmed; World Bank halt on new direct lending confirmed; EU and bilateral donor reviews confirmed.",
+        "source": "https://www.hrw.org/news/2023/05/30/ugandas-president-signs-repressive-anti-lgbt-law",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
           "date": null,
@@ -1622,7 +1745,7 @@
         }
       }
     ],
-    "source": "https://www.eacop.com/overview/"
+    "source": "https://www.hrw.org/news/2023/05/30/ugandas-president-signs-repressive-anti-lgbt-law"
   },
   {
     "year": 2024,
@@ -1651,6 +1774,31 @@
   },
   {
     "year": 2024,
+    "title": "EACOP Construction Advances Amid Protests",
+    "verdict": "TRUE",
+    "reason": "Construction continuing in 2024 confirmed; European banks/insurers declining confirmed; TotalEnergies proceeding with African/Asian financing confirmed; 75-79% complete as of late 2025 confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Construction continuing in 2024 confirmed; European banks/insurers declining confirmed; TotalEnergies proceeding with African/Asian financing confirmed; 75-79% complete as of late 2025 confirmed.",
+        "source": "https://www.eacop.com/overview/",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://www.eacop.com/overview/"
+  },
+  {
+    "year": 2024,
     "title": "LRA Still Active in Congo Despite Uganda Phase Ending",
     "verdict": "TRUE",
     "reason": "LRA active in CAR and DRC confirmed; greatly reduced from peak confirmed; Kony believed alive in CAR-Sudan border area confirmed; Dominic Ongwen 25-year ICC sentence (2021) confirmed.",
@@ -1673,117 +1821,5 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/Lord's_Resistance_Army"
-  },
-  {
-    "year": 2022,
-    "title": "Oil Production Start — Tilenga Project",
-    "verdict": "FALSE",
-    "reason": "The Tilenga project is real (TotalEnergies-operated, Lake Albert/Albertine Graben, ~6.5 billion barrels, largest landlocked oil discovery in Africa, with civil-society/displacement concerns around Murchison Falls NP — all accurate general facts). However, the specific event described — TotalEnergies beginning to drill production wells — did NOT happen in 2022. In 2022, only the Final Investment Decision (1 Feb 2022, ~$10B, covering Tilenga, Kingfisher, and EACOP) was taken, along with site prep, EPC contracting, and rig mobilization — no wells were spudded. Commercial/production drilling of the actual Tilenga wells began in 2023: the SINOPEC 1501 rig spudded the first well at the Jobi-Rii 05 pad on 28 June 2023, and TotalEnergies publicly announced the start of commercial drilling at Tilenga in late July 2023 (multiple trade-press sources dated July 2023 confirm 'drilling of the Tilenga wells began in July 2023'). So year+substance are both off in a way that matters: this is a 2023 event, not a 2022 event — the described action (drilling start) simply had not occurred yet in 2022.",
-    "verify_count": 2,
-    "consensus_verdict": "FALSE",
-    "consensus_status": "double_negative",
-    "needs_tiebreak": false,
-    "source_independence": "independent",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "FALSE",
-        "reason": "Independent sources converge: TotalEnergies' Final Investment Decision (FID) for Tilenga/Lake Albert Development was made in Feb 2022, and well-pad/CPF construction proceeded through 2022, but actual drilling of production wells did NOT begin in 2022 as the event claims. Drilling had been planned for Q4 2022 but slipped; the first well was spudded on 28 June 2023 (Jobi-Rii 05 well pad), with TotalEnergies publicly announcing commencement of commercial drilling in late July 2023 (Reuters/JPT/World Oil/Offshore Technology all agree on 2023). The other details (6.5bn barrel Albertine Rift discovery, largest landlocked reserve claim, civil society/African Court concerns over Murchison Falls National Park displacement) are broadly accurate for the project, but the core claim — drilling of production wells starting in 2022 — is factually wrong; it happened in 2023. Since the year itself is the wrong material detail, this fails the PARTIAL bar (which requires year+country to hold) and is scored FALSE with corrected_year 2023.",
-        "source": "https://jpt.spe.org/totalenergies-spuds-first-of-hundreds-of-wells-in-uganda-megaproject",
-        "verifier": {
-          "model": "claude-sonnet-5",
-          "date": "2026-07-03",
-          "method": "web_search"
-        },
-        "corrected_year": 2023
-      },
-      {
-        "pass_n": 2,
-        "verdict": "FALSE",
-        "reason": "The Tilenga project is real (TotalEnergies-operated, Lake Albert/Albertine Graben, ~6.5 billion barrels, largest landlocked oil discovery in Africa, with civil-society/displacement concerns around Murchison Falls NP — all accurate general facts). However, the specific event described — TotalEnergies beginning to drill production wells — did NOT happen in 2022. In 2022, only the Final Investment Decision (1 Feb 2022, ~$10B, covering Tilenga, Kingfisher, and EACOP) was taken, along with site prep, EPC contracting, and rig mobilization — no wells were spudded. Commercial/production drilling of the actual Tilenga wells began in 2023: the SINOPEC 1501 rig spudded the first well at the Jobi-Rii 05 pad on 28 June 2023, and TotalEnergies publicly announced the start of commercial drilling at Tilenga in late July 2023 (multiple trade-press sources dated July 2023 confirm 'drilling of the Tilenga wells began in July 2023'). So year+substance are both off in a way that matters: this is a 2023 event, not a 2022 event — the described action (drilling start) simply had not occurred yet in 2022.",
-        "source": "https://www.offshore-technology.com/news/totalenergies-begins-drilling-at-tilenga/",
-        "verifier": {
-          "model": "claude-sonnet-5",
-          "date": "2026-07-03",
-          "method": "web_search"
-        },
-        "corrected_year": 2023
-      }
-    ],
-    "source": "https://www.offshore-technology.com/news/totalenergies-begins-drilling-at-tilenga/"
-  },
-  {
-    "year": 2018,
-    "title": "EACOP Pipeline Agreement Signed",
-    "verdict": "FALSE",
-    "reason": "No agreement between Uganda, Tanzania, TotalEnergies and CNOOC for EACOP was signed in 2018. The actual timeline: the Uganda-Tanzania Inter-Governmental Agreement (IGA) was signed 26 May 2017; FEED was completed February 2018 (engineering only, no signing ceremony); ownership shares were reallocated among UNOC/TPDC/CNOOC/Total in March 2019; the substantive multi-party agreements matching this description — the Host Government Agreement, Shareholders' Agreement, and Transportation & Tariffing Agreement between Uganda, Tanzania, TotalEnergies and CNOOC — were signed at a ceremony in Entebbe on 11 April 2021, attended by Presidents Museveni and Samia Suluhu Hassan, TotalEnergies CEO Patrick Pouyanné, and CNOOC representatives. The Final Investment Decision followed in February 2022. A separate 2017-2018 Tullow-Total-CNOOC farm-down deal (unrelated to Tanzania) was itself terminated in 2019 without completing. No source places a Uganda-Tanzania-Total-CNOOC EACOP signing event in 2018.",
-    "verify_count": 2,
-    "consensus_verdict": "FALSE",
-    "consensus_status": "double_negative",
-    "needs_tiebreak": false,
-    "source_independence": "independent",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "FALSE",
-        "reason": "The EACOP project and its various formal agreements are real, but none of the major Uganda-Tanzania-TotalEnergies-CNOOC signings occurred in 2018. The documented timeline is: Inter-Governmental Agreement (IGA) between Uganda and Tanzania signed 26 May 2017 (with a foundation-stone ceremony 5 Aug 2017); Uganda-Total and Tanzania-Total Host Government Agreements signed Sept-Oct 2020; the Tripartite Project Agreement/Shareholders Agreement signed 11-12 April 2021 in Entebbe by Presidents Museveni and Samia Suluhu together with TotalEnergies and CNOOC leadership (this is the event that most closely matches 'agreements with TotalEnergies and CNOOC'); and the Final Investment Decision signed by TotalEnergies and CNOOC in Kampala on 1 Feb 2022, after which project cost estimates rose to ~$5 billion. Multiple independent sources (Wikipedia, EACOP.com, TotalEnergies, Anadolu Agency) show 2016-2018 was only a route-study/environmental-assessment phase with no major signing ceremony; no source places a Uganda-Tanzania-Total-CNOOC EACOP signing in 2018. Year is wrong; closest-matching real event is the April 2021 tripartite signing.",
-        "source": "https://en.wikipedia.org/wiki/East_African_Crude_Oil_Pipeline",
-        "verifier": {
-          "model": "claude-sonnet-5",
-          "date": "2026-07-03",
-          "method": "web_search"
-        },
-        "corrected_year": 2021
-      },
-      {
-        "pass_n": 2,
-        "verdict": "FALSE",
-        "reason": "No agreement between Uganda, Tanzania, TotalEnergies and CNOOC for EACOP was signed in 2018. The actual timeline: the Uganda-Tanzania Inter-Governmental Agreement (IGA) was signed 26 May 2017; FEED was completed February 2018 (engineering only, no signing ceremony); ownership shares were reallocated among UNOC/TPDC/CNOOC/Total in March 2019; the substantive multi-party agreements matching this description — the Host Government Agreement, Shareholders' Agreement, and Transportation & Tariffing Agreement between Uganda, Tanzania, TotalEnergies and CNOOC — were signed at a ceremony in Entebbe on 11 April 2021, attended by Presidents Museveni and Samia Suluhu Hassan, TotalEnergies CEO Patrick Pouyanné, and CNOOC representatives. The Final Investment Decision followed in February 2022. A separate 2017-2018 Tullow-Total-CNOOC farm-down deal (unrelated to Tanzania) was itself terminated in 2019 without completing. No source places a Uganda-Tanzania-Total-CNOOC EACOP signing event in 2018.",
-        "source": "https://www.eacop.com/host-government-agreements-signed/",
-        "verifier": {
-          "model": "claude-sonnet-5",
-          "date": "2026-07-03",
-          "method": "web_search"
-        },
-        "corrected_year": 2021
-      }
-    ],
-    "source": "https://www.eacop.com/host-government-agreements-signed/"
-  },
-  {
-    "year": 1974,
-    "title": "Amin Declares Uganda an Islamic Republic",
-    "verdict": "TRUE",
-    "reason": "Multiple independent sources confirm the core elements: Idi Amin, a Muslim from the Kakwa ethnic group, pivoted Uganda toward the Islamic world starting 1972-1974 to secure financial and military backing — Uganda was formally admitted into the Organisation of Islamic Cooperation/Conference in 1973/1974 (multiple sources pin it specifically to 1974), he cultivated close ties with Libya's Gaddafi (who extended a $25M loan in 1972 and later sent troops) and Saudi Arabia's King Faisal (who gave him a private jet and later granted him asylum), and he \"increasingly spoke of Uganda as a Muslim country\" despite Uganda being overwhelmingly Christian (Muslims were only ~5% of the population). Disproportionate appointment of Muslims and his own Kakwa/Nubian ethnic circle to political and military posts is strongly documented: Muslim cabinet representation surged toward 70% by 1975 and Muslims made up 80-87.5% of top generals/cabinet versus 5% of the population. He also fostered the Uganda Muslim Supreme Council and mosque-building as part of a \"quasi-establishment\" of Islam. I could not find a single source using the literal phrase \"declared an Islamic Republic\" or independently pin down \"introduced Islamic holidays\" as a discrete 1974 legal act, but every other substantive element of the description (country, year, Libya/Saudi courtship, Muslim/Kakwa favoritism, Christian-majority population) is corroborated by multiple independent sources, so I assess this as materially TRUE rather than merely PARTIAL.",
-    "verify_count": 2,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "double_confirmed",
-    "needs_tiebreak": false,
-    "source_independence": "independent",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Multiple independent sources corroborate the substance and year. The Oxford Encyclopedia of the Islamic World (Oxford Islamic Studies Online, by Omari H. Kokole and Aili Mari Tripp) states plainly: \"In Amin's Uganda, Islam was declared a state religion even though the majority of the population was Christian. Amin surrounded himself increasingly with fellow Muslims and gave preference to Muslims in public-sector hiring... Under Amin, Uganda joined the OIC.\" Independent reporting (Uganda Muslim Brothers and Sisters blog reprint of a Daily Monitor piece on '170 years of Islam in Uganda') pins the OIC registration specifically to 1974, matching Uganda's attendance at the 2nd Islamic Summit Conference in Lahore, Pakistan (Feb 22-24, 1974) — the same year given in the event. Wikipedia's Idi Amin and Second Republic of Uganda articles independently confirm Amin's 1972 pivot to Gaddafi's Libya for aid, his close ties with Saudi Arabia's King Faisal, and the heavy over-representation of Muslims and Amin's own Kakwa/West Nile ethnic bloc in the cabinet and military (Muslims made up 80%/87.5% of top generals/cabinet vs ~5% of the population) despite Uganda being majority Christian. All core elements of the description — Islamic-state declaration, Christian-majority country, Libya/Gaddafi and Saudi financial backing, Arab-world ties via OIC, and disproportionate Muslim/Kakwa appointments — are corroborated by independent sources anchored to 1974 as the pivotal year (OIC entry/Lahore summit), with the broader Islamization pattern documented as continuing/intensifying through 1977. The title's framing as \"Islamic Republic\" is loose (Uganda was never formally renamed that way in law), but the description itself says \"declared Uganda an Islamic state,\" which matches the sourced language \"Islam was declared a state religion\" closely enough to be materially accurate rather than a distorting error.",
-        "source": "http://www.oxfordislamicstudies.com/article/opr/t236/e0813",
-        "verifier": {
-          "model": "claude-sonnet-5",
-          "date": "2026-07-05",
-          "method": "web_search"
-        }
-      },
-      {
-        "pass_n": 2,
-        "verdict": "TRUE",
-        "reason": "Multiple independent sources confirm the core elements: Idi Amin, a Muslim from the Kakwa ethnic group, pivoted Uganda toward the Islamic world starting 1972-1974 to secure financial and military backing — Uganda was formally admitted into the Organisation of Islamic Cooperation/Conference in 1973/1974 (multiple sources pin it specifically to 1974), he cultivated close ties with Libya's Gaddafi (who extended a $25M loan in 1972 and later sent troops) and Saudi Arabia's King Faisal (who gave him a private jet and later granted him asylum), and he \"increasingly spoke of Uganda as a Muslim country\" despite Uganda being overwhelmingly Christian (Muslims were only ~5% of the population). Disproportionate appointment of Muslims and his own Kakwa/Nubian ethnic circle to political and military posts is strongly documented: Muslim cabinet representation surged toward 70% by 1975 and Muslims made up 80-87.5% of top generals/cabinet versus 5% of the population. He also fostered the Uganda Muslim Supreme Council and mosque-building as part of a \"quasi-establishment\" of Islam. I could not find a single source using the literal phrase \"declared an Islamic Republic\" or independently pin down \"introduced Islamic holidays\" as a discrete 1974 legal act, but every other substantive element of the description (country, year, Libya/Saudi courtship, Muslim/Kakwa favoritism, Christian-majority population) is corroborated by multiple independent sources, so I assess this as materially TRUE rather than merely PARTIAL.",
-        "source": "https://en.wikipedia.org/wiki/Uganda_Muslim_Supreme_Council",
-        "verifier": {
-          "model": "claude-sonnet-5",
-          "date": "2026-07-05",
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/Uganda_Muslim_Supreme_Council"
   }
 ]

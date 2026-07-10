@@ -2435,6 +2435,42 @@
   },
   {
     "year": 2009,
+    "title": "Central Bank of Nigeria Bailout Rescues Eight Insolvent Banks",
+    "verdict": "TRUE",
+    "reason": "Independently corroborated across multiple sources: CBN under newly appointed Governor Sanusi Lamido Sanusi (appointed June 2009) injected N620bn (~$4.2bn) into the banking sector in August 2009; a joint CBN/NDIC special examination of all 24 Nigerian banks found 10 insolvent/undercapitalized, resulting in the removal of 8 bank CEOs (CBN's own press release confirms this outcome). The 2008-2009 stock market crash (~70%, NGX ASI from 66,371 to ~19,000) turned margin loans to stockbrokers and loans to oil marketers non-performing, matching the described mechanism. Bank executives were subsequently investigated/charged by the EFCC, and Erastus Akingbola (Intercontinental Bank) fled to the UK, matching 'at least one fled the country.' IMF literature and the Laeven-Valencia Systemic Banking Crises Database both date a distinct Nigerian systemic banking crisis to 2009, matching the claim. The only unverified granular detail is the precise 28% NPL figure, which is plausible and uncontradicted but not pinned to a specific source found. All country, year, actors, magnitude, and causal-chain details hold.",
+    "verify_count": 2,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "double_confirmed",
+    "needs_tiebreak": false,
+    "source_independence": "independent",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Multiple independent sources corroborate every material element. Sanusi Lamido Sanusi became CBN Governor in June 2009 amid the global financial crisis. A joint CBN/NDIC special examination of banks found five banks insolvent (Oceanic Bank, Union Bank, Afribank, FinBank, Intercontinental Bank); their CEOs were sacked on 14 Aug 2009 (Cecilia Ibru, Erastus Akingbola, Bart Ebong, Okey Nwosu, Sebastian Adigwe) and CBN injected N400bn tier-2 capital. A second round in October 2009 found three more banks in grave condition (Bank PHB, Equitorial Trust Bank, Spring Bank), sacked their CEOs (Francis Atuche, Ike Oraekwuotu, Charles Ojo), with N200bn additional liquidity support — bringing the total to eight banks and a combined N600-620bn (~$4.1-4.2bn) injected, matching the description almost exactly. Separately, the Nigerian All Share Index fell over 70% from March 2008 to April 2009, and margin loans to stockbrokers (exceeding N2.1 trillion) turned non-performing, consistent with the described mechanism. Sacked executives were later investigated/prosecuted by the EFCC (Cecilia Ibru pled guilty in 2010; Erastus Akingbola fled to the UK), matching the \"fled the country\" detail. This crisis is indeed catalogued in the IMF and academic banking-crisis literature (Laeven-Valencia style databases) as a distinct 2009 Nigerian systemic banking crisis. All core facts (country, year, actor, magnitude, mechanism, aftermath) check out; only minor numeric rounding (N600bn split as 400+200 vs \"620bn\" quoted in some sources as a round total) shows slight source variance, but this is within normal reporting variance, not a material error.",
+        "source": "https://www.vanguardngr.com/2009/08/cbn-sacks-5-banks-directors/",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-09",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Independently corroborated across multiple sources: CBN under newly appointed Governor Sanusi Lamido Sanusi (appointed June 2009) injected N620bn (~$4.2bn) into the banking sector in August 2009; a joint CBN/NDIC special examination of all 24 Nigerian banks found 10 insolvent/undercapitalized, resulting in the removal of 8 bank CEOs (CBN's own press release confirms this outcome). The 2008-2009 stock market crash (~70%, NGX ASI from 66,371 to ~19,000) turned margin loans to stockbrokers and loans to oil marketers non-performing, matching the described mechanism. Bank executives were subsequently investigated/charged by the EFCC, and Erastus Akingbola (Intercontinental Bank) fled to the UK, matching 'at least one fled the country.' IMF literature and the Laeven-Valencia Systemic Banking Crises Database both date a distinct Nigerian systemic banking crisis to 2009, matching the claim. The only unverified granular detail is the precise 28% NPL figure, which is plausible and uncontradicted but not pinned to a specific source found. All country, year, actors, magnitude, and causal-chain details hold.",
+        "source": "https://www.cbn.gov.ng/Out/publications/pressRelease/GOV/2009/pressstatmt%2002-10-2009.pdf",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-09",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://www.cbn.gov.ng/Out/publications/pressRelease/GOV/2009/pressstatmt%2002-10-2009.pdf"
+  },
+  {
+    "year": 2009,
     "title": "Yar'Adua's Illness Creates Constitutional Crisis",
     "verdict": "TRUE",
     "reason": "Yar'Adua traveled to Saudi Arabia November 2009 for medical treatment. National Assembly doctrine of necessity resolution enabling Jonathan to act as president confirmed. Year correct.",

@@ -1110,6 +1110,42 @@
     "source": "https://en.wikipedia.org/wiki/Hyperinflation_in_Zimbabwe"
   },
   {
+    "year": 2004,
+    "title": "Zimbabwe Reserve Bank Places Nine Banks Under Curatorship in 2004 Crisis",
+    "verdict": "TRUE",
+    "reason": "Multiple independent sources corroborate every material claim. The Reserve Bank of Zimbabwe placed nine institutions under curatorship in early 2004 — Barbican Bank, Trust Bank Corporation, Royal Bank, CFX Bank, CFX Merchant Bank, Intermarket Banking Corporation, Intermarket Building Society, Intermarket Discount House and Time Bank — over abuse of depositor funds, illicit forex dealing and poor governance, matching the description's list exactly (as an 'including' subset). Barbican Bank was closed March 15, 2004, consistent with a March 23, 2004 Mail & Guardian report of banks 'closed by the Reserve Bank this week.' The trigger was ENG Capital Asset Management's collapse on December 19, 2003, hours after Gideon Gono's maiden December 2003 Monetary Policy Statement as RBZ governor — matching the 'late-2003 collapse of ENG Capital' and 'tightening December 2003 monetary policy statement' language. Academic sources confirm roughly 14 banking institutions failed within the year. In 2005, Royal Bank, Trust Bank and Barbican Bank were merged into Zimbabwe Allied Banking Group (ZABG), confirmed by Wikipedia's Allied Bank Zimbabwe Limited page and a February 2005 Mail & Guardian article on ZABG's formation and legal challenges. All year, country, actors, and sequence details hold up.",
+    "verify_count": 2,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "double_confirmed",
+    "needs_tiebreak": false,
+    "source_independence": "independent",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Multiple independent sources corroborate all material elements: (1) the Reserve Bank of Zimbabwe placed nine financial institutions under curatorship in Q1 2004, including Barbican Bank, CFX Bank, CFX Merchant Bank, Intermarket Banking Corporation, Intermarket Building Society, Royal Bank, and Trust Bank (matching the named subset in the description), citing abuse of depositor funds, illicit foreign-currency dealing and poor corporate governance; (2) Barbican Bank was specifically closed on March 15, 2004; (3) the crisis was triggered by the December 19, 2003 collapse of ENG Capital Asset Management, which occurred hours after Gideon Gono's maiden December 2003 Monetary Policy Statement as RBZ governor; (4) the crisis is widely described as ultimately affecting around 14 banking institutions within about a year; (5) in 2005 (January 31, per Pindula/Wikipedia) Royal Bank, Trust Bank and Barbican Bank were merged into a new entity, Zimbabwe Allied Banking Group (ZABG), consistent with the description. Contemporaneous 2004 reporting (Mail & Guardian) and later encyclopedic sources (Pindula, Wikipedia, allAfrica) independently agree on these facts.",
+        "source": "https://mg.co.za/news/south-africa/2004-03-23-moguls-flee-as-zim-banks-close/",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-09",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Multiple independent sources corroborate every material claim. The Reserve Bank of Zimbabwe placed nine institutions under curatorship in early 2004 — Barbican Bank, Trust Bank Corporation, Royal Bank, CFX Bank, CFX Merchant Bank, Intermarket Banking Corporation, Intermarket Building Society, Intermarket Discount House and Time Bank — over abuse of depositor funds, illicit forex dealing and poor governance, matching the description's list exactly (as an 'including' subset). Barbican Bank was closed March 15, 2004, consistent with a March 23, 2004 Mail & Guardian report of banks 'closed by the Reserve Bank this week.' The trigger was ENG Capital Asset Management's collapse on December 19, 2003, hours after Gideon Gono's maiden December 2003 Monetary Policy Statement as RBZ governor — matching the 'late-2003 collapse of ENG Capital' and 'tightening December 2003 monetary policy statement' language. Academic sources confirm roughly 14 banking institutions failed within the year. In 2005, Royal Bank, Trust Bank and Barbican Bank were merged into Zimbabwe Allied Banking Group (ZABG), confirmed by Wikipedia's Allied Bank Zimbabwe Limited page and a February 2005 Mail & Guardian article on ZABG's formation and legal challenges. All year, country, actors, and sequence details hold up.",
+        "source": "https://en.wikipedia.org/wiki/Allied_Bank_Zimbabwe_Limited",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-09",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Allied_Bank_Zimbabwe_Limited"
+  },
+  {
     "year": 2005,
     "title": "Operation Murambatsvina Destroys Urban Communities",
     "verdict": "TRUE",

@@ -1,31 +1,6 @@
 [
   {
     "year": 1958,
-    "title": "Guinea Votes NO — Sekou Toure Rejects de Gaulle's French Community",
-    "verdict": "TRUE",
-    "reason": "Guinea was the only French African territory to vote 'No' in the September 28, 1958 referendum, with over 95% voting against joining de Gaulle's proposed French Community. Touré's quote about preferring 'poverty in freedom to riches in slavery' is well documented across multiple sources.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Guinea was the only French African territory to vote 'No' in the September 28, 1958 referendum, with over 95% voting against joining de Gaulle's proposed French Community. Touré's quote about preferring 'poverty in freedom to riches in slavery' is well documented across multiple sources.",
-        "source": "https://en.wikipedia.org/wiki/1958_Guinean_constitutional_referendum",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/1958_Guinean_constitutional_referendum"
-  },
-  {
-    "year": 1958,
     "title": "French Punitive Withdrawal — Infrastructure and Aid Stripped",
     "verdict": "TRUE",
     "reason": "France withdrew over 4,000 administrators, teachers, doctors, judges, and technicians within weeks; civil servants burnt files and records; France cut all aid and economic ties. This is documented as 'Operation Persil' and confirmed by multiple historical sources.",
@@ -48,6 +23,31 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/Operation_Persil"
+  },
+  {
+    "year": 1958,
+    "title": "Guinea Votes NO — Sekou Toure Rejects de Gaulle's French Community",
+    "verdict": "TRUE",
+    "reason": "Guinea was the only French African territory to vote 'No' in the September 28, 1958 referendum, with over 95% voting against joining de Gaulle's proposed French Community. Touré's quote about preferring 'poverty in freedom to riches in slavery' is well documented across multiple sources.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Guinea was the only French African territory to vote 'No' in the September 28, 1958 referendum, with over 95% voting against joining de Gaulle's proposed French Community. Touré's quote about preferring 'poverty in freedom to riches in slavery' is well documented across multiple sources.",
+        "source": "https://en.wikipedia.org/wiki/1958_Guinean_constitutional_referendum",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/1958_Guinean_constitutional_referendum"
   },
   {
     "year": 1958,
@@ -376,31 +376,6 @@
   },
   {
     "year": 1978,
-    "title": "Reconciliation with France — Giscard d'Estaing Visit",
-    "verdict": "TRUE",
-    "reason": "French President Valéry Giscard d'Estaing visited Conakry on December 20–22, 1978, marking the first visit by a French head of state since de Gaulle's 1958 tour and cementing a normalization of Franco-Guinean relations. Official Élysée communiqués confirm the visit.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "French President Valéry Giscard d'Estaing visited Conakry on December 20–22, 1978, marking the first visit by a French head of state since de Gaulle's 1958 tour and cementing a normalization of Franco-Guinean relations. Official Élysée communiqués confirm the visit.",
-        "source": "https://www.elysee.fr/valery-giscard-d-estaing/1978/12/22/communique-conjoint-franco-guineen-a-lissue-du-voyage-de-m-giscard-destaing-en-guinee-conakry-le-22-decembre-1978",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://www.elysee.fr/valery-giscard-d-estaing/1978/12/22/communique-conjoint-franco-guineen-a-lissue-du-voyage-de-m-giscard-destaing-en-guinee-conakry-le-22-decembre-1978"
-  },
-  {
-    "year": 1978,
     "title": "Boke Bauxite Complex Opens — World's Largest Bauxite Operation",
     "verdict": "PARTIAL",
     "reason": "The CBG Boké mine actually began exports in August 1973, not 1978; the first shipment of bauxite left Kamsar port on August 2, 1973. By 1978 the operation was well established and growing but it opened five years earlier. The description of its scale and CBG's joint-venture structure is accurate.",
@@ -423,6 +398,31 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/Compagnie_des_Bauxites_de_Guin%C3%A9e"
+  },
+  {
+    "year": 1978,
+    "title": "Reconciliation with France — Giscard d'Estaing Visit",
+    "verdict": "TRUE",
+    "reason": "French President Valéry Giscard d'Estaing visited Conakry on December 20–22, 1978, marking the first visit by a French head of state since de Gaulle's 1958 tour and cementing a normalization of Franco-Guinean relations. Official Élysée communiqués confirm the visit.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "French President Valéry Giscard d'Estaing visited Conakry on December 20–22, 1978, marking the first visit by a French head of state since de Gaulle's 1958 tour and cementing a normalization of Franco-Guinean relations. Official Élysée communiqués confirm the visit.",
+        "source": "https://www.elysee.fr/valery-giscard-d-estaing/1978/12/22/communique-conjoint-franco-guineen-a-lissue-du-voyage-de-m-giscard-destaing-en-guinee-conakry-le-22-decembre-1978",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://www.elysee.fr/valery-giscard-d-estaing/1978/12/22/communique-conjoint-franco-guineen-a-lissue-du-voyage-de-m-giscard-destaing-en-guinee-conakry-le-22-decembre-1978"
   },
   {
     "year": 1980,
@@ -476,9 +476,9 @@
   },
   {
     "year": 1984,
-    "title": "Sekou Toure Dies — 26 Years of One-Party Rule Ends",
+    "title": "Camp Boiro Opened — Political Prisoners Released",
     "verdict": "TRUE",
-    "reason": "Ahmed Sékou Touré died on March 26, 1984, in Cleveland during cardiac surgery at the Cleveland Clinic, ending 26 years of rule since 1958. His death was confirmed by UPI archives and The Washington Post's contemporaneous reporting.",
+    "reason": "Following Conté's coup, he ordered the release of 250 political prisoners from Camp Boiro, closed the detention centre, and encouraged return of approximately 200,000 exiles. Multiple sources including Human Rights Watch and Global Voices confirm the public celebration at the opening of the camp.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -488,8 +488,8 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "Ahmed Sékou Touré died on March 26, 1984, in Cleveland during cardiac surgery at the Cleveland Clinic, ending 26 years of rule since 1958. His death was confirmed by UPI archives and The Washington Post's contemporaneous reporting.",
-        "source": "https://www.washingtonpost.com/archive/local/1984/03/28/guineas-longtime-president-ahmed-sekou-toure-dies/18f31685-878c-4759-8028-3bef7fbc568b/",
+        "reason": "Following Conté's coup, he ordered the release of 250 political prisoners from Camp Boiro, closed the detention centre, and encouraged return of approximately 200,000 exiles. Multiple sources including Human Rights Watch and Global Voices confirm the public celebration at the opening of the camp.",
+        "source": "https://en.wikipedia.org/wiki/Camp_Boiro",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
           "date": null,
@@ -497,7 +497,7 @@
         }
       }
     ],
-    "source": "https://www.washingtonpost.com/archive/local/1984/03/28/guineas-longtime-president-ahmed-sekou-toure-dies/18f31685-878c-4759-8028-3bef7fbc568b/"
+    "source": "https://en.wikipedia.org/wiki/Camp_Boiro"
   },
   {
     "year": 1984,
@@ -526,9 +526,9 @@
   },
   {
     "year": 1984,
-    "title": "Camp Boiro Opened — Political Prisoners Released",
+    "title": "Sekou Toure Dies — 26 Years of One-Party Rule Ends",
     "verdict": "TRUE",
-    "reason": "Following Conté's coup, he ordered the release of 250 political prisoners from Camp Boiro, closed the detention centre, and encouraged return of approximately 200,000 exiles. Multiple sources including Human Rights Watch and Global Voices confirm the public celebration at the opening of the camp.",
+    "reason": "Ahmed Sékou Touré died on March 26, 1984, in Cleveland during cardiac surgery at the Cleveland Clinic, ending 26 years of rule since 1958. His death was confirmed by UPI archives and The Washington Post's contemporaneous reporting.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -538,8 +538,8 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "Following Conté's coup, he ordered the release of 250 political prisoners from Camp Boiro, closed the detention centre, and encouraged return of approximately 200,000 exiles. Multiple sources including Human Rights Watch and Global Voices confirm the public celebration at the opening of the camp.",
-        "source": "https://en.wikipedia.org/wiki/Camp_Boiro",
+        "reason": "Ahmed Sékou Touré died on March 26, 1984, in Cleveland during cardiac surgery at the Cleveland Clinic, ending 26 years of rule since 1958. His death was confirmed by UPI archives and The Washington Post's contemporaneous reporting.",
+        "source": "https://www.washingtonpost.com/archive/local/1984/03/28/guineas-longtime-president-ahmed-sekou-toure-dies/18f31685-878c-4759-8028-3bef7fbc568b/",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
           "date": null,
@@ -547,7 +547,32 @@
         }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/Camp_Boiro"
+    "source": "https://www.washingtonpost.com/archive/local/1984/03/28/guineas-longtime-president-ahmed-sekou-toure-dies/18f31685-878c-4759-8028-3bef7fbc568b/"
+  },
+  {
+    "year": 1985,
+    "title": "Coup Attempt by Colonel Diarra Traore Crushed",
+    "verdict": "TRUE",
+    "reason": "Colonel Diarra Traoré, former Prime Minister, launched a coup on July 4, 1985 while Conté was at an ECOWAS summit in Togo; loyalist forces crushed the rebellion and Traoré was arrested and executed on July 8, 1985, along with approximately 100 soldiers.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Colonel Diarra Traoré, former Prime Minister, launched a coup on July 4, 1985 while Conté was at an ECOWAS summit in Togo; loyalist forces crushed the rebellion and Traoré was arrested and executed on July 8, 1985, along with approximately 100 soldiers.",
+        "source": "https://en.wikipedia.org/wiki/Diarra_Traor%C3%A9",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Diarra_Traor%C3%A9"
   },
   {
     "year": 1985,
@@ -576,28 +601,39 @@
   },
   {
     "year": 1985,
-    "title": "Coup Attempt by Colonel Diarra Traore Crushed",
-    "verdict": "TRUE",
-    "reason": "Colonel Diarra Traoré, former Prime Minister, launched a coup on July 4, 1985 while Conté was at an ECOWAS summit in Togo; loyalist forces crushed the rebellion and Traoré was arrested and executed on July 8, 1985, along with approximately 100 soldiers.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
+    "title": "Guinea Shuts Down Its Entire Banking System in a Single Day",
+    "verdict": "PARTIAL",
+    "reason": "Year, country, and the core systemic-crisis facts are solidly corroborated by two independent authoritative sources: (1) a World Bank document confirms that in 1985, \"after more than 25 years of central economic planning, a new Government decided to reintroduce a market economy in Guinea... As part of the first phase of financial reforms, six state-owned banks were liquidated and the country was left with one privately-owned commercial bank.\" (2) IMF Working Paper WP/04/55 (\"Banking in Sub-Saharan Africa: What Went Wrong?\" by Daumont, Le Gall, Leroux, 2004), accessed via a full-text mirror, states for Guinea's 1985 episode: \"6 banks accounting for 99 percent of banking system deposits insolvent; 80 percent of banking system loans nonperforming,\" with repayment costs equal to 3% of 1986 GDP, and notes \"as the crises came out in the open in Benin and Guinea, all the banks were simply closed\" — closely matching the description's \"6 main banks,\" \">95% of assets,\" and single-event closure. The same IMF paper also confirms a second Guinea banking-crisis episode in 1993-94 (\"3 banks accounting for 45 percent of market affected\"), matching the description's claim, and this paper is the well-known primary source underlying Laeven-Valencia-era systemic banking crisis coding for this period.\n\nHowever, the specific causal mechanism in the event description — \"widespread bank-draft fraud by customers, likely with staff collusion, had rendered the sector insolvent\" — is NOT corroborated by any source found. A targeted full-text search of IMF WP/04/55 for the word \"fraud\" returns exactly one hit, and it refers to Uganda's bank collapse (a labeled case-study box), not Guinea; Guinea's insolvency is instead attributed generically to a high nonperforming-loan ratio (80%) and framed by the World Bank document as a deliberate policy liquidation of state banks during Guinea's transition away from central planning after Sékou Touré's death, not as a fraud-driven collapse. Extensive French- and English-language searches for \"bank draft fraud,\" \"traites de complaisance,\" \"chèques de cavalerie,\" and similar terms tied to Guinea 1985 turned up nothing. Since the causal/mechanism detail materially diverges from what the two available authoritative sources describe (policy-driven state-bank liquidation / NPL-driven insolvency, not customer bank-draft fraud with staff collusion) while year, country, bank count, scale, and the second-episode timeline all hold, this is PARTIAL rather than TRUE.",
+    "verify_count": 2,
+    "consensus_verdict": "PARTIAL",
+    "consensus_status": "downgraded",
     "needs_tiebreak": false,
-    "source_independence": "n/a",
+    "source_independence": "independent",
     "verifications": [
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "Colonel Diarra Traoré, former Prime Minister, launched a coup on July 4, 1985 while Conté was at an ECOWAS summit in Togo; loyalist forces crushed the rebellion and Traoré was arrested and executed on July 8, 1985, along with approximately 100 soldiers.",
-        "source": "https://en.wikipedia.org/wiki/Diarra_Traor%C3%A9",
+        "reason": "Multiple independent sources (IMF working paper \"Banking in Sub-Saharan Africa: What Went Wrong?\" by Daumont, Le Gall and Leroux, reproduced verbatim in the IMF eLibrary book chapter \"Role of the Central Bank in Banking Crisis: An Overview,\" plus a separate mirror of the same IMF paper) confirm: in 1985 Guinean authorities closed six state-owned banks that accounted for 95 percent of the assets of the banking system, after discovering fictitious assets and accounts amounting to 76 percent of total assets — described as \"the purest case of bank failure that could be attributed almost exclusively to fraud and mismanagement.\" A separate mirror of the same paper's crisis table also confirms a second Guinea banking-crisis episode in 1993-94 (3 banks, ~45% of market affected), matching the description's closing sentence. The specific causal mechanism in the description (\"bank-draft fraud by customers, likely with staff collusion\") is not verbatim-confirmed in the sources found, but is consistent with, and hedged (\"likely\") relative to, the confirmed \"fictitious assets and accounts\"/fraud-and-mismanagement characterization, so it is not treated as a material contradiction. Country, year, scale (six banks, >95% of system assets), systemic nature, and the 1993-94 follow-on episode all check out from an authoritative IMF source.",
+        "source": "https://www.elibrary.imf.org/display/book/9781557751850/ch014.xml",
         "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
+          "model": "claude-sonnet-5",
+          "date": "2026-07-09",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "PARTIAL",
+        "reason": "Year, country, and the core systemic-crisis facts are solidly corroborated by two independent authoritative sources: (1) a World Bank document confirms that in 1985, \"after more than 25 years of central economic planning, a new Government decided to reintroduce a market economy in Guinea... As part of the first phase of financial reforms, six state-owned banks were liquidated and the country was left with one privately-owned commercial bank.\" (2) IMF Working Paper WP/04/55 (\"Banking in Sub-Saharan Africa: What Went Wrong?\" by Daumont, Le Gall, Leroux, 2004), accessed via a full-text mirror, states for Guinea's 1985 episode: \"6 banks accounting for 99 percent of banking system deposits insolvent; 80 percent of banking system loans nonperforming,\" with repayment costs equal to 3% of 1986 GDP, and notes \"as the crises came out in the open in Benin and Guinea, all the banks were simply closed\" — closely matching the description's \"6 main banks,\" \">95% of assets,\" and single-event closure. The same IMF paper also confirms a second Guinea banking-crisis episode in 1993-94 (\"3 banks accounting for 45 percent of market affected\"), matching the description's claim, and this paper is the well-known primary source underlying Laeven-Valencia-era systemic banking crisis coding for this period.\n\nHowever, the specific causal mechanism in the event description — \"widespread bank-draft fraud by customers, likely with staff collusion, had rendered the sector insolvent\" — is NOT corroborated by any source found. A targeted full-text search of IMF WP/04/55 for the word \"fraud\" returns exactly one hit, and it refers to Uganda's bank collapse (a labeled case-study box), not Guinea; Guinea's insolvency is instead attributed generically to a high nonperforming-loan ratio (80%) and framed by the World Bank document as a deliberate policy liquidation of state banks during Guinea's transition away from central planning after Sékou Touré's death, not as a fraud-driven collapse. Extensive French- and English-language searches for \"bank draft fraud,\" \"traites de complaisance,\" \"chèques de cavalerie,\" and similar terms tied to Guinea 1985 turned up nothing. Since the causal/mechanism detail materially diverges from what the two available authoritative sources describe (policy-driven state-bank liquidation / NPL-driven insolvency, not customer bank-draft fraud with staff collusion) while year, country, bank count, scale, and the second-episode timeline all hold, this is PARTIAL rather than TRUE.",
+        "source": "https://documents1.worldbank.org/curated/en/122241468035961325/txt/multi0page.txt",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-09",
           "method": "web_search"
         }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/Diarra_Traor%C3%A9"
+    "source": "https://documents1.worldbank.org/curated/en/122241468035961325/txt/multi0page.txt"
   },
   {
     "year": 1990,
@@ -726,31 +762,6 @@
   },
   {
     "year": 2000,
-    "title": "Cross-Border Attacks — Sierra Leone and Liberia Refugee Crisis",
-    "verdict": "TRUE",
-    "reason": "Beginning September 2000, RUF forces backed by Liberian President Charles Taylor launched large-scale attacks into Guinea's Forest Region, killing hundreds of civilians and displacing 250,000 inhabitants. Amnesty International and Human Rights Watch confirm the scale of the cross-border attacks and refugee crisis.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Beginning September 2000, RUF forces backed by Liberian President Charles Taylor launched large-scale attacks into Guinea's Forest Region, killing hundreds of civilians and displacing 250,000 inhabitants. Amnesty International and Human Rights Watch confirm the scale of the cross-border attacks and refugee crisis.",
-        "source": "https://www.hrw.org/reports/2001/guinea/guinea0701-02.htm",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://www.hrw.org/reports/2001/guinea/guinea0701-02.htm"
-  },
-  {
-    "year": 2000,
     "title": "Alpha Conde Released Following International Pressure",
     "verdict": "PARTIAL",
     "reason": "Condé was released in May 2001, not 2000 — the event year is off by one year. His release followed advocacy from Amnesty International, France, and European governments, after which he went into exile in France. The description of international pressure is accurate but the year 2000 is incorrect.",
@@ -773,6 +784,31 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/Alpha_Cond%C3%A9"
+  },
+  {
+    "year": 2000,
+    "title": "Cross-Border Attacks — Sierra Leone and Liberia Refugee Crisis",
+    "verdict": "TRUE",
+    "reason": "Beginning September 2000, RUF forces backed by Liberian President Charles Taylor launched large-scale attacks into Guinea's Forest Region, killing hundreds of civilians and displacing 250,000 inhabitants. Amnesty International and Human Rights Watch confirm the scale of the cross-border attacks and refugee crisis.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Beginning September 2000, RUF forces backed by Liberian President Charles Taylor launched large-scale attacks into Guinea's Forest Region, killing hundreds of civilians and displacing 250,000 inhabitants. Amnesty International and Human Rights Watch confirm the scale of the cross-border attacks and refugee crisis.",
+        "source": "https://www.hrw.org/reports/2001/guinea/guinea0701-02.htm",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://www.hrw.org/reports/2001/guinea/guinea0701-02.htm"
   },
   {
     "year": 2003,
@@ -901,6 +937,31 @@
   },
   {
     "year": 2008,
+    "title": "Captain Moussa Dadis Camara Seizes Power — CNDD Junta",
+    "verdict": "TRUE",
+    "reason": "Hours after Conté's death, Captain Moussa Dadis Camara's National Council for Democracy and Development (CNDD) seized power on December 23, 2008, suspending the constitution and dissolving all state institutions. ECOWAS and the AU condemned the coup.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Hours after Conté's death, Captain Moussa Dadis Camara's National Council for Democracy and Development (CNDD) seized power on December 23, 2008, suspending the constitution and dissolving all state institutions. ECOWAS and the AU condemned the coup.",
+        "source": "https://en.wikipedia.org/wiki/2008_Guinean_coup_d%27%C3%A9tat",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/2008_Guinean_coup_d%27%C3%A9tat"
+  },
+  {
+    "year": 2008,
     "title": "Lansana Conte Dies — 24 Years of Military Rule Ends",
     "verdict": "TRUE",
     "reason": "Lansana Conté died on December 22, 2008 at 6:45 pm in Conakry from complications of chronic diabetes, ending 24 years of rule since the April 1984 coup. His death was confirmed by the President of the National Assembly on state television.",
@@ -925,10 +986,10 @@
     "source": "https://en.wikipedia.org/wiki/Lansana_Cont%C3%A9"
   },
   {
-    "year": 2008,
-    "title": "Captain Moussa Dadis Camara Seizes Power — CNDD Junta",
+    "year": 2009,
+    "title": "Camara Shot by Aide — Sekouba Konate Becomes Transitional Leader",
     "verdict": "TRUE",
-    "reason": "Hours after Conté's death, Captain Moussa Dadis Camara's National Council for Democracy and Development (CNDD) seized power on December 23, 2008, suspending the constitution and dissolving all state institutions. ECOWAS and the AU condemned the coup.",
+    "reason": "On December 3, 2009, Camara was shot by his aide-de-camp Abubakar 'Toumba' Diakité; Camara survived and was evacuated to Morocco then Burkina Faso. General Sékouba Konaté assumed leadership and negotiated a transition framework with the political opposition.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -938,8 +999,8 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "Hours after Conté's death, Captain Moussa Dadis Camara's National Council for Democracy and Development (CNDD) seized power on December 23, 2008, suspending the constitution and dissolving all state institutions. ECOWAS and the AU condemned the coup.",
-        "source": "https://en.wikipedia.org/wiki/2008_Guinean_coup_d%27%C3%A9tat",
+        "reason": "On December 3, 2009, Camara was shot by his aide-de-camp Abubakar 'Toumba' Diakité; Camara survived and was evacuated to Morocco then Burkina Faso. General Sékouba Konaté assumed leadership and negotiated a transition framework with the political opposition.",
+        "source": "https://en.wikipedia.org/wiki/Moussa_Dadis_Camara",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
           "date": null,
@@ -947,7 +1008,7 @@
         }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/2008_Guinean_coup_d%27%C3%A9tat"
+    "source": "https://en.wikipedia.org/wiki/Moussa_Dadis_Camara"
   },
   {
     "year": 2009,
@@ -1000,31 +1061,6 @@
     "source": "https://www.hrw.org/report/2009/12/17/bloody-monday/september-28-massacre-and-rapes-security-forces-guinea"
   },
   {
-    "year": 2009,
-    "title": "Camara Shot by Aide — Sekouba Konate Becomes Transitional Leader",
-    "verdict": "TRUE",
-    "reason": "On December 3, 2009, Camara was shot by his aide-de-camp Abubakar 'Toumba' Diakité; Camara survived and was evacuated to Morocco then Burkina Faso. General Sékouba Konaté assumed leadership and negotiated a transition framework with the political opposition.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "On December 3, 2009, Camara was shot by his aide-de-camp Abubakar 'Toumba' Diakité; Camara survived and was evacuated to Morocco then Burkina Faso. General Sékouba Konaté assumed leadership and negotiated a transition framework with the political opposition.",
-        "source": "https://en.wikipedia.org/wiki/Moussa_Dadis_Camara",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/Moussa_Dadis_Camara"
-  },
-  {
     "year": 2010,
     "title": "Guinea's First Free Presidential Election — Alpha Conde Wins",
     "verdict": "TRUE",
@@ -1051,31 +1087,6 @@
   },
   {
     "year": 2011,
-    "title": "Post-Election Violence — Ethnic Clashes Between Malinke and Fula",
-    "verdict": "TRUE",
-    "reason": "Following Condé's November 2010 election win, at least ten people were killed in clashes between Malinke (Condé supporters) and Fula (Diallo supporters) communities. A state of emergency was declared on November 17, 2010. Violence continued into 2011 as ethnic political polarization deepened.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Following Condé's November 2010 election win, at least ten people were killed in clashes between Malinke (Condé supporters) and Fula (Diallo supporters) communities. A state of emergency was declared on November 17, 2010. Violence continued into 2011 as ethnic political polarization deepened.",
-        "source": "https://www.france24.com/en/20101119-uneasy-calm-guinea-conakry-after-post-election-ethnic-violence-cellou-dalien-diallo-alpha-conde",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://www.france24.com/en/20101119-uneasy-calm-guinea-conakry-after-post-election-ethnic-violence-cellou-dalien-diallo-alpha-conde"
-  },
-  {
-    "year": 2011,
     "title": "Assassination Attempt Against President Alpha Conde",
     "verdict": "TRUE",
     "reason": "On July 19, 2011, Condé's personal residence in Conakry was attacked with rocket-propelled grenades in the early hours; one presidential guard was killed and two injured. Condé escaped unharmed. Former army chief Nouhou Thiam was among those arrested; two were later sentenced to life imprisonment.",
@@ -1098,6 +1109,31 @@
       }
     ],
     "source": "https://www.voanews.com/a/guinea-court-jails-2-for-life-for-assassination-attempt-on-president/1701240.html"
+  },
+  {
+    "year": 2011,
+    "title": "Post-Election Violence — Ethnic Clashes Between Malinke and Fula",
+    "verdict": "TRUE",
+    "reason": "Following Condé's November 2010 election win, at least ten people were killed in clashes between Malinke (Condé supporters) and Fula (Diallo supporters) communities. A state of emergency was declared on November 17, 2010. Violence continued into 2011 as ethnic political polarization deepened.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Following Condé's November 2010 election win, at least ten people were killed in clashes between Malinke (Condé supporters) and Fula (Diallo supporters) communities. A state of emergency was declared on November 17, 2010. Violence continued into 2011 as ethnic political polarization deepened.",
+        "source": "https://www.france24.com/en/20101119-uneasy-calm-guinea-conakry-after-post-election-ethnic-violence-cellou-dalien-diallo-alpha-conde",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://www.france24.com/en/20101119-uneasy-calm-guinea-conakry-after-post-election-ethnic-violence-cellou-dalien-diallo-alpha-conde"
   },
   {
     "year": 2013,
@@ -1301,31 +1337,6 @@
   },
   {
     "year": 2020,
-    "title": "Constitutional Referendum — Conde Resets Term Clock",
-    "verdict": "TRUE",
-    "reason": "A constitutional referendum was held on March 22, 2020 alongside legislative elections; the new constitution passed with over 90% of votes, resetting Condé's term counter to zero. The opposition boycotted; ECOWAS, the EU, France, and the US all condemned or expressed concern about accompanying violence that killed at least 32 protesters.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "A constitutional referendum was held on March 22, 2020 alongside legislative elections; the new constitution passed with over 90% of votes, resetting Condé's term counter to zero. The opposition boycotted; ECOWAS, the EU, France, and the US all condemned or expressed concern about accompanying violence that killed at least 32 protesters.",
-        "source": "https://en.wikipedia.org/wiki/2020_Guinean_constitutional_referendum",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/2020_Guinean_constitutional_referendum"
-  },
-  {
-    "year": 2020,
     "title": "Conde Wins Third Presidential Term — Opposition Rejects Results",
     "verdict": "TRUE",
     "reason": "Alpha Condé was declared winner of the October 18, 2020 election with 59.5% of the vote. Diallo declared himself winner before results were announced; post-election violence killed approximately 27–30 people according to the opposition (officials said ~10). The Constitutional Court confirmed Condé's victory.",
@@ -1350,10 +1361,10 @@
     "source": "https://en.wikipedia.org/wiki/2020_Guinean_presidential_election"
   },
   {
-    "year": 2021,
-    "title": "Military Coup — Colonel Mamadi Doumbouya and CNRD Seize Power",
+    "year": 2020,
+    "title": "Constitutional Referendum — Conde Resets Term Clock",
     "verdict": "TRUE",
-    "reason": "On September 5, 2021, Colonel Mamadi Doumbouya led the Groupement des Forces Spéciales in a coup against Condé at the presidential palace. The government and constitution were dissolved and the CNRD (Comité national du rassemblement et du développement) established. Doumbouya was sworn in as interim president on October 1, 2021.",
+    "reason": "A constitutional referendum was held on March 22, 2020 alongside legislative elections; the new constitution passed with over 90% of votes, resetting Condé's term counter to zero. The opposition boycotted; ECOWAS, the EU, France, and the US all condemned or expressed concern about accompanying violence that killed at least 32 protesters.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -1363,8 +1374,8 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "On September 5, 2021, Colonel Mamadi Doumbouya led the Groupement des Forces Spéciales in a coup against Condé at the presidential palace. The government and constitution were dissolved and the CNRD (Comité national du rassemblement et du développement) established. Doumbouya was sworn in as interim president on October 1, 2021.",
-        "source": "https://en.wikipedia.org/wiki/2021_Guinean_coup_d%27%C3%A9tat",
+        "reason": "A constitutional referendum was held on March 22, 2020 alongside legislative elections; the new constitution passed with over 90% of votes, resetting Condé's term counter to zero. The opposition boycotted; ECOWAS, the EU, France, and the US all condemned or expressed concern about accompanying violence that killed at least 32 protesters.",
+        "source": "https://en.wikipedia.org/wiki/2020_Guinean_constitutional_referendum",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
           "date": null,
@@ -1372,7 +1383,32 @@
         }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/2021_Guinean_coup_d%27%C3%A9tat"
+    "source": "https://en.wikipedia.org/wiki/2020_Guinean_constitutional_referendum"
+  },
+  {
+    "year": 2021,
+    "title": "Alpha Conde Detained — Treatment of Former President",
+    "verdict": "TRUE",
+    "reason": "Condé was captured during the coup and held initially at an undisclosed location; by November 27, 2021 he was moved to his wife's home in Conakry under house arrest. Amnesty International called for his legal rights to be respected, and the CNRD stated he could leave when borders reopened.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Condé was captured during the coup and held initially at an undisclosed location; by November 27, 2021 he was moved to his wife's home in Conakry under house arrest. Amnesty International called for his legal rights to be respected, and the CNRD stated he could leave when borders reopened.",
+        "source": "https://www.hrw.org/news/2021/09/15/guinea-leaders-should-respect-fundamental-rights",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://www.hrw.org/news/2021/09/15/guinea-leaders-should-respect-fundamental-rights"
   },
   {
     "year": 2021,
@@ -1401,9 +1437,9 @@
   },
   {
     "year": 2021,
-    "title": "Alpha Conde Detained — Treatment of Former President",
+    "title": "Military Coup — Colonel Mamadi Doumbouya and CNRD Seize Power",
     "verdict": "TRUE",
-    "reason": "Condé was captured during the coup and held initially at an undisclosed location; by November 27, 2021 he was moved to his wife's home in Conakry under house arrest. Amnesty International called for his legal rights to be respected, and the CNRD stated he could leave when borders reopened.",
+    "reason": "On September 5, 2021, Colonel Mamadi Doumbouya led the Groupement des Forces Spéciales in a coup against Condé at the presidential palace. The government and constitution were dissolved and the CNRD (Comité national du rassemblement et du développement) established. Doumbouya was sworn in as interim president on October 1, 2021.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -1413,8 +1449,8 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "Condé was captured during the coup and held initially at an undisclosed location; by November 27, 2021 he was moved to his wife's home in Conakry under house arrest. Amnesty International called for his legal rights to be respected, and the CNRD stated he could leave when borders reopened.",
-        "source": "https://www.hrw.org/news/2021/09/15/guinea-leaders-should-respect-fundamental-rights",
+        "reason": "On September 5, 2021, Colonel Mamadi Doumbouya led the Groupement des Forces Spéciales in a coup against Condé at the presidential palace. The government and constitution were dissolved and the CNRD (Comité national du rassemblement et du développement) established. Doumbouya was sworn in as interim president on October 1, 2021.",
+        "source": "https://en.wikipedia.org/wiki/2021_Guinean_coup_d%27%C3%A9tat",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
           "date": null,
@@ -1422,7 +1458,7 @@
         }
       }
     ],
-    "source": "https://www.hrw.org/news/2021/09/15/guinea-leaders-should-respect-fundamental-rights"
+    "source": "https://en.wikipedia.org/wiki/2021_Guinean_coup_d%27%C3%A9tat"
   },
   {
     "year": 2022,
@@ -1451,31 +1487,6 @@
   },
   {
     "year": 2022,
-    "title": "Transition Charter and 36-Month Timeline Announced",
-    "verdict": "TRUE",
-    "reason": "In May 2022, Guinea's National Transitional Council voted 73-4 to adopt a 36-month transition timeline, rejecting ECOWAS's preferred shorter period. Doumbouya had initially proposed 39 months. The charter laid out consultation and election processes, though implementation lagged significantly.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "In May 2022, Guinea's National Transitional Council voted 73-4 to adopt a 36-month transition timeline, rejecting ECOWAS's preferred shorter period. Doumbouya had initially proposed 39 months. The charter laid out consultation and election processes, though implementation lagged significantly.",
-        "source": "https://www.africanews.com/2022/05/12/transition-period-set-at-36-months-in-guinea/",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://www.africanews.com/2022/05/12/transition-period-set-at-36-months-in-guinea/"
-  },
-  {
-    "year": 2022,
     "title": "Kaloum Explosion — Fuel Depot Blast Kills Over 100",
     "verdict": "FALSE",
     "reason": "The Conakry oil depot explosion in Kaloum occurred on December 18, 2023, not December 2021 or 2022. The official death toll was 23–24 people, not over 100. Both the year and the casualty figure in the event description are significantly incorrect.",
@@ -1498,6 +1509,31 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/Conakry_oil_depot_explosion"
+  },
+  {
+    "year": 2022,
+    "title": "Transition Charter and 36-Month Timeline Announced",
+    "verdict": "TRUE",
+    "reason": "In May 2022, Guinea's National Transitional Council voted 73-4 to adopt a 36-month transition timeline, rejecting ECOWAS's preferred shorter period. Doumbouya had initially proposed 39 months. The charter laid out consultation and election processes, though implementation lagged significantly.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "In May 2022, Guinea's National Transitional Council voted 73-4 to adopt a 36-month transition timeline, rejecting ECOWAS's preferred shorter period. Doumbouya had initially proposed 39 months. The charter laid out consultation and election processes, though implementation lagged significantly.",
+        "source": "https://www.africanews.com/2022/05/12/transition-period-set-at-36-months-in-guinea/",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://www.africanews.com/2022/05/12/transition-period-set-at-36-months-in-guinea/"
   },
   {
     "year": 2023,
@@ -1601,31 +1637,6 @@
   },
   {
     "year": 2024,
-    "title": "New Transition Charter — Elections Postponed to 2025",
-    "verdict": "TRUE",
-    "reason": "In September 2024, Guinea's foreign affairs minister confirmed elections would not occur in 2024 as promised; on December 31, 2024 the junta extended the transition without specifying a new timeline. A constitutional referendum was eventually held September 21, 2025, followed by a presidential election on December 28, 2025.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "In September 2024, Guinea's foreign affairs minister confirmed elections would not occur in 2024 as promised; on December 31, 2024 the junta extended the transition without specifying a new timeline. A constitutional referendum was eventually held September 21, 2025, followed by a presidential election on December 28, 2025.",
-        "source": "https://www.hrw.org/news/2024/12/02/guinea-rights-risk-promised-transition-derails",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://www.hrw.org/news/2024/12/02/guinea-rights-risk-promised-transition-derails"
-  },
-  {
-    "year": 2024,
     "title": "Bauxite Sector Controversies — Environmental Damage and Community Protests",
     "verdict": "TRUE",
     "reason": "Communities in Guinea's bauxite-mining Boké region continued to protest environmental degradation, water contamination, displacement, and inadequate compensation in 2024. Human Rights Watch, Inclusive Development International, and academic studies document failures by state authorities and mining companies to uphold consultation and environmental standards.",
@@ -1673,5 +1684,30 @@
       }
     ],
     "source": "https://www.hrw.org/news/2024/07/31/guinea-landmark-verdict-stadium-mass-killings-trial"
+  },
+  {
+    "year": 2024,
+    "title": "New Transition Charter — Elections Postponed to 2025",
+    "verdict": "TRUE",
+    "reason": "In September 2024, Guinea's foreign affairs minister confirmed elections would not occur in 2024 as promised; on December 31, 2024 the junta extended the transition without specifying a new timeline. A constitutional referendum was eventually held September 21, 2025, followed by a presidential election on December 28, 2025.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "In September 2024, Guinea's foreign affairs minister confirmed elections would not occur in 2024 as promised; on December 31, 2024 the junta extended the transition without specifying a new timeline. A constitutional referendum was eventually held September 21, 2025, followed by a presidential election on December 28, 2025.",
+        "source": "https://www.hrw.org/news/2024/12/02/guinea-rights-risk-promised-transition-derails",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://www.hrw.org/news/2024/12/02/guinea-rights-risk-promised-transition-derails"
   }
 ]

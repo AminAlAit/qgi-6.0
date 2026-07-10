@@ -650,6 +650,42 @@
     "source": "https://www.history.com/this-day-in-history/noriega-indicted-on-u-s-drug-charges-feb-05-1988"
   },
   {
+    "year": 1988,
+    "title": "US Sanctions Trigger Nine-Week Banking System Shutdown",
+    "verdict": "TRUE",
+    "reason": "Multiple independent sources corroborate all material elements. Washington Post (Mar 4 and Mar 23, 1988) and UPI Archives confirm that on March 4, 1988, Panama's National Banking Commission ordered an indefinite suspension/closure of the national banking system, explicitly because the US had frozen Panamanian government deposits in US banks, suspended the Federal Reserve clearing arrangement with the Banco Nacional de Panama, and withheld Panama Canal toll payments to pressure Noriega's regime (per Delvalle-aligned officials) after the March 1988 political crisis. Panama's own bank regulator, Superintendencia de Bancos de Panamá, states in its official historical review that the closure lasted 'nine and a half weeks' and that bank assets fell to approximately B/.14.78 billion during the crisis — matching the event description's figures exactly. GAO testimony (T-NSIAD-89-44) corroborates the US sanctions mechanism. Additional search results (drawing on the IMF's 2006 Selected Issues paper) confirm the same ~14.78 billion balboa asset trough, the nine-and-a-half-week duration, and that 12 banks ultimately ceased operations as a result. All year, country, actor, mechanism, and magnitude details check out with no material discrepancy.",
+    "verify_count": 2,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "double_confirmed",
+    "needs_tiebreak": false,
+    "source_independence": "weak",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Multiple independent, authoritative sources corroborate every material element. Panama's own bank regulator (Superintendencia de Bancos de Panamá, official historical review, directly fetched) states verbatim: 'the political crisis in 1988 during the military government, which caused a decrease in assets to near B/.14.78 billion and the closure of the banking system for nine and a half weeks' — matching the description's duration and asset-level figures exactly. Contemporaneous Washington Post reporting (March 4, 1988, 'U.S. Actions Close Banks in Panama') and UPI Archives (March 4, 1988) confirm the National Banking Commission's indefinite suspension of bank service to the public triggered by U.S. financial pressure on the Noriega regime. Search results attributable to an IMF Panama country report corroborate that the U.S. froze official Panamanian deposits in U.S. banks, suspended the Fed clearing arrangement, and withheld Panama Canal payments, and that '12 banks ceased operations' during the 1988-89 Noriega crisis, plus a 25% credit contraction and 40% loss of bank capital. All specific figures in the candidate event (nine-and-a-half-week closure, ~14.78 billion balboas in assets, twelve banks ceasing operations, the causal chain of US sanctions -> dollar drain -> bank holiday) are corroborated, none contradicted. Year and country hold.",
+        "source": "https://www.superbancos.gob.pa/en/about-sbp/historical-review",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-09",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Multiple independent sources corroborate all material elements. Washington Post (Mar 4 and Mar 23, 1988) and UPI Archives confirm that on March 4, 1988, Panama's National Banking Commission ordered an indefinite suspension/closure of the national banking system, explicitly because the US had frozen Panamanian government deposits in US banks, suspended the Federal Reserve clearing arrangement with the Banco Nacional de Panama, and withheld Panama Canal toll payments to pressure Noriega's regime (per Delvalle-aligned officials) after the March 1988 political crisis. Panama's own bank regulator, Superintendencia de Bancos de Panamá, states in its official historical review that the closure lasted 'nine and a half weeks' and that bank assets fell to approximately B/.14.78 billion during the crisis — matching the event description's figures exactly. GAO testimony (T-NSIAD-89-44) corroborates the US sanctions mechanism. Additional search results (drawing on the IMF's 2006 Selected Issues paper) confirm the same ~14.78 billion balboa asset trough, the nine-and-a-half-week duration, and that 12 banks ultimately ceased operations as a result. All year, country, actor, mechanism, and magnitude details check out with no material discrepancy.",
+        "source": "https://www.superbancos.gob.pa/en/about-sbp/historical-review",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-09",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://www.superbancos.gob.pa/en/about-sbp/historical-review"
+  },
+  {
     "year": 1989,
     "title": "Operation Just Cause: US Invades Panama and Removes Noriega",
     "verdict": "TRUE",

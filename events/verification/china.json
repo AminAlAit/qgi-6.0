@@ -25,30 +25,6 @@
   },
   {
     "year": 1950,
-    "title": "Sino-Soviet Treaty of Friendship signed",
-    "verdict": "TRUE",
-    "reason": "Signed February 14, 1950. 30-year mutual assistance treaty confirmed.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Signed February 14, 1950. 30-year mutual assistance treaty confirmed.",
-        "source": null,
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ]
-  },
-  {
-    "year": 1950,
     "title": "Land Reform Law enacted nationwide",
     "verdict": "TRUE",
     "reason": "The Agrarian Reform Law was enacted June 30, 1950 by the PRC, abolishing landlord land ownership and redistributing confiscated land to peasants nationwide. Independent sources corroborate all material elements: the ~300 million peasant beneficiary scale (sources describe roughly 60% of the rural population, i.e. hundreds of millions, receiving land), the mass mobilization campaigns (\\\"speak bitterness\\\" meetings, struggle sessions/trials), and the executions of landlords (estimates range from ~1-2 million to 2-5 million killed in the 1947-1952 land reform period). Year, country, and description all check out materially.",
@@ -82,30 +58,6 @@
       }
     ],
     "source": "https://www.britannica.com/topic/Agrarian-Reform-Law-1950-China"
-  },
-  {
-    "year": 1950,
-    "title": "PRC annexes Tibet militarily",
-    "verdict": "TRUE",
-    "reason": "PLA invaded October 7, 1950; Battle of Chamdo confirmed.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "PLA invaded October 7, 1950; Battle of Chamdo confirmed.",
-        "source": null,
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ]
   },
   {
     "year": 1950,
@@ -156,6 +108,54 @@
     ]
   },
   {
+    "year": 1950,
+    "title": "PRC annexes Tibet militarily",
+    "verdict": "TRUE",
+    "reason": "PLA invaded October 7, 1950; Battle of Chamdo confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "PLA invaded October 7, 1950; Battle of Chamdo confirmed.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
+    "year": 1950,
+    "title": "Sino-Soviet Treaty of Friendship signed",
+    "verdict": "TRUE",
+    "reason": "Signed February 14, 1950. 30-year mutual assistance treaty confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Signed February 14, 1950. 30-year mutual assistance treaty confirmed.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
     "year": 1951,
     "title": "Thought Reform Campaign targets intellectuals",
     "verdict": "TRUE",
@@ -170,30 +170,6 @@
         "pass_n": 1,
         "verdict": "TRUE",
         "reason": "1951 ideological remolding campaign against intellectuals well-documented.",
-        "source": null,
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ]
-  },
-  {
-    "year": 1953,
-    "title": "Korean War armistice signed",
-    "verdict": "TRUE",
-    "reason": "Armistice signed July 27, 1953 at Panmunjom confirmed.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Armistice signed July 27, 1953 at Panmunjom confirmed.",
         "source": null,
         "verifier": {
           "model": "claude-sonnet-pre-migration",
@@ -254,6 +230,30 @@
         "pass_n": 1,
         "verdict": "TRUE",
         "reason": "Gao Gang purged in 1953–1954; committed suicide August 1954 (not 1954 as implied by year=1953, but events began 1953). Year assignment acceptable as crisis unfolded from late 1953.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
+    "year": 1953,
+    "title": "Korean War armistice signed",
+    "verdict": "TRUE",
+    "reason": "Armistice signed July 27, 1953 at Panmunjom confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Armistice signed July 27, 1953 at Panmunjom confirmed.",
         "source": null,
         "verifier": {
           "model": "claude-sonnet-pre-migration",
@@ -337,30 +337,6 @@
   },
   {
     "year": 1955,
-    "title": "Bandung Conference — China leads decolonizing world",
-    "verdict": "TRUE",
-    "reason": "Zhou attended Bandung April 1955 confirmed.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Zhou attended Bandung April 1955 confirmed.",
-        "source": null,
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ]
-  },
-  {
-    "year": 1955,
     "title": "Agricultural collectivization drive accelerates",
     "verdict": "TRUE",
     "reason": "Confirmed from multiple independent sources: in 1955 Mao Zedong overrode moderate party leaders (notably Deng Zihui, whom Liu Shaoqi and Peng Dehuai initially backed) who favored a slower pace of agricultural cooperativization. Mao's July 31, 1955 speech 'On the Question of Agricultural Cooperation' pushed for rapid formation of higher-level (advanced) agricultural producers' cooperatives. By October 1955 national/provincial leaders had capitulated to Mao's accelerated timetable, and by winter 1955-56 cooperatives covered nearly all of China except Tibet. Within about a year of the push, over 90% of peasant households were enrolled (96.3% of peasants in cooperatives by end of 1956, with 87.8% in advanced/higher-level cooperatives) — matching the description's 'over 90% within a year' and 'restructuring Chinese agriculture' framing. Country, year of the drive's launch/acceleration, and the material substance (Mao overriding moderates, higher-level cooperative push, >90% enrollment achieved rapidly) all check out.",
@@ -396,6 +372,30 @@
     "source": "http://www.chinaknowledge.de/History/PRC/prc-event-collectivizationofagriculture.html"
   },
   {
+    "year": 1955,
+    "title": "Bandung Conference — China leads decolonizing world",
+    "verdict": "TRUE",
+    "reason": "Zhou attended Bandung April 1955 confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Zhou attended Bandung April 1955 confirmed.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
     "year": 1956,
     "title": "Hundred Flowers Campaign and Anti-Rightist crackdown",
     "verdict": "TRUE",
@@ -421,30 +421,6 @@
   },
   {
     "year": 1956,
-    "title": "Socialist transformation of industry completed",
-    "verdict": "TRUE",
-    "reason": "Private industry converted to state/joint ownership by 1956 confirmed.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Private industry converted to state/joint ownership by 1956 confirmed.",
-        "source": null,
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ]
-  },
-  {
-    "year": 1956,
     "title": "Sino-Soviet ideological divergence begins",
     "verdict": "TRUE",
     "reason": "Khrushchev's secret speech 1956 triggering Sino-Soviet tension confirmed.",
@@ -458,6 +434,30 @@
         "pass_n": 1,
         "verdict": "TRUE",
         "reason": "Khrushchev's secret speech 1956 triggering Sino-Soviet tension confirmed.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
+    "year": 1956,
+    "title": "Socialist transformation of industry completed",
+    "verdict": "TRUE",
+    "reason": "Private industry converted to state/joint ownership by 1956 confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Private industry converted to state/joint ownership by 1956 confirmed.",
         "source": null,
         "verifier": {
           "model": "claude-sonnet-pre-migration",
@@ -541,30 +541,6 @@
   },
   {
     "year": 1959,
-    "title": "Tibetan Uprising and Dalai Lama's exile",
-    "verdict": "TRUE",
-    "reason": "Lhasa uprising March 1959; Dalai Lama fled to Dharamsala confirmed.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Lhasa uprising March 1959; Dalai Lama fled to Dharamsala confirmed.",
-        "source": null,
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ]
-  },
-  {
-    "year": 1959,
     "title": "Lushan Conference — Peng Dehuai purged",
     "verdict": "TRUE",
     "reason": "Lushan 1959; Peng's letter and purge; Lin Biao replacement confirmed.",
@@ -588,10 +564,10 @@
     ]
   },
   {
-    "year": 1960,
-    "title": "Sino-Soviet split becomes public",
+    "year": 1959,
+    "title": "Tibetan Uprising and Dalai Lama's exile",
     "verdict": "TRUE",
-    "reason": "Bucharest/Moscow 1960 disputes; Soviet advisors withdrawn July 1960 confirmed.",
+    "reason": "Lhasa uprising March 1959; Dalai Lama fled to Dharamsala confirmed.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -601,7 +577,7 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "Bucharest/Moscow 1960 disputes; Soviet advisors withdrawn July 1960 confirmed.",
+        "reason": "Lhasa uprising March 1959; Dalai Lama fled to Dharamsala confirmed.",
         "source": null,
         "verifier": {
           "model": "claude-sonnet-pre-migration",
@@ -626,6 +602,30 @@
         "pass_n": 1,
         "verdict": "TRUE",
         "reason": "Independent program under Second Ministry of Machine Building after Soviet withdrawal confirmed.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
+    "year": 1960,
+    "title": "Sino-Soviet split becomes public",
+    "verdict": "TRUE",
+    "reason": "Bucharest/Moscow 1960 disputes; Soviet advisors withdrawn July 1960 confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Bucharest/Moscow 1960 disputes; Soviet advisors withdrawn July 1960 confirmed.",
         "source": null,
         "verifier": {
           "model": "claude-sonnet-pre-migration",
@@ -757,30 +757,6 @@
   },
   {
     "year": 1965,
-    "title": "Cultural Revolution ideological preparations begin",
-    "verdict": "TRUE",
-    "reason": "Critique of 'Hai Rui Dismissed from Office' (November 1965) as opening shot confirmed.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Critique of 'Hai Rui Dismissed from Office' (November 1965) as opening shot confirmed.",
-        "source": null,
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ]
-  },
-  {
-    "year": 1965,
     "title": "China deploys troops to support Vietnam War",
     "verdict": "TRUE",
     "reason": "~320,000 Chinese troops to North Vietnam 1965–1969 confirmed.",
@@ -794,6 +770,30 @@
         "pass_n": 1,
         "verdict": "TRUE",
         "reason": "~320,000 Chinese troops to North Vietnam 1965–1969 confirmed.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
+    "year": 1965,
+    "title": "Cultural Revolution ideological preparations begin",
+    "verdict": "TRUE",
+    "reason": "Critique of 'Hai Rui Dismissed from Office' (November 1965) as opening shot confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Critique of 'Hai Rui Dismissed from Office' (November 1965) as opening shot confirmed.",
         "source": null,
         "verifier": {
           "model": "claude-sonnet-pre-migration",
@@ -829,30 +829,6 @@
   },
   {
     "year": 1967,
-    "title": "Cultural Revolution violence peaks — Revolutionary Committees",
-    "verdict": "TRUE",
-    "reason": "1967 factional violence; Guangxi massacres; Revolutionary Committees confirmed.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "1967 factional violence; Guangxi massacres; Revolutionary Committees confirmed.",
-        "source": null,
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ]
-  },
-  {
-    "year": 1967,
     "title": "China conducts first hydrogen bomb test",
     "verdict": "TRUE",
     "reason": "Project 639 thermonuclear test June 17, 1967 at Lop Nor confirmed. 32-month fission-to-fusion record confirmed.",
@@ -866,6 +842,30 @@
         "pass_n": 1,
         "verdict": "TRUE",
         "reason": "Project 639 thermonuclear test June 17, 1967 at Lop Nor confirmed. 32-month fission-to-fusion record confirmed.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
+    "year": 1967,
+    "title": "Cultural Revolution violence peaks — Revolutionary Committees",
+    "verdict": "TRUE",
+    "reason": "1967 factional violence; Guangxi massacres; Revolutionary Committees confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "1967 factional violence; Guangxi massacres; Revolutionary Committees confirmed.",
         "source": null,
         "verifier": {
           "model": "claude-sonnet-pre-migration",
@@ -925,9 +925,9 @@
   },
   {
     "year": 1971,
-    "title": "Lin Biao incident — designated successor dies fleeing China",
+    "title": "Bangladesh Liberation War — China backs Pakistan",
     "verdict": "TRUE",
-    "reason": "Plane crashed Mongolia September 13, 1971 confirmed. Coup attempt and flight confirmed.",
+    "reason": "China backed Pakistan in 1971; first UNSC veto on related resolutions confirmed.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -937,7 +937,7 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "Plane crashed Mongolia September 13, 1971 confirmed. Coup attempt and flight confirmed.",
+        "reason": "China backed Pakistan in 1971; first UNSC veto on related resolutions confirmed.",
         "source": null,
         "verifier": {
           "model": "claude-sonnet-pre-migration",
@@ -973,9 +973,9 @@
   },
   {
     "year": 1971,
-    "title": "Bangladesh Liberation War — China backs Pakistan",
+    "title": "Lin Biao incident — designated successor dies fleeing China",
     "verdict": "TRUE",
-    "reason": "China backed Pakistan in 1971; first UNSC veto on related resolutions confirmed.",
+    "reason": "Plane crashed Mongolia September 13, 1971 confirmed. Coup attempt and flight confirmed.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -985,31 +985,7 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "China backed Pakistan in 1971; first UNSC veto on related resolutions confirmed.",
-        "source": null,
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ]
-  },
-  {
-    "year": 1972,
-    "title": "Nixon visits China — Shanghai Communiqué",
-    "verdict": "TRUE",
-    "reason": "Nixon February 1972 visit and Shanghai Communiqué confirmed.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Nixon February 1972 visit and Shanghai Communiqué confirmed.",
+        "reason": "Plane crashed Mongolia September 13, 1971 confirmed. Coup attempt and flight confirmed.",
         "source": null,
         "verifier": {
           "model": "claude-sonnet-pre-migration",
@@ -1034,6 +1010,30 @@
         "pass_n": 1,
         "verdict": "TRUE",
         "reason": "Japan-China normalization September 1972 under PM Tanaka confirmed.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
+    "year": 1972,
+    "title": "Nixon visits China — Shanghai Communiqué",
+    "verdict": "TRUE",
+    "reason": "Nixon February 1972 visit and Shanghai Communiqué confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Nixon February 1972 visit and Shanghai Communiqué confirmed.",
         "source": null,
         "verifier": {
           "model": "claude-sonnet-pre-migration",
@@ -1189,54 +1189,6 @@
   },
   {
     "year": 1978,
-    "title": "Third Plenum — Reform and Opening Up begins",
-    "verdict": "TRUE",
-    "reason": "Third Plenary Session of 11th CC December 1978 confirmed.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Third Plenary Session of 11th CC December 1978 confirmed.",
-        "source": null,
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ]
-  },
-  {
-    "year": 1978,
-    "title": "US-China full diplomatic normalization",
-    "verdict": "TRUE",
-    "reason": "US-China normalization announced December 1978, effective January 1, 1979 confirmed.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "US-China normalization announced December 1978, effective January 1, 1979 confirmed.",
-        "source": null,
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ]
-  },
-  {
-    "year": 1978,
     "title": "Democracy Wall movement",
     "verdict": "TRUE",
     "reason": "Democracy Wall 1978–1979; Wei Jingsheng confirmed.",
@@ -1284,10 +1236,10 @@
     ]
   },
   {
-    "year": 1979,
-    "title": "Sino-Vietnamese War",
+    "year": 1978,
+    "title": "Third Plenum — Reform and Opening Up begins",
     "verdict": "TRUE",
-    "reason": "February–March 1979 punitive invasion confirmed.",
+    "reason": "Third Plenary Session of 11th CC December 1978 confirmed.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -1297,7 +1249,7 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "February–March 1979 punitive invasion confirmed.",
+        "reason": "Third Plenary Session of 11th CC December 1978 confirmed.",
         "source": null,
         "verifier": {
           "model": "claude-sonnet-pre-migration",
@@ -1308,10 +1260,10 @@
     ]
   },
   {
-    "year": 1979,
-    "title": "One Child Policy announced",
+    "year": 1978,
+    "title": "US-China full diplomatic normalization",
     "verdict": "TRUE",
-    "reason": "Announced 1979, formally enacted 1980 confirmed.",
+    "reason": "US-China normalization announced December 1978, effective January 1, 1979 confirmed.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -1321,7 +1273,7 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "Announced 1979, formally enacted 1980 confirmed.",
+        "reason": "US-China normalization announced December 1978, effective January 1, 1979 confirmed.",
         "source": null,
         "verifier": {
           "model": "claude-sonnet-pre-migration",
@@ -1382,6 +1334,78 @@
     "source": "https://www.cambridge.org/core/journals/journal-of-institutional-economics/article/resolving-douglass-c-norths-puzzle-concerning-chinas-household-responsibility-system/7627E68395A4A2FC24566233F08F287C"
   },
   {
+    "year": 1979,
+    "title": "One Child Policy announced",
+    "verdict": "TRUE",
+    "reason": "Announced 1979, formally enacted 1980 confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Announced 1979, formally enacted 1980 confirmed.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
+    "year": 1979,
+    "title": "Sino-Vietnamese War",
+    "verdict": "TRUE",
+    "reason": "February–March 1979 punitive invasion confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "February–March 1979 punitive invasion confirmed.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
+    "year": 1980,
+    "title": "China joins the IMF and World Bank",
+    "verdict": "TRUE",
+    "reason": "China joined IMF and World Bank April 1980 confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "China joined IMF and World Bank April 1980 confirmed.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
     "year": 1980,
     "title": "Shenzhen designated first Special Economic Zone",
     "verdict": "TRUE",
@@ -1420,30 +1444,6 @@
         "pass_n": 1,
         "verdict": "TRUE",
         "reason": "Trial 1980–1981; Jiang Qing and Zhang Chunqiao death sentences commuted confirmed.",
-        "source": null,
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ]
-  },
-  {
-    "year": 1980,
-    "title": "China joins the IMF and World Bank",
-    "verdict": "TRUE",
-    "reason": "China joined IMF and World Bank April 1980 confirmed.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "China joined IMF and World Bank April 1980 confirmed.",
         "source": null,
         "verifier": {
           "model": "claude-sonnet-pre-migration",
@@ -1576,30 +1576,6 @@
   },
   {
     "year": 1984,
-    "title": "Sino-British Joint Declaration signed",
-    "verdict": "TRUE",
-    "reason": "Joint Declaration December 1984; 1997 handover terms confirmed.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Joint Declaration December 1984; 1997 handover terms confirmed.",
-        "source": null,
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ]
-  },
-  {
-    "year": 1984,
     "title": "Fourteen coastal cities opened to foreign investment",
     "verdict": "TRUE",
     "reason": "14 coastal cities opened 1984 confirmed.",
@@ -1613,6 +1589,30 @@
         "pass_n": 1,
         "verdict": "TRUE",
         "reason": "14 coastal cities opened 1984 confirmed.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
+    "year": 1984,
+    "title": "Sino-British Joint Declaration signed",
+    "verdict": "TRUE",
+    "reason": "Joint Declaration December 1984; 1997 handover terms confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Joint Declaration December 1984; 1997 handover terms confirmed.",
         "source": null,
         "verifier": {
           "model": "claude-sonnet-pre-migration",
@@ -1648,30 +1648,6 @@
   },
   {
     "year": 1986,
-    "title": "Student democracy protests sweep China",
-    "verdict": "TRUE",
-    "reason": "Late 1986 campus protests; Hu Yaobang dismissed January 1987 confirmed.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Late 1986 campus protests; Hu Yaobang dismissed January 1987 confirmed.",
-        "source": null,
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ]
-  },
-  {
-    "year": 1986,
     "title": "Compulsory Education Law enacted",
     "verdict": "TRUE",
     "reason": "Nine-year compulsory education law 1986 confirmed.",
@@ -1685,6 +1661,30 @@
         "pass_n": 1,
         "verdict": "TRUE",
         "reason": "Nine-year compulsory education law 1986 confirmed.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
+    "year": 1986,
+    "title": "Student democracy protests sweep China",
+    "verdict": "TRUE",
+    "reason": "Late 1986 campus protests; Hu Yaobang dismissed January 1987 confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Late 1986 campus protests; Hu Yaobang dismissed January 1987 confirmed.",
         "source": null,
         "verifier": {
           "model": "claude-sonnet-pre-migration",
@@ -1792,30 +1792,6 @@
   },
   {
     "year": 1989,
-    "title": "Zhao Ziyang purged — Jiang Zemin appointed General Secretary",
-    "verdict": "TRUE",
-    "reason": "Zhao removed; house arrest until death; Jiang Zemin appointed confirmed.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Zhao removed; house arrest until death; Jiang Zemin appointed confirmed.",
-        "source": null,
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ]
-  },
-  {
-    "year": 1989,
     "title": "Western sanctions imposed after Tiananmen",
     "verdict": "TRUE",
     "reason": "US and EC sanctions; EU arms embargo still in force confirmed.",
@@ -1829,6 +1805,30 @@
         "pass_n": 1,
         "verdict": "TRUE",
         "reason": "US and EC sanctions; EU arms embargo still in force confirmed.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
+    "year": 1989,
+    "title": "Zhao Ziyang purged — Jiang Zemin appointed General Secretary",
+    "verdict": "TRUE",
+    "reason": "Zhao removed; house arrest until death; Jiang Zemin appointed confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Zhao removed; house arrest until death; Jiang Zemin appointed confirmed.",
         "source": null,
         "verifier": {
           "model": "claude-sonnet-pre-migration",
@@ -1865,6 +1865,30 @@
   {
     "year": 1991,
     "title": "Soviet Union collapse — China draws lessons on Party control",
+    "verdict": "TRUE",
+    "reason": "Pre-verified in source file.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Pre-verified in source file.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
+    "year": 1992,
+    "title": "China normalizes relations with South Korea",
     "verdict": "TRUE",
     "reason": "Pre-verified in source file.",
     "verify_count": 1,
@@ -1935,92 +1959,8 @@
     ]
   },
   {
-    "year": 1992,
-    "title": "China normalizes relations with South Korea",
-    "verdict": "TRUE",
-    "reason": "Pre-verified in source file.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Pre-verified in source file.",
-        "source": null,
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ]
-  },
-  {
     "year": 1993,
     "title": "China becomes net oil importer",
-    "verdict": "TRUE",
-    "reason": "Pre-verified in source file.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Pre-verified in source file.",
-        "source": null,
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ]
-  },
-  {
-    "year": 1994,
-    "title": "Yuan renminbi unified exchange rate reform",
-    "verdict": "TRUE",
-    "reason": "Multiple independent sources (World Bank blog, IMF-referenced literature, PIIE) confirm that in January 1994 China terminated its dual exchange rate regime by unifying the official exchange rate with the market-based 'swap center' rate, resulting in an effective ~33% devaluation of the official rate (from ~5.8 to ~8.7-8.3 RMB/USD). This matches the event description on country (China), year (1994), and core mechanism (unification of dual exchange rates, currency devaluation). The 'export competitiveness' framing is a standard characterization in economic literature discussing this reform's effects, even though the World Bank source frames the primary policy intent as equilibrium-rate/inflation-anchor setting rather than pure export promotion — this is a minor nuance in stated motive, not a material factual discrepancy in what happened, where, or when.",
-    "verify_count": 2,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "double_confirmed",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Pre-verified in source file.",
-        "source": null,
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      },
-      {
-        "pass_n": 2,
-        "verdict": "TRUE",
-        "reason": "Multiple independent sources (World Bank blog, IMF-referenced literature, PIIE) confirm that in January 1994 China terminated its dual exchange rate regime by unifying the official exchange rate with the market-based 'swap center' rate, resulting in an effective ~33% devaluation of the official rate (from ~5.8 to ~8.7-8.3 RMB/USD). This matches the event description on country (China), year (1994), and core mechanism (unification of dual exchange rates, currency devaluation). The 'export competitiveness' framing is a standard characterization in economic literature discussing this reform's effects, even though the World Bank source frames the primary policy intent as equilibrium-rate/inflation-anchor setting rather than pure export promotion — this is a minor nuance in stated motive, not a material factual discrepancy in what happened, where, or when.",
-        "source": "https://blogs.worldbank.org/en/allaboutfinance/historical-lessons-chinas-monetary-policy-during-transition-1987-2006-central-bank",
-        "verifier": {
-          "model": "claude-sonnet-5",
-          "date": "2026-07-02",
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://blogs.worldbank.org/en/allaboutfinance/historical-lessons-chinas-monetary-policy-during-transition-1987-2006-central-bank"
-  },
-  {
-    "year": 1994,
-    "title": "Tax-sharing reform reshapes central-local fiscal relations",
     "verdict": "TRUE",
     "reason": "Pre-verified in source file.",
     "verify_count": 1,
@@ -2079,8 +2019,8 @@
     "source": "https://english.cas.cn/Special_Reports/CAS_75th_anniversary/National_Economic_Development/202410/t20241016_691879.shtml"
   },
   {
-    "year": 1995,
-    "title": "Third Taiwan Strait Crisis — China fires missiles near Taiwan",
+    "year": 1994,
+    "title": "Tax-sharing reform reshapes central-local fiscal relations",
     "verdict": "TRUE",
     "reason": "Pre-verified in source file.",
     "verify_count": 1,
@@ -2101,6 +2041,42 @@
         }
       }
     ]
+  },
+  {
+    "year": 1994,
+    "title": "Yuan renminbi unified exchange rate reform",
+    "verdict": "TRUE",
+    "reason": "Multiple independent sources (World Bank blog, IMF-referenced literature, PIIE) confirm that in January 1994 China terminated its dual exchange rate regime by unifying the official exchange rate with the market-based 'swap center' rate, resulting in an effective ~33% devaluation of the official rate (from ~5.8 to ~8.7-8.3 RMB/USD). This matches the event description on country (China), year (1994), and core mechanism (unification of dual exchange rates, currency devaluation). The 'export competitiveness' framing is a standard characterization in economic literature discussing this reform's effects, even though the World Bank source frames the primary policy intent as equilibrium-rate/inflation-anchor setting rather than pure export promotion — this is a minor nuance in stated motive, not a material factual discrepancy in what happened, where, or when.",
+    "verify_count": 2,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "double_confirmed",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Pre-verified in source file.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Multiple independent sources (World Bank blog, IMF-referenced literature, PIIE) confirm that in January 1994 China terminated its dual exchange rate regime by unifying the official exchange rate with the market-based 'swap center' rate, resulting in an effective ~33% devaluation of the official rate (from ~5.8 to ~8.7-8.3 RMB/USD). This matches the event description on country (China), year (1994), and core mechanism (unification of dual exchange rates, currency devaluation). The 'export competitiveness' framing is a standard characterization in economic literature discussing this reform's effects, even though the World Bank source frames the primary policy intent as equilibrium-rate/inflation-anchor setting rather than pure export promotion — this is a minor nuance in stated motive, not a material factual discrepancy in what happened, where, or when.",
+        "source": "https://blogs.worldbank.org/en/allaboutfinance/historical-lessons-chinas-monetary-policy-during-transition-1987-2006-central-bank",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-02",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://blogs.worldbank.org/en/allaboutfinance/historical-lessons-chinas-monetary-policy-during-transition-1987-2006-central-bank"
   },
   {
     "year": 1995,
@@ -2127,56 +2103,32 @@
     ]
   },
   {
+    "year": 1995,
+    "title": "Third Taiwan Strait Crisis — China fires missiles near Taiwan",
+    "verdict": "TRUE",
+    "reason": "Pre-verified in source file.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Pre-verified in source file.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
     "year": 1996,
     "title": "China-Russia strategic partnership",
-    "verdict": "TRUE",
-    "reason": "Pre-verified in source file.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Pre-verified in source file.",
-        "source": null,
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ]
-  },
-  {
-    "year": 1997,
-    "title": "Hong Kong handover to China",
-    "verdict": "TRUE",
-    "reason": "Pre-verified in source file.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Pre-verified in source file.",
-        "source": null,
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ]
-  },
-  {
-    "year": 1997,
-    "title": "Deng Xiaoping dies",
     "verdict": "TRUE",
     "reason": "Pre-verified in source file.",
     "verify_count": 1,
@@ -2236,6 +2188,54 @@
   },
   {
     "year": 1997,
+    "title": "Deng Xiaoping dies",
+    "verdict": "TRUE",
+    "reason": "Pre-verified in source file.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Pre-verified in source file.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
+    "year": 1997,
+    "title": "Hong Kong handover to China",
+    "verdict": "TRUE",
+    "reason": "Pre-verified in source file.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Pre-verified in source file.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
+    "year": 1997,
     "title": "State-owned enterprise restructuring — millions laid off",
     "verdict": "TRUE",
     "reason": "Confirmed from multiple independent sources. The \"grasping the large, letting go of the small\" (zhua da fang xiao) SOE reform strategy, associated with Zhu Rongji, was formally adopted in September 1997 at the 15th CCP Congress, launching a wave of SOE closures, mergers, and mass layoffs (xiagang) that ran through roughly 2000-2003. Scale estimates from independent academic/journalistic sources cluster in or near the 20-40 million range described: e.g. 30-35 million redundancies estimated by end of 1997 in some analyses; 21-34 million cumulative laid-off/xiagang workers by 2000-2001 in others; state-sector urban employment fell by 34 million (30%) in Zhu's first four years. Between 1997-1998 alone the number of industrial SOEs fell over 41%. The country (China), year (1997 as launch/adoption year), actor (Zhu Rongji/CCP leadership), and rough magnitude (tens of millions laid off over several years, largest peacetime labor displacement) all check out as materially accurate. Minor note: Zhu formally became Premier in March 1998, but he was already the chief architect of the policy as Executive Vice Premier when it was adopted in 1997, so attributing the 1997 launch to him is standard in historical accounts and not a material error.",
@@ -2272,31 +2272,43 @@
   },
   {
     "year": 1998,
-    "title": "Yangtze River floods — massive disaster",
+    "title": "25% Bad-Loan Ratio at State Banks Forces Historic Recapitalization",
     "verdict": "TRUE",
-    "reason": "Pre-verified in source file.",
-    "verify_count": 1,
+    "reason": "Independently corroborated across multiple sources. (1) NPL ratio: PBOC governor Dai Xianglong stated in a January 1998 report (reflecting year-end 1997 data, old classification standard) that non-performing loans were approximately 25% of state bank loan portfolios — a figure widely cited in the China banking-reform literature (SMU/BIS/academic sources). (2) Recapitalization: Central Banking journal (independently fetched) confirms \"Special government bonds totalling Rmb270 billion were issued in 1998 to recapitalise the four state-owned commercial banks,\" and search corroboration (BBVA Research working paper \"Lessons from China's past banking bailouts\") specifies the issuance was in August 1998 by the Ministry of Finance to ICBC, CCB, BOC and ABC, raising their combined capital from RMB 208bn to RMB 478bn and capital-adequacy ratio from 3.5% (end-1997) to ~8% (1998) — matching the description's RMB 270bn / ~$32.5bn figures almost exactly. (3) AMCs: the same Central Banking article confirms \"four asset management companies were established in 1999 to take over their non-performing assets of nearly RMB1.4 trillion,\" matching the description's claim that AMCs were created the following year to strip bad loans off the banks' books. All three material claims (NPL ratio ~25%, RMB270bn August 1998 bond-funded equity injection into the named four banks, 1999 AMC creation) check out against independent, non-overlapping sources — no material detail is off.",
+    "verify_count": 2,
     "consensus_verdict": "TRUE",
-    "consensus_status": "single",
+    "consensus_status": "double_confirmed",
     "needs_tiebreak": false,
-    "source_independence": "n/a",
+    "source_independence": "independent",
     "verifications": [
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "Pre-verified in source file.",
-        "source": null,
+        "reason": "Independent sources corroborate every material element. In August 1998, China's Ministry of Finance issued RMB 270 billion (~$32.5bn) in special 30-year treasury bonds and injected the proceeds as new equity capital into the \"Big Four\" state banks (ICBC, CCB, BOC, ABC), raising their capital from RMB 208bn to RMB 478bn and lifting average capital adequacy ratio from ~3.5% (end-1997) to ~8% (1998) — matching the description's actors, amount, mechanism and timing exactly. NPL ratios at the state banks were around 25% in this period (some sources cite ~20-30% depending on exact measure/year), consistent with \"roughly 25%... by end of 1997.\" The following year (1999), the government did create four asset-management companies (Cinda for CCB, Orient for BOC, Great Wall for ABC, Huarong for ICBC) to strip bad loans off the banks' balance sheets — exactly as described. This is widely documented as China's first systemic bank rescue of the reform era.",
+        "source": "https://www.bbvaresearch.com/wp-content/uploads/2020/03/WP_Lessons-from-Chinas-past-banking-bailouts.pdf",
         "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
+          "model": "claude-sonnet-5",
+          "date": "2026-07-09",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Independently corroborated across multiple sources. (1) NPL ratio: PBOC governor Dai Xianglong stated in a January 1998 report (reflecting year-end 1997 data, old classification standard) that non-performing loans were approximately 25% of state bank loan portfolios — a figure widely cited in the China banking-reform literature (SMU/BIS/academic sources). (2) Recapitalization: Central Banking journal (independently fetched) confirms \"Special government bonds totalling Rmb270 billion were issued in 1998 to recapitalise the four state-owned commercial banks,\" and search corroboration (BBVA Research working paper \"Lessons from China's past banking bailouts\") specifies the issuance was in August 1998 by the Ministry of Finance to ICBC, CCB, BOC and ABC, raising their combined capital from RMB 208bn to RMB 478bn and capital-adequacy ratio from 3.5% (end-1997) to ~8% (1998) — matching the description's RMB 270bn / ~$32.5bn figures almost exactly. (3) AMCs: the same Central Banking article confirms \"four asset management companies were established in 1999 to take over their non-performing assets of nearly RMB1.4 trillion,\" matching the description's claim that AMCs were created the following year to strip bad loans off the banks' books. All three material claims (NPL ratio ~25%, RMB270bn August 1998 bond-funded equity injection into the named four banks, 1999 AMC creation) check out against independent, non-overlapping sources — no material detail is off.",
+        "source": "https://www.centralbanking.com/central-banking-journal/feature/2069552/china-s-reform-banking",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-09",
           "method": "web_search"
         }
       }
-    ]
+    ],
+    "source": "https://www.centralbanking.com/central-banking-journal/feature/2069552/china-s-reform-banking"
   },
   {
-    "year": 1999,
-    "title": "NATO bombing of Chinese embassy in Belgrade",
+    "year": 1998,
+    "title": "Yangtze River floods — massive disaster",
     "verdict": "TRUE",
     "reason": "Pre-verified in source file.",
     "verify_count": 1,
@@ -2368,7 +2380,55 @@
   },
   {
     "year": 1999,
+    "title": "NATO bombing of Chinese embassy in Belgrade",
+    "verdict": "TRUE",
+    "reason": "Pre-verified in source file.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Pre-verified in source file.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
+    "year": 1999,
     "title": "Taiwan 'two states' statement triggers crisis",
+    "verdict": "TRUE",
+    "reason": "Pre-verified in source file.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Pre-verified in source file.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
+    "year": 2001,
+    "title": "Beijing wins 2008 Olympics bid",
     "verdict": "TRUE",
     "reason": "Pre-verified in source file.",
     "verify_count": 1,
@@ -2439,56 +2499,8 @@
     ]
   },
   {
-    "year": 2001,
-    "title": "Beijing wins 2008 Olympics bid",
-    "verdict": "TRUE",
-    "reason": "Pre-verified in source file.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Pre-verified in source file.",
-        "source": null,
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ]
-  },
-  {
     "year": 2002,
     "title": "Sixteenth Party Congress — first peaceful CCP leadership transfer",
-    "verdict": "TRUE",
-    "reason": "Pre-verified in source file.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Pre-verified in source file.",
-        "source": null,
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ]
-  },
-  {
-    "year": 2003,
-    "title": "SARS epidemic — government cover-up and global spread",
     "verdict": "TRUE",
     "reason": "Pre-verified in source file.",
     "verify_count": 1,
@@ -2545,6 +2557,30 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/Shenzhou_5"
+  },
+  {
+    "year": 2003,
+    "title": "SARS epidemic — government cover-up and global spread",
+    "verdict": "TRUE",
+    "reason": "Pre-verified in source file.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Pre-verified in source file.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
   },
   {
     "year": 2003,
@@ -2752,54 +2788,6 @@
   },
   {
     "year": 2008,
-    "title": "Tibet protests and Olympic torch relay disruptions",
-    "verdict": "TRUE",
-    "reason": "Pre-verified in source file.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Pre-verified in source file.",
-        "source": null,
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ]
-  },
-  {
-    "year": 2008,
-    "title": "Sichuan earthquake kills nearly 90,000",
-    "verdict": "TRUE",
-    "reason": "Description says 'nearly 70,000 people' then title says 'nearly 90,000' — official confirmed dead was ~69,180; dead+missing totals ~87,000–90,000. The description number (70,000) refers to confirmed deaths, title (90,000) to dead+missing. Both figures are accurate for their respective measures.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Description says 'nearly 70,000 people' then title says 'nearly 90,000' — official confirmed dead was ~69,180; dead+missing totals ~87,000–90,000. The description number (70,000) refers to confirmed deaths, title (90,000) to dead+missing. Both figures are accurate for their respective measures.",
-        "source": null,
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ]
-  },
-  {
-    "year": 2008,
     "title": "Beijing Summer Olympics",
     "verdict": "TRUE",
     "reason": "Pre-verified in source file.",
@@ -2871,6 +2859,78 @@
     ]
   },
   {
+    "year": 2008,
+    "title": "Sichuan earthquake kills nearly 90,000",
+    "verdict": "TRUE",
+    "reason": "Description says 'nearly 70,000 people' then title says 'nearly 90,000' — official confirmed dead was ~69,180; dead+missing totals ~87,000–90,000. The description number (70,000) refers to confirmed deaths, title (90,000) to dead+missing. Both figures are accurate for their respective measures.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Description says 'nearly 70,000 people' then title says 'nearly 90,000' — official confirmed dead was ~69,180; dead+missing totals ~87,000–90,000. The description number (70,000) refers to confirmed deaths, title (90,000) to dead+missing. Both figures are accurate for their respective measures.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
+    "year": 2008,
+    "title": "Tibet protests and Olympic torch relay disruptions",
+    "verdict": "TRUE",
+    "reason": "Pre-verified in source file.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Pre-verified in source file.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
+    "year": 2009,
+    "title": "Great Firewall expands — internet censorship tightened",
+    "verdict": "TRUE",
+    "reason": "Pre-verified in source file.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Pre-verified in source file.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
     "year": 2009,
     "title": "Xinjiang Urumqi riots — ethnic violence",
     "verdict": "TRUE",
@@ -2907,30 +2967,6 @@
     "source": "https://en.wikipedia.org/wiki/July_2009_%C3%9Cr%C3%BCmqi_riots"
   },
   {
-    "year": 2009,
-    "title": "Great Firewall expands — internet censorship tightened",
-    "verdict": "TRUE",
-    "reason": "Pre-verified in source file.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Pre-verified in source file.",
-        "source": null,
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ]
-  },
-  {
     "year": 2010,
     "title": "China surpasses Japan as world's second largest economy",
     "verdict": "TRUE",
@@ -2956,7 +2992,7 @@
   },
   {
     "year": 2010,
-    "title": "Liu Xiaobo awarded Nobel Peace Prize — China furious",
+    "title": "China-Japan Diaoyu/Senkaku boat collision — rare earth embargo",
     "verdict": "TRUE",
     "reason": "Pre-verified in source file.",
     "verify_count": 1,
@@ -2980,7 +3016,7 @@
   },
   {
     "year": 2010,
-    "title": "China-Japan Diaoyu/Senkaku boat collision — rare earth embargo",
+    "title": "Liu Xiaobo awarded Nobel Peace Prize — China furious",
     "verdict": "TRUE",
     "reason": "Pre-verified in source file.",
     "verify_count": 1,
@@ -3028,7 +3064,7 @@
   },
   {
     "year": 2012,
-    "title": "China's first aircraft carrier commissioned",
+    "title": "Bo Xilai scandal — elite political crisis",
     "verdict": "TRUE",
     "reason": "Pre-verified in source file.",
     "verify_count": 1,
@@ -3052,7 +3088,7 @@
   },
   {
     "year": 2012,
-    "title": "Xi Jinping becomes CCP General Secretary",
+    "title": "China's first aircraft carrier commissioned",
     "verdict": "TRUE",
     "reason": "Pre-verified in source file.",
     "verify_count": 1,
@@ -3100,7 +3136,7 @@
   },
   {
     "year": 2012,
-    "title": "Bo Xilai scandal — elite political crisis",
+    "title": "Xi Jinping becomes CCP General Secretary",
     "verdict": "TRUE",
     "reason": "Pre-verified in source file.",
     "verify_count": 1,
@@ -3124,7 +3160,7 @@
   },
   {
     "year": 2013,
-    "title": "Xi Jinping becomes state president — 'Chinese Dream'",
+    "title": "Anti-corruption campaign launched under Xi",
     "verdict": "TRUE",
     "reason": "Pre-verified in source file.",
     "verify_count": 1,
@@ -3172,30 +3208,6 @@
   },
   {
     "year": 2013,
-    "title": "Third Plenum — comprehensive reform blueprint",
-    "verdict": "TRUE",
-    "reason": "Pre-verified in source file.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Pre-verified in source file.",
-        "source": null,
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ]
-  },
-  {
-    "year": 2013,
     "title": "East China Sea Air Defense Identification Zone declared",
     "verdict": "TRUE",
     "reason": "Pre-verified in source file.",
@@ -3220,7 +3232,31 @@
   },
   {
     "year": 2013,
-    "title": "Anti-corruption campaign launched under Xi",
+    "title": "Third Plenum — comprehensive reform blueprint",
+    "verdict": "TRUE",
+    "reason": "Pre-verified in source file.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Pre-verified in source file.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
+    "year": 2013,
+    "title": "Xi Jinping becomes state president — 'Chinese Dream'",
     "verdict": "TRUE",
     "reason": "Pre-verified in source file.",
     "verify_count": 1,
@@ -3244,31 +3280,7 @@
   },
   {
     "year": 2014,
-    "title": "Zhou Yongkang arrested — unprecedented Politburo Standing Committee case",
-    "verdict": "TRUE",
-    "reason": "Pre-verified in source file.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Pre-verified in source file.",
-        "source": null,
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ]
-  },
-  {
-    "year": 2014,
-    "title": "South China Sea island-building — artificial islands with military installations",
+    "title": "China-Russia Power of Siberia gas deal",
     "verdict": "TRUE",
     "reason": "Pre-verified in source file.",
     "verify_count": 1,
@@ -3316,7 +3328,7 @@
   },
   {
     "year": 2014,
-    "title": "China-Russia Power of Siberia gas deal",
+    "title": "South China Sea island-building — artificial islands with military installations",
     "verdict": "TRUE",
     "reason": "Pre-verified in source file.",
     "verify_count": 1,
@@ -3339,8 +3351,8 @@
     ]
   },
   {
-    "year": 2015,
-    "title": "Made in China 2025 industrial strategy",
+    "year": 2014,
+    "title": "Zhou Yongkang arrested — unprecedented Politburo Standing Committee case",
     "verdict": "TRUE",
     "reason": "Pre-verified in source file.",
     "verify_count": 1,
@@ -3388,7 +3400,7 @@
   },
   {
     "year": 2015,
-    "title": "Two Child Policy — end of One Child Policy",
+    "title": "Made in China 2025 industrial strategy",
     "verdict": "TRUE",
     "reason": "Pre-verified in source file.",
     "verify_count": 1,
@@ -3413,6 +3425,30 @@
   {
     "year": 2015,
     "title": "Renminbi added to IMF Special Drawing Rights basket",
+    "verdict": "TRUE",
+    "reason": "Pre-verified in source file.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Pre-verified in source file.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
+    "year": 2015,
+    "title": "Two Child Policy — end of One Child Policy",
     "verdict": "TRUE",
     "reason": "Pre-verified in source file.",
     "verify_count": 1,
@@ -3460,30 +3496,6 @@
   },
   {
     "year": 2016,
-    "title": "Xi Jinping declared 'core' leader",
-    "verdict": "TRUE",
-    "reason": "Pre-verified in source file.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Pre-verified in source file.",
-        "source": null,
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ]
-  },
-  {
-    "year": 2016,
     "title": "Taiwan's Tsai Ing-wen elected president",
     "verdict": "TRUE",
     "reason": "Pre-verified in source file.",
@@ -3507,32 +3519,8 @@
     ]
   },
   {
-    "year": 2017,
-    "title": "Nineteenth Party Congress — Xi Thought enshrined in constitution",
-    "verdict": "TRUE",
-    "reason": "Pre-verified in source file.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Pre-verified in source file.",
-        "source": null,
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ]
-  },
-  {
-    "year": 2017,
-    "title": "Mass detention of Uyghurs in Xinjiang begins",
+    "year": 2016,
+    "title": "Xi Jinping declared 'core' leader",
     "verdict": "TRUE",
     "reason": "Pre-verified in source file.",
     "verify_count": 1,
@@ -3603,8 +3591,8 @@
     ]
   },
   {
-    "year": 2018,
-    "title": "Presidential term limits abolished — Xi can rule indefinitely",
+    "year": 2017,
+    "title": "Mass detention of Uyghurs in Xinjiang begins",
     "verdict": "TRUE",
     "reason": "Pre-verified in source file.",
     "verify_count": 1,
@@ -3627,8 +3615,8 @@
     ]
   },
   {
-    "year": 2018,
-    "title": "US-China trade war begins",
+    "year": 2017,
+    "title": "Nineteenth Party Congress — Xi Thought enshrined in constitution",
     "verdict": "TRUE",
     "reason": "Pre-verified in source file.",
     "verify_count": 1,
@@ -3687,6 +3675,54 @@
     "source": "https://www.washingtonpost.com/news/business/wp/2018/04/16/u-s-companies-banned-from-selling-to-chinas-zte-telecom-maker/"
   },
   {
+    "year": 2018,
+    "title": "Presidential term limits abolished — Xi can rule indefinitely",
+    "verdict": "TRUE",
+    "reason": "Pre-verified in source file.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Pre-verified in source file.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
+    "year": 2018,
+    "title": "US-China trade war begins",
+    "verdict": "TRUE",
+    "reason": "Pre-verified in source file.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Pre-verified in source file.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
     "year": 2019,
     "title": "Hong Kong protests — extradition bill and pro-democracy revolt",
     "verdict": "TRUE",
@@ -3736,79 +3772,7 @@
   },
   {
     "year": 2020,
-    "title": "COVID-19 pandemic originates in Wuhan",
-    "verdict": "TRUE",
-    "reason": "Pre-verified in source file.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Pre-verified in source file.",
-        "source": null,
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ]
-  },
-  {
-    "year": 2020,
-    "title": "Wuhan lockdown — unprecedented urban quarantine",
-    "verdict": "TRUE",
-    "reason": "Pre-verified in source file.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Pre-verified in source file.",
-        "source": null,
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ]
-  },
-  {
-    "year": 2020,
-    "title": "Hong Kong National Security Law imposed",
-    "verdict": "TRUE",
-    "reason": "Pre-verified in source file.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Pre-verified in source file.",
-        "source": null,
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ]
-  },
-  {
-    "year": 2020,
-    "title": "Galwan Valley clash with India — first deadly border clash since 1975",
+    "title": "China declares victory over absolute poverty",
     "verdict": "TRUE",
     "reason": "Pre-verified in source file.",
     "verify_count": 1,
@@ -3856,7 +3820,79 @@
   },
   {
     "year": 2020,
-    "title": "China declares victory over absolute poverty",
+    "title": "COVID-19 pandemic originates in Wuhan",
+    "verdict": "TRUE",
+    "reason": "Pre-verified in source file.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Pre-verified in source file.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
+    "year": 2020,
+    "title": "Galwan Valley clash with India — first deadly border clash since 1975",
+    "verdict": "TRUE",
+    "reason": "Pre-verified in source file.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Pre-verified in source file.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
+    "year": 2020,
+    "title": "Hong Kong National Security Law imposed",
+    "verdict": "TRUE",
+    "reason": "Pre-verified in source file.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Pre-verified in source file.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
+    "year": 2020,
+    "title": "Wuhan lockdown — unprecedented urban quarantine",
     "verdict": "TRUE",
     "reason": "Pre-verified in source file.",
     "verify_count": 1,
@@ -3928,27 +3964,41 @@
   },
   {
     "year": 2021,
-    "title": "Western sanctions over Xinjiang — China counter-sanctions freeze EU deal",
-    "verdict": "TRUE",
-    "reason": "Pre-verified in source file.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
+    "title": "RCEP trade agreement enters into force",
+    "verdict": "FALSE",
+    "reason": "RCEP was signed in November 2020, but it did NOT enter into force in 2021. Multiple independent sources (ASEAN Secretariat, CNBC, China's State Council/gov.cn, Congress.gov CRS) confirm RCEP entered into force on January 1, 2022 for the first 10 ratifying parties, including China. China ratified the agreement and deposited its instrument of ratification with the ASEAN Secretary-General on April 15, 2021, but ratification is a distinct legal step from entry into force. The event title and description both describe 'entry into force,' which occurred on January 1, 2022, not in 2021. The underlying event is real and material to China's regional trade integration, but the year field (2021) is incorrect; the correct year for entry into force is 2022.",
+    "verify_count": 2,
+    "consensus_verdict": "FALSE",
+    "consensus_status": "double_negative",
     "needs_tiebreak": false,
-    "source_independence": "n/a",
+    "source_independence": "weak",
     "verifications": [
       {
         "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Pre-verified in source file.",
-        "source": null,
+        "verdict": "FALSE",
+        "reason": "The event's own description states RCEP \"entered into force on January 1, 2022\" — and independent sources (ASEAN Secretariat, China's State Council/gov.cn, CNBC, Wikipedia) confirm RCEP entered into force on 1 January 2022 for the first 10 ratifying parties including China, not in 2021. China did ratify/deposit its instrument of ratification on 15 April 2021, and the agreement was signed in November 2020, but \"enters into force\" — the specific milestone in the title — is a 2022 event, not 2021. Since the top-level year field (2021) does not match the actual date of the described milestone, this is a year mismatch (FALSE), with the correct year being 2022.",
+        "source": "https://asean.org/regional-comprehensive-economic-partnership-rcep-to-enter-into-force-on-1-january-2022/",
         "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
+          "model": "claude-sonnet-5",
+          "date": "2026-07-07",
           "method": "web_search"
-        }
+        },
+        "corrected_year": 2022
+      },
+      {
+        "pass_n": 2,
+        "verdict": "FALSE",
+        "reason": "RCEP was signed in November 2020, but it did NOT enter into force in 2021. Multiple independent sources (ASEAN Secretariat, CNBC, China's State Council/gov.cn, Congress.gov CRS) confirm RCEP entered into force on January 1, 2022 for the first 10 ratifying parties, including China. China ratified the agreement and deposited its instrument of ratification with the ASEAN Secretary-General on April 15, 2021, but ratification is a distinct legal step from entry into force. The event title and description both describe 'entry into force,' which occurred on January 1, 2022, not in 2021. The underlying event is real and material to China's regional trade integration, but the year field (2021) is incorrect; the correct year for entry into force is 2022.",
+        "source": "https://asean.org/regional-comprehensive-economic-partnership-rcep-to-enter-into-force-on-1-january-2022/",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-07",
+          "method": "web_search"
+        },
+        "corrected_year": 2022
       }
-    ]
+    ],
+    "source": "https://asean.org/regional-comprehensive-economic-partnership-rcep-to-enter-into-force-on-1-january-2022/"
   },
   {
     "year": 2021,
@@ -3975,8 +4025,32 @@
     ]
   },
   {
+    "year": 2021,
+    "title": "Western sanctions over Xinjiang — China counter-sanctions freeze EU deal",
+    "verdict": "TRUE",
+    "reason": "Pre-verified in source file.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Pre-verified in source file.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
     "year": 2022,
-    "title": "Xi-Putin 'no limits' partnership — Russia invades Ukraine",
+    "title": "A4 Revolution — Zero-COVID protests and policy reversal",
     "verdict": "TRUE",
     "reason": "Pre-verified in source file.",
     "verify_count": 1,
@@ -4072,7 +4146,7 @@
   },
   {
     "year": 2022,
-    "title": "A4 Revolution — Zero-COVID protests and policy reversal",
+    "title": "Xi-Putin 'no limits' partnership — Russia invades Ukraine",
     "verdict": "TRUE",
     "reason": "Pre-verified in source file.",
     "verify_count": 1,
@@ -4144,42 +4218,6 @@
   },
   {
     "year": 2023,
-    "title": "Youth unemployment surges — data suppressed",
-    "verdict": "TRUE",
-    "reason": "Confirmed from multiple independent sources: China's official urban youth (16-24) unemployment rate hit a record 21.3% in June 2023. In August 2023, following three consecutive record-high months, the National Bureau of Statistics (NBS) announced it would suspend publication of the youth unemployment breakdown, citing a need to refine methodology (it later resumed in January 2024 under a revised methodology excluding students). The \"lying flat\" (tang ping) / \"let it rot\" (bai lan) phenomenon among disillusioned young Chinese was widely reported as spreading in this period, tied directly to the bleak youth job market. All material details (country=China, year=2023, 21.3% figure, data suspension, lying-flat linkage) check out.",
-    "verify_count": 2,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "double_confirmed",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Pre-verified in source file.",
-        "source": null,
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      },
-      {
-        "pass_n": 2,
-        "verdict": "TRUE",
-        "reason": "Confirmed from multiple independent sources: China's official urban youth (16-24) unemployment rate hit a record 21.3% in June 2023. In August 2023, following three consecutive record-high months, the National Bureau of Statistics (NBS) announced it would suspend publication of the youth unemployment breakdown, citing a need to refine methodology (it later resumed in January 2024 under a revised methodology excluding students). The \"lying flat\" (tang ping) / \"let it rot\" (bai lan) phenomenon among disillusioned young Chinese was widely reported as spreading in this period, tied directly to the bleak youth job market. All material details (country=China, year=2023, 21.3% figure, data suspension, lying-flat linkage) check out.",
-        "source": "https://www.nbcnews.com/news/world/china-suspends-data-youth-unemployment-rcna99929",
-        "verifier": {
-          "model": "claude-sonnet-5",
-          "date": "2026-07-02",
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://www.nbcnews.com/news/world/china-suspends-data-youth-unemployment-rcna99929"
-  },
-  {
-    "year": 2023,
     "title": "Gallium and germanium export controls — tech war escalation",
     "verdict": "TRUE",
     "reason": "China's Ministry of Commerce (MOFCOM) and General Administration of Customs jointly announced on July 3, 2023 export control measures on gallium- and germanium-related items (gallium metal, gallium nitride, gallium arsenide, germanium metal, germanium dioxide, etc.), with the controls taking effect August 1, 2023. Exporters had to obtain licenses for these materials, which are critical inputs for semiconductors, solar panels, and defense/electronics applications. Multiple independent legal/trade-policy analyses (Mayer Brown, Herbert Smith Freehills Kramer, Winston & Strawn, CSIS) and the IEA describe this as a direct response to escalating US semiconductor export restrictions on China, marking the first time Chinese critical-minerals controls were explicitly tied to retaliation in the US-China tech war. Real-world trade data confirms material effect: gallium/germanium wrought exports dropped to zero in August 2023 versus thousands of kg in July, and gallium prices rose ~27% following the announcement. All elements of the description (country=China, year=2023, materials, retaliatory motive, tech-war escalation framing) are corroborated.",
@@ -4217,6 +4255,90 @@
   {
     "year": 2023,
     "title": "Senior officials purged — Qin Gang and Rocket Force generals",
+    "verdict": "TRUE",
+    "reason": "Pre-verified in source file.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Pre-verified in source file.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
+    "year": 2023,
+    "title": "Youth unemployment surges — data suppressed",
+    "verdict": "TRUE",
+    "reason": "Confirmed from multiple independent sources: China's official urban youth (16-24) unemployment rate hit a record 21.3% in June 2023. In August 2023, following three consecutive record-high months, the National Bureau of Statistics (NBS) announced it would suspend publication of the youth unemployment breakdown, citing a need to refine methodology (it later resumed in January 2024 under a revised methodology excluding students). The \"lying flat\" (tang ping) / \"let it rot\" (bai lan) phenomenon among disillusioned young Chinese was widely reported as spreading in this period, tied directly to the bleak youth job market. All material details (country=China, year=2023, 21.3% figure, data suspension, lying-flat linkage) check out.",
+    "verify_count": 2,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "double_confirmed",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Pre-verified in source file.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Confirmed from multiple independent sources: China's official urban youth (16-24) unemployment rate hit a record 21.3% in June 2023. In August 2023, following three consecutive record-high months, the National Bureau of Statistics (NBS) announced it would suspend publication of the youth unemployment breakdown, citing a need to refine methodology (it later resumed in January 2024 under a revised methodology excluding students). The \"lying flat\" (tang ping) / \"let it rot\" (bai lan) phenomenon among disillusioned young Chinese was widely reported as spreading in this period, tied directly to the bleak youth job market. All material details (country=China, year=2023, 21.3% figure, data suspension, lying-flat linkage) check out.",
+        "source": "https://www.nbcnews.com/news/world/china-suspends-data-youth-unemployment-rcna99929",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-02",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://www.nbcnews.com/news/world/china-suspends-data-youth-unemployment-rcna99929"
+  },
+  {
+    "year": 2024,
+    "title": "EU imposes tariffs on Chinese electric vehicles",
+    "verdict": "TRUE",
+    "reason": "Pre-verified in source file.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Pre-verified in source file.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
+    "year": 2024,
+    "title": "South China Sea confrontations with Philippines escalate",
     "verdict": "TRUE",
     "reason": "Pre-verified in source file.",
     "verify_count": 1,
@@ -4287,32 +4409,8 @@
     ]
   },
   {
-    "year": 2024,
-    "title": "EU imposes tariffs on Chinese electric vehicles",
-    "verdict": "TRUE",
-    "reason": "Pre-verified in source file.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Pre-verified in source file.",
-        "source": null,
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ]
-  },
-  {
-    "year": 2024,
-    "title": "South China Sea confrontations with Philippines escalate",
+    "year": 2025,
+    "title": "BYD overtakes global automakers in EV sales",
     "verdict": "TRUE",
     "reason": "Pre-verified in source file.",
     "verify_count": 1,
@@ -4336,7 +4434,7 @@
   },
   {
     "year": 2025,
-    "title": "Trump tariffs escalate to 145% — US-China trade war and truce",
+    "title": "China's population decline accelerates",
     "verdict": "TRUE",
     "reason": "Pre-verified in source file.",
     "verify_count": 1,
@@ -4396,7 +4494,7 @@
   },
   {
     "year": 2025,
-    "title": "China's population decline accelerates",
+    "title": "Trump tariffs escalate to 145% — US-China trade war and truce",
     "verdict": "TRUE",
     "reason": "Pre-verified in source file.",
     "verify_count": 1,
@@ -4417,67 +4515,5 @@
         }
       }
     ]
-  },
-  {
-    "year": 2025,
-    "title": "BYD overtakes global automakers in EV sales",
-    "verdict": "TRUE",
-    "reason": "Pre-verified in source file.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Pre-verified in source file.",
-        "source": null,
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ]
-  },
-  {
-    "year": 2021,
-    "title": "RCEP trade agreement enters into force",
-    "verdict": "FALSE",
-    "reason": "RCEP was signed in November 2020, but it did NOT enter into force in 2021. Multiple independent sources (ASEAN Secretariat, CNBC, China's State Council/gov.cn, Congress.gov CRS) confirm RCEP entered into force on January 1, 2022 for the first 10 ratifying parties, including China. China ratified the agreement and deposited its instrument of ratification with the ASEAN Secretary-General on April 15, 2021, but ratification is a distinct legal step from entry into force. The event title and description both describe 'entry into force,' which occurred on January 1, 2022, not in 2021. The underlying event is real and material to China's regional trade integration, but the year field (2021) is incorrect; the correct year for entry into force is 2022.",
-    "verify_count": 2,
-    "consensus_verdict": "FALSE",
-    "consensus_status": "double_negative",
-    "needs_tiebreak": false,
-    "source_independence": "weak",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "FALSE",
-        "reason": "The event's own description states RCEP \"entered into force on January 1, 2022\" — and independent sources (ASEAN Secretariat, China's State Council/gov.cn, CNBC, Wikipedia) confirm RCEP entered into force on 1 January 2022 for the first 10 ratifying parties including China, not in 2021. China did ratify/deposit its instrument of ratification on 15 April 2021, and the agreement was signed in November 2020, but \"enters into force\" — the specific milestone in the title — is a 2022 event, not 2021. Since the top-level year field (2021) does not match the actual date of the described milestone, this is a year mismatch (FALSE), with the correct year being 2022.",
-        "source": "https://asean.org/regional-comprehensive-economic-partnership-rcep-to-enter-into-force-on-1-january-2022/",
-        "verifier": {
-          "model": "claude-sonnet-5",
-          "date": "2026-07-07",
-          "method": "web_search"
-        },
-        "corrected_year": 2022
-      },
-      {
-        "pass_n": 2,
-        "verdict": "FALSE",
-        "reason": "RCEP was signed in November 2020, but it did NOT enter into force in 2021. Multiple independent sources (ASEAN Secretariat, CNBC, China's State Council/gov.cn, Congress.gov CRS) confirm RCEP entered into force on January 1, 2022 for the first 10 ratifying parties, including China. China ratified the agreement and deposited its instrument of ratification with the ASEAN Secretary-General on April 15, 2021, but ratification is a distinct legal step from entry into force. The event title and description both describe 'entry into force,' which occurred on January 1, 2022, not in 2021. The underlying event is real and material to China's regional trade integration, but the year field (2021) is incorrect; the correct year for entry into force is 2022.",
-        "source": "https://asean.org/regional-comprehensive-economic-partnership-rcep-to-enter-into-force-on-1-january-2022/",
-        "verifier": {
-          "model": "claude-sonnet-5",
-          "date": "2026-07-07",
-          "method": "web_search"
-        },
-        "corrected_year": 2022
-      }
-    ],
-    "source": "https://asean.org/regional-comprehensive-economic-partnership-rcep-to-enter-into-force-on-1-january-2022/"
   }
 ]

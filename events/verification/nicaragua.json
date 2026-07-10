@@ -551,31 +551,6 @@
   },
   {
     "year": 1988,
-    "title": "Sapoa Ceasefire Halts Large-Scale Contra Hostilities",
-    "verdict": "TRUE",
-    "reason": "Confirmed: The Sapoa Agreement was signed March 23, 1988, establishing a 60-day ceasefire between the Sandinista government and Contra forces. Mediated by OAS Secretary General and Archbishop Obando y Bravo, it provided for prisoner releases and Contra political participation. The Contra War killed approximately 30,000 Nicaraguans.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Confirmed: The Sapoa Agreement was signed March 23, 1988, establishing a 60-day ceasefire between the Sandinista government and Contra forces. Mediated by OAS Secretary General and Archbishop Obando y Bravo, it provided for prisoner releases and Contra political participation. The Contra War killed approximately 30,000 Nicaraguans.",
-        "source": "https://en.wikipedia.org/wiki/Nicaraguan_Revolution",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/Nicaraguan_Revolution"
-  },
-  {
-    "year": 1988,
     "title": "Hurricane Joan Devastates Nicaragua's Atlantic Coast",
     "verdict": "TRUE",
     "reason": "Confirmed: Hurricane Joan made landfall near Bluefields, Nicaragua on October 22, 1988 with 145 mph winds. Killed 148 people in Nicaragua, nearly all structures in Bluefields destroyed, 500,000 hectares of rain forest destroyed, and $2 billion in total damage. Struck an already-marginalized Atlantic coast community.",
@@ -598,6 +573,31 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/Hurricane_Joan%E2%80%93Miriam"
+  },
+  {
+    "year": 1988,
+    "title": "Sapoa Ceasefire Halts Large-Scale Contra Hostilities",
+    "verdict": "TRUE",
+    "reason": "Confirmed: The Sapoa Agreement was signed March 23, 1988, establishing a 60-day ceasefire between the Sandinista government and Contra forces. Mediated by OAS Secretary General and Archbishop Obando y Bravo, it provided for prisoner releases and Contra political participation. The Contra War killed approximately 30,000 Nicaraguans.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed: The Sapoa Agreement was signed March 23, 1988, establishing a 60-day ceasefire between the Sandinista government and Contra forces. Mediated by OAS Secretary General and Archbishop Obando y Bravo, it provided for prisoner releases and Contra political participation. The Contra War killed approximately 30,000 Nicaraguans.",
+        "source": "https://en.wikipedia.org/wiki/Nicaraguan_Revolution",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Nicaraguan_Revolution"
   },
   {
     "year": 1990,
@@ -701,31 +701,6 @@
   },
   {
     "year": 1994,
-    "title": "Sandinista Split Produces Reform Faction, Ortega Consolidates Party Control",
-    "verdict": "TRUE",
-    "reason": "Confirmed: Internal FSLN conflict during 1994-1995 produced a formal split. An extraordinary FSLN congress in May 1994 saw Ortega win control. On January 8, 1995, Sergio Ramírez and others formally quit to found the Sandinista Renovation Movement (MRS), with Dora María Téllez also leaving. Ortega consolidated party machinery.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Confirmed: Internal FSLN conflict during 1994-1995 produced a formal split. An extraordinary FSLN congress in May 1994 saw Ortega win control. On January 8, 1995, Sergio Ramírez and others formally quit to found the Sandinista Renovation Movement (MRS), with Dora María Téllez also leaving. Ortega consolidated party machinery.",
-        "source": "https://en.wikipedia.org/wiki/Sandinista_Renovation_Movement",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/Sandinista_Renovation_Movement"
-  },
-  {
-    "year": 1994,
     "title": "Ortega Accused of Sexual Abuse by Stepdaughter",
     "verdict": "FALSE",
     "reason": "Year fabricated. All credible sources confirm Zoilamérica Narváez made her public accusation on March 2, 1998 — not 1994. The accusation was filed formally in 1998 and covered by international press (Washington Post March 14, 1998). Placing this event in 1994 represents a >2-year factual drift.",
@@ -748,6 +723,31 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/Zoilam%C3%A9rica_Ortega_Murillo"
+  },
+  {
+    "year": 1994,
+    "title": "Sandinista Split Produces Reform Faction, Ortega Consolidates Party Control",
+    "verdict": "TRUE",
+    "reason": "Confirmed: Internal FSLN conflict during 1994-1995 produced a formal split. An extraordinary FSLN congress in May 1994 saw Ortega win control. On January 8, 1995, Sergio Ramírez and others formally quit to found the Sandinista Renovation Movement (MRS), with Dora María Téllez also leaving. Ortega consolidated party machinery.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed: Internal FSLN conflict during 1994-1995 produced a formal split. An extraordinary FSLN congress in May 1994 saw Ortega win control. On January 8, 1995, Sergio Ramírez and others formally quit to found the Sandinista Renovation Movement (MRS), with Dora María Téllez also leaving. Ortega consolidated party machinery.",
+        "source": "https://en.wikipedia.org/wiki/Sandinista_Renovation_Movement",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Sandinista_Renovation_Movement"
   },
   {
     "year": 1996,
@@ -850,6 +850,42 @@
     "source": "https://www.npr.org/2001/09/09/1128732/nicaraguas-coffee-crisis"
   },
   {
+    "year": 2000,
+    "title": "Interbank Fraud Triggers Wave of Bank Failures",
+    "verdict": "TRUE",
+    "reason": "Independent sources corroborate every material detail. La Prensa (Nicaragua's leading newspaper) and the Central Bank of Nicaragua (BCN) confirm: Banco Intercontinental (Interbank) was intervened by the Superintendency of Banks on August 7, 2000 after fraudulent loans worth $52 million were channeled to the CONAGRA agribusiness consortium (Centeno brothers' Agropecuaria Renacer de San Miguel/Agresami), roughly twice the bank's capital — matching the description precisely. The BCN's own official retrospective, titled \"Crisis Bancaria 2000-2001,\" confirms the subsequent interventions: Banco del Café (Bancafe) on November 22, 2000, Banco Mercantil (Bamer) on March 3, 2001, and Banco Nicaragüense de Industria y Comercio (Banic) on August 4, 2001 — dates match the event description exactly. Academic/CEPAL analysis confirms the failed banks' assets were absorbed by Banpro, Bancentro (Banco de Crédito Centroamericano) and BDF under central-bank-led resolution, again matching the description. The crisis is officially dated as beginning in 2000, consistent with the event's year field. No detail in the description is contradicted by any source found; this is a well-documented, officially-recognized banking crisis.",
+    "verify_count": 2,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "double_confirmed",
+    "needs_tiebreak": false,
+    "source_independence": "independent",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Multiple independent Nicaraguan and regional sources corroborate every material detail. Banco Intercontinental (Interbank) was intervened and declared bankrupt by the Superintendencia de Bancos (SIB) on August 7, 2000, after fraud was uncovered involving loans channeled to the CONAGRA agribusiness consortium (headed by the Centeno Roque brothers) via the shell company Agresami; reported figures cite roughly $52 million diverted, about twice the bank's capital, consistent with the description. The SIB went on to intervene Banco del Cafe (Bancafe) on November 22, 2000, Banco Mercantil (Bamer) on March 3, 2001, and Banco Nicaraguense de Industria y Comercio (Banic) on August 4, 2001 -- all four dates match exactly across multiple independent sources (La Prensa Nicaragua, a CEPAL repository report on Nicaraguan banking regulation, Rebelion analysis, and La Nacion Costa Rica coverage). Surviving banks absorbed the failed institutions via central-bank/SIB-run resolution using CENIs: Banpro acquired Interbank's and Banic's portfolios, Bancentro acquired Bamer, and BDF acquired Bancafe -- exactly matching \"Banpro, Bancentro and BDF absorbed the failed institutions' assets.\" CONAGRA's Consagro/Centeno Roque fraud vehicle is independently documented in detail (nearly 100 shell companies, ~600 phantom accounts, hundreds of millions in transfers). All core facts (dates, actors, amounts, resolution banks) are corroborated by at least three independent outlets, no single-source or off-limits-domain dependency.",
+        "source": "https://www.laprensani.com/2024/10/13/suplemento/la-prensa-domingo/3389674-las-quiebras-bancarias-que-hicieron-temblar-al-sistema-financiero-nicaraguense",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-09",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Independent sources corroborate every material detail. La Prensa (Nicaragua's leading newspaper) and the Central Bank of Nicaragua (BCN) confirm: Banco Intercontinental (Interbank) was intervened by the Superintendency of Banks on August 7, 2000 after fraudulent loans worth $52 million were channeled to the CONAGRA agribusiness consortium (Centeno brothers' Agropecuaria Renacer de San Miguel/Agresami), roughly twice the bank's capital — matching the description precisely. The BCN's own official retrospective, titled \"Crisis Bancaria 2000-2001,\" confirms the subsequent interventions: Banco del Café (Bancafe) on November 22, 2000, Banco Mercantil (Bamer) on March 3, 2001, and Banco Nicaragüense de Industria y Comercio (Banic) on August 4, 2001 — dates match the event description exactly. Academic/CEPAL analysis confirms the failed banks' assets were absorbed by Banpro, Bancentro (Banco de Crédito Centroamericano) and BDF under central-bank-led resolution, again matching the description. The crisis is officially dated as beginning in 2000, consistent with the event's year field. No detail in the description is contradicted by any source found; this is a well-documented, officially-recognized banking crisis.",
+        "source": "https://www.bcn.gob.ni/divulgacion-prensa/bcn-presenta-informe-sobre-proceso-de-resoluci%C3%B3n-crisis-bancaria-2000-2001",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-09",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://www.bcn.gob.ni/divulgacion-prensa/bcn-presenta-informe-sobre-proceso-de-resoluci%C3%B3n-crisis-bancaria-2000-2001"
+  },
+  {
     "year": 2002,
     "title": "Bolaños Prosecutes Former President Alemán for Embezzlement",
     "verdict": "TRUE",
@@ -876,31 +912,6 @@
   },
   {
     "year": 2006,
-    "title": "Total Abortion Ban Criminalized Termination in All Circumstances",
-    "verdict": "TRUE",
-    "reason": "Confirmed: In October 2006, days before the November election, the National Assembly voted 52-0 to eliminate Nicaragua's century-old therapeutic abortion exception. President Bolaños signed it into law November 17, 2006, making Nicaragua the sixth country worldwide with an absolute abortion prohibition. HRW documented increased maternal mortality.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Confirmed: In October 2006, days before the November election, the National Assembly voted 52-0 to eliminate Nicaragua's century-old therapeutic abortion exception. President Bolaños signed it into law November 17, 2006, making Nicaragua the sixth country worldwide with an absolute abortion prohibition. HRW documented increased maternal mortality.",
-        "source": "https://www.hrw.org/reports/2007/nicaragua1007/nicaragua1007.htm",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://www.hrw.org/reports/2007/nicaragua1007/nicaragua1007.htm"
-  },
-  {
-    "year": 2006,
     "title": "Ortega Returns to Power on Fourth Presidential Attempt",
     "verdict": "TRUE",
     "reason": "Confirmed: Daniel Ortega won Nicaragua's November 2006 presidential election with 38% of the vote in a divided field, using the 35% threshold negotiated in El Pacto. It was his fourth presidential campaign (lost 1990, 1996, 2001). He ran as a moderate, pledging to honor CAFTA and maintain macroeconomic stability.",
@@ -923,6 +934,31 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/2006_Nicaraguan_general_election"
+  },
+  {
+    "year": 2006,
+    "title": "Total Abortion Ban Criminalized Termination in All Circumstances",
+    "verdict": "TRUE",
+    "reason": "Confirmed: In October 2006, days before the November election, the National Assembly voted 52-0 to eliminate Nicaragua's century-old therapeutic abortion exception. President Bolaños signed it into law November 17, 2006, making Nicaragua the sixth country worldwide with an absolute abortion prohibition. HRW documented increased maternal mortality.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed: In October 2006, days before the November election, the National Assembly voted 52-0 to eliminate Nicaragua's century-old therapeutic abortion exception. President Bolaños signed it into law November 17, 2006, making Nicaragua the sixth country worldwide with an absolute abortion prohibition. HRW documented increased maternal mortality.",
+        "source": "https://www.hrw.org/reports/2007/nicaragua1007/nicaragua1007.htm",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://www.hrw.org/reports/2007/nicaragua1007/nicaragua1007.htm"
   },
   {
     "year": 2007,
@@ -1376,31 +1412,6 @@
   },
   {
     "year": 2023,
-    "title": "Mass Emigration Reaches 15 Percent of Population Since 2018",
-    "verdict": "TRUE",
-    "reason": "Confirmed: IOM and Migration Policy Institute document record emigration from Nicaragua since 2018. By 2022-2023 an estimated 800,000+ Nicaraguans lived outside their country (over 10-15% of the ~6.2 million population). Nicaragua became the leading per-capita Central American source of US-Mexico border crossers. Remittances exceeded $4 billion annually.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Confirmed: IOM and Migration Policy Institute document record emigration from Nicaragua since 2018. By 2022-2023 an estimated 800,000+ Nicaraguans lived outside their country (over 10-15% of the ~6.2 million population). Nicaragua became the leading per-capita Central American source of US-Mexico border crossers. Remittances exceeded $4 billion annually.",
-        "source": "https://www.migrationpolicy.org/article/record-emigration-nicaragua-crisis",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://www.migrationpolicy.org/article/record-emigration-nicaragua-crisis"
-  },
-  {
-    "year": 2023,
     "title": "Government Strips Citizenship from Hundreds of Exiled Critics",
     "verdict": "TRUE",
     "reason": "Confirmed: In February 2023, alongside the release of the 222 political prisoners, 316 individuals were made stateless through citizenship stripping. An additional 94 exiled dissidents lost citizenship on February 16, 2023. By 2023 at least 450 government opponents had been stripped of nationality. UN, IACHR, and Amnesty International condemned the measures as violations of international law.",
@@ -1423,6 +1434,31 @@
       }
     ],
     "source": "https://www.ohchr.org/en/press-releases/2023/02/nicaragua-un-experts-denounce-mass-deprivation-nationality-destabilize"
+  },
+  {
+    "year": 2023,
+    "title": "Mass Emigration Reaches 15 Percent of Population Since 2018",
+    "verdict": "TRUE",
+    "reason": "Confirmed: IOM and Migration Policy Institute document record emigration from Nicaragua since 2018. By 2022-2023 an estimated 800,000+ Nicaraguans lived outside their country (over 10-15% of the ~6.2 million population). Nicaragua became the leading per-capita Central American source of US-Mexico border crossers. Remittances exceeded $4 billion annually.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed: IOM and Migration Policy Institute document record emigration from Nicaragua since 2018. By 2022-2023 an estimated 800,000+ Nicaraguans lived outside their country (over 10-15% of the ~6.2 million population). Nicaragua became the leading per-capita Central American source of US-Mexico border crossers. Remittances exceeded $4 billion annually.",
+        "source": "https://www.migrationpolicy.org/article/record-emigration-nicaragua-crisis",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://www.migrationpolicy.org/article/record-emigration-nicaragua-crisis"
   },
   {
     "year": 2024,

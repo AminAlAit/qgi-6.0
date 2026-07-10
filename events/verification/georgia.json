@@ -486,6 +486,42 @@
     "source": "https://guam-organization.org/en/joint-communique-of-the-meeting-of-the-president-of-azerbaijan-georgia-moldova-and-ukraine-strasbourg-october-10-1997/"
   },
   {
+    "year": 1998,
+    "title": "Georgia's 1998-99 Currency Crisis Triggers Mass Bank License Revocations",
+    "verdict": "TRUE",
+    "reason": "The core, most specific claim is confirmed with high precision by an independent academic source: an SCIRP paper on Georgian monetary crises states the lari devalued from 1.35 to 2.45 GEL/USD (\"82 percent devaluation rate\") with the acute phase October 1998-March 1999, explicitly attributed to contagion moving from Russia to Georgia -- matching the event description almost verbatim. The banking-sector shakeout (NBG revoking licenses of numerous small, poorly capitalized banks, part of a documented reduction from ~226 banks in 1994 to ~23 by 2003, accelerated by the 1998 crisis) and heavy dollarization protecting a large share of deposits are consistent with multiple independent sources (IBSU/EconStor academic paper, financial history summaries), though I could not pin the exact 'more than 150 banks in 1998' and 'roughly 80% of deposits protected' figures to a single primary archival document (only secondary/aggregated summaries reference those specific numbers). Given the precise verification of the crisis's magnitude, timing, and cause, and no contradicting evidence on the banking details, the event is materially true.",
+    "verify_count": 2,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "double_confirmed",
+    "needs_tiebreak": false,
+    "source_independence": "weak",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Contagion from Russia's August 1998 default/ruble crash spreading to neighboring Caucasus states (including Georgia) is independently documented (e.g., a Wikipedia snippet on the 1998 Russian financial crisis notes currency crises erupting in Kyrgyzstan and Georgia in late 1998). The magnitude and exact timing of the lari devaluation are confirmed by a directly-fetched academic source (a scirp.org paper, \"Origins and the Reasons of Monetary Crises in Georgia (1995-2016)\"), which states verbatim that the lari \"dropped officially from the rate of US $1 = 1.35 Georgian lari to 1 US dollar = 2.45 Georgian lari, or Georgian currency suffered 82 percent devaluation rate during the acute phase of the crisis from October 1998 to March 1999\" -- an exact match to the event's magnitude and date range. The banking-sector claim (NBG revoking licenses of 150+ small, poorly-managed banks in 1998, with roughly 80% of deposits ultimately protected) is corroborated by consistent, repeated web-search hits (across multiple independent queries) pointing to Tea Kbiltsetskhlashvili's peer-reviewed paper \"Development of the Banking Sector in Georgia\" (IBSU Scientific Journal, 2008), which states \"In 1998, more than 150 banks had their licenses revoked\" and \"more than 80% of the clients' deposits were sound and secure.\" This is consistent with the broader documented trend of Georgia's bank count collapsing from 220+ institutions in the mid-1990s down to a small fraction by the 2000s-2020s via NBG license revocations for undercapitalized/fraud-prone entities. Direct WebFetch of the researchgate/econstor/IBSU-journal hosts returned 403 (typical anti-bot blocking for these hosts, not evidence the content is wrong), but the figures were corroborated identically across several independent search queries, and the currency-crisis half of the event (the more precisely falsifiable, dated claim) was independently and directly verified against a fetchable source. Taken together, all material details -- country, year, causal mechanism (Russian contagion), devaluation magnitude/dates, mass small-bank license revocations, and deposit protection rate -- check out.",
+        "source": "https://www.scirp.org/journal/paperinformation?paperid=71053",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-09",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "The core, most specific claim is confirmed with high precision by an independent academic source: an SCIRP paper on Georgian monetary crises states the lari devalued from 1.35 to 2.45 GEL/USD (\"82 percent devaluation rate\") with the acute phase October 1998-March 1999, explicitly attributed to contagion moving from Russia to Georgia -- matching the event description almost verbatim. The banking-sector shakeout (NBG revoking licenses of numerous small, poorly capitalized banks, part of a documented reduction from ~226 banks in 1994 to ~23 by 2003, accelerated by the 1998 crisis) and heavy dollarization protecting a large share of deposits are consistent with multiple independent sources (IBSU/EconStor academic paper, financial history summaries), though I could not pin the exact 'more than 150 banks in 1998' and 'roughly 80% of deposits protected' figures to a single primary archival document (only secondary/aggregated summaries reference those specific numbers). Given the precise verification of the crisis's magnitude, timing, and cause, and no contradicting evidence on the banking details, the event is materially true.",
+        "source": "https://www.scirp.org/journal/paperinformation?paperid=71053",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-09",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://www.scirp.org/journal/paperinformation?paperid=71053"
+  },
+  {
     "year": 1999,
     "title": "Georgia Joins the Council of Europe",
     "verdict": "TRUE",
