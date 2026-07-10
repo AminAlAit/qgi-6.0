@@ -147,3 +147,20 @@ what's been *learned*.
   economic_recession). Rule: distinct banking-specific facts (bank failures/bailouts/runs) = KEEP;
   same-story-relabelled = DROP. gh token this session came from `~/.secrets/qgi-claude-gh-pat.txt`
   (git credential fill returned empty; use the PAT file + credential.helper x-access-token).
+- **2026-07-11** — **Targeted DEPTH batch needs CORPUS-CONSISTENT dating (recession majors top-up, #83).**
+  For a trend with global co-movements (recessions, pandemics), a LOO test needs the SAME global event
+  on ONE shared year across countries. Before steering the fleet, pull the corpus's existing anchor years
+  (`Counter(year)` on the trend's positives; years with ≥4 countries = global co-movements) and inject them
+  as hard dating rules: recession GFC=2008 (NOT the NBER Dec-2007 peak — corpus uses 2008), oil=1973,
+  early-80s=1980/1982, Asian=1997/1998, COVID=2020; idiosyncratic recessions = the country's own contraction
+  year. The fleet still independently verifies + can correct seeds (batch dropped France 2012 = GDP +0.2% no
+  recession; swapped Italy 1992→1993 = 1992 positive, 1993 the contraction). Result: 216→250, US all 7 filled.
+- **2026-07-11** — **Recession/pandemic twin-facets: keep the GDP-contraction facet.** A recession co-occurs
+  with banking (2008 Lehman), fiscal (Thatcher budget), currency, and (deactivated) epidemic events at the
+  same year. KEEP the economic_recession entry when it carries the distinct GDP/unemployment facts (US 2008
+  GDP vs banking TARP; UK 1980 GDP vs the fiscal budget; France 1975 GDP vs the 1973 oil-shock energy entry;
+  all COVID-2020 GDP vs the deactivated epidemic entries) — same twin-crisis rule as banking. Watch WITHIN-
+  category adjacency (netherlands 2011 fiscal-mislabeled-as-recession vs our real 2012 GDP recession — kept
+  ours, flagged the pre-existing mis-cat). regen-tracking = ZERO diff is CORRECT when a batch touches only
+  already-verified majors (modal verify_count unchanged) — say "regen no-op (modal)" in the commit to avoid
+  a reviewer reading it as a skipped step.
