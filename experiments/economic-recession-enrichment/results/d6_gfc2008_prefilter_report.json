@@ -1,0 +1,206 @@
+{
+  "recipe_id": "economic_recession",
+  "n_positive_events": 250,
+  "window": 3,
+  "architecture": "LR",
+  "seed": 12345,
+  "exclude_year": 2008,
+  "chance": 0.5,
+  "candidates": {
+    "FD.AST.PRVT.GD.ZS": {
+      "candidate_id": "FD.AST.PRVT.GD.ZS",
+      "exclude_year": 2008,
+      "n_total_rows": 1000,
+      "n_2008_rows_excluded": 110,
+      "coverage_full_sample": {
+        "n_pos_total": 250,
+        "n_pos_survive": 197,
+        "n_neg_total": 750,
+        "n_neg_survive": 527,
+        "pos_coverage": 0.788,
+        "neg_coverage": 0.7026666666666667,
+        "n_countries_survive": 100,
+        "gate_pass": true
+      },
+      "coverage_excl_2008": {
+        "n_pos_total": 217,
+        "n_pos_survive": 166,
+        "n_neg_total": 673,
+        "n_neg_survive": 458,
+        "pos_coverage": 0.7649769585253456,
+        "neg_coverage": 0.6805349182763745,
+        "n_countries_survive": 99,
+        "gate_pass": true
+      },
+      "auc_full_sample": 0.5501594120536704,
+      "auc_full_sample_ci95": [
+        0.5015592322385635,
+        0.595525927321631
+      ],
+      "auc_excl_2008": 0.533566580733414,
+      "auc_excl_2008_ci95": [
+        0.48234534941877294,
+        0.5843776694066563
+      ],
+      "lift_over_chance_full": 0.05015941205367036,
+      "lift_over_chance_excl_2008": 0.03356658073341401,
+      "verdict": "PASS_PREFILTER"
+    },
+    "FD.AST.PRVT.GD.ZS__accel3": {
+      "candidate_id": "FD.AST.PRVT.GD.ZS__accel3",
+      "exclude_year": 2008,
+      "n_total_rows": 1000,
+      "n_2008_rows_excluded": 110,
+      "coverage_full_sample": {
+        "n_pos_total": 250,
+        "n_pos_survive": 182,
+        "n_neg_total": 750,
+        "n_neg_survive": 483,
+        "pos_coverage": 0.728,
+        "neg_coverage": 0.644,
+        "n_countries_survive": 98,
+        "gate_pass": true
+      },
+      "coverage_excl_2008": {
+        "n_pos_total": 217,
+        "n_pos_survive": 158,
+        "n_neg_total": 673,
+        "n_neg_survive": 418,
+        "pos_coverage": 0.728110599078341,
+        "neg_coverage": 0.6210995542347697,
+        "n_countries_survive": 97,
+        "gate_pass": true
+      },
+      "auc_full_sample": 0.5400427729620276,
+      "auc_full_sample_ci95": [
+        0.48748655755281495,
+        0.5888443090214415
+      ],
+      "auc_excl_2008": 0.5230452425655624,
+      "auc_excl_2008_ci95": [
+        0.474191230757548,
+        0.5755959409933827
+      ],
+      "lift_over_chance_full": 0.04004277296202763,
+      "lift_over_chance_excl_2008": 0.023045242565562396,
+      "verdict": "PASS_PREFILTER"
+    },
+    "FM.LBL.BMNY.GD.ZS": {
+      "candidate_id": "FM.LBL.BMNY.GD.ZS",
+      "exclude_year": 2008,
+      "n_total_rows": 1000,
+      "n_2008_rows_excluded": 110,
+      "coverage_full_sample": {
+        "n_pos_total": 250,
+        "n_pos_survive": 180,
+        "n_neg_total": 750,
+        "n_neg_survive": 508,
+        "pos_coverage": 0.72,
+        "neg_coverage": 0.6773333333333333,
+        "n_countries_survive": 89,
+        "gate_pass": true
+      },
+      "coverage_excl_2008": {
+        "n_pos_total": 217,
+        "n_pos_survive": 155,
+        "n_neg_total": 673,
+        "n_neg_survive": 442,
+        "pos_coverage": 0.7142857142857143,
+        "neg_coverage": 0.6567607726597325,
+        "n_countries_survive": 88,
+        "gate_pass": true
+      },
+      "auc_full_sample": 0.5232283464566929,
+      "auc_full_sample_ci95": [
+        0.47356478341959374,
+        0.5701581997932453
+      ],
+      "auc_excl_2008": 0.5196759597139103,
+      "auc_excl_2008_ci95": [
+        0.4652927399563967,
+        0.5775582152680806
+      ],
+      "lift_over_chance_full": 0.023228346456692917,
+      "lift_over_chance_excl_2008": 0.01967595971391034,
+      "verdict": "PASS_PREFILTER"
+    },
+    "FM.LBL.BMNY.GD.ZS__decel3": {
+      "candidate_id": "FM.LBL.BMNY.GD.ZS__decel3",
+      "exclude_year": 2008,
+      "n_total_rows": 1000,
+      "n_2008_rows_excluded": 110,
+      "coverage_full_sample": {
+        "n_pos_total": 250,
+        "n_pos_survive": 170,
+        "n_neg_total": 750,
+        "n_neg_survive": 467,
+        "pos_coverage": 0.68,
+        "neg_coverage": 0.6226666666666667,
+        "n_countries_survive": 89,
+        "gate_pass": true
+      },
+      "coverage_excl_2008": {
+        "n_pos_total": 217,
+        "n_pos_survive": 146,
+        "n_neg_total": 673,
+        "n_neg_survive": 402,
+        "pos_coverage": 0.6728110599078341,
+        "neg_coverage": 0.5973254086181278,
+        "n_countries_survive": 87,
+        "gate_pass": false
+      },
+      "auc_full_sample": null,
+      "auc_excl_2008": null,
+      "verdict": "INCONCLUSIVE_INSUFFICIENT_DATA"
+    },
+    "NE.GDI.TOTL.ZS": {
+      "candidate_id": "NE.GDI.TOTL.ZS",
+      "exclude_year": 2008,
+      "n_total_rows": 1000,
+      "n_2008_rows_excluded": 110,
+      "coverage_full_sample": {
+        "n_pos_total": 250,
+        "n_pos_survive": 188,
+        "n_neg_total": 750,
+        "n_neg_survive": 521,
+        "pos_coverage": 0.752,
+        "neg_coverage": 0.6946666666666667,
+        "n_countries_survive": 97,
+        "gate_pass": true
+      },
+      "coverage_excl_2008": {
+        "n_pos_total": 217,
+        "n_pos_survive": 159,
+        "n_neg_total": 673,
+        "n_neg_survive": 454,
+        "pos_coverage": 0.7327188940092166,
+        "neg_coverage": 0.674591381872214,
+        "n_countries_survive": 96,
+        "gate_pass": true
+      },
+      "auc_full_sample": 0.5096990239719035,
+      "auc_full_sample_ci95": [
+        0.4616141515667429,
+        0.5581741613042982
+      ],
+      "auc_excl_2008": 0.5079793865846564,
+      "auc_excl_2008_ci95": [
+        0.45727391493514796,
+        0.5610428162239244
+      ],
+      "lift_over_chance_full": 0.009699023971903475,
+      "lift_over_chance_excl_2008": 0.007979386584656356,
+      "verdict": "PASS_PREFILTER"
+    }
+  },
+  "survivors": [
+    "FD.AST.PRVT.GD.ZS",
+    "FD.AST.PRVT.GD.ZS__accel3",
+    "FM.LBL.BMNY.GD.ZS",
+    "NE.GDI.TOTL.ZS"
+  ],
+  "rejected": [],
+  "inconclusive": [
+    "FM.LBL.BMNY.GD.ZS__decel3"
+  ]
+}

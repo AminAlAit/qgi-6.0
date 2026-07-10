@@ -24,3 +24,11 @@ None clears (incl. the +0.02 floor) → **record ~0.547 as recession's honest ce
 
 ## Odds (prior)
 LOW — near-chance baseline + the best mechanisms absent from the panel + borderline-coverage candidates. **~20–35%** of clearing the +0.02 bar.
+
+---
+
+## OUTCOME (2026-07-11) — CEILING 0.547; substrate gap
+
+None of the 5 candidates cleared. All blocked at **D1 coverage-at-positive-cells (≥80%)**: credit-level 79.6% (0.4pp short), credit-accel3 73.6%, M2 72.4%, M2-decel3 69.6%, investment 75.6%. Additionally **both credit candidates fail D3 income-proxy** (FD.AST.PRVT.GD.ZS correlates r=0.606 with GDP-per-capita — a development-level proxy, not a business-cycle signal; the acceleration transform doesn't launder it). M2 + investment pass D3/D6 cleanly, blocked only on coverage. GFC-2008 pre-filter: 4/5 not pure-2008 effects (signal uniformly weak, not a shock artifact). 66/66 battery tests pass.
+
+**VERDICT: 0.547 is economic_recession's honest ceiling with the current substrate.** The real blocker is a **SUBSTRATE GAP**, not a search failure: the best recession predictors (yield-curve/term-spread, house prices, confidence) are absent from the panel, and the available macro series (credit/M2) fall short on coverage. → No enrichment possible via the existing pool. The lever that could help is **sourcing new indicator data** (yield-curve series, house-price indices; and an M2/GDP coverage top-up) — a different, bigger project than searching. No live number at risk (recession never LOCKed).
