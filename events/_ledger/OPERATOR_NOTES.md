@@ -126,3 +126,24 @@ what's been *learned*.
   silently no-ops (events_updated:0, empty consensus) because the CLI reads `results.results ?? []`.
   Extract from the task `.output` as `{mode:'B', results: <o.result.results>}`. (merge-a-trend reads
   `results.events`, so pass the whole `o.result` object there.)
+- **2026-07-10** — **TARGETED Mode A (arg = trend slug + steered research).** To enrich a specific
+  RUNNABLE trend at specific countries (e.g. ML asked for banking EM coverage): `plan-a-trend --trend X`,
+  then POST-PROCESS the plan — append a targeting block to each `researchAgents[].researchPrompt`
+  (priority country slices + seed onset-years + hard rules) and raise `caps.TREND_CANDIDATES_TARGET` if
+  you want >40. The fleet still independently double-verifies (born-verified bar preserved). Banking
+  batch: 58 steered EM countries → 47 kept → banking 76→116, 14/16 big-EM.
+- **2026-07-10** — **Revert-to-drop gotcha (Mode-A dedup):** `git checkout main -- <dir>` does NOT
+  delete files ABSENT from main. When reverting a Mode-A batch to drop N events + re-merge, a NEWLY-
+  CREATED verification file for a dropped country survives the checkout and merges as an ORPHAN (no
+  curated twin → not a positive, but a stray file + validator warning). ALWAYS explicitly
+  `rm events/verification/<dropped-new-country>.json` after the checkout. (benin.json leaked in #80,
+  cleaned in #81.)
+- **2026-07-10** — **Twin-crisis events are LEGIT for banking (not curation-artifact dups).** A twin
+  crisis (banking+currency, e.g. mexico 1994) can be curated under banking AND currency_crisis as
+  SEPARATE entries with DISTINCT facts (FOBAPROA bailout vs peso devaluation) — kept, because each
+  feeds a different recipe (per-Trend D2 training, no within-recipe double-count). This is the EM
+  external-fragility signal the ML wants. BUT drop NEAR-VERBATIM restatements where the two entries
+  describe the same event with no distinct facet (benin/moldova 'Banking System Collapse' already under
+  economic_recession). Rule: distinct banking-specific facts (bank failures/bailouts/runs) = KEEP;
+  same-story-relabelled = DROP. gh token this session came from `~/.secrets/qgi-claude-gh-pat.txt`
+  (git credential fill returned empty; use the PAT file + credential.helper x-access-token).
