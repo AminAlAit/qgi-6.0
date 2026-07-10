@@ -1,0 +1,50 @@
+{
+  "seed": 12345,
+  "recipe_id": "banking_and_financial_crisis",
+  "n_pos_samples": 116,
+  "baseline": {
+    "drivers": [
+      "NV.SRV.TOTL.ZS",
+      "v2x_gender",
+      "MS.MIL.XPND.GD.ZS"
+    ],
+    "loco_auc": 0.6381273123992031,
+    "ci95_lo": 0.5612101118203985,
+    "ci95_hi": 0.6984622530441662,
+    "chosen_window": 15
+  },
+  "candidate": {
+    "selected_indicators": [
+      "GII"
+    ],
+    "chosen_window_from_greedy": 10,
+    "chosen_window_from_final_fit": 10,
+    "early_abort_floor_unreachable": false,
+    "loco_auc": 0.6803687095166916,
+    "ci95_lo": 0.6083517816663538,
+    "ci95_hi": 0.746900056622955
+  },
+  "pairing": {
+    "n_pairs": 260,
+    "n_a": 295,
+    "n_b": 337,
+    "label_mismatches": 0,
+    "pair_fraction_of_a": 0.8813559322033898,
+    "pair_fraction_of_b": 0.771513353115727,
+    "severe_coverage_mismatch": false,
+    "min_pair_fraction_threshold": 0.5
+  },
+  "delta_auc": {
+    "point": 0.062011834319526615,
+    "auc_a": 0.7021696252465484,
+    "auc_b": 0.6401577909270217,
+    "ci95_lo": -0.046004149562204916,
+    "ci95_hi": 0.17708730158730163,
+    "p_value": 0.2897102897102897,
+    "n_pairs": 260,
+    "n_clusters": 75,
+    "n_boot_valid": 1000,
+    "b_eval": 1000
+  },
+  "accepted_ci_lower_gt_0": false
+}

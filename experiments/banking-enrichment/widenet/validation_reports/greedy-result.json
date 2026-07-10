@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "config_signature": "d983c2cdc200307c09e6d1999a4d33478550035f020547edd947e95fed2c3df1",
+  "written_at_utc": "2026-07-10T05:07:51.548563+00:00",
+  "state": {
+    "selected": [
+      "GII"
+    ],
+    "step": 1
+  },
+  "result": {
+    "selected_indicators": [
+      "GII"
+    ],
+    "chosen_window": 10,
+    "final_global_auc": 0.6803687095166916,
+    "history": [
+      {
+        "step": 1,
+        "candidate": "GII",
+        "window": 10,
+        "auc": 0.6803687095166916,
+        "lift_over_previous": 0.1803687095166916,
+        "selected_after": [
+          "GII"
+        ]
+      },
+      {
+        "step": 2,
+        "candidate": "OWID_POP_YOUNG",
+        "window": 7,
+        "auc": 0.6837942202291978,
+        "lift_over_previous": 0.0034255107125061857,
+        "selected_after": [
+          "GII",
+          "OWID_POP_YOUNG"
+        ]
+      }
+    ],
+    "early_abort_floor_unreachable": false
+  }
+}
