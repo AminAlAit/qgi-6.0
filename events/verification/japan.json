@@ -201,31 +201,6 @@
   },
   {
     "year": 1964,
-    "title": "Tokyo Olympics Showcase Japan's Postwar Recovery",
-    "verdict": "FALSE",
-    "reason": "The 1964 Tokyo Olympics (October 10-24) did showcase Japan's postwar recovery and were the first Asian Olympics. However, the title claims '18 gold medals for Japan' but Japan won 16 gold medals (confirmed by the official Olympic medal table). The gold medal count is factually wrong by 2.",
-    "verify_count": 1,
-    "consensus_verdict": "FALSE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "FALSE",
-        "reason": "The 1964 Tokyo Olympics (October 10-24) did showcase Japan's postwar recovery and were the first Asian Olympics. However, the title claims '18 gold medals for Japan' but Japan won 16 gold medals (confirmed by the official Olympic medal table). The gold medal count is factually wrong by 2.",
-        "source": "https://en.wikipedia.org/wiki/1964_Summer_Olympics_medal_table",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/1964_Summer_Olympics_medal_table"
-  },
-  {
-    "year": 1964,
     "title": "Tokaido Shinkansen Bullet Train Opens",
     "verdict": "TRUE",
     "reason": "The Tokaido Shinkansen opened October 1, 1964, connecting Tokyo and Osaka at 210 km/h, reducing travel time to about 4 hours. It was the world's first high-speed rail line. Year, country, and substance confirmed.",
@@ -248,6 +223,31 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/Tokaido_Shinkansen"
+  },
+  {
+    "year": 1964,
+    "title": "Tokyo Olympics Showcase Japan's Postwar Recovery",
+    "verdict": "FALSE",
+    "reason": "The 1964 Tokyo Olympics (October 10-24) did showcase Japan's postwar recovery and were the first Asian Olympics. However, the title claims '18 gold medals for Japan' but Japan won 16 gold medals (confirmed by the official Olympic medal table). The gold medal count is factually wrong by 2.",
+    "verify_count": 1,
+    "consensus_verdict": "FALSE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "FALSE",
+        "reason": "The 1964 Tokyo Olympics (October 10-24) did showcase Japan's postwar recovery and were the first Asian Olympics. However, the title claims '18 gold medals for Japan' but Japan won 16 gold medals (confirmed by the official Olympic medal table). The gold medal count is factually wrong by 2.",
+        "source": "https://en.wikipedia.org/wiki/1964_Summer_Olympics_medal_table",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/1964_Summer_Olympics_medal_table"
   },
   {
     "year": 1968,
@@ -301,31 +301,6 @@
   },
   {
     "year": 1972,
-    "title": "Okinawa Returned to Japanese Sovereignty",
-    "verdict": "TRUE",
-    "reason": "The Ryukyu Islands including Okinawa were formally returned to Japan on May 15, 1972, ending 27 years of US military administration. Negotiated between PM Sato and President Nixon in 1969 and formalized by the 1971 Okinawa Reversion Agreement. Year, country, and substance confirmed.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "The Ryukyu Islands including Okinawa were formally returned to Japan on May 15, 1972, ending 27 years of US military administration. Negotiated between PM Sato and President Nixon in 1969 and formalized by the 1971 Okinawa Reversion Agreement. Year, country, and substance confirmed.",
-        "source": "https://en.wikipedia.org/wiki/1971_Okinawa_Reversion_Agreement",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/1971_Okinawa_Reversion_Agreement"
-  },
-  {
-    "year": 1972,
     "title": "Japan-China Diplomatic Normalization",
     "verdict": "TRUE",
     "reason": "Prime Minister Tanaka Kakuei visited Beijing September 25-30, 1972, signing the Japan-China Joint Communiqué on September 29, normalizing diplomatic relations and ending recognition of the Republic of China on Taiwan. Year, country, and substance confirmed.",
@@ -348,6 +323,31 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/Japan%E2%80%93China_Joint_Communiqu%C3%A9"
+  },
+  {
+    "year": 1972,
+    "title": "Okinawa Returned to Japanese Sovereignty",
+    "verdict": "TRUE",
+    "reason": "The Ryukyu Islands including Okinawa were formally returned to Japan on May 15, 1972, ending 27 years of US military administration. Negotiated between PM Sato and President Nixon in 1969 and formalized by the 1971 Okinawa Reversion Agreement. Year, country, and substance confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "The Ryukyu Islands including Okinawa were formally returned to Japan on May 15, 1972, ending 27 years of US military administration. Negotiated between PM Sato and President Nixon in 1969 and formalized by the 1971 Okinawa Reversion Agreement. Year, country, and substance confirmed.",
+        "source": "https://en.wikipedia.org/wiki/1971_Okinawa_Reversion_Agreement",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/1971_Okinawa_Reversion_Agreement"
   },
   {
     "year": 1973,
@@ -601,6 +601,31 @@
   },
   {
     "year": 1993,
+    "title": "Kono Statement Acknowledges Comfort Women System",
+    "verdict": "TRUE",
+    "reason": "Chief Cabinet Secretary Yohei Kono issued a statement on August 4, 1993 acknowledging the Japanese military's direct involvement in establishing and managing comfort women stations and expressing apology and remorse. Year, country, and substance confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Chief Cabinet Secretary Yohei Kono issued a statement on August 4, 1993 acknowledging the Japanese military's direct involvement in establishing and managing comfort women stations and expressing apology and remorse. Year, country, and substance confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Kono_Statement",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Kono_Statement"
+  },
+  {
+    "year": 1993,
     "title": "LDP's 38-Year Rule Ends: Coalition Government Forms",
     "verdict": "TRUE",
     "reason": "July 18, 1993 elections ended the LDP's 38-year uninterrupted rule amid corruption scandals. A seven-party coalition under Morihiro Hosokawa formed Japan's first non-LDP government since 1955. Hosokawa became PM on August 9, 1993. Year, country, and substance confirmed.",
@@ -626,53 +651,39 @@
   },
   {
     "year": 1993,
-    "title": "Kono Statement Acknowledges Comfort Women System",
+    "title": "Post-Bubble Recession — Japan's GDP Turns Negative",
     "verdict": "TRUE",
-    "reason": "Chief Cabinet Secretary Yohei Kono issued a statement on August 4, 1993 acknowledging the Japanese military's direct involvement in establishing and managing comfort women stations and expressing apology and remorse. Year, country, and substance confirmed.",
-    "verify_count": 1,
+    "reason": "Directly queried the World Bank's own API for indicator NY.GDP.MKTP.KD.ZG (GDP growth, annual %), country JPN, year 1993, and it returned -0.518% — matching the event description's claim of \"roughly -0.5% for 1993\" almost exactly. (Note: several secondary aggregators like countryeconomy.com and general web-search summaries reported a different, positive figure of ~+0.2-0.4% for 1993, likely reflecting an older/different data vintage or a different national-accounts series; but the live, current World Bank API — the specific source the description cites — confirms the negative figure.) The broader narrative is also well corroborated: the late-1980s Japanese asset price bubble (stock/land prices) collapsed starting 1990-91 and fed into falling investment/consumption through 1991-93 (Wikipedia \"Japanese asset price bubble,\" NBER w12142, ADB working paper 521, Federal Reserve IFDP 479 \"Determinants of the 1991-93 Japanese Recession\"); the Japanese government did enact supplementary budgets/stimulus packages in 1992-93 (three packages totaling ~¥29.9 trillion per IMF/PIIE sources) aimed at public investment and demand stimulus that proved insufficient to reverse the slide; and the 1991-93 downturn is consistently described across sources as the opening phase of Japan's \"Lost Decade\" (Wikipedia \"Lost Decades,\" NBER, ADB). All material elements of the event — country, year, direction/magnitude of GDP contraction, causal narrative (bubble collapse), and the 1993 fiscal stimulus response — check out.",
+    "verify_count": 2,
     "consensus_verdict": "TRUE",
-    "consensus_status": "single",
+    "consensus_status": "double_confirmed",
     "needs_tiebreak": false,
-    "source_independence": "n/a",
+    "source_independence": "independent",
     "verifications": [
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "Chief Cabinet Secretary Yohei Kono issued a statement on August 4, 1993 acknowledging the Japanese military's direct involvement in establishing and managing comfort women stations and expressing apology and remorse. Year, country, and substance confirmed.",
-        "source": "https://en.wikipedia.org/wiki/Kono_Statement",
+        "reason": "Independent cross-checks confirm Japan's real GDP growth was negative in 1993, in the range the description gives (\"roughly -0.5%\"). IMF-sourced data via ecodb.net shows Japan's real GDP change for 1993 at -0.46% (vs. +0.90% in 1992 and +0.92% in 1994), and IMF data via indexmundi shows -0.518% for the same year. A Japanese-language search result citing Japan's official national accounts also states real economic growth was -0.5% in FY1993, describing it as the aftermath of the bubble collapse (down sharply from 6.4% in FY1988). Some calendar-year vintages (e.g., countryeconomy.com, one older World Bank-derived snippet) show a small positive figure (~+0.2%) for 1993 instead — a known artifact of Japan's multiple GDP rebasing/revision episodes (68SNA→93SNA transition, chain-linking) that have shifted early-1990s figures over time — but the more recent/converging IMF-based series and Japan's own government figures corroborate the negative growth the event describes. The supplementary-budget/stimulus detail is also independently confirmed: Japan announced stimulus packages in 1992 (10.7tn and 13.2tn yen) and another in 1993, with public investment rising ~15% from 1992 to 1993 while GDP grew only ~1% nominally, illustrating the \"insufficient to halt the slide\" framing. The 1991-93 recession as the first leg of Japan's \"Lost Decade\" is well established in the literature (e.g., Federal Reserve working paper \"Determinants of the 1991-93 Japanese Recession\"; IMF's \"Japan's Lost Decade\" literature). All material details (country=Japan, year=1993, negative GDP growth of roughly -0.5%, supplementary budget response, insufficient stimulus, start of Lost Decade) check out.",
+        "source": "https://ecodb.net/country/JP/imf_growth.html",
         "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
+          "model": "claude-sonnet-5",
+          "date": "2026-07-10",
           "method": "web_search"
         }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/Kono_Statement"
-  },
-  {
-    "year": 1995,
-    "title": "Great Hanshin Earthquake Devastates Kobe",
-    "verdict": "TRUE",
-    "reason": "A magnitude 6.9 earthquake struck the Kobe region on January 17, 1995, killing approximately 6,434 people and destroying over 100,000 buildings. The description's death toll of 6,434 matches confirmed records. Year, country, and substance confirmed.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
+      },
       {
-        "pass_n": 1,
+        "pass_n": 2,
         "verdict": "TRUE",
-        "reason": "A magnitude 6.9 earthquake struck the Kobe region on January 17, 1995, killing approximately 6,434 people and destroying over 100,000 buildings. The description's death toll of 6,434 matches confirmed records. Year, country, and substance confirmed.",
-        "source": "https://en.wikipedia.org/wiki/Kobe_earthquake",
+        "reason": "Directly queried the World Bank's own API for indicator NY.GDP.MKTP.KD.ZG (GDP growth, annual %), country JPN, year 1993, and it returned -0.518% — matching the event description's claim of \"roughly -0.5% for 1993\" almost exactly. (Note: several secondary aggregators like countryeconomy.com and general web-search summaries reported a different, positive figure of ~+0.2-0.4% for 1993, likely reflecting an older/different data vintage or a different national-accounts series; but the live, current World Bank API — the specific source the description cites — confirms the negative figure.) The broader narrative is also well corroborated: the late-1980s Japanese asset price bubble (stock/land prices) collapsed starting 1990-91 and fed into falling investment/consumption through 1991-93 (Wikipedia \"Japanese asset price bubble,\" NBER w12142, ADB working paper 521, Federal Reserve IFDP 479 \"Determinants of the 1991-93 Japanese Recession\"); the Japanese government did enact supplementary budgets/stimulus packages in 1992-93 (three packages totaling ~¥29.9 trillion per IMF/PIIE sources) aimed at public investment and demand stimulus that proved insufficient to reverse the slide; and the 1991-93 downturn is consistently described across sources as the opening phase of Japan's \"Lost Decade\" (Wikipedia \"Lost Decades,\" NBER, ADB). All material elements of the event — country, year, direction/magnitude of GDP contraction, causal narrative (bubble collapse), and the 1993 fiscal stimulus response — check out.",
+        "source": "https://data.worldbank.org/indicator/NY.GDP.MKTP.KD.ZG?locations=JP (live API query: https://api.worldbank.org/v2/country/JPN/indicator/NY.GDP.MKTP.KD.ZG?date=1993:1993&format=json returns value=-0.517919847117952 for Japan, 1993)",
         "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
+          "model": "claude-sonnet-5",
+          "date": "2026-07-10",
           "method": "web_search"
         }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/Kobe_earthquake"
+    "source": "https://data.worldbank.org/indicator/NY.GDP.MKTP.KD.ZG?locations=JP (live API query: https://api.worldbank.org/v2/country/JPN/indicator/NY.GDP.MKTP.KD.ZG?date=1993:1993&format=json returns value=-0.517919847117952 for Japan, 1993)"
   },
   {
     "year": 1995,
@@ -698,6 +709,31 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/Tokyo_subway_sarin_attack"
+  },
+  {
+    "year": 1995,
+    "title": "Great Hanshin Earthquake Devastates Kobe",
+    "verdict": "TRUE",
+    "reason": "A magnitude 6.9 earthquake struck the Kobe region on January 17, 1995, killing approximately 6,434 people and destroying over 100,000 buildings. The description's death toll of 6,434 matches confirmed records. Year, country, and substance confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "A magnitude 6.9 earthquake struck the Kobe region on January 17, 1995, killing approximately 6,434 people and destroying over 100,000 buildings. The description's death toll of 6,434 matches confirmed records. Year, country, and substance confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Kobe_earthquake",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Kobe_earthquake"
   },
   {
     "year": 1995,
@@ -748,6 +784,42 @@
       }
     ],
     "source": "https://www.nippon.com/en/currents/d00360/"
+  },
+  {
+    "year": 1998,
+    "title": "Banking Crisis and Recession Amid Asian Financial Crisis",
+    "verdict": "TRUE",
+    "reason": "Confirmed from multiple independent sources. Japan's real GDP growth slowed sharply from roughly 4-5% in 1996 (IMF WEO Oct 1998 puts it near 4%; other vintages cite 5.0%) to 1.4-1.6% in 1997, then the economy fell into recession in 1998 with quarterly contractions (IMF WEO Oct 1998: -5.25% and -3.25% annualized in Q1/Q2 1998) and full-year contraction estimates ranging -1.3% to -2.6% across different data vintages (Japan's GDP series has been revised multiple times due to base-year changes, explaining the spread; all vintages agree on a material 1998 contraction). The April 1997 consumption-tax hike from 3% to 5% is well documented as a contributing drag (Richmond Fed, RIETI). A banking crisis accompanied the downturn: in November 1997, the failures of Sanyo Securities, Hokkaido Takushoku Bank, Yamaichi Securities and Tokuyo City Bank triggered a run on banks (Nov 26, 1997) that authorities moved to contain (Nippon.com \"Lessons of the 1997 Financial Crisis in Japan\"; IMF WEO Oct 1998 explicitly cites these same failures causing deposit withdrawals/liquidity injections). In 1998 the government bailed out major lenders amid a credit crunch: the Financial Reconstruction Law enabled temporary nationalization of Long-Term Credit Bank (Oct 1998) and Nippon Credit Bank (Dec 1998) (Yale/EliScholar Journal of Financial Crises case studies). The 1997-98 Asian financial crisis is consistently cited as compounding the downturn via reduced regional demand and squeezed exporters facing devalued regional currencies (Federal Reserve History \"Asian Financial Crisis\" essay; ADB working papers). All core elements of the description (year, country, recession, banking crisis, near bank-run, 1998 bailouts, tax-hike + Asian-crisis compounding) are corroborated; only the precise GDP percentage points vary by data vintage, which does not change the material accuracy of the event.",
+    "verify_count": 2,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "double_confirmed",
+    "needs_tiebreak": false,
+    "source_independence": "independent",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Multiple independent sources confirm the core narrative. (1) Recession/contraction in 1998: World Bank data (via API) shows Japan real GDP growth of 3.08% (1996), 1.36% (1997), -1.77% (1998) — directionally matching the description's \"5%→1.6%→contraction of roughly 1.3%\" (the 1996 figure of ~5% matches the contemporaneous, pre-revision figure reported in the US State Department's 1998 report, a known artifact of Japan's repeated GDP base-year/chain-linking revisions; 1997 and 1998 figures are close matches, \"roughly\" as the description hedges). (2) The April 1997 consumption-tax hike from 3% to 5% is well documented and widely cited as a contributing drag on consumption. (3) The 1997-98 Asian financial crisis and competitive devaluation pressure on Japanese exporters is standard, well-established economic history from this period. (4) The banking crisis is independently confirmed in detail: a wave of financial-institution failures in November 1997 (Sanyo Securities, Hokkaido Takushoku Bank, Yamaichi Securities, Tokuyo City Bank), and specifically a bank run narrowly averted on 26 November 1997 when TV networks declined to broadcast footage of queues forming outside banks before the Bank of Japan/Ministry of Finance intervened. (5) 1998 government bailouts of major lenders are confirmed: an initial ¥1.8 trillion public capital injection into 21 major banks in March 1998, and the government's nationalization/takeover of the Long-Term Credit Bank (LTCB) and Nippon Credit Bank (NCB) later in 1998. All core elements (country, year, recession, banking crisis, near bank-run, bailouts, Asian financial crisis linkage, tax-hike timing) check out as materially accurate across several independent, credible sources (Nippon.com, U.S. State Department contemporaneous report, academic papers on the Japanese banking crisis, World Bank GDP data). The precise GDP percentages vary somewhat by data vintage (a documented characteristic of pre-2000 Japanese national accounts due to multiple base-year rebasings), but fall within the range reported by legitimate sources and do not change the material facts of the event.",
+        "source": "https://www.nippon.com/en/currents/d00360/",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-10",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Confirmed from multiple independent sources. Japan's real GDP growth slowed sharply from roughly 4-5% in 1996 (IMF WEO Oct 1998 puts it near 4%; other vintages cite 5.0%) to 1.4-1.6% in 1997, then the economy fell into recession in 1998 with quarterly contractions (IMF WEO Oct 1998: -5.25% and -3.25% annualized in Q1/Q2 1998) and full-year contraction estimates ranging -1.3% to -2.6% across different data vintages (Japan's GDP series has been revised multiple times due to base-year changes, explaining the spread; all vintages agree on a material 1998 contraction). The April 1997 consumption-tax hike from 3% to 5% is well documented as a contributing drag (Richmond Fed, RIETI). A banking crisis accompanied the downturn: in November 1997, the failures of Sanyo Securities, Hokkaido Takushoku Bank, Yamaichi Securities and Tokuyo City Bank triggered a run on banks (Nov 26, 1997) that authorities moved to contain (Nippon.com \"Lessons of the 1997 Financial Crisis in Japan\"; IMF WEO Oct 1998 explicitly cites these same failures causing deposit withdrawals/liquidity injections). In 1998 the government bailed out major lenders amid a credit crunch: the Financial Reconstruction Law enabled temporary nationalization of Long-Term Credit Bank (Oct 1998) and Nippon Credit Bank (Dec 1998) (Yale/EliScholar Journal of Financial Crises case studies). The 1997-98 Asian financial crisis is consistently cited as compounding the downturn via reduced regional demand and squeezed exporters facing devalued regional currencies (Federal Reserve History \"Asian Financial Crisis\" essay; ADB working papers). All core elements of the description (year, country, recession, banking crisis, near bank-run, 1998 bailouts, tax-hike + Asian-crisis compounding) are corroborated; only the precise GDP percentage points vary by data vintage, which does not change the material accuracy of the event.",
+        "source": "https://www.elibrary.imf.org/display/book/9781557757739/ch004.xml",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-10",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://www.elibrary.imf.org/display/book/9781557757739/ch004.xml"
   },
   {
     "year": 1999,
@@ -900,6 +972,42 @@
     "source": "https://www.imf.org/external/pubs/ft/spn/2009/spn0905.pdf"
   },
   {
+    "year": 2008,
+    "title": "Global Financial Crisis Triggers Japan's Sharpest Contraction in Decades",
+    "verdict": "TRUE",
+    "reason": "Confirmed via multiple independent sources. Japan's GDP contracted at an annualized 12.7% in Q4 2008 (initial estimate; later revised to 12.1%) — directly confirmed by Econbrowser (fetched full text: \"Japan reported a 12.7% annualized GDP contraction for Q4 2008... the biggest drop since 1974\"), and corroborated by additional search hits (CNN, Washington Post). Q1 2009 annualized contraction of 15.2%, a postwar record, is confirmed via search results referencing the Japan Times editorial (\"declined 4 percent from the previous quarter for an annualized contraction of 15.2 percent, a postwar record\"). The export-driven, non-financial nature of the slump is corroborated by an FRBSF conference paper/CEPR analysis found via search: Japan's Q4 2008 contraction (12.1%) was nearly double the US's (6.3%), with the drop in net exports alone accounting for 11.8 of the 12.1 percentage points — i.e., the decline was almost entirely an external-demand shock, not a domestic financial one. The same sources confirm Japanese banks had limited direct exposure to US toxic mortgage assets (\"limited exposure to toxic assets... hardly affected directly, small estimated value of write-downs\"). Yen appreciation is also corroborated (yen rose from 106% to 136% of its 2007 average between September 2008 and January 2009). All material details in the description (magnitudes, causal mechanism, timing, and country) check out against independent, non-overlapping sources.",
+    "verify_count": 2,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "double_confirmed",
+    "needs_tiebreak": false,
+    "source_independence": "independent",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Independent sources confirm every material element: Japan's GDP contracted at a 12.7% annualized rate in Q4 2008 (Washington Post, citing government data, \"steepest since 1974 oil shock\") and 15.2% annualized in Q1 2009 (Japan Times, \"postwar record\"). CEPR/VoxEU and IMF analyses corroborate that the contraction was driven almost entirely by a collapse in external demand/net exports rather than domestic financial-sector exposure, since Japanese banks held relatively little of the toxic US mortgage securities. Yen appreciation over 2007-2009 further squeezed exporters, consistent with sharp (~40-45% y/y) declines in Japanese exports reported during the period. All figures, causal mechanism, and timing match the candidate description exactly.",
+        "source": "https://www.washingtonpost.com/wp-dyn/content/article/2009/02/15/AR2009021501961.html",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-10",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Confirmed via multiple independent sources. Japan's GDP contracted at an annualized 12.7% in Q4 2008 (initial estimate; later revised to 12.1%) — directly confirmed by Econbrowser (fetched full text: \"Japan reported a 12.7% annualized GDP contraction for Q4 2008... the biggest drop since 1974\"), and corroborated by additional search hits (CNN, Washington Post). Q1 2009 annualized contraction of 15.2%, a postwar record, is confirmed via search results referencing the Japan Times editorial (\"declined 4 percent from the previous quarter for an annualized contraction of 15.2 percent, a postwar record\"). The export-driven, non-financial nature of the slump is corroborated by an FRBSF conference paper/CEPR analysis found via search: Japan's Q4 2008 contraction (12.1%) was nearly double the US's (6.3%), with the drop in net exports alone accounting for 11.8 of the 12.1 percentage points — i.e., the decline was almost entirely an external-demand shock, not a domestic financial one. The same sources confirm Japanese banks had limited direct exposure to US toxic mortgage assets (\"limited exposure to toxic assets... hardly affected directly, small estimated value of write-downs\"). Yen appreciation is also corroborated (yen rose from 106% to 136% of its 2007 average between September 2008 and January 2009). All material details in the description (magnitudes, causal mechanism, timing, and country) check out against independent, non-overlapping sources.",
+        "source": "https://econbrowser.com/archives/2009/02/japanese_gdp_co",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-10",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://econbrowser.com/archives/2009/02/japanese_gdp_co"
+  },
+  {
     "year": 2009,
     "title": "Democratic Party of Japan Ends LDP Dominance",
     "verdict": "TRUE",
@@ -951,31 +1059,6 @@
   },
   {
     "year": 2011,
-    "title": "Great East Japan Earthquake, Tsunami, and Fukushima Disaster",
-    "verdict": "TRUE",
-    "reason": "A magnitude 9.0 earthquake struck northeast Japan on March 11, 2011, triggering a massive tsunami that killed approximately 18,500 people and causing three reactor meltdowns at Fukushima Daiichi — the worst nuclear accident since Chernobyl. Year, country, and substance confirmed.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "A magnitude 9.0 earthquake struck northeast Japan on March 11, 2011, triggering a massive tsunami that killed approximately 18,500 people and causing three reactor meltdowns at Fukushima Daiichi — the worst nuclear accident since Chernobyl. Year, country, and substance confirmed.",
-        "source": "https://en.wikipedia.org/wiki/2011_T%C5%8Dhoku_earthquake_and_tsunami",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/2011_T%C5%8Dhoku_earthquake_and_tsunami"
-  },
-  {
-    "year": 2011,
     "title": "Fukushima Nuclear Crisis Disrupts Japan's Energy Policy",
     "verdict": "TRUE",
     "reason": "Following the March 2011 Fukushima accident, Japan progressively shut down all 50 nuclear reactors by May 2012, eliminating roughly 30% of electricity generation capacity. The Nuclear Regulation Authority was created and LNG imports surged. Year, country, and substance confirmed.",
@@ -1000,10 +1083,10 @@
     "source": "https://en.wikipedia.org/wiki/Fukushima_nuclear_accident"
   },
   {
-    "year": 2012,
-    "title": "Senkaku Islands Dispute with China Escalates",
+    "year": 2011,
+    "title": "Great East Japan Earthquake, Tsunami, and Fukushima Disaster",
     "verdict": "TRUE",
-    "reason": "Japan's national government purchased three Senkaku/Diaoyu islands from their private owner on September 11, 2012, triggering large anti-Japanese protests across China and escalating coast guard patrols around the disputed islands. Year, country, and substance confirmed.",
+    "reason": "A magnitude 9.0 earthquake struck northeast Japan on March 11, 2011, triggering a massive tsunami that killed approximately 18,500 people and causing three reactor meltdowns at Fukushima Daiichi — the worst nuclear accident since Chernobyl. Year, country, and substance confirmed.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -1013,8 +1096,8 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "Japan's national government purchased three Senkaku/Diaoyu islands from their private owner on September 11, 2012, triggering large anti-Japanese protests across China and escalating coast guard patrols around the disputed islands. Year, country, and substance confirmed.",
-        "source": "https://en.wikipedia.org/wiki/Senkaku_Islands_dispute",
+        "reason": "A magnitude 9.0 earthquake struck northeast Japan on March 11, 2011, triggering a massive tsunami that killed approximately 18,500 people and causing three reactor meltdowns at Fukushima Daiichi — the worst nuclear accident since Chernobyl. Year, country, and substance confirmed.",
+        "source": "https://en.wikipedia.org/wiki/2011_T%C5%8Dhoku_earthquake_and_tsunami",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
           "date": null,
@@ -1022,7 +1105,7 @@
         }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/Senkaku_Islands_dispute"
+    "source": "https://en.wikipedia.org/wiki/2011_T%C5%8Dhoku_earthquake_and_tsunami"
   },
   {
     "year": 2012,
@@ -1048,6 +1131,31 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/Abenomics"
+  },
+  {
+    "year": 2012,
+    "title": "Senkaku Islands Dispute with China Escalates",
+    "verdict": "TRUE",
+    "reason": "Japan's national government purchased three Senkaku/Diaoyu islands from their private owner on September 11, 2012, triggering large anti-Japanese protests across China and escalating coast guard patrols around the disputed islands. Year, country, and substance confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Japan's national government purchased three Senkaku/Diaoyu islands from their private owner on September 11, 2012, triggering large anti-Japanese protests across China and escalating coast guard patrols around the disputed islands. Year, country, and substance confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Senkaku_Islands_dispute",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Senkaku_Islands_dispute"
   },
   {
     "year": 2013,
@@ -1351,31 +1459,6 @@
   },
   {
     "year": 2024,
-    "title": "Noto Peninsula Earthquake Opens New Year with Tragedy",
-    "verdict": "TRUE",
-    "reason": "A magnitude 7.5 earthquake struck Japan's Noto Peninsula on January 1, 2024, causing 228 direct deaths (and 703 total deaths including disaster-related). The description states 'more than 240 people' which is within range of early estimates of direct fatalities. Year, country, and substance confirmed.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "A magnitude 7.5 earthquake struck Japan's Noto Peninsula on January 1, 2024, causing 228 direct deaths (and 703 total deaths including disaster-related). The description states 'more than 240 people' which is within range of early estimates of direct fatalities. Year, country, and substance confirmed.",
-        "source": "https://en.wikipedia.org/wiki/2024_Noto_earthquake",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/2024_Noto_earthquake"
-  },
-  {
-    "year": 2024,
     "title": "Bank of Japan Raises Interest Rates, Ending Ultra-Loose Era",
     "verdict": "TRUE",
     "reason": "The Bank of Japan raised its benchmark rate in March 2024 for the first time in 17 years, ending the negative interest rate policy. A second hike in July 2024 to 0.25% triggered unwinding of the yen carry trade and global market turbulence. Year, country, and substance confirmed.",
@@ -1400,10 +1483,10 @@
     "source": "https://www.cnbc.com/2024/03/19/bank-of-japan-boj-march-2024-policy-decision-mpm-meeting.html"
   },
   {
-    "year": 2025,
-    "title": "Japan's Defense Transformation Accelerates with Record Budgets",
+    "year": 2024,
+    "title": "Noto Peninsula Earthquake Opens New Year with Tragedy",
     "verdict": "TRUE",
-    "reason": "Japan's FY2025 defense budget was approved at 8.7 trillion yen ($55.1 billion), the first time the budget exceeded 8 trillion yen and a record high. Tomahawk cruise missile acquisitions from the US are confirmed. This is part of the 5-year $273 billion defense buildup program. Year, country, and substance confirmed.",
+    "reason": "A magnitude 7.5 earthquake struck Japan's Noto Peninsula on January 1, 2024, causing 228 direct deaths (and 703 total deaths including disaster-related). The description states 'more than 240 people' which is within range of early estimates of direct fatalities. Year, country, and substance confirmed.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -1413,8 +1496,8 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "Japan's FY2025 defense budget was approved at 8.7 trillion yen ($55.1 billion), the first time the budget exceeded 8 trillion yen and a record high. Tomahawk cruise missile acquisitions from the US are confirmed. This is part of the 5-year $273 billion defense buildup program. Year, country, and substance confirmed.",
-        "source": "https://thediplomat.com/2024/12/japan-approves-9-4-percent-increase-in-defense-spending-for-fy2025/",
+        "reason": "A magnitude 7.5 earthquake struck Japan's Noto Peninsula on January 1, 2024, causing 228 direct deaths (and 703 total deaths including disaster-related). The description states 'more than 240 people' which is within range of early estimates of direct fatalities. Year, country, and substance confirmed.",
+        "source": "https://en.wikipedia.org/wiki/2024_Noto_earthquake",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
           "date": null,
@@ -1422,7 +1505,7 @@
         }
       }
     ],
-    "source": "https://thediplomat.com/2024/12/japan-approves-9-4-percent-increase-in-defense-spending-for-fy2025/"
+    "source": "https://en.wikipedia.org/wiki/2024_Noto_earthquake"
   },
   {
     "year": 2025,
@@ -1448,5 +1531,30 @@
       }
     ],
     "source": "https://www.worldometers.info/world-population/japan-population/"
+  },
+  {
+    "year": 2025,
+    "title": "Japan's Defense Transformation Accelerates with Record Budgets",
+    "verdict": "TRUE",
+    "reason": "Japan's FY2025 defense budget was approved at 8.7 trillion yen ($55.1 billion), the first time the budget exceeded 8 trillion yen and a record high. Tomahawk cruise missile acquisitions from the US are confirmed. This is part of the 5-year $273 billion defense buildup program. Year, country, and substance confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Japan's FY2025 defense budget was approved at 8.7 trillion yen ($55.1 billion), the first time the budget exceeded 8 trillion yen and a record high. Tomahawk cruise missile acquisitions from the US are confirmed. This is part of the 5-year $273 billion defense buildup program. Year, country, and substance confirmed.",
+        "source": "https://thediplomat.com/2024/12/japan-approves-9-4-percent-increase-in-defense-spending-for-fy2025/",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://thediplomat.com/2024/12/japan-approves-9-4-percent-increase-in-defense-spending-for-fy2025/"
   }
 ]

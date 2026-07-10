@@ -1,9 +1,9 @@
 [
   {
     "year": 1950,
-    "title": "Korean War Begins â€” North Korean Invasion",
+    "title": "Chinese Military Intervention Transforms Korean War",
     "verdict": "TRUE",
-    "reason": "North Korea crossed the 38th parallel on June 25, 1950; Seoul fell within days; UN Security Council authorized intervention under US command — all confirmed.",
+    "reason": "PVA crossed into Korea on October 19, 1950 with ~250,000 troops, drove UN forces south, and recaptured Seoul — confirmed.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -13,8 +13,8 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "North Korea crossed the 38th parallel on June 25, 1950; Seoul fell within days; UN Security Council authorized intervention under US command — all confirmed.",
-        "source": "https://en.wikipedia.org/wiki/Korean_War",
+        "reason": "PVA crossed into Korea on October 19, 1950 with ~250,000 troops, drove UN forces south, and recaptured Seoul — confirmed.",
+        "source": "https://en.wikipedia.org/wiki/China_in_the_Korean_War",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
           "date": null,
@@ -22,7 +22,7 @@
         }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/Korean_War"
+    "source": "https://en.wikipedia.org/wiki/China_in_the_Korean_War"
   },
   {
     "year": 1950,
@@ -51,9 +51,9 @@
   },
   {
     "year": 1950,
-    "title": "Chinese Military Intervention Transforms Korean War",
+    "title": "Korean War Begins â€” North Korean Invasion",
     "verdict": "TRUE",
-    "reason": "PVA crossed into Korea on October 19, 1950 with ~250,000 troops, drove UN forces south, and recaptured Seoul — confirmed.",
+    "reason": "North Korea crossed the 38th parallel on June 25, 1950; Seoul fell within days; UN Security Council authorized intervention under US command — all confirmed.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -63,8 +63,8 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "PVA crossed into Korea on October 19, 1950 with ~250,000 troops, drove UN forces south, and recaptured Seoul — confirmed.",
-        "source": "https://en.wikipedia.org/wiki/China_in_the_Korean_War",
+        "reason": "North Korea crossed the 38th parallel on June 25, 1950; Seoul fell within days; UN Security Council authorized intervention under US command — all confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Korean_War",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
           "date": null,
@@ -72,7 +72,7 @@
         }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/China_in_the_Korean_War"
+    "source": "https://en.wikipedia.org/wiki/Korean_War"
   },
   {
     "year": 1952,
@@ -351,31 +351,6 @@
   },
   {
     "year": 1972,
-    "title": "Yushin Constitution Establishes Authoritarian System",
-    "verdict": "TRUE",
-    "reason": "Park declared martial law October 17, 1972 and imposed the Yushin Constitution, abolishing direct presidential elections and granting near-unlimited presidential powers — confirmed.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Park declared martial law October 17, 1972 and imposed the Yushin Constitution, abolishing direct presidential elections and granting near-unlimited presidential powers — confirmed.",
-        "source": "https://en.wikipedia.org/wiki/October_Restoration",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/October_Restoration"
-  },
-  {
-    "year": 1972,
     "title": "Heavy and Chemical Industry Drive",
     "verdict": "TRUE",
     "reason": "HCI Drive announced in 1972, directing state investment into steel, petrochemicals, shipbuilding, electronics, and machinery — confirmed.",
@@ -398,6 +373,31 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/Heavy_and_Chemical_Industry_Drive"
+  },
+  {
+    "year": 1972,
+    "title": "Yushin Constitution Establishes Authoritarian System",
+    "verdict": "TRUE",
+    "reason": "Park declared martial law October 17, 1972 and imposed the Yushin Constitution, abolishing direct presidential elections and granting near-unlimited presidential powers — confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Park declared martial law October 17, 1972 and imposed the Yushin Constitution, abolishing direct presidential elections and granting near-unlimited presidential powers — confirmed.",
+        "source": "https://en.wikipedia.org/wiki/October_Restoration",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/October_Restoration"
   },
   {
     "year": 1973,
@@ -501,31 +501,6 @@
   },
   {
     "year": 1979,
-    "title": "Park Chung-hee Assassinated by KCIA Director",
-    "verdict": "TRUE",
-    "reason": "KCIA Director Kim Jae-gyu shot Park at a private dinner on October 26, 1979 — confirmed.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "KCIA Director Kim Jae-gyu shot Park at a private dinner on October 26, 1979 — confirmed.",
-        "source": "https://en.wikipedia.org/wiki/Assassination_of_Park_Chung_Hee",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/Assassination_of_Park_Chung_Hee"
-  },
-  {
-    "year": 1979,
     "title": "Chun Doo-hwan Seizes Military Control â€” December Coup",
     "verdict": "TRUE",
     "reason": "Chun's Hanahoe faction seized control of the military on December 12, 1979 by arresting the army chief of staff — confirmed.",
@@ -550,10 +525,10 @@
     "source": "https://en.wikipedia.org/wiki/1979_South_Korean_coup_d%27%C3%A9tat"
   },
   {
-    "year": 1980,
-    "title": "Gwangju Uprising and Massacre",
+    "year": 1979,
+    "title": "Park Chung-hee Assassinated by KCIA Director",
     "verdict": "TRUE",
-    "reason": "May 1980 uprising suppressed by paratroopers; death toll estimates range widely; the event is confirmed, though the '200 or more civilians' figure is conservative relative to some estimates.",
+    "reason": "KCIA Director Kim Jae-gyu shot Park at a private dinner on October 26, 1979 — confirmed.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -563,8 +538,8 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "May 1980 uprising suppressed by paratroopers; death toll estimates range widely; the event is confirmed, though the '200 or more civilians' figure is conservative relative to some estimates.",
-        "source": "https://en.wikipedia.org/wiki/Gwangju_Uprising",
+        "reason": "KCIA Director Kim Jae-gyu shot Park at a private dinner on October 26, 1979 — confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Assassination_of_Park_Chung_Hee",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
           "date": null,
@@ -572,7 +547,7 @@
         }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/Gwangju_Uprising"
+    "source": "https://en.wikipedia.org/wiki/Assassination_of_Park_Chung_Hee"
   },
   {
     "year": 1980,
@@ -598,6 +573,31 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/Fifth_Republic_of_Korea"
+  },
+  {
+    "year": 1980,
+    "title": "Gwangju Uprising and Massacre",
+    "verdict": "TRUE",
+    "reason": "May 1980 uprising suppressed by paratroopers; death toll estimates range widely; the event is confirmed, though the '200 or more civilians' figure is conservative relative to some estimates.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "May 1980 uprising suppressed by paratroopers; death toll estimates range widely; the event is confirmed, though the '200 or more civilians' figure is conservative relative to some estimates.",
+        "source": "https://en.wikipedia.org/wiki/Gwangju_Uprising",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Gwangju_Uprising"
   },
   {
     "year": 1981,
@@ -651,31 +651,6 @@
   },
   {
     "year": 1985,
-    "title": "Opposition NKDP Formed â€” Signature Campaign for Direct Elections",
-    "verdict": "TRUE",
-    "reason": "NKDP founded January 18, 1985; won 29.3% in February elections; Kim Young-sam and Kim Dae-jung supported the party and led the direct-elections petition — confirmed.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "NKDP founded January 18, 1985; won 29.3% in February elections; Kim Young-sam and Kim Dae-jung supported the party and led the direct-elections petition — confirmed.",
-        "source": "https://en.wikipedia.org/wiki/New_Korean_Democratic_Party",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/New_Korean_Democratic_Party"
-  },
-  {
-    "year": 1985,
     "title": "Hyundai Excel Achieves Record US First-Year Import Sales",
     "verdict": "FALSE",
     "reason": "The Excel began US sales in February 1986, not 1985; the 168,882 first-year record was for calendar year 1986. Year is off by one year.",
@@ -700,10 +675,10 @@
     "source": "https://en.wikipedia.org/wiki/Hyundai_Excel"
   },
   {
-    "year": 1987,
-    "title": "June Democracy Movement Restores Direct Presidential Elections",
+    "year": 1985,
+    "title": "Opposition NKDP Formed â€” Signature Campaign for Direct Elections",
     "verdict": "TRUE",
-    "reason": "Nationwide protests June 10–29, 1987; Lee Han-yeol struck by tear gas canister June 9; Roh's June 29 Declaration accepted direct elections — confirmed.",
+    "reason": "NKDP founded January 18, 1985; won 29.3% in February elections; Kim Young-sam and Kim Dae-jung supported the party and led the direct-elections petition — confirmed.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -713,8 +688,8 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "Nationwide protests June 10–29, 1987; Lee Han-yeol struck by tear gas canister June 9; Roh's June 29 Declaration accepted direct elections — confirmed.",
-        "source": "https://en.wikipedia.org/wiki/June_Democratic_Struggle",
+        "reason": "NKDP founded January 18, 1985; won 29.3% in February elections; Kim Young-sam and Kim Dae-jung supported the party and led the direct-elections petition — confirmed.",
+        "source": "https://en.wikipedia.org/wiki/New_Korean_Democratic_Party",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
           "date": null,
@@ -722,7 +697,7 @@
         }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/June_Democratic_Struggle"
+    "source": "https://en.wikipedia.org/wiki/New_Korean_Democratic_Party"
   },
   {
     "year": 1987,
@@ -775,10 +750,10 @@
     "source": "https://libcom.org/article/1987-great-workers-struggle-south-korea"
   },
   {
-    "year": 1988,
-    "title": "Seoul Summer Olympics â€” South Korea on the World Stage",
+    "year": 1987,
+    "title": "June Democracy Movement Restores Direct Presidential Elections",
     "verdict": "TRUE",
-    "reason": "159 nations attended; both US and Soviet Union participated, ending the mutual boycotts of 1980 and 1984 — confirmed.",
+    "reason": "Nationwide protests June 10–29, 1987; Lee Han-yeol struck by tear gas canister June 9; Roh's June 29 Declaration accepted direct elections — confirmed.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -788,8 +763,8 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "159 nations attended; both US and Soviet Union participated, ending the mutual boycotts of 1980 and 1984 — confirmed.",
-        "source": "https://en.wikipedia.org/wiki/1988_Summer_Olympics",
+        "reason": "Nationwide protests June 10–29, 1987; Lee Han-yeol struck by tear gas canister June 9; Roh's June 29 Declaration accepted direct elections — confirmed.",
+        "source": "https://en.wikipedia.org/wiki/June_Democratic_Struggle",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
           "date": null,
@@ -797,7 +772,7 @@
         }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/1988_Summer_Olympics"
+    "source": "https://en.wikipedia.org/wiki/June_Democratic_Struggle"
   },
   {
     "year": 1988,
@@ -823,6 +798,31 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/1987_South_Korean_presidential_election"
+  },
+  {
+    "year": 1988,
+    "title": "Seoul Summer Olympics â€” South Korea on the World Stage",
+    "verdict": "TRUE",
+    "reason": "159 nations attended; both US and Soviet Union participated, ending the mutual boycotts of 1980 and 1984 — confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "159 nations attended; both US and Soviet Union participated, ending the mutual boycotts of 1980 and 1984 — confirmed.",
+        "source": "https://en.wikipedia.org/wiki/1988_Summer_Olympics",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/1988_Summer_Olympics"
   },
   {
     "year": 1990,
@@ -1200,29 +1200,40 @@
     "source": "https://en.wikipedia.org/wiki/2007%E2%80%932008_financial_crisis"
   },
   {
-    "year": 2010,
-    "title": "North Korea Sinks Cheonan Naval Vessel â€” 46 Killed",
-    "verdict": "TRUE",
-    "reason": "Corvette sank March 26, 2010, killing 46 of 104 sailors; international investigation attributed it to a North Korean torpedo — confirmed.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
+    "year": 2008,
+    "title": "Global Financial Crisis Pushes South Korea Into Technical Recession",
+    "verdict": "PARTIAL",
+    "reason": "Core narrative confirms: South Korea's GDP fell sharply in Q4 2008 (initial estimate -5.1% q/q, later revised to -3.4% q/q per Wikipedia/Economy of South Korea), described as the first negative quarterly growth in ten years, driven by collapsing exports and capital flight after the Lehman collapse. The capital account recorded a $42.6bn deficit in Q4 2008, equal to 20% of GDP (Global Asia journal, Prof. Shalendra Sharma), and the won depreciated sharply (fell to ~1,485/USD, down ~34-40% from earlier levels). The Bank of Korea concluded a $30 billion currency swap with the US Federal Reserve on Oct 30, 2008 (confirmed independently by Korea Times, Bloomberg, and Forbes). 2009 full-year growth of 0.2% is also confirmed (Wikipedia/Economy of South Korea). However, the claimed full-year 2008 GDP growth of \"3.0 percent\" is materially off: multiple independent sources (Wikipedia/OECD-derived figure of 2.3%, CIA World Factbook archive ~2.2%) put actual 2008 annual growth at roughly 2.2-2.3%, not 3.0% -- about a 30% relative overstatement on that one contextual figure. Year and country hold and the central \"technical recession\" claim is well-supported, but this magnitude error on the full-year 2008 growth rate is material enough to warrant PARTIAL rather than TRUE.",
+    "verify_count": 2,
+    "consensus_verdict": "PARTIAL",
+    "consensus_status": "downgraded",
     "needs_tiebreak": false,
-    "source_independence": "n/a",
+    "source_independence": "weak",
     "verifications": [
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "Corvette sank March 26, 2010, killing 46 of 104 sailors; international investigation attributed it to a North Korean torpedo — confirmed.",
-        "source": "https://en.wikipedia.org/wiki/ROKS_Cheonan_sinking",
+        "reason": "Multiple independent sources confirm the core narrative: Korea's GDP contracted quarter-on-quarter in Q4 2008 (reported variously as -3.4%, -4.5%, -5.1%, or -5.6% depending on source/revision vintage, spanning the description's claimed 3.4-5.1% range), described by Wikipedia/secondary summaries as 'the first negative quarterly growth in 10 years' (verbatim match to the description). A BIS working paper explicitly confirms the decline extended into Q1 2009 (-3.2% QoQ) and calls this a 'technical recession' (two consecutive negative quarters), matching the event title exactly. The Federal Reserve's own press release (federalreserve.gov, primary source) confirms the $30 billion swap line with the Bank of Korea established Oct 29-30, 2008. A GlobalAsia.org retrospective article independently confirms both the $30bn Fed swap and a capital account deficit of $42.6bn in Q4 2008 'equivalent to 20 percent of GDP' -- an exact match to the description's unusual, specific figure. The won's sharp depreciation (~40% vs USD, ~26% trade-weighted) is corroborated by the same source. Full-year 2009 growth of 0.2% is confirmed by essentially every source checked (CIA World Factbook archive, Wikipedia, Korean press retrospectives). Full-year 2008 growth is reported inconsistently across data vintages (2.2-2.3% per CIA World Factbook archive and a Korean news retrospective vs. exactly 3.0% per countryeconomy.com) -- likely reflecting Bank of Korea historical GDP revisions/rebasing done over the years; since at least one legitimate source matches the claimed 3.0% exactly and this is a secondary/contextual stat rather than the event's core claim, I treat it as within normal data-revision variance rather than a disqualifying error. All distinctive, checkable specifics (swap amount and counterparty, capital-account-deficit percentage, 'first negative growth in 10 years' framing, technical-recession framing, 2009 full-year figure) are corroborated by at least one authoritative/primary source, so the event stands as materially accurate for South Korea in 2008.",
+        "source": "https://www.globalasia.org/v8no1/feature/how-south-korea-weathered-the-2008-financial-crisis_shalendra-d-sharma",
         "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
+          "model": "claude-sonnet-5",
+          "date": "2026-07-10",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "PARTIAL",
+        "reason": "Core narrative confirms: South Korea's GDP fell sharply in Q4 2008 (initial estimate -5.1% q/q, later revised to -3.4% q/q per Wikipedia/Economy of South Korea), described as the first negative quarterly growth in ten years, driven by collapsing exports and capital flight after the Lehman collapse. The capital account recorded a $42.6bn deficit in Q4 2008, equal to 20% of GDP (Global Asia journal, Prof. Shalendra Sharma), and the won depreciated sharply (fell to ~1,485/USD, down ~34-40% from earlier levels). The Bank of Korea concluded a $30 billion currency swap with the US Federal Reserve on Oct 30, 2008 (confirmed independently by Korea Times, Bloomberg, and Forbes). 2009 full-year growth of 0.2% is also confirmed (Wikipedia/Economy of South Korea). However, the claimed full-year 2008 GDP growth of \"3.0 percent\" is materially off: multiple independent sources (Wikipedia/OECD-derived figure of 2.3%, CIA World Factbook archive ~2.2%) put actual 2008 annual growth at roughly 2.2-2.3%, not 3.0% -- about a 30% relative overstatement on that one contextual figure. Year and country hold and the central \"technical recession\" claim is well-supported, but this magnitude error on the full-year 2008 growth rate is material enough to warrant PARTIAL rather than TRUE.",
+        "source": "https://www.globalasia.org/v8no1/feature/how-south-korea-weathered-the-2008-financial-crisis_shalendra-d-sharma",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-10",
           "method": "web_search"
         }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/ROKS_Cheonan_sinking"
+    "source": "https://www.globalasia.org/v8no1/feature/how-south-korea-weathered-the-2008-financial-crisis_shalendra-d-sharma"
   },
   {
     "year": 2010,
@@ -1248,6 +1259,31 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/2010_Yeonpyeongdo_bombardment"
+  },
+  {
+    "year": 2010,
+    "title": "North Korea Sinks Cheonan Naval Vessel â€” 46 Killed",
+    "verdict": "TRUE",
+    "reason": "Corvette sank March 26, 2010, killing 46 of 104 sailors; international investigation attributed it to a North Korean torpedo — confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Corvette sank March 26, 2010, killing 46 of 104 sailors; international investigation attributed it to a North Korean torpedo — confirmed.",
+        "source": "https://en.wikipedia.org/wiki/ROKS_Cheonan_sinking",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/ROKS_Cheonan_sinking"
   },
   {
     "year": 2012,
@@ -1401,31 +1437,6 @@
   },
   {
     "year": 2018,
-    "title": "PyeongChang Olympics and Inter-Korean Diplomatic Breakthrough",
-    "verdict": "TRUE",
-    "reason": "North Korea participated; both Koreas marched under unified flag; three inter-Korean summits and Singapore US-DPRK summit in 2018 followed — confirmed.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "North Korea participated; both Koreas marched under unified flag; three inter-Korean summits and Singapore US-DPRK summit in 2018 followed — confirmed.",
-        "source": "https://en.wikipedia.org/wiki/2018_Winter_Olympics",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/2018_Winter_Olympics"
-  },
-  {
-    "year": 2018,
     "title": "MeToo Movement Reshapes South Korean Public Life",
     "verdict": "TRUE",
     "reason": "Movement launched January 2018 when prosecutor Seo Ji-hyun went public; multiple high-profile convictions followed — confirmed.",
@@ -1448,6 +1459,31 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/Me_Too_movement_(South_Korea)"
+  },
+  {
+    "year": 2018,
+    "title": "PyeongChang Olympics and Inter-Korean Diplomatic Breakthrough",
+    "verdict": "TRUE",
+    "reason": "North Korea participated; both Koreas marched under unified flag; three inter-Korean summits and Singapore US-DPRK summit in 2018 followed — confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "North Korea participated; both Koreas marched under unified flag; three inter-Korean summits and Singapore US-DPRK summit in 2018 followed — confirmed.",
+        "source": "https://en.wikipedia.org/wiki/2018_Winter_Olympics",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/2018_Winter_Olympics"
   },
   {
     "year": 2020,
@@ -1501,31 +1537,6 @@
   },
   {
     "year": 2022,
-    "title": "Yoon Suk-yeol Elected President â€” Narrowest Victory in History",
-    "verdict": "TRUE",
-    "reason": "Yoon won March 9, 2022 by 0.73 percentage points (247,077 votes), the narrowest margin in South Korean presidential election history — confirmed.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Yoon won March 9, 2022 by 0.73 percentage points (247,077 votes), the narrowest margin in South Korean presidential election history — confirmed.",
-        "source": "https://en.wikipedia.org/wiki/2022_South_Korean_presidential_election",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/2022_South_Korean_presidential_election"
-  },
-  {
-    "year": 2022,
     "title": "Itaewon Crowd Crush â€” 159 Dead at Halloween Gathering",
     "verdict": "TRUE",
     "reason": "Crowd crush on October 29, 2022 in Itaewon killed 159 people; event description matches confirmed facts on inadequate crowd management and emergency response.",
@@ -1548,6 +1559,31 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/Seoul_Halloween_crowd_crush"
+  },
+  {
+    "year": 2022,
+    "title": "Yoon Suk-yeol Elected President â€” Narrowest Victory in History",
+    "verdict": "TRUE",
+    "reason": "Yoon won March 9, 2022 by 0.73 percentage points (247,077 votes), the narrowest margin in South Korean presidential election history — confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Yoon won March 9, 2022 by 0.73 percentage points (247,077 votes), the narrowest margin in South Korean presidential election history — confirmed.",
+        "source": "https://en.wikipedia.org/wiki/2022_South_Korean_presidential_election",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/2022_South_Korean_presidential_election"
   },
   {
     "year": 2024,
@@ -1576,31 +1612,6 @@
   },
   {
     "year": 2024,
-    "title": "Yoon Declares Emergency Martial Law â€” Reversed Within Hours",
-    "verdict": "TRUE",
-    "reason": "Martial law declared December 3–4, 2024; National Assembly voted 190–0 to lift it; Yoon rescinded after ~6 hours; impeachment and insurrection investigation followed — confirmed.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Martial law declared December 3–4, 2024; National Assembly voted 190–0 to lift it; Yoon rescinded after ~6 hours; impeachment and insurrection investigation followed — confirmed.",
-        "source": "https://en.wikipedia.org/wiki/2024_South_Korean_martial_law_crisis",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/2024_South_Korean_martial_law_crisis"
-  },
-  {
-    "year": 2024,
     "title": "National Assembly Impeaches President Yoon Suk-yeol",
     "verdict": "TRUE",
     "reason": "National Assembly voted 204–0 to impeach on December 14, 2024; Constitutional Court upheld unanimously on April 4, 2025 — confirmed.",
@@ -1623,5 +1634,30 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/Impeachment_of_Yoon_Suk_Yeol"
+  },
+  {
+    "year": 2024,
+    "title": "Yoon Declares Emergency Martial Law â€” Reversed Within Hours",
+    "verdict": "TRUE",
+    "reason": "Martial law declared December 3–4, 2024; National Assembly voted 190–0 to lift it; Yoon rescinded after ~6 hours; impeachment and insurrection investigation followed — confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Martial law declared December 3–4, 2024; National Assembly voted 190–0 to lift it; Yoon rescinded after ~6 hours; impeachment and insurrection investigation followed — confirmed.",
+        "source": "https://en.wikipedia.org/wiki/2024_South_Korean_martial_law_crisis",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/2024_South_Korean_martial_law_crisis"
   }
 ]

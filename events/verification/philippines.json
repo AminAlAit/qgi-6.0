@@ -2522,6 +2522,42 @@
     "source": "https://en.wikipedia.org/wiki/Joseph_Estrada"
   },
   {
+    "year": 1998,
+    "title": "Philippine GDP Contracts as Asian Financial Crisis Spreads Regionally",
+    "verdict": "TRUE",
+    "reason": "Multiple independent sources confirm Philippine real GDP contracted in 1998 during the Asian Financial Crisis. Indexmundi (aggregating official growth-rate data) shows 1997: +5.185%, 1998: -0.577%, 1999: +3.082% — matching the description's 'roughly 0.5 percent' contraction (within rounding) and the stated return to positive growth by 1999. Independent academic literature (NBER working paper w8330 'Economic Growth in East Asia Before and After the Financial Crisis'; MPRA/RePEc paper 'The Philippines in the Asian Financial Crisis: How the Sick Man Avoided Pneumonia'; Asia Society commentary) corroborates that the Philippine downturn was markedly milder than Indonesia (~-13%), Thailand (~-10%), Malaysia (~-7%), and South Korea (~-5.5%), and attributes this specifically to the Philippines' comparatively low pre-crisis investment ratio and its earlier IMF-monitored structural/fiscal reform program (the country had just exited an IMF program in 1997, right before the crisis hit). Fidel Ramos was indeed president through mid-1998, matching 'growth recovery achieved under President Ramos.' All material details (year, country, magnitude, relative severity, causal explanation, recovery timing) check out.",
+    "verify_count": 2,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "double_confirmed",
+    "needs_tiebreak": false,
+    "source_independence": "independent",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Multiple independent sources confirm the Philippine economy contracted by approximately 0.5-0.6% in 1998 as the Asian financial crisis spread regionally, materially matching the described magnitude. Wikipedia's account of the 1997 Asian financial crisis states the Philippine GDP contracted by just 0.6% during the crisis's worst phase, explicitly noting it was one of the least severely impacted nations compared to Indonesia, Thailand, Malaysia, and South Korea — matching the description's claim of a 'markedly milder' decline. A separate search result (referencing Philippine economic-history sources) corroborates 'a decline of only 0.5 percent in real GDP in 1998... despite a bad year for agriculture, making the Philippines much more resilient... than its neighboring countries,' and further confirms GDP growth recovered to roughly 3.1% for full-year 1999, matching the description's claim that 'the economy returned to positive growth by 1999.' Ramos was Philippine president through mid-1998 (succeeded by Estrada), consistent with the description's reference to 'the growth recovery achieved under President Ramos' being interrupted. All material details (year, country, magnitude, regional comparison, 1999 recovery) check out across independent sources.",
+        "source": "https://en.wikipedia.org/wiki/1997_Asian_financial_crisis",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-10",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Multiple independent sources confirm Philippine real GDP contracted in 1998 during the Asian Financial Crisis. Indexmundi (aggregating official growth-rate data) shows 1997: +5.185%, 1998: -0.577%, 1999: +3.082% — matching the description's 'roughly 0.5 percent' contraction (within rounding) and the stated return to positive growth by 1999. Independent academic literature (NBER working paper w8330 'Economic Growth in East Asia Before and After the Financial Crisis'; MPRA/RePEc paper 'The Philippines in the Asian Financial Crisis: How the Sick Man Avoided Pneumonia'; Asia Society commentary) corroborates that the Philippine downturn was markedly milder than Indonesia (~-13%), Thailand (~-10%), Malaysia (~-7%), and South Korea (~-5.5%), and attributes this specifically to the Philippines' comparatively low pre-crisis investment ratio and its earlier IMF-monitored structural/fiscal reform program (the country had just exited an IMF program in 1997, right before the crisis hit). Fidel Ramos was indeed president through mid-1998, matching 'growth recovery achieved under President Ramos.' All material details (year, country, magnitude, relative severity, causal explanation, recovery timing) check out.",
+        "source": "https://www.indexmundi.com/philippines/gdp_real_growth_rate.html",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-10",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://www.indexmundi.com/philippines/gdp_real_growth_rate.html"
+  },
+  {
     "year": 1999,
     "title": "All-Out War Against MILF",
     "verdict": "TRUE",

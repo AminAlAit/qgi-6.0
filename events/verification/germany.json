@@ -51,31 +51,6 @@
   },
   {
     "year": 1952,
-    "title": "Luxembourg Agreement: West Germany agrees reparations to Israel",
-    "verdict": "PARTIAL",
-    "reason": "The agreement was signed on 10 September 1952 and committed West Germany to 3 billion DM to Israel and 450 million DM to the Claims Conference; however the repayment period was 14 years (not 12 as stated), and the 450 million DM went to the Claims Conference, not the World Jewish Congress directly.",
-    "verify_count": 1,
-    "consensus_verdict": "PARTIAL",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "PARTIAL",
-        "reason": "The agreement was signed on 10 September 1952 and committed West Germany to 3 billion DM to Israel and 450 million DM to the Claims Conference; however the repayment period was 14 years (not 12 as stated), and the 450 million DM went to the Claims Conference, not the World Jewish Congress directly.",
-        "source": "https://en.wikipedia.org/wiki/Reparations_Agreement_between_Israel_and_the_Federal_Republic_of_Germany",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/Reparations_Agreement_between_Israel_and_the_Federal_Republic_of_Germany"
-  },
-  {
-    "year": 1952,
     "title": "Equalization of Burdens Act compensates war-displaced Germans",
     "verdict": "TRUE",
     "reason": "The Lastenausgleichsgesetz was passed on 14 August 1952 and came into force 1 September 1952, levying a 50% charge on remaining property to fund redistribution to expellees and war-loss sufferers, totalling over 110 billion DM by 1978.",
@@ -98,6 +73,31 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/Lastenausgleich"
+  },
+  {
+    "year": 1952,
+    "title": "Luxembourg Agreement: West Germany agrees reparations to Israel",
+    "verdict": "PARTIAL",
+    "reason": "The agreement was signed on 10 September 1952 and committed West Germany to 3 billion DM to Israel and 450 million DM to the Claims Conference; however the repayment period was 14 years (not 12 as stated), and the 450 million DM went to the Claims Conference, not the World Jewish Congress directly.",
+    "verify_count": 1,
+    "consensus_verdict": "PARTIAL",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "PARTIAL",
+        "reason": "The agreement was signed on 10 September 1952 and committed West Germany to 3 billion DM to Israel and 450 million DM to the Claims Conference; however the repayment period was 14 years (not 12 as stated), and the 450 million DM went to the Claims Conference, not the World Jewish Congress directly.",
+        "source": "https://en.wikipedia.org/wiki/Reparations_Agreement_between_Israel_and_the_Federal_Republic_of_Germany",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Reparations_Agreement_between_Israel_and_the_Federal_Republic_of_Germany"
   },
   {
     "year": 1953,
@@ -401,31 +401,6 @@
   },
   {
     "year": 1969,
-    "title": "Willy Brandt becomes Chancellor; SPD wins power for first time",
-    "verdict": "TRUE",
-    "reason": "Willy Brandt was elected Chancellor on 21 October 1969 leading an SPD-FDP coalition — the first Social Democratic-led government in postwar West Germany — ending 20 years of CDU/CSU dominance.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Willy Brandt was elected Chancellor on 21 October 1969 leading an SPD-FDP coalition — the first Social Democratic-led government in postwar West Germany — ending 20 years of CDU/CSU dominance.",
-        "source": "https://en.wikipedia.org/wiki/1969_West_German_federal_election",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/1969_West_German_federal_election"
-  },
-  {
-    "year": 1969,
     "title": "Turkish Gastarbeiter become West Germany's largest immigrant community",
     "verdict": "PARTIAL",
     "reason": "The Turkish community grew significantly from 1961 and a notable milestone (the millionth guest worker from Southeast Europe) occurred in November 1969, but Turks only became the single largest foreign worker group in 1972-73 — not definitively by 1969 as stated.",
@@ -448,6 +423,31 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/Gastarbeiter"
+  },
+  {
+    "year": 1969,
+    "title": "Willy Brandt becomes Chancellor; SPD wins power for first time",
+    "verdict": "TRUE",
+    "reason": "Willy Brandt was elected Chancellor on 21 October 1969 leading an SPD-FDP coalition — the first Social Democratic-led government in postwar West Germany — ending 20 years of CDU/CSU dominance.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Willy Brandt was elected Chancellor on 21 October 1969 leading an SPD-FDP coalition — the first Social Democratic-led government in postwar West Germany — ending 20 years of CDU/CSU dominance.",
+        "source": "https://en.wikipedia.org/wiki/1969_West_German_federal_election",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/1969_West_German_federal_election"
   },
   {
     "year": 1970,
@@ -576,6 +576,42 @@
   },
   {
     "year": 1975,
+    "title": "Oil Shock Recession Produces West Germany's Sharpest Post-War GDP Fall",
+    "verdict": "TRUE",
+    "reason": "Multiple independent sources confirm West Germany's real GDP fell in 1975 (Wikipedia's Economic history of Germany article states -1.4% in constant prices, \"the first time since the founding of the FRG that it had fallen so sharply\"), matching the described -0.9 to -1.4% range. The decline is attributed to the 1973-74 oil price shock and global stagflation feeding through into falling output and rising unemployment (unemployment rose over 1 million by mid-1975, to 4.3%), consistent with the description. Chancellor Helmut Schmidt's government is correctly identified as presiding over this period. Recovery beginning in 1976 is also confirmed (\"By 1976 the worst was over. West German growth resumed\"). All material details (country, year, magnitude, cause, actor, recovery timing) check out.",
+    "verify_count": 2,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "double_confirmed",
+    "needs_tiebreak": false,
+    "source_independence": "weak",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Multiple independent sources confirm West Germany's GDP contracted sharply in 1975 in the wake of the 1973-74 oil price shock. Wikipedia's \"Economic history of Germany\" article states verbatim: \"West Germany's GDP in 1975 fell by 1.4 percent (in constant prices), the first time since the founding of the FRG that it had fallen so sharply,\" and confirms this was during Chancellor Helmut Schmidt's tenure, that he \"faced great problems, including the dramatic upsurge in oil prices of 1973-74,\" and that \"By 1976 the worst was over. West German growth resumed, and the inflation rate began to decline.\" A separate German-language search (referencing Bundestag/BPB-adjacent historical material) independently corroborates a sharp GDP/GNP contraction that year (cited there as -1.1%), consistent with the event description's stated range of \"-0.9 to -1.4% depending on the data series\" — different vintages/series (GDP vs GNP, constant-price revisions) plausibly explain the spread. Unemployment is separately confirmed to have risen sharply across 1973-1975 (from ~275,000 in 1973 to over 1 million/4.6% in 1975), and the Wikipedia 1973-1975 recession article separately states \"West Germany, Europe's largest economy at the time, had the largest post-war GDP fall in 1975,\" matching the \"largest post-war contraction\" claim. All material elements — country, year, magnitude range, causal mechanism (oil shock/stagflation/trade balance), the responsible chancellor, and 1976 recovery — check out.",
+        "source": "https://en.wikipedia.org/wiki/Economic_history_of_Germany",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-10",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Multiple independent sources confirm West Germany's real GDP fell in 1975 (Wikipedia's Economic history of Germany article states -1.4% in constant prices, \"the first time since the founding of the FRG that it had fallen so sharply\"), matching the described -0.9 to -1.4% range. The decline is attributed to the 1973-74 oil price shock and global stagflation feeding through into falling output and rising unemployment (unemployment rose over 1 million by mid-1975, to 4.3%), consistent with the description. Chancellor Helmut Schmidt's government is correctly identified as presiding over this period. Recovery beginning in 1976 is also confirmed (\"By 1976 the worst was over. West German growth resumed\"). All material details (country, year, magnitude, cause, actor, recovery timing) check out.",
+        "source": "https://en.wikipedia.org/wiki/Economic_history_of_Germany",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-10",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Economic_history_of_Germany"
+  },
+  {
+    "year": 1975,
     "title": "West Germany signs the Helsinki Final Act",
     "verdict": "TRUE",
     "reason": "Chancellor Helmut Schmidt signed the Helsinki Final Act on behalf of West Germany on 1 August 1975; the agreement established principles for East-West relations including territorial integrity and human rights, and formally accepted postwar borders.",
@@ -698,6 +734,42 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/1982_vote_of_no_confidence_in_the_government_of_Helmut_Schmidt"
+  },
+  {
+    "year": 1982,
+    "title": "Recession Topples Schmidt Coalition Amid Rising Unemployment",
+    "verdict": "TRUE",
+    "reason": "All material claims confirm independently. West Germany's GDP contracted -0.4% in 1982 (down from +0.5% in 1981), matching the description's figure exactly (countryeconomy.com, sourcing World Bank/national accounts data). Unemployment climbed above 7% by end of 1982, a post-war high relative to the ~1% rates of the 1960s-70s (IMF eLibrary, BLS Monthly Labor Review). The FDP formally withdrew from Schmidt's coalition on September 17, 1982 over a dispute on spending/economic policy (Genscher/FDP resisting further government spending), consistent with \"spending disputes\" and the September timing. The Bundestag's constructive vote of no confidence passed October 1, 1982 (256-235), installing Helmut Kohl as chancellor on a platform including an \"emergency program\" for jobs, matching the description's account of the ouster and Kohl's installation \"that October.\" No detail (magnitude, actors, sequence, dates) is materially off.",
+    "verify_count": 2,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "double_confirmed",
+    "needs_tiebreak": false,
+    "source_independence": "independent",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "All material facts check out. (1) West Germany's economy contracted in 1982; World Bank data puts growth at approximately -0.39% for the year, matching the described \"roughly -0.4%\" and consistent with academic sources describing 1981-82 as the deepest post-war recession to that point, part of the broader early-1980s global recession. (2) Unemployment rose sharply and remained above 7% from late 1982 through the decade — described in IMF/academic literature as historically high by West German post-war standards, consistent with \"climbing toward post-war highs,\" and inflation stayed elevated in a stagflationary environment. (3) The FDP withdrew from Schmidt's SPD-FDP coalition on September 17, 1982, with FDP leader Genscher citing irreconcilable differences over budget consolidation/spending — matching \"spending disputes.\" (4) On October 1, 1982, the Bundestag passed a constructive vote of no confidence (256-235), removing Schmidt and installing Helmut Kohl as chancellor — the first West German government change not resulting from an election. (5) Kohl's government subsequently pursued the \"Wende\" (turn), a program of spending cuts and economic liberalization, matching \"platform of spending cuts and deregulation.\" Every material detail (country, year, magnitude, actors, sequence, causal chain) is corroborated by independent, authoritative sources.",
+        "source": "https://en.wikipedia.org/wiki/1982_vote_of_no_confidence_in_the_government_of_Helmut_Schmidt",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-10",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "All material claims confirm independently. West Germany's GDP contracted -0.4% in 1982 (down from +0.5% in 1981), matching the description's figure exactly (countryeconomy.com, sourcing World Bank/national accounts data). Unemployment climbed above 7% by end of 1982, a post-war high relative to the ~1% rates of the 1960s-70s (IMF eLibrary, BLS Monthly Labor Review). The FDP formally withdrew from Schmidt's coalition on September 17, 1982 over a dispute on spending/economic policy (Genscher/FDP resisting further government spending), consistent with \"spending disputes\" and the September timing. The Bundestag's constructive vote of no confidence passed October 1, 1982 (256-235), installing Helmut Kohl as chancellor on a platform including an \"emergency program\" for jobs, matching the description's account of the ouster and Kohl's installation \"that October.\" No detail (magnitude, actors, sequence, dates) is materially off.",
+        "source": "https://countryeconomy.com/gdp/germany?year=1982",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-10",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://countryeconomy.com/gdp/germany?year=1982"
   },
   {
     "year": 1983,
@@ -876,31 +948,6 @@
   },
   {
     "year": 1992,
-    "title": "Rostock-Lichtenhagen: xenophobic mob attacks refugee housing",
-    "verdict": "TRUE",
-    "reason": "From 22-26 August 1992 up to 1,200 right-wing rioters attacked the asylum-seeker reception centre and Vietnamese workers' housing in Rostock-Lichtenhagen with Molotov cocktails and rocks, while bystanders applauded; the attacks shocked Germany and fed the asylum policy debate.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "From 22-26 August 1992 up to 1,200 right-wing rioters attacked the asylum-seeker reception centre and Vietnamese workers' housing in Rostock-Lichtenhagen with Molotov cocktails and rocks, while bystanders applauded; the attacks shocked Germany and fed the asylum policy debate.",
-        "source": "https://en.wikipedia.org/wiki/Rostock-Lichtenhagen_riots",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/Rostock-Lichtenhagen_riots"
-  },
-  {
-    "year": 1992,
     "title": "Germany ratifies Maastricht Treaty, committing to European monetary union",
     "verdict": "TRUE",
     "reason": "The Bundestag ratified the Maastricht Treaty on 2 December 1992 with 543 of 562 votes, requiring Basic Law amendments for EU membership and monetary union; Kohl overrode Bundesbank resistance, viewing European integration as inseparable from German national interest.",
@@ -923,6 +970,31 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/Maastricht_Treaty"
+  },
+  {
+    "year": 1992,
+    "title": "Rostock-Lichtenhagen: xenophobic mob attacks refugee housing",
+    "verdict": "TRUE",
+    "reason": "From 22-26 August 1992 up to 1,200 right-wing rioters attacked the asylum-seeker reception centre and Vietnamese workers' housing in Rostock-Lichtenhagen with Molotov cocktails and rocks, while bystanders applauded; the attacks shocked Germany and fed the asylum policy debate.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "From 22-26 August 1992 up to 1,200 right-wing rioters attacked the asylum-seeker reception centre and Vietnamese workers' housing in Rostock-Lichtenhagen with Molotov cocktails and rocks, while bystanders applauded; the attacks shocked Germany and fed the asylum policy debate.",
+        "source": "https://en.wikipedia.org/wiki/Rostock-Lichtenhagen_riots",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Rostock-Lichtenhagen_riots"
   },
   {
     "year": 1993,
@@ -948,6 +1020,42 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/1993_Solingen_arson_attack"
+  },
+  {
+    "year": 1993,
+    "title": "Post-Reunification Recession as Bundesbank Tightening Bites",
+    "verdict": "TRUE",
+    "reason": "Confirmed from multiple independent sources: Germany's GDP contracted by 1.1-1.2% in 1993 (sources cite both -1.1% and -1.2%), the first full-year decline of the reunification era. This followed the Bundesbank's tight monetary policy (rates raised to 9.5% in 1992 to contain inflation from unification spending), which choked off growth. Western German quarterly growth decelerated from 4.2% in Q1 1991 to 0.8% in Q4 1992 (matching \"under 1% by late 1992\") before turning negative in 1993. The Bundesbank began cutting rates (to 7.3%) in 1993, and growth resumed in 1994 at about 2.4%. All material details in the description (magnitude, mechanism/actor, timeline, scope to western Germany, and 1994 recovery) are corroborated.",
+    "verify_count": 2,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "double_confirmed",
+    "needs_tiebreak": false,
+    "source_independence": "independent",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed from multiple independent sources. The World Bank's official GDP growth indicator (fetched directly via API) shows Germany's real GDP growth in 1993 at -0.97%, following +2.01% in 1992 and preceding +2.60% in 1994 — a clean contraction-then-rebound pattern matching the description. Secondary historical sources (Wikipedia's \"Economic history of the German reunification,\" sourced to an NBER paper on Bundesbank policy) independently report a -1.2% figure for 1993 and detail the exact quarterly deceleration cited in the event description almost verbatim: western German quarterly growth slowed from 4.2% in Q1 1991 to 0.8% in Q4 1992 before turning negative, driven by Bundesbank short-term rates rising from 7.1% (1989) to 9.5% (1992) to contain unification-driven inflation, with rates only beginning to fall in 1993 (to 7.3%) and growth resuming in 1994. A separate search result independently corroborated a -1.1% contraction figure for 1993 with 1994 recovery of ~2.9%. All figures (-0.97% to -1.2%) cluster tightly around the \"1.1-1.2%\" stated in the event, well within normal cross-source/data-revision variance for 30+-year-old macro data, and every causal/mechanism/timing detail (Bundesbank tightening → recession → 1994 rate cuts → recovery) is corroborated.",
+        "source": "https://api.worldbank.org/v2/country/DE/indicator/NY.GDP.MKTP.KD.ZG?format=json&date=1990:1995",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-10",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Confirmed from multiple independent sources: Germany's GDP contracted by 1.1-1.2% in 1993 (sources cite both -1.1% and -1.2%), the first full-year decline of the reunification era. This followed the Bundesbank's tight monetary policy (rates raised to 9.5% in 1992 to contain inflation from unification spending), which choked off growth. Western German quarterly growth decelerated from 4.2% in Q1 1991 to 0.8% in Q4 1992 (matching \"under 1% by late 1992\") before turning negative in 1993. The Bundesbank began cutting rates (to 7.3%) in 1993, and growth resumed in 1994 at about 2.4%. All material details in the description (magnitude, mechanism/actor, timeline, scope to western Germany, and 1994 recovery) are corroborated.",
+        "source": "https://en.wikipedia.org/wiki/Economic_history_of_the_German_reunification",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-10",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Economic_history_of_the_German_reunification"
   },
   {
     "year": 1995,
@@ -1001,31 +1109,6 @@
   },
   {
     "year": 1999,
-    "title": "Germany participates in NATO bombing of Yugoslavia over Kosovo",
-    "verdict": "TRUE",
-    "reason": "Germany participated in the March-June 1999 NATO air campaign against Yugoslavia — the Bundeswehr's first combat operations since World War II — with Foreign Minister Fischer of the Greens invoking the Auschwitz precedent to justify overriding the party's pacifist tradition.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Germany participated in the March-June 1999 NATO air campaign against Yugoslavia — the Bundeswehr's first combat operations since World War II — with Foreign Minister Fischer of the Greens invoking the Auschwitz precedent to justify overriding the party's pacifist tradition.",
-        "source": "https://en.wikipedia.org/wiki/NATO_bombing_of_Yugoslavia",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/NATO_bombing_of_Yugoslavia"
-  },
-  {
-    "year": 1999,
     "title": "Euro introduced; Deutsche Mark retired as Germany's monetary unit",
     "verdict": "TRUE",
     "reason": "The euro was introduced as a non-cash accounting currency on 1 January 1999, with the Deutsche Mark irrevocably fixed at DM 1.95583 to €1; euro banknotes and coins entered circulation on 1 January 2002 with the DM ceasing legal tender on 31 December 2001.",
@@ -1048,6 +1131,31 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/German_adoption_of_the_euro"
+  },
+  {
+    "year": 1999,
+    "title": "Germany participates in NATO bombing of Yugoslavia over Kosovo",
+    "verdict": "TRUE",
+    "reason": "Germany participated in the March-June 1999 NATO air campaign against Yugoslavia — the Bundeswehr's first combat operations since World War II — with Foreign Minister Fischer of the Greens invoking the Auschwitz precedent to justify overriding the party's pacifist tradition.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Germany participated in the March-June 1999 NATO air campaign against Yugoslavia — the Bundeswehr's first combat operations since World War II — with Foreign Minister Fischer of the Greens invoking the Auschwitz precedent to justify overriding the party's pacifist tradition.",
+        "source": "https://en.wikipedia.org/wiki/NATO_bombing_of_Yugoslavia",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/NATO_bombing_of_Yugoslavia"
   },
   {
     "year": 2000,
@@ -1123,6 +1231,42 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/Agenda_2010"
+  },
+  {
+    "year": 2003,
+    "title": "Germany Enters Technical Recession as Strong Euro Hits Exports",
+    "verdict": "TRUE",
+    "reason": "Confirmed via contemporaneous Al Jazeera report (2003-08-15): German GDP contracted 0.2% q/q in Q1 2003 and 0.1% q/q in Q2 2003, meeting the technical definition of recession (two consecutive quarters of negative growth). Chancellor Gerhard Schroeder explicitly resisted the 'recession' label, stating \"I would not speak of a recession at this stage. There was stagnation in the first two quarters\" — matching the description's claim he called it 'stagnation.' Economy Minister Clement similarly downplayed the data and attributed the contraction to weak global demand and the stronger euro squeezing exporters, matching the description almost verbatim. The only unconfirmed detail is the specific \"sick man of Europe\" framing tied to this exact episode — that phrase is a well-documented characterization applied to Germany's economy in this era (stemming from a 1999 Economist article and widely used through the early-2000s stagnation period), but the Al Jazeera source itself doesn't use it. This is a minor scene-setting/contextual flourish, not a load-bearing factual claim (year, country, GDP figures, actor attributions, and causal narrative are all exactly right), so it does not downgrade the verdict to PARTIAL.",
+    "verify_count": 2,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "double_confirmed",
+    "needs_tiebreak": false,
+    "source_independence": "weak",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Contemporaneous Al Jazeera report (Aug 15, 2003) confirms Germany's GDP contracted 0.2% q/q in Q1 2003 and 0.1% q/q in Q2 2003, meeting the technical definition of recession (two consecutive quarters of negative growth). It confirms Chancellor Gerhard Schroeder rejected the 'recession' label, saying 'I would not speak of a recession at this stage... There was stagnation in the first two quarters,' and that Economy Minister Wolfgang Clement took the same position, with both attributing the contraction to weak global demand and a strengthening euro squeezing exporters (an economist quoted in the same piece attributes the GDP fall to an export downturn from sluggish global demand and euro appreciation). Wolfgang Clement was indeed Germany's Federal Economics Minister at the time. The only unverified flourish is the specific phrase 'sick man of Europe' being applied in this episode — not present in the source found, but this is a widely known contemporaneous descriptor of Germany's economy in the early 2000s and is not a load-bearing factual claim (year/country/core mechanism all confirmed). All material facts — country, year, magnitudes, actors, causal narrative, and the Schroeder 'stagnation' pushback — are corroborated.",
+        "source": "https://www.aljazeera.com/news/2003/8/15/german-economy-in-recession",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-10",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Confirmed via contemporaneous Al Jazeera report (2003-08-15): German GDP contracted 0.2% q/q in Q1 2003 and 0.1% q/q in Q2 2003, meeting the technical definition of recession (two consecutive quarters of negative growth). Chancellor Gerhard Schroeder explicitly resisted the 'recession' label, stating \"I would not speak of a recession at this stage. There was stagnation in the first two quarters\" — matching the description's claim he called it 'stagnation.' Economy Minister Clement similarly downplayed the data and attributed the contraction to weak global demand and the stronger euro squeezing exporters, matching the description almost verbatim. The only unconfirmed detail is the specific \"sick man of Europe\" framing tied to this exact episode — that phrase is a well-documented characterization applied to Germany's economy in this era (stemming from a 1999 Economist article and widely used through the early-2000s stagnation period), but the Al Jazeera source itself doesn't use it. This is a minor scene-setting/contextual flourish, not a load-bearing factual claim (year, country, GDP figures, actor attributions, and causal narrative are all exactly right), so it does not downgrade the verdict to PARTIAL.",
+        "source": "https://www.aljazeera.com/news/2003/8/15/german-economy-in-recession",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-10",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://www.aljazeera.com/news/2003/8/15/german-economy-in-recession"
   },
   {
     "year": 2005,
@@ -1276,31 +1420,6 @@
   },
   {
     "year": 2013,
-    "title": "NSA surveillance scandal reveals mass spying on German citizens and Merkel",
-    "verdict": "TRUE",
-    "reason": "Snowden's 2013 disclosures revealed the NSA had tapped Merkel's personal mobile phone (reportedly since 2002) and conducted mass surveillance of German communications; Merkel declared 'spying among friends is not acceptable' and the affair caused a major diplomatic crisis.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Snowden's 2013 disclosures revealed the NSA had tapped Merkel's personal mobile phone (reportedly since 2002) and conducted mass surveillance of German communications; Merkel declared 'spying among friends is not acceptable' and the affair caused a major diplomatic crisis.",
-        "source": "https://en.wikipedia.org/wiki/German_Parliamentary_Committee_investigation_of_the_NSA_spying_scandal",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/German_Parliamentary_Committee_investigation_of_the_NSA_spying_scandal"
-  },
-  {
-    "year": 2013,
     "title": "Merkel wins third term; Germany introduces statutory minimum wage",
     "verdict": "PARTIAL",
     "reason": "Merkel's CDU/CSU won 41.5% in the September 2013 election (not its best since 1994 — CDU/CSU got 35.2% in 2005 and the 1994 result was 41.4%, so 2013's 41.5% was close but not clearly the best); the €8.50 minimum wage was agreed as a coalition condition but did not take effect until 1 January 2015, not during 2013.",
@@ -1323,6 +1442,31 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/Minimum_wage_in_Germany"
+  },
+  {
+    "year": 2013,
+    "title": "NSA surveillance scandal reveals mass spying on German citizens and Merkel",
+    "verdict": "TRUE",
+    "reason": "Snowden's 2013 disclosures revealed the NSA had tapped Merkel's personal mobile phone (reportedly since 2002) and conducted mass surveillance of German communications; Merkel declared 'spying among friends is not acceptable' and the affair caused a major diplomatic crisis.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Snowden's 2013 disclosures revealed the NSA had tapped Merkel's personal mobile phone (reportedly since 2002) and conducted mass surveillance of German communications; Merkel declared 'spying among friends is not acceptable' and the affair caused a major diplomatic crisis.",
+        "source": "https://en.wikipedia.org/wiki/German_Parliamentary_Committee_investigation_of_the_NSA_spying_scandal",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/German_Parliamentary_Committee_investigation_of_the_NSA_spying_scandal"
   },
   {
     "year": 2014,
@@ -1476,31 +1620,6 @@
   },
   {
     "year": 2020,
-    "title": "Germany leads EU recovery fund breakthrough, enabling common EU debt",
-    "verdict": "PARTIAL",
-    "reason": "Germany and France jointly proposed a €500 billion EU recovery fund on 18 May 2020; the final Next Generation EU instrument agreed by EU leaders on 21 July 2020 was €750 billion — the description accurately credits the Franco-German initiative but misstates the proposed amount as €750 billion when the Franco-German proposal was €500 billion.",
-    "verify_count": 1,
-    "consensus_verdict": "PARTIAL",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "PARTIAL",
-        "reason": "Germany and France jointly proposed a €500 billion EU recovery fund on 18 May 2020; the final Next Generation EU instrument agreed by EU leaders on 21 July 2020 was €750 billion — the description accurately credits the Franco-German initiative but misstates the proposed amount as €750 billion when the Franco-German proposal was €500 billion.",
-        "source": "https://en.wikipedia.org/wiki/Next_Generation_EU",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/Next_Generation_EU"
-  },
-  {
-    "year": 2020,
     "title": "COVID-19: Germany suspends debt brake for massive economic rescue",
     "verdict": "TRUE",
     "reason": "Germany went into lockdown in March 2020; Merkel's nationally televised address was widely praised; the constitutional debt brake was suspended and a supplementary budget of ~156 billion euros approved, with the Kurzarbeit scheme massively expanded to prevent mass unemployment.",
@@ -1523,6 +1642,31 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/German_government_response_to_the_COVID-19_pandemic"
+  },
+  {
+    "year": 2020,
+    "title": "Germany leads EU recovery fund breakthrough, enabling common EU debt",
+    "verdict": "PARTIAL",
+    "reason": "Germany and France jointly proposed a €500 billion EU recovery fund on 18 May 2020; the final Next Generation EU instrument agreed by EU leaders on 21 July 2020 was €750 billion — the description accurately credits the Franco-German initiative but misstates the proposed amount as €750 billion when the Franco-German proposal was €500 billion.",
+    "verify_count": 1,
+    "consensus_verdict": "PARTIAL",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "PARTIAL",
+        "reason": "Germany and France jointly proposed a €500 billion EU recovery fund on 18 May 2020; the final Next Generation EU instrument agreed by EU leaders on 21 July 2020 was €750 billion — the description accurately credits the Franco-German initiative but misstates the proposed amount as €750 billion when the Franco-German proposal was €500 billion.",
+        "source": "https://en.wikipedia.org/wiki/Next_Generation_EU",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Next_Generation_EU"
   },
   {
     "year": 2021,
@@ -1576,31 +1720,6 @@
   },
   {
     "year": 2022,
-    "title": "Russia invades Ukraine: Germany announces Zeitenwende defense policy shift",
-    "verdict": "TRUE",
-    "reason": "On 27 February 2022, three days after Russia's full-scale invasion, Chancellor Scholz announced a Zeitenwende in a Bundestag speech, pledging a €100 billion special Bundeswehr fund and commitment to NATO's 2% GDP target — the most dramatic shift in German defence policy since 1955.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "On 27 February 2022, three days after Russia's full-scale invasion, Chancellor Scholz announced a Zeitenwende in a Bundestag speech, pledging a €100 billion special Bundeswehr fund and commitment to NATO's 2% GDP target — the most dramatic shift in German defence policy since 1955.",
-        "source": "https://en.wikipedia.org/wiki/Zeitenwende_speech",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/Zeitenwende_speech"
-  },
-  {
-    "year": 2022,
     "title": "Germany conducts crash program to phase out Russian gas after Ukraine invasion",
     "verdict": "TRUE",
     "reason": "Russia had supplied ~55% of Germany's gas imports in 2021; following the invasion and supply cuts Germany leased floating LNG terminals (first online December 2022), passed the LNG Acceleration Act, extended coal plants, and provided hundreds of billions in energy subsidies.",
@@ -1623,6 +1742,31 @@
       }
     ],
     "source": "https://www.cleanenergywire.org/factsheets/liquefied-gas-does-lng-have-place-germanys-energy-future"
+  },
+  {
+    "year": 2022,
+    "title": "Russia invades Ukraine: Germany announces Zeitenwende defense policy shift",
+    "verdict": "TRUE",
+    "reason": "On 27 February 2022, three days after Russia's full-scale invasion, Chancellor Scholz announced a Zeitenwende in a Bundestag speech, pledging a €100 billion special Bundeswehr fund and commitment to NATO's 2% GDP target — the most dramatic shift in German defence policy since 1955.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "On 27 February 2022, three days after Russia's full-scale invasion, Chancellor Scholz announced a Zeitenwende in a Bundestag speech, pledging a €100 billion special Bundeswehr fund and commitment to NATO's 2% GDP target — the most dramatic shift in German defence policy since 1955.",
+        "source": "https://en.wikipedia.org/wiki/Zeitenwende_speech",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Zeitenwende_speech"
   },
   {
     "year": 2023,

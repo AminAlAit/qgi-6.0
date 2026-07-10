@@ -1035,6 +1035,42 @@
   },
   {
     "year": 1998,
+    "title": "Asian Financial Crisis Triggers Indonesia's Deepest Postwar Recession",
+    "verdict": "TRUE",
+    "reason": "Multiple independent authoritative sources confirm all material elements: Indonesia's GDP contracted 13.1-13.6% in 1998 (CNBC, Indonesia Investments) — matching \"more than 13 percent\"; this was the steepest decline among crisis-hit Southeast Asian economies vs. Thailand (10.5%), Malaysia (7.4%), South Korea (6.9%) — matching the comparative claim; the rupiah collapsed from ~2,400 to ~14,000 per USD triggering mass bank failures (Cato Institute, Facts and Details); Suharto resigned in May 1998 amid the crisis, replaced by Habibie (Wikipedia \"Fall of Suharto\", U.S. State Dept archive); and an IMF-backed reform/aid program is well documented (IMF eLibrary, Cato). The single unverified micro-detail (\"35 years of continuous growth\") is plausible scene-setting consistent with Indonesia's long New Order growth era and not contradicted by any source, and is not material enough to change the verdict given how solidly the core economic and political facts are corroborated.",
+    "verify_count": 2,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "double_confirmed",
+    "needs_tiebreak": false,
+    "source_independence": "independent",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Multiple independent, reputable sources confirm all material claims. Indonesia's real GDP contracted approximately 13.1-13.7% in 1998 (World Bank data via Wikipedia's Economy of Indonesia article; Indonesia Investments), which was the steepest decline among crisis-hit Southeast/East Asian economies that year versus Thailand (-10.5%), Malaysia (-7.4%), and South Korea (-6.9%) per CNBC's 20-years-later retrospective. The rupiah collapsed from ~2,400 to ~16,800 per dollar, banks became technically insolvent en masse, and inflation soared (Heritage Foundation/EveryCRSReport contemporaneous analysis). President Suharto resigned on May 21, 1998 amid the crisis (Fall of Suharto, EveryCRSReport), ending roughly three decades of sustained growth under his New Order regime (FPIF: 'wiped out thirty years of material gains' — close to the '35 years' figure cited, a minor non-material rounding difference). Indonesia subsequently entered a multi-year IMF-backed structural adjustment/recovery program (~$43B package, EveryCRSReport; Brookings 'Indonesia: Ten Years After the Crisis'). All core facts — country, year, magnitude, relative severity, banking collapse, Suharto's fall, and IMF program — are corroborated across independent sources with no contradictions found.",
+        "source": "https://www.brookings.edu/articles/indonesia-ten-years-after-the-crisis/",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-10",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Multiple independent authoritative sources confirm all material elements: Indonesia's GDP contracted 13.1-13.6% in 1998 (CNBC, Indonesia Investments) — matching \"more than 13 percent\"; this was the steepest decline among crisis-hit Southeast Asian economies vs. Thailand (10.5%), Malaysia (7.4%), South Korea (6.9%) — matching the comparative claim; the rupiah collapsed from ~2,400 to ~14,000 per USD triggering mass bank failures (Cato Institute, Facts and Details); Suharto resigned in May 1998 amid the crisis, replaced by Habibie (Wikipedia \"Fall of Suharto\", U.S. State Dept archive); and an IMF-backed reform/aid program is well documented (IMF eLibrary, Cato). The single unverified micro-detail (\"35 years of continuous growth\") is plausible scene-setting consistent with Indonesia's long New Order growth era and not contradicted by any source, and is not material enough to change the verdict given how solidly the core economic and political facts are corroborated.",
+        "source": "https://www.cnbc.com/2017/07/07/20-years-after-the-asian-financial-crisis-indonesia-has-lessons-learned--and-warnings.html",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-10",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://www.cnbc.com/2017/07/07/20-years-after-the-asian-financial-crisis-indonesia-has-lessons-learned--and-warnings.html"
+  },
+  {
+    "year": 1998,
     "title": "May 1998 riots, anti-Chinese violence, and fall of Suharto",
     "verdict": "TRUE",
     "reason": "Trisakti University students killed 12 May 1998 (four, not 'four students' as stated — matches). Suharto resigned 21 May 1998 handing power to Habibie. Estimated 1,000 deaths confirmed. All core facts verified.",
