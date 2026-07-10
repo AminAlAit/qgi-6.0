@@ -1075,6 +1075,42 @@
     "source": "https://en.wikipedia.org/wiki/People%27s_Liberation_Army,_Nepal"
   },
   {
+    "year": 2011,
+    "title": "Real Estate Bubble Bursts, Triggering Nationwide Liquidity Crisis",
+    "verdict": "TRUE",
+    "reason": "Multiple independent sources confirm this materially as described. On June 9, 2011, Vibor Bikas Bank (VBB) approached Nepal Rastra Bank (NRB) requesting a capital injection or management takeover, rattling the banking industry and depositors, drawing explicit comparisons to a domestic 'Lehman moment'/Northern Rock crisis. This was rooted in a real estate bubble fueled by an overextended, rapidly-proliferating banking sector (8 commercial banks in 1993 growing to 31 by 2011) engaged in reckless real-estate/housing lending funded partly by remittance inflows. The exact figures in the event description are corroborated verbatim: commercial banks had invested 'over Rs 110 billion' in real estate, and 'over 72% of commercial banks' credit flows [were secured] against fixed assets.' NRB responded with a special refinance facility from June 14, 2011 and tightened real-estate lending caps. All core claims (country, year, actor, magnitude, causal mechanism, terminating regulatory intervention) check out.",
+    "verify_count": 2,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "double_confirmed",
+    "needs_tiebreak": false,
+    "source_independence": "independent",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Independent corroboration confirms the event materially as described. Chandan Sapkota's blog (a Nepali economist, published June 2011, contemporaneous with the events) confirms: commercial banks invested over Rs 110 billion in real estate with more than 72% of their credit secured against fixed assets; Vibor Bikas Bank's approach to Nepal Rastra Bank on June 9, 2011 seeking a capital injection or management takeover sparked depositor panic and industry-wide alarm; NRB responded with emergency support described by the author as a 'Northern Rock moment' (closely matching the description's 'Lehman moment' framing) to avert systemic collapse. Additional corroborating search results (bankkosamachar.com bank profile page, Nepal Economic Forum, NIICE Nepal) independently repeat the same Rs 110 billion figure, 72% fixed-asset-secured credit statistic, and the June 9, 2011 Vibor Bikas Bank trigger date. All material details -- amount, percentage, bank name, regulator, year, and crisis characterization -- align across multiple independent sources.",
+        "source": "https://sapkotac.blogspot.com/2011/06/nepal-banking-and-liquidity-crises.html",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-09",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Multiple independent sources confirm this materially as described. On June 9, 2011, Vibor Bikas Bank (VBB) approached Nepal Rastra Bank (NRB) requesting a capital injection or management takeover, rattling the banking industry and depositors, drawing explicit comparisons to a domestic 'Lehman moment'/Northern Rock crisis. This was rooted in a real estate bubble fueled by an overextended, rapidly-proliferating banking sector (8 commercial banks in 1993 growing to 31 by 2011) engaged in reckless real-estate/housing lending funded partly by remittance inflows. The exact figures in the event description are corroborated verbatim: commercial banks had invested 'over Rs 110 billion' in real estate, and 'over 72% of commercial banks' credit flows [were secured] against fixed assets.' NRB responded with a special refinance facility from June 14, 2011 and tightened real-estate lending caps. All core claims (country, year, actor, magnitude, causal mechanism, terminating regulatory intervention) check out.",
+        "source": "https://idsa.in/idsacomments/AvertingtheLehmanMomentuminNepal_hbjha_180711",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-09",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://idsa.in/idsacomments/AvertingtheLehmanMomentuminNepal_hbjha_180711"
+  },
+  {
     "year": 2012,
     "title": "Constituent Assembly Dissolved Without Constitution",
     "verdict": "TRUE",

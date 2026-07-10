@@ -112,6 +112,42 @@
   },
   {
     "year": 1992,
+    "title": "Estonia's 1992 Banking Crisis: Major Banks Lose Assets Stranded in Russia",
+    "verdict": "TRUE",
+    "reason": "Multiple independent sources corroborate the core narrative. The Duke University country-risk chronology (Bekaert/Harvey academic compilation) confirms a 1992-94 Estonian banking crisis with \"frozen deposits in Russia\" as a stated cause, and names Tartu Bank (Tartu Kommertspank) — one of the three banks in the event description — as liquidated after accounting for 15% of commercial bank assets. Independently, an IMF eLibrary publication (\"Bank Restructuring and Resolution\") lists Estonia 1992 among the small set of extreme historical cases where depositor haircuts were imposed as part of \"a fundamental restructuring of not just the banking system but the entire economic framework.\" Separate web sources (Postimees, ERR, Estonian Wikipedia on Tartu Kommertspank) converge on the same three named banks — Balti Ühispank, Põhja-Eesti Aktsiapank, and Tartu Kommertspank — a Bank of Estonia (Eesti Pank)-imposed moratorium in November 1992 due to insolvency triggered mainly by frozen/frozen-following-Soviet-decision external assets, and a resolution in which Balti Ühispank and Põhja-Eesti Aktsiapank were merged into a new bank (Põhja-Eesti Pank) while Tartu Kommertspank went to bankruptcy — all consistent with \"Bank of Estonia led the resolution\" and containment without major lasting economic damage. The specific \"40 to 22 banks by early 1993\" figure recurred across several secondary search results, and is broadly consistent with an independently-fetched figure of 43 banks active at end-1992 with consolidation occurring through 1993 (nationsencyclopedia.com), though I could not pin that exact 40→22 figure to a single directly-quotable primary source — a minor unconfirmed magnitude detail that does not change the year/country/core-mechanism verdict. Overall the year (1992), country (Estonia), named banks, Russia-asset-freeze trigger, Bank of Estonia-led resolution, and contained/non-systemic-to-wider-economy outcome are all materially confirmed.",
+    "verify_count": 2,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "double_confirmed",
+    "needs_tiebreak": false,
+    "source_independence": "weak",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Multiple independent sources confirm the event materially as described. The Bank of Estonia (Eesti Pank) led resolution of a 1992 banking crisis triggered when several of Estonia's largest banks — Balti Uhispank, Pohja-Eesti Aktsiapank (PEAP), and Tartu Commercial Bank — lost access to assets frozen at the former Vneshekonombank in Russia/Moscow. The central bank's response (tightened capital/liquidity requirements, forced consolidation/liquidation, recapitalization via government bonds) matches the description. Duke University's academic Country Risk chronology (Bekaert & Harvey) independently corroborates: 1992 insolvent banks held 41% of financial system assets, frozen deposits in Russia were a contributing cause, and the central bank's multi-part recovery involved liquidating banks (including Tartu Bank) and merging two others (Balti Uhispank + PEAP) for recapitalization — consistent with the merger into Pohja-Eesti Pank. Wikipedia's Bank of Estonia article independently states the same three named banks and same trigger almost verbatim. Multiple search-result summaries (from BOFIT, IMF, and other academic sources) additionally confirm the number of active commercial banks fell from 40 to 22 by early 1993, and that the episode, while severe for the affected institutions, did not cause major lasting damage to the wider Estonian economy — matching the \"contained without major lasting damage\" claim in the event description. All material details (country, year, named banks, cause, resolution actor, outcome) check out.",
+        "source": "https://people.duke.edu/~charvey/Country_risk/chronology/estonia.htm",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-09",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Multiple independent sources corroborate the core narrative. The Duke University country-risk chronology (Bekaert/Harvey academic compilation) confirms a 1992-94 Estonian banking crisis with \"frozen deposits in Russia\" as a stated cause, and names Tartu Bank (Tartu Kommertspank) — one of the three banks in the event description — as liquidated after accounting for 15% of commercial bank assets. Independently, an IMF eLibrary publication (\"Bank Restructuring and Resolution\") lists Estonia 1992 among the small set of extreme historical cases where depositor haircuts were imposed as part of \"a fundamental restructuring of not just the banking system but the entire economic framework.\" Separate web sources (Postimees, ERR, Estonian Wikipedia on Tartu Kommertspank) converge on the same three named banks — Balti Ühispank, Põhja-Eesti Aktsiapank, and Tartu Kommertspank — a Bank of Estonia (Eesti Pank)-imposed moratorium in November 1992 due to insolvency triggered mainly by frozen/frozen-following-Soviet-decision external assets, and a resolution in which Balti Ühispank and Põhja-Eesti Aktsiapank were merged into a new bank (Põhja-Eesti Pank) while Tartu Kommertspank went to bankruptcy — all consistent with \"Bank of Estonia led the resolution\" and containment without major lasting economic damage. The specific \"40 to 22 banks by early 1993\" figure recurred across several secondary search results, and is broadly consistent with an independently-fetched figure of 43 banks active at end-1992 with consolidation occurring through 1993 (nationsencyclopedia.com), though I could not pin that exact 40→22 figure to a single directly-quotable primary source — a minor unconfirmed magnitude detail that does not change the year/country/core-mechanism verdict. Overall the year (1992), country (Estonia), named banks, Russia-asset-freeze trigger, Bank of Estonia-led resolution, and contained/non-systemic-to-wider-economy outcome are all materially confirmed.",
+        "source": "https://people.duke.edu/~charvey/Country_risk/chronology/estonia.htm",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-09",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://people.duke.edu/~charvey/Country_risk/chronology/estonia.htm"
+  },
+  {
+    "year": 1992,
     "title": "Estonian Kroon Currency Reform",
     "verdict": "TRUE",
     "reason": "Estonia reintroduced the kroon on 20 June 1992, replacing the Soviet rouble at 1 KR = 10 Rbls and pegging it to the Deutsche Mark at 8 KR = DM 1 via a currency board. This halted hyperinflation that had exceeded 1,000% annually, confirmed by Eesti Pank and the Bundesbank.",

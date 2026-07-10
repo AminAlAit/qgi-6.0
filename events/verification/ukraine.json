@@ -888,6 +888,42 @@
     "source": "https://en.wikipedia.org/wiki/2014_Russian_annexation_of_Crimea"
   },
   {
+    "year": 2014,
+    "title": "Ukraine's 2014-2015 Banking Crisis: Over 60 Banks Declared Insolvent",
+    "verdict": "TRUE",
+    "reason": "All material claims confirmed by independent sources: (1) NBU declared 62 Ukrainian banks insolvent from early 2014 through November 2015, per Wikipedia's Banking in Ukraine page (sourced to NBU data). (2) Ukraine's GDP contracted 6.8% in 2014, confirmed by OSW Centre for Eastern Studies and Wikipedia's Economy of Ukraine page, consistent with the war-driven recession (Russo-Ukrainian War/Crimea annexation) and hryvnia collapse (hryvnia lost ~75% of value vs USD from early 2014, per Atlantic Council). (3) Losses to the state and banking-sector clients (depositors) exceeded $20 billion, confirmed by OSW Studies (Rafał Sadowski, 'The aftermath of the crisis: An overhaul of Ukraine's banking sector,' July 2017) and cross-corroborated by an academic source (niss-priority.com). (4) The bank count shrank from around 180 institutions toward a much smaller number within about a decade, confirmed by Kyiv Post reporting on NBU's banking cleanup ('Between 2014 and 2025, Ukraine's banking system shrank from 180 to 60 banks'). All figures in the event description (62 banks, November 2015 cutoff, 6.8% GDP contraction, $20B+ losses, ~180-bank starting point) match across multiple independent, reputable sources with no material discrepancies.",
+    "verify_count": 2,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "double_confirmed",
+    "needs_tiebreak": false,
+    "source_independence": "weak",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Multiple independent sources corroborate every material element. Wikipedia's 'Banking in Ukraine' article (sourcing a Kyiv Post profile of NBU deputy governor Kateryna Rozhkova) states verbatim: 'From early 2014 till November 2015, the National Bank of Ukraine declared 62 (Ukrainian) banks insolvent' — matching the '62 banks... by November 2015' figure exactly. The same article confirms Ukraine's GDP shrank 6.8% in 2014, matching the description precisely. The OSW Centre for Eastern Studies (independent Polish think tank) report on the crisis states losses to the state and banking sector clients exceeded US$20 billion, matching the '$20 billion' figure. The hryvnia collapse and war-driven recession context (Russo-Ukrainian conflict starting 2014, Revolution of Dignity aftermath) is corroborated by World Bank and OSW commentary. The bank-count contraction from ~180 institutions toward roughly 60 over the following decade is also independently confirmed (Kyiv Post/Wilson Center reporting on the 'bankopad' cleanup). Year, country, magnitude, and causal mechanism all align across sources with no material discrepancy.",
+        "source": "https://en.wikipedia.org/wiki/Banking_in_Ukraine",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-09",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "All material claims confirmed by independent sources: (1) NBU declared 62 Ukrainian banks insolvent from early 2014 through November 2015, per Wikipedia's Banking in Ukraine page (sourced to NBU data). (2) Ukraine's GDP contracted 6.8% in 2014, confirmed by OSW Centre for Eastern Studies and Wikipedia's Economy of Ukraine page, consistent with the war-driven recession (Russo-Ukrainian War/Crimea annexation) and hryvnia collapse (hryvnia lost ~75% of value vs USD from early 2014, per Atlantic Council). (3) Losses to the state and banking-sector clients (depositors) exceeded $20 billion, confirmed by OSW Studies (Rafał Sadowski, 'The aftermath of the crisis: An overhaul of Ukraine's banking sector,' July 2017) and cross-corroborated by an academic source (niss-priority.com). (4) The bank count shrank from around 180 institutions toward a much smaller number within about a decade, confirmed by Kyiv Post reporting on NBU's banking cleanup ('Between 2014 and 2025, Ukraine's banking system shrank from 180 to 60 banks'). All figures in the event description (62 banks, November 2015 cutoff, 6.8% GDP contraction, $20B+ losses, ~180-bank starting point) match across multiple independent, reputable sources with no material discrepancies.",
+        "source": "https://en.wikipedia.org/wiki/Banking_in_Ukraine",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-09",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Banking_in_Ukraine"
+  },
+  {
     "year": 2015,
     "title": "Battle of Debaltseve: Russia Overruns Ukrainian Salient After Minsk II",
     "verdict": "PARTIAL",

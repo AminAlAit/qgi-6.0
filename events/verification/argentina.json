@@ -1,9 +1,9 @@
 [
   {
     "year": 1950,
-    "title": "Perón's Second Five-Year Plan Announced",
+    "title": "Argentina-Chile Border Tensions Escalate",
     "verdict": "TRUE",
-    "reason": "The Second Five-Year Plan covered 1952–1957 and was announced/drafted in 1950–1951. Announcement year of 1950 is plausible.",
+    "reason": "Long-standing border disputes over Andean and Beagle Channel territory are well-documented across this era.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -13,7 +13,7 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "The Second Five-Year Plan covered 1952–1957 and was announced/drafted in 1950–1951. Announcement year of 1950 is plausible.",
+        "reason": "Long-standing border disputes over Andean and Beagle Channel territory are well-documented across this era.",
         "source": null,
         "verifier": {
           "model": "claude-sonnet-pre-migration",
@@ -73,9 +73,9 @@
   },
   {
     "year": 1950,
-    "title": "Argentina-Chile Border Tensions Escalate",
+    "title": "Perón's Second Five-Year Plan Announced",
     "verdict": "TRUE",
-    "reason": "Long-standing border disputes over Andean and Beagle Channel territory are well-documented across this era.",
+    "reason": "The Second Five-Year Plan covered 1952–1957 and was announced/drafted in 1950–1951. Announcement year of 1950 is plausible.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -85,79 +85,7 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "Long-standing border disputes over Andean and Beagle Channel territory are well-documented across this era.",
-        "source": null,
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ]
-  },
-  {
-    "year": 1951,
-    "title": "Failed Military Coup Against Perón",
-    "verdict": "TRUE",
-    "reason": "General Benjamín Menéndez led the failed coup on 28 September 1951. Facts match.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "General Benjamín Menéndez led the failed coup on 28 September 1951. Facts match.",
-        "source": null,
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ]
-  },
-  {
-    "year": 1951,
-    "title": "Eva Perón Withdraws Vice-Presidential Candidacy",
-    "verdict": "TRUE",
-    "reason": "Withdrawal announced at public rally in August 1951 under military pressure. Cancer was a contributing factor. Facts match.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Withdrawal announced at public rally in August 1951 under military pressure. Cancer was a contributing factor. Facts match.",
-        "source": null,
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ]
-  },
-  {
-    "year": 1951,
-    "title": "Perón Wins Re-election with Expanded Suffrage",
-    "verdict": "TRUE",
-    "reason": "November 1951; Perón received approximately 62–63% of the vote; first election with women's suffrage (granted 1947). All facts match.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "November 1951; Perón received approximately 62–63% of the vote; first election with women's suffrage (granted 1947). All facts match.",
+        "reason": "The Second Five-Year Plan covered 1952–1957 and was announced/drafted in 1950–1951. Announcement year of 1950 is plausible.",
         "source": null,
         "verifier": {
           "model": "claude-sonnet-pre-migration",
@@ -204,10 +132,10 @@
     "source": "https://en.wikipedia.org/wiki/Television_in_Argentina"
   },
   {
-    "year": 1952,
-    "title": "Death of Eva Perón",
+    "year": 1951,
+    "title": "Eva Perón Withdraws Vice-Presidential Candidacy",
     "verdict": "TRUE",
-    "reason": "Eva died 26 July 1952, age 33. Disease was cervical cancer (or uterine cervical cancer). All key facts match.",
+    "reason": "Withdrawal announced at public rally in August 1951 under military pressure. Cancer was a contributing factor. Facts match.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -217,7 +145,55 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "Eva died 26 July 1952, age 33. Disease was cervical cancer (or uterine cervical cancer). All key facts match.",
+        "reason": "Withdrawal announced at public rally in August 1951 under military pressure. Cancer was a contributing factor. Facts match.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
+    "year": 1951,
+    "title": "Failed Military Coup Against Perón",
+    "verdict": "TRUE",
+    "reason": "General Benjamín Menéndez led the failed coup on 28 September 1951. Facts match.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "General Benjamín Menéndez led the failed coup on 28 September 1951. Facts match.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
+    "year": 1951,
+    "title": "Perón Wins Re-election with Expanded Suffrage",
+    "verdict": "TRUE",
+    "reason": "November 1951; Perón received approximately 62–63% of the vote; first election with women's suffrage (granted 1947). All facts match.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "November 1951; Perón received approximately 62–63% of the vote; first election with women's suffrage (granted 1947). All facts match.",
         "source": null,
         "verifier": {
           "model": "claude-sonnet-pre-migration",
@@ -253,6 +229,30 @@
   },
   {
     "year": 1952,
+    "title": "Death of Eva Perón",
+    "verdict": "TRUE",
+    "reason": "Eva died 26 July 1952, age 33. Disease was cervical cancer (or uterine cervical cancer). All key facts match.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Eva died 26 July 1952, age 33. Disease was cervical cancer (or uterine cervical cancer). All key facts match.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
+    "year": 1952,
     "title": "Perón Implements Economic Austerity Program",
     "verdict": "TRUE",
     "reason": "Gómez Morales stabilization is historically documented. Facts match.",
@@ -266,54 +266,6 @@
         "pass_n": 1,
         "verdict": "TRUE",
         "reason": "Gómez Morales stabilization is historically documented. Facts match.",
-        "source": null,
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ]
-  },
-  {
-    "year": 1953,
-    "title": "Peronist Mob Burns Jockey Club and Opposition Buildings",
-    "verdict": "TRUE",
-    "reason": "April 1953 burning of the Jockey Club and Radical headquarters in Buenos Aires is well-documented.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "April 1953 burning of the Jockey Club and Radical headquarters in Buenos Aires is well-documented.",
-        "source": null,
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ]
-  },
-  {
-    "year": 1953,
-    "title": "Argentina Signs Economic Agreement with the United States",
-    "verdict": "TRUE",
-    "reason": "A bilateral economic cooperation agreement was signed in 1953 as Perón moderated foreign policy. Consistent with historical record.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "A bilateral economic cooperation agreement was signed in 1953 as Perón moderated foreign policy. Consistent with historical record.",
         "source": null,
         "verifier": {
           "model": "claude-sonnet-pre-migration",
@@ -372,6 +324,90 @@
     ],
     "had_dissent": true,
     "source": "https://en.wikipedia.org/wiki/ENTel"
+  },
+  {
+    "year": 1953,
+    "title": "Argentina Signs Economic Agreement with the United States",
+    "verdict": "TRUE",
+    "reason": "A bilateral economic cooperation agreement was signed in 1953 as Perón moderated foreign policy. Consistent with historical record.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "A bilateral economic cooperation agreement was signed in 1953 as Perón moderated foreign policy. Consistent with historical record.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
+    "year": 1953,
+    "title": "Peronist Mob Burns Jockey Club and Opposition Buildings",
+    "verdict": "TRUE",
+    "reason": "April 1953 burning of the Jockey Club and Radical headquarters in Buenos Aires is well-documented.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "April 1953 burning of the Jockey Club and Radical headquarters in Buenos Aires is well-documented.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
+    "year": 1954,
+    "title": "Legalization of Divorce and Anti-Clerical Legislation",
+    "verdict": "TRUE",
+    "reason": "Confirmed by multiple independent sources. Argentina's pro-Perón Congress passed Law 14,394 in December 1954, whose Article 31 legalized absolute divorce for the first time in the country, over strong Catholic Church opposition. This was part of a broader anti-clerical push in 1954 (suppression of religious education in schools, legalization of prostitution, proposed separation of church and state, abolition of Catholic holidays, ban on religious displays in public places). This triggered a major escalating church-state conflict: the Church mobilized opposition, and mass Catholic demonstrations (notably the Corpus Christi procession in June 1955, which turned into an anti-government protest) directly challenged Perón's authority. This confrontation is widely credited by historians as a key factor leading to the September 1955 military coup ('Revolución Libertadora') that ousted Perón. All material elements of the description — country (Argentina), year (1954 for the divorce law's passage), the church-state clash, mass Catholic mobilization, and the framing as a precursor to Perón's downfall — are corroborated.",
+    "verify_count": 2,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "double_confirmed",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Divorce legalized in 1954, Church mobilized opposition. Facts match.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Confirmed by multiple independent sources. Argentina's pro-Perón Congress passed Law 14,394 in December 1954, whose Article 31 legalized absolute divorce for the first time in the country, over strong Catholic Church opposition. This was part of a broader anti-clerical push in 1954 (suppression of religious education in schools, legalization of prostitution, proposed separation of church and state, abolition of Catholic holidays, ban on religious displays in public places). This triggered a major escalating church-state conflict: the Church mobilized opposition, and mass Catholic demonstrations (notably the Corpus Christi procession in June 1955, which turned into an anti-government protest) directly challenged Perón's authority. This confrontation is widely credited by historians as a key factor leading to the September 1955 military coup ('Revolución Libertadora') that ousted Perón. All material elements of the description — country (Argentina), year (1954 for the divorce law's passage), the church-state clash, mass Catholic mobilization, and the framing as a precursor to Perón's downfall — are corroborated.",
+        "source": "https://en.wikipedia.org/wiki/Catholic_Church%E2%80%93state_relations_in_Argentina",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-02",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Catholic_Church%E2%80%93state_relations_in_Argentina"
   },
   {
     "year": 1954,
@@ -434,46 +470,10 @@
     ]
   },
   {
-    "year": 1954,
-    "title": "Legalization of Divorce and Anti-Clerical Legislation",
-    "verdict": "TRUE",
-    "reason": "Confirmed by multiple independent sources. Argentina's pro-Perón Congress passed Law 14,394 in December 1954, whose Article 31 legalized absolute divorce for the first time in the country, over strong Catholic Church opposition. This was part of a broader anti-clerical push in 1954 (suppression of religious education in schools, legalization of prostitution, proposed separation of church and state, abolition of Catholic holidays, ban on religious displays in public places). This triggered a major escalating church-state conflict: the Church mobilized opposition, and mass Catholic demonstrations (notably the Corpus Christi procession in June 1955, which turned into an anti-government protest) directly challenged Perón's authority. This confrontation is widely credited by historians as a key factor leading to the September 1955 military coup ('Revolución Libertadora') that ousted Perón. All material elements of the description — country (Argentina), year (1954 for the divorce law's passage), the church-state clash, mass Catholic mobilization, and the framing as a precursor to Perón's downfall — are corroborated.",
-    "verify_count": 2,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "double_confirmed",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Divorce legalized in 1954, Church mobilized opposition. Facts match.",
-        "source": null,
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      },
-      {
-        "pass_n": 2,
-        "verdict": "TRUE",
-        "reason": "Confirmed by multiple independent sources. Argentina's pro-Perón Congress passed Law 14,394 in December 1954, whose Article 31 legalized absolute divorce for the first time in the country, over strong Catholic Church opposition. This was part of a broader anti-clerical push in 1954 (suppression of religious education in schools, legalization of prostitution, proposed separation of church and state, abolition of Catholic holidays, ban on religious displays in public places). This triggered a major escalating church-state conflict: the Church mobilized opposition, and mass Catholic demonstrations (notably the Corpus Christi procession in June 1955, which turned into an anti-government protest) directly challenged Perón's authority. This confrontation is widely credited by historians as a key factor leading to the September 1955 military coup ('Revolución Libertadora') that ousted Perón. All material elements of the description — country (Argentina), year (1954 for the divorce law's passage), the church-state clash, mass Catholic mobilization, and the framing as a precursor to Perón's downfall — are corroborated.",
-        "source": "https://en.wikipedia.org/wiki/Catholic_Church%E2%80%93state_relations_in_Argentina",
-        "verifier": {
-          "model": "claude-sonnet-5",
-          "date": "2026-07-02",
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/Catholic_Church%E2%80%93state_relations_in_Argentina"
-  },
-  {
     "year": 1955,
-    "title": "Navy and Air Force Bomb Buenos Aires Plaza de Mayo",
+    "title": "Lonardi Replaced by Aramburu — Harder Anti-Peronist Line",
     "verdict": "TRUE",
-    "reason": "Date 16 June 1955 confirmed. Death toll varies by source: 150–364 confirmed. The event description says 'approximately 364' which is the high-end estimate; this is within range rather than materially false.",
+    "reason": "Lonardi replaced by Aramburu on 13 November 1955 ('two months after the coup' is accurate). All facts match.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -483,7 +483,7 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "Date 16 June 1955 confirmed. Death toll varies by source: 150–364 confirmed. The event description says 'approximately 364' which is the high-end estimate; this is within range rather than materially false.",
+        "reason": "Lonardi replaced by Aramburu on 13 November 1955 ('two months after the coup' is accurate). All facts match.",
         "source": null,
         "verifier": {
           "model": "claude-sonnet-pre-migration",
@@ -519,9 +519,9 @@
   },
   {
     "year": 1955,
-    "title": "Lonardi Replaced by Aramburu — Harder Anti-Peronist Line",
+    "title": "Navy and Air Force Bomb Buenos Aires Plaza de Mayo",
     "verdict": "TRUE",
-    "reason": "Lonardi replaced by Aramburu on 13 November 1955 ('two months after the coup' is accurate). All facts match.",
+    "reason": "Date 16 June 1955 confirmed. Death toll varies by source: 150–364 confirmed. The event description says 'approximately 364' which is the high-end estimate; this is within range rather than materially false.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -531,7 +531,7 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "Lonardi replaced by Aramburu on 13 November 1955 ('two months after the coup' is accurate). All facts match.",
+        "reason": "Date 16 June 1955 confirmed. Death toll varies by source: 150–364 confirmed. The event description says 'approximately 364' which is the high-end estimate; this is within range rather than materially false.",
         "source": null,
         "verifier": {
           "model": "claude-sonnet-pre-migration",
@@ -543,9 +543,9 @@
   },
   {
     "year": 1956,
-    "title": "Failed Pro-Perón Military Uprising and Executions",
+    "title": "Constitutional Convention Restores 1853 Constitution",
     "verdict": "TRUE",
-    "reason": "June 1956 Peronist rebellion by General Valle. The description states 26 other rebels executed alongside Valle. Historically documented as approximately 27 total (Valle + 26 others). Facts match.",
+    "reason": "1956 constituent assembly annulled the 1949 Peronist Constitution, reinstating 1853 text. Facts match.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -555,7 +555,7 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "June 1956 Peronist rebellion by General Valle. The description states 26 other rebels executed alongside Valle. Historically documented as approximately 27 total (Valle + 26 others). Facts match.",
+        "reason": "1956 constituent assembly annulled the 1949 Peronist Constitution, reinstating 1853 text. Facts match.",
         "source": null,
         "verifier": {
           "model": "claude-sonnet-pre-migration",
@@ -591,9 +591,9 @@
   },
   {
     "year": 1956,
-    "title": "Constitutional Convention Restores 1853 Constitution",
+    "title": "Failed Pro-Perón Military Uprising and Executions",
     "verdict": "TRUE",
-    "reason": "1956 constituent assembly annulled the 1949 Peronist Constitution, reinstating 1853 text. Facts match.",
+    "reason": "June 1956 Peronist rebellion by General Valle. The description states 26 other rebels executed alongside Valle. Historically documented as approximately 27 total (Valle + 26 others). Facts match.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -603,7 +603,7 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "1956 constituent assembly annulled the 1949 Peronist Constitution, reinstating 1853 text. Facts match.",
+        "reason": "June 1956 Peronist rebellion by General Valle. The description states 26 other rebels executed alongside Valle. Historically documented as approximately 27 total (Valle + 26 others). Facts match.",
         "source": null,
         "verifier": {
           "model": "claude-sonnet-pre-migration",
@@ -810,30 +810,6 @@
   },
   {
     "year": 1959,
-    "title": "Frondizi Stabilization Plan and IMF Agreement",
-    "verdict": "TRUE",
-    "reason": "1959 IMF-backed stabilization with wage freezes and devaluation. Facts match.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "1959 IMF-backed stabilization with wage freezes and devaluation. Facts match.",
-        "source": null,
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ]
-  },
-  {
-    "year": 1959,
     "title": "Argentine Government Suppresses Labor Strikes with Military",
     "verdict": "PARTIAL",
     "reason": "Multiple independent sources confirm the core event: Frondizi used the military and his CONINTES (\"Conmoción Interna del Estado\") emergency decree to suppress major labor strikes in 1958-1959, including a general oil workers' strike protesting his oil contracts, and this decisively broke his earlier Frondizi-Perón pact / Peronist-friendly stance, alienating labor unions. English Wikipedia and Spanish-language sources (todo-argentina.net, an academic Redalyc article on Frondizi-era railway strikes) also confirm labor unrest (railway, meatpacking [Lisandro de la Torre, Jan 1959], banking, metalworking, oil) continued as an endemic feature of his presidency, matching the description's closing claim. However, I could not independently corroborate the specific detail that this 1959 military strike-breaking occurred 'particularly in the Ingeniero White port' — extensive targeted searches (Spanish and English) on Ingeniero White strikes only turned up documented labor conflicts there in 1907 (a tragic strike with fatalities) and 1966 (dockworkers' strike under Onganía), with no source placing a 1959 strike or military action at that specific port. The oil-sector part of the claim is solid; the Ingeniero White port detail appears to be a probable inaccuracy or at least is unconfirmed by any source I could find, so I'm marking this PARTIAL rather than TRUE. Year and country are correct.",
@@ -893,10 +869,10 @@
     ]
   },
   {
-    "year": 1960,
-    "title": "Mossad Captures Adolf Eichmann in Buenos Aires",
+    "year": 1959,
+    "title": "Frondizi Stabilization Plan and IMF Agreement",
     "verdict": "TRUE",
-    "reason": "Captured May 1960 by Mossad in Buenos Aires. Tried in Jerusalem, executed 1962. All facts match.",
+    "reason": "1959 IMF-backed stabilization with wage freezes and devaluation. Facts match.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -906,7 +882,7 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "Captured May 1960 by Mossad in Buenos Aires. Tried in Jerusalem, executed 1962. All facts match.",
+        "reason": "1959 IMF-backed stabilization with wage freezes and devaluation. Facts match.",
         "source": null,
         "verifier": {
           "model": "claude-sonnet-pre-migration",
@@ -941,6 +917,30 @@
     ]
   },
   {
+    "year": 1960,
+    "title": "Mossad Captures Adolf Eichmann in Buenos Aires",
+    "verdict": "TRUE",
+    "reason": "Captured May 1960 by Mossad in Buenos Aires. Tried in Jerusalem, executed 1962. All facts match.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Captured May 1960 by Mossad in Buenos Aires. Tried in Jerusalem, executed 1962. All facts match.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
     "year": 1961,
     "title": "Frondizi Meets Che Guevara — Military Pressure Erupts",
     "verdict": "TRUE",
@@ -955,54 +955,6 @@
         "pass_n": 1,
         "verdict": "TRUE",
         "reason": "Secret meeting with Guevara in August 1961 documented. Frondizi then voted to expel Cuba from OAS in 1962. Facts match.",
-        "source": null,
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ]
-  },
-  {
-    "year": 1962,
-    "title": "Military Coup Deposes President Frondizi",
-    "verdict": "TRUE",
-    "reason": "Coup on 29 March 1962 after Peronists won provincial elections. Guido installed. Facts match.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Coup on 29 March 1962 after Peronists won provincial elections. Guido installed. Facts match.",
-        "source": null,
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ]
-  },
-  {
-    "year": 1962,
-    "title": "Inter-Military Conflict — Azules vs Colorados",
-    "verdict": "TRUE",
-    "reason": "1962–1963 factional conflict with tank battles. Azules prevailed under Onganía. Facts match.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "1962–1963 factional conflict with tank battles. Azules prevailed under Onganía. Facts match.",
         "source": null,
         "verifier": {
           "model": "claude-sonnet-pre-migration",
@@ -1047,6 +999,54 @@
       }
     ],
     "source": "https://manifold.bfi.uchicago.edu/read/a-monetary-and-fiscal-history-of-latin-america-1960-2017/section/4fb09bf3-b545-4f6f-91f3-76f3d201b15a"
+  },
+  {
+    "year": 1962,
+    "title": "Inter-Military Conflict — Azules vs Colorados",
+    "verdict": "TRUE",
+    "reason": "1962–1963 factional conflict with tank battles. Azules prevailed under Onganía. Facts match.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "1962–1963 factional conflict with tank battles. Azules prevailed under Onganía. Facts match.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
+    "year": 1962,
+    "title": "Military Coup Deposes President Frondizi",
+    "verdict": "TRUE",
+    "reason": "Coup on 29 March 1962 after Peronists won provincial elections. Guido installed. Facts match.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Coup on 29 March 1962 after Peronists won provincial elections. Guido installed. Facts match.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
   },
   {
     "year": 1963,
@@ -1182,54 +1182,6 @@
   },
   {
     "year": 1966,
-    "title": "Military Coup — General Onganía Seizes Power",
-    "verdict": "TRUE",
-    "reason": "Coup on 28 June 1966. Congress dissolved, parties banned. Facts match.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Coup on 28 June 1966. Congress dissolved, parties banned. Facts match.",
-        "source": null,
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ]
-  },
-  {
-    "year": 1966,
-    "title": "La Noche de los Bastones Largos — University Crackdown",
-    "verdict": "TRUE",
-    "reason": "29 July 1966. Police evicted five university faculties in Buenos Aires. Brain drain followed. Facts match.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "29 July 1966. Police evicted five university faculties in Buenos Aires. Brain drain followed. Facts match.",
-        "source": null,
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ]
-  },
-  {
-    "year": 1966,
     "title": "Krieger Vasena Economic Stabilization Plan",
     "verdict": "FALSE",
     "reason": "Multiple independent, non-Wikipedia sources place this plan in 1967, not 1966. Krieger Vasena was sworn in as Economy Minister on January 2, 1967 (having been selected in the closing days of December 1966 after Jorge Salimei's resignation), and the actual stabilization package he is famous for — the ~40-50% peso devaluation, simultaneous export-tax hikes, wage freeze, and trade liberalization — was announced and launched at Easter/Semana Santa in March 1967 (Infobae). Encyclopedia.com corroborates: his ministerial tenure and the implementation of the devaluation/wage-freeze/export-tax package are dated '1967 to 1969,' with only the appointment process beginning in 'late 1966.' No source found dates the devaluation, exchange-rate freeze, or wage controls to calendar year 1966 itself — 1966 was only the year of Onganía's coup and the initial cabinet reshuffle. All other details (actor, mechanism, 1969 Cordobazo aftermath) match the description, so this is a year error rather than a fabricated event: country and substance hold, but the correct year is 1967.",
@@ -1277,6 +1229,54 @@
     ],
     "had_dissent": true,
     "source": "https://www.infobae.com/sociedad/2022/07/24/el-plan-de-krieger-vasena-para-salir-de-la-crisis-economica-en-los-60-el-cordobazo-y-las-torpezas-de-ongania/"
+  },
+  {
+    "year": 1966,
+    "title": "La Noche de los Bastones Largos — University Crackdown",
+    "verdict": "TRUE",
+    "reason": "29 July 1966. Police evicted five university faculties in Buenos Aires. Brain drain followed. Facts match.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "29 July 1966. Police evicted five university faculties in Buenos Aires. Brain drain followed. Facts match.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
+    "year": 1966,
+    "title": "Military Coup — General Onganía Seizes Power",
+    "verdict": "TRUE",
+    "reason": "Coup on 28 June 1966. Congress dissolved, parties banned. Facts match.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Coup on 28 June 1966. Congress dissolved, parties banned. Facts match.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
   },
   {
     "year": 1967,
@@ -1412,30 +1412,6 @@
   },
   {
     "year": 1970,
-    "title": "Montoneros Kidnap and Kill Ex-President Aramburu",
-    "verdict": "TRUE",
-    "reason": "Aramburu kidnapped and executed June 1970. Onganía ousted shortly after. Facts match.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Aramburu kidnapped and executed June 1970. Onganía ousted shortly after. Facts match.",
-        "source": null,
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ]
-  },
-  {
-    "year": 1970,
     "title": "General Levingston Replaces Onganía as Military President",
     "verdict": "TRUE",
     "reason": "Levingston replaced Onganía in June 1970, himself ousted within a year. Facts match.",
@@ -1459,10 +1435,10 @@
     ]
   },
   {
-    "year": 1971,
-    "title": "Viborazo — Second Major Uprising in Córdoba",
+    "year": 1970,
+    "title": "Montoneros Kidnap and Kill Ex-President Aramburu",
     "verdict": "TRUE",
-    "reason": "March 1971 uprising in Córdoba led to Levingston's replacement by Lanusse. Facts match.",
+    "reason": "Aramburu kidnapped and executed June 1970. Onganía ousted shortly after. Facts match.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -1472,7 +1448,7 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "March 1971 uprising in Córdoba led to Levingston's replacement by Lanusse. Facts match.",
+        "reason": "Aramburu kidnapped and executed June 1970. Onganía ousted shortly after. Facts match.",
         "source": null,
         "verifier": {
           "model": "claude-sonnet-pre-migration",
@@ -1543,10 +1519,10 @@
     "source": "https://en.wikipedia.org/wiki/Historical_exchange_rates_of_Argentine_currency"
   },
   {
-    "year": 1972,
-    "title": "Trelew Massacre — Execution of Guerrilla Prisoners",
+    "year": 1971,
+    "title": "Viborazo — Second Major Uprising in Córdoba",
     "verdict": "TRUE",
-    "reason": "22 August 1972. 16 political prisoners executed at Trelew naval base (Almirante Zar). ERP and Montoneros fighters. All facts match.",
+    "reason": "March 1971 uprising in Córdoba led to Levingston's replacement by Lanusse. Facts match.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -1556,7 +1532,31 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "22 August 1972. 16 political prisoners executed at Trelew naval base (Almirante Zar). ERP and Montoneros fighters. All facts match.",
+        "reason": "March 1971 uprising in Córdoba led to Levingston's replacement by Lanusse. Facts match.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
+    "year": 1972,
+    "title": "Argentina Establishes Relations with People's Republic of China",
+    "verdict": "TRUE",
+    "reason": "Argentina established diplomatic relations with PRC in 1972 alongside global shift post-Nixon. Facts match.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Argentina established diplomatic relations with PRC in 1972 alongside global shift post-Nixon. Facts match.",
         "source": null,
         "verifier": {
           "model": "claude-sonnet-pre-migration",
@@ -1592,9 +1592,9 @@
   },
   {
     "year": 1972,
-    "title": "Argentina Establishes Relations with People's Republic of China",
+    "title": "Trelew Massacre — Execution of Guerrilla Prisoners",
     "verdict": "TRUE",
-    "reason": "Argentina established diplomatic relations with PRC in 1972 alongside global shift post-Nixon. Facts match.",
+    "reason": "22 August 1972. 16 political prisoners executed at Trelew naval base (Almirante Zar). ERP and Montoneros fighters. All facts match.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -1604,31 +1604,7 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "Argentina established diplomatic relations with PRC in 1972 alongside global shift post-Nixon. Facts match.",
-        "source": null,
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ]
-  },
-  {
-    "year": 1973,
-    "title": "Héctor Cámpora Elected President — Peronist Return",
-    "verdict": "TRUE",
-    "reason": "March 1973 election. 'Cámpora al gobierno, Perón al poder' slogan. Political prisoner amnesty. Facts match.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "March 1973 election. 'Cámpora al gobierno, Perón al poder' slogan. Political prisoner amnesty. Facts match.",
+        "reason": "22 August 1972. 16 political prisoners executed at Trelew naval base (Almirante Zar). ERP and Montoneros fighters. All facts match.",
         "source": null,
         "verifier": {
           "model": "claude-sonnet-pre-migration",
@@ -1653,6 +1629,30 @@
         "pass_n": 1,
         "verdict": "TRUE",
         "reason": "20 June 1973. Official figure: 13 killed, 300+ wounded. Event says '13 killed' — matches official figures.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
+    "year": 1973,
+    "title": "Héctor Cámpora Elected President — Peronist Return",
+    "verdict": "TRUE",
+    "reason": "March 1973 election. 'Cámpora al gobierno, Perón al poder' slogan. Political prisoner amnesty. Facts match.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "March 1973 election. 'Cámpora al gobierno, Perón al poder' slogan. Political prisoner amnesty. Facts match.",
         "source": null,
         "verifier": {
           "model": "claude-sonnet-pre-migration",
@@ -1712,30 +1712,6 @@
   },
   {
     "year": 1974,
-    "title": "López Rega and the Triple A Death Squads",
-    "verdict": "TRUE",
-    "reason": "López Rega organized Triple A under Isabel Perón's government 1974–1975. Hundreds killed. Facts match.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "López Rega organized Triple A under Isabel Perón's government 1974–1975. Hundreds killed. Facts match.",
-        "source": null,
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ]
-  },
-  {
-    "year": 1974,
     "title": "Eva Perón's Body Returned to Argentina",
     "verdict": "TRUE",
     "reason": "Body returned 1974 from Italy/Spain, held at Olivos. The saga lasted ~18 years from 1956. Facts match.",
@@ -1749,6 +1725,30 @@
         "pass_n": 1,
         "verdict": "TRUE",
         "reason": "Body returned 1974 from Italy/Spain, held at Olivos. The saga lasted ~18 years from 1956. Facts match.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
+    "year": 1974,
+    "title": "López Rega and the Triple A Death Squads",
+    "verdict": "TRUE",
+    "reason": "López Rega organized Triple A under Isabel Perón's government 1974–1975. Hundreds killed. Facts match.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "López Rega organized Triple A under Isabel Perón's government 1974–1975. Hundreds killed. Facts match.",
         "source": null,
         "verifier": {
           "model": "claude-sonnet-pre-migration",
@@ -1784,6 +1784,30 @@
   },
   {
     "year": 1975,
+    "title": "Political Violence Reaches Critical Level",
+    "verdict": "TRUE",
+    "reason": "700+ political deaths in 1975 documented. Facts match.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "700+ political deaths in 1975 documented. Facts match.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
+    "year": 1975,
     "title": "Rodrigazo — Economic Crisis and Mass Strike",
     "verdict": "TRUE",
     "reason": "June 1975. Economy Minister Rodrigo announced large price increases. CGT general strike forced Rodrigo and López Rega resignations. Facts match.",
@@ -1807,10 +1831,10 @@
     ]
   },
   {
-    "year": 1975,
-    "title": "Political Violence Reaches Critical Level",
+    "year": 1976,
+    "title": "ESMA Detention Center Becomes Major Torture Site",
     "verdict": "TRUE",
-    "reason": "700+ political deaths in 1975 documented. Facts match.",
+    "reason": "~5,000 prisoners documented. UNESCO designation confirmed in September 2023. 'Death flights' confirmed. Facts match.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -1820,7 +1844,7 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "700+ political deaths in 1975 documented. Facts match.",
+        "reason": "~5,000 prisoners documented. UNESCO designation confirmed in September 2023. 'Death flights' confirmed. Facts match.",
         "source": null,
         "verifier": {
           "model": "claude-sonnet-pre-migration",
@@ -1869,30 +1893,6 @@
         "pass_n": 1,
         "verdict": "TRUE",
         "reason": "30,000 figure is used by human rights organizations; CONADEP documented ~9,000. 500+ detention centers documented. The 30,000 figure is the widely accepted advocacy number. Facts consistent with standard historical presentation.",
-        "source": null,
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ]
-  },
-  {
-    "year": 1976,
-    "title": "ESMA Detention Center Becomes Major Torture Site",
-    "verdict": "TRUE",
-    "reason": "~5,000 prisoners documented. UNESCO designation confirmed in September 2023. 'Death flights' confirmed. Facts match.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "~5,000 prisoners documented. UNESCO designation confirmed in September 2023. 'Death flights' confirmed. Facts match.",
         "source": null,
         "verifier": {
           "model": "claude-sonnet-pre-migration",
@@ -2000,30 +2000,6 @@
   },
   {
     "year": 1979,
-    "title": "Inter-American Commission on Human Rights Visits Argentina",
-    "verdict": "TRUE",
-    "reason": "IACHR on-site visit September 1979. First major international investigation. Facts match.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "IACHR on-site visit September 1979. First major international investigation. Facts match.",
-        "source": null,
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ]
-  },
-  {
-    "year": 1979,
     "title": "Economic 'Opening' Under Martínez de Hoz",
     "verdict": "TRUE",
     "reason": "Tablita exchange rate system, import liberalization, eventual collapse. Facts match.",
@@ -2037,6 +2013,30 @@
         "pass_n": 1,
         "verdict": "TRUE",
         "reason": "Tablita exchange rate system, import liberalization, eventual collapse. Facts match.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
+    "year": 1979,
+    "title": "Inter-American Commission on Human Rights Visits Argentina",
+    "verdict": "TRUE",
+    "reason": "IACHR on-site visit September 1979. First major international investigation. Facts match.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "IACHR on-site visit September 1979. First major international investigation. Facts match.",
         "source": null,
         "verifier": {
           "model": "claude-sonnet-pre-migration",
@@ -2192,30 +2192,6 @@
   },
   {
     "year": 1982,
-    "title": "Falklands War — British Recapture of Islands",
-    "verdict": "TRUE",
-    "reason": "Argentine surrender 14 June 1982. 649 Argentine and 255 British military dead — exact figures confirmed. Facts match.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Argentine surrender 14 June 1982. 649 Argentine and 255 British military dead — exact figures confirmed. Facts match.",
-        "source": null,
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ]
-  },
-  {
-    "year": 1982,
     "title": "Debt Crisis and Banking System Collapse",
     "verdict": "TRUE",
     "reason": "Multiple independent sources confirm Argentina's 1982 banking/debt crisis: the central bank (under Domingo Cavallo) nationalized/absorbed roughly $15-17 billion of private-sector foreign debt in a controversial 'socialization of losses' following a wave of bank failures caused by currency mismatches and devaluation (exchange-rate insurance/'seguro de cambio' losses). This culminated in December 1982, the same year Argentina also formally defaulted on foreign debt and approached the IMF (Aug 1982). Argentina's total external debt at end-1982 is documented in the $38-43.6 billion range across sources (gross vs. total measures vary), close to the \"approximately $45B\" figure given, and Argentina was indeed among the largest debtors in Latin America/the world at the time (alongside Mexico and Brazil). All core elements of the description (banking collapse, government bailout of banks with FX liabilities, socialization of private debt, large external debt) are corroborated.",
@@ -2251,10 +2227,10 @@
     "source": "https://en.wikipedia.org/wiki/Central_Bank_of_Argentina"
   },
   {
-    "year": 1983,
-    "title": "Return to Democracy — Raúl Alfonsín Elected President",
+    "year": 1982,
+    "title": "Falklands War — British Recapture of Islands",
     "verdict": "TRUE",
-    "reason": "30 October 1983. Alfonsín defeated Peronist candidate — historic first Radical victory over Peronism. Facts match.",
+    "reason": "Argentine surrender 14 June 1982. 649 Argentine and 255 British military dead — exact figures confirmed. Facts match.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -2264,7 +2240,7 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "30 October 1983. Alfonsín defeated Peronist candidate — historic first Radical victory over Peronism. Facts match.",
+        "reason": "Argentine surrender 14 June 1982. 649 Argentine and 255 British military dead — exact figures confirmed. Facts match.",
         "source": null,
         "verifier": {
           "model": "claude-sonnet-pre-migration",
@@ -2289,6 +2265,30 @@
         "pass_n": 1,
         "verdict": "TRUE",
         "reason": "CONADEP chaired by Ernesto Sábato. Documented 8,961 (often cited as 9,000) cases. Nunca Más sold 400,000 copies. Facts match.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
+    "year": 1983,
+    "title": "Return to Democracy — Raúl Alfonsín Elected President",
+    "verdict": "TRUE",
+    "reason": "30 October 1983. Alfonsín defeated Peronist candidate — historic first Radical victory over Peronism. Facts match.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "30 October 1983. Alfonsín defeated Peronist candidate — historic first Radical victory over Peronism. Facts match.",
         "source": null,
         "verifier": {
           "model": "claude-sonnet-pre-migration",
@@ -2348,30 +2348,6 @@
   },
   {
     "year": 1985,
-    "title": "Trial of the Military Juntas",
-    "verdict": "TRUE",
-    "reason": "Videla and Massera received life sentences. First civilian trial of military rulers in Latin America. Facts match.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Videla and Massera received life sentences. First civilian trial of military rulers in Latin America. Facts match.",
-        "source": null,
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ]
-  },
-  {
-    "year": 1985,
     "title": "Austral Plan — Anti-Inflation Shock Program",
     "verdict": "TRUE",
     "reason": "Launched June 1985 by Economy Minister Juan Sourrouille (event spells 'Sourouille' — minor spelling variant). Replaced peso with austral. Initial success documented. Facts match.",
@@ -2385,6 +2361,30 @@
         "pass_n": 1,
         "verdict": "TRUE",
         "reason": "Launched June 1985 by Economy Minister Juan Sourrouille (event spells 'Sourouille' — minor spelling variant). Replaced peso with austral. Initial success documented. Facts match.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
+    "year": 1985,
+    "title": "Trial of the Military Juntas",
+    "verdict": "TRUE",
+    "reason": "Videla and Massera received life sentences. First civilian trial of military rulers in Latin America. Facts match.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Videla and Massera received life sentences. First civilian trial of military rulers in Latin America. Facts match.",
         "source": null,
         "verifier": {
           "model": "claude-sonnet-pre-migration",
@@ -2444,30 +2444,6 @@
   },
   {
     "year": 1987,
-    "title": "Semana Santa Military Rebellion — Carapintadas",
-    "verdict": "TRUE",
-    "reason": "Holy Week 1987. Aldo Rico led rebellion. Due Obedience Law followed. Facts match.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Holy Week 1987. Aldo Rico led rebellion. Due Obedience Law followed. Facts match.",
-        "source": null,
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ]
-  },
-  {
-    "year": 1987,
     "title": "Due Obedience Law Grants Immunity to Lower-Ranking Officers",
     "verdict": "TRUE",
     "reason": "Passed June 1987. Annulled by Congress 2003. Facts match.",
@@ -2481,6 +2457,30 @@
         "pass_n": 1,
         "verdict": "TRUE",
         "reason": "Passed June 1987. Annulled by Congress 2003. Facts match.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
+    "year": 1987,
+    "title": "Semana Santa Military Rebellion — Carapintadas",
+    "verdict": "TRUE",
+    "reason": "Holy Week 1987. Aldo Rico led rebellion. Due Obedience Law followed. Facts match.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Holy Week 1987. Aldo Rico led rebellion. Due Obedience Law followed. Facts match.",
         "source": null,
         "verifier": {
           "model": "claude-sonnet-pre-migration",
@@ -2540,6 +2540,30 @@
   },
   {
     "year": 1989,
+    "title": "Carlos Menem Wins Presidential Election",
+    "verdict": "TRUE",
+    "reason": "May 1989 election, ~47% vote. Neoliberal pivot. Facts match.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "May 1989 election, ~47% vote. Neoliberal pivot. Facts match.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
+    "year": 1989,
     "title": "Hyperinflation Crisis — Alfonsín Resigns Early",
     "verdict": "TRUE",
     "reason": "Multiple independent sources confirm Argentina's 1989 hyperinflation crisis: annual inflation for 1989 was approximately 3,079% (exceeding 3,000% as described), with a monthly peak around 196-197% in July 1989. The crisis triggered food riots and looting in cities across Argentina in May-June 1989. President Raúl Alfonsín, unable to arrange a proper transition amid the collapse, resigned roughly five to six months early and transferred power to President-elect Carlos Menem in July 1989 instead of the scheduled December date. All material details (country, year, magnitude, actors, sequence of events) match the description.",
@@ -2576,30 +2600,6 @@
   },
   {
     "year": 1989,
-    "title": "Carlos Menem Wins Presidential Election",
-    "verdict": "TRUE",
-    "reason": "May 1989 election, ~47% vote. Neoliberal pivot. Facts match.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "May 1989 election, ~47% vote. Neoliberal pivot. Facts match.",
-        "source": null,
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ]
-  },
-  {
-    "year": 1989,
     "title": "Menem Pardons Military Junta Leaders",
     "verdict": "TRUE",
     "reason": "October 1989 and December 1990 pardons. Videla and Massera released. Later nullified. Facts match.",
@@ -2624,30 +2624,6 @@
   },
   {
     "year": 1990,
-    "title": "Final Carapintada Uprising Suppressed",
-    "verdict": "TRUE",
-    "reason": "December 1990 revolt by Seineldín. 14 killed. Army headquarters seized then suppressed. Facts match.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "December 1990 revolt by Seineldín. 14 killed. Army headquarters seized then suppressed. Facts match.",
-        "source": null,
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ]
-  },
-  {
-    "year": 1990,
     "title": "Diplomatic Relations Restored with United Kingdom",
     "verdict": "TRUE",
     "reason": "February 1990 restoration of full diplomatic relations, eight years after Falklands. Facts match.",
@@ -2661,6 +2637,30 @@
         "pass_n": 1,
         "verdict": "TRUE",
         "reason": "February 1990 restoration of full diplomatic relations, eight years after Falklands. Facts match.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
+    "year": 1990,
+    "title": "Final Carapintada Uprising Suppressed",
+    "verdict": "TRUE",
+    "reason": "December 1990 revolt by Seineldín. 14 killed. Army headquarters seized then suppressed. Facts match.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "December 1990 revolt by Seineldín. 14 killed. Army headquarters seized then suppressed. Facts match.",
         "source": null,
         "verifier": {
           "model": "claude-sonnet-pre-migration",
@@ -2756,30 +2756,6 @@
   },
   {
     "year": 1992,
-    "title": "Israeli Embassy Bombing in Buenos Aires",
-    "verdict": "TRUE",
-    "reason": "17 March 1992. 29 killed, 242 injured. Islamic Jihad (Hezbollah affiliate) claimed responsibility; Iranian involvement suspected. All facts match.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "17 March 1992. 29 killed, 242 injured. Islamic Jihad (Hezbollah affiliate) claimed responsibility; Iranian involvement suspected. All facts match.",
-        "source": null,
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ]
-  },
-  {
-    "year": 1992,
     "title": "Argentine Troops Join UN Peacekeeping Missions",
     "verdict": "TRUE",
     "reason": "Deployments to former Yugoslavia and Central America in early 1990s. Argentina became major troop contributor. Facts match.",
@@ -2803,10 +2779,10 @@
     ]
   },
   {
-    "year": 1993,
-    "title": "Menem Re-election Constitutional Reform",
+    "year": 1992,
+    "title": "Israeli Embassy Bombing in Buenos Aires",
     "verdict": "TRUE",
-    "reason": "Olivos Pact between Menem and Alfonsín. New constitution adopted 1994, reduced term to 4 years, allowed re-election. Event dated 1993 for the pact negotiation — plausible. Facts match.",
+    "reason": "17 March 1992. 29 killed, 242 injured. Islamic Jihad (Hezbollah affiliate) claimed responsibility; Iranian involvement suspected. All facts match.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -2816,7 +2792,7 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "Olivos Pact between Menem and Alfonsín. New constitution adopted 1994, reduced term to 4 years, allowed re-election. Event dated 1993 for the pact negotiation — plausible. Facts match.",
+        "reason": "17 March 1992. 29 killed, 242 injured. Islamic Jihad (Hezbollah affiliate) claimed responsibility; Iranian involvement suspected. All facts match.",
         "source": null,
         "verifier": {
           "model": "claude-sonnet-pre-migration",
@@ -2841,6 +2817,30 @@
         "pass_n": 1,
         "verdict": "TRUE",
         "reason": "GDP growth over 6% annually 1991–1994 documented. Facts match.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
+    "year": 1993,
+    "title": "Menem Re-election Constitutional Reform",
+    "verdict": "TRUE",
+    "reason": "Olivos Pact between Menem and Alfonsín. New constitution adopted 1994, reduced term to 4 years, allowed re-election. Event dated 1993 for the pact negotiation — plausible. Facts match.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Olivos Pact between Menem and Alfonsín. New constitution adopted 1994, reduced term to 4 years, allowed re-election. Event dated 1993 for the pact negotiation — plausible. Facts match.",
         "source": null,
         "verifier": {
           "model": "claude-sonnet-pre-migration",
@@ -3116,30 +3116,6 @@
   },
   {
     "year": 1999,
-    "title": "Fernando de la Rúa Elected President",
-    "verdict": "TRUE",
-    "reason": "October 1999 election. ~48% of vote. Defeated Duhalde. Facts match.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "October 1999 election. ~48% of vote. Defeated Duhalde. Facts match.",
-        "source": null,
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ]
-  },
-  {
-    "year": 1999,
     "title": "Argentina Enters Recession — Convertibility Strains",
     "verdict": "TRUE",
     "reason": "Multiple independent sources confirm Argentina's economy contracted in 1999 (figures cited range 3%-4%, with 3-3.5% most common, consistent with the described 3.4%), driven by the overvalued peso under the Convertibility Plan currency board (peso pegged 1:1 to USD), loss of export competitiveness, and Brazil's January 1999 real devaluation (Brazil was ~30% of Argentine trade; devaluation eroded ~20% of Argentina's competitiveness overnight and cut exports to Brazil from $12.86B in 1998 to $9.96B in 1999). Sources also confirm the currency board's rigidity prevented the normal devaluation-based adjustment, forcing painful internal wage/price deflation instead, and that this recession (beginning Q3 1998) persisted through the government's fall/debt default in December 2001 before the deeper 2002 collapse — matching the description's \"four-year contraction\" ending December 2001. All material elements (country, year, magnitude, causal mechanism) are corroborated across Wikipedia, World Bank working papers, CEPR, ILO, and a US Congressional JEC report.",
@@ -3173,6 +3149,30 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/1998%E2%80%932002_Argentine_great_depression"
+  },
+  {
+    "year": 1999,
+    "title": "Fernando de la Rúa Elected President",
+    "verdict": "TRUE",
+    "reason": "October 1999 election. ~48% of vote. Defeated Duhalde. Facts match.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "October 1999 election. ~48% of vote. Defeated Duhalde. Facts match.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
   },
   {
     "year": 2000,
@@ -3224,30 +3224,6 @@
   },
   {
     "year": 2001,
-    "title": "Economic Crisis, Corralito, and Presidential Resignations",
-    "verdict": "TRUE",
-    "reason": "December 2001. Corralito, 39 deaths, De la Rúa resigned by helicopter on 20 December. Rodríguez Saá briefly declared default. Facts match.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "December 2001. Corralito, 39 deaths, De la Rúa resigned by helicopter on 20 December. Rodríguez Saá briefly declared default. Facts match.",
-        "source": null,
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ]
-  },
-  {
-    "year": 2001,
     "title": "Argentina Declares Largest Sovereign Default in History",
     "verdict": "TRUE",
     "reason": "December 2001 default. Amount varies by source: $93–132 billion depending on what is included. Event cites $95 billion and then $132 billion — both figures appear in historical literature. Consistent with historical record.",
@@ -3271,46 +3247,46 @@
     ]
   },
   {
-    "year": 2002,
-    "title": "Peso Devaluation Ends Convertibility",
+    "year": 2001,
+    "title": "Corralito Bank Deposit Freeze Triggers Systemic Collapse and Default",
     "verdict": "TRUE",
-    "reason": "Confirmed from multiple independent sources: On 6 January 2002, newly installed President Eduardo Duhalde signed the law ending the decade-long Convertibility Plan, scrapping the 1:1 peso-dollar peg. The peso was initially set at a provisional 1.4:1 rate, then floated and fell to nearly 4:1 by mid-2002 before settling in the roughly 3-3.5:1 range by year-end — consistent with the description's '3.5:1' figure as the settled/approximate post-devaluation rate. The devaluation devastated middle-class dollar savers via the 'pesification' of bank deposits/corralito (deposits forcibly converted from dollars to pesos at unfavorable rates), which was challenged in court (Supreme Court ruled on it in 2002-2004) and caused years of litigation, exactly as described. It also restored export competitiveness, a widely cited consequence in economic analyses of the crisis. All material elements (country, year, actor, magnitude, causal effects) check out.",
+    "reason": "All material details confirmed by independent sources: the corralito was imposed Dec 1, 2001 by Economy Minister Domingo Cavallo, freezing deposits and capping weekly cash withdrawals at 250 pesos, amid a ~3-year recession under the 1991 fixed convertibility peg. Cavallo resigned Dec 19, 2001 and President Fernando de la Rúa resigned the next day (Dec 20) following deadly riots. Argentina defaulted on $81.3 billion in sovereign debt at year-end (Dec 26, 2001) — widely described as the largest sovereign default up to that point (later surpassed by Greece). The convertibility peg was formally abandoned in January 2002, followed by a currency collapse. Every figure and date in the event description matches independent sourcing precisely.",
     "verify_count": 2,
     "consensus_verdict": "TRUE",
     "consensus_status": "double_confirmed",
     "needs_tiebreak": false,
-    "source_independence": "n/a",
+    "source_independence": "weak",
     "verifications": [
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "January 2002. Duhalde ended convertibility. Peso devalued to 3.5:1 (initially), then floated further. Facts match.",
-        "source": null,
+        "reason": "Confirmed via multiple independent sources: Economy Minister Domingo Cavallo imposed the 'corralito' on December 1, 2001, freezing bank deposits and capping weekly cash withdrawals at 250 pesos amid a bank run during a prolonged recession under the 1991 one-peso-to-one-dollar convertibility regime. President Fernando de la Rúa resigned on December 20, 2001 after deadly riots. Argentina defaulted on its sovereign debt at year end 2001 (commonly cited as $81.3 billion in defaulted bonds, part of a ~$93 billion total default), the largest sovereign default up to that point. The convertibility peg was abandoned in January 2002 and the peso devalued sharply thereafter. All material facts (dates, actor, magnitude, sequence of events) match the description.",
+        "source": "https://en.wikipedia.org/wiki/Corralito",
         "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
+          "model": "claude-sonnet-5",
+          "date": "2026-07-09",
           "method": "web_search"
         }
       },
       {
         "pass_n": 2,
         "verdict": "TRUE",
-        "reason": "Confirmed from multiple independent sources: On 6 January 2002, newly installed President Eduardo Duhalde signed the law ending the decade-long Convertibility Plan, scrapping the 1:1 peso-dollar peg. The peso was initially set at a provisional 1.4:1 rate, then floated and fell to nearly 4:1 by mid-2002 before settling in the roughly 3-3.5:1 range by year-end — consistent with the description's '3.5:1' figure as the settled/approximate post-devaluation rate. The devaluation devastated middle-class dollar savers via the 'pesification' of bank deposits/corralito (deposits forcibly converted from dollars to pesos at unfavorable rates), which was challenged in court (Supreme Court ruled on it in 2002-2004) and caused years of litigation, exactly as described. It also restored export competitiveness, a widely cited consequence in economic analyses of the crisis. All material elements (country, year, actor, magnitude, causal effects) check out.",
-        "source": "https://en.wikipedia.org/wiki/Convertibility_plan",
+        "reason": "All material details confirmed by independent sources: the corralito was imposed Dec 1, 2001 by Economy Minister Domingo Cavallo, freezing deposits and capping weekly cash withdrawals at 250 pesos, amid a ~3-year recession under the 1991 fixed convertibility peg. Cavallo resigned Dec 19, 2001 and President Fernando de la Rúa resigned the next day (Dec 20) following deadly riots. Argentina defaulted on $81.3 billion in sovereign debt at year-end (Dec 26, 2001) — widely described as the largest sovereign default up to that point (later surpassed by Greece). The convertibility peg was formally abandoned in January 2002, followed by a currency collapse. Every figure and date in the event description matches independent sourcing precisely.",
+        "source": "https://en.wikipedia.org/wiki/Argentine_debt_restructuring",
         "verifier": {
           "model": "claude-sonnet-5",
-          "date": "2026-07-02",
+          "date": "2026-07-09",
           "method": "web_search"
         }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/Convertibility_plan"
+    "source": "https://en.wikipedia.org/wiki/Argentine_debt_restructuring"
   },
   {
-    "year": 2002,
-    "title": "Avellaneda Bridge Massacre — Piquetero Protesters Killed",
+    "year": 2001,
+    "title": "Economic Crisis, Corralito, and Presidential Resignations",
     "verdict": "TRUE",
-    "reason": "June 2002. Maximiliano Kosteki and Darío Santillán killed on Avellaneda bridge. Captured on camera. Led to early elections. Facts match.",
+    "reason": "December 2001. Corralito, 39 deaths, De la Rúa resigned by helicopter on 20 December. Rodríguez Saá briefly declared default. Facts match.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -3320,7 +3296,7 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "June 2002. Maximiliano Kosteki and Darío Santillán killed on Avellaneda bridge. Captured on camera. Led to early elections. Facts match.",
+        "reason": "December 2001. Corralito, 39 deaths, De la Rúa resigned by helicopter on 20 December. Rodríguez Saá briefly declared default. Facts match.",
         "source": null,
         "verifier": {
           "model": "claude-sonnet-pre-migration",
@@ -3367,10 +3343,10 @@
     "source": "https://en.wikipedia.org/wiki/1998%E2%80%932002_Argentine_great_depression"
   },
   {
-    "year": 2003,
-    "title": "Néstor Kirchner Elected President",
+    "year": 2002,
+    "title": "Avellaneda Bridge Massacre — Piquetero Protesters Killed",
     "verdict": "TRUE",
-    "reason": "May 2003. Won with 22% after Menem withdrew from runoff. Santa Cruz governor. Facts match.",
+    "reason": "June 2002. Maximiliano Kosteki and Darío Santillán killed on Avellaneda bridge. Captured on camera. Led to early elections. Facts match.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -3380,7 +3356,7 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "May 2003. Won with 22% after Menem withdrew from runoff. Santa Cruz governor. Facts match.",
+        "reason": "June 2002. Maximiliano Kosteki and Darío Santillán killed on Avellaneda bridge. Captured on camera. Led to early elections. Facts match.",
         "source": null,
         "verifier": {
           "model": "claude-sonnet-pre-migration",
@@ -3389,6 +3365,42 @@
         }
       }
     ]
+  },
+  {
+    "year": 2002,
+    "title": "Peso Devaluation Ends Convertibility",
+    "verdict": "TRUE",
+    "reason": "Confirmed from multiple independent sources: On 6 January 2002, newly installed President Eduardo Duhalde signed the law ending the decade-long Convertibility Plan, scrapping the 1:1 peso-dollar peg. The peso was initially set at a provisional 1.4:1 rate, then floated and fell to nearly 4:1 by mid-2002 before settling in the roughly 3-3.5:1 range by year-end — consistent with the description's '3.5:1' figure as the settled/approximate post-devaluation rate. The devaluation devastated middle-class dollar savers via the 'pesification' of bank deposits/corralito (deposits forcibly converted from dollars to pesos at unfavorable rates), which was challenged in court (Supreme Court ruled on it in 2002-2004) and caused years of litigation, exactly as described. It also restored export competitiveness, a widely cited consequence in economic analyses of the crisis. All material elements (country, year, actor, magnitude, causal effects) check out.",
+    "verify_count": 2,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "double_confirmed",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "January 2002. Duhalde ended convertibility. Peso devalued to 3.5:1 (initially), then floated further. Facts match.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Confirmed from multiple independent sources: On 6 January 2002, newly installed President Eduardo Duhalde signed the law ending the decade-long Convertibility Plan, scrapping the 1:1 peso-dollar peg. The peso was initially set at a provisional 1.4:1 rate, then floated and fell to nearly 4:1 by mid-2002 before settling in the roughly 3-3.5:1 range by year-end — consistent with the description's '3.5:1' figure as the settled/approximate post-devaluation rate. The devaluation devastated middle-class dollar savers via the 'pesification' of bank deposits/corralito (deposits forcibly converted from dollars to pesos at unfavorable rates), which was challenged in court (Supreme Court ruled on it in 2002-2004) and caused years of litigation, exactly as described. It also restored export competitiveness, a widely cited consequence in economic analyses of the crisis. All material elements (country, year, actor, magnitude, causal effects) check out.",
+        "source": "https://en.wikipedia.org/wiki/Convertibility_plan",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-02",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Convertibility_plan"
   },
   {
     "year": 2003,
@@ -3415,10 +3427,10 @@
     ]
   },
   {
-    "year": 2004,
-    "title": "Kirchner Orders Military Portraits Removed from ESMA",
+    "year": 2003,
+    "title": "Néstor Kirchner Elected President",
     "verdict": "TRUE",
-    "reason": "Public removal of military portraits and ESMA museum announcement. Facts match.",
+    "reason": "May 2003. Won with 22% after Menem withdrew from runoff. Santa Cruz governor. Facts match.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -3428,7 +3440,7 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "Public removal of military portraits and ESMA museum announcement. Facts match.",
+        "reason": "May 2003. Won with 22% after Menem withdrew from runoff. Santa Cruz governor. Facts match.",
         "source": null,
         "verifier": {
           "model": "claude-sonnet-pre-migration",
@@ -3453,6 +3465,30 @@
         "pass_n": 1,
         "verdict": "TRUE",
         "reason": "30 December 2004. 194 killed, 1,492+ injured. Flare ignited ceiling. Mayor Ibarra resigned. Facts match.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
+    "year": 2004,
+    "title": "Kirchner Orders Military Portraits Removed from ESMA",
+    "verdict": "TRUE",
+    "reason": "Public removal of military portraits and ESMA museum announcement. Facts match.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Public removal of military portraits and ESMA museum announcement. Facts match.",
         "source": null,
         "verifier": {
           "model": "claude-sonnet-pre-migration",
@@ -3536,30 +3572,6 @@
   },
   {
     "year": 2006,
-    "title": "Dirty War Trials Resume — First Convictions Under New Rules",
-    "verdict": "TRUE",
-    "reason": "Trials resumed after 2003–2004 legal changes. First convictions under new framework documented. Facts match.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Trials resumed after 2003–2004 legal changes. First convictions under new framework documented. Facts match.",
-        "source": null,
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ]
-  },
-  {
-    "year": 2006,
     "title": "Argentina-Venezuela Energy Deals Under Chávez",
     "verdict": "TRUE",
     "reason": "Energy and financial agreements with Chávez in 2006. Venezuelan bond purchases. Facts match.",
@@ -3573,6 +3585,30 @@
         "pass_n": 1,
         "verdict": "TRUE",
         "reason": "Energy and financial agreements with Chávez in 2006. Venezuelan bond purchases. Facts match.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
+    "year": 2006,
+    "title": "Dirty War Trials Resume — First Convictions Under New Rules",
+    "verdict": "TRUE",
+    "reason": "Trials resumed after 2003–2004 legal changes. First convictions under new framework documented. Facts match.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Trials resumed after 2003–2004 legal changes. First convictions under new framework documented. Facts match.",
         "source": null,
         "verifier": {
           "model": "claude-sonnet-pre-migration",
@@ -3632,42 +3668,6 @@
   },
   {
     "year": 2008,
-    "title": "Soy Export Tax Crisis — Agro-Business Conflict",
-    "verdict": "TRUE",
-    "reason": "Multiple independent sources confirm all material facts: in March 2008 Cristina Fernández de Kirchner's government imposed Resolution 125, a variable/sliding-scale export tax on soybeans (raising the effective rate toward 44%), which triggered a roughly four-month nationwide rural lockout and roadblocks led by farm organizations (the 'Mesa de Enlace'), widely described as the most severe political conflict of the Kirchner era. The lower house narrowly passed the measure (129-122) but the Senate tied 36-36 on July 17, 2008, and Vice President Julio Cobos cast the deciding 'voto no positivo' (non-positive/against vote), defeating the government's own bill — the next day the government reversed the measure. Country, year, actors, mechanism, duration, and outcome all match the description materially.",
-    "verify_count": 2,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "double_confirmed",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Resolution 125 variable export tax on soybeans. Four-month rural lockout. VP Cobos cast deciding Senate vote against. Facts match.",
-        "source": null,
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      },
-      {
-        "pass_n": 2,
-        "verdict": "TRUE",
-        "reason": "Multiple independent sources confirm all material facts: in March 2008 Cristina Fernández de Kirchner's government imposed Resolution 125, a variable/sliding-scale export tax on soybeans (raising the effective rate toward 44%), which triggered a roughly four-month nationwide rural lockout and roadblocks led by farm organizations (the 'Mesa de Enlace'), widely described as the most severe political conflict of the Kirchner era. The lower house narrowly passed the measure (129-122) but the Senate tied 36-36 on July 17, 2008, and Vice President Julio Cobos cast the deciding 'voto no positivo' (non-positive/against vote), defeating the government's own bill — the next day the government reversed the measure. Country, year, actors, mechanism, duration, and outcome all match the description materially.",
-        "source": "https://en.wikipedia.org/wiki/2008_Argentine_government_conflict_with_the_agricultural_sector",
-        "verifier": {
-          "model": "claude-sonnet-5",
-          "date": "2026-07-02",
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/2008_Argentine_government_conflict_with_the_agricultural_sector"
-  },
-  {
-    "year": 2008,
     "title": "Renationalization of Pension System",
     "verdict": "TRUE",
     "reason": "Multiple independent sources confirm Argentina's private pension system (AFJP) was renationalized in 2008: President Cristina Fernández de Kirchner signed the bill on October 21, 2008; the Chamber of Deputies passed it in early November; the Senate approved it 46-18 on November 20, 2008; assets were transferred to the state ANSES fund (creating the Sustainability Guarantee Fund/FGS). Reported asset value at the time ranged $26-30 billion depending on exact valuation date, consistent with the description's $30 billion figure. The government's justification (protecting pensions from the global financial crisis) and critics' counter-accusation (using the funds to cover fiscal deficits and debt) are both corroborated by contemporaneous reporting from France24, Al Jazeera, and WSWS.",
@@ -3703,28 +3703,40 @@
     "source": "https://www.aljazeera.com/news/2008/11/21/argentina-passes-pension-takeover"
   },
   {
-    "year": 2009,
-    "title": "Kirchner Government Loses Mid-Term Elections",
+    "year": 2008,
+    "title": "Soy Export Tax Crisis — Agro-Business Conflict",
     "verdict": "TRUE",
-    "reason": "June 2009. Néstor Kirchner defeated by Francisco de Narváez in Buenos Aires. Coalition lost congressional majority. Facts match.",
-    "verify_count": 1,
+    "reason": "Multiple independent sources confirm all material facts: in March 2008 Cristina Fernández de Kirchner's government imposed Resolution 125, a variable/sliding-scale export tax on soybeans (raising the effective rate toward 44%), which triggered a roughly four-month nationwide rural lockout and roadblocks led by farm organizations (the 'Mesa de Enlace'), widely described as the most severe political conflict of the Kirchner era. The lower house narrowly passed the measure (129-122) but the Senate tied 36-36 on July 17, 2008, and Vice President Julio Cobos cast the deciding 'voto no positivo' (non-positive/against vote), defeating the government's own bill — the next day the government reversed the measure. Country, year, actors, mechanism, duration, and outcome all match the description materially.",
+    "verify_count": 2,
     "consensus_verdict": "TRUE",
-    "consensus_status": "single",
+    "consensus_status": "double_confirmed",
     "needs_tiebreak": false,
     "source_independence": "n/a",
     "verifications": [
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "June 2009. Néstor Kirchner defeated by Francisco de Narváez in Buenos Aires. Coalition lost congressional majority. Facts match.",
+        "reason": "Resolution 125 variable export tax on soybeans. Four-month rural lockout. VP Cobos cast deciding Senate vote against. Facts match.",
         "source": null,
         "verifier": {
           "model": "claude-sonnet-pre-migration",
           "date": null,
           "method": "web_search"
         }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Multiple independent sources confirm all material facts: in March 2008 Cristina Fernández de Kirchner's government imposed Resolution 125, a variable/sliding-scale export tax on soybeans (raising the effective rate toward 44%), which triggered a roughly four-month nationwide rural lockout and roadblocks led by farm organizations (the 'Mesa de Enlace'), widely described as the most severe political conflict of the Kirchner era. The lower house narrowly passed the measure (129-122) but the Senate tied 36-36 on July 17, 2008, and Vice President Julio Cobos cast the deciding 'voto no positivo' (non-positive/against vote), defeating the government's own bill — the next day the government reversed the measure. Country, year, actors, mechanism, duration, and outcome all match the description materially.",
+        "source": "https://en.wikipedia.org/wiki/2008_Argentine_government_conflict_with_the_agricultural_sector",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-02",
+          "method": "web_search"
+        }
       }
-    ]
+    ],
+    "source": "https://en.wikipedia.org/wiki/2008_Argentine_government_conflict_with_the_agricultural_sector"
   },
   {
     "year": 2009,
@@ -3741,6 +3753,30 @@
         "pass_n": 1,
         "verdict": "TRUE",
         "reason": "Argentina severely affected in Southern Hemisphere winter 2009. School closures. Facts match.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
+    "year": 2009,
+    "title": "Kirchner Government Loses Mid-Term Elections",
+    "verdict": "TRUE",
+    "reason": "June 2009. Néstor Kirchner defeated by Francisco de Narváez in Buenos Aires. Coalition lost congressional majority. Facts match.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "June 2009. Néstor Kirchner defeated by Francisco de Narváez in Buenos Aires. Coalition lost congressional majority. Facts match.",
         "source": null,
         "verifier": {
           "model": "claude-sonnet-pre-migration",
@@ -3824,6 +3860,30 @@
   },
   {
     "year": 2012,
+    "title": "Sarmiento Train Accident in Buenos Aires — 51 Dead",
+    "verdict": "TRUE",
+    "reason": "22 February 2012 at Once station. 51 killed, 700+ injured (event says 789 — confirmed by some sources). Facts match.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "22 February 2012 at Once station. 51 killed, 700+ injured (event says 789 — confirmed by some sources). Facts match.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
+    "year": 2012,
     "title": "YPF Renationalization from Repsol",
     "verdict": "TRUE",
     "reason": "Confirmed via independent sources: In April 2012, Argentine President Cristina Fernández de Kirchner introduced and Congress approved legislation expropriating 51% of YPF (Argentina's largest energy firm), the shares taken primarily from Spain's Repsol, which had held a controlling stake. The stated justification was Repsol's underinvestment in oil exploration/production. Spain reacted with threats of trade retaliation, and the dispute was resolved in 2014 when Argentina agreed to pay Repsol approximately $5 billion in compensation (via sovereign bonds). All material details in the event description (country, year, magnitude 51%, target company Repsol, stated rationale, congressional approval, Spanish reaction, and 2014 $5B settlement) are corroborated by multiple independent sources including Wikipedia's 'Renationalization of YPF' article, Americas Quarterly, Buenos Aires Times, and the Seven Pillars Institute case study.",
@@ -3857,30 +3917,6 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/Renationalization_of_YPF"
-  },
-  {
-    "year": 2012,
-    "title": "Sarmiento Train Accident in Buenos Aires — 51 Dead",
-    "verdict": "TRUE",
-    "reason": "22 February 2012 at Once station. 51 killed, 700+ injured (event says 789 — confirmed by some sources). Facts match.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "22 February 2012 at Once station. 51 killed, 700+ injured (event says 789 — confirmed by some sources). Facts match.",
-        "source": null,
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ]
   },
   {
     "year": 2013,
@@ -4016,30 +4052,6 @@
   },
   {
     "year": 2016,
-    "title": "Macri Removes Currency Controls and Floats Peso",
-    "verdict": "TRUE",
-    "reason": "December 2015/January 2016. Cepo cambiario removed. ~40% devaluation. Agricultural export taxes removed. Facts match.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "December 2015/January 2016. Cepo cambiario removed. ~40% devaluation. Agricultural export taxes removed. Facts match.",
-        "source": null,
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ]
-  },
-  {
-    "year": 2016,
     "title": "Argentina Settles Holdout Creditor Dispute",
     "verdict": "TRUE",
     "reason": "February 2016 settlement with Elliott Management. ~$4.65 billion. $16.5 billion bond issuance April 2016. Facts match.",
@@ -4053,6 +4065,30 @@
         "pass_n": 1,
         "verdict": "TRUE",
         "reason": "February 2016 settlement with Elliott Management. ~$4.65 billion. $16.5 billion bond issuance April 2016. Facts match.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
+    "year": 2016,
+    "title": "Macri Removes Currency Controls and Floats Peso",
+    "verdict": "TRUE",
+    "reason": "December 2015/January 2016. Cepo cambiario removed. ~40% devaluation. Agricultural export taxes removed. Facts match.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "December 2015/January 2016. Cepo cambiario removed. ~40% devaluation. Agricultural export taxes removed. Facts match.",
         "source": null,
         "verifier": {
           "model": "claude-sonnet-pre-migration",
@@ -4101,6 +4137,30 @@
         "pass_n": 1,
         "verdict": "TRUE",
         "reason": "October 2017 mid-terms. Cambiemos gained seats. Cristina Kirchner won Senate seat from Buenos Aires. Facts match.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
+    "year": 2018,
+    "title": "Argentina Hosts G20 Leaders' Summit in Buenos Aires",
+    "verdict": "TRUE",
+    "reason": "30 November–1 December 2018. First G20 summit in South America. Facts match.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "30 November–1 December 2018. First G20 summit in South America. Facts match.",
         "source": null,
         "verifier": {
           "model": "claude-sonnet-pre-migration",
@@ -4161,30 +4221,6 @@
         "pass_n": 1,
         "verdict": "TRUE",
         "reason": "August 2018 Senate rejection after Deputies passed the bill. Green vs. blue scarves. Facts match.",
-        "source": null,
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ]
-  },
-  {
-    "year": 2018,
-    "title": "Argentina Hosts G20 Leaders' Summit in Buenos Aires",
-    "verdict": "TRUE",
-    "reason": "30 November–1 December 2018. First G20 summit in South America. Facts match.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "30 November–1 December 2018. First G20 summit in South America. Facts match.",
         "source": null,
         "verifier": {
           "model": "claude-sonnet-pre-migration",
@@ -4256,6 +4292,30 @@
   },
   {
     "year": 2020,
+    "title": "Abortion Legalized in Argentina",
+    "verdict": "TRUE",
+    "reason": "30 December 2020. Senate passed 38-29. First 14 weeks. One of largest countries in Latin America to legalize. Facts match.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "30 December 2020. Senate passed 38-29. First 14 weeks. One of largest countries in Latin America to legalize. Facts match.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
+    "year": 2020,
     "title": "Argentina Defaults for Third Time — Debt Restructuring",
     "verdict": "TRUE",
     "reason": "May 2020 default. $65 billion restructuring completed August 2020. Facts match.",
@@ -4303,34 +4363,10 @@
     ]
   },
   {
-    "year": 2020,
-    "title": "Abortion Legalized in Argentina",
-    "verdict": "TRUE",
-    "reason": "30 December 2020. Senate passed 38-29. First 14 weeks. One of largest countries in Latin America to legalize. Facts match.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "30 December 2020. Senate passed 38-29. First 14 weeks. One of largest countries in Latin America to legalize. Facts match.",
-        "source": null,
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ]
-  },
-  {
     "year": 2021,
-    "title": "Vacunatorio VIP Scandal — Vaccines Given to Political Allies",
+    "title": "Argentina Negotiates New IMF Program for $44 Billion",
     "verdict": "TRUE",
-    "reason": "February 2021. Health minister Ginés González García resigned. Criminal investigations launched. Facts match.",
+    "reason": "Negotiations throughout 2021. New extended fund facility agreed March 2022. $44 billion remaining from Macri's 2018 program. Facts match.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -4340,7 +4376,7 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "February 2021. Health minister Ginés González García resigned. Criminal investigations launched. Facts match.",
+        "reason": "Negotiations throughout 2021. New extended fund facility agreed March 2022. $44 billion remaining from Macri's 2018 program. Facts match.",
         "source": null,
         "verifier": {
           "model": "claude-sonnet-pre-migration",
@@ -4376,9 +4412,9 @@
   },
   {
     "year": 2021,
-    "title": "Argentina Negotiates New IMF Program for $44 Billion",
+    "title": "Vacunatorio VIP Scandal — Vaccines Given to Political Allies",
     "verdict": "TRUE",
-    "reason": "Negotiations throughout 2021. New extended fund facility agreed March 2022. $44 billion remaining from Macri's 2018 program. Facts match.",
+    "reason": "February 2021. Health minister Ginés González García resigned. Criminal investigations launched. Facts match.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -4388,31 +4424,7 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "Negotiations throughout 2021. New extended fund facility agreed March 2022. $44 billion remaining from Macri's 2018 program. Facts match.",
-        "source": null,
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ]
-  },
-  {
-    "year": 2022,
-    "title": "Assassination Attempt Against Cristina Kirchner",
-    "verdict": "TRUE",
-    "reason": "1 September 2022. Pistol pointed at her head, gun failed to fire. Massive Plaza de Mayo marches. Facts match.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "1 September 2022. Pistol pointed at her head, gun failed to fire. Massive Plaza de Mayo marches. Facts match.",
+        "reason": "February 2021. Health minister Ginés González García resigned. Criminal investigations launched. Facts match.",
         "source": null,
         "verifier": {
           "model": "claude-sonnet-pre-migration",
@@ -4448,9 +4460,9 @@
   },
   {
     "year": 2022,
-    "title": "Inflation Reaches 95% — Economic Crisis Deepens",
+    "title": "Assassination Attempt Against Cristina Kirchner",
     "verdict": "TRUE",
-    "reason": "Annual inflation reached ~94.8% in 2022. Multiple economy ministers. Facts match.",
+    "reason": "1 September 2022. Pistol pointed at her head, gun failed to fire. Massive Plaza de Mayo marches. Facts match.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -4460,7 +4472,7 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "Annual inflation reached ~94.8% in 2022. Multiple economy ministers. Facts match.",
+        "reason": "1 September 2022. Pistol pointed at her head, gun failed to fire. Massive Plaza de Mayo marches. Facts match.",
         "source": null,
         "verifier": {
           "model": "claude-sonnet-pre-migration",
@@ -4495,10 +4507,10 @@
     ]
   },
   {
-    "year": 2023,
-    "title": "Severe Drought Devastates Agricultural Sector",
+    "year": 2022,
+    "title": "Inflation Reaches 95% — Economic Crisis Deepens",
     "verdict": "TRUE",
-    "reason": "Worst drought in 60 years. ~$20 billion cost. Agricultural exports fell by a third. Facts match.",
+    "reason": "Annual inflation reached ~94.8% in 2022. Multiple economy ministers. Facts match.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -4508,7 +4520,7 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "Worst drought in 60 years. ~$20 billion cost. Agricultural exports fell by a third. Facts match.",
+        "reason": "Annual inflation reached ~94.8% in 2022. Multiple economy ministers. Facts match.",
         "source": null,
         "verifier": {
           "model": "claude-sonnet-pre-migration",
@@ -4579,10 +4591,10 @@
     ]
   },
   {
-    "year": 2024,
-    "title": "Milei's Shock Therapy — Peso Devalued 50% on Day One",
+    "year": 2023,
+    "title": "Severe Drought Devastates Agricultural Sector",
     "verdict": "TRUE",
-    "reason": "54% devaluation on 13 December 2023 (first day in office). 13 of 18 ministries eliminated. Monthly inflation spiked to 25%+ in December 2023 and ~20% in January 2024. Facts match.",
+    "reason": "Worst drought in 60 years. ~$20 billion cost. Agricultural exports fell by a third. Facts match.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -4592,31 +4604,7 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "54% devaluation on 13 December 2023 (first day in office). 13 of 18 ministries eliminated. Monthly inflation spiked to 25%+ in December 2023 and ~20% in January 2024. Facts match.",
-        "source": null,
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ]
-  },
-  {
-    "year": 2024,
-    "title": "Omnibus Law Battle in Congress",
-    "verdict": "TRUE",
-    "reason": "January 2024 omnibus bill with 600+ articles. Withdrawn in February after opposition. DNU decree in parallel. Facts match.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "January 2024 omnibus bill with 600+ articles. Withdrawn in February after opposition. DNU decree in parallel. Facts match.",
+        "reason": "Worst drought in 60 years. ~$20 billion cost. Agricultural exports fell by a third. Facts match.",
         "source": null,
         "verifier": {
           "model": "claude-sonnet-pre-migration",
@@ -4725,6 +4713,54 @@
         "pass_n": 1,
         "verdict": "TRUE",
         "reason": "Withdrawal from UN migration compact and WHO negotiations documented. CPAC attendance and alliances with global right confirmed. Facts match.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
+    "year": 2024,
+    "title": "Milei's Shock Therapy — Peso Devalued 50% on Day One",
+    "verdict": "TRUE",
+    "reason": "54% devaluation on 13 December 2023 (first day in office). 13 of 18 ministries eliminated. Monthly inflation spiked to 25%+ in December 2023 and ~20% in January 2024. Facts match.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "54% devaluation on 13 December 2023 (first day in office). 13 of 18 ministries eliminated. Monthly inflation spiked to 25%+ in December 2023 and ~20% in January 2024. Facts match.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
+    "year": 2024,
+    "title": "Omnibus Law Battle in Congress",
+    "verdict": "TRUE",
+    "reason": "January 2024 omnibus bill with 600+ articles. Withdrawn in February after opposition. DNU decree in parallel. Facts match.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "January 2024 omnibus bill with 600+ articles. Withdrawn in February after opposition. DNU decree in parallel. Facts match.",
         "source": null,
         "verifier": {
           "model": "claude-sonnet-pre-migration",

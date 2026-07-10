@@ -169,6 +169,30 @@
   },
   {
     "year": 1988,
+    "title": "Azerbaijani Popular Front Founded, Mass Rallies Begin",
+    "verdict": "TRUE",
+    "reason": "Popular Front movement established 1988, formal founding congress July 1989. Description correctly dates origins to 1988.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Popular Front movement established 1988, formal founding congress July 1989. Description correctly dates origins to 1988.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
+    "year": 1988,
     "title": "Sumgait Pogrom â€” Anti-Armenian Violence Shocks Soviet Union",
     "verdict": "TRUE",
     "reason": "Well-documented historical event confirmed by multiple independent sources. The Sumgait pogrom occurred in Sumgait, Azerbaijan SSR, over several days from Feb 26/27 to 29 (some sources say through March 1), 1988. Mobs of Azerbaijanis attacked and killed Armenian residents; the official Soviet Procurator General's death toll was 32 people (26 Armenians and 6 Azerbaijanis) — matching the description's 'at least 26 people' figure exactly. It was triggered by escalating Nagorno-Karabakh tensions, specifically the Feb 20, 1988 vote of the Nagorno-Karabakh Autonomous Oblast Soviet to seek unification with Armenia, as the description states. Sources consistently describe it as the worst inter-ethnic violence in the USSR in decades, causing mass Armenian displacement across the Caucasus and marking the transformation of the Karabakh territorial dispute into an entrenched ethnic conflict — all matching the event description materially. Country, year, actors, magnitude, trigger, and consequences all check out.",
@@ -204,30 +228,6 @@
     "source": "https://en.wikipedia.org/wiki/Sumgait_pogrom"
   },
   {
-    "year": 1988,
-    "title": "Azerbaijani Popular Front Founded, Mass Rallies Begin",
-    "verdict": "TRUE",
-    "reason": "Popular Front movement established 1988, formal founding congress July 1989. Description correctly dates origins to 1988.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Popular Front movement established 1988, formal founding congress July 1989. Description correctly dates origins to 1988.",
-        "source": null,
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ]
-  },
-  {
     "year": 1989,
     "title": "Azerbaijan Imposes Economic Blockade on Armenia and Karabakh",
     "verdict": "TRUE",
@@ -242,30 +242,6 @@
         "pass_n": 1,
         "verdict": "TRUE",
         "reason": "Azerbaijan's rail and road blockade of Armenia and Karabakh is well-documented from 1989.",
-        "source": null,
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ]
-  },
-  {
-    "year": 1990,
-    "title": "Black January â€” Soviet Army Kills 132 Civilians in Baku",
-    "verdict": "FALSE",
-    "reason": "Official Azerbaijani count is 147 killed; most sources give 133–137. The figure '132' does not match any major source. Year is correct but the specific death toll figure is materially wrong.",
-    "verify_count": 1,
-    "consensus_verdict": "FALSE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "FALSE",
-        "reason": "Official Azerbaijani count is 147 killed; most sources give 133–137. The figure '132' does not match any major source. Year is correct but the specific death toll figure is materially wrong.",
         "source": null,
         "verifier": {
           "model": "claude-sonnet-pre-migration",
@@ -300,6 +276,30 @@
     ]
   },
   {
+    "year": 1990,
+    "title": "Black January â€” Soviet Army Kills 132 Civilians in Baku",
+    "verdict": "FALSE",
+    "reason": "Official Azerbaijani count is 147 killed; most sources give 133–137. The figure '132' does not match any major source. Year is correct but the specific death toll figure is materially wrong.",
+    "verify_count": 1,
+    "consensus_verdict": "FALSE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "FALSE",
+        "reason": "Official Azerbaijani count is 147 killed; most sources give 133–137. The figure '132' does not match any major source. Year is correct but the specific death toll figure is materially wrong.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
     "year": 1991,
     "title": "Azerbaijan Declares Independence Following Soviet Coup",
     "verdict": "TRUE",
@@ -314,6 +314,30 @@
         "pass_n": 1,
         "verdict": "TRUE",
         "reason": "Independence declared 30 August 1991; confirmed by referendum 29 December 1991. Mutalibov became first president. All facts accurate.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
+    "year": 1992,
+    "title": "Fall of Shusha â€” Azerbaijan Loses Cultural Heartland",
+    "verdict": "TRUE",
+    "reason": "Shusha fell 8–9 May 1992 to Armenian forces. Description correctly notes May 1992.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Shusha fell 8–9 May 1992 to Armenian forces. Description correctly notes May 1992.",
         "source": null,
         "verifier": {
           "model": "claude-sonnet-pre-migration",
@@ -384,30 +408,6 @@
     ]
   },
   {
-    "year": 1992,
-    "title": "Fall of Shusha â€” Azerbaijan Loses Cultural Heartland",
-    "verdict": "TRUE",
-    "reason": "Shusha fell 8–9 May 1992 to Armenian forces. Description correctly notes May 1992.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Shusha fell 8–9 May 1992 to Armenian forces. Description correctly notes May 1992.",
-        "source": null,
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ]
-  },
-  {
     "year": 1993,
     "title": "Armenian Forces Capture Seven Districts, Heydar Aliyev Returns to Power",
     "verdict": "TRUE",
@@ -422,6 +422,30 @@
         "pass_n": 1,
         "verdict": "TRUE",
         "reason": "Armenian forces captured surrounding districts through 1993. Aliyev returned as parliamentary speaker then won October 1993 presidential election. All facts accurate.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
+    "year": 1994,
+    "title": "Aliyev Suppresses Multiple Coup Attempts",
+    "verdict": "TRUE",
+    "reason": "Coup attempts by Huseinov and Hamidov in 1994–95 are well-documented; both suppressed. Facts accurate.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Coup attempts by Huseinov and Hamidov in 1994–95 are well-documented; both suppressed. Facts accurate.",
         "source": null,
         "verifier": {
           "model": "claude-sonnet-pre-migration",
@@ -480,28 +504,40 @@
     ]
   },
   {
-    "year": 1994,
-    "title": "Aliyev Suppresses Multiple Coup Attempts",
+    "year": 1995,
+    "title": "Azerbaijan's Savings Bank Turns Insolvent, Sparking Late-1995 Deposit Run",
     "verdict": "TRUE",
-    "reason": "Coup attempts by Huseinov and Hamidov in 1994–95 are well-documented; both suppressed. Facts accurate.",
-    "verify_count": 1,
+    "reason": "Confirmed via the World Bank's \"Azerbaijan Financial Sector Review\" (Report No. 15422-AZ). Multiple independent search queries against this document consistently reproduced the specific facts in the event description: (1) the state Savings Bank held 60-70% of Azerbaijan's household deposits; (2) starting in 1994 it began losing deposits to non-bank charity organizations paying 20-25% monthly interest, so it matched those rates on liabilities while its loan book (funded at those same high rates) went overdue on interest and principal, rendering it insolvent by end-1994; (3) monthly deposit rates were 25% (Jul 1994-Apr 1995), stepped down to 20% (to Jul/Aug 1995) and 10% (to Oct 1, 1995) as the bank tried to manage the crisis; (4) \"in late-1995, a very serious deposit run-off was halted with the injection of budget funds\"; (5) at October 1995 the bank held Manat 79 billion across 4 million accounts (~19,657 manat/account). Separately, Azerbaijan's hyperinflation is independently documented as exceeding 1,000% annually from early 1993 through mid-1995, consistent with the description's hyperinflation context. Every material detail (country, year, mechanism, scale, and resolution) matches the World Bank primary source closely, so this is a TRUE match rather than merely PARTIAL.",
+    "verify_count": 2,
     "consensus_verdict": "TRUE",
-    "consensus_status": "single",
+    "consensus_status": "double_confirmed",
     "needs_tiebreak": false,
-    "source_independence": "n/a",
+    "source_independence": "weak",
     "verifications": [
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "Coup attempts by Huseinov and Hamidov in 1994–95 are well-documented; both suppressed. Facts accurate.",
-        "source": null,
+        "reason": "World Bank Report No. 15422-AZ \"Azerbaijan Financial Sector Review\" directly corroborates the event: the Savings Bank was illiquid/insolvent and a serious deposit run-off in late-1995 was halted by a budget-fund injection; the bank held 60-70% of household deposits; deposits totaled Manat 79 billion across 4 million accounts as of October 1995; and in 1994 the bank began losing deposits to non-bank schemes paying 20-25% monthly interest, prompting it to match those unsustainable rates. Independently verified Azerbaijan's 1994 inflation was roughly 1,300-1,600% (GDP deflator ~1,386%), supporting the \">1,000% annually\" hyperinflation claim. All material details (country, year, magnitude, mechanism) align with no contradicting evidence found.",
+        "source": "https://documents1.worldbank.org/curated/en/835701468741653064/pdf/multi-page.pdf",
         "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
+          "model": "claude-sonnet-5",
+          "date": "2026-07-09",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Confirmed via the World Bank's \"Azerbaijan Financial Sector Review\" (Report No. 15422-AZ). Multiple independent search queries against this document consistently reproduced the specific facts in the event description: (1) the state Savings Bank held 60-70% of Azerbaijan's household deposits; (2) starting in 1994 it began losing deposits to non-bank charity organizations paying 20-25% monthly interest, so it matched those rates on liabilities while its loan book (funded at those same high rates) went overdue on interest and principal, rendering it insolvent by end-1994; (3) monthly deposit rates were 25% (Jul 1994-Apr 1995), stepped down to 20% (to Jul/Aug 1995) and 10% (to Oct 1, 1995) as the bank tried to manage the crisis; (4) \"in late-1995, a very serious deposit run-off was halted with the injection of budget funds\"; (5) at October 1995 the bank held Manat 79 billion across 4 million accounts (~19,657 manat/account). Separately, Azerbaijan's hyperinflation is independently documented as exceeding 1,000% annually from early 1993 through mid-1995, consistent with the description's hyperinflation context. Every material detail (country, year, mechanism, scale, and resolution) matches the World Bank primary source closely, so this is a TRUE match rather than merely PARTIAL.",
+        "source": "https://documents1.worldbank.org/curated/en/835701468741653064/pdf/multi-page.pdf",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-09",
           "method": "web_search"
         }
       }
-    ]
+    ],
+    "source": "https://documents1.worldbank.org/curated/en/835701468741653064/pdf/multi-page.pdf"
   },
   {
     "year": 1995,

@@ -1562,6 +1562,42 @@
   },
   {
     "year": 1985,
+    "title": "Apartheid-Era Debt Standstill Triggers South African Banking Crisis",
+    "verdict": "TRUE",
+    "reason": "All material facts corroborate across multiple independent sources. P.W. Botha's \"Rubicon\" speech on August 15, 1985 failed to signal reform as international markets expected. Chase Manhattan Bank led foreign banks in refusing to roll over short-term loans to South Africa (decision around July 31/August 1985), triggering a cascade. The rand collapsed, reaching a record low of $0.35 on August 27, 1985, prompting the government to suspend all trading on the Johannesburg Stock Exchange and in foreign exchange. On September 1, 1985, the government declared a standstill freezing roughly $13.6 billion in foreign private-sector debt principal (interest continued to be paid via a special account), and the two-tier financial rand system was reintroduced September 1, 1985 to control capital flows. The crisis is widely described in economic history literature as rooted in sanctions-driven capital flight during 1984-85. The only element I could not independently verify from a primary source was the specific claim that Laeven and Valencia code this exact episode as a \"systemic banking crisis\" in their database (I could not access the actual crisis-dates table), but this is a secondary methodological/classification detail, not a material fact about whether the event happened — the core event (country, year, mechanism, magnitude, dates) is solidly confirmed by multiple independent, non-overlapping sources.",
+    "verify_count": 2,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "double_confirmed",
+    "needs_tiebreak": false,
+    "source_independence": "independent",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Core narrative independently confirmed by multiple sources. Chase Manhattan led foreign banks in refusing to roll over short-term SA loans in mid/late-1985 after Botha's Aug 15, 1985 'Rubicon' speech disappointed reform expectations. Contemporaneous reporting (Washington Post, Sept 2 1985) confirms South Africa on Sept 1, 1985 declared a standstill freezing ~$13.6 billion in foreign private-sector debt principal, continuing interest payments via a special account, managed thereafter by a Debt Standstill Committee (last repayments in 2001). Wikipedia's dedicated '1985 in South Africa' page independently corroborates: rand fell from 52c to 33c US on Aug 27, 1985 (matches description's 'near $0.35'), and the government closed the foreign-exchange market and Johannesburg Stock Exchange for a week while trying (and failing) to reschedule debt. The financial rand two-tier system's Sept 1, 1985 reintroduction is confirmed by Wikipedia's 'Financial rand' article, tied explicitly to 1984-85 sanctions-driven capital outflows. One unverifiable detail: I could not independently confirm the specific claim that Laeven and Valencia's systemic banking crisis database codes this exact episode -- a comprehensive Wikipedia 'List of banking crises' that cites Laeven/Valencia and Reinhart/Rogoff has no South Africa entry at all, which is weak negative evidence, though that list is known to be incomplete for emerging-market episodes and this is commonly discussed in the literature as SA's mid-1980s systemic financial crisis. This citation nuance doesn't change any of the core facts (actors, magnitude, dates, mechanism), so I do not treat it as a material scope/magnitude/actor error.",
+        "source": "https://www.washingtonpost.com/archive/politics/1985/09/02/south-africa-freezes-foreign-debt-payments/91d1253c-8312-4fa1-badb-ea6fa34bdcfd/",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-09",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "All material facts corroborate across multiple independent sources. P.W. Botha's \"Rubicon\" speech on August 15, 1985 failed to signal reform as international markets expected. Chase Manhattan Bank led foreign banks in refusing to roll over short-term loans to South Africa (decision around July 31/August 1985), triggering a cascade. The rand collapsed, reaching a record low of $0.35 on August 27, 1985, prompting the government to suspend all trading on the Johannesburg Stock Exchange and in foreign exchange. On September 1, 1985, the government declared a standstill freezing roughly $13.6 billion in foreign private-sector debt principal (interest continued to be paid via a special account), and the two-tier financial rand system was reintroduced September 1, 1985 to control capital flows. The crisis is widely described in economic history literature as rooted in sanctions-driven capital flight during 1984-85. The only element I could not independently verify from a primary source was the specific claim that Laeven and Valencia code this exact episode as a \"systemic banking crisis\" in their database (I could not access the actual crisis-dates table), but this is a secondary methodological/classification detail, not a material fact about whether the event happened — the core event (country, year, mechanism, magnitude, dates) is solidly confirmed by multiple independent, non-overlapping sources.",
+        "source": "https://en.wikipedia.org/wiki/Rubicon_speech",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-09",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Rubicon_speech"
+  },
+  {
+    "year": 1985,
     "title": "International Disinvestment Campaign Gains Momentum",
     "verdict": "TRUE",
     "reason": "Following the Rubicon speech and continued unrest in 1985, US banks refused to roll over South African loans, forcing the government to declare a debt standstill; American corporations, universities, and pension funds accelerated disinvestment under activist pressure.",

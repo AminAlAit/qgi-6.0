@@ -1036,6 +1036,42 @@
     "source": "https://peacemaker.un.org/en/node/9287"
   },
   {
+    "year": 1998,
+    "title": "Filanbanco Bailout Triggers Systemic Banking Collapse",
+    "verdict": "TRUE",
+    "reason": "Independently verified every material claim. Filanbanco, Ecuador's largest bank, was rescued/bailed out by the government in November 1998 (formal handover to the state via AGD on Dec 2, 1998), consistent with the description. Multiple independent sources describe the causal chain exactly as stated: the Filanbanco rescue caused sucre depreciation and capital flight that worsened system liquidity and led to the closure of Banco del Progreso, confirmed as the second-largest bank (by assets), which shut in March 1999. President Jamil Mahuad declared a bank holiday starting March 8, 1999 (initially framed as a short/5-day holiday, later extended until banks reopened March 15), then signed Executive Decree 685 (March 11, 1999) freezing deposits for one year. An independent Spanish-language source (eldiario.ec) states verbatim that \"the freezing affected more than one million people,\" matching the description exactly. The crisis is well documented as compounded by the 1997-98 El Niño flooding and the 1998 oil price collapse (Ecuador is oil-dependent), and it culminated in President Mahuad's announcement of dollarization on January 9, 2000 — confirmed by multiple sources. All year, actors, magnitudes, and sequence in the description hold up under independent verification.",
+    "verify_count": 2,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "double_confirmed",
+    "needs_tiebreak": false,
+    "source_independence": "independent",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Every material claim checks out against independent sources. Filanbanco, Ecuador's largest bank, was bailed out/taken over by the state (AGD) in Nov-Dec 1998, amid sucre depreciation and capital flight tied to the broader 1998-99 crisis (confirmed via Wikipedia and multiple bank-history sources). Banco del Progreso ('El Progreso') is explicitly confirmed by a contemporaneous press account as 'the nation's No. 2 bank' (Filanbanco being No. 1), and it closed its doors on March 22, 1999 — directly corroborating the 'second-largest bank' detail that most needed checking. President Mahuad's government declared a bank holiday starting March 8, 1999 (banks reopened about a week later), and on March 11 announced Executive Decree 685, a roughly one-year partial freeze of deposits (dollar savings over $500 frozen for a year per the contemporaneous report; a Yale case-study summary describes a tiered freeze of 6-12 months across account types — a minor nuance but consistent with 'froze savings for a year' as a description of the headline measure). The 1997-98 El Nino flooding (~13% of GDP cost per Wikipedia) and the 1998 oil price collapse are both independently confirmed as compounding factors. Dollarization was announced by Mahuad on January 9, 2000, exactly as stated. The 'affecting more than one million depositors' figure was not found verbatim in any source, but is a plausible aggregate (El Progreso alone had ~720,000-800,000 clients; the freeze applied system-wide across dozens of banks) and is not a load-bearing figure that contradicts the rest of the record. Overall: real event, correct country, correct year, and all central facts (actors, bank rankings, dates, mechanism, macro drivers, resolution) match documented history.",
+        "source": "https://www.latinamericanstudies.org/ecuador/bank.htm",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-09",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Independently verified every material claim. Filanbanco, Ecuador's largest bank, was rescued/bailed out by the government in November 1998 (formal handover to the state via AGD on Dec 2, 1998), consistent with the description. Multiple independent sources describe the causal chain exactly as stated: the Filanbanco rescue caused sucre depreciation and capital flight that worsened system liquidity and led to the closure of Banco del Progreso, confirmed as the second-largest bank (by assets), which shut in March 1999. President Jamil Mahuad declared a bank holiday starting March 8, 1999 (initially framed as a short/5-day holiday, later extended until banks reopened March 15), then signed Executive Decree 685 (March 11, 1999) freezing deposits for one year. An independent Spanish-language source (eldiario.ec) states verbatim that \"the freezing affected more than one million people,\" matching the description exactly. The crisis is well documented as compounded by the 1997-98 El Niño flooding and the 1998 oil price collapse (Ecuador is oil-dependent), and it culminated in President Mahuad's announcement of dollarization on January 9, 2000 — confirmed by multiple sources. All year, actors, magnitudes, and sequence in the description hold up under independent verification.",
+        "source": "https://en.wikipedia.org/wiki/1998%E2%80%931999_Ecuador_economic_crisis",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-09",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/1998%E2%80%931999_Ecuador_economic_crisis"
+  },
+  {
     "year": 1999,
     "title": "Total Economic and Financial Collapse; Mass Emigration Wave",
     "verdict": "TRUE",

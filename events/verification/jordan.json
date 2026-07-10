@@ -1336,6 +1336,42 @@
     "source": "https://en.wikipedia.org/wiki/1989_Jordanian_protests"
   },
   {
+    "year": 1989,
+    "title": "Petra Bank Collapse Forces $350 Million Bailout of Jordan's Banking System",
+    "verdict": "TRUE",
+    "reason": "Confirmed materially as described from multiple independent sources. Petra Bank, Jordan's third-largest bank, collapsed on 2 August 1989 after failing to meet a Central Bank of Jordan requirement to deposit 30% of foreign-exchange holdings domestically (Wikipedia). Salon.com's detailed 2004 investigative piece states verbatim: \"Fourteen percent of the bank's assets, or about $130 million before the Jordanian devaluation, were dubious loans to, or commitments from, 'related parties'\" — i.e., chairman Ahmad Chalabi's family/business network — matching the description's figures exactly. The Central Bank of Jordan announced a $350 million bailout to protect depositors and prevent contagion to the wider banking system (Wikipedia, Salon). Separately, IMF evaluation documentation confirms Jordan suffered a severe 1988-89 balance-of-payments crisis, a >30% dinar devaluation, and that \"a large devaluation of the dinar was compounded by the collapse of Jordan's third largest bank\" (i.e., Petra Bank), which precipitated Jordan's first-ever IMF standby arrangement and structural adjustment program in 1989 — corroborating the description's claim of a broader 1989 financial crisis and Washington Consensus-style adjustment. All material details (year, country, actors, magnitudes, causal chain) check out across independent, non-overlapping sources.",
+    "verify_count": 2,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "double_confirmed",
+    "needs_tiebreak": false,
+    "source_independence": "independent",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "All material facts confirmed via independent sources. Petra Bank (Jordan's third-largest lender) collapsed on 2 August 1989 after failing to meet a May 1989 Central Bank of Jordan decree requiring banks to deposit 30% of foreign-exchange holdings domestically (confirmed by Wikipedia's Petra Bank article, corroborated by Salon.com's investigative account, which cites the same 30% figure -- a rival source cites 35%, a minor discrepancy not material to the event). An Arthur Andersen audit found roughly 14% of Petra Bank's assets (~$130 million pre-devaluation) were dubious 'related party' loans tied to bank chairman Ahmad Chalabi's network (Salon.com, matching the description verbatim). The Central Bank of Jordan announced a $350 million bailout to protect depositors and avert systemic collapse (confirmed by Wikipedia and Salon.com). This occurred amid Jordan's broader 1988-89 balance-of-payments/currency crisis (dinar devaluation of ~30%+, reserves nearly exhausted), which led Jordan into its first-ever IMF standby arrangement/structural adjustment program in 1989 (confirmed by IMF Independent Evaluation Office report 'Evaluation Report IMF Support to Jordan, 1989-2004'). No detail in the event description is contradicted by any source found; magnitude, actors, dates, and causal chain all match.",
+        "source": "https://en.wikipedia.org/wiki/Petra_Bank",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-09",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Confirmed materially as described from multiple independent sources. Petra Bank, Jordan's third-largest bank, collapsed on 2 August 1989 after failing to meet a Central Bank of Jordan requirement to deposit 30% of foreign-exchange holdings domestically (Wikipedia). Salon.com's detailed 2004 investigative piece states verbatim: \"Fourteen percent of the bank's assets, or about $130 million before the Jordanian devaluation, were dubious loans to, or commitments from, 'related parties'\" — i.e., chairman Ahmad Chalabi's family/business network — matching the description's figures exactly. The Central Bank of Jordan announced a $350 million bailout to protect depositors and prevent contagion to the wider banking system (Wikipedia, Salon). Separately, IMF evaluation documentation confirms Jordan suffered a severe 1988-89 balance-of-payments crisis, a >30% dinar devaluation, and that \"a large devaluation of the dinar was compounded by the collapse of Jordan's third largest bank\" (i.e., Petra Bank), which precipitated Jordan's first-ever IMF standby arrangement and structural adjustment program in 1989 — corroborating the description's claim of a broader 1989 financial crisis and Washington Consensus-style adjustment. All material details (year, country, actors, magnitudes, causal chain) check out across independent, non-overlapping sources.",
+        "source": "https://www.salon.com/2004/05/04/petra/",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-09",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://www.salon.com/2004/05/04/petra/"
+  },
+  {
     "year": 1990,
     "title": "Gulf War — Jordan's Difficult Neutrality",
     "verdict": "TRUE",

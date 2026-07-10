@@ -76,31 +76,6 @@
   },
   {
     "year": 1951,
-    "title": "Vargas Launches National Developmentalism Policy",
-    "verdict": "TRUE",
-    "reason": "Accurate description of Vargas's second-term economic nationalism agenda.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Accurate description of Vargas's second-term economic nationalism agenda.",
-        "source": "https://en.wikipedia.org/wiki/Getúlio_Vargas",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/Getúlio_Vargas"
-  },
-  {
-    "year": 1951,
     "title": "Banco do Brasil Expands Credit to Agriculture",
     "verdict": "TRUE",
     "reason": "Consistent with Vargas-era rural credit expansion policies.",
@@ -123,6 +98,31 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/Banco_do_Brasil"
+  },
+  {
+    "year": 1951,
+    "title": "Vargas Launches National Developmentalism Policy",
+    "verdict": "TRUE",
+    "reason": "Accurate description of Vargas's second-term economic nationalism agenda.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Accurate description of Vargas's second-term economic nationalism agenda.",
+        "source": "https://en.wikipedia.org/wiki/Getúlio_Vargas",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Getúlio_Vargas"
   },
   {
     "year": 1952,
@@ -201,9 +201,9 @@
   },
   {
     "year": 1953,
-    "title": "Petrobras State Oil Company Created",
+    "title": "Brazilian Soccer League Professionalizes Nationally",
     "verdict": "TRUE",
-    "reason": "Confirmed: Petrobras established October 3, 1953 via Law 2,004. Slogan 'O petróleo é nosso' is correct.",
+    "reason": "General narrative consistent with 1950s football institutionalization in Brazil.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -213,8 +213,8 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "Confirmed: Petrobras established October 3, 1953 via Law 2,004. Slogan 'O petróleo é nosso' is correct.",
-        "source": "https://en.wikipedia.org/wiki/Petrobras",
+        "reason": "General narrative consistent with 1950s football institutionalization in Brazil.",
+        "source": "https://en.wikipedia.org/wiki/Brazilian_football",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
           "date": null,
@@ -222,7 +222,7 @@
         }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/Petrobras"
+    "source": "https://en.wikipedia.org/wiki/Brazilian_football"
   },
   {
     "year": 1953,
@@ -262,9 +262,9 @@
   },
   {
     "year": 1953,
-    "title": "Brazilian Soccer League Professionalizes Nationally",
+    "title": "Petrobras State Oil Company Created",
     "verdict": "TRUE",
-    "reason": "General narrative consistent with 1950s football institutionalization in Brazil.",
+    "reason": "Confirmed: Petrobras established October 3, 1953 via Law 2,004. Slogan 'O petróleo é nosso' is correct.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -274,8 +274,8 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "General narrative consistent with 1950s football institutionalization in Brazil.",
-        "source": "https://en.wikipedia.org/wiki/Brazilian_football",
+        "reason": "Confirmed: Petrobras established October 3, 1953 via Law 2,004. Slogan 'O petróleo é nosso' is correct.",
+        "source": "https://en.wikipedia.org/wiki/Petrobras",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
           "date": null,
@@ -283,7 +283,7 @@
         }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/Brazilian_football"
+    "source": "https://en.wikipedia.org/wiki/Petrobras"
   },
   {
     "year": 1954,
@@ -387,9 +387,9 @@
   },
   {
     "year": 1956,
-    "title": "Kubitschek Launches Targets Plan for Development",
+    "title": "Brazil Establishes National Nuclear Energy Commission",
     "verdict": "TRUE",
-    "reason": "Confirmed: Plano de Metas (30 goals) launched during JK's term starting 1956.",
+    "reason": "CNEN created 1956 by Law 4,118; confirmed.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -399,8 +399,8 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "Confirmed: Plano de Metas (30 goals) launched during JK's term starting 1956.",
-        "source": "https://en.wikipedia.org/wiki/Juscelino_Kubitschek",
+        "reason": "CNEN created 1956 by Law 4,118; confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Brazilian_National_Nuclear_Energy_Commission",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
           "date": null,
@@ -408,7 +408,7 @@
         }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/Juscelino_Kubitschek"
+    "source": "https://en.wikipedia.org/wiki/Brazilian_National_Nuclear_Energy_Commission"
   },
   {
     "year": 1956,
@@ -437,9 +437,9 @@
   },
   {
     "year": 1956,
-    "title": "Brazil Establishes National Nuclear Energy Commission",
+    "title": "Kubitschek Launches Targets Plan for Development",
     "verdict": "TRUE",
-    "reason": "CNEN created 1956 by Law 4,118; confirmed.",
+    "reason": "Confirmed: Plano de Metas (30 goals) launched during JK's term starting 1956.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -449,8 +449,8 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "CNEN created 1956 by Law 4,118; confirmed.",
-        "source": "https://en.wikipedia.org/wiki/Brazilian_National_Nuclear_Energy_Commission",
+        "reason": "Confirmed: Plano de Metas (30 goals) launched during JK's term starting 1956.",
+        "source": "https://en.wikipedia.org/wiki/Juscelino_Kubitschek",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
           "date": null,
@@ -458,7 +458,7 @@
         }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/Brazilian_National_Nuclear_Energy_Commission"
+    "source": "https://en.wikipedia.org/wiki/Juscelino_Kubitschek"
   },
   {
     "year": 1957,
@@ -487,31 +487,6 @@
   },
   {
     "year": 1957,
-    "title": "Volkswagen and Foreign Auto Plants Open in Sao Paulo",
-    "verdict": "TRUE",
-    "reason": "Volkswagen do Brasil founded 1953, began manufacturing in São Bernardo do Campo by 1957. Correct.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Volkswagen do Brasil founded 1953, began manufacturing in São Bernardo do Campo by 1957. Correct.",
-        "source": "https://en.wikipedia.org/wiki/Volkswagen_do_Brasil",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/Volkswagen_do_Brasil"
-  },
-  {
-    "year": 1957,
     "title": "Road Network Expansion Drives Interior Integration",
     "verdict": "TRUE",
     "reason": "Transport was a core Plano de Metas target; consistent with historical record.",
@@ -534,6 +509,31 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/Juscelino_Kubitschek"
+  },
+  {
+    "year": 1957,
+    "title": "Volkswagen and Foreign Auto Plants Open in Sao Paulo",
+    "verdict": "TRUE",
+    "reason": "Volkswagen do Brasil founded 1953, began manufacturing in São Bernardo do Campo by 1957. Correct.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Volkswagen do Brasil founded 1953, began manufacturing in São Bernardo do Campo by 1957. Correct.",
+        "source": "https://en.wikipedia.org/wiki/Volkswagen_do_Brasil",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Volkswagen_do_Brasil"
   },
   {
     "year": 1958,
@@ -587,6 +587,31 @@
   },
   {
     "year": 1959,
+    "title": "Inflation Crisis Strains Kubitschek Government",
+    "verdict": "TRUE",
+    "reason": "IMF negotiations collapse in 1959 is documented; JK's rejection of austerity is confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "IMF negotiations collapse in 1959 is documented; JK's rejection of austerity is confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Juscelino_Kubitschek",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Juscelino_Kubitschek"
+  },
+  {
+    "year": 1959,
     "title": "Superintendent for Northeast Development (SUDENE) Created",
     "verdict": "TRUE",
     "reason": "SUDENE created December 1959 (Law 3,692). Confirmed.",
@@ -611,10 +636,10 @@
     "source": "https://en.wikipedia.org/wiki/SUDENE"
   },
   {
-    "year": 1959,
-    "title": "Inflation Crisis Strains Kubitschek Government",
+    "year": 1960,
+    "title": "Brazil Breaks Relations with Cuba After Revolution",
     "verdict": "TRUE",
-    "reason": "IMF negotiations collapse in 1959 is documented; JK's rejection of austerity is confirmed.",
+    "reason": "Brazil faced Cold War pressure over Cuba relations; Brazil did not break ties under JK/Quadros — this is a nuanced claim but the description of diplomatic pressure and elite division is accurate.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -624,8 +649,8 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "IMF negotiations collapse in 1959 is documented; JK's rejection of austerity is confirmed.",
-        "source": "https://en.wikipedia.org/wiki/Juscelino_Kubitschek",
+        "reason": "Brazil faced Cold War pressure over Cuba relations; Brazil did not break ties under JK/Quadros — this is a nuanced claim but the description of diplomatic pressure and elite division is accurate.",
+        "source": "https://en.wikipedia.org/wiki/Brazil–Cuba_relations",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
           "date": null,
@@ -633,7 +658,7 @@
         }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/Juscelino_Kubitschek"
+    "source": "https://en.wikipedia.org/wiki/Brazil–Cuba_relations"
   },
   {
     "year": 1960,
@@ -686,35 +711,10 @@
     "source": "https://en.wikipedia.org/wiki/Jânio_Quadros"
   },
   {
-    "year": 1960,
-    "title": "Brazil Breaks Relations with Cuba After Revolution",
-    "verdict": "TRUE",
-    "reason": "Brazil faced Cold War pressure over Cuba relations; Brazil did not break ties under JK/Quadros — this is a nuanced claim but the description of diplomatic pressure and elite division is accurate.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Brazil faced Cold War pressure over Cuba relations; Brazil did not break ties under JK/Quadros — this is a nuanced claim but the description of diplomatic pressure and elite division is accurate.",
-        "source": "https://en.wikipedia.org/wiki/Brazil–Cuba_relations",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/Brazil–Cuba_relations"
-  },
-  {
     "year": 1961,
-    "title": "President Quadros Resigns After Seven Months",
+    "title": "National Students Union Leads Anti-Coup Protests",
     "verdict": "TRUE",
-    "reason": "Confirmed: resigned August 25, 1961 citing 'terrible forces'; Goulart succession crisis followed.",
+    "reason": "UNE activism in 1961 succession crisis is documented.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -724,8 +724,8 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "Confirmed: resigned August 25, 1961 citing 'terrible forces'; Goulart succession crisis followed.",
-        "source": "https://en.wikipedia.org/wiki/Jânio_Quadros",
+        "reason": "UNE activism in 1961 succession crisis is documented.",
+        "source": "https://en.wikipedia.org/wiki/National_Union_of_Students_(Brazil)",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
           "date": null,
@@ -733,7 +733,7 @@
         }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/Jânio_Quadros"
+    "source": "https://en.wikipedia.org/wiki/National_Union_of_Students_(Brazil)"
   },
   {
     "year": 1961,
@@ -762,9 +762,9 @@
   },
   {
     "year": 1961,
-    "title": "National Students Union Leads Anti-Coup Protests",
+    "title": "President Quadros Resigns After Seven Months",
     "verdict": "TRUE",
-    "reason": "UNE activism in 1961 succession crisis is documented.",
+    "reason": "Confirmed: resigned August 25, 1961 citing 'terrible forces'; Goulart succession crisis followed.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -774,8 +774,8 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "UNE activism in 1961 succession crisis is documented.",
-        "source": "https://en.wikipedia.org/wiki/National_Union_of_Students_(Brazil)",
+        "reason": "Confirmed: resigned August 25, 1961 citing 'terrible forces'; Goulart succession crisis followed.",
+        "source": "https://en.wikipedia.org/wiki/Jânio_Quadros",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
           "date": null,
@@ -783,7 +783,7 @@
         }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/National_Union_of_Students_(Brazil)"
+    "source": "https://en.wikipedia.org/wiki/Jânio_Quadros"
   },
   {
     "year": 1962,
@@ -809,6 +809,31 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/1962_FIFA_World_Cup_final"
+  },
+  {
+    "year": 1962,
+    "title": "Cuba Crisis and Brazilian Independent Foreign Policy",
+    "verdict": "TRUE",
+    "reason": "Brazil's attempted mediation role and support for nuclear-free zone during 1962 crisis is documented.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Brazil's attempted mediation role and support for nuclear-free zone during 1962 crisis is documented.",
+        "source": "https://en.wikipedia.org/wiki/Cuban_Missile_Crisis",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Cuban_Missile_Crisis"
   },
   {
     "year": 1962,
@@ -847,31 +872,6 @@
     "source": "https://atlas.fgv.br/verbete/8751"
   },
   {
-    "year": 1962,
-    "title": "Cuba Crisis and Brazilian Independent Foreign Policy",
-    "verdict": "TRUE",
-    "reason": "Brazil's attempted mediation role and support for nuclear-free zone during 1962 crisis is documented.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Brazil's attempted mediation role and support for nuclear-free zone during 1962 crisis is documented.",
-        "source": "https://en.wikipedia.org/wiki/Cuban_Missile_Crisis",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/Cuban_Missile_Crisis"
-  },
-  {
     "year": 1963,
     "title": "Referendum Restores Full Presidential Powers to Goulart",
     "verdict": "TRUE",
@@ -895,31 +895,6 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/João_Goulart"
-  },
-  {
-    "year": 1963,
-    "title": "Sergeants Revolt in Brasilia",
-    "verdict": "TRUE",
-    "reason": "September 1963 revolt confirmed; NCOs protesting electoral ineligibility.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "September 1963 revolt confirmed; NCOs protesting electoral ineligibility.",
-        "source": "https://en.wikipedia.org/wiki/Sergeants%27_revolt_(Brazil)",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/Sergeants%27_revolt_(Brazil)"
   },
   {
     "year": 1963,
@@ -958,10 +933,10 @@
     "source": "https://www18.fgv.br/cpdoc/acervo/dicionarios/verbete-tematico/estatuto-do-trabalhador-rural"
   },
   {
-    "year": 1964,
-    "title": "Military Coup Overthrows President Joao Goulart",
+    "year": 1963,
+    "title": "Sergeants Revolt in Brasilia",
     "verdict": "TRUE",
-    "reason": "Confirmed: March 31–April 1, 1964. Goulart fled to Uruguay. US support documented.",
+    "reason": "September 1963 revolt confirmed; NCOs protesting electoral ineligibility.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -971,8 +946,8 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "Confirmed: March 31–April 1, 1964. Goulart fled to Uruguay. US support documented.",
-        "source": "https://en.wikipedia.org/wiki/1964_Brazilian_coup_d'état",
+        "reason": "September 1963 revolt confirmed; NCOs protesting electoral ineligibility.",
+        "source": "https://en.wikipedia.org/wiki/Sergeants%27_revolt_(Brazil)",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
           "date": null,
@@ -980,7 +955,7 @@
         }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/1964_Brazilian_coup_d'état"
+    "source": "https://en.wikipedia.org/wiki/Sergeants%27_revolt_(Brazil)"
   },
   {
     "year": 1964,
@@ -1008,10 +983,10 @@
     "source": "https://en.wikipedia.org/wiki/Institutional_Act_Number_One"
   },
   {
-    "year": 1965,
-    "title": "Institutional Act No. 2 Abolishes Political Parties",
+    "year": 1964,
+    "title": "Military Coup Overthrows President Joao Goulart",
     "verdict": "TRUE",
-    "reason": "AI-2 issued October 27, 1965; created two-party system (ARENA/MDB). Confirmed.",
+    "reason": "Confirmed: March 31–April 1, 1964. Goulart fled to Uruguay. US support documented.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -1021,8 +996,8 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "AI-2 issued October 27, 1965; created two-party system (ARENA/MDB). Confirmed.",
-        "source": "https://en.wikipedia.org/wiki/Institutional_Act_Number_Two",
+        "reason": "Confirmed: March 31–April 1, 1964. Goulart fled to Uruguay. US support documented.",
+        "source": "https://en.wikipedia.org/wiki/1964_Brazilian_coup_d'état",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
           "date": null,
@@ -1030,7 +1005,7 @@
         }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/Institutional_Act_Number_Two"
+    "source": "https://en.wikipedia.org/wiki/1964_Brazilian_coup_d'état"
   },
   {
     "year": 1965,
@@ -1059,6 +1034,31 @@
   },
   {
     "year": 1965,
+    "title": "Institutional Act No. 2 Abolishes Political Parties",
+    "verdict": "TRUE",
+    "reason": "AI-2 issued October 27, 1965; created two-party system (ARENA/MDB). Confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "AI-2 issued October 27, 1965; created two-party system (ARENA/MDB). Confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Institutional_Act_Number_Two",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Institutional_Act_Number_Two"
+  },
+  {
+    "year": 1965,
     "title": "PAEG Economic Stabilization Program Launched",
     "verdict": "TRUE",
     "reason": "PAEG launched 1964–65 under Castelo Branco. Confirmed.",
@@ -1084,31 +1084,6 @@
   },
   {
     "year": 1966,
-    "title": "New Constitution Formalizes Military Rule",
-    "verdict": "TRUE",
-    "reason": "Minor: constitution promulgated January 24, 1967 but enacted/approved in 1966 legislative session. Borderline — marking VERIFIED with note.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Minor: constitution promulgated January 24, 1967 but enacted/approved in 1966 legislative session. Borderline — marking VERIFIED with note.",
-        "source": "https://en.wikipedia.org/wiki/Brazilian_Constitution_of_1967",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/Brazilian_Constitution_of_1967"
-  },
-  {
-    "year": 1966,
     "title": "General Costa e Silva Designated as Next President",
     "verdict": "TRUE",
     "reason": "Costa e Silva designated by military in 1966, inaugurated March 1967. Confirmed.",
@@ -1131,6 +1106,31 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/Artur_da_Costa_e_Silva"
+  },
+  {
+    "year": 1966,
+    "title": "New Constitution Formalizes Military Rule",
+    "verdict": "TRUE",
+    "reason": "Minor: constitution promulgated January 24, 1967 but enacted/approved in 1966 legislative session. Borderline — marking VERIFIED with note.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Minor: constitution promulgated January 24, 1967 but enacted/approved in 1966 legislative session. Borderline — marking VERIFIED with note.",
+        "source": "https://en.wikipedia.org/wiki/Brazilian_Constitution_of_1967",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Brazilian_Constitution_of_1967"
   },
   {
     "year": 1967,
@@ -1209,6 +1209,31 @@
   },
   {
     "year": 1968,
+    "title": "Cultural Tropicalism Movement Emerges",
+    "verdict": "TRUE",
+    "reason": "Confirmed: Caetano Veloso and Gilberto Gil led Tropicália; imprisoned and exiled post-AI-5.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed: Caetano Veloso and Gilberto Gil led Tropicália; imprisoned and exiled post-AI-5.",
+        "source": "https://en.wikipedia.org/wiki/Tropicália",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Tropicália"
+  },
+  {
+    "year": 1968,
     "title": "Institutional Act No. 5 Launches Hardest Phase of Repression",
     "verdict": "TRUE",
     "reason": "AI-5 issued December 13, 1968. 'Anos de Chumbo' description confirmed.",
@@ -1258,10 +1283,10 @@
     "source": "https://en.wikipedia.org/wiki/Brazilian_military_government"
   },
   {
-    "year": 1968,
-    "title": "Cultural Tropicalism Movement Emerges",
+    "year": 1969,
+    "title": "General Medici Takes Power as Repression Peaks",
     "verdict": "TRUE",
-    "reason": "Confirmed: Caetano Veloso and Gilberto Gil led Tropicália; imprisoned and exiled post-AI-5.",
+    "reason": "Confirmed: Médici assumed presidency October 1969 after Costa e Silva's stroke.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -1271,8 +1296,8 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "Confirmed: Caetano Veloso and Gilberto Gil led Tropicália; imprisoned and exiled post-AI-5.",
-        "source": "https://en.wikipedia.org/wiki/Tropicália",
+        "reason": "Confirmed: Médici assumed presidency October 1969 after Costa e Silva's stroke.",
+        "source": "https://en.wikipedia.org/wiki/Emílio_Garrastazu_Médici",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
           "date": null,
@@ -1280,7 +1305,7 @@
         }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/Tropicália"
+    "source": "https://en.wikipedia.org/wiki/Emílio_Garrastazu_Médici"
   },
   {
     "year": 1969,
@@ -1306,31 +1331,6 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/Charles_Burke_Elbrick"
-  },
-  {
-    "year": 1969,
-    "title": "General Medici Takes Power as Repression Peaks",
-    "verdict": "TRUE",
-    "reason": "Confirmed: Médici assumed presidency October 1969 after Costa e Silva's stroke.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Confirmed: Médici assumed presidency October 1969 after Costa e Silva's stroke.",
-        "source": "https://en.wikipedia.org/wiki/Emílio_Garrastazu_Médici",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/Emílio_Garrastazu_Médici"
   },
   {
     "year": 1970,
@@ -1396,31 +1396,6 @@
   },
   {
     "year": 1971,
-    "title": "Araguaia Guerrilla Movement Emerges in Amazon",
-    "verdict": "TRUE",
-    "reason": "PCdoB began Araguaia operations ~1972; '1971' as organizational emergence is slightly early but within acceptable range.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "PCdoB began Araguaia operations ~1972; '1971' as organizational emergence is slightly early but within acceptable range.",
-        "source": "https://en.wikipedia.org/wiki/Araguaia_guerrilla",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/Araguaia_guerrilla"
-  },
-  {
-    "year": 1971,
     "title": "Amazon Highway Construction Program Launched",
     "verdict": "TRUE",
     "reason": "Transamazon Highway construction began 1970–1972; 1971 is within the launch period.",
@@ -1445,10 +1420,10 @@
     "source": "https://en.wikipedia.org/wiki/Transamazon_Highway"
   },
   {
-    "year": 1972,
-    "title": "Military Campaign Annihilates Araguaia Guerrillas",
+    "year": 1971,
+    "title": "Araguaia Guerrilla Movement Emerges in Amazon",
     "verdict": "TRUE",
-    "reason": "Military operations 1972–1974 destroyed the PCdoB Araguaia movement. Confirmed.",
+    "reason": "PCdoB began Araguaia operations ~1972; '1971' as organizational emergence is slightly early but within acceptable range.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -1458,7 +1433,7 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "Military operations 1972–1974 destroyed the PCdoB Araguaia movement. Confirmed.",
+        "reason": "PCdoB began Araguaia operations ~1972; '1971' as organizational emergence is slightly early but within acceptable range.",
         "source": "https://en.wikipedia.org/wiki/Araguaia_guerrilla",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
@@ -1496,6 +1471,31 @@
   },
   {
     "year": 1972,
+    "title": "Military Campaign Annihilates Araguaia Guerrillas",
+    "verdict": "TRUE",
+    "reason": "Military operations 1972–1974 destroyed the PCdoB Araguaia movement. Confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Military operations 1972–1974 destroyed the PCdoB Araguaia movement. Confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Araguaia_guerrilla",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Araguaia_guerrilla"
+  },
+  {
+    "year": 1972,
     "title": "Record Coffee Export Earnings Boost Economy",
     "verdict": "TRUE",
     "reason": "Coffee export boom in early 1970s is documented.",
@@ -1521,9 +1521,9 @@
   },
   {
     "year": 1973,
-    "title": "Oil Shock Undermines Brazilian Economic Miracle",
+    "title": "Federal University System Expanded Across Brazil",
     "verdict": "TRUE",
-    "reason": "1973 OPEC embargo impact on Brazil's import-dependent economy is confirmed.",
+    "reason": "University expansion under military government is documented.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -1533,8 +1533,8 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "1973 OPEC embargo impact on Brazil's import-dependent economy is confirmed.",
-        "source": "https://en.wikipedia.org/wiki/1973_oil_crisis",
+        "reason": "University expansion under military government is documented.",
+        "source": "https://en.wikipedia.org/wiki/Education_in_Brazil",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
           "date": null,
@@ -1542,7 +1542,7 @@
         }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/1973_oil_crisis"
+    "source": "https://en.wikipedia.org/wiki/Education_in_Brazil"
   },
   {
     "year": 1973,
@@ -1571,9 +1571,9 @@
   },
   {
     "year": 1973,
-    "title": "Federal University System Expanded Across Brazil",
+    "title": "Oil Shock Undermines Brazilian Economic Miracle",
     "verdict": "TRUE",
-    "reason": "University expansion under military government is documented.",
+    "reason": "1973 OPEC embargo impact on Brazil's import-dependent economy is confirmed.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -1583,8 +1583,8 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "University expansion under military government is documented.",
-        "source": "https://en.wikipedia.org/wiki/Education_in_Brazil",
+        "reason": "1973 OPEC embargo impact on Brazil's import-dependent economy is confirmed.",
+        "source": "https://en.wikipedia.org/wiki/1973_oil_crisis",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
           "date": null,
@@ -1592,7 +1592,7 @@
         }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/Education_in_Brazil"
+    "source": "https://en.wikipedia.org/wiki/1973_oil_crisis"
   },
   {
     "year": 1974,
@@ -1646,31 +1646,6 @@
   },
   {
     "year": 1975,
-    "title": "Journalist Vladimir Herzog Dies Under Torture",
-    "verdict": "TRUE",
-    "reason": "Confirmed: Herzog arrested and died in Army custody October 25, 1975 in São Paulo.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Confirmed: Herzog arrested and died in Army custody October 25, 1975 in São Paulo.",
-        "source": "https://en.wikipedia.org/wiki/Vladimir_Herzog",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/Vladimir_Herzog"
-  },
-  {
-    "year": 1975,
     "title": "Brazil Recognizes Independent Angola Against US Wishes",
     "verdict": "TRUE",
     "reason": "Brazil was among the first to recognize MPLA Angola in 1975. Confirmed.",
@@ -1720,10 +1695,10 @@
     "source": "https://www.wilsoncenter.org/publication/brazils-1975-nuclear-agreement-west-germany"
   },
   {
-    "year": 1976,
-    "title": "Worker Manuel Fiel Filho Dies in Military Custody",
+    "year": 1975,
+    "title": "Journalist Vladimir Herzog Dies Under Torture",
     "verdict": "TRUE",
-    "reason": "Confirmed: metalworker died in military custody January 1976, shortly after Herzog.",
+    "reason": "Confirmed: Herzog arrested and died in Army custody October 25, 1975 in São Paulo.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -1733,8 +1708,8 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "Confirmed: metalworker died in military custody January 1976, shortly after Herzog.",
-        "source": "https://en.wikipedia.org/wiki/Manoel_Fiel_Filho",
+        "reason": "Confirmed: Herzog arrested and died in Army custody October 25, 1975 in São Paulo.",
+        "source": "https://en.wikipedia.org/wiki/Vladimir_Herzog",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
           "date": null,
@@ -1742,7 +1717,32 @@
         }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/Manoel_Fiel_Filho"
+    "source": "https://en.wikipedia.org/wiki/Vladimir_Herzog"
+  },
+  {
+    "year": 1976,
+    "title": "Brazil Hosts First F1 Grand Prix in Sao Paulo",
+    "verdict": "FALSE",
+    "reason": "The first Brazilian Grand Prix at Interlagos was held in 1972 (non-championship) and 1973 (first championship race). The 1976 race was not the first — year is wrong by 3+ years.",
+    "verify_count": 1,
+    "consensus_verdict": "FALSE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "FALSE",
+        "reason": "The first Brazilian Grand Prix at Interlagos was held in 1972 (non-championship) and 1973 (first championship race). The 1976 race was not the first — year is wrong by 3+ years.",
+        "source": "https://en.wikipedia.org/wiki/Brazilian_Grand_Prix",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Brazilian_Grand_Prix"
   },
   {
     "year": 1976,
@@ -1771,20 +1771,20 @@
   },
   {
     "year": 1976,
-    "title": "Brazil Hosts First F1 Grand Prix in Sao Paulo",
-    "verdict": "FALSE",
-    "reason": "The first Brazilian Grand Prix at Interlagos was held in 1972 (non-championship) and 1973 (first championship race). The 1976 race was not the first — year is wrong by 3+ years.",
+    "title": "Worker Manuel Fiel Filho Dies in Military Custody",
+    "verdict": "TRUE",
+    "reason": "Confirmed: metalworker died in military custody January 1976, shortly after Herzog.",
     "verify_count": 1,
-    "consensus_verdict": "FALSE",
+    "consensus_verdict": "TRUE",
     "consensus_status": "single",
     "needs_tiebreak": false,
     "source_independence": "n/a",
     "verifications": [
       {
         "pass_n": 1,
-        "verdict": "FALSE",
-        "reason": "The first Brazilian Grand Prix at Interlagos was held in 1972 (non-championship) and 1973 (first championship race). The 1976 race was not the first — year is wrong by 3+ years.",
-        "source": "https://en.wikipedia.org/wiki/Brazilian_Grand_Prix",
+        "verdict": "TRUE",
+        "reason": "Confirmed: metalworker died in military custody January 1976, shortly after Herzog.",
+        "source": "https://en.wikipedia.org/wiki/Manoel_Fiel_Filho",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
           "date": null,
@@ -1792,7 +1792,7 @@
         }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/Brazilian_Grand_Prix"
+    "source": "https://en.wikipedia.org/wiki/Manoel_Fiel_Filho"
   },
   {
     "year": 1977,
@@ -2032,31 +2032,6 @@
   },
   {
     "year": 1980,
-    "title": "Workers Party (PT) Founded by Lula",
-    "verdict": "TRUE",
-    "reason": "Confirmed: PT founded February 10, 1980 in São Paulo.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Confirmed: PT founded February 10, 1980 in São Paulo.",
-        "source": "https://en.wikipedia.org/wiki/Workers%27_Party_(Brazil)",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/Workers%27_Party_(Brazil)"
-  },
-  {
-    "year": 1980,
     "title": "ABC Industrial Region Strikes Continue",
     "verdict": "TRUE",
     "reason": "Independently confirmed via non-Wikipedia sources. In 1980 a mass strike by 200,000+ metalworkers in Brazil's ABC region (Santo André, São Bernardo, São Caetano) demanded wage increases and job stability against the military regime. On April 19, 1980 (19 days into the strike), Lula (then president of the ABC Metalworkers' Union) and ten other union leaders were arrested and charged under the National Security Law. Critically, the strike did NOT collapse after his arrest — workers continued the movement (chanting for his release, with a 100,000-person march on May 1) and sustained the strike for 41 total days until suspending it on May 11, 1980. This directly matches the event description's core claim that the labor movement 'maintained pressure... despite the government imprisoning Lula' and 'demonstrated its capacity to sustain organized resistance.' Corroborated by Memorial da Democracia (memorialdademocracia.com.br) and cross-checked with Instituto Lula, Fundação Perseu Abramo, and The Intercept Brasil — all independent of Wikipedia, which was excluded from consideration per source-independence rules.",
@@ -2117,6 +2092,56 @@
     "source": "https://en.wikipedia.org/wiki/Droughts_in_Brazil"
   },
   {
+    "year": 1980,
+    "title": "Workers Party (PT) Founded by Lula",
+    "verdict": "TRUE",
+    "reason": "Confirmed: PT founded February 10, 1980 in São Paulo.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed: PT founded February 10, 1980 in São Paulo.",
+        "source": "https://en.wikipedia.org/wiki/Workers%27_Party_(Brazil)",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Workers%27_Party_(Brazil)"
+  },
+  {
+    "year": 1981,
+    "title": "Brazil's External Debt Crisis Deepens",
+    "verdict": "TRUE",
+    "reason": "External debt over $60 billion and rising interest rates in 1981 are confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "External debt over $60 billion and rising interest rates in 1981 are confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Brazilian_debt_crisis",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Brazilian_debt_crisis"
+  },
+  {
     "year": 1981,
     "title": "Riocentro Bombing Attempt by Military Hardliners",
     "verdict": "TRUE",
@@ -2142,10 +2167,10 @@
     "source": "https://en.wikipedia.org/wiki/Riocentro_bomb_incident"
   },
   {
-    "year": 1981,
-    "title": "Brazil's External Debt Crisis Deepens",
+    "year": 1982,
+    "title": "Debt Crisis Forces IMF Agreement",
     "verdict": "TRUE",
-    "reason": "External debt over $60 billion and rising interest rates in 1981 are confirmed.",
+    "reason": "Mexico default contagion reached Brazil in 1982; IMF standby agreement negotiated. Confirmed.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -2155,7 +2180,7 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "External debt over $60 billion and rising interest rates in 1981 are confirmed.",
+        "reason": "Mexico default contagion reached Brazil in 1982; IMF standby agreement negotiated. Confirmed.",
         "source": "https://en.wikipedia.org/wiki/Brazilian_debt_crisis",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
@@ -2192,31 +2217,6 @@
     "source": "https://en.wikipedia.org/wiki/1982_Brazilian_gubernatorial_elections"
   },
   {
-    "year": 1982,
-    "title": "Debt Crisis Forces IMF Agreement",
-    "verdict": "TRUE",
-    "reason": "Mexico default contagion reached Brazil in 1982; IMF standby agreement negotiated. Confirmed.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Mexico default contagion reached Brazil in 1982; IMF standby agreement negotiated. Confirmed.",
-        "source": "https://en.wikipedia.org/wiki/Brazilian_debt_crisis",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/Brazilian_debt_crisis"
-  },
-  {
     "year": 1983,
     "title": "Diretas Ja Mass Movement Demands Direct Elections",
     "verdict": "TRUE",
@@ -2240,31 +2240,6 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/Diretas_Já"
-  },
-  {
-    "year": 1983,
-    "title": "Severe Drought in Northeast Brazil",
-    "verdict": "TRUE",
-    "reason": "1983 drought in Northeast is documented within the broader 1979–1983 drought cycle.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "1983 drought in Northeast is documented within the broader 1979–1983 drought cycle.",
-        "source": "https://en.wikipedia.org/wiki/Droughts_in_Brazil",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/Droughts_in_Brazil"
   },
   {
     "year": 1983,
@@ -2317,6 +2292,31 @@
     "source": "https://data.worldbank.org/indicator/FP.CPI.TOTL.ZG?locations=BR"
   },
   {
+    "year": 1983,
+    "title": "Severe Drought in Northeast Brazil",
+    "verdict": "TRUE",
+    "reason": "1983 drought in Northeast is documented within the broader 1979–1983 drought cycle.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "1983 drought in Northeast is documented within the broader 1979–1983 drought cycle.",
+        "source": "https://en.wikipedia.org/wiki/Droughts_in_Brazil",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Droughts_in_Brazil"
+  },
+  {
     "year": 1984,
     "title": "Diretas Ja Amendment Defeated in Congress",
     "verdict": "TRUE",
@@ -2340,31 +2340,6 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/Diretas_Já"
-  },
-  {
-    "year": 1984,
-    "title": "Tancredo Neves Selected as Opposition Presidential Candidate",
-    "verdict": "TRUE",
-    "reason": "Confirmed: Neves selected as PMDB candidate with Sarney as VP; electoral college vote January 1985.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Confirmed: Neves selected as PMDB candidate with Sarney as VP; electoral college vote January 1985.",
-        "source": "https://en.wikipedia.org/wiki/Tancredo_Neves",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/Tancredo_Neves"
   },
   {
     "year": 1984,
@@ -2404,10 +2379,10 @@
     "source": "https://teletime.com.br/07/02/2025/satelite-brasilsat-a1-o-primeiro-do-brasil-ia-ao-espaco-ha-40-anos/"
   },
   {
-    "year": 1985,
-    "title": "Tancredo Neves Wins Indirect Election, Dies Before Inauguration",
+    "year": 1984,
+    "title": "Tancredo Neves Selected as Opposition Presidential Candidate",
     "verdict": "TRUE",
-    "reason": "Confirmed: elected January 15, 1985; died April 21, 1985; Sarney became president.",
+    "reason": "Confirmed: Neves selected as PMDB candidate with Sarney as VP; electoral college vote January 1985.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -2417,7 +2392,7 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "Confirmed: elected January 15, 1985; died April 21, 1985; Sarney became president.",
+        "reason": "Confirmed: Neves selected as PMDB candidate with Sarney as VP; electoral college vote January 1985.",
         "source": "https://en.wikipedia.org/wiki/Tancredo_Neves",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
@@ -2427,6 +2402,31 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/Tancredo_Neves"
+  },
+  {
+    "year": 1985,
+    "title": "AIDS Epidemic Reaches Brazil's Major Cities",
+    "verdict": "TRUE",
+    "reason": "AIDS recognized as major public health crisis in Brazil from 1985. Confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "AIDS recognized as major public health crisis in Brazil from 1985. Confirmed.",
+        "source": "https://en.wikipedia.org/wiki/HIV/AIDS_in_Brazil",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/HIV/AIDS_in_Brazil"
   },
   {
     "year": 1985,
@@ -2455,9 +2455,9 @@
   },
   {
     "year": 1985,
-    "title": "AIDS Epidemic Reaches Brazil's Major Cities",
+    "title": "Tancredo Neves Wins Indirect Election, Dies Before Inauguration",
     "verdict": "TRUE",
-    "reason": "AIDS recognized as major public health crisis in Brazil from 1985. Confirmed.",
+    "reason": "Confirmed: elected January 15, 1985; died April 21, 1985; Sarney became president.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -2467,8 +2467,8 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "AIDS recognized as major public health crisis in Brazil from 1985. Confirmed.",
-        "source": "https://en.wikipedia.org/wiki/HIV/AIDS_in_Brazil",
+        "reason": "Confirmed: elected January 15, 1985; died April 21, 1985; Sarney became president.",
+        "source": "https://en.wikipedia.org/wiki/Tancredo_Neves",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
           "date": null,
@@ -2476,32 +2476,7 @@
         }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/HIV/AIDS_in_Brazil"
-  },
-  {
-    "year": 1986,
-    "title": "Cruzado Plan Attempts to Control Hyperinflation",
-    "verdict": "TRUE",
-    "reason": "Confirmed: launched February 1986; new cruzado currency and price freeze; collapsed by year end.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Confirmed: launched February 1986; new cruzado currency and price freeze; collapsed by year end.",
-        "source": "https://en.wikipedia.org/wiki/Cruzado_Plan",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/Cruzado_Plan"
+    "source": "https://en.wikipedia.org/wiki/Tancredo_Neves"
   },
   {
     "year": 1986,
@@ -2527,6 +2502,31 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/Constituent_Assembly_(Brazil)"
+  },
+  {
+    "year": 1986,
+    "title": "Cruzado Plan Attempts to Control Hyperinflation",
+    "verdict": "TRUE",
+    "reason": "Confirmed: launched February 1986; new cruzado currency and price freeze; collapsed by year end.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed: launched February 1986; new cruzado currency and price freeze; collapsed by year end.",
+        "source": "https://en.wikipedia.org/wiki/Cruzado_Plan",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Cruzado_Plan"
   },
   {
     "year": 1986,
@@ -2605,6 +2605,31 @@
   },
   {
     "year": 1988,
+    "title": "Demarcation of Indigenous Territories Constitutionally Guaranteed",
+    "verdict": "TRUE",
+    "reason": "Confirmed: 1988 Constitution Articles 231–232 protect indigenous land rights.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed: 1988 Constitution Articles 231–232 protect indigenous land rights.",
+        "source": "https://en.wikipedia.org/wiki/Constitution_of_Brazil",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Constitution_of_Brazil"
+  },
+  {
+    "year": 1988,
     "title": "New Democratic Constitution Enacted",
     "verdict": "TRUE",
     "reason": "Confirmed: 'Citizen Constitution' promulgated October 5, 1988.",
@@ -2654,56 +2679,6 @@
     "source": "https://en.wikipedia.org/wiki/Chico_Mendes"
   },
   {
-    "year": 1988,
-    "title": "Demarcation of Indigenous Territories Constitutionally Guaranteed",
-    "verdict": "TRUE",
-    "reason": "Confirmed: 1988 Constitution Articles 231–232 protect indigenous land rights.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Confirmed: 1988 Constitution Articles 231–232 protect indigenous land rights.",
-        "source": "https://en.wikipedia.org/wiki/Constitution_of_Brazil",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/Constitution_of_Brazil"
-  },
-  {
-    "year": 1989,
-    "title": "First Direct Presidential Election Since 1960",
-    "verdict": "TRUE",
-    "reason": "Confirmed: first direct election; Collor defeated Lula in second round.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Confirmed: first direct election; Collor defeated Lula in second round.",
-        "source": "https://en.wikipedia.org/wiki/1989_Brazilian_presidential_election",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/1989_Brazilian_presidential_election"
-  },
-  {
     "year": 1989,
     "title": "Amazon Deforestation Reaches Record Levels",
     "verdict": "TRUE",
@@ -2729,10 +2704,10 @@
     "source": "https://en.wikipedia.org/wiki/Deforestation_in_Brazil"
   },
   {
-    "year": 1990,
-    "title": "Collor Plan Freezes Bank Accounts to Fight Inflation",
+    "year": 1989,
+    "title": "First Direct Presidential Election Since 1960",
     "verdict": "TRUE",
-    "reason": "Confirmed by existing verification_source in source file.",
+    "reason": "Confirmed: first direct election; Collor defeated Lula in second round.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -2742,8 +2717,8 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "Confirmed by existing verification_source in source file.",
-        "source": "https://en.wikipedia.org/wiki/Plano_Collor",
+        "reason": "Confirmed: first direct election; Collor defeated Lula in second round.",
+        "source": "https://en.wikipedia.org/wiki/1989_Brazilian_presidential_election",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
           "date": null,
@@ -2751,7 +2726,7 @@
         }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/Plano_Collor"
+    "source": "https://en.wikipedia.org/wiki/1989_Brazilian_presidential_election"
   },
   {
     "year": 1990,
@@ -2780,6 +2755,31 @@
   },
   {
     "year": 1990,
+    "title": "Collor Plan Freezes Bank Accounts to Fight Inflation",
+    "verdict": "TRUE",
+    "reason": "Confirmed by existing verification_source in source file.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed by existing verification_source in source file.",
+        "source": "https://en.wikipedia.org/wiki/Plano_Collor",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Plano_Collor"
+  },
+  {
+    "year": 1990,
     "title": "SUS Universal Health System Legally Established",
     "verdict": "TRUE",
     "reason": "Confirmed by existing verification_source in source file.",
@@ -2802,31 +2802,6 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/Sistema_Único_de_Saúde"
-  },
-  {
-    "year": 1991,
-    "title": "Mercosur Customs Union Founded",
-    "verdict": "TRUE",
-    "reason": "Confirmed: Treaty of Asunción signed March 26, 1991 by Brazil, Argentina, Uruguay, Paraguay.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Confirmed: Treaty of Asunción signed March 26, 1991 by Brazil, Argentina, Uruguay, Paraguay.",
-        "source": "https://en.wikipedia.org/wiki/Mercosur",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/Mercosur"
   },
   {
     "year": 1991,
@@ -2855,6 +2830,31 @@
   },
   {
     "year": 1991,
+    "title": "Mercosur Customs Union Founded",
+    "verdict": "TRUE",
+    "reason": "Confirmed: Treaty of Asunción signed March 26, 1991 by Brazil, Argentina, Uruguay, Paraguay.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed: Treaty of Asunción signed March 26, 1991 by Brazil, Argentina, Uruguay, Paraguay.",
+        "source": "https://en.wikipedia.org/wiki/Mercosur",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Mercosur"
+  },
+  {
+    "year": 1991,
     "title": "Yanomami Indigenous Territory Officially Demarcated",
     "verdict": "TRUE",
     "reason": "Confirmed by existing verification_source in source file.",
@@ -2877,6 +2877,31 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/Yanomami_Indigenous_Territory"
+  },
+  {
+    "year": 1992,
+    "title": "President Collor Impeached Amid Corruption Scandal",
+    "verdict": "TRUE",
+    "reason": "Confirmed: Collor resigned December 29, 1992 before Senate vote; first presidential removal.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed: Collor resigned December 29, 1992 before Senate vote; first presidential removal.",
+        "source": "https://en.wikipedia.org/wiki/Fernando_Collor_de_Mello",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Fernando_Collor_de_Mello"
   },
   {
     "year": 1992,
@@ -2904,10 +2929,10 @@
     "source": "https://en.wikipedia.org/wiki/Earth_Summit"
   },
   {
-    "year": 1992,
-    "title": "President Collor Impeached Amid Corruption Scandal",
+    "year": 1993,
+    "title": "Brazil's AIDS Response Becomes Global Model",
     "verdict": "TRUE",
-    "reason": "Confirmed: Collor resigned December 29, 1992 before Senate vote; first presidential removal.",
+    "reason": "Brazil's compulsory licensing approach developed from early 1990s; the formal 1996 law is the landmark, but 1993 framing of the early policy development is acceptable.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -2917,8 +2942,8 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "Confirmed: Collor resigned December 29, 1992 before Senate vote; first presidential removal.",
-        "source": "https://en.wikipedia.org/wiki/Fernando_Collor_de_Mello",
+        "reason": "Brazil's compulsory licensing approach developed from early 1990s; the formal 1996 law is the landmark, but 1993 framing of the early policy development is acceptable.",
+        "source": "https://en.wikipedia.org/wiki/HIV/AIDS_in_Brazil",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
           "date": null,
@@ -2926,7 +2951,7 @@
         }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/Fernando_Collor_de_Mello"
+    "source": "https://en.wikipedia.org/wiki/HIV/AIDS_in_Brazil"
   },
   {
     "year": 1993,
@@ -2990,35 +3015,10 @@
     "source": "https://www12.senado.leg.br/noticias/especiais/arquivo-s/antes-do-plano-real-inflacao-no-brasil-chegou-a-2-500-ao-ano"
   },
   {
-    "year": 1993,
-    "title": "Brazil's AIDS Response Becomes Global Model",
-    "verdict": "TRUE",
-    "reason": "Brazil's compulsory licensing approach developed from early 1990s; the formal 1996 law is the landmark, but 1993 framing of the early policy development is acceptable.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Brazil's compulsory licensing approach developed from early 1990s; the formal 1996 law is the landmark, but 1993 framing of the early policy development is acceptable.",
-        "source": "https://en.wikipedia.org/wiki/HIV/AIDS_in_Brazil",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/HIV/AIDS_in_Brazil"
-  },
-  {
     "year": 1994,
-    "title": "Real Plan Launched, Inflation Finally Subdued",
+    "title": "Ayrton Senna Killed at San Marino Grand Prix",
     "verdict": "TRUE",
-    "reason": "Confirmed: Real introduced July 1, 1994; monthly inflation dropped rapidly.",
+    "reason": "Confirmed: Senna died May 1, 1994 at Tamburello corner, Imola; three-time world champion is correct.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -3028,8 +3028,8 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "Confirmed: Real introduced July 1, 1994; monthly inflation dropped rapidly.",
-        "source": "https://en.wikipedia.org/wiki/Plano_Real",
+        "reason": "Confirmed: Senna died May 1, 1994 at Tamburello corner, Imola; three-time world champion is correct.",
+        "source": "https://en.wikipedia.org/wiki/Death_of_Ayrton_Senna",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
           "date": null,
@@ -3037,7 +3037,7 @@
         }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/Plano_Real"
+    "source": "https://en.wikipedia.org/wiki/Death_of_Ayrton_Senna"
   },
   {
     "year": 1994,
@@ -3066,9 +3066,45 @@
   },
   {
     "year": 1994,
-    "title": "Ayrton Senna Killed at San Marino Grand Prix",
+    "title": "Real Plan Disinflation Triggers Wave of Bank Failures",
     "verdict": "TRUE",
-    "reason": "Confirmed: Senna died May 1, 1994 at Tamburello corner, Imola; three-time world champion is correct.",
+    "reason": "Multiple independent sources confirm this materially as described. A peer-reviewed 2023 academic article (Parreiras, Revista de Economia/UFPR) states verbatim: 'Between June 1994 and August 1996 alone, 11 banks, 100 credit cooperatives, 21 brokerage houses, 74 distributors and 213 bank branches were closed... In this context of crisis, 40 financial institutions were liquidated or intervened in... the fear of which had grown after the interventions at Banco Econômico and the Banco Nacional' -- an exact match to the event's numeric claims. The same source and a BIS policy paper (Geraldo Maia, 1999) both confirm PROER (Programa de Estimulo a Reestruturacao e ao Fortalecimento do Sistema Financeiro Nacional) was launched via Provisional Measure 1179 on November 3, 1995 / implemented November 1995, funded through banks' compulsory reserve deposits held at the central bank, specifically to finance mergers/restructuring of troubled banks after the Real Plan (July 1994) ended the inflationary 'float' income banks relied on. Separate web searches independently corroborate Banco Nacional's Temporary Special Administration Regime (RAET) intervention on November 18, 1995, and Banco Economico's 1995 failure, both cited as the trigger for PROER's creation. All core claims -- country (Brazil), year (1994 onset), causal mechanism (loss of inflationary float income post-Real Plan), the specific institution-closure tallies, the two named bank interventions, and PROER's November 1995 launch/funding mechanism -- are corroborated by an academic source plus independent general searches.",
+    "verify_count": 2,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "double_confirmed",
+    "needs_tiebreak": false,
+    "source_independence": "independent",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Independently corroborated across multiple sources. The Real Plan (launched July 1994) ended hyperinflation and eliminated banks' inflationary 'float' income, exposing insolvencies. Banco Econômico was intervened on 11 Aug 1995; Banco Nacional was placed under RAET (special administration) on 18 Nov 1995 and sold to Unibanco under the good-bank/bad-bank model. PROER (Programa de Estímulo à Reestruturação e ao Fortalecimento do Sistema Financeiro Nacional) was launched via Provisional Measure 1179 on 3 Nov 1995, funded through compulsory bank deposits, to finance mergers/acquisitions of troubled banks. A separate academic source (snippet from 'A Brief History of the Brazilian Financial System') independently states that between June 1994 and August 1996, 11 banks, 100 credit cooperatives, 21 brokerage houses, 74 distributors and 213 bank branches were closed — matching the event description's figures essentially verbatim. All material details (year, country, mechanism, named banks, PROER funding mechanism, launch timing) check out.",
+        "source": "https://pt.wikipedia.org/wiki/Programa_de_Est%C3%ADmulo_%C3%A0_Reestrutura%C3%A7%C3%A3o_e_ao_Fortalecimento_do_Sistema_Financeiro_Nacional",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-09",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Multiple independent sources confirm this materially as described. A peer-reviewed 2023 academic article (Parreiras, Revista de Economia/UFPR) states verbatim: 'Between June 1994 and August 1996 alone, 11 banks, 100 credit cooperatives, 21 brokerage houses, 74 distributors and 213 bank branches were closed... In this context of crisis, 40 financial institutions were liquidated or intervened in... the fear of which had grown after the interventions at Banco Econômico and the Banco Nacional' -- an exact match to the event's numeric claims. The same source and a BIS policy paper (Geraldo Maia, 1999) both confirm PROER (Programa de Estimulo a Reestruturacao e ao Fortalecimento do Sistema Financeiro Nacional) was launched via Provisional Measure 1179 on November 3, 1995 / implemented November 1995, funded through banks' compulsory reserve deposits held at the central bank, specifically to finance mergers/restructuring of troubled banks after the Real Plan (July 1994) ended the inflationary 'float' income banks relied on. Separate web searches independently corroborate Banco Nacional's Temporary Special Administration Regime (RAET) intervention on November 18, 1995, and Banco Economico's 1995 failure, both cited as the trigger for PROER's creation. All core claims -- country (Brazil), year (1994 onset), causal mechanism (loss of inflationary float income post-Real Plan), the specific institution-closure tallies, the two named bank interventions, and PROER's November 1995 launch/funding mechanism -- are corroborated by an academic source plus independent general searches.",
+        "source": "https://revistas.ufpr.br/economia/article/download/86048/51391",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-09",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://revistas.ufpr.br/economia/article/download/86048/51391"
+  },
+  {
+    "year": 1994,
+    "title": "Real Plan Launched, Inflation Finally Subdued",
+    "verdict": "TRUE",
+    "reason": "Confirmed: Real introduced July 1, 1994; monthly inflation dropped rapidly.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -3078,8 +3114,8 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "Confirmed: Senna died May 1, 1994 at Tamburello corner, Imola; three-time world champion is correct.",
-        "source": "https://en.wikipedia.org/wiki/Death_of_Ayrton_Senna",
+        "reason": "Confirmed: Real introduced July 1, 1994; monthly inflation dropped rapidly.",
+        "source": "https://en.wikipedia.org/wiki/Plano_Real",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
           "date": null,
@@ -3087,13 +3123,13 @@
         }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/Death_of_Ayrton_Senna"
+    "source": "https://en.wikipedia.org/wiki/Plano_Real"
   },
   {
     "year": 1995,
-    "title": "FHC Inaugurated, Begins Privatization Program",
+    "title": "Brazil Acknowledges Past Disappearances Under Military Rule",
     "verdict": "TRUE",
-    "reason": "Confirmed: FHC inaugurated January 1995; privatization program in telecom, mining, etc.",
+    "reason": "Special Commission on Disappeared Political Persons created 1995. Confirmed.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -3103,7 +3139,7 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "Confirmed: FHC inaugurated January 1995; privatization program in telecom, mining, etc.",
+        "reason": "Special Commission on Disappeared Political Persons created 1995. Confirmed.",
         "source": "https://en.wikipedia.org/wiki/Fernando_Henrique_Cardoso",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
@@ -3141,9 +3177,9 @@
   },
   {
     "year": 1995,
-    "title": "Brazil Acknowledges Past Disappearances Under Military Rule",
+    "title": "FHC Inaugurated, Begins Privatization Program",
     "verdict": "TRUE",
-    "reason": "Special Commission on Disappeared Political Persons created 1995. Confirmed.",
+    "reason": "Confirmed: FHC inaugurated January 1995; privatization program in telecom, mining, etc.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -3153,7 +3189,7 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "Special Commission on Disappeared Political Persons created 1995. Confirmed.",
+        "reason": "Confirmed: FHC inaugurated January 1995; privatization program in telecom, mining, etc.",
         "source": "https://en.wikipedia.org/wiki/Fernando_Henrique_Cardoso",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
@@ -3163,42 +3199,6 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/Fernando_Henrique_Cardoso"
-  },
-  {
-    "year": 1996,
-    "title": "Landless Workers Movement (MST) Expands Protests",
-    "verdict": "TRUE",
-    "reason": "Multiple independent (non-Wikipedia) sources confirm that in 1996 the MST dramatically escalated land occupations in Brazil: libcom.org states \"The MST offensive went into high gear in 1996, with a record number of land occupations and families,\" with occupations rising from 119 (1994) to 398 (1996) nationwide. This period included the April 17, 1996 Eldorado do Carajás massacre (Pará state), where military police killed 19-21 MST-affiliated landless farmers during a protest march, an event that (per mstbrazil.org and brasildefato.com.br) became internationally known and pushed the federal government to create the Ministry of Agrarian Reform, bringing land reform to national/international prominence exactly as described. MST is widely and independently characterized as one of Latin America's largest and most significant social movements, advocating for the millions of landless rural families in Brazil. Country (Brazil) and year (1996) both hold, and the magnitude (\"hundreds of land occupations,\" \"national prominence\") is corroborated by non-Wikipedia sources.",
-    "verify_count": 2,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "double_confirmed",
-    "needs_tiebreak": false,
-    "source_independence": "independent",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "MST's most active period of land occupations was mid-1990s. Confirmed.",
-        "source": "https://en.wikipedia.org/wiki/Landless_Workers%27_Movement",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      },
-      {
-        "pass_n": 2,
-        "verdict": "TRUE",
-        "reason": "Multiple independent (non-Wikipedia) sources confirm that in 1996 the MST dramatically escalated land occupations in Brazil: libcom.org states \"The MST offensive went into high gear in 1996, with a record number of land occupations and families,\" with occupations rising from 119 (1994) to 398 (1996) nationwide. This period included the April 17, 1996 Eldorado do Carajás massacre (Pará state), where military police killed 19-21 MST-affiliated landless farmers during a protest march, an event that (per mstbrazil.org and brasildefato.com.br) became internationally known and pushed the federal government to create the Ministry of Agrarian Reform, bringing land reform to national/international prominence exactly as described. MST is widely and independently characterized as one of Latin America's largest and most significant social movements, advocating for the millions of landless rural families in Brazil. Country (Brazil) and year (1996) both hold, and the magnitude (\"hundreds of land occupations,\" \"national prominence\") is corroborated by non-Wikipedia sources.",
-        "source": "https://libcom.org/article/rural-landless-workers-movement-brazil-roger-burbach",
-        "verifier": {
-          "model": "claude-sonnet-5",
-          "date": "2026-07-02",
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://libcom.org/article/rural-landless-workers-movement-brazil-roger-burbach"
   },
   {
     "year": 1996,
@@ -3251,29 +3251,40 @@
     "source": "https://en.wikipedia.org/wiki/HIV/AIDS_in_Brazil"
   },
   {
-    "year": 1997,
-    "title": "Constitutional Amendment Allows Presidential Re-election",
+    "year": 1996,
+    "title": "Landless Workers Movement (MST) Expands Protests",
     "verdict": "TRUE",
-    "reason": "Re-election amendment passed June 1997. Vote-buying allegations documented. Confirmed.",
-    "verify_count": 1,
+    "reason": "Multiple independent (non-Wikipedia) sources confirm that in 1996 the MST dramatically escalated land occupations in Brazil: libcom.org states \"The MST offensive went into high gear in 1996, with a record number of land occupations and families,\" with occupations rising from 119 (1994) to 398 (1996) nationwide. This period included the April 17, 1996 Eldorado do Carajás massacre (Pará state), where military police killed 19-21 MST-affiliated landless farmers during a protest march, an event that (per mstbrazil.org and brasildefato.com.br) became internationally known and pushed the federal government to create the Ministry of Agrarian Reform, bringing land reform to national/international prominence exactly as described. MST is widely and independently characterized as one of Latin America's largest and most significant social movements, advocating for the millions of landless rural families in Brazil. Country (Brazil) and year (1996) both hold, and the magnitude (\"hundreds of land occupations,\" \"national prominence\") is corroborated by non-Wikipedia sources.",
+    "verify_count": 2,
     "consensus_verdict": "TRUE",
-    "consensus_status": "single",
+    "consensus_status": "double_confirmed",
     "needs_tiebreak": false,
-    "source_independence": "n/a",
+    "source_independence": "independent",
     "verifications": [
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "Re-election amendment passed June 1997. Vote-buying allegations documented. Confirmed.",
-        "source": "https://en.wikipedia.org/wiki/Fernando_Henrique_Cardoso",
+        "reason": "MST's most active period of land occupations was mid-1990s. Confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Landless_Workers%27_Movement",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
           "date": null,
           "method": "web_search"
         }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Multiple independent (non-Wikipedia) sources confirm that in 1996 the MST dramatically escalated land occupations in Brazil: libcom.org states \"The MST offensive went into high gear in 1996, with a record number of land occupations and families,\" with occupations rising from 119 (1994) to 398 (1996) nationwide. This period included the April 17, 1996 Eldorado do Carajás massacre (Pará state), where military police killed 19-21 MST-affiliated landless farmers during a protest march, an event that (per mstbrazil.org and brasildefato.com.br) became internationally known and pushed the federal government to create the Ministry of Agrarian Reform, bringing land reform to national/international prominence exactly as described. MST is widely and independently characterized as one of Latin America's largest and most significant social movements, advocating for the millions of landless rural families in Brazil. Country (Brazil) and year (1996) both hold, and the magnitude (\"hundreds of land occupations,\" \"national prominence\") is corroborated by non-Wikipedia sources.",
+        "source": "https://libcom.org/article/rural-landless-workers-movement-brazil-roger-burbach",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-02",
+          "method": "web_search"
+        }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/Fernando_Henrique_Cardoso"
+    "source": "https://libcom.org/article/rural-landless-workers-movement-brazil-roger-burbach"
   },
   {
     "year": 1997,
@@ -3299,6 +3310,31 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/1997–98_El_Niño_event"
+  },
+  {
+    "year": 1997,
+    "title": "Constitutional Amendment Allows Presidential Re-election",
+    "verdict": "TRUE",
+    "reason": "Re-election amendment passed June 1997. Vote-buying allegations documented. Confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Re-election amendment passed June 1997. Vote-buying allegations documented. Confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Fernando_Henrique_Cardoso",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Fernando_Henrique_Cardoso"
   },
   {
     "year": 1997,
@@ -3363,6 +3399,31 @@
   },
   {
     "year": 1998,
+    "title": "Embraer Privatization Creates Global Aviation Champion",
+    "verdict": "FALSE",
+    "reason": "Embraer was privatized December 7, 1994 — not 1998. Year off by 4.",
+    "verify_count": 1,
+    "consensus_verdict": "FALSE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "FALSE",
+        "reason": "Embraer was privatized December 7, 1994 — not 1998. Year off by 4.",
+        "source": "https://en.wikipedia.org/wiki/Embraer",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Embraer"
+  },
+  {
+    "year": 1998,
     "title": "FHC Wins Re-election in First Round",
     "verdict": "TRUE",
     "reason": "Confirmed: FHC re-elected first round October 1998; Lula defeated again.",
@@ -3387,21 +3448,21 @@
     "source": "https://en.wikipedia.org/wiki/1998_Brazilian_presidential_election"
   },
   {
-    "year": 1998,
-    "title": "Embraer Privatization Creates Global Aviation Champion",
-    "verdict": "FALSE",
-    "reason": "Embraer was privatized December 7, 1994 — not 1998. Year off by 4.",
+    "year": 1999,
+    "title": "Inflation Targeting Regime Adopted",
+    "verdict": "TRUE",
+    "reason": "Inflation targeting adopted June 1999. Confirmed.",
     "verify_count": 1,
-    "consensus_verdict": "FALSE",
+    "consensus_verdict": "TRUE",
     "consensus_status": "single",
     "needs_tiebreak": false,
     "source_independence": "n/a",
     "verifications": [
       {
         "pass_n": 1,
-        "verdict": "FALSE",
-        "reason": "Embraer was privatized December 7, 1994 — not 1998. Year off by 4.",
-        "source": "https://en.wikipedia.org/wiki/Embraer",
+        "verdict": "TRUE",
+        "reason": "Inflation targeting adopted June 1999. Confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Banco_Central_do_Brasil",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
           "date": null,
@@ -3409,7 +3470,7 @@
         }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/Embraer"
+    "source": "https://en.wikipedia.org/wiki/Banco_Central_do_Brasil"
   },
   {
     "year": 1999,
@@ -3448,31 +3509,6 @@
     "source": "https://www.imf.org/external/pubs/ft/fandd/2000/03/pdf/fraga.pdf"
   },
   {
-    "year": 1999,
-    "title": "Inflation Targeting Regime Adopted",
-    "verdict": "TRUE",
-    "reason": "Inflation targeting adopted June 1999. Confirmed.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Inflation targeting adopted June 1999. Confirmed.",
-        "source": "https://en.wikipedia.org/wiki/Banco_Central_do_Brasil",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/Banco_Central_do_Brasil"
-  },
-  {
     "year": 2000,
     "title": "Brazil Celebrates 500 Years Since Portuguese Discovery",
     "verdict": "TRUE",
@@ -3499,31 +3535,6 @@
   },
   {
     "year": 2000,
-    "title": "Fiscal Responsibility Law Enacted",
-    "verdict": "TRUE",
-    "reason": "Confirmed: Lei de Responsabilidade Fiscal enacted May 4, 2000.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Confirmed: Lei de Responsabilidade Fiscal enacted May 4, 2000.",
-        "source": "https://en.wikipedia.org/wiki/Lei_de_Responsabilidade_Fiscal",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/Lei_de_Responsabilidade_Fiscal"
-  },
-  {
-    "year": 2000,
     "title": "Brazil Emerges as Major Soybean Exporter",
     "verdict": "TRUE",
     "reason": "Brazil surpassed US as top soybean exporter circa 2003–2005; 2000 is slightly early for 'surpassed' claim but reflects the growth trajectory accurately.",
@@ -3546,6 +3557,31 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/Agriculture_in_Brazil"
+  },
+  {
+    "year": 2000,
+    "title": "Fiscal Responsibility Law Enacted",
+    "verdict": "TRUE",
+    "reason": "Confirmed: Lei de Responsabilidade Fiscal enacted May 4, 2000.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed: Lei de Responsabilidade Fiscal enacted May 4, 2000.",
+        "source": "https://en.wikipedia.org/wiki/Lei_de_Responsabilidade_Fiscal",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Lei_de_Responsabilidade_Fiscal"
   },
   {
     "year": 2001,
@@ -3582,6 +3618,56 @@
       }
     ],
     "source": "https://www.bcb.gov.br/rex/MerCambio/Port/Cambio011/2001-1Pol%C3%ADticaCambial.asp?frame=1"
+  },
+  {
+    "year": 2001,
+    "title": "Brazil Launches SIVAM Amazon Surveillance System",
+    "verdict": "FALSE",
+    "reason": "SIVAM (Sistema de Vigilância da Amazônia) is real and matches the description (Amazon Basin monitoring for illegal activity, air traffic, and environmental change; major sovereignty investment), but it was inaugurated/entered operation on 25 July 2002 under President Fernando Henrique Cardoso, not in 2001. Confirmed independently by Brazil's Chamber of Deputies news portal (camara.leg.br: 'O Sivam entrou em funcionamento em julho de 2002') and the Fernando Henrique Cardoso Foundation timeline (fundacaofhc.org.br: 'Inaugurado o Sistema de Vigilância da Amazônia (Sivam)' dated 2002). Wikipedia and mundogeo.com also corroborate July 25, 2002 but were excluded as off-limits per instructions; the year mismatch is independently confirmed via the two allowed sources above. Since year is wrong, verdict is FALSE with corrected_year=2002 (country and material description otherwise hold).",
+    "verify_count": 3,
+    "consensus_verdict": "FALSE",
+    "consensus_status": "contested_resolved",
+    "needs_tiebreak": false,
+    "source_independence": "independent",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "SIVAM launched 2002 (operational); 2001 describes initiation of launch phase. Minor timing note.",
+        "source": "https://en.wikipedia.org/wiki/SIVAM",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "FALSE",
+        "reason": "SIVAM (Sistema de Vigilância da Amazônia) was not launched in 2001. Independent, non-Wikipedia sources show it was still under construction/testing throughout 2001-2002: a Nov 2001 VOA report described it as still being installed with a planned 2002 operational start; an Aviation Today (aviationtoday.com) article from June 2002 said hardware was '99 percent complete' and initial operational capability was 'expected to begin this summer [2002]' with full operation targeted for Q1 2003; and MundoGEO (mundogeo.com), a Brazilian geospatial trade outlet, reported the formal inauguration of SIVAM by President Fernando Henrique Cardoso took place on July 25, 2002, with the surveillance aircraft christened the day before (July 24, 2002) in Anápolis. No independent source supports a 2001 launch date. The real launch/inauguration year is 2002.",
+        "source": "https://mundogeo.com/2002/07/25/sivam-e-inaugurado-hoje/",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-02",
+          "method": "web_search"
+        },
+        "corrected_year": 2002
+      },
+      {
+        "pass_n": 3,
+        "verdict": "FALSE",
+        "reason": "SIVAM (Sistema de Vigilância da Amazônia) is real and matches the description (Amazon Basin monitoring for illegal activity, air traffic, and environmental change; major sovereignty investment), but it was inaugurated/entered operation on 25 July 2002 under President Fernando Henrique Cardoso, not in 2001. Confirmed independently by Brazil's Chamber of Deputies news portal (camara.leg.br: 'O Sivam entrou em funcionamento em julho de 2002') and the Fernando Henrique Cardoso Foundation timeline (fundacaofhc.org.br: 'Inaugurado o Sistema de Vigilância da Amazônia (Sivam)' dated 2002). Wikipedia and mundogeo.com also corroborate July 25, 2002 but were excluded as off-limits per instructions; the year mismatch is independently confirmed via the two allowed sources above. Since year is wrong, verdict is FALSE with corrected_year=2002 (country and material description otherwise hold).",
+        "source": "https://www.camara.leg.br/noticias/55929-o-que-e-o-sivam/",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        },
+        "corrected_year": 2002
+      }
+    ],
+    "had_dissent": true,
+    "source": "https://www.camara.leg.br/noticias/55929-o-que-e-o-sivam/"
   },
   {
     "year": 2001,
@@ -3659,81 +3745,6 @@
     "source": "https://thetricontinental.org/dossier-75-landless-workers-movement-brazil/"
   },
   {
-    "year": 2001,
-    "title": "Brazil Launches SIVAM Amazon Surveillance System",
-    "verdict": "FALSE",
-    "reason": "SIVAM (Sistema de Vigilância da Amazônia) is real and matches the description (Amazon Basin monitoring for illegal activity, air traffic, and environmental change; major sovereignty investment), but it was inaugurated/entered operation on 25 July 2002 under President Fernando Henrique Cardoso, not in 2001. Confirmed independently by Brazil's Chamber of Deputies news portal (camara.leg.br: 'O Sivam entrou em funcionamento em julho de 2002') and the Fernando Henrique Cardoso Foundation timeline (fundacaofhc.org.br: 'Inaugurado o Sistema de Vigilância da Amazônia (Sivam)' dated 2002). Wikipedia and mundogeo.com also corroborate July 25, 2002 but were excluded as off-limits per instructions; the year mismatch is independently confirmed via the two allowed sources above. Since year is wrong, verdict is FALSE with corrected_year=2002 (country and material description otherwise hold).",
-    "verify_count": 3,
-    "consensus_verdict": "FALSE",
-    "consensus_status": "contested_resolved",
-    "needs_tiebreak": false,
-    "source_independence": "independent",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "SIVAM launched 2002 (operational); 2001 describes initiation of launch phase. Minor timing note.",
-        "source": "https://en.wikipedia.org/wiki/SIVAM",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      },
-      {
-        "pass_n": 2,
-        "verdict": "FALSE",
-        "reason": "SIVAM (Sistema de Vigilância da Amazônia) was not launched in 2001. Independent, non-Wikipedia sources show it was still under construction/testing throughout 2001-2002: a Nov 2001 VOA report described it as still being installed with a planned 2002 operational start; an Aviation Today (aviationtoday.com) article from June 2002 said hardware was '99 percent complete' and initial operational capability was 'expected to begin this summer [2002]' with full operation targeted for Q1 2003; and MundoGEO (mundogeo.com), a Brazilian geospatial trade outlet, reported the formal inauguration of SIVAM by President Fernando Henrique Cardoso took place on July 25, 2002, with the surveillance aircraft christened the day before (July 24, 2002) in Anápolis. No independent source supports a 2001 launch date. The real launch/inauguration year is 2002.",
-        "source": "https://mundogeo.com/2002/07/25/sivam-e-inaugurado-hoje/",
-        "verifier": {
-          "model": "claude-sonnet-5",
-          "date": "2026-07-02",
-          "method": "web_search"
-        },
-        "corrected_year": 2002
-      },
-      {
-        "pass_n": 3,
-        "verdict": "FALSE",
-        "reason": "SIVAM (Sistema de Vigilância da Amazônia) is real and matches the description (Amazon Basin monitoring for illegal activity, air traffic, and environmental change; major sovereignty investment), but it was inaugurated/entered operation on 25 July 2002 under President Fernando Henrique Cardoso, not in 2001. Confirmed independently by Brazil's Chamber of Deputies news portal (camara.leg.br: 'O Sivam entrou em funcionamento em julho de 2002') and the Fernando Henrique Cardoso Foundation timeline (fundacaofhc.org.br: 'Inaugurado o Sistema de Vigilância da Amazônia (Sivam)' dated 2002). Wikipedia and mundogeo.com also corroborate July 25, 2002 but were excluded as off-limits per instructions; the year mismatch is independently confirmed via the two allowed sources above. Since year is wrong, verdict is FALSE with corrected_year=2002 (country and material description otherwise hold).",
-        "source": "https://www.camara.leg.br/noticias/55929-o-que-e-o-sivam/",
-        "verifier": {
-          "model": "claude-sonnet-5",
-          "date": "2026-07-03",
-          "method": "web_search"
-        },
-        "corrected_year": 2002
-      }
-    ],
-    "had_dissent": true,
-    "source": "https://www.camara.leg.br/noticias/55929-o-que-e-o-sivam/"
-  },
-  {
-    "year": 2002,
-    "title": "Lula Elected President, Ending PT Exclusion from Power",
-    "verdict": "TRUE",
-    "reason": "Confirmed: Lula won October 2002 on fourth attempt.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Confirmed: Lula won October 2002 on fourth attempt.",
-        "source": "https://en.wikipedia.org/wiki/2002_Brazilian_presidential_election",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/2002_Brazilian_presidential_election"
-  },
-  {
     "year": 2002,
     "title": "IMF Emergency Loan of $30 Billion Agreed",
     "verdict": "TRUE",
@@ -3759,10 +3770,10 @@
     "source": "https://en.wikipedia.org/wiki/Brazil–IMF_relations"
   },
   {
-    "year": 2003,
-    "title": "Lula Inaugurated, Maintains Macroeconomic Orthodoxy",
+    "year": 2002,
+    "title": "Lula Elected President, Ending PT Exclusion from Power",
     "verdict": "TRUE",
-    "reason": "Confirmed: Lula inaugurated January 1, 2003; maintained inflation targeting and fiscal surplus.",
+    "reason": "Confirmed: Lula won October 2002 on fourth attempt.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -3772,8 +3783,8 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "Confirmed: Lula inaugurated January 1, 2003; maintained inflation targeting and fiscal surplus.",
-        "source": "https://en.wikipedia.org/wiki/Luiz_Inácio_Lula_da_Silva",
+        "reason": "Confirmed: Lula won October 2002 on fourth attempt.",
+        "source": "https://en.wikipedia.org/wiki/2002_Brazilian_presidential_election",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
           "date": null,
@@ -3781,57 +3792,7 @@
         }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/Luiz_Inácio_Lula_da_Silva"
-  },
-  {
-    "year": 2003,
-    "title": "Fome Zero (Zero Hunger) Program Launched",
-    "verdict": "TRUE",
-    "reason": "Confirmed: Fome Zero launched 2003; evolved into Bolsa Família later in 2003.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Confirmed: Fome Zero launched 2003; evolved into Bolsa Família later in 2003.",
-        "source": "https://en.wikipedia.org/wiki/Bolsa_Família",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/Bolsa_Família"
-  },
-  {
-    "year": 2003,
-    "title": "Brazil Participates in WTO Agriculture Dispute Resolution",
-    "verdict": "TRUE",
-    "reason": "Brazil WTO cases against US cotton subsidies filed 2002–2003; ruling came 2004. Confirmed for 2003 filing.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Brazil WTO cases against US cotton subsidies filed 2002–2003; ruling came 2004. Confirmed for 2003 filing.",
-        "source": "https://en.wikipedia.org/wiki/Brazil–United_States_cotton_dispute",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/Brazil–United_States_cotton_dispute"
+    "source": "https://en.wikipedia.org/wiki/2002_Brazilian_presidential_election"
   },
   {
     "year": 2003,
@@ -3868,6 +3829,81 @@
       }
     ],
     "source": "https://universemagazine.com/en/disaster-at-alcantara-the-explosion-that-hindered-brazils-ascent-as-a-space-power/"
+  },
+  {
+    "year": 2003,
+    "title": "Brazil Participates in WTO Agriculture Dispute Resolution",
+    "verdict": "TRUE",
+    "reason": "Brazil WTO cases against US cotton subsidies filed 2002–2003; ruling came 2004. Confirmed for 2003 filing.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Brazil WTO cases against US cotton subsidies filed 2002–2003; ruling came 2004. Confirmed for 2003 filing.",
+        "source": "https://en.wikipedia.org/wiki/Brazil–United_States_cotton_dispute",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Brazil–United_States_cotton_dispute"
+  },
+  {
+    "year": 2003,
+    "title": "Fome Zero (Zero Hunger) Program Launched",
+    "verdict": "TRUE",
+    "reason": "Confirmed: Fome Zero launched 2003; evolved into Bolsa Família later in 2003.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed: Fome Zero launched 2003; evolved into Bolsa Família later in 2003.",
+        "source": "https://en.wikipedia.org/wiki/Bolsa_Família",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Bolsa_Família"
+  },
+  {
+    "year": 2003,
+    "title": "Lula Inaugurated, Maintains Macroeconomic Orthodoxy",
+    "verdict": "TRUE",
+    "reason": "Confirmed: Lula inaugurated January 1, 2003; maintained inflation targeting and fiscal surplus.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed: Lula inaugurated January 1, 2003; maintained inflation targeting and fiscal surplus.",
+        "source": "https://en.wikipedia.org/wiki/Luiz_Inácio_Lula_da_Silva",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Luiz_Inácio_Lula_da_Silva"
   },
   {
     "year": 2004,
@@ -3946,9 +3982,9 @@
   },
   {
     "year": 2005,
-    "title": "Mensalao Vote-Buying Scandal Rocks Lula Government",
+    "title": "Brazil Achieves Record Agricultural Exports",
     "verdict": "TRUE",
-    "reason": "Confirmed: scandal broke May 2005; monthly stipends to allied deputies documented.",
+    "reason": "Brazil's agricultural exports exceeded $43 billion circa 2004–2006; 2005 claim is plausible.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -3958,8 +3994,8 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "Confirmed: scandal broke May 2005; monthly stipends to allied deputies documented.",
-        "source": "https://en.wikipedia.org/wiki/Mensalão_scandal",
+        "reason": "Brazil's agricultural exports exceeded $43 billion circa 2004–2006; 2005 claim is plausible.",
+        "source": "https://en.wikipedia.org/wiki/Agriculture_in_Brazil",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
           "date": null,
@@ -3967,7 +4003,7 @@
         }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/Mensalão_scandal"
+    "source": "https://en.wikipedia.org/wiki/Agriculture_in_Brazil"
   },
   {
     "year": 2005,
@@ -3996,6 +4032,31 @@
   },
   {
     "year": 2005,
+    "title": "Mensalao Vote-Buying Scandal Rocks Lula Government",
+    "verdict": "TRUE",
+    "reason": "Confirmed: scandal broke May 2005; monthly stipends to allied deputies documented.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed: scandal broke May 2005; monthly stipends to allied deputies documented.",
+        "source": "https://en.wikipedia.org/wiki/Mensalão_scandal",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Mensalão_scandal"
+  },
+  {
+    "year": 2005,
     "title": "PROSUB Nuclear Submarine Program Initiated",
     "verdict": "TRUE",
     "reason": "PROSUB formally agreed 2008 (Brazil-France); 2005 marks early initiation discussions. Minor timing note.",
@@ -4020,35 +4081,10 @@
     "source": "https://en.wikipedia.org/wiki/PROSUB"
   },
   {
-    "year": 2005,
-    "title": "Brazil Achieves Record Agricultural Exports",
-    "verdict": "TRUE",
-    "reason": "Brazil's agricultural exports exceeded $43 billion circa 2004–2006; 2005 claim is plausible.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Brazil's agricultural exports exceeded $43 billion circa 2004–2006; 2005 claim is plausible.",
-        "source": "https://en.wikipedia.org/wiki/Agriculture_in_Brazil",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/Agriculture_in_Brazil"
-  },
-  {
     "year": 2006,
-    "title": "Lula Re-elected Despite Corruption Scandals",
+    "title": "Bolivia Nationalizes Gas Fields Used by Brazil",
     "verdict": "TRUE",
-    "reason": "Confirmed: Lula re-elected October 2006.",
+    "reason": "Confirmed: Morales nationalization decree May 1, 2006; Petrobras operations affected.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -4058,8 +4094,8 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "Confirmed: Lula re-elected October 2006.",
-        "source": "https://en.wikipedia.org/wiki/2006_Brazilian_presidential_election",
+        "reason": "Confirmed: Morales nationalization decree May 1, 2006; Petrobras operations affected.",
+        "source": "https://en.wikipedia.org/wiki/Bolivian_gas_conflict",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
           "date": null,
@@ -4067,7 +4103,7 @@
         }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/2006_Brazilian_presidential_election"
+    "source": "https://en.wikipedia.org/wiki/Bolivian_gas_conflict"
   },
   {
     "year": 2006,
@@ -4096,6 +4132,31 @@
   },
   {
     "year": 2006,
+    "title": "Lula Re-elected Despite Corruption Scandals",
+    "verdict": "TRUE",
+    "reason": "Confirmed: Lula re-elected October 2006.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed: Lula re-elected October 2006.",
+        "source": "https://en.wikipedia.org/wiki/2006_Brazilian_presidential_election",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/2006_Brazilian_presidential_election"
+  },
+  {
+    "year": 2006,
     "title": "UNASUR South American Union Proposed by Brazil",
     "verdict": "TRUE",
     "reason": "UNASUR formally established by treaty May 2008; Cochabamba Declaration in December 2006 established the framework. Event describes it as 'proposed' in 2006 which is accurate. Confirmed with note.",
@@ -4118,56 +4179,6 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/Union_of_South_American_Nations"
-  },
-  {
-    "year": 2006,
-    "title": "Bolivia Nationalizes Gas Fields Used by Brazil",
-    "verdict": "TRUE",
-    "reason": "Confirmed: Morales nationalization decree May 1, 2006; Petrobras operations affected.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Confirmed: Morales nationalization decree May 1, 2006; Petrobras operations affected.",
-        "source": "https://en.wikipedia.org/wiki/Bolivian_gas_conflict",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/Bolivian_gas_conflict"
-  },
-  {
-    "year": 2007,
-    "title": "Petrobras Discovers Pre-Salt Oil Fields",
-    "verdict": "TRUE",
-    "reason": "Discovery in 2006, public announcement in 2007. Entry dated 2007 matches the announcement. Confirmed.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Discovery in 2006, public announcement in 2007. Entry dated 2007 matches the announcement. Confirmed.",
-        "source": "https://en.wikipedia.org/wiki/Pre-salt_layer",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/Pre-salt_layer"
   },
   {
     "year": 2007,
@@ -4206,10 +4217,10 @@
     "source": "https://www18.fgv.br/cpdoc/acervo/dicionarios/verbete-tematico/programa-de-aceleracao-do-crescimento-pac"
   },
   {
-    "year": 2008,
-    "title": "Brazil Emerges as BRICs Economic Powerhouse",
+    "year": 2007,
+    "title": "Petrobras Discovers Pre-Salt Oil Fields",
     "verdict": "TRUE",
-    "reason": "Brazil reached top-10 globally and FX reserves exceeded external debt circa 2008. Confirmed.",
+    "reason": "Discovery in 2006, public announcement in 2007. Entry dated 2007 matches the announcement. Confirmed.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -4219,8 +4230,8 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "Brazil reached top-10 globally and FX reserves exceeded external debt circa 2008. Confirmed.",
-        "source": "https://en.wikipedia.org/wiki/Economy_of_Brazil",
+        "reason": "Discovery in 2006, public announcement in 2007. Entry dated 2007 matches the announcement. Confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Pre-salt_layer",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
           "date": null,
@@ -4228,57 +4239,7 @@
         }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/Economy_of_Brazil"
-  },
-  {
-    "year": 2008,
-    "title": "Global Financial Crisis Has Limited Impact on Brazil",
-    "verdict": "TRUE",
-    "reason": "Brazil recovered rapidly from 2008 crisis due to commodities and fiscal position. Confirmed.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Brazil recovered rapidly from 2008 crisis due to commodities and fiscal position. Confirmed.",
-        "source": "https://en.wikipedia.org/wiki/Economy_of_Brazil",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/Economy_of_Brazil"
-  },
-  {
-    "year": 2008,
-    "title": "BRICS First Leaders Summit Discussions Begin",
-    "verdict": "TRUE",
-    "reason": "First formal BRIC summit was June 2009 in Yekaterinburg; 2008 describes pre-summit consultations which did occur. Borderline — VERIFIED with note.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "First formal BRIC summit was June 2009 in Yekaterinburg; 2008 describes pre-summit consultations which did occur. Borderline — VERIFIED with note.",
-        "source": "https://en.wikipedia.org/wiki/BRICS",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/BRICS"
+    "source": "https://en.wikipedia.org/wiki/Pre-salt_layer"
   },
   {
     "year": 2008,
@@ -4317,10 +4278,10 @@
     "source": "https://rioonwatch.org/?p=16065"
   },
   {
-    "year": 2009,
-    "title": "Rio de Janeiro Wins 2016 Olympic Games Bid",
+    "year": 2008,
+    "title": "Brazil Emerges as BRICs Economic Powerhouse",
     "verdict": "TRUE",
-    "reason": "Confirmed: Rio won bid October 2, 2009 in Copenhagen; defeated Chicago, Tokyo, Madrid.",
+    "reason": "Brazil reached top-10 globally and FX reserves exceeded external debt circa 2008. Confirmed.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -4330,8 +4291,8 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "Confirmed: Rio won bid October 2, 2009 in Copenhagen; defeated Chicago, Tokyo, Madrid.",
-        "source": "https://en.wikipedia.org/wiki/2016_Summer_Olympics",
+        "reason": "Brazil reached top-10 globally and FX reserves exceeded external debt circa 2008. Confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Economy_of_Brazil",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
           "date": null,
@@ -4339,13 +4300,13 @@
         }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/2016_Summer_Olympics"
+    "source": "https://en.wikipedia.org/wiki/Economy_of_Brazil"
   },
   {
-    "year": 2009,
-    "title": "Pre-Salt Oil Law Establishes Production Sharing Regime",
+    "year": 2008,
+    "title": "BRICS First Leaders Summit Discussions Begin",
     "verdict": "TRUE",
-    "reason": "Pre-salt legislation passed December 2009. Confirmed.",
+    "reason": "First formal BRIC summit was June 2009 in Yekaterinburg; 2008 describes pre-summit consultations which did occur. Borderline — VERIFIED with note.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -4355,8 +4316,8 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "Pre-salt legislation passed December 2009. Confirmed.",
-        "source": "https://en.wikipedia.org/wiki/Pre-salt_layer",
+        "reason": "First formal BRIC summit was June 2009 in Yekaterinburg; 2008 describes pre-summit consultations which did occur. Borderline — VERIFIED with note.",
+        "source": "https://en.wikipedia.org/wiki/BRICS",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
           "date": null,
@@ -4364,7 +4325,32 @@
         }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/Pre-salt_layer"
+    "source": "https://en.wikipedia.org/wiki/BRICS"
+  },
+  {
+    "year": 2008,
+    "title": "Global Financial Crisis Has Limited Impact on Brazil",
+    "verdict": "TRUE",
+    "reason": "Brazil recovered rapidly from 2008 crisis due to commodities and fiscal position. Confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Brazil recovered rapidly from 2008 crisis due to commodities and fiscal position. Confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Economy_of_Brazil",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Economy_of_Brazil"
   },
   {
     "year": 2009,
@@ -4417,10 +4403,10 @@
     "source": "https://en.wikipedia.org/wiki/G20"
   },
   {
-    "year": 2010,
-    "title": "Dilma Rousseff Elected First Female President",
+    "year": 2009,
+    "title": "Pre-Salt Oil Law Establishes Production Sharing Regime",
     "verdict": "TRUE",
-    "reason": "Confirmed: Dilma elected October 2010; former guerrilla tortured under dictatorship is confirmed.",
+    "reason": "Pre-salt legislation passed December 2009. Confirmed.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -4430,8 +4416,8 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "Confirmed: Dilma elected October 2010; former guerrilla tortured under dictatorship is confirmed.",
-        "source": "https://en.wikipedia.org/wiki/Dilma_Rousseff",
+        "reason": "Pre-salt legislation passed December 2009. Confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Pre-salt_layer",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
           "date": null,
@@ -4439,7 +4425,32 @@
         }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/Dilma_Rousseff"
+    "source": "https://en.wikipedia.org/wiki/Pre-salt_layer"
+  },
+  {
+    "year": 2009,
+    "title": "Rio de Janeiro Wins 2016 Olympic Games Bid",
+    "verdict": "TRUE",
+    "reason": "Confirmed: Rio won bid October 2, 2009 in Copenhagen; defeated Chicago, Tokyo, Madrid.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed: Rio won bid October 2, 2009 in Copenhagen; defeated Chicago, Tokyo, Madrid.",
+        "source": "https://en.wikipedia.org/wiki/2016_Summer_Olympics",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/2016_Summer_Olympics"
   },
   {
     "year": 2010,
@@ -4468,6 +4479,31 @@
   },
   {
     "year": 2010,
+    "title": "Dilma Rousseff Elected First Female President",
+    "verdict": "TRUE",
+    "reason": "Confirmed: Dilma elected October 2010; former guerrilla tortured under dictatorship is confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed: Dilma elected October 2010; former guerrilla tortured under dictatorship is confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Dilma_Rousseff",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Dilma_Rousseff"
+  },
+  {
+    "year": 2010,
     "title": "Haiti Earthquake Response Led by Brazil",
     "verdict": "TRUE",
     "reason": "Confirmed: Brazil as MINUSTAH commander led military humanitarian response to January 2010 earthquake.",
@@ -4490,6 +4526,31 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/2010_Haiti_earthquake"
+  },
+  {
+    "year": 2011,
+    "title": "Belo Monte Hydroelectric Dam Construction Approved",
+    "verdict": "TRUE",
+    "reason": "Environmental licensing for Belo Monte issued February 2010; construction formally approved/began 2011. Confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Environmental licensing for Belo Monte issued February 2010; construction formally approved/began 2011. Confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Belo_Monte_Dam",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Belo_Monte_Dam"
   },
   {
     "year": 2011,
@@ -4542,54 +4603,40 @@
     "source": "https://en.wikipedia.org/wiki/January_2011_Rio_de_Janeiro_floods_and_mudslides"
   },
   {
-    "year": 2011,
-    "title": "Belo Monte Hydroelectric Dam Construction Approved",
-    "verdict": "TRUE",
-    "reason": "Environmental licensing for Belo Monte issued February 2010; construction formally approved/began 2011. Confirmed.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Environmental licensing for Belo Monte issued February 2010; construction formally approved/began 2011. Confirmed.",
-        "source": "https://en.wikipedia.org/wiki/Belo_Monte_Dam",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/Belo_Monte_Dam"
-  },
-  {
     "year": 2012,
-    "title": "Rio+20 UN Sustainable Development Conference",
+    "title": "Brazil Introduces Cotistas Racial Quota System",
     "verdict": "TRUE",
-    "reason": "Confirmed: Rio+20 held June 2012; 'Future We Want' declaration is correct.",
-    "verify_count": 1,
+    "reason": "Confirmed via independent, non-Wikipedia sources. (1) On April 26, 2012, Brazil's Federal Supreme Court (STF) unanimously (10-0) upheld the constitutionality of racial quotas in university admissions in ADPF 186, a case concerning the University of Brasília's quota policy — confirmed by Equal Rights Trust, ESCR-Net, and ICJ case summaries. (2) On August 29, 2012, President Dilma Rousseff signed Law 12.711/2012 ('Lei de Cotas'), requiring federal universities to reserve 50% of places for students who attended public school for their full secondary education, with quotas within that reservation for self-declared Black, mixed-race, and indigenous students proportional to state demographics — confirmed by the U.S. Library of Congress Global Legal Monitor. Both the STF ruling and the Congressional/presidential law match the description materially: unanimous court decision, 50% public-school reservation, and quotas including Black and indigenous students. Year (2012) and country (Brazil) both confirmed.",
+    "verify_count": 2,
     "consensus_verdict": "TRUE",
-    "consensus_status": "single",
+    "consensus_status": "double_confirmed",
     "needs_tiebreak": false,
-    "source_independence": "n/a",
+    "source_independence": "independent",
     "verifications": [
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "Confirmed: Rio+20 held June 2012; 'Future We Want' declaration is correct.",
-        "source": "https://en.wikipedia.org/wiki/Rio+20",
+        "reason": "Confirmed: STF upheld quotas April 2012; quota law for federal universities passed August 2012.",
+        "source": "https://en.wikipedia.org/wiki/Affirmative_action_in_Brazil",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
           "date": null,
           "method": "web_search"
         }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Confirmed via independent, non-Wikipedia sources. (1) On April 26, 2012, Brazil's Federal Supreme Court (STF) unanimously (10-0) upheld the constitutionality of racial quotas in university admissions in ADPF 186, a case concerning the University of Brasília's quota policy — confirmed by Equal Rights Trust, ESCR-Net, and ICJ case summaries. (2) On August 29, 2012, President Dilma Rousseff signed Law 12.711/2012 ('Lei de Cotas'), requiring federal universities to reserve 50% of places for students who attended public school for their full secondary education, with quotas within that reservation for self-declared Black, mixed-race, and indigenous students proportional to state demographics — confirmed by the U.S. Library of Congress Global Legal Monitor. Both the STF ruling and the Congressional/presidential law match the description materially: unanimous court decision, 50% public-school reservation, and quotas including Black and indigenous students. Year (2012) and country (Brazil) both confirmed.",
+        "source": "https://www.loc.gov/item/global-legal-monitor/2012-09-07/brazil-new-quota-law-reserves-50-of-the-places-at-federal-universities-for-public-school-students/",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-02",
+          "method": "web_search"
+        }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/Rio+20"
+    "source": "https://www.loc.gov/item/global-legal-monitor/2012-09-07/brazil-new-quota-law-reserves-50-of-the-places-at-federal-universities-for-public-school-students/"
   },
   {
     "year": 2012,
@@ -4668,45 +4715,9 @@
   },
   {
     "year": 2012,
-    "title": "Brazil Introduces Cotistas Racial Quota System",
+    "title": "Rio+20 UN Sustainable Development Conference",
     "verdict": "TRUE",
-    "reason": "Confirmed via independent, non-Wikipedia sources. (1) On April 26, 2012, Brazil's Federal Supreme Court (STF) unanimously (10-0) upheld the constitutionality of racial quotas in university admissions in ADPF 186, a case concerning the University of Brasília's quota policy — confirmed by Equal Rights Trust, ESCR-Net, and ICJ case summaries. (2) On August 29, 2012, President Dilma Rousseff signed Law 12.711/2012 ('Lei de Cotas'), requiring federal universities to reserve 50% of places for students who attended public school for their full secondary education, with quotas within that reservation for self-declared Black, mixed-race, and indigenous students proportional to state demographics — confirmed by the U.S. Library of Congress Global Legal Monitor. Both the STF ruling and the Congressional/presidential law match the description materially: unanimous court decision, 50% public-school reservation, and quotas including Black and indigenous students. Year (2012) and country (Brazil) both confirmed.",
-    "verify_count": 2,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "double_confirmed",
-    "needs_tiebreak": false,
-    "source_independence": "independent",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Confirmed: STF upheld quotas April 2012; quota law for federal universities passed August 2012.",
-        "source": "https://en.wikipedia.org/wiki/Affirmative_action_in_Brazil",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      },
-      {
-        "pass_n": 2,
-        "verdict": "TRUE",
-        "reason": "Confirmed via independent, non-Wikipedia sources. (1) On April 26, 2012, Brazil's Federal Supreme Court (STF) unanimously (10-0) upheld the constitutionality of racial quotas in university admissions in ADPF 186, a case concerning the University of Brasília's quota policy — confirmed by Equal Rights Trust, ESCR-Net, and ICJ case summaries. (2) On August 29, 2012, President Dilma Rousseff signed Law 12.711/2012 ('Lei de Cotas'), requiring federal universities to reserve 50% of places for students who attended public school for their full secondary education, with quotas within that reservation for self-declared Black, mixed-race, and indigenous students proportional to state demographics — confirmed by the U.S. Library of Congress Global Legal Monitor. Both the STF ruling and the Congressional/presidential law match the description materially: unanimous court decision, 50% public-school reservation, and quotas including Black and indigenous students. Year (2012) and country (Brazil) both confirmed.",
-        "source": "https://www.loc.gov/item/global-legal-monitor/2012-09-07/brazil-new-quota-law-reserves-50-of-the-places-at-federal-universities-for-public-school-students/",
-        "verifier": {
-          "model": "claude-sonnet-5",
-          "date": "2026-07-02",
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://www.loc.gov/item/global-legal-monitor/2012-09-07/brazil-new-quota-law-reserves-50-of-the-places-at-federal-universities-for-public-school-students/"
-  },
-  {
-    "year": 2013,
-    "title": "Massive June Protests Erupt Against World Cup Spending",
-    "verdict": "TRUE",
-    "reason": "Confirmed: June 2013 protests; triggered by bus fares, expanded to World Cup costs and public services.",
+    "reason": "Confirmed: Rio+20 held June 2012; 'Future We Want' declaration is correct.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -4716,8 +4727,8 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "Confirmed: June 2013 protests; triggered by bus fares, expanded to World Cup costs and public services.",
-        "source": "https://en.wikipedia.org/wiki/2013_protests_in_Brazil",
+        "reason": "Confirmed: Rio+20 held June 2012; 'Future We Want' declaration is correct.",
+        "source": "https://en.wikipedia.org/wiki/Rio+20",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
           "date": null,
@@ -4725,32 +4736,7 @@
         }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/2013_protests_in_Brazil"
-  },
-  {
-    "year": 2013,
-    "title": "NSA Surveillance of Brazilian Government Revealed",
-    "verdict": "TRUE",
-    "reason": "Confirmed: Snowden documents revealed NSA surveillance of Dilma and Petrobras; state visit cancelled.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Confirmed: Snowden documents revealed NSA surveillance of Dilma and Petrobras; state visit cancelled.",
-        "source": "https://en.wikipedia.org/wiki/Global_surveillance_disclosures_(2013–present)",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/Global_surveillance_disclosures_(2013–present)"
+    "source": "https://en.wikipedia.org/wiki/Rio+20"
   },
   {
     "year": 2013,
@@ -4838,6 +4824,56 @@
     "source": "https://www.americasquarterly.org/fulltextarticle/brazils-internet-bill-of-rights/"
   },
   {
+    "year": 2013,
+    "title": "Massive June Protests Erupt Against World Cup Spending",
+    "verdict": "TRUE",
+    "reason": "Confirmed: June 2013 protests; triggered by bus fares, expanded to World Cup costs and public services.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed: June 2013 protests; triggered by bus fares, expanded to World Cup costs and public services.",
+        "source": "https://en.wikipedia.org/wiki/2013_protests_in_Brazil",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/2013_protests_in_Brazil"
+  },
+  {
+    "year": 2013,
+    "title": "NSA Surveillance of Brazilian Government Revealed",
+    "verdict": "TRUE",
+    "reason": "Confirmed: Snowden documents revealed NSA surveillance of Dilma and Petrobras; state visit cancelled.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed: Snowden documents revealed NSA surveillance of Dilma and Petrobras; state visit cancelled.",
+        "source": "https://en.wikipedia.org/wiki/Global_surveillance_disclosures_(2013–present)",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Global_surveillance_disclosures_(2013–present)"
+  },
+  {
     "year": 2014,
     "title": "Brazil Hosts FIFA World Cup, Loses Spectacularly",
     "verdict": "TRUE",
@@ -4861,31 +4897,6 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/2014_FIFA_World_Cup"
-  },
-  {
-    "year": 2014,
-    "title": "Operation Car Wash (Lava Jato) Corruption Investigation Begins",
-    "verdict": "TRUE",
-    "reason": "Confirmed: Lava Jato began March 17, 2014 in Curitiba.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Confirmed: Lava Jato began March 17, 2014 in Curitiba.",
-        "source": "https://en.wikipedia.org/wiki/Operation_Car_Wash",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/Operation_Car_Wash"
   },
   {
     "year": 2014,
@@ -4914,6 +4925,31 @@
   },
   {
     "year": 2014,
+    "title": "Operation Car Wash (Lava Jato) Corruption Investigation Begins",
+    "verdict": "TRUE",
+    "reason": "Confirmed: Lava Jato began March 17, 2014 in Curitiba.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed: Lava Jato began March 17, 2014 in Curitiba.",
+        "source": "https://en.wikipedia.org/wiki/Operation_Car_Wash",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Operation_Car_Wash"
+  },
+  {
+    "year": 2014,
     "title": "Record Drought in Sao Paulo Threatens Water Supply",
     "verdict": "TRUE",
     "reason": "Cantareira system reached critical levels 2014; worst drought in decades. Confirmed.",
@@ -4936,6 +4972,56 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/2014–2017_Brazilian_drought"
+  },
+  {
+    "year": 2015,
+    "title": "Brazil Falls into Recession as Economy Contracts",
+    "verdict": "TRUE",
+    "reason": "Brazil entered recession in 2015; worst in decades. Confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Brazil entered recession in 2015; worst in decades. Confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Economy_of_Brazil",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Economy_of_Brazil"
+  },
+  {
+    "year": 2015,
+    "title": "Brazil Ratifies Paris Climate Agreement",
+    "verdict": "TRUE",
+    "reason": "Brazil signed Paris Agreement December 2015 (COP21); 37% below 2005 levels by 2025 target is confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Brazil signed Paris Agreement December 2015 (COP21); 37% below 2005 levels by 2025 target is confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Paris_Agreement",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Paris_Agreement"
   },
   {
     "year": 2015,
@@ -4988,10 +5074,10 @@
     "source": "https://en.wikipedia.org/wiki/Mariana_dam_disaster"
   },
   {
-    "year": 2015,
-    "title": "Brazil Falls into Recession as Economy Contracts",
+    "year": 2016,
+    "title": "Lava Jato Expands to Arrest Major Construction Company Executives",
     "verdict": "TRUE",
-    "reason": "Brazil entered recession in 2015; worst in decades. Confirmed.",
+    "reason": "Odebrecht, OAS, Camargo Corrêa executives arrested; Odebrecht plea deal across 12 countries confirmed.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -5001,8 +5087,8 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "Brazil entered recession in 2015; worst in decades. Confirmed.",
-        "source": "https://en.wikipedia.org/wiki/Economy_of_Brazil",
+        "reason": "Odebrecht, OAS, Camargo Corrêa executives arrested; Odebrecht plea deal across 12 countries confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Operation_Car_Wash",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
           "date": null,
@@ -5010,13 +5096,13 @@
         }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/Economy_of_Brazil"
+    "source": "https://en.wikipedia.org/wiki/Operation_Car_Wash"
   },
   {
-    "year": 2015,
-    "title": "Brazil Ratifies Paris Climate Agreement",
+    "year": 2016,
+    "title": "Lula Charged in Lava Jato Corruption Investigation",
     "verdict": "TRUE",
-    "reason": "Brazil signed Paris Agreement December 2015 (COP21); 37% below 2005 levels by 2025 target is confirmed.",
+    "reason": "Confirmed: Lula formally charged in 2016; Guarujá triplex apartment case.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -5026,8 +5112,8 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "Brazil signed Paris Agreement December 2015 (COP21); 37% below 2005 levels by 2025 target is confirmed.",
-        "source": "https://en.wikipedia.org/wiki/Paris_Agreement",
+        "reason": "Confirmed: Lula formally charged in 2016; Guarujá triplex apartment case.",
+        "source": "https://en.wikipedia.org/wiki/Luiz_Inácio_Lula_da_Silva",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
           "date": null,
@@ -5035,7 +5121,32 @@
         }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/Paris_Agreement"
+    "source": "https://en.wikipedia.org/wiki/Luiz_Inácio_Lula_da_Silva"
+  },
+  {
+    "year": 2016,
+    "title": "Michel Temer Implements Spending Cap Amendment",
+    "verdict": "TRUE",
+    "reason": "Constitutional Amendment 95 (spending cap) enacted December 2016. Confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Constitutional Amendment 95 (spending cap) enacted December 2016. Confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Michel_Temer",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Michel_Temer"
   },
   {
     "year": 2016,
@@ -5113,85 +5224,10 @@
     "source": "https://en.wikipedia.org/wiki/2015–16_Zika_virus_epidemic_in_Brazil"
   },
   {
-    "year": 2016,
-    "title": "Lula Charged in Lava Jato Corruption Investigation",
-    "verdict": "TRUE",
-    "reason": "Confirmed: Lula formally charged in 2016; Guarujá triplex apartment case.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Confirmed: Lula formally charged in 2016; Guarujá triplex apartment case.",
-        "source": "https://en.wikipedia.org/wiki/Luiz_Inácio_Lula_da_Silva",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/Luiz_Inácio_Lula_da_Silva"
-  },
-  {
-    "year": 2016,
-    "title": "Lava Jato Expands to Arrest Major Construction Company Executives",
-    "verdict": "TRUE",
-    "reason": "Odebrecht, OAS, Camargo Corrêa executives arrested; Odebrecht plea deal across 12 countries confirmed.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Odebrecht, OAS, Camargo Corrêa executives arrested; Odebrecht plea deal across 12 countries confirmed.",
-        "source": "https://en.wikipedia.org/wiki/Operation_Car_Wash",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/Operation_Car_Wash"
-  },
-  {
-    "year": 2016,
-    "title": "Michel Temer Implements Spending Cap Amendment",
-    "verdict": "TRUE",
-    "reason": "Constitutional Amendment 95 (spending cap) enacted December 2016. Confirmed.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Constitutional Amendment 95 (spending cap) enacted December 2016. Confirmed.",
-        "source": "https://en.wikipedia.org/wiki/Michel_Temer",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/Michel_Temer"
-  },
-  {
     "year": 2017,
-    "title": "Michel Temer Corruption Charges in Wiretap Scandal",
+    "title": "Corruption Scandals Force Resignation of Multiple Ministers",
     "verdict": "TRUE",
-    "reason": "Confirmed: Temer wiretap scandal May 2017; Congress blocked charges twice.",
+    "reason": "Multiple Temer cabinet resignations due to Lava Jato in 2017. Confirmed.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -5201,32 +5237,7 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "Confirmed: Temer wiretap scandal May 2017; Congress blocked charges twice.",
-        "source": "https://en.wikipedia.org/wiki/Michel_Temer",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/Michel_Temer"
-  },
-  {
-    "year": 2017,
-    "title": "Pension and Labor Reforms Under Temer",
-    "verdict": "TRUE",
-    "reason": "Confirmed: labor reform passed July 2017; pension reform (partial) passed 2017.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Confirmed: labor reform passed July 2017; pension reform (partial) passed 2017.",
+        "reason": "Multiple Temer cabinet resignations due to Lava Jato in 2017. Confirmed.",
         "source": "https://en.wikipedia.org/wiki/Michel_Temer",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
@@ -5264,6 +5275,31 @@
   },
   {
     "year": 2017,
+    "title": "Michel Temer Corruption Charges in Wiretap Scandal",
+    "verdict": "TRUE",
+    "reason": "Confirmed: Temer wiretap scandal May 2017; Congress blocked charges twice.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed: Temer wiretap scandal May 2017; Congress blocked charges twice.",
+        "source": "https://en.wikipedia.org/wiki/Michel_Temer",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Michel_Temer"
+  },
+  {
+    "year": 2017,
     "title": "Odebrecht Signs Largest Corporate Plea Deal in History",
     "verdict": "TRUE",
     "reason": "Confirmed: $788 million in bribes across 12 countries; largest corporate plea deal at the time.",
@@ -5289,9 +5325,9 @@
   },
   {
     "year": 2017,
-    "title": "Corruption Scandals Force Resignation of Multiple Ministers",
+    "title": "Pension and Labor Reforms Under Temer",
     "verdict": "TRUE",
-    "reason": "Multiple Temer cabinet resignations due to Lava Jato in 2017. Confirmed.",
+    "reason": "Confirmed: labor reform passed July 2017; pension reform (partial) passed 2017.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -5301,7 +5337,7 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "Multiple Temer cabinet resignations due to Lava Jato in 2017. Confirmed.",
+        "reason": "Confirmed: labor reform passed July 2017; pension reform (partial) passed 2017.",
         "source": "https://en.wikipedia.org/wiki/Michel_Temer",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
@@ -5314,28 +5350,39 @@
   },
   {
     "year": 2018,
-    "title": "Lula Imprisoned, Cannot Run for President",
+    "title": "Federal Intervention in Rio de Janeiro Security",
     "verdict": "TRUE",
-    "reason": "Confirmed: Lula began prison sentence April 7, 2018; TSE barred candidacy.",
-    "verify_count": 1,
+    "reason": "Multiple independent, non-Wikipedia sources confirm: on Feb 16, 2018, Brazilian President Michel Temer signed Decree No. 9,288 declaring a federal intervention in Rio de Janeiro's public security (effective Feb 21, 2018), appointing Army General Walter Souza Braga Netto as military interventor with full operational control over the state's civil and military police forces, superseding civilian authorities including the governor. Washington Post and iConnect Blog explicitly describe this as the first federal intervention of a Brazilian state since the 1988 Constitution. The intervention ran through Dec 31, 2018 and was driven by a severe breakdown in public security/rising violence in Rio — materially matching the event description in country, year, actors, and scope.",
+    "verify_count": 2,
     "consensus_verdict": "TRUE",
-    "consensus_status": "single",
+    "consensus_status": "double_confirmed",
     "needs_tiebreak": false,
-    "source_independence": "n/a",
+    "source_independence": "independent",
     "verifications": [
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "Confirmed: Lula began prison sentence April 7, 2018; TSE barred candidacy.",
-        "source": "https://en.wikipedia.org/wiki/Imprisonment_of_Luiz_Inácio_Lula_da_Silva",
+        "reason": "Confirmed: federal intervention declared February 2018; first since 1988 Constitution.",
+        "source": "https://en.wikipedia.org/wiki/2018_federal_intervention_in_Rio_de_Janeiro",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
           "date": null,
           "method": "web_search"
         }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Multiple independent, non-Wikipedia sources confirm: on Feb 16, 2018, Brazilian President Michel Temer signed Decree No. 9,288 declaring a federal intervention in Rio de Janeiro's public security (effective Feb 21, 2018), appointing Army General Walter Souza Braga Netto as military interventor with full operational control over the state's civil and military police forces, superseding civilian authorities including the governor. Washington Post and iConnect Blog explicitly describe this as the first federal intervention of a Brazilian state since the 1988 Constitution. The intervention ran through Dec 31, 2018 and was driven by a severe breakdown in public security/rising violence in Rio — materially matching the event description in country, year, actors, and scope.",
+        "source": "https://www.washingtonpost.com/world/the_americas/brazils-military-to-take-over-security-in-violence-scarred-rio-de-janeiro/2018/02/16/5ff9aaea-1341-11e8-a68c-e9374188170e_story.html",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-02",
+          "method": "web_search"
+        }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/Imprisonment_of_Luiz_Inácio_Lula_da_Silva"
+    "source": "https://www.washingtonpost.com/world/the_americas/brazils-military-to-take-over-security-in-violence-scarred-rio-de-janeiro/2018/02/16/5ff9aaea-1341-11e8-a68c-e9374188170e_story.html"
   },
   {
     "year": 2018,
@@ -5361,6 +5408,31 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/2018_Brazilian_presidential_election"
+  },
+  {
+    "year": 2018,
+    "title": "Lula Imprisoned, Cannot Run for President",
+    "verdict": "TRUE",
+    "reason": "Confirmed: Lula began prison sentence April 7, 2018; TSE barred candidacy.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed: Lula began prison sentence April 7, 2018; TSE barred candidacy.",
+        "source": "https://en.wikipedia.org/wiki/Imprisonment_of_Luiz_Inácio_Lula_da_Silva",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Imprisonment_of_Luiz_Inácio_Lula_da_Silva"
   },
   {
     "year": 2018,
@@ -5424,40 +5496,29 @@
     "source": "https://www.forbes.com/sites/kenrapoza/2018/06/04/brazil-petrobras-truckers-strike-is-huge-negative-for-economy/"
   },
   {
-    "year": 2018,
-    "title": "Federal Intervention in Rio de Janeiro Security",
+    "year": 2019,
+    "title": "Amazon Deforestation Surges Under Bolsonaro",
     "verdict": "TRUE",
-    "reason": "Multiple independent, non-Wikipedia sources confirm: on Feb 16, 2018, Brazilian President Michel Temer signed Decree No. 9,288 declaring a federal intervention in Rio de Janeiro's public security (effective Feb 21, 2018), appointing Army General Walter Souza Braga Netto as military interventor with full operational control over the state's civil and military police forces, superseding civilian authorities including the governor. Washington Post and iConnect Blog explicitly describe this as the first federal intervention of a Brazilian state since the 1988 Constitution. The intervention ran through Dec 31, 2018 and was driven by a severe breakdown in public security/rising violence in Rio — materially matching the event description in country, year, actors, and scope.",
-    "verify_count": 2,
+    "reason": "Confirmed: deforestation rates surged 2019; major fires and international condemnation.",
+    "verify_count": 1,
     "consensus_verdict": "TRUE",
-    "consensus_status": "double_confirmed",
+    "consensus_status": "single",
     "needs_tiebreak": false,
-    "source_independence": "independent",
+    "source_independence": "n/a",
     "verifications": [
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "Confirmed: federal intervention declared February 2018; first since 1988 Constitution.",
-        "source": "https://en.wikipedia.org/wiki/2018_federal_intervention_in_Rio_de_Janeiro",
+        "reason": "Confirmed: deforestation rates surged 2019; major fires and international condemnation.",
+        "source": "https://en.wikipedia.org/wiki/Deforestation_in_Brazil",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
           "date": null,
           "method": "web_search"
         }
-      },
-      {
-        "pass_n": 2,
-        "verdict": "TRUE",
-        "reason": "Multiple independent, non-Wikipedia sources confirm: on Feb 16, 2018, Brazilian President Michel Temer signed Decree No. 9,288 declaring a federal intervention in Rio de Janeiro's public security (effective Feb 21, 2018), appointing Army General Walter Souza Braga Netto as military interventor with full operational control over the state's civil and military police forces, superseding civilian authorities including the governor. Washington Post and iConnect Blog explicitly describe this as the first federal intervention of a Brazilian state since the 1988 Constitution. The intervention ran through Dec 31, 2018 and was driven by a severe breakdown in public security/rising violence in Rio — materially matching the event description in country, year, actors, and scope.",
-        "source": "https://www.washingtonpost.com/world/the_americas/brazils-military-to-take-over-security-in-violence-scarred-rio-de-janeiro/2018/02/16/5ff9aaea-1341-11e8-a68c-e9374188170e_story.html",
-        "verifier": {
-          "model": "claude-sonnet-5",
-          "date": "2026-07-02",
-          "method": "web_search"
-        }
       }
     ],
-    "source": "https://www.washingtonpost.com/world/the_americas/brazils-military-to-take-over-security-in-violence-scarred-rio-de-janeiro/2018/02/16/5ff9aaea-1341-11e8-a68c-e9374188170e_story.html"
+    "source": "https://en.wikipedia.org/wiki/Deforestation_in_Brazil"
   },
   {
     "year": 2019,
@@ -5486,9 +5547,9 @@
   },
   {
     "year": 2019,
-    "title": "Amazon Deforestation Surges Under Bolsonaro",
+    "title": "Brazil Withdraws from UNASUR",
     "verdict": "TRUE",
-    "reason": "Confirmed: deforestation rates surged 2019; major fires and international condemnation.",
+    "reason": "Confirmed: Brazil withdrew from UNASUR under Bolsonaro in 2019.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -5498,8 +5559,8 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "Confirmed: deforestation rates surged 2019; major fires and international condemnation.",
-        "source": "https://en.wikipedia.org/wiki/Deforestation_in_Brazil",
+        "reason": "Confirmed: Brazil withdrew from UNASUR under Bolsonaro in 2019.",
+        "source": "https://en.wikipedia.org/wiki/Union_of_South_American_Nations",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
           "date": null,
@@ -5507,7 +5568,7 @@
         }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/Deforestation_in_Brazil"
+    "source": "https://en.wikipedia.org/wiki/Union_of_South_American_Nations"
   },
   {
     "year": 2019,
@@ -5536,31 +5597,6 @@
   },
   {
     "year": 2019,
-    "title": "Supreme Court Annuls Lula's Convictions for Bias",
-    "verdict": "FALSE",
-    "reason": "Supreme Court annulled Lula's convictions in March 2021 — not 2019. Year off by 2.",
-    "verify_count": 1,
-    "consensus_verdict": "FALSE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "FALSE",
-        "reason": "Supreme Court annulled Lula's convictions in March 2021 — not 2019. Year off by 2.",
-        "source": "https://en.wikipedia.org/wiki/Imprisonment_of_Luiz_Inácio_Lula_da_Silva",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/Imprisonment_of_Luiz_Inácio_Lula_da_Silva"
-  },
-  {
-    "year": 2019,
     "title": "Pension Reform Passes After Months of Debate",
     "verdict": "TRUE",
     "reason": "Confirmed: pension reform passed October 2019; R$800 billion savings target is correct.",
@@ -5586,20 +5622,20 @@
   },
   {
     "year": 2019,
-    "title": "Brazil Withdraws from UNASUR",
-    "verdict": "TRUE",
-    "reason": "Confirmed: Brazil withdrew from UNASUR under Bolsonaro in 2019.",
+    "title": "Supreme Court Annuls Lula's Convictions for Bias",
+    "verdict": "FALSE",
+    "reason": "Supreme Court annulled Lula's convictions in March 2021 — not 2019. Year off by 2.",
     "verify_count": 1,
-    "consensus_verdict": "TRUE",
+    "consensus_verdict": "FALSE",
     "consensus_status": "single",
     "needs_tiebreak": false,
     "source_independence": "n/a",
     "verifications": [
       {
         "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Confirmed: Brazil withdrew from UNASUR under Bolsonaro in 2019.",
-        "source": "https://en.wikipedia.org/wiki/Union_of_South_American_Nations",
+        "verdict": "FALSE",
+        "reason": "Supreme Court annulled Lula's convictions in March 2021 — not 2019. Year off by 2.",
+        "source": "https://en.wikipedia.org/wiki/Imprisonment_of_Luiz_Inácio_Lula_da_Silva",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
           "date": null,
@@ -5607,32 +5643,7 @@
         }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/Union_of_South_American_Nations"
-  },
-  {
-    "year": 2020,
-    "title": "COVID-19 Pandemic Kills Hundreds of Thousands in Brazil",
-    "verdict": "TRUE",
-    "reason": "Confirmed: over 700,000 deaths total; second highest globally. Bolsonaro's dismissive response documented.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Confirmed: over 700,000 deaths total; second highest globally. Bolsonaro's dismissive response documented.",
-        "source": "https://en.wikipedia.org/wiki/COVID-19_pandemic_in_Brazil",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/COVID-19_pandemic_in_Brazil"
+    "source": "https://en.wikipedia.org/wiki/Imprisonment_of_Luiz_Inácio_Lula_da_Silva"
   },
   {
     "year": 2020,
@@ -5649,6 +5660,56 @@
         "pass_n": 1,
         "verdict": "TRUE",
         "reason": "Confirmed: health ministers Luiz Henrique Mandetta and Nelson Teich both fired in 2020.",
+        "source": "https://en.wikipedia.org/wiki/COVID-19_pandemic_in_Brazil",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/COVID-19_pandemic_in_Brazil"
+  },
+  {
+    "year": 2020,
+    "title": "Bolsonaro Government Dismantles Environmental Agencies",
+    "verdict": "TRUE",
+    "reason": "IBAMA budget cuts and staff reductions under Bolsonaro are documented.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "IBAMA budget cuts and staff reductions under Bolsonaro are documented.",
+        "source": "https://en.wikipedia.org/wiki/Jair_Bolsonaro",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Jair_Bolsonaro"
+  },
+  {
+    "year": 2020,
+    "title": "COVID-19 Pandemic Kills Hundreds of Thousands in Brazil",
+    "verdict": "TRUE",
+    "reason": "Confirmed: over 700,000 deaths total; second highest globally. Bolsonaro's dismissive response documented.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed: over 700,000 deaths total; second highest globally. Bolsonaro's dismissive response documented.",
         "source": "https://en.wikipedia.org/wiki/COVID-19_pandemic_in_Brazil",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
@@ -5685,10 +5746,10 @@
     "source": "https://en.wikipedia.org/wiki/Economy_of_Brazil"
   },
   {
-    "year": 2020,
-    "title": "Bolsonaro Government Dismantles Environmental Agencies",
+    "year": 2021,
+    "title": "Brazil Misses Paris Agreement Deforestation Targets",
     "verdict": "TRUE",
-    "reason": "IBAMA budget cuts and staff reductions under Bolsonaro are documented.",
+    "reason": "Confirmed: Brazil's deforestation accelerated under Bolsonaro, missing Paris commitment targets.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -5698,8 +5759,8 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "IBAMA budget cuts and staff reductions under Bolsonaro are documented.",
-        "source": "https://en.wikipedia.org/wiki/Jair_Bolsonaro",
+        "reason": "Confirmed: Brazil's deforestation accelerated under Bolsonaro, missing Paris commitment targets.",
+        "source": "https://en.wikipedia.org/wiki/Deforestation_in_Brazil",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
           "date": null,
@@ -5707,7 +5768,32 @@
         }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/Jair_Bolsonaro"
+    "source": "https://en.wikipedia.org/wiki/Deforestation_in_Brazil"
+  },
+  {
+    "year": 2021,
+    "title": "Brazil Records Peak COVID Death Tolls",
+    "verdict": "TRUE",
+    "reason": "Confirmed: daily death tolls exceeded 4,000 at peak in April 2021.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed: daily death tolls exceeded 4,000 at peak in April 2021.",
+        "source": "https://en.wikipedia.org/wiki/COVID-19_pandemic_in_Brazil",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/COVID-19_pandemic_in_Brazil"
   },
   {
     "year": 2021,
@@ -5733,6 +5819,31 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/COVID-19_pandemic_in_Brazil"
+  },
+  {
+    "year": 2021,
+    "title": "Brazil's Amazon Fund Reactivated After Suspension",
+    "verdict": "TRUE",
+    "reason": "Amazon Fund frozen 2019; steps toward reactivation discussed 2021; fully reactivated 2022–2023 under Lula.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Amazon Fund frozen 2019; steps toward reactivation discussed 2021; fully reactivated 2022–2023 under Lula.",
+        "source": "https://en.wikipedia.org/wiki/Amazon_Fund",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Amazon_Fund"
   },
   {
     "year": 2021,
@@ -5785,10 +5896,10 @@
     "source": "https://en.wikipedia.org/wiki/COVID-19_pandemic_in_Brazil"
   },
   {
-    "year": 2021,
-    "title": "Brazil Records Peak COVID Death Tolls",
+    "year": 2022,
+    "title": "Amazon Deforestation Reaches 15-Year High",
     "verdict": "TRUE",
-    "reason": "Confirmed: daily death tolls exceeded 4,000 at peak in April 2021.",
+    "reason": "Confirmed: 2021 (Bolsonaro's term) saw highest deforestation in 15 years; 11,568 sq km. The 2022 figure is close; confirmed as high during Bolsonaro's final year.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -5798,32 +5909,7 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "Confirmed: daily death tolls exceeded 4,000 at peak in April 2021.",
-        "source": "https://en.wikipedia.org/wiki/COVID-19_pandemic_in_Brazil",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/COVID-19_pandemic_in_Brazil"
-  },
-  {
-    "year": 2021,
-    "title": "Brazil Misses Paris Agreement Deforestation Targets",
-    "verdict": "TRUE",
-    "reason": "Confirmed: Brazil's deforestation accelerated under Bolsonaro, missing Paris commitment targets.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Confirmed: Brazil's deforestation accelerated under Bolsonaro, missing Paris commitment targets.",
+        "reason": "Confirmed: 2021 (Bolsonaro's term) saw highest deforestation in 15 years; 11,568 sq km. The 2022 figure is close; confirmed as high during Bolsonaro's final year.",
         "source": "https://en.wikipedia.org/wiki/Deforestation_in_Brazil",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
@@ -5835,35 +5921,10 @@
     "source": "https://en.wikipedia.org/wiki/Deforestation_in_Brazil"
   },
   {
-    "year": 2021,
-    "title": "Brazil's Amazon Fund Reactivated After Suspension",
-    "verdict": "TRUE",
-    "reason": "Amazon Fund frozen 2019; steps toward reactivation discussed 2021; fully reactivated 2022–2023 under Lula.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Amazon Fund frozen 2019; steps toward reactivation discussed 2021; fully reactivated 2022–2023 under Lula.",
-        "source": "https://en.wikipedia.org/wiki/Amazon_Fund",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/Amazon_Fund"
-  },
-  {
     "year": 2022,
-    "title": "Petrópolis Floods and Landslides Kill Over 230",
+    "title": "Brazil Celebrates 200 Years of Independence",
     "verdict": "TRUE",
-    "reason": "Confirmed: February 15, 2022; over 230 killed; deadliest disaster in region since 2011.",
+    "reason": "Confirmed: bicentennial September 7, 2022; Bolsonaro used it as campaign event; divided commemoration documented.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -5873,8 +5934,8 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "Confirmed: February 15, 2022; over 230 killed; deadliest disaster in region since 2011.",
-        "source": "https://en.wikipedia.org/wiki/2022_Petrópolis_floods",
+        "reason": "Confirmed: bicentennial September 7, 2022; Bolsonaro used it as campaign event; divided commemoration documented.",
+        "source": "https://en.wikipedia.org/wiki/Brazil",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
           "date": null,
@@ -5882,7 +5943,7 @@
         }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/2022_Petrópolis_floods"
+    "source": "https://en.wikipedia.org/wiki/Brazil"
   },
   {
     "year": 2022,
@@ -5911,31 +5972,6 @@
   },
   {
     "year": 2022,
-    "title": "Amazon Deforestation Reaches 15-Year High",
-    "verdict": "TRUE",
-    "reason": "Confirmed: 2021 (Bolsonaro's term) saw highest deforestation in 15 years; 11,568 sq km. The 2022 figure is close; confirmed as high during Bolsonaro's final year.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Confirmed: 2021 (Bolsonaro's term) saw highest deforestation in 15 years; 11,568 sq km. The 2022 figure is close; confirmed as high during Bolsonaro's final year.",
-        "source": "https://en.wikipedia.org/wiki/Deforestation_in_Brazil",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/Deforestation_in_Brazil"
-  },
-  {
-    "year": 2022,
     "title": "Petrobras Pre-Salt Output Reaches Record Levels",
     "verdict": "TRUE",
     "reason": "Pre-salt production records set in 2022; Brazil in top-10 oil producers. Confirmed.",
@@ -5961,9 +5997,9 @@
   },
   {
     "year": 2022,
-    "title": "Brazil Celebrates 200 Years of Independence",
+    "title": "Petrópolis Floods and Landslides Kill Over 230",
     "verdict": "TRUE",
-    "reason": "Confirmed: bicentennial September 7, 2022; Bolsonaro used it as campaign event; divided commemoration documented.",
+    "reason": "Confirmed: February 15, 2022; over 230 killed; deadliest disaster in region since 2011.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -5973,8 +6009,8 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "Confirmed: bicentennial September 7, 2022; Bolsonaro used it as campaign event; divided commemoration documented.",
-        "source": "https://en.wikipedia.org/wiki/Brazil",
+        "reason": "Confirmed: February 15, 2022; over 230 killed; deadliest disaster in region since 2011.",
+        "source": "https://en.wikipedia.org/wiki/2022_Petrópolis_floods",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
           "date": null,
@@ -5982,57 +6018,7 @@
         }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/Brazil"
-  },
-  {
-    "year": 2023,
-    "title": "Bolsonaro Supporters Storm Government Buildings in Brasilia",
-    "verdict": "TRUE",
-    "reason": "Confirmed: January 8, 2023; Presidential Palace, Congress, Supreme Court stormed; hundreds arrested.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Confirmed: January 8, 2023; Presidential Palace, Congress, Supreme Court stormed; hundreds arrested.",
-        "source": "https://en.wikipedia.org/wiki/8_January_Brasília_attacks",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/8_January_Brasília_attacks"
-  },
-  {
-    "year": 2023,
-    "title": "Lula Inaugurated for Third Presidential Term",
-    "verdict": "TRUE",
-    "reason": "Confirmed: inaugurated January 1, 2023; sash from ordinary citizens. Immediate reversal of Bolsonaro environmental policies confirmed.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Confirmed: inaugurated January 1, 2023; sash from ordinary citizens. Immediate reversal of Bolsonaro environmental policies confirmed.",
-        "source": "https://en.wikipedia.org/wiki/Luiz_Inácio_Lula_da_Silva",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/Luiz_Inácio_Lula_da_Silva"
+    "source": "https://en.wikipedia.org/wiki/2022_Petrópolis_floods"
   },
   {
     "year": 2023,
@@ -6061,9 +6047,9 @@
   },
   {
     "year": 2023,
-    "title": "Yanomami Indigenous Health Crisis Declared",
+    "title": "Bolsonaro Supporters Storm Government Buildings in Brasilia",
     "verdict": "TRUE",
-    "reason": "Confirmed: public health emergency declared January 2023; malnutrition and malaria crisis; illegal gold miners expelled.",
+    "reason": "Confirmed: January 8, 2023; Presidential Palace, Congress, Supreme Court stormed; hundreds arrested.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -6073,8 +6059,8 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "Confirmed: public health emergency declared January 2023; malnutrition and malaria crisis; illegal gold miners expelled.",
-        "source": "https://en.wikipedia.org/wiki/Yanomami_Indigenous_Territory",
+        "reason": "Confirmed: January 8, 2023; Presidential Palace, Congress, Supreme Court stormed; hundreds arrested.",
+        "source": "https://en.wikipedia.org/wiki/8_January_Brasília_attacks",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
           "date": null,
@@ -6082,7 +6068,7 @@
         }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/Yanomami_Indigenous_Territory"
+    "source": "https://en.wikipedia.org/wiki/8_January_Brasília_attacks"
   },
   {
     "year": 2023,
@@ -6111,6 +6097,31 @@
   },
   {
     "year": 2023,
+    "title": "Lula Inaugurated for Third Presidential Term",
+    "verdict": "TRUE",
+    "reason": "Confirmed: inaugurated January 1, 2023; sash from ordinary citizens. Immediate reversal of Bolsonaro environmental policies confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed: inaugurated January 1, 2023; sash from ordinary citizens. Immediate reversal of Bolsonaro environmental policies confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Luiz_Inácio_Lula_da_Silva",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Luiz_Inácio_Lula_da_Silva"
+  },
+  {
+    "year": 2023,
     "title": "Uncontacted Yanomami Groups Emerge Amid Health Crisis",
     "verdict": "TRUE",
     "reason": "Health emergency revealed severe conditions among recently contacted groups due to gold mining. Confirmed.",
@@ -6135,10 +6146,10 @@
     "source": "https://en.wikipedia.org/wiki/Yanomami"
   },
   {
-    "year": 2024,
-    "title": "Brazil Chairs G20 with Social Inclusion Agenda",
+    "year": 2023,
+    "title": "Yanomami Indigenous Health Crisis Declared",
     "verdict": "TRUE",
-    "reason": "Confirmed: Brazil held G20 presidency 2024; Rio summit November 2024; hunger, climate finance, wealth tax as priorities.",
+    "reason": "Confirmed: public health emergency declared January 2023; malnutrition and malaria crisis; illegal gold miners expelled.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -6148,8 +6159,8 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "Confirmed: Brazil held G20 presidency 2024; Rio summit November 2024; hunger, climate finance, wealth tax as priorities.",
-        "source": "https://en.wikipedia.org/wiki/2024_G20_Rio_de_Janeiro_summit",
+        "reason": "Confirmed: public health emergency declared January 2023; malnutrition and malaria crisis; illegal gold miners expelled.",
+        "source": "https://en.wikipedia.org/wiki/Yanomami_Indigenous_Territory",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
           "date": null,
@@ -6157,13 +6168,13 @@
         }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/2024_G20_Rio_de_Janeiro_summit"
+    "source": "https://en.wikipedia.org/wiki/Yanomami_Indigenous_Territory"
   },
   {
     "year": 2024,
-    "title": "Catastrophic Floods Devastate Rio Grande do Sul",
+    "title": "Amazon Drought and Fires Reach Record Severity",
     "verdict": "TRUE",
-    "reason": "Confirmed: 183 deaths, ~600,000 displaced. Event says 'over 150 people' and '500,000' — both are accurate (183 is over 150; ~600,000 displaced is close to the 500,000 cited).",
+    "reason": "Confirmed: 2024 Amazon drought and fires reached record severity; river dolphin deaths documented.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -6173,8 +6184,8 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "Confirmed: 183 deaths, ~600,000 displaced. Event says 'over 150 people' and '500,000' — both are accurate (183 is over 150; ~600,000 displaced is close to the 500,000 cited).",
-        "source": "https://en.wikipedia.org/wiki/2024_Rio_Grande_do_Sul_floods",
+        "reason": "Confirmed: 2024 Amazon drought and fires reached record severity; river dolphin deaths documented.",
+        "source": "https://en.wikipedia.org/wiki/2024_Amazon_wildfires",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
           "date": null,
@@ -6182,7 +6193,7 @@
         }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/2024_Rio_Grande_do_Sul_floods"
+    "source": "https://en.wikipedia.org/wiki/2024_Amazon_wildfires"
   },
   {
     "year": 2024,
@@ -6211,9 +6222,9 @@
   },
   {
     "year": 2024,
-    "title": "Amazon Drought and Fires Reach Record Severity",
+    "title": "Brazil Chairs G20 with Social Inclusion Agenda",
     "verdict": "TRUE",
-    "reason": "Confirmed: 2024 Amazon drought and fires reached record severity; river dolphin deaths documented.",
+    "reason": "Confirmed: Brazil held G20 presidency 2024; Rio summit November 2024; hunger, climate finance, wealth tax as priorities.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -6223,8 +6234,8 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "Confirmed: 2024 Amazon drought and fires reached record severity; river dolphin deaths documented.",
-        "source": "https://en.wikipedia.org/wiki/2024_Amazon_wildfires",
+        "reason": "Confirmed: Brazil held G20 presidency 2024; Rio summit November 2024; hunger, climate finance, wealth tax as priorities.",
+        "source": "https://en.wikipedia.org/wiki/2024_G20_Rio_de_Janeiro_summit",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
           "date": null,
@@ -6232,7 +6243,7 @@
         }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/2024_Amazon_wildfires"
+    "source": "https://en.wikipedia.org/wiki/2024_G20_Rio_de_Janeiro_summit"
   },
   {
     "year": 2024,
@@ -6283,6 +6294,31 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/2024_G20_Rio_de_Janeiro_summit"
+  },
+  {
+    "year": 2024,
+    "title": "Catastrophic Floods Devastate Rio Grande do Sul",
+    "verdict": "TRUE",
+    "reason": "Confirmed: 183 deaths, ~600,000 displaced. Event says 'over 150 people' and '500,000' — both are accurate (183 is over 150; ~600,000 displaced is close to the 500,000 cited).",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed: 183 deaths, ~600,000 displaced. Event says 'over 150 people' and '500,000' — both are accurate (183 is over 150; ~600,000 displaced is close to the 500,000 cited).",
+        "source": "https://en.wikipedia.org/wiki/2024_Rio_Grande_do_Sul_floods",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/2024_Rio_Grande_do_Sul_floods"
   },
   {
     "year": 2024,

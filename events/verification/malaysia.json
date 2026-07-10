@@ -101,31 +101,6 @@
   },
   {
     "year": 1955,
-    "title": "First Federal Elections — Alliance Wins 51 of 52 Seats",
-    "verdict": "TRUE",
-    "reason": "The first Malayan Federal Legislative Council elections were held on 27 July 1955; the Alliance won 51 of 52 contested seats with approximately 80% of the vote, and Tunku Abdul Rahman became Chief Minister.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "The first Malayan Federal Legislative Council elections were held on 27 July 1955; the Alliance won 51 of 52 contested seats with approximately 80% of the vote, and Tunku Abdul Rahman became Chief Minister.",
-        "source": "https://en.wikipedia.org/wiki/1955_Malayan_general_election",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/1955_Malayan_general_election"
-  },
-  {
-    "year": 1955,
     "title": "Baling Peace Talks with MCP Fail",
     "verdict": "TRUE",
     "reason": "The Baling Talks were held on 28-29 December 1955 at Baling, Kedah, between Tunku Abdul Rahman and MCP Secretary-General Chin Peng; talks collapsed because the MCP refused to disarm and disband, and Chin Peng subsequently withdrew to Thailand.",
@@ -148,6 +123,31 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/Baling_Talks"
+  },
+  {
+    "year": 1955,
+    "title": "First Federal Elections — Alliance Wins 51 of 52 Seats",
+    "verdict": "TRUE",
+    "reason": "The first Malayan Federal Legislative Council elections were held on 27 July 1955; the Alliance won 51 of 52 contested seats with approximately 80% of the vote, and Tunku Abdul Rahman became Chief Minister.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "The first Malayan Federal Legislative Council elections were held on 27 July 1955; the Alliance won 51 of 52 contested seats with approximately 80% of the vote, and Tunku Abdul Rahman became Chief Minister.",
+        "source": "https://en.wikipedia.org/wiki/1955_Malayan_general_election",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/1955_Malayan_general_election"
   },
   {
     "year": 1957,
@@ -201,31 +201,6 @@
   },
   {
     "year": 1960,
-    "title": "Malayan Emergency Officially Ended",
-    "verdict": "TRUE",
-    "reason": "The Malayan Emergency was officially declared over on 31 July 1960 after twelve years of counter-insurgency operations; the Internal Security Act was maintained and the MCP remnants continued in southern Thailand until 1989.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "The Malayan Emergency was officially declared over on 31 July 1960 after twelve years of counter-insurgency operations; the Internal Security Act was maintained and the MCP remnants continued in southern Thailand until 1989.",
-        "source": "https://en.wikipedia.org/wiki/Malayan_Emergency",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/Malayan_Emergency"
-  },
-  {
-    "year": 1960,
     "title": "FELDA Founded to Resettle Landless Malay Families",
     "verdict": "PARTIAL",
     "reason": "FELDA was founded in 1956 under the Land Development Ordinance, not 1960; however, 1960 was the year FELDA was given direct authority to open and develop land throughout Malaysia, representing a significant expansion. The description of FELDA's mission and scale is accurate.",
@@ -248,6 +223,31 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/Federal_Land_Development_Authority"
+  },
+  {
+    "year": 1960,
+    "title": "Malayan Emergency Officially Ended",
+    "verdict": "TRUE",
+    "reason": "The Malayan Emergency was officially declared over on 31 July 1960 after twelve years of counter-insurgency operations; the Internal Security Act was maintained and the MCP remnants continued in southern Thailand until 1989.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "The Malayan Emergency was officially declared over on 31 July 1960 after twelve years of counter-insurgency operations; the Internal Security Act was maintained and the MCP remnants continued in southern Thailand until 1989.",
+        "source": "https://en.wikipedia.org/wiki/Malayan_Emergency",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Malayan_Emergency"
   },
   {
     "year": 1961,
@@ -1000,6 +1000,42 @@
     "source": "https://en.wikipedia.org/wiki/1997_Asian_financial_crisis"
   },
   {
+    "year": 1997,
+    "title": "Ringgit Collapse and Bad-Loan Surge Force Systemic Bank Rescue",
+    "verdict": "PARTIAL",
+    "reason": "Core event confirmed independently across multiple sources: ringgit fell from RM2.48 (March 1997) to RM3.77 per USD by end of 1997 (Wikipedia/1997 Asian financial crisis sources); KLCI dropped from 1,216 to 594.44 by end-1997 (fundsupermart.com KLCI history, ide.go.jp paper); property-sector NPLs exceeded 30% (multiple academic sources); Danaharta was created June 20, 1998 and absorbed RM23.1 billion in NPLs, ~31.8% of system-wide NPLs ('nearly a third') — confirmed by Yale New Bagehot/YPFS Danaharta case study; Malaysia imposed capital controls and pegged the ringgit at RM3.80/USD on September 1, 1998 (Harvard/NBER 'Did the Malaysian Capital Controls Work?', UNCTAD paper). However, two material details are off: (1) Danamodal was NOT created in June 1998 alongside Danaharta as the description implies — it was incorporated August 10, 1998 (confirmed by Yale New Bagehot/YPFS Danamodal case study, cross-checked twice), a ~7-week discrepancy; (2) the RM6.4 billion Danamodal injection figure is on the low end of a disputed range — the more authoritative Yale/YPFS and BIS-adjacent sources cite ~RM7.6 billion injected into the same 10 institutions (RM6.4bn does appear in one Edge Malaysia article, so it is not fabricated, but the scholarly consensus figure is materially higher, ~19% more). Year, country, and the overall crisis/rescue narrative all hold solidly; the Danamodal timing and magnitude are the flagged inaccuracies.",
+    "verify_count": 2,
+    "consensus_verdict": "PARTIAL",
+    "consensus_status": "downgraded",
+    "needs_tiebreak": false,
+    "source_independence": "independent",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Independently corroborated on all major counts. Wikipedia's 1997 Asian Financial Crisis article confirms the ringgit at ~2.48/USD in mid-1997 collapsing to under 3.80 by end of 1997 (fixed at 3.80 in the Sept 1998 capital controls), and the KLCI/KLSE falling \"from above 1,200 to under 600\" by end of 1997 -- matching the 1,216-to-594 figures closely. An independent academic journal (ejournal.um.edu.my, IJPS) confirms property-sector NPLs exceeded 30% during the crisis. Yale School of Management's New Bagehot/YPFS crisis archive confirms Danaharta was established 20 June 1998 and absorbed RM23.1 billion in NPLs (~31.8% of system-wide NPLs, matching \"nearly a third\"), and confirms Danamodal (created 10 Aug 1998) recapitalized exactly 10 banking institutions. One soft spot: Danamodal's total injection is reported anywhere from RM6.15-6.4 billion (per an Edge Malaysia summary and some early-stage snapshots) up to RM7.6-7.7 billion (the figure most consistently cited as the program's lifetime total by Yale/YPFS sources) -- the event's RM6.4bn figure sits at the low end of a range multiple legitimate sources report differently depending on measurement point (initial injection vs. peak/final utilization), so I treat it as normal historical-figure variance rather than a fabricated/wrong number, especially since the \"10 institutions\" detail is exactly right everywhere. Core narrative (ringgit collapse, KLCI crash, NPL surge, Danaharta/Danamodal bailout, Sept 1998 capital controls + currency peg) is materially accurate.",
+        "source": "https://en.wikipedia.org/wiki/1997_Asian_financial_crisis",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-09",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "PARTIAL",
+        "reason": "Core event confirmed independently across multiple sources: ringgit fell from RM2.48 (March 1997) to RM3.77 per USD by end of 1997 (Wikipedia/1997 Asian financial crisis sources); KLCI dropped from 1,216 to 594.44 by end-1997 (fundsupermart.com KLCI history, ide.go.jp paper); property-sector NPLs exceeded 30% (multiple academic sources); Danaharta was created June 20, 1998 and absorbed RM23.1 billion in NPLs, ~31.8% of system-wide NPLs ('nearly a third') — confirmed by Yale New Bagehot/YPFS Danaharta case study; Malaysia imposed capital controls and pegged the ringgit at RM3.80/USD on September 1, 1998 (Harvard/NBER 'Did the Malaysian Capital Controls Work?', UNCTAD paper). However, two material details are off: (1) Danamodal was NOT created in June 1998 alongside Danaharta as the description implies — it was incorporated August 10, 1998 (confirmed by Yale New Bagehot/YPFS Danamodal case study, cross-checked twice), a ~7-week discrepancy; (2) the RM6.4 billion Danamodal injection figure is on the low end of a disputed range — the more authoritative Yale/YPFS and BIS-adjacent sources cite ~RM7.6 billion injected into the same 10 institutions (RM6.4bn does appear in one Edge Malaysia article, so it is not fabricated, but the scholarly consensus figure is materially higher, ~19% more). Year, country, and the overall crisis/rescue narrative all hold solidly; the Danamodal timing and magnitude are the flagged inaccuracies.",
+        "source": "https://newbagehot.yale.edu/docs/malaysia-danamodal-nasional-berhad-danamodal",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-09",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://newbagehot.yale.edu/docs/malaysia-danamodal-nasional-berhad-danamodal"
+  },
+  {
     "year": 1998,
     "title": "Capital Controls Imposed and Anwar Ibrahim Sacked and Arrested",
     "verdict": "TRUE",
@@ -1151,31 +1187,6 @@
   },
   {
     "year": 2007,
-    "title": "HINDRAF Rally — Indian Minority Rights Protest",
-    "verdict": "TRUE",
-    "reason": "The HINDRAF rally was held on 25 November 2007 in Kuala Lumpur, drawing tens of thousands of ethnic Indians to protest marginalisation and temple demolitions; police deployed tear gas and water cannons and arrested 136 people.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "The HINDRAF rally was held on 25 November 2007 in Kuala Lumpur, drawing tens of thousands of ethnic Indians to protest marginalisation and temple demolitions; police deployed tear gas and water cannons and arrested 136 people.",
-        "source": "https://en.wikipedia.org/wiki/2007_HINDRAF_rally",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/2007_HINDRAF_rally"
-  },
-  {
-    "year": 2007,
     "title": "BERSIH First Rally for Electoral Reform",
     "verdict": "PARTIAL",
     "reason": "The first BERSIH rally was on 10 November 2007; attendance estimates range from 30,000 to 40,000 (not 'over 40,000' as stated). The police response with riot equipment is confirmed. The event's role in galvanising civil society and contributing to 2008 results is accurate.",
@@ -1198,6 +1209,31 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/2007_Bersih_rally"
+  },
+  {
+    "year": 2007,
+    "title": "HINDRAF Rally — Indian Minority Rights Protest",
+    "verdict": "TRUE",
+    "reason": "The HINDRAF rally was held on 25 November 2007 in Kuala Lumpur, drawing tens of thousands of ethnic Indians to protest marginalisation and temple demolitions; police deployed tear gas and water cannons and arrested 136 people.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "The HINDRAF rally was held on 25 November 2007 in Kuala Lumpur, drawing tens of thousands of ethnic Indians to protest marginalisation and temple demolitions; police deployed tear gas and water cannons and arrested 136 people.",
+        "source": "https://en.wikipedia.org/wiki/2007_HINDRAF_rally",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/2007_HINDRAF_rally"
   },
   {
     "year": 2008,
@@ -1276,31 +1312,6 @@
   },
   {
     "year": 2013,
-    "title": "Najib Wins Narrowly Despite Losing Popular Vote",
-    "verdict": "TRUE",
-    "reason": "In the 2013 election BN won 133 seats with 47.4% of the popular vote while Pakatan won 89 seats with 50.9%; Najib blamed a 'Chinese tsunami' though analysts attributed losses to urban voters broadly. The rural constituency weighting advantage for BN is confirmed.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "In the 2013 election BN won 133 seats with 47.4% of the popular vote while Pakatan won 89 seats with 50.9%; Najib blamed a 'Chinese tsunami' though analysts attributed losses to urban voters broadly. The rural constituency weighting advantage for BN is confirmed.",
-        "source": "https://en.wikipedia.org/wiki/2013_Malaysian_general_election",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/2013_Malaysian_general_election"
-  },
-  {
-    "year": 2013,
     "title": "Lahad Datu Standoff — Sulu Armed Incursion in Sabah",
     "verdict": "TRUE",
     "reason": "In February 2013, 235 armed followers of the Sulu Sultanate's claimant landed in Lahad Datu, Sabah; the standoff ended with around 72 deaths (56 militants, 10 security personnel, 6 civilians) before Malaysian forces suppressed the incursion.",
@@ -1323,6 +1334,31 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/2013_Lahad_Datu_standoff"
+  },
+  {
+    "year": 2013,
+    "title": "Najib Wins Narrowly Despite Losing Popular Vote",
+    "verdict": "TRUE",
+    "reason": "In the 2013 election BN won 133 seats with 47.4% of the popular vote while Pakatan won 89 seats with 50.9%; Najib blamed a 'Chinese tsunami' though analysts attributed losses to urban voters broadly. The rural constituency weighting advantage for BN is confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "In the 2013 election BN won 133 seats with 47.4% of the popular vote while Pakatan won 89 seats with 50.9%; Najib blamed a 'Chinese tsunami' though analysts attributed losses to urban voters broadly. The rural constituency weighting advantage for BN is confirmed.",
+        "source": "https://en.wikipedia.org/wiki/2013_Malaysian_general_election",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/2013_Malaysian_general_election"
   },
   {
     "year": 2014,
@@ -1526,31 +1562,6 @@
   },
   {
     "year": 2020,
-    "title": "Sheraton Move Political Coup — Pakatan Harapan Government Falls",
-    "verdict": "TRUE",
-    "reason": "In February 2020, the Sheraton Move conspiracy engineered by Muhyiddin Yassin (PPBM), UMNO, and PAS brought down the Pakatan Harapan government through defections without an election; King Al-Sultan Abdullah appointed Muhyiddin as Prime Minister of the Perikatan Nasional coalition.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "In February 2020, the Sheraton Move conspiracy engineered by Muhyiddin Yassin (PPBM), UMNO, and PAS brought down the Pakatan Harapan government through defections without an election; King Al-Sultan Abdullah appointed Muhyiddin as Prime Minister of the Perikatan Nasional coalition.",
-        "source": "https://en.wikipedia.org/wiki/2020%E2%80%932022_Malaysian_political_crisis",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/2020%E2%80%932022_Malaysian_political_crisis"
-  },
-  {
-    "year": 2020,
     "title": "COVID-19 Pandemic — Movement Control Orders and RM300B Stimulus",
     "verdict": "TRUE",
     "reason": "Malaysia was hit by COVID-19 with a major cluster from the Sri Petaling tabligh gathering in late February 2020; the MCO was imposed in March, over RM300 billion in fiscal stimulus was deployed, EPF allowed early withdrawals, and Malaysia suffered over 36,000 deaths.",
@@ -1573,6 +1584,31 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/COVID-19_pandemic_in_Malaysia"
+  },
+  {
+    "year": 2020,
+    "title": "Sheraton Move Political Coup — Pakatan Harapan Government Falls",
+    "verdict": "TRUE",
+    "reason": "In February 2020, the Sheraton Move conspiracy engineered by Muhyiddin Yassin (PPBM), UMNO, and PAS brought down the Pakatan Harapan government through defections without an election; King Al-Sultan Abdullah appointed Muhyiddin as Prime Minister of the Perikatan Nasional coalition.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "In February 2020, the Sheraton Move conspiracy engineered by Muhyiddin Yassin (PPBM), UMNO, and PAS brought down the Pakatan Harapan government through defections without an election; King Al-Sultan Abdullah appointed Muhyiddin as Prime Minister of the Perikatan Nasional coalition.",
+        "source": "https://en.wikipedia.org/wiki/2020%E2%80%932022_Malaysian_political_crisis",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/2020%E2%80%932022_Malaysian_political_crisis"
   },
   {
     "year": 2021,

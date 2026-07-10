@@ -36,6 +36,42 @@
     "source": "https://en.wikipedia.org/wiki/Language_Movement_Day"
   },
   {
+    "year": 1987,
+    "title": "Chronic Loan Defaults Force IMF-Backed Banking Sector Overhaul",
+    "verdict": "TRUE",
+    "reason": "Multiple independent sources corroborate the core narrative and most specific figures. A World Bank project document (documents1.worldbank.org) confirms: Bangladesh established the National Commission on Money, Banking and Credit in 1984, which reported in 1986 identifying deep structural problems (misallocation of credit, widespread defaults, poor recovery systems) in the nationalized banking sector; IDA's own 1987 sector report \"Bangladesh - A Program for Financial Sector Reform\" independently identified the same weaknesses. Separate academic/reference sources (Bangladesh Studies overview, drawing on IMF working-paper-era data) confirm: \"the National Commission on Money, Credit, and Banking recommended broad structural changes...early in 1987, many of which were built into a three-year compensatory financing facility signed by Bangladesh with the IMF in February 1987,\" and that \"the rate of recovery on agricultural loans was only 27 per cent in FY 1986,\" improving in 1987 \"following pressure from major donors\" — matching the description's 27% agricultural recovery figure and the IMF facility's timing/purpose almost verbatim. A Bangladeshi financial-history review article (daily-sun.com/post/774437, found via two independent search queries returning consistent content) states \"By 1987, 41% of loans in the banking sector were overdue\" and that \"NPLs in banks like Sonali and Agrani exceeded 50%\" — matching the description's specific overdue-loan and Sonali/Agrani figures. Direct WebFetch of daily-sun.com was blocked by the site (403), but its content was independently retrievable via two separate search-engine queries with consistent figures, and it is corroborated in structure/timing/actors by the World Bank/IDA and Bangladesh Studies sources. All core elements — Bangladesh, 1987, chronic loan defaults, IMF three-year compensatory financing facility signed February 1987, National Commission on Money, Credit and Banking recommendations, focus on nationalized commercial banks' credit discipline/management, technical insolvency exposure, and first major banking reform program — are corroborated across multiple independent sources with no contradicting evidence found.",
+    "verify_count": 2,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "double_confirmed",
+    "needs_tiebreak": false,
+    "source_independence": "independent",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Independently corroborated by the U.S. Library of Congress \"Bangladesh: A Country Study\" (Federal Research Division, hosted at countrystudies.us), which confirms the core, specific facts of the event: agricultural loan recovery of only 27% in FY1986 (matching the description's \"recovery rates as low as 27% on agricultural loans\"), a National Commission that \"recommended broad structural changes in Bangladesh's system of financial intermediation early in 1987,\" and \"a three-year compensatory financing facility signed by Bangladesh with the IMF in February 1987\" that incorporated the commission's recommendations. This is an exact match on year, mechanism (three-year IMF compensatory financing facility, Feb 1987), and the National Commission's role. A World Bank Implementation Completion Report independently confirms the commission (National Commission on Money, Banking and Credit, NCMBC, formed 1984, reported 1986) diagnosing \"numerous financial sector problems\" tied to the same reform push — slight word-order variance in the commission's name (\"Money, Credit and Banking\" vs. \"Money, Banking and Credit\") is not a material discrepancy, just naming-order variance seen across sources. A Bangladeshi news source (daily-sun.com, \"Bangladesh Banking Sector Crisis: A Review\") additionally reproduces the specific 41% overdue and Sonali/Agrani >50% NPL figures verbatim, though I could only access this via a search-engine snippet (direct fetch returned 403) — I'm treating it as supporting corroboration rather than sole evidence, since the year/mechanism/central causal claim (chronic defaults -> National Commission -> Feb 1987 IMF compensatory facility -> banking reform) is independently confirmed by the Library of Congress country study, an authoritative non-QGI, non-daily-sun.com source. No contradicting information found anywhere. Overall this reads as a well-documented, materially accurate historical event.",
+        "source": "https://countrystudies.us/bangladesh/62.htm",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-09",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Multiple independent sources corroborate the core narrative and most specific figures. A World Bank project document (documents1.worldbank.org) confirms: Bangladesh established the National Commission on Money, Banking and Credit in 1984, which reported in 1986 identifying deep structural problems (misallocation of credit, widespread defaults, poor recovery systems) in the nationalized banking sector; IDA's own 1987 sector report \"Bangladesh - A Program for Financial Sector Reform\" independently identified the same weaknesses. Separate academic/reference sources (Bangladesh Studies overview, drawing on IMF working-paper-era data) confirm: \"the National Commission on Money, Credit, and Banking recommended broad structural changes...early in 1987, many of which were built into a three-year compensatory financing facility signed by Bangladesh with the IMF in February 1987,\" and that \"the rate of recovery on agricultural loans was only 27 per cent in FY 1986,\" improving in 1987 \"following pressure from major donors\" — matching the description's 27% agricultural recovery figure and the IMF facility's timing/purpose almost verbatim. A Bangladeshi financial-history review article (daily-sun.com/post/774437, found via two independent search queries returning consistent content) states \"By 1987, 41% of loans in the banking sector were overdue\" and that \"NPLs in banks like Sonali and Agrani exceeded 50%\" — matching the description's specific overdue-loan and Sonali/Agrani figures. Direct WebFetch of daily-sun.com was blocked by the site (403), but its content was independently retrievable via two separate search-engine queries with consistent figures, and it is corroborated in structure/timing/actors by the World Bank/IDA and Bangladesh Studies sources. All core elements — Bangladesh, 1987, chronic loan defaults, IMF three-year compensatory financing facility signed February 1987, National Commission on Money, Credit and Banking recommendations, focus on nationalized commercial banks' credit discipline/management, technical insolvency exposure, and first major banking reform program — are corroborated across multiple independent sources with no contradicting evidence found.",
+        "source": "https://documents1.worldbank.org/curated/en/948321468013241269/txt/multi-page.txt",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-09",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://documents1.worldbank.org/curated/en/948321468013241269/txt/multi-page.txt"
+  },
+  {
     "year": 1990,
     "title": "Mass Uprising Ousts General Ershad",
     "verdict": "TRUE",

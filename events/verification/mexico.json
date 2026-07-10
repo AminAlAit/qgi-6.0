@@ -1598,6 +1598,42 @@
   },
   {
     "year": 1994,
+    "title": "Tequila Crisis Triggers FOBAPROA Banking Bailout",
+    "verdict": "TRUE",
+    "reason": "All material elements confirmed across independent sources: (1) Mexico devalued/floated the peso in Dec 1994, triggering the 'Tequila Crisis' (GAO report: 'On December 20, Mexican authorities sought to relieve pressure on the exchange rate...'). (2) This cascaded into a 1995 banking crisis with surging nonperforming loans among recently privatized banks — GAO data shows delinquent loans rose from 9% of all bank loans in 1994 to ~17% by Sept 1995. (3) FOBAPROA (created 1990) was activated in 1995, providing a blanket guarantee on bank liabilities/deposits and absorbing bad loans, ultimately assuming debt of 552 billion pesos — this exact figure is corroborated across multiple economic-history sources (Wikipedia/Fobaproa, NACLA, ResearchGate chronicle of the FOBAPROA debacle). (4) PROCAPTE (Programa de Capitalización Temporal) was announced via Bank of Mexico circular on Feb 24, 1995 and took effect March 31, 1995 — i.e., launched in February 1995 as described, recapitalizing 6 banks (Serfin, Inverlat, Bital, etc.) with ~$950 million. (5) A $52 billion international support package was announced Jan 31, 1995 by the US Treasury/IMF ($20B US Exchange Stabilization Fund, $17.8B IMF, remainder from BIS/other creditors/Canada) to contain the crisis. Every specific claim in the description — year, country, mechanism, dollar/peso figures, program names and timing — checks out against independent economic-history and US government sources. No off-limits domains were used (this is a first blind pass).",
+    "verify_count": 2,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "double_confirmed",
+    "needs_tiebreak": false,
+    "source_independence": "weak",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "All material facts confirmed via independent sources. The December 1994 peso devaluation (Tequila Crisis) cascaded into a 1995 banking crisis in Mexico as recently-privatized banks faced surging nonperforming loans and capital shortfalls. FOBAPROA (Fondo Bancario de Protección al Ahorro), created in 1990, was activated in 1995 to guarantee bank deposits/liabilities and absorb bad loans, ultimately assuming 552 billion pesos in debt — this exact figure is corroborated by both Wikipedia's Fobaproa article and independent journalistic sources (NACLA). The Temporary Capitalization Program (PROCAPTE) was introduced via a Bank of Mexico circular dated February 24, 1995 (entering into effect March 31, 1995) — matching 'February 1995' in the event description; it recapitalized banks like Serfin, Inverlat, and Bital. The $52 billion international support package is exactly confirmed: announced January 31, 1995 by the US Treasury/IMF, composed of $20B from the US Exchange Stabilization Fund, $17.8B from the IMF, $10B from the BIS, and the remainder from other bilateral sources (per EBSCO Research Starters and other summaries of the GAO/Brookings record). Every specific figure and date in the event description (552 billion pesos, February 1995 PROCAPTE launch, $52 billion package, 1990 FOBAPROA creation) checks out against multiple independent, non-overlapping sources (Yale EliScholar Journal of Financial Crises, Wikipedia, NACLA, EBSCO/GAO/Brookings summaries).",
+        "source": "https://elischolar.library.yale.edu/journal-of-financial-crises/vol3/iss3/22/",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-09",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "All material elements confirmed across independent sources: (1) Mexico devalued/floated the peso in Dec 1994, triggering the 'Tequila Crisis' (GAO report: 'On December 20, Mexican authorities sought to relieve pressure on the exchange rate...'). (2) This cascaded into a 1995 banking crisis with surging nonperforming loans among recently privatized banks — GAO data shows delinquent loans rose from 9% of all bank loans in 1994 to ~17% by Sept 1995. (3) FOBAPROA (created 1990) was activated in 1995, providing a blanket guarantee on bank liabilities/deposits and absorbing bad loans, ultimately assuming debt of 552 billion pesos — this exact figure is corroborated across multiple economic-history sources (Wikipedia/Fobaproa, NACLA, ResearchGate chronicle of the FOBAPROA debacle). (4) PROCAPTE (Programa de Capitalización Temporal) was announced via Bank of Mexico circular on Feb 24, 1995 and took effect March 31, 1995 — i.e., launched in February 1995 as described, recapitalizing 6 banks (Serfin, Inverlat, Bital, etc.) with ~$950 million. (5) A $52 billion international support package was announced Jan 31, 1995 by the US Treasury/IMF ($20B US Exchange Stabilization Fund, $17.8B IMF, remainder from BIS/other creditors/Canada) to contain the crisis. Every specific claim in the description — year, country, mechanism, dollar/peso figures, program names and timing — checks out against independent economic-history and US government sources. No off-limits domains were used (this is a first blind pass).",
+        "source": "https://elischolar.library.yale.edu/cgi/viewcontent.cgi?article=1222&context=journal-of-financial-crises",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-09",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://elischolar.library.yale.edu/cgi/viewcontent.cgi?article=1222&context=journal-of-financial-crises"
+  },
+  {
+    "year": 1994,
     "title": "Zapatista Uprising in Chiapas — EZLN Declares War on NAFTA Day",
     "verdict": "TRUE",
     "reason": "Already marked verified in source file.",

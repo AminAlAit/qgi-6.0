@@ -101,31 +101,6 @@
   },
   {
     "year": 1952,
-    "title": "Reparations Agreement with West Germany",
-    "verdict": "TRUE",
-    "reason": "Luxembourg Agreement 1952, 3 billion DM reparations. Ben-Gurion pushed through over Begin opposition.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Luxembourg Agreement 1952, 3 billion DM reparations. Ben-Gurion pushed through over Begin opposition.",
-        "source": "https://en.wikipedia.org/wiki/Luxembourg_Agreement",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/Luxembourg_Agreement"
-  },
-  {
-    "year": 1952,
     "title": "Israel Bonds and Economic Austerity",
     "verdict": "TRUE",
     "reason": "Tsena (austerity) period and State of Israel Bonds program are historically documented.",
@@ -148,6 +123,31 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/Israel_Bonds"
+  },
+  {
+    "year": 1952,
+    "title": "Reparations Agreement with West Germany",
+    "verdict": "TRUE",
+    "reason": "Luxembourg Agreement 1952, 3 billion DM reparations. Ben-Gurion pushed through over Begin opposition.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Luxembourg Agreement 1952, 3 billion DM reparations. Ben-Gurion pushed through over Begin opposition.",
+        "source": "https://en.wikipedia.org/wiki/Luxembourg_Agreement",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Luxembourg_Agreement"
   },
   {
     "year": 1953,
@@ -251,31 +251,6 @@
   },
   {
     "year": 1956,
-    "title": "Sinai Campaign — Operation Kadesh",
-    "verdict": "TRUE",
-    "reason": "Oct 29–Nov 5, 1956. Israeli-British-French operation. US/Soviet pressure forced withdrawal. Confirmed.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Oct 29–Nov 5, 1956. Israeli-British-French operation. US/Soviet pressure forced withdrawal. Confirmed.",
-        "source": "https://en.wikipedia.org/wiki/Operation_Kadesh",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/Operation_Kadesh"
-  },
-  {
-    "year": 1956,
     "title": "Kafr Qasim Massacre",
     "verdict": "TRUE",
     "reason": "Oct 29, 1956. 49 Arab Israeli civilians killed (confirmed). Light sentences and pardons documented.",
@@ -298,6 +273,31 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/Kafr_Qasim_massacre"
+  },
+  {
+    "year": 1956,
+    "title": "Sinai Campaign — Operation Kadesh",
+    "verdict": "TRUE",
+    "reason": "Oct 29–Nov 5, 1956. Israeli-British-French operation. US/Soviet pressure forced withdrawal. Confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Oct 29–Nov 5, 1956. Israeli-British-French operation. US/Soviet pressure forced withdrawal. Confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Operation_Kadesh",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Operation_Kadesh"
   },
   {
     "year": 1957,
@@ -601,31 +601,6 @@
   },
   {
     "year": 1967,
-    "title": "Six-Day War — Israel Captures West Bank, Gaza, Sinai, Golan",
-    "verdict": "TRUE",
-    "reason": "June 5–10, 1967. Preemptive strikes, all four territories captured in six days. Confirmed.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "June 5–10, 1967. Preemptive strikes, all four territories captured in six days. Confirmed.",
-        "source": "https://en.wikipedia.org/wiki/Six-Day_War",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/Six-Day_War"
-  },
-  {
-    "year": 1967,
     "title": "Reunification of Jerusalem",
     "verdict": "TRUE",
     "reason": "East Jerusalem captured from Jordan June 7, 1967. Western Wall under Jewish control. UN rejected annexation. Confirmed.",
@@ -648,6 +623,31 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/Reunification_of_Jerusalem"
+  },
+  {
+    "year": 1967,
+    "title": "Six-Day War — Israel Captures West Bank, Gaza, Sinai, Golan",
+    "verdict": "TRUE",
+    "reason": "June 5–10, 1967. Preemptive strikes, all four territories captured in six days. Confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "June 5–10, 1967. Preemptive strikes, all four territories captured in six days. Confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Six-Day_War",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Six-Day_War"
   },
   {
     "year": 1967,
@@ -776,31 +776,6 @@
   },
   {
     "year": 1972,
-    "title": "Munich Olympics Massacre",
-    "verdict": "TRUE",
-    "reason": "Sep 5, 1972. 11 Israelis killed total (2 in apartment, 9 as hostages), one German policeman, five of eight terrorists killed. Event correctly states all 11 Israeli team members killed.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Sep 5, 1972. 11 Israelis killed total (2 in apartment, 9 as hostages), one German policeman, five of eight terrorists killed. Event correctly states all 11 Israeli team members killed.",
-        "source": "https://en.wikipedia.org/wiki/Munich_massacre",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/Munich_massacre"
-  },
-  {
-    "year": 1972,
     "title": "Israel's Operation Wrath of God Begins",
     "verdict": "TRUE",
     "reason": "Mossad assassination campaign post-Munich. Lillehammer affair (wrong target killed in Norway) confirmed.",
@@ -825,10 +800,10 @@
     "source": "https://en.wikipedia.org/wiki/Operation_Wrath_of_God"
   },
   {
-    "year": 1973,
-    "title": "Yom Kippur War — Egyptian and Syrian Surprise Attack",
+    "year": 1972,
+    "title": "Munich Olympics Massacre",
     "verdict": "TRUE",
-    "reason": "Oct 6, 1973 surprise attack on Yom Kippur. Egyptian crossing of Suez, Syrian attack on Golan. US airlift. Confirmed.",
+    "reason": "Sep 5, 1972. 11 Israelis killed total (2 in apartment, 9 as hostages), one German policeman, five of eight terrorists killed. Event correctly states all 11 Israeli team members killed.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -838,8 +813,8 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "Oct 6, 1973 surprise attack on Yom Kippur. Egyptian crossing of Suez, Syrian attack on Golan. US airlift. Confirmed.",
-        "source": "https://en.wikipedia.org/wiki/Yom_Kippur_War",
+        "reason": "Sep 5, 1972. 11 Israelis killed total (2 in apartment, 9 as hostages), one German policeman, five of eight terrorists killed. Event correctly states all 11 Israeli team members killed.",
+        "source": "https://en.wikipedia.org/wiki/Munich_massacre",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
           "date": null,
@@ -847,7 +822,7 @@
         }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/Yom_Kippur_War"
+    "source": "https://en.wikipedia.org/wiki/Munich_massacre"
   },
   {
     "year": 1973,
@@ -873,6 +848,31 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/Agranat_Commission"
+  },
+  {
+    "year": 1973,
+    "title": "Yom Kippur War — Egyptian and Syrian Surprise Attack",
+    "verdict": "TRUE",
+    "reason": "Oct 6, 1973 surprise attack on Yom Kippur. Egyptian crossing of Suez, Syrian attack on Golan. US airlift. Confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Oct 6, 1973 surprise attack on Yom Kippur. Egyptian crossing of Suez, Syrian attack on Golan. US airlift. Confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Yom_Kippur_War",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Yom_Kippur_War"
   },
   {
     "year": 1974,
@@ -976,31 +976,6 @@
   },
   {
     "year": 1977,
-    "title": "Likud Victory — End of Labor Dominance",
-    "verdict": "TRUE",
-    "reason": "May 1977 Likud victory, 'Mahapach' (upheaval), Mizrahi voter bloc key. End of ~30 years Labor rule. Confirmed.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "May 1977 Likud victory, 'Mahapach' (upheaval), Mizrahi voter bloc key. End of ~30 years Labor rule. Confirmed.",
-        "source": "https://en.wikipedia.org/wiki/1977_Israeli_legislative_election",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/1977_Israeli_legislative_election"
-  },
-  {
-    "year": 1977,
     "title": "Anwar Sadat Visits Jerusalem",
     "verdict": "TRUE",
     "reason": "Nov 19, 1977. Sadat visited Jerusalem, addressed Knesset. First Arab leader to officially visit Israel. Confirmed.",
@@ -1023,6 +998,31 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/Anwar_Sadat%27s_visit_to_Israel"
+  },
+  {
+    "year": 1977,
+    "title": "Likud Victory — End of Labor Dominance",
+    "verdict": "TRUE",
+    "reason": "May 1977 Likud victory, 'Mahapach' (upheaval), Mizrahi voter bloc key. End of ~30 years Labor rule. Confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "May 1977 Likud victory, 'Mahapach' (upheaval), Mizrahi voter bloc key. End of ~30 years Labor rule. Confirmed.",
+        "source": "https://en.wikipedia.org/wiki/1977_Israeli_legislative_election",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/1977_Israeli_legislative_election"
   },
   {
     "year": 1978,
@@ -1126,31 +1126,6 @@
   },
   {
     "year": 1980,
-    "title": "Jerusalem Law — Capital Declaration",
-    "verdict": "TRUE",
-    "reason": "Knesset passed Jerusalem Law 1980. UN Security Council Resolution 478 declared it null and void. Confirmed.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Knesset passed Jerusalem Law 1980. UN Security Council Resolution 478 declared it null and void. Confirmed.",
-        "source": "https://en.wikipedia.org/wiki/Jerusalem_Law",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/Jerusalem_Law"
-  },
-  {
-    "year": 1980,
     "title": "Israeli High-Tech Sector Emerges",
     "verdict": "TRUE",
     "reason": "Late 1970s/early 1980s tech sector formation with defense spinoffs and US R&D centers. Tadiran, Elbit named correctly.",
@@ -1175,10 +1150,10 @@
     "source": "https://en.wikipedia.org/wiki/Silicon_Wadi"
   },
   {
-    "year": 1981,
-    "title": "Israeli Air Strike on Iraqi Nuclear Reactor",
+    "year": 1980,
+    "title": "Jerusalem Law — Capital Declaration",
     "verdict": "TRUE",
-    "reason": "Jun 7, 1981. Operation Opera/Babylon. Osirak reactor destroyed. First preemptive nuclear strike in history. Begin Doctrine. Confirmed.",
+    "reason": "Knesset passed Jerusalem Law 1980. UN Security Council Resolution 478 declared it null and void. Confirmed.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -1188,8 +1163,8 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "Jun 7, 1981. Operation Opera/Babylon. Osirak reactor destroyed. First preemptive nuclear strike in history. Begin Doctrine. Confirmed.",
-        "source": "https://en.wikipedia.org/wiki/Operation_Opera",
+        "reason": "Knesset passed Jerusalem Law 1980. UN Security Council Resolution 478 declared it null and void. Confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Jerusalem_Law",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
           "date": null,
@@ -1197,7 +1172,7 @@
         }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/Operation_Opera"
+    "source": "https://en.wikipedia.org/wiki/Jerusalem_Law"
   },
   {
     "year": 1981,
@@ -1223,6 +1198,31 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/Golan_Heights_Law"
+  },
+  {
+    "year": 1981,
+    "title": "Israeli Air Strike on Iraqi Nuclear Reactor",
+    "verdict": "TRUE",
+    "reason": "Jun 7, 1981. Operation Opera/Babylon. Osirak reactor destroyed. First preemptive nuclear strike in history. Begin Doctrine. Confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Jun 7, 1981. Operation Opera/Babylon. Osirak reactor destroyed. First preemptive nuclear strike in history. Begin Doctrine. Confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Operation_Opera",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Operation_Opera"
   },
   {
     "year": 1982,
@@ -1276,28 +1276,39 @@
   },
   {
     "year": 1983,
-    "title": "Kahan Commission and Sharon's Dismissal",
+    "title": "Israel's 1983 Bank Shares Crisis: Government Nationalizes Top Four Banks",
     "verdict": "TRUE",
-    "reason": "Kahan Commission found Sharon bore personal responsibility. Forced resignation as Defense Minister. Confirmed.",
-    "verify_count": 1,
+    "reason": "Fully corroborated by multiple independent sources. Israel's largest banks (Leumi, Hapoalim, Mizrachi, Discount) had for years propped up their own share prices via coordinated buybacks; by October 1983 they lacked capital to continue. On \"Black Thursday,\" October 6, 1983, a wave of selling forced the banks to admit they could not absorb further sales without government help. The Tel Aviv Stock Exchange closed October 6-24 (eighteen days), the shekel was devalued 23%, and the government nationalized the banks. An academic study (Blass & Grossman, \"Assessing Damages: The 1983 Israeli Bank Shares Crisis\") found 1993 time-adjusted bank share values were $10 billion lower than in 1983 ($4B borne by precrisis shareholders, $6B by taxpayers) against a ~$27B 1983 Israeli GDP (~37%, i.e. \"roughly a third\"), and explicitly states the government \"did not begin to sell [the banks] back to the public until 1993\" — matching the event description's privatization-timing claim precisely. All material details (year, country, mechanism, Black Thursday date, exchange closure length, devaluation %, ~$10B/one-third-of-GDP loss estimate, 1993 re-privatization start) check out.",
+    "verify_count": 2,
     "consensus_verdict": "TRUE",
-    "consensus_status": "single",
+    "consensus_status": "double_confirmed",
     "needs_tiebreak": false,
-    "source_independence": "n/a",
+    "source_independence": "weak",
     "verifications": [
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "Kahan Commission found Sharon bore personal responsibility. Forced resignation as Defense Minister. Confirmed.",
-        "source": "https://en.wikipedia.org/wiki/Kahan_Commission",
+        "reason": "Multiple independent sources (Wikipedia, Yale Journal of Financial Crises paper, MPRA/academic \"Assessing Damages\" paper, general web results) confirm all material details: Israel's largest banks had for years propped up their own share prices via coordinated buybacks; by October 1983 they ran out of capital; shares of the four largest banks collapsed on \"Black Thursday,\" October 6, 1983; the Tel Aviv Stock Exchange closed for 18 days (Oct 6-24); the shekel was devalued 23% during the closure; the government nationalized the major banks (Leumi, Hapoalim, Discount, Mizrahi/HaMizrachi, and Clali); total losses to investors and taxpayers are estimated by the academic literature at about $10 billion (1983 present value), roughly a third of Israel's 1983 GDP (~$27B) - an exact match to the description; and the government did not begin selling the banks back to the public until 1993 (partial IPOs of Leumi and Hapoalim that year), with full privatization completing only much later (1996/1998/2005/2006). Every material fact in the description (timing, mechanism, magnitude, nationalization, and terminating sell-back date) checks out against independent sources.",
+        "source": "https://en.wikipedia.org/wiki/1983_Israel_bank_stock_crisis",
         "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
+          "model": "claude-sonnet-5",
+          "date": "2026-07-09",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Fully corroborated by multiple independent sources. Israel's largest banks (Leumi, Hapoalim, Mizrachi, Discount) had for years propped up their own share prices via coordinated buybacks; by October 1983 they lacked capital to continue. On \"Black Thursday,\" October 6, 1983, a wave of selling forced the banks to admit they could not absorb further sales without government help. The Tel Aviv Stock Exchange closed October 6-24 (eighteen days), the shekel was devalued 23%, and the government nationalized the banks. An academic study (Blass & Grossman, \"Assessing Damages: The 1983 Israeli Bank Shares Crisis\") found 1993 time-adjusted bank share values were $10 billion lower than in 1983 ($4B borne by precrisis shareholders, $6B by taxpayers) against a ~$27B 1983 Israeli GDP (~37%, i.e. \"roughly a third\"), and explicitly states the government \"did not begin to sell [the banks] back to the public until 1993\" — matching the event description's privatization-timing claim precisely. All material details (year, country, mechanism, Black Thursday date, exchange closure length, devaluation %, ~$10B/one-third-of-GDP loss estimate, 1993 re-privatization start) check out.",
+        "source": "https://en.wikipedia.org/wiki/1983_Israel_bank_stock_crisis",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-09",
           "method": "web_search"
         }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/Kahan_Commission"
+    "source": "https://en.wikipedia.org/wiki/1983_Israel_bank_stock_crisis"
   },
   {
     "year": 1983,
@@ -1325,10 +1336,10 @@
     "source": "https://en.wikipedia.org/wiki/Economy_of_Israel"
   },
   {
-    "year": 1984,
-    "title": "National Unity Government — Labor-Likud Coalition",
+    "year": 1983,
+    "title": "Kahan Commission and Sharon's Dismissal",
     "verdict": "TRUE",
-    "reason": "1984 near-tie, Peres-Shamir rotation, economic stabilization plan enacted. Lebanon withdrawal. Confirmed.",
+    "reason": "Kahan Commission found Sharon bore personal responsibility. Forced resignation as Defense Minister. Confirmed.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -1338,8 +1349,8 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "1984 near-tie, Peres-Shamir rotation, economic stabilization plan enacted. Lebanon withdrawal. Confirmed.",
-        "source": "https://en.wikipedia.org/wiki/National_Unity_Government_(Israel,_1984)",
+        "reason": "Kahan Commission found Sharon bore personal responsibility. Forced resignation as Defense Minister. Confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Kahan_Commission",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
           "date": null,
@@ -1347,7 +1358,7 @@
         }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/National_Unity_Government_(Israel,_1984)"
+    "source": "https://en.wikipedia.org/wiki/Kahan_Commission"
   },
   {
     "year": 1984,
@@ -1373,6 +1384,31 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/Operation_Moses"
+  },
+  {
+    "year": 1984,
+    "title": "National Unity Government — Labor-Likud Coalition",
+    "verdict": "TRUE",
+    "reason": "1984 near-tie, Peres-Shamir rotation, economic stabilization plan enacted. Lebanon withdrawal. Confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "1984 near-tie, Peres-Shamir rotation, economic stabilization plan enacted. Lebanon withdrawal. Confirmed.",
+        "source": "https://en.wikipedia.org/wiki/National_Unity_Government_(Israel,_1984)",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/National_Unity_Government_(Israel,_1984)"
   },
   {
     "year": 1985,
@@ -1476,31 +1512,6 @@
   },
   {
     "year": 1988,
-    "title": "PLO Declares Palestinian State",
-    "verdict": "TRUE",
-    "reason": "Nov 1988, Algiers PNC meeting. Declaration recognized by 100+ countries. Implicit two-state acceptance. Confirmed.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Nov 1988, Algiers PNC meeting. Declaration recognized by 100+ countries. Implicit two-state acceptance. Confirmed.",
-        "source": "https://en.wikipedia.org/wiki/Palestinian_Declaration_of_Independence",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/Palestinian_Declaration_of_Independence"
-  },
-  {
-    "year": 1988,
     "title": "Hamas Founded in Gaza",
     "verdict": "TRUE",
     "reason": "Hamas founded Dec 1987/early 1988 by Sheikh Ahmed Yassin as Muslim Brotherhood Palestinian branch. Confirmed.",
@@ -1523,6 +1534,31 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/Hamas"
+  },
+  {
+    "year": 1988,
+    "title": "PLO Declares Palestinian State",
+    "verdict": "TRUE",
+    "reason": "Nov 1988, Algiers PNC meeting. Declaration recognized by 100+ countries. Implicit two-state acceptance. Confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Nov 1988, Algiers PNC meeting. Declaration recognized by 100+ countries. Implicit two-state acceptance. Confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Palestinian_Declaration_of_Independence",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Palestinian_Declaration_of_Independence"
   },
   {
     "year": 1989,
@@ -1601,31 +1637,6 @@
   },
   {
     "year": 1992,
-    "title": "Rabin Elected — Peace Process Accelerates",
-    "verdict": "TRUE",
-    "reason": "Already marked verified in source file. Confirmed.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Already marked verified in source file. Confirmed.",
-        "source": "https://en.wikipedia.org/wiki/1992_Israeli_legislative_election",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/1992_Israeli_legislative_election"
-  },
-  {
-    "year": 1992,
     "title": "Israel's High-Tech Investment Boom Begins",
     "verdict": "TRUE",
     "reason": "Already marked verified in source file. Confirmed.",
@@ -1648,6 +1659,31 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/Yozma"
+  },
+  {
+    "year": 1992,
+    "title": "Rabin Elected — Peace Process Accelerates",
+    "verdict": "TRUE",
+    "reason": "Already marked verified in source file. Confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Already marked verified in source file. Confirmed.",
+        "source": "https://en.wikipedia.org/wiki/1992_Israeli_legislative_election",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/1992_Israeli_legislative_election"
   },
   {
     "year": 1993,
@@ -1851,31 +1887,6 @@
   },
   {
     "year": 2000,
-    "title": "Israeli Withdrawal from Lebanon",
-    "verdict": "TRUE",
-    "reason": "Already marked verified in source file. May 24, 2000 completion. Confirmed.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Already marked verified in source file. May 24, 2000 completion. Confirmed.",
-        "source": "https://en.wikipedia.org/wiki/Israeli_occupation_of_Southern_Lebanon",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/Israeli_occupation_of_Southern_Lebanon"
-  },
-  {
-    "year": 2000,
     "title": "Camp David Summit Failure and Second Intifada",
     "verdict": "TRUE",
     "reason": "Already marked verified in source file. Jul 11–25, 2000. Sharon Temple Mount visit Sep 28 triggered Intifada. Confirmed.",
@@ -1898,6 +1909,31 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/2000_Camp_David_Summit"
+  },
+  {
+    "year": 2000,
+    "title": "Israeli Withdrawal from Lebanon",
+    "verdict": "TRUE",
+    "reason": "Already marked verified in source file. May 24, 2000 completion. Confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Already marked verified in source file. May 24, 2000 completion. Confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Israeli_occupation_of_Southern_Lebanon",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Israeli_occupation_of_Southern_Lebanon"
   },
   {
     "year": 2001,
@@ -2151,31 +2187,6 @@
   },
   {
     "year": 2007,
-    "title": "Iran's Nuclear Program Becomes Central Threat",
-    "verdict": "TRUE",
-    "reason": "Already marked verified in source file. Olmert 2007 warnings confirmed. Stuxnet confirmed.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Already marked verified in source file. Olmert 2007 warnings confirmed. Stuxnet confirmed.",
-        "source": "https://en.wikipedia.org/wiki/Iran_and_weapons_of_mass_destruction",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/Iran_and_weapons_of_mass_destruction"
-  },
-  {
-    "year": 2007,
     "title": "Air Strike on Syrian Nuclear Reactor",
     "verdict": "TRUE",
     "reason": "Already marked verified in source file. Sep 6, 2007. Israel confirmed Mar 2018. IAEA confirmed 2011. Confirmed.",
@@ -2200,10 +2211,10 @@
     "source": "https://en.wikipedia.org/wiki/Operation_Outside_the_Box"
   },
   {
-    "year": 2008,
-    "title": "Operation Cast Lead — Gaza War",
+    "year": 2007,
+    "title": "Iran's Nuclear Program Becomes Central Threat",
     "verdict": "TRUE",
-    "reason": "Already marked verified in source file. Dec 27, 2008. 22 days. ~1,400 Palestinian deaths. 13 Israeli. Goldstone Report. Confirmed.",
+    "reason": "Already marked verified in source file. Olmert 2007 warnings confirmed. Stuxnet confirmed.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -2213,8 +2224,8 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "Already marked verified in source file. Dec 27, 2008. 22 days. ~1,400 Palestinian deaths. 13 Israeli. Goldstone Report. Confirmed.",
-        "source": "https://en.wikipedia.org/wiki/United_Nations_Fact_Finding_Mission_on_the_Gaza_Conflict",
+        "reason": "Already marked verified in source file. Olmert 2007 warnings confirmed. Stuxnet confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Iran_and_weapons_of_mass_destruction",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
           "date": null,
@@ -2222,7 +2233,7 @@
         }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/United_Nations_Fact_Finding_Mission_on_the_Gaza_Conflict"
+    "source": "https://en.wikipedia.org/wiki/Iran_and_weapons_of_mass_destruction"
   },
   {
     "year": 2008,
@@ -2248,6 +2259,31 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/Ehud_Olmert"
+  },
+  {
+    "year": 2008,
+    "title": "Operation Cast Lead — Gaza War",
+    "verdict": "TRUE",
+    "reason": "Already marked verified in source file. Dec 27, 2008. 22 days. ~1,400 Palestinian deaths. 13 Israeli. Goldstone Report. Confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Already marked verified in source file. Dec 27, 2008. 22 days. ~1,400 Palestinian deaths. 13 Israeli. Goldstone Report. Confirmed.",
+        "source": "https://en.wikipedia.org/wiki/United_Nations_Fact_Finding_Mission_on_the_Gaza_Conflict",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/United_Nations_Fact_Finding_Mission_on_the_Gaza_Conflict"
   },
   {
     "year": 2009,
@@ -2301,31 +2337,6 @@
   },
   {
     "year": 2011,
-    "title": "Social Justice Protests — Housing Crisis",
-    "verdict": "TRUE",
-    "reason": "Already marked verified in source file. Summer 2011. ~500,000 demonstrated. Tent cities. Confirmed.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Already marked verified in source file. Summer 2011. ~500,000 demonstrated. Tent cities. Confirmed.",
-        "source": "https://en.wikipedia.org/wiki/2011_Israeli_social_justice_protests",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/2011_Israeli_social_justice_protests"
-  },
-  {
-    "year": 2011,
     "title": "Gilad Shalit Prisoner Exchange",
     "verdict": "TRUE",
     "reason": "Already marked verified in source file. Oct 18, 2011. 1,027 Palestinian prisoners for one Israeli soldier. Confirmed.",
@@ -2348,6 +2359,31 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/Gilad_Shalit_prisoner_exchange"
+  },
+  {
+    "year": 2011,
+    "title": "Social Justice Protests — Housing Crisis",
+    "verdict": "TRUE",
+    "reason": "Already marked verified in source file. Summer 2011. ~500,000 demonstrated. Tent cities. Confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Already marked verified in source file. Summer 2011. ~500,000 demonstrated. Tent cities. Confirmed.",
+        "source": "https://en.wikipedia.org/wiki/2011_Israeli_social_justice_protests",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/2011_Israeli_social_justice_protests"
   },
   {
     "year": 2012,
@@ -2476,31 +2512,6 @@
   },
   {
     "year": 2017,
-    "title": "Trump Recognizes Jerusalem as Israel's Capital",
-    "verdict": "TRUE",
-    "reason": "Already marked verified in source file. Dec 6, 2017. Embassy moved May 14, 2018. Confirmed.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Already marked verified in source file. Dec 6, 2017. Embassy moved May 14, 2018. Confirmed.",
-        "source": "https://en.wikipedia.org/wiki/United_States_recognition_of_Jerusalem_as_capital_of_Israel",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/United_States_recognition_of_Jerusalem_as_capital_of_Israel"
-  },
-  {
-    "year": 2017,
     "title": "Israeli Economy Reaches OECD Top Tier",
     "verdict": "TRUE",
     "reason": "Already marked verified in source file. GDP per capita >$40k by 2017. Tech sector ~15% GDP confirmed.",
@@ -2525,10 +2536,10 @@
     "source": "https://en.wikipedia.org/wiki/Economy_of_Israel"
   },
   {
-    "year": 2018,
-    "title": "Nation-State Law Enacted",
+    "year": 2017,
+    "title": "Trump Recognizes Jerusalem as Israel's Capital",
     "verdict": "TRUE",
-    "reason": "Already marked verified in source file. Jul 19, 2018. 62-55 vote. Downgraded Arabic. Confirmed.",
+    "reason": "Already marked verified in source file. Dec 6, 2017. Embassy moved May 14, 2018. Confirmed.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -2538,8 +2549,8 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "Already marked verified in source file. Jul 19, 2018. 62-55 vote. Downgraded Arabic. Confirmed.",
-        "source": "https://en.wikipedia.org/wiki/Basic_Law:_Israel_as_the_Nation-State_of_the_Jewish_People",
+        "reason": "Already marked verified in source file. Dec 6, 2017. Embassy moved May 14, 2018. Confirmed.",
+        "source": "https://en.wikipedia.org/wiki/United_States_recognition_of_Jerusalem_as_capital_of_Israel",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
           "date": null,
@@ -2547,7 +2558,7 @@
         }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/Basic_Law:_Israel_as_the_Nation-State_of_the_Jewish_People"
+    "source": "https://en.wikipedia.org/wiki/United_States_recognition_of_Jerusalem_as_capital_of_Israel"
   },
   {
     "year": 2018,
@@ -2573,6 +2584,31 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/2018%E2%80%932019_Gaza_border_protests"
+  },
+  {
+    "year": 2018,
+    "title": "Nation-State Law Enacted",
+    "verdict": "TRUE",
+    "reason": "Already marked verified in source file. Jul 19, 2018. 62-55 vote. Downgraded Arabic. Confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Already marked verified in source file. Jul 19, 2018. 62-55 vote. Downgraded Arabic. Confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Basic_Law:_Israel_as_the_Nation-State_of_the_Jewish_People",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Basic_Law:_Israel_as_the_Nation-State_of_the_Jewish_People"
   },
   {
     "year": 2019,
@@ -2601,31 +2637,6 @@
   },
   {
     "year": 2020,
-    "title": "COVID-19 Response — Early Vaccination Success",
-    "verdict": "TRUE",
-    "reason": "Already marked verified in source file. Dec 19, 2020 vaccination campaign start. Pfizer deal. Confirmed.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Already marked verified in source file. Dec 19, 2020 vaccination campaign start. Pfizer deal. Confirmed.",
-        "source": "https://en.wikipedia.org/wiki/COVID-19_vaccination_in_Israel",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/COVID-19_vaccination_in_Israel"
-  },
-  {
-    "year": 2020,
     "title": "Abraham Accords — Normalization with Gulf States",
     "verdict": "TRUE",
     "reason": "Already marked verified in source file. UAE Aug 13, Bahrain Sep 15, 2020. Sudan and Morocco followed. Confirmed.",
@@ -2648,6 +2659,31 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/Abraham_Accords"
+  },
+  {
+    "year": 2020,
+    "title": "COVID-19 Response — Early Vaccination Success",
+    "verdict": "TRUE",
+    "reason": "Already marked verified in source file. Dec 19, 2020 vaccination campaign start. Pfizer deal. Confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Already marked verified in source file. Dec 19, 2020 vaccination campaign start. Pfizer deal. Confirmed.",
+        "source": "https://en.wikipedia.org/wiki/COVID-19_vaccination_in_Israel",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/COVID-19_vaccination_in_Israel"
   },
   {
     "year": 2021,
@@ -2701,6 +2737,31 @@
   },
   {
     "year": 2023,
+    "title": "Gaza War Begins — Operation Swords of Iron",
+    "verdict": "TRUE",
+    "reason": "Operation Swords of Iron launched Oct 2023. Ground invasion followed. South Africa ICJ genocide case filed. 30,000+ Palestinian deaths by early 2024 confirmed by multiple sources.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Operation Swords of Iron launched Oct 2023. Ground invasion followed. South Africa ICJ genocide case filed. 30,000+ Palestinian deaths by early 2024 confirmed by multiple sources.",
+        "source": "https://en.wikipedia.org/wiki/Gaza_war",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Gaza_war"
+  },
+  {
+    "year": 2023,
     "title": "Judicial Reform Crisis — Massive Protests",
     "verdict": "TRUE",
     "reason": "Already marked verified in source file. Jan–Oct 2023. ~500,000 in one March rally. Reservist threats. Confirmed.",
@@ -2748,56 +2809,6 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/October_7_attacks"
-  },
-  {
-    "year": 2023,
-    "title": "Gaza War Begins — Operation Swords of Iron",
-    "verdict": "TRUE",
-    "reason": "Operation Swords of Iron launched Oct 2023. Ground invasion followed. South Africa ICJ genocide case filed. 30,000+ Palestinian deaths by early 2024 confirmed by multiple sources.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Operation Swords of Iron launched Oct 2023. Ground invasion followed. South Africa ICJ genocide case filed. 30,000+ Palestinian deaths by early 2024 confirmed by multiple sources.",
-        "source": "https://en.wikipedia.org/wiki/Gaza_war",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/Gaza_war"
-  },
-  {
-    "year": 2024,
-    "title": "Israel Expands Gaza Campaign — Rafah Controversy",
-    "verdict": "TRUE",
-    "reason": "Rafah operation May 2024 despite Biden arms-conditioning warning. ICJ provisional measures on humanitarian aid. Several European states recognized Palestinian statehood. Confirmed.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Rafah operation May 2024 despite Biden arms-conditioning warning. ICJ provisional measures on humanitarian aid. Several European states recognized Palestinian statehood. Confirmed.",
-        "source": "https://en.wikipedia.org/wiki/Battle_of_Rafah_(2024)",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/Battle_of_Rafah_(2024)"
   },
   {
     "year": 2024,
@@ -2848,6 +2859,31 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/April_2024_Iranian_strikes_on_Israel"
+  },
+  {
+    "year": 2024,
+    "title": "Israel Expands Gaza Campaign — Rafah Controversy",
+    "verdict": "TRUE",
+    "reason": "Rafah operation May 2024 despite Biden arms-conditioning warning. ICJ provisional measures on humanitarian aid. Several European states recognized Palestinian statehood. Confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Rafah operation May 2024 despite Biden arms-conditioning warning. ICJ provisional measures on humanitarian aid. Several European states recognized Palestinian statehood. Confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Battle_of_Rafah_(2024)",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Battle_of_Rafah_(2024)"
   },
   {
     "year": 2024,

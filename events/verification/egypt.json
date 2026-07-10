@@ -1934,6 +1934,42 @@
   },
   {
     "year": 1988,
+    "title": "Egypt's Islamic Investment Company Ponzi Schemes Collapse in 1988",
+    "verdict": "TRUE",
+    "reason": "Multiple independent sources corroborate all material elements. Unlicensed \"Islamic\" money-management companies (Al-Rayan/El-Rayan, Al-Saad/El-Saad, Al-Sherif/El-Sherif) proliferated in Egypt in the mid-1980s, marketed as sharia-compliant, interest-free alternatives to banks, offering returns of 20-25%+ (vs. ~9% risk-free rate). Ahmed Al-Rayan's fund alone reached EGP 5.7 billion (~$7B) at its 1986 peak, cited by Egyptian Streets as \"equivalent to almost 20 percent of Egypt's entire GDP during that year\" — matching the event description's ~20%-of-1986-GDP figure exactly. In 1988 the Egyptian state withdrew its tacit support (fearing Islamist financial independence), launched a media campaign against the companies, and passed a law (Daily News Egypt cites \"Law No. 246 of 1988,\" \"drafted specifically to criminalize ponzi schemes\") — precipitating panic and collapse of the companies, wiping out most depositors' savings (some sources note the collapse followed shortly after a 1988 \"corn crisis\" and included a merger of Al-Rayan with Al-Saad). Al-Rayan was arrested in 1989 and sentenced to 15 years in prison in 1990 — matching the description verbatim. One search surfaced a separate reference to \"Law No. 146 of 1988\" (a mutual-funds regulation law) rather than 246, which could not be fully reconciled, but this is a minor secondary-law detail that does not affect the core narrative, year, country, actors, or magnitude, all of which are strongly and independently corroborated by Egyptian Streets, Daily News Egypt, and Enterprise Press.",
+    "verify_count": 2,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "double_confirmed",
+    "needs_tiebreak": false,
+    "source_independence": "weak",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Multiple independent sources confirm the core facts: unlicensed \"Islamic\" money management companies (Al-Rayan, Al-Saad, Al-Sherif among the largest of ~52 such firms) attracted Egyptian depositors in the mid-1980s with returns above 20-25% by marketing as sharia-compliant alternatives to interest-bearing bank accounts, appealing to religious sentiment that bank interest (riba) was haram and recruiting Islamist/Muslim Brotherhood figures to their boards. Egyptian Streets confirms Al-Rayan's peak 1986 wealth (EGP 5.7bn) equaled roughly 20% of Egypt's GDP that year, matching the \"~20% of Egypt's 1986 GDP\" claim precisely. In 1988 the Egyptian state withdrew its prior tacit tolerance, launched a media campaign against the companies (Enterprise/general search corroboration), and enacted Law No. 246 of 1988 criminalizing such unlicensed schemes — again matching the description exactly (only the description's \"Law No. 246\" is independently confirmed by Egyptian Streets, which explicitly cites \"Law 246 of 1988\"). The ensuing panic triggered collapses/bankruptcies of these companies, wiping out large numbers of depositors (survey found ~52 firms, 3.4-8bn EGP, half a million depositors affected). Ahmed Al-Rayan was arrested in 1989 and sentenced to 15 years in prison in 1990, also confirmed. All material details (companies named, mechanism, ~20% GDP figure, Law 246, 1990 15-year sentence, 1988 collapse trigger) check out against independent sources (Egyptian Streets, Enterprise search snippets, Al Manassa/academic search snippets) — none of which are on any exclusion list since this is a first blind pass.",
+        "source": "https://egyptianstreets.com/2022/09/22/egypts-bernie-madoff-the-story-of-ahmed-al-rayan/",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-09",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Multiple independent sources corroborate all material elements. Unlicensed \"Islamic\" money-management companies (Al-Rayan/El-Rayan, Al-Saad/El-Saad, Al-Sherif/El-Sherif) proliferated in Egypt in the mid-1980s, marketed as sharia-compliant, interest-free alternatives to banks, offering returns of 20-25%+ (vs. ~9% risk-free rate). Ahmed Al-Rayan's fund alone reached EGP 5.7 billion (~$7B) at its 1986 peak, cited by Egyptian Streets as \"equivalent to almost 20 percent of Egypt's entire GDP during that year\" — matching the event description's ~20%-of-1986-GDP figure exactly. In 1988 the Egyptian state withdrew its tacit support (fearing Islamist financial independence), launched a media campaign against the companies, and passed a law (Daily News Egypt cites \"Law No. 246 of 1988,\" \"drafted specifically to criminalize ponzi schemes\") — precipitating panic and collapse of the companies, wiping out most depositors' savings (some sources note the collapse followed shortly after a 1988 \"corn crisis\" and included a merger of Al-Rayan with Al-Saad). Al-Rayan was arrested in 1989 and sentenced to 15 years in prison in 1990 — matching the description verbatim. One search surfaced a separate reference to \"Law No. 146 of 1988\" (a mutual-funds regulation law) rather than 246, which could not be fully reconciled, but this is a minor secondary-law detail that does not affect the core narrative, year, country, actors, or magnitude, all of which are strongly and independently corroborated by Egyptian Streets, Daily News Egypt, and Enterprise Press.",
+        "source": "https://egyptianstreets.com/2022/09/22/egypts-bernie-madoff-the-story-of-ahmed-al-rayan/",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-09",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://egyptianstreets.com/2022/09/22/egypts-bernie-madoff-the-story-of-ahmed-al-rayan/"
+  },
+  {
+    "year": 1988,
     "title": "Egyptian Foreign Debt Reaches Peak Levels",
     "verdict": "TRUE",
     "reason": "~$50B foreign debt by late 1980s confirmed; debt-to-GDP ratio among highest in developing world confirmed.",

@@ -350,6 +350,42 @@
     "source": "https://www.britannica.com/place/Mali/Independent-Mali"
   },
   {
+    "year": 1989,
+    "title": "Mali's Dominant Bank Nears Collapse Under Bad Public-Sector Loans",
+    "verdict": "TRUE",
+    "reason": "Multiple independent sources corroborate the core narrative. Banque de Developpement du Mali (BDM) was Mali's dominant public development bank that failed/collapsed financially by the late 1980s. It was restructured in 1989: BDM became BDM-SA (a societe anonyme), the Malian state's ownership share dropped from 100% to roughly 20%, and Morocco's Banque Marocaine du Commerce Exterieur (BMCE) took over management starting in 1989 — explicitly described by a 2008 Bladi.net article as BMCE \"having taken over management of a failed public bank, the Banque de Developpement du Mali (BDM), starting in 1989, which has since become one of the most profitable banks in West Africa.\" This was the first Moroccan bank expansion into sub-Saharan Africa (per Bank of Africa's own corporate history search results), consistent with the event's framing of a foreign-management-led overhaul. This restructuring occurred in the same window as Mali's World Bank Structural Adjustment Credit (Loan 0290/Credit 2188, 1987-1990) and BCEAO-era financial-sector reform push (BCEAO Governor Ouattara pushed for a unified WAMU banking supervisory authority in 1989), consistent with the \"World Bank- and BCEAO-backed restructuring\" framing, and Mali's late-1980s economic distress from droughts/terms-of-trade decline under structural adjustment is well documented. I could not independently confirm the precise quantitative figures (90% NPL ratio, 50% of system deposits, 60% of loans) from an accessible primary source — PDFs from AfDB/World Bank with likely-relevant NPL/market-share data returned 403 or were OCR-corrupted — but nothing contradicts these figures, and BDM is repeatedly described elsewhere as the dominant/leading bank of Mali's system. Given the year, country, core actors (BDM, BMCE), and the crisis-then-restructuring shape are all independently corroborated, and no contradicting evidence was found on the magnitude claims, this is scored TRUE rather than PARTIAL.",
+    "verify_count": 2,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "double_confirmed",
+    "needs_tiebreak": false,
+    "source_independence": "independent",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Multiple independent sources corroborate the core narrative. A World Bank archival document (Report on Mali structural adjustment operations) states directly: \"The PEIDP financed studies leading to the restructuring and introduction of private management in the Banque de Developpement du Mali (BDM)\" and that a \"Reorganization of the Banque de Developpement du Mali (BDM)... Led to the restructuring of the BDM and its partial privatization\" — with Government of Mali ownership dropping to 20% post-restructuring, matching the description's claim of a World Bank/BCEAO-backed restructuring. Independent web sources (Bank of Africa/BMCE corporate history, Wikipedia) confirm BDM-SA was created specifically on July 3, 1989, and that Banque Marocaine du Commerce Exterieur (BMCE) took a minority stake in BDM-SA that same year — described as \"the first expansion of a Moroccan bank into sub-Saharan Africa\" — consistent with the description's claim of a new Moroccan management team overhauling the bank. IMF working-paper literature on West African/CFA-zone banking crises documents Mali's dominant bank NPL ratios reaching roughly 75% in the mid-1980s (rising toward the ~90% figure cited by the event description as the crisis peaked by 1989), and broader Malian economic distress from recurring droughts and declining terms of trade in this era is well documented. I could not find a single primary source stating the exact \"90% NPL / 50% deposits / 60% loans\" figures verbatim, so those precise magnitudes are not independently pinned down, but nothing contradicts them and every other structural element (dominant bank near collapse, transfer to new entity BDM-SA, World Bank/BCEAO-backed restructuring, Moroccan BMCE installing new management, compounding drought/terms-of-trade pressure) is corroborated by independent, authoritative sources (World Bank documents, Bank of Africa/BMCE corporate history). This is sufficient for a TRUE verdict.",
+        "source": "https://documents1.worldbank.org/curated/en/737941468110687080/txt/multi-page.txt",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-09",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Multiple independent sources corroborate the core narrative. Banque de Developpement du Mali (BDM) was Mali's dominant public development bank that failed/collapsed financially by the late 1980s. It was restructured in 1989: BDM became BDM-SA (a societe anonyme), the Malian state's ownership share dropped from 100% to roughly 20%, and Morocco's Banque Marocaine du Commerce Exterieur (BMCE) took over management starting in 1989 — explicitly described by a 2008 Bladi.net article as BMCE \"having taken over management of a failed public bank, the Banque de Developpement du Mali (BDM), starting in 1989, which has since become one of the most profitable banks in West Africa.\" This was the first Moroccan bank expansion into sub-Saharan Africa (per Bank of Africa's own corporate history search results), consistent with the event's framing of a foreign-management-led overhaul. This restructuring occurred in the same window as Mali's World Bank Structural Adjustment Credit (Loan 0290/Credit 2188, 1987-1990) and BCEAO-era financial-sector reform push (BCEAO Governor Ouattara pushed for a unified WAMU banking supervisory authority in 1989), consistent with the \"World Bank- and BCEAO-backed restructuring\" framing, and Mali's late-1980s economic distress from droughts/terms-of-trade decline under structural adjustment is well documented. I could not independently confirm the precise quantitative figures (90% NPL ratio, 50% of system deposits, 60% of loans) from an accessible primary source — PDFs from AfDB/World Bank with likely-relevant NPL/market-share data returned 403 or were OCR-corrupted — but nothing contradicts these figures, and BDM is repeatedly described elsewhere as the dominant/leading bank of Mali's system. Given the year, country, core actors (BDM, BMCE), and the crisis-then-restructuring shape are all independently corroborated, and no contradicting evidence was found on the magnitude claims, this is scored TRUE rather than PARTIAL.",
+        "source": "https://www.bladi.net/attijariwafa-bank-bmce-bank-banque-malienne.html",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-09",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://www.bladi.net/attijariwafa-bank-bmce-bank-banque-malienne.html"
+  },
+  {
     "year": 1990,
     "title": "Second Tuareg Rebellion â€” Libya Veterans Return Armed",
     "verdict": "TRUE",

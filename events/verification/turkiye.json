@@ -612,6 +612,42 @@
   },
   {
     "year": 2001,
+    "title": "Turkiye's 2001 Banking Crisis Wipes Out $70 Billion, Forces IMF Bailout",
+    "verdict": "TRUE",
+    "reason": "Multiple independent sources corroborate every material element. (1) Crawling-peg collapse in February 2001: triggered by the Feb 19, 2001 Ecevit-Sezer clash; peg abandoned Feb 21-22, 2001, lira floated and devalued sharply. (2) ~$70 billion foreign capital withdrawal: explicitly stated by Wikipedia's \"2001 Turkish economic crisis\" article (\"foreign investors withdrew $70 billion worth of capital from the country in a matter of months\") and independently by Türkiye Today's retrospective and market-bulls.com's analysis. (3) Kemal Dervis as Economy Minister: confirmed via Wikipedia's Kemal Dervis biography — appointed March 13, 2001 as Minister of State for Economic Affairs specifically to manage the crisis. (4) IMF program: an IMF Stand-By Arrangement worth $16 billion is documented (approved Dec 2001, built up from earlier smaller tranches, consistent with \"grew to $16 billion\"); Dervis's Wikipedia page also notes he mobilized combined IMF/World Bank financing around $20 billion. (5) Bank recapitalization/restructuring and central bank operational independence: confirmed — Dervis's program \"implemented bank reforms,\" \"strengthened the independence of the central bank,\" consistent with widely documented TMSF-led bank restructuring/recapitalization of 2001-2002. (6) Deep contraction: consistent with Turkey's ~5.7% GDP contraction in 2001, one of its worst post-war recessions. All core facts (country, year, mechanism, magnitude, key actor, IMF size, central bank independence outcome) check out across independent sources (Wikipedia crisis article, Wikipedia Dervis biography, Türkiye Today, market-bulls.com) with no material discrepancy.",
+    "verify_count": 2,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "double_confirmed",
+    "needs_tiebreak": false,
+    "source_independence": "weak",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Multiple independent, authoritative sources confirm all material elements: (1) Turkey's crawling-peg exchange rate collapsed in Feb 2001 (Turkish govt floated the lira Feb 22, 2001, after a Feb 19 political-crisis trigger); (2) foreign investors withdrew roughly $70 billion in capital within months (confirmed verbatim on Wikipedia's 2001 Turkish economic crisis page and corroborated by Turkiye Today); (3) Kemal Dervis was appointed Minister of State for Economic Affairs (commonly called 'economy minister') in March 2001 and led negotiations with the IMF; (4) the IMF Stand-By Arrangement grew to a total value of $16 billion by December 2001 (confirmed by American Diplomacy/UNC retrospective, consistent with IMF program history); (5) Turkey's Central Bank was granted formal 'instrument/operational independence' in 2001 as part of Dervis's reforms (confirmed via Hurriyet Daily News historical piece and Dervis biographical sources), alongside bank restructuring/recapitalization of the banking sector; (6) the crisis produced one of Turkey's deepest modern economic contractions (triple-digit interest rates, currency losing >50% of value, high inflation, GDP contraction in 2001). No material detail was contradicted; all figures and actors check out against independent sources (Wikipedia, American Diplomacy/UNC, Hurriyet Daily News, Turkiye Today, AA.com.tr).",
+        "source": "https://en.wikipedia.org/wiki/2001_Turkish_economic_crisis",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-09",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Multiple independent sources corroborate every material element. (1) Crawling-peg collapse in February 2001: triggered by the Feb 19, 2001 Ecevit-Sezer clash; peg abandoned Feb 21-22, 2001, lira floated and devalued sharply. (2) ~$70 billion foreign capital withdrawal: explicitly stated by Wikipedia's \"2001 Turkish economic crisis\" article (\"foreign investors withdrew $70 billion worth of capital from the country in a matter of months\") and independently by Türkiye Today's retrospective and market-bulls.com's analysis. (3) Kemal Dervis as Economy Minister: confirmed via Wikipedia's Kemal Dervis biography — appointed March 13, 2001 as Minister of State for Economic Affairs specifically to manage the crisis. (4) IMF program: an IMF Stand-By Arrangement worth $16 billion is documented (approved Dec 2001, built up from earlier smaller tranches, consistent with \"grew to $16 billion\"); Dervis's Wikipedia page also notes he mobilized combined IMF/World Bank financing around $20 billion. (5) Bank recapitalization/restructuring and central bank operational independence: confirmed — Dervis's program \"implemented bank reforms,\" \"strengthened the independence of the central bank,\" consistent with widely documented TMSF-led bank restructuring/recapitalization of 2001-2002. (6) Deep contraction: consistent with Turkey's ~5.7% GDP contraction in 2001, one of its worst post-war recessions. All core facts (country, year, mechanism, magnitude, key actor, IMF size, central bank independence outcome) check out across independent sources (Wikipedia crisis article, Wikipedia Dervis biography, Türkiye Today, market-bulls.com) with no material discrepancy.",
+        "source": "https://en.wikipedia.org/wiki/2001_Turkish_economic_crisis",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-09",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/2001_Turkish_economic_crisis"
+  },
+  {
+    "year": 2001,
     "title": "Worst Economic Crisis in Turkish History: Lira Collapses 50 Percent",
     "verdict": "TRUE",
     "reason": "All key facts confirmed: February 21 Sezer-Ecevit NSC clash, lira floated Feb 22, ~50 percent depreciation, interest rates exceeded 3000 percent, GDP contracted ~9-12 percent.",

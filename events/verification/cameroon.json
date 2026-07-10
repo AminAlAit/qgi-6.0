@@ -1,5 +1,41 @@
 [
   {
+    "year": 1987,
+    "title": "Cameroon's State-Linked Banks Become Insolvent Amid Price Collapse",
+    "verdict": "TRUE",
+    "reason": "Strongly corroborated by multiple independent sources. The IMF working paper WP/04/55 (Daumont, Le Gall, Leroux 2004, \"Banking in Sub-Saharan Africa: What Went Wrong?\") states almost verbatim: \"the commercial bank and two development banks owned by the government were technically insolvent as of 1987,\" \"the banking crisis in Cameroon lasted from 1987-93, with 60-70 percent of banking system loans nonperforming in 1989,\" and attributes the crisis to a terms-of-trade collapse driven by falling oil, cocoa, and rubber export prices. Separately, multiple sources (business press summaries, academic paper \"Managing Cameroon's Banking Sector - In and Out of Crisis\") independently confirm Societe Camerounaise de Banque and Cameroon Bank Limited (CAMBANK) were the first institutions to formally fail, in 1988, followed by Banque Meridien BIAO Cameroun and Banque de Credit et de Commerce in 1991 — matching the description's bank names and years exactly. The government debt \"trebling\" to the Central Bank is also independently confirmed (\"a trebling of the debt owed to the Central Bank by the financially strained Government\"). The specific commodity percentage figures (oil -65%, cocoa -24%, rubber -20%) were not independently pinned to the exact same figures in general web sources (one source cites oil falling \"two-thirds\" 1985-88 and cocoa \"one third,\" which is directionally consistent but not an exact percentage match), but this is a minor magnitude nuance within an otherwise precisely corroborated, multi-institution, multi-date event. Core facts (country, year of insolvency, named banks, failure years, NPL ratio, debt trebling) all check out against an authoritative IMF source plus corroborating secondary sources.",
+    "verify_count": 2,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "double_confirmed",
+    "needs_tiebreak": false,
+    "source_independence": "weak",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Multiple independent sources corroborate the core claims. The IMF Working Paper WP/04/55 \"Banking in Sub-Saharan Africa: What Went Wrong?\" (Daumont, Le Gall, Leroux, 2004) states directly: \"the commercial bank and two development banks owned by the government were technically insolvent as of 1987\" in Cameroon, that Cameroon's terms of trade fell steeply 1985-92 driven by commodity price collapse (oil, cocoa, coffee, rubber all down sharply 1985-1987, matching the description's 65%/24%/20% figures nearly verbatim per search snippets), and explicitly \"60-70 percent of banking system loans nonperforming in 1989\" — an exact match to the event description. Separately, a ResearchGate paper (\"Managing Cameroon's Banking Sector - In and Out of Crisis\") states \"the Société Camerounaise de Banque (SCB) and Cameroon Bank Limited (CAMBANK) were the first financial institutions to fail in 1988,\" matching the description precisely. French Wikipedia (SCB Cameroun) and Cairn.info confirm SCB's collapse/split-dissolution as part of this crisis (dating it 1989, a minor variance likely reflecting technical-insolvency vs. formal-dissolution timing). Meridien BIAO Cameroun's failure and BCCI's Cameroon operations (closed/sold in 1991 amid the global BCCI collapse, plausibly the \"Banque de Credit et de Commerce\" referenced) are confirmed by several sources, though exact formal-liquidation dates vary by source (1990/1991/1996) — consistent with real ambiguity between administrative takeover, sale, and final liquidation dates rather than the event being fabricated. Country, year of onset (1987), causal mechanism (commodity price collapse), insolvency of state banks, and the 1989 NPL ratio are all precisely corroborated by the primary IMF source, so despite minor date variance on secondary bank-failure specifics, the event holds materially as described.",
+        "source": "https://studyres.com/doc/21108963/banking-in-sub-saharan-africa--what-went-wrong",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-09",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Strongly corroborated by multiple independent sources. The IMF working paper WP/04/55 (Daumont, Le Gall, Leroux 2004, \"Banking in Sub-Saharan Africa: What Went Wrong?\") states almost verbatim: \"the commercial bank and two development banks owned by the government were technically insolvent as of 1987,\" \"the banking crisis in Cameroon lasted from 1987-93, with 60-70 percent of banking system loans nonperforming in 1989,\" and attributes the crisis to a terms-of-trade collapse driven by falling oil, cocoa, and rubber export prices. Separately, multiple sources (business press summaries, academic paper \"Managing Cameroon's Banking Sector - In and Out of Crisis\") independently confirm Societe Camerounaise de Banque and Cameroon Bank Limited (CAMBANK) were the first institutions to formally fail, in 1988, followed by Banque Meridien BIAO Cameroun and Banque de Credit et de Commerce in 1991 — matching the description's bank names and years exactly. The government debt \"trebling\" to the Central Bank is also independently confirmed (\"a trebling of the debt owed to the Central Bank by the financially strained Government\"). The specific commodity percentage figures (oil -65%, cocoa -24%, rubber -20%) were not independently pinned to the exact same figures in general web sources (one source cites oil falling \"two-thirds\" 1985-88 and cocoa \"one third,\" which is directionally consistent but not an exact percentage match), but this is a minor magnitude nuance within an otherwise precisely corroborated, multi-institution, multi-date event. Core facts (country, year of insolvency, named banks, failure years, NPL ratio, debt trebling) all check out against an authoritative IMF source plus corroborating secondary sources.",
+        "source": "https://studyres.com/doc/21108963/banking-in-sub-saharan-africa--what-went-wrong",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-09",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://studyres.com/doc/21108963/banking-in-sub-saharan-africa--what-went-wrong"
+  },
+  {
     "year": 1990,
     "title": "Launch of Social Democratic Front in Bamenda",
     "verdict": "TRUE",
@@ -126,31 +162,6 @@
   },
   {
     "year": 1994,
-    "title": "CFA Franc Devaluation Hits Cameroon",
-    "verdict": "TRUE",
-    "reason": "The CFA franc was devalued by 50% against the French franc on 12 January 1994, mandated by France and the IMF; Cameroon, as a CFA zone member, was directly affected by sharply higher import costs and inflation.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "The CFA franc was devalued by 50% against the French franc on 12 January 1994, mandated by France and the IMF; Cameroon, as a CFA zone member, was directly affected by sharply higher import costs and inflation.",
-        "source": "https://en.wikipedia.org/wiki/CFA_franc",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/CFA_franc"
-  },
-  {
-    "year": 1994,
     "title": "Bakassi Peninsula Clashes with Nigeria Begin",
     "verdict": "TRUE",
     "reason": "Armed clashes between Cameroonian and Nigerian forces erupted in the Bakassi Peninsula from December 1993 into early 1994, with Nigerian forces occupying the peninsula on 12 December 1993 and further skirmishes in February 1994; this directly prompted Cameroon to file at the ICJ.",
@@ -198,6 +209,31 @@
       }
     ],
     "source": "https://www.icj-cij.org/case/94"
+  },
+  {
+    "year": 1994,
+    "title": "CFA Franc Devaluation Hits Cameroon",
+    "verdict": "TRUE",
+    "reason": "The CFA franc was devalued by 50% against the French franc on 12 January 1994, mandated by France and the IMF; Cameroon, as a CFA zone member, was directly affected by sharply higher import costs and inflation.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "The CFA franc was devalued by 50% against the French franc on 12 January 1994, mandated by France and the IMF; Cameroon, as a CFA zone member, was directly affected by sharply higher import costs and inflation.",
+        "source": "https://en.wikipedia.org/wiki/CFA_franc",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/CFA_franc"
   },
   {
     "year": 1995,
@@ -811,31 +847,6 @@
   },
   {
     "year": 2017,
-    "title": "Government Shuts Down Internet in Anglophone Regions",
-    "verdict": "TRUE",
-    "reason": "Cameroon cut internet access in the Northwest and Southwest Regions for exactly 93 days from January to 20 April 2017; Slate, Al Jazeera and Africanews all confirmed this was the longest internet shutdown in Africa at the time.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Cameroon cut internet access in the Northwest and Southwest Regions for exactly 93 days from January to 20 April 2017; Slate, Al Jazeera and Africanews all confirmed this was the longest internet shutdown in Africa at the time.",
-        "source": "https://slate.com/technology/2017/08/the-damage-caused-by-cameroon-s-93-day-internet-blackout.html",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://slate.com/technology/2017/08/the-damage-caused-by-cameroon-s-93-day-internet-blackout.html"
-  },
-  {
-    "year": 2017,
     "title": "Ambazonia Separatists Declare Independence",
     "verdict": "TRUE",
     "reason": "SCACUF symbolically declared the Federal Republic of Ambazonia independent on 1 October 2017; Cameroonian security forces fired on demonstrators on 2 October 2017, killing at least 17 people, escalating the crisis into armed conflict.",
@@ -858,6 +869,31 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/Ambazonia"
+  },
+  {
+    "year": 2017,
+    "title": "Government Shuts Down Internet in Anglophone Regions",
+    "verdict": "TRUE",
+    "reason": "Cameroon cut internet access in the Northwest and Southwest Regions for exactly 93 days from January to 20 April 2017; Slate, Al Jazeera and Africanews all confirmed this was the longest internet shutdown in Africa at the time.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Cameroon cut internet access in the Northwest and Southwest Regions for exactly 93 days from January to 20 April 2017; Slate, Al Jazeera and Africanews all confirmed this was the longest internet shutdown in Africa at the time.",
+        "source": "https://slate.com/technology/2017/08/the-damage-caused-by-cameroon-s-93-day-internet-blackout.html",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://slate.com/technology/2017/08/the-damage-caused-by-cameroon-s-93-day-internet-blackout.html"
   },
   {
     "year": 2018,
@@ -986,31 +1022,6 @@
   },
   {
     "year": 2020,
-    "title": "First Regional Elections Held Under Decentralization",
-    "verdict": "TRUE",
-    "reason": "Cameroon held its first-ever regional council elections in December 2020; the CPDM won nine of ten regions (not all ten as stated — NUDP won one), and opposition parties denounced the process, but the event and timing are confirmed.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Cameroon held its first-ever regional council elections in December 2020; the CPDM won nine of ten regions (not all ten as stated — NUDP won one), and opposition parties denounced the process, but the event and timing are confirmed.",
-        "source": "https://www.voanews.com/a/africa_cameroons-ruling-party-scores-landslide-victory-regional-elections/6199464.html",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://www.voanews.com/a/africa_cameroons-ruling-party-scores-landslide-victory-regional-elections/6199464.html"
-  },
-  {
-    "year": 2020,
     "title": "COVID-19 Pandemic Strains Economy and Health System",
     "verdict": "TRUE",
     "reason": "Cameroon's first COVID-19 case was confirmed on 6 March 2020; GDP growth fell from 4.03% to -1.2% per IMF projections, disrupting oil revenues and trade, with urban health systems overwhelmed.",
@@ -1033,6 +1044,31 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/COVID-19_pandemic_in_Cameroon"
+  },
+  {
+    "year": 2020,
+    "title": "First Regional Elections Held Under Decentralization",
+    "verdict": "TRUE",
+    "reason": "Cameroon held its first-ever regional council elections in December 2020; the CPDM won nine of ten regions (not all ten as stated — NUDP won one), and opposition parties denounced the process, but the event and timing are confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Cameroon held its first-ever regional council elections in December 2020; the CPDM won nine of ten regions (not all ten as stated — NUDP won one), and opposition parties denounced the process, but the event and timing are confirmed.",
+        "source": "https://www.voanews.com/a/africa_cameroons-ruling-party-scores-landslide-victory-regional-elections/6199464.html",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://www.voanews.com/a/africa_cameroons-ruling-party-scores-landslide-victory-regional-elections/6199464.html"
   },
   {
     "year": 2020,
@@ -1061,31 +1097,6 @@
   },
   {
     "year": 2021,
-    "title": "School Attacks Escalate in Anglophone Regions",
-    "verdict": "TRUE",
-    "reason": "The Kumba school massacre occurred on 24 October 2020 (within ±2-year tolerance), killing seven children; by 2021 the school boycott enforced by armed separatists kept over 700,000 children out of school per HRW, and attacks escalated throughout 2021.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "The Kumba school massacre occurred on 24 October 2020 (within ±2-year tolerance), killing seven children; by 2021 the school boycott enforced by armed separatists kept over 700,000 children out of school per HRW, and attacks escalated throughout 2021.",
-        "source": "https://en.wikipedia.org/wiki/Kumba_school_massacre",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/Kumba_school_massacre"
-  },
-  {
-    "year": 2021,
     "title": "Far North Humanitarian Crisis Deepens",
     "verdict": "TRUE",
     "reason": "The Far North Region faced a compounding 2021 humanitarian crisis from Boko Haram violence, seasonal flooding, and food insecurity; UNHCR and UNOCHA reported over 322,000 Boko-Haram-related IDPs and broader multi-crisis displacement across the region.",
@@ -1110,10 +1121,10 @@
     "source": "https://www.crisisgroup.org/africa/central-africa/cameroon/humanitarian-fallout-cameroons-struggle-against-boko-haram"
   },
   {
-    "year": 2022,
-    "title": "Cameroon Hosts Africa Cup of Nations",
+    "year": 2021,
+    "title": "School Attacks Escalate in Anglophone Regions",
     "verdict": "TRUE",
-    "reason": "Cameroon hosted the 2021 AFCON in January-February 2022; a fatal crowd crush at Olembe Stadium on 24 January 2022 killed at least eight people and injured 38, widely reported by Al Jazeera, NBC News and AFP.",
+    "reason": "The Kumba school massacre occurred on 24 October 2020 (within ±2-year tolerance), killing seven children; by 2021 the school boycott enforced by armed separatists kept over 700,000 children out of school per HRW, and attacks escalated throughout 2021.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -1123,8 +1134,8 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "Cameroon hosted the 2021 AFCON in January-February 2022; a fatal crowd crush at Olembe Stadium on 24 January 2022 killed at least eight people and injured 38, widely reported by Al Jazeera, NBC News and AFP.",
-        "source": "https://en.wikipedia.org/wiki/Yaound%C3%A9_stadium_disaster",
+        "reason": "The Kumba school massacre occurred on 24 October 2020 (within ±2-year tolerance), killing seven children; by 2021 the school boycott enforced by armed separatists kept over 700,000 children out of school per HRW, and attacks escalated throughout 2021.",
+        "source": "https://en.wikipedia.org/wiki/Kumba_school_massacre",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
           "date": null,
@@ -1132,7 +1143,7 @@
         }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/Yaound%C3%A9_stadium_disaster"
+    "source": "https://en.wikipedia.org/wiki/Kumba_school_massacre"
   },
   {
     "year": 2022,
@@ -1158,6 +1169,31 @@
       }
     ],
     "source": "https://reliefweb.int/report/cameroon/cameroon-north-west-and-south-west-crisis-displacement-tracking-matrix-monthly-dashboard-2-26-october-2022"
+  },
+  {
+    "year": 2022,
+    "title": "Cameroon Hosts Africa Cup of Nations",
+    "verdict": "TRUE",
+    "reason": "Cameroon hosted the 2021 AFCON in January-February 2022; a fatal crowd crush at Olembe Stadium on 24 January 2022 killed at least eight people and injured 38, widely reported by Al Jazeera, NBC News and AFP.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Cameroon hosted the 2021 AFCON in January-February 2022; a fatal crowd crush at Olembe Stadium on 24 January 2022 killed at least eight people and injured 38, widely reported by Al Jazeera, NBC News and AFP.",
+        "source": "https://en.wikipedia.org/wiki/Yaound%C3%A9_stadium_disaster",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Yaound%C3%A9_stadium_disaster"
   },
   {
     "year": 2023,
@@ -1211,31 +1247,6 @@
   },
   {
     "year": 2024,
-    "title": "Legislative and Municipal Elections Held",
-    "verdict": "FALSE",
-    "reason": "No parliamentary or municipal elections were held in Cameroon in February 2024; the most recent parliamentary elections were held in February 2020, the next were delayed to 2026, and President Biya actually postponed municipal elections scheduled for 2025 to 2026.",
-    "verify_count": 1,
-    "consensus_verdict": "FALSE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "FALSE",
-        "reason": "No parliamentary or municipal elections were held in Cameroon in February 2024; the most recent parliamentary elections were held in February 2020, the next were delayed to 2026, and President Biya actually postponed municipal elections scheduled for 2025 to 2026.",
-        "source": "https://en.wikipedia.org/wiki/2026_Cameroonian_parliamentary_election",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/2026_Cameroonian_parliamentary_election"
-  },
-  {
-    "year": 2024,
     "title": "Cholera Outbreak Strikes Multiple Regions",
     "verdict": "TRUE",
     "reason": "Cameroon was among 14 WHO African Region countries with cholera outbreaks in 2024; the Southwest and Littoral regions were the hardest hit, with inadequate water/sanitation and conflict-displacement accelerating transmission, confirmed by WHO Africa and BMC Public Health.",
@@ -1258,6 +1269,31 @@
       }
     ],
     "source": "https://www.afro.who.int/publications/monthly-regional-cholera-bulletin-july-2024"
+  },
+  {
+    "year": 2024,
+    "title": "Legislative and Municipal Elections Held",
+    "verdict": "FALSE",
+    "reason": "No parliamentary or municipal elections were held in Cameroon in February 2024; the most recent parliamentary elections were held in February 2020, the next were delayed to 2026, and President Biya actually postponed municipal elections scheduled for 2025 to 2026.",
+    "verify_count": 1,
+    "consensus_verdict": "FALSE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "FALSE",
+        "reason": "No parliamentary or municipal elections were held in Cameroon in February 2024; the most recent parliamentary elections were held in February 2020, the next were delayed to 2026, and President Biya actually postponed municipal elections scheduled for 2025 to 2026.",
+        "source": "https://en.wikipedia.org/wiki/2026_Cameroonian_parliamentary_election",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/2026_Cameroonian_parliamentary_election"
   },
   {
     "year": 2025,

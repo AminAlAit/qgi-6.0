@@ -550,6 +550,42 @@
     "source": "https://en.wikipedia.org/wiki/Tanzania_and_the_International_Monetary_Fund"
   },
   {
+    "year": 1987,
+    "title": "Tanzania's State-Owned Banks Reach Systemic Insolvency",
+    "verdict": "TRUE",
+    "reason": "A World Bank Staff Appraisal Report (1995, Report No. 13713-TA) independently confirms all material elements: NBC, CRDB, Tanzania Investment Bank, and Tanzania Housing Bank were all Government-owned since the 1967 Arusha Declaration nationalizations, directed to lend to unprofitable parastatals/cooperatives without regard to creditworthiness, resulting in a state of crisis ('By 1988...banking system clientele who were bankrupt and mostly in arrears'), on-site exams finding 'virtual insolvency' with 70%+ NPLs, NBC's December 1994 review confirming 77% NPLs (matching the claimed 60-80% by mid-1990s), TIB with 90%+ arrears, and CRDB/THB similarly distressed -- followed by 1991-97 market liberalization and NBC privatization. The only minor imprecision is 'by 1987' vs. the WB's 'by 1988' framing of a gradual, decades-long systemic buildup rather than a discrete dated event, which does not rise to a material year error.",
+    "verify_count": 2,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "double_confirmed",
+    "needs_tiebreak": false,
+    "source_independence": "independent",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Independent academic source (researchpublish.com paper citing Caprio & Klingebiel 1996, Chijoriga 2000, Daumont et al. 2004) states almost verbatim: 'In 1987, Tanzania's banking system was facing a systemic banking crisis... NBC, TIB, CRDB, and THB were all in arrears amounting to half of their loan portfolios and insolvent.' This matches the event's year, country, and all four named institutions. The Bank of Tanzania's own official Working Paper No. 13 (2018) independently corroborates: 'In the late 1980's the financial sector was in crisis. State owned banks and financial institutions faced... non-performing loans (about 65% of loan portfolio)' leading to the 1988 Nyirabu Commission, and documents NBC's restructuring completing in 1997 and CRDB's privatization in 1996 - confirming the market-driven liberalization through the 1990s described in the event. Minor nuance: the 60-80% NPL figure for 'mid-1990s' traces to a whole-banking-system statistic from the 1995 crisis rather than NBC's portfolio specifically in primary sources found, but NBC (the country's largest bank) would have been a major driver of that system-wide figure, so this is not treated as a material misstatement. Root cause (Arusha Declaration nationalizations, politically directed lending to parastatals) is confirmed by both sources.",
+        "source": "https://www.researchpublish.com/upload/book/Assessing%20the%20Exposure-5627.pdf",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-09",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "A World Bank Staff Appraisal Report (1995, Report No. 13713-TA) independently confirms all material elements: NBC, CRDB, Tanzania Investment Bank, and Tanzania Housing Bank were all Government-owned since the 1967 Arusha Declaration nationalizations, directed to lend to unprofitable parastatals/cooperatives without regard to creditworthiness, resulting in a state of crisis ('By 1988...banking system clientele who were bankrupt and mostly in arrears'), on-site exams finding 'virtual insolvency' with 70%+ NPLs, NBC's December 1994 review confirming 77% NPLs (matching the claimed 60-80% by mid-1990s), TIB with 90%+ arrears, and CRDB/THB similarly distressed -- followed by 1991-97 market liberalization and NBC privatization. The only minor imprecision is 'by 1987' vs. the WB's 'by 1988' framing of a gradual, decades-long systemic buildup rather than a discrete dated event, which does not rise to a material year error.",
+        "source": "https://documents1.worldbank.org/curated/en/995551468778747637/pdf/multi0page.pdf",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-09",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://documents1.worldbank.org/curated/en/995551468778747637/pdf/multi0page.pdf"
+  },
+  {
     "year": 1988,
     "title": "AIDS Epidemic Devastates Tanzania",
     "verdict": "TRUE",

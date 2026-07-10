@@ -601,6 +601,42 @@
   },
   {
     "year": 1982,
+    "title": "Souk Al-Manakh Crash Leaves Kuwait's Banking System Near-Insolvent",
+    "verdict": "TRUE",
+    "reason": "Independent sourcing confirms every material claim: Kuwait's unofficial Souk Al-Manakh market (unregulated Gulf shares traded on postdated checks) grew from $5B to $100B market cap, then crashed in August 1982 when a postdated check from a Passport Office employee bounced. The official investigation found ~$94 billion in worthless postdated checks held by roughly 6,000 investors. The resulting debts left all Kuwaiti banks except the National Bank of Kuwait technically insolvent, propped up by Central Bank support. Wikipedia's account was independently corroborated by Cleveland Fed's economic commentary and Kuwait Times reporting, which describe the same $93-94B figure, the bounced-check trigger, and near-total bank insolvency.",
+    "verify_count": 2,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "double_confirmed",
+    "needs_tiebreak": false,
+    "source_independence": "weak",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Independently confirmed via Wikipedia and corroborating search summaries: Kuwait's unofficial Souk Al-Manakh market grew from $5B to $100B market cap on unregulated postdated-check trading, crashed in August 1982 when a postdated check from a Passport Office employee bounced. Official investigation found ~$94 billion in worthless postdated checks held by ~6,000 investors. All Kuwaiti banks except the National Bank of Kuwait became technically insolvent, propped up by Central Bank of Kuwait support. A specially created settlement corporation ('Corporation for the Settlement of Company Forward Share Transactions,' formed April 1983) was tasked with unwinding the claims over subsequent years (later work continued under the 'Difficult Credit Facilities Resettlement Program'). Every material detail in the event description (magnitude, actors, scope, year, country) is corroborated.",
+        "source": "https://en.wikipedia.org/wiki/Souk_Al-Manakh_stock_market_crash",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-09",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Independent sourcing confirms every material claim: Kuwait's unofficial Souk Al-Manakh market (unregulated Gulf shares traded on postdated checks) grew from $5B to $100B market cap, then crashed in August 1982 when a postdated check from a Passport Office employee bounced. The official investigation found ~$94 billion in worthless postdated checks held by roughly 6,000 investors. The resulting debts left all Kuwaiti banks except the National Bank of Kuwait technically insolvent, propped up by Central Bank support. Wikipedia's account was independently corroborated by Cleveland Fed's economic commentary and Kuwait Times reporting, which describe the same $93-94B figure, the bounced-check trigger, and near-total bank insolvency.",
+        "source": "https://en.wikipedia.org/wiki/Souk_Al-Manakh_stock_market_crash",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-09",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Souk_Al-Manakh_stock_market_crash"
+  },
+  {
+    "year": 1982,
     "title": "Souk Al-Manakh Stock Market Crash",
     "verdict": "TRUE",
     "reason": "Kuwait's unofficial Souk Al-Manakh stock market collapsed in August 1982 when a post-dated check from a Passport Office employee bounced, triggering a cascade. The Ministry of Finance shut the market in September 1982 with outstanding worthless checks valued at roughly $94 billion, requiring a massive government bailout.",

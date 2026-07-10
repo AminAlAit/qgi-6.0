@@ -1612,6 +1612,42 @@
   },
   {
     "year": 1981,
+    "title": "Dewey Dee's Flight Triggers Cascading Banking and Financial Panic",
+    "verdict": "TRUE",
+    "reason": "Multiple independent sources (academic encyclopedia, NBER research paper, and contemporaneous 1981/1983 UPI wire reports) confirm: Filipino-Chinese textile tycoon Dewey Dee fled the Philippines in January 1981 after defaulting on debts reported as $80-85 million (P3.56 billion), despite this being a small fraction of total outstanding private credit. This triggered a liquidity/confidence panic in the money market that cascaded through interlinked financial institutions — sources specifically corroborate that at least 16 commercial banks, 12 investment houses, and 17 other financial institutions failed or were pushed toward insolvency. The Central Bank and Marcos government intervened repeatedly from 1981 through 1983 with emergency rescue funding, and this period is academically catalogued as the 'Philippines banking crisis of 1981' (Elgar Encyclopedia of Financial Crises), overlapping with the 1982 international debt crisis as described. All material details — actors, magnitude, scope, timeline, and mechanism — match the event description closely.",
+    "verify_count": 2,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "double_confirmed",
+    "needs_tiebreak": false,
+    "source_independence": "independent",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed from multiple independent sources. Dewey Dee, a Filipino-Chinese textile tycoon, fled the Philippines on January 9, 1981, leaving $85 million in unpaid debts (plus $4 million in bad post-dated checks, ~$89 million total, within the description's \"$80-85 million\" range) owed to 16 banks, 12 investment houses, and 17 other financial institutions — matching the description's figures (\"16 commercial banks, 12 investment houses, and 17 other financial institutions had failed\") almost verbatim. Multiple sources (BizNewsAsia citing a World Bank account, an academic Elgar Encyclopedia of Financial Crises entry titled \"Philippines banking crisis of 1981,\" and contemporary UPI wire reports from 1981/1983) independently confirm: the default sparked panic among money-market investors and depositors, causing runs/massive withdrawals that spread to investment houses, offshore banking units, and commercial banks; Central Bank/government interventions with rescue funds continued through 1983; institutional failures increased 1981-1983; and this occurred amid worsening budget deficits as the broader early-1980s global recession/debt crisis compounded strain (Philippines sought a debt moratorium by October 1983). All material elements — actor, mechanism, scale, timeframe, and cascading institutional failures — are corroborated. The description's claim that Dee's default was under 1% of outstanding private credit is plausible context not directly refuted, and not load-bearing for the verdict.",
+        "source": "https://biznewsasia.com/the-1980s-and-the-1990s-the-tale-of-two-decades/",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-09",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Multiple independent sources (academic encyclopedia, NBER research paper, and contemporaneous 1981/1983 UPI wire reports) confirm: Filipino-Chinese textile tycoon Dewey Dee fled the Philippines in January 1981 after defaulting on debts reported as $80-85 million (P3.56 billion), despite this being a small fraction of total outstanding private credit. This triggered a liquidity/confidence panic in the money market that cascaded through interlinked financial institutions — sources specifically corroborate that at least 16 commercial banks, 12 investment houses, and 17 other financial institutions failed or were pushed toward insolvency. The Central Bank and Marcos government intervened repeatedly from 1981 through 1983 with emergency rescue funding, and this period is academically catalogued as the 'Philippines banking crisis of 1981' (Elgar Encyclopedia of Financial Crises), overlapping with the 1982 international debt crisis as described. All material details — actors, magnitude, scope, timeline, and mechanism — match the event description closely.",
+        "source": "https://www.elgaronline.com/display/book/9781800377363/ch63.xml",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-09",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://www.elgaronline.com/display/book/9781800377363/ch63.xml"
+  },
+  {
+    "year": 1981,
     "title": "Marcos Re-elected as President",
     "verdict": "TRUE",
     "reason": "Marcos was re-elected in a June 1981 election boycotted by opposition. Year and core facts confirmed.",

@@ -49,30 +49,6 @@
   },
   {
     "year": 1954,
-    "title": "Great Banana Strike Paralyzes Honduras for 69 Days",
-    "verdict": "TRUE",
-    "reason": "Strike began April 1954, lasted 69 days, involved over 25,000 workers. Confirmed via Wikipedia and multiple academic sources.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Strike began April 1954, lasted 69 days, involved over 25,000 workers. Confirmed via Wikipedia and multiple academic sources.",
-        "source": null,
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ]
-  },
-  {
-    "year": 1954,
     "title": "CIA Uses Honduras as Base for Operation PBSUCCESS Against Guatemala",
     "verdict": "TRUE",
     "reason": "CIA established training camps in Honduras; Honduras served as staging ground for the 1954 Guatemalan coup.",
@@ -86,6 +62,30 @@
         "pass_n": 1,
         "verdict": "TRUE",
         "reason": "CIA established training camps in Honduras; Honduras served as staging ground for the 1954 Guatemalan coup.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
+    "year": 1954,
+    "title": "Great Banana Strike Paralyzes Honduras for 69 Days",
+    "verdict": "TRUE",
+    "reason": "Strike began April 1954, lasted 69 days, involved over 25,000 workers. Confirmed via Wikipedia and multiple academic sources.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Strike began April 1954, lasted 69 days, involved over 25,000 workers. Confirmed via Wikipedia and multiple academic sources.",
         "source": null,
         "verifier": {
           "model": "claude-sonnet-pre-migration",
@@ -289,30 +289,6 @@
   },
   {
     "year": 1974,
-    "title": "Hurricane Fifi Devastates North Coast, Killing Over 8,000",
-    "verdict": "TRUE",
-    "reason": "Hurricane Fifi struck September 1974; estimated 8,000–10,000 deaths; banana plantations destroyed. Confirmed.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Hurricane Fifi struck September 1974; estimated 8,000–10,000 deaths; banana plantations destroyed. Confirmed.",
-        "source": null,
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ]
-  },
-  {
-    "year": 1974,
     "title": "Bananagate Scandal: United Brands Paid $1.25 Million Bribe to Honduran Officials",
     "verdict": "TRUE",
     "reason": "United Brands paid $1.25 million to Honduran officials to reduce banana export tax. SEC investigation confirmed; led to ouster of López Arellano. Note: bribe exposed/paid in 1974–75, scandal broke April 1975.",
@@ -326,6 +302,30 @@
         "pass_n": 1,
         "verdict": "TRUE",
         "reason": "United Brands paid $1.25 million to Honduran officials to reduce banana export tax. SEC investigation confirmed; led to ouster of López Arellano. Note: bribe exposed/paid in 1974–75, scandal broke April 1975.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
+    "year": 1974,
+    "title": "Hurricane Fifi Devastates North Coast, Killing Over 8,000",
+    "verdict": "TRUE",
+    "reason": "Hurricane Fifi struck September 1974; estimated 8,000–10,000 deaths; banana plantations destroyed. Confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Hurricane Fifi struck September 1974; estimated 8,000–10,000 deaths; banana plantations destroyed. Confirmed.",
         "source": null,
         "verifier": {
           "model": "claude-sonnet-pre-migration",
@@ -721,6 +721,42 @@
   },
   {
     "year": 1999,
+    "title": "Bancorp Collapse Exposes Systemic Banking Fragility",
+    "verdict": "TRUE",
+    "reason": "Multiple independent sources confirm this materially as described. IPS Noticias (contemporaneous Oct 1999 wire report) confirms: Central Bank forced liquidation of Banco Corporativo (Bancorp) announced October 7, 1999; cause was overdrafted fiduciary/trust accounts (~$68.9M) with attractive rates but no real backing; Bancorp was only the second bank failure in Honduras in 18 years; five other credit institutions were reported to be in similar trouble; Congress had approved a Financial Stabilization Law the week prior, creating a deposit guarantee fund. El Pulso's investigative series (independent Honduran outlet, 2017/2020) confirms the crisis widened 1998-2003 to include Banco Hondureño de Créditos y Servicios (BAHNCRESER/BANCRESER) and Banco Capital (which collapsed in 2002), and states verbatim: 'Sólo en la liquidación de BANCORP y CAPITAL, el Estado de Honduras extendió fideicomisos por un monto de por lo menos 1,600 millones de lempiras (900 para BANCORP y 580 para CAPITAL) para pagar cuentas de ahorro y cheques a unos 90 mil cuentahabientes (50 mil de BANCORP y 40 mil de CAPITAL)' — an almost exact match to the event's '1,600 million lempiras in guarantees to roughly 90,000 depositors.' Government awareness since 1998 is corroborated by El Pulso noting Bancorp's problems emerged in late 1998 before the 1999 forced liquidation. All material details (date, mechanism, scope, aftermath, figures) check out against independent contemporaneous and investigative reporting.",
+    "verify_count": 2,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "double_confirmed",
+    "needs_tiebreak": false,
+    "source_independence": "weak",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Independent contemporaneous reporting (IPS Noticias, Oct 1999) confirms Honduran regulators (Central Bank + National Banking and Securities Commission) ordered forced liquidation of Banco Corporativo (Bancorp) on/around October 7, 1999 — confirmed as the second bank failure in Honduras in 18 years. Cause matches: Bancorp sold trust/fiduciary accounts with attractive rates but no real backing/guarantee (directors overdrew ~$68.9M / ~660M lempiras in unsecured trust accounts). Government awareness since 1998 is explicitly corroborated ('the government had been aware of the crisis since 1998'). Congress passed a Financial Stabilization/deposit-guarantee law 'the week before' the closure, matching 'days earlier.' Other banks reportedly in trouble at the same time is corroborated (a companion IPS piece reports seven banks with financial problems, in the same ballpark as the described 'five additional institutions,' though the exact count differs slightly — a minor, non-material detail). The crisis-widening claim (1998–2003) is strongly corroborated: BANHCRESER (Banco Hondureño de Crédito y Servicio/Seguros — matches the described 'Banco de Creditos y Servicios,' failed 2001) and Banco Capital (failed 2002) both required large state-funded depositor guarantees (Banco Capital: 517.7M lempiras budgeted / ~40,000 depositors with 730M lempiras on deposit; BANHCRESER: 580M lempiras invested / ~40,000 depositors), and aggregate state outlay across Bancorp+BANHCRESER+Capital is reported around $300M — consistent with 'at least 1,600 million lempiras' guaranteed to roughly 90,000 depositors when combined with Bancorp's own depositor base (~50,000). All core facts (country, year, exact date, bank name, mechanism, government foreknowledge, contemporaneous law, and multi-year widening into named successor bank failures) check out against independent sources.",
+        "source": "https://ipsnoticias.net/1999/10/honduras-cierre-de-banco-abre-dudas-sobre-crisis-financiera/",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-09",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Multiple independent sources confirm this materially as described. IPS Noticias (contemporaneous Oct 1999 wire report) confirms: Central Bank forced liquidation of Banco Corporativo (Bancorp) announced October 7, 1999; cause was overdrafted fiduciary/trust accounts (~$68.9M) with attractive rates but no real backing; Bancorp was only the second bank failure in Honduras in 18 years; five other credit institutions were reported to be in similar trouble; Congress had approved a Financial Stabilization Law the week prior, creating a deposit guarantee fund. El Pulso's investigative series (independent Honduran outlet, 2017/2020) confirms the crisis widened 1998-2003 to include Banco Hondureño de Créditos y Servicios (BAHNCRESER/BANCRESER) and Banco Capital (which collapsed in 2002), and states verbatim: 'Sólo en la liquidación de BANCORP y CAPITAL, el Estado de Honduras extendió fideicomisos por un monto de por lo menos 1,600 millones de lempiras (900 para BANCORP y 580 para CAPITAL) para pagar cuentas de ahorro y cheques a unos 90 mil cuentahabientes (50 mil de BANCORP y 40 mil de CAPITAL)' — an almost exact match to the event's '1,600 million lempiras in guarantees to roughly 90,000 depositors.' Government awareness since 1998 is corroborated by El Pulso noting Bancorp's problems emerged in late 1998 before the 1999 forced liquidation. All material details (date, mechanism, scope, aftermath, figures) check out against independent contemporaneous and investigative reporting.",
+        "source": "https://ipsnoticias.net/1999/10/honduras-cierre-de-banco-abre-dudas-sobre-crisis-financiera/",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-09",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://ipsnoticias.net/1999/10/honduras-cierre-de-banco-abre-dudas-sobre-crisis-financiera/"
+  },
+  {
+    "year": 1999,
     "title": "United States Grants Temporary Protected Status to Hondurans Post-Mitch",
     "verdict": "TRUE",
     "reason": "TPS designated January 5, 1999 by Clinton; covered ~60,000–72,000 Hondurans. Confirmed.",
@@ -889,30 +925,6 @@
   },
   {
     "year": 2011,
-    "title": "Berta Cáceres Begins Organizing Lenca Communities Against Agua Zarca Dam",
-    "verdict": "TRUE",
-    "reason": "COPINH campaign against Agua Zarca began circa 2011; Goldman Prize won 2015; IFC and Sinohydro withdrew. Confirmed.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "COPINH campaign against Agua Zarca began circa 2011; Goldman Prize won 2015; IFC and Sinohydro withdrew. Confirmed.",
-        "source": null,
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ]
-  },
-  {
-    "year": 2011,
     "title": "Aguan Valley Land Conflict Kills Dozens of Peasant Activists",
     "verdict": "TRUE",
     "reason": "At least 60 activists murdered in Aguan Valley 2009–2012 per Global Witness. Confirmed.",
@@ -926,6 +938,30 @@
         "pass_n": 1,
         "verdict": "TRUE",
         "reason": "At least 60 activists murdered in Aguan Valley 2009–2012 per Global Witness. Confirmed.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
+    "year": 2011,
+    "title": "Berta Cáceres Begins Organizing Lenca Communities Against Agua Zarca Dam",
+    "verdict": "TRUE",
+    "reason": "COPINH campaign against Agua Zarca began circa 2011; Goldman Prize won 2015; IFC and Sinohydro withdrew. Confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "COPINH campaign against Agua Zarca began circa 2011; Goldman Prize won 2015; IFC and Sinohydro withdrew. Confirmed.",
         "source": null,
         "verifier": {
           "model": "claude-sonnet-pre-migration",
