@@ -1,0 +1,19 @@
+{
+  "note": "THROWAWAY diagnostic — joint AND-coverage of the 3 standalone-clean run-2 survivors (v2xel_frefair, MS.MIL.XPND.GD.ZS, SL.UEM.1524.ZS) after dropping VC.IDP.NWDS, VC.BTL.DETH, DT.TDS.DECT.EX.ZS. Same machinery/seed as _per_driver_coverage.py and run-3.1-pilot/_recompute_terrorist_attack_baseline.py.",
+  "drivers": ["v2xel_frefair", "MS.MIL.XPND.GD.ZS", "SL.UEM.1524.ZS"],
+  "seed": 12345,
+  "n_pos_total": 242,
+  "n_neg_total": 726,
+  "window_grid": {
+    "3":  {"pos_coverage": 0.6281, "neg_coverage": 0.5813, "n_pos_survive": 152, "n_countries_survive": 69, "coverage_gate_ok": false},
+    "5":  {"pos_coverage": 0.6405, "neg_coverage": 0.5937, "n_pos_survive": 155, "n_countries_survive": 69, "coverage_gate_ok": false},
+    "7":  {"pos_coverage": 0.6529, "neg_coverage": 0.5964, "n_pos_survive": 158, "n_countries_survive": 69, "coverage_gate_ok": false},
+    "10": {"pos_coverage": 0.6529, "neg_coverage": 0.6116, "n_pos_survive": 158, "n_countries_survive": 69, "coverage_gate_ok": true},
+    "12": {"pos_coverage": 0.6281, "neg_coverage": 0.5882, "n_pos_survive": 152, "n_countries_survive": 69, "coverage_gate_ok": false},
+    "15": {"pos_coverage": 0.5826, "neg_coverage": 0.5661, "n_pos_survive": 141, "n_countries_survive": 69, "coverage_gate_ok": false},
+    "18": {"pos_coverage": 0.5579, "neg_coverage": 0.5386, "n_pos_survive": 135, "n_countries_survive": 69, "coverage_gate_ok": false},
+    "21": {"pos_coverage": 0.5496, "neg_coverage": 0.5303, "n_pos_survive": 133, "n_countries_survive": 68, "coverage_gate_ok": false},
+    "25": {"pos_coverage": 0.5207, "neg_coverage": 0.5096, "n_pos_survive": 126, "n_countries_survive": 68, "coverage_gate_ok": false}
+  },
+  "headline": "window=10 is the ONLY cell in WINDOW_GRID where the 3-driver clean subset clears coverage_gate_ok (65.29% pos-survival / 61.16% neg-survival / 158 of 242 positives / 69 of 71 countries). This is a candidate Phase-0 rebuilt baseline per PRE-REGISTRATION.md §2 (window LOCKED at 10, not argmaxed) -- LOCO-AUC not yet computed for this set; that is the next step, not part of this diagnostic."
+}
