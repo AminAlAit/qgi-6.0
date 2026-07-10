@@ -150,7 +150,7 @@ event survives on disk.
 | barbados | - | - | 0 | 2026-07-02 | row added by regen-tracking (Generated/Curated: see session logs below) |
 | belarus | - | - | 1 | 2026-07-02 | row added by regen-tracking (Generated/Curated: see session logs below) |
 | belize | - | - | 0 | 2026-07-02 | row added by regen-tracking (Generated/Curated: see session logs below) |
-| benin | - | - | 2 | 2026-07-09 | row added by regen-tracking (Generated/Curated: see session logs below) |
+| benin | - | - | 0 | 2026-07-10 | row added by regen-tracking (Generated/Curated: see session logs below) |
 | bhutan | - | - | 1 | 2026-07-02 | row added by regen-tracking (Generated/Curated: see session logs below) |
 | botswana | - | - | 1 | 2026-07-02 | row added by regen-tracking (Generated/Curated: see session logs below) |
 | brunei | - | - | 1 | 2026-07-02 | row added by regen-tracking (Generated/Curated: see session logs below) |
