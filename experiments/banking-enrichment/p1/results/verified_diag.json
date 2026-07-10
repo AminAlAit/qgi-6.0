@@ -1,0 +1,662 @@
+{
+  "diagnostics": {
+    "train_window": [
+      1789,
+      2021
+    ],
+    "n_curated_events_in_window": 12407,
+    "n_curated_in_verified_countries": 11255,
+    "n_matched_a_verdict": 10926,
+    "n_verdict_true": 10156,
+    "match_rate_among_verified_countries": 0.9708,
+    "n_countries_with_verification": 163,
+    "n_countries_without_verification": 34,
+    "countries_without_verification": [
+      "andorra",
+      "bahamas",
+      "barbados",
+      "belize",
+      "benin",
+      "central_african_republic",
+      "dominica",
+      "equatorial_guinea",
+      "eswatini",
+      "gabon",
+      "gambia",
+      "guinea_bissau",
+      "guyana",
+      "kiribati",
+      "lesotho",
+      "liechtenstein",
+      "luxembourg",
+      "marshall_islands",
+      "micronesia",
+      "monaco",
+      "montenegro",
+      "nauru",
+      "palau",
+      "republic_of_congo",
+      "saint_kitts_and_nevis",
+      "saint_lucia",
+      "saint_vincent_and_the_grenadines",
+      "sao_tome_and_principe",
+      "seychelles",
+      "solomon_islands",
+      "tonga",
+      "tuvalu",
+      "vanuatu",
+      "vatican_city"
+    ],
+    "low_match_countries": [
+      "antigua_and_barbuda",
+      "cabo_verde",
+      "comoros",
+      "djibouti",
+      "fiji",
+      "grenada",
+      "malta",
+      "samoa",
+      "san_marino"
+    ],
+    "per_country_match_rate": {
+      "afghanistan": 1.0,
+      "albania": 1.0,
+      "algeria": 0.992,
+      "angola": 1.0,
+      "antigua_and_barbuda": 0.441,
+      "argentina": 1.0,
+      "armenia": 0.963,
+      "australia": 1.0,
+      "austria": 1.0,
+      "azerbaijan": 1.0,
+      "bahrain": 1.0,
+      "bangladesh": 1.0,
+      "belarus": 1.0,
+      "belgium": 1.0,
+      "bhutan": 1.0,
+      "bolivia": 1.0,
+      "bosnia_and_herzegovina": 0.98,
+      "botswana": 1.0,
+      "brazil": 1.0,
+      "brunei": 1.0,
+      "bulgaria": 1.0,
+      "burkina_faso": 1.0,
+      "burundi": 1.0,
+      "cabo_verde": 0.478,
+      "cambodia": 1.0,
+      "cameroon": 1.0,
+      "canada": 1.0,
+      "chad": 1.0,
+      "chile": 1.0,
+      "china": 1.0,
+      "colombia": 1.0,
+      "comoros": 0.02,
+      "costa_rica": 0.974,
+      "croatia": 0.981,
+      "cuba": 1.0,
+      "cyprus": 1.0,
+      "czechia": 1.0,
+      "democratic_republic_of_congo": 1.0,
+      "denmark": 1.0,
+      "djibouti": 0.27,
+      "dominican_republic": 0.98,
+      "ecuador": 1.0,
+      "egypt": 1.0,
+      "el_salvador": 1.0,
+      "eritrea": 0.984,
+      "estonia": 1.0,
+      "ethiopia": 0.966,
+      "fiji": 0.328,
+      "finland": 1.0,
+      "france": 1.0,
+      "georgia": 1.0,
+      "germany": 1.0,
+      "ghana": 1.0,
+      "greece": 1.0,
+      "grenada": 0.024,
+      "guatemala": 1.0,
+      "guinea": 1.0,
+      "haiti": 1.0,
+      "honduras": 1.0,
+      "hungary": 1.0,
+      "iceland": 1.0,
+      "india": 1.0,
+      "indonesia": 0.985,
+      "iran": 0.951,
+      "iraq": 1.0,
+      "ireland": 1.0,
+      "israel": 1.0,
+      "italy": 1.0,
+      "ivory_coast": 0.981,
+      "jamaica": 1.0,
+      "japan": 1.0,
+      "jordan": 1.0,
+      "kazakhstan": 1.0,
+      "kenya": 1.0,
+      "kosovo": 1.0,
+      "kuwait": 1.0,
+      "kyrgyzstan": 1.0,
+      "laos": 0.974,
+      "latvia": 1.0,
+      "lebanon": 0.979,
+      "liberia": 1.0,
+      "libya": 0.987,
+      "lithuania": 1.0,
+      "madagascar": 0.942,
+      "malawi": 1.0,
+      "malaysia": 1.0,
+      "maldives": 1.0,
+      "mali": 0.959,
+      "malta": 0.618,
+      "mauritania": 1.0,
+      "mauritius": 1.0,
+      "mexico": 1.0,
+      "moldova": 1.0,
+      "mongolia": 1.0,
+      "morocco": 0.968,
+      "mozambique": 0.961,
+      "myanmar": 1.0,
+      "namibia": 1.0,
+      "nepal": 1.0,
+      "netherlands": 1.0,
+      "new_zealand": 1.0,
+      "nicaragua": 1.0,
+      "niger": 1.0,
+      "nigeria": 1.0,
+      "north_korea": 1.0,
+      "north_macedonia": 1.0,
+      "norway": 1.0,
+      "oman": 1.0,
+      "pakistan": 0.992,
+      "palestine": 1.0,
+      "panama": 1.0,
+      "papua_new_guinea": 1.0,
+      "paraguay": 1.0,
+      "peru": 1.0,
+      "philippines": 1.0,
+      "poland": 1.0,
+      "portugal": 1.0,
+      "qatar": 1.0,
+      "romania": 1.0,
+      "russia": 0.996,
+      "rwanda": 0.985,
+      "samoa": 0.548,
+      "san_marino": 0.028,
+      "saudi_arabia": 1.0,
+      "senegal": 0.982,
+      "serbia": 1.0,
+      "sierra_leone": 1.0,
+      "singapore": 1.0,
+      "slovakia": 1.0,
+      "slovenia": 1.0,
+      "somalia": 1.0,
+      "south_africa": 1.0,
+      "south_korea": 1.0,
+      "south_sudan": 1.0,
+      "spain": 1.0,
+      "sri_lanka": 1.0,
+      "sudan": 1.0,
+      "suriname": 1.0,
+      "sweden": 1.0,
+      "switzerland": 1.0,
+      "syria": 0.994,
+      "taiwan": 1.0,
+      "tajikistan": 1.0,
+      "tanzania": 1.0,
+      "thailand": 1.0,
+      "timor_leste": 1.0,
+      "togo": 1.0,
+      "trinidad_and_tobago": 1.0,
+      "tunisia": 0.989,
+      "turkiye": 1.0,
+      "turkmenistan": 1.0,
+      "uganda": 1.0,
+      "ukraine": 0.735,
+      "united_arab_emirates": 1.0,
+      "united_kingdom": 1.0,
+      "united_states": 1.0,
+      "uruguay": 1.0,
+      "uzbekistan": 1.0,
+      "venezuela": 0.923,
+      "vietnam": 1.0,
+      "yemen": 1.0,
+      "zambia": 1.0,
+      "zimbabwe": 0.986
+    },
+    "per_category_curated_in_window": {
+      "agricultural_policy": 92,
+      "banking_and_financial_crisis": 151,
+      "bilateral_treaty": 700,
+      "civil_war_and_insurgency": 615,
+      "climate_agreement": 30,
+      "constitutional_change": 536,
+      "cultural_and_heritage": 111,
+      "currency_crisis": 75,
+      "cyberattack": 6,
+      "decentralization_and_federalism": 41,
+      "democratic_transition": 434,
+      "digital_policy": 16,
+      "diplomatic_rupture": 139,
+      "drought_and_famine": 36,
+      "earthquake": 22,
+      "economic_growth_milestone": 88,
+      "economic_liberalization": 124,
+      "economic_nationalization": 86,
+      "economic_recession": 275,
+      "economic_recovery": 29,
+      "education_and_research": 33,
+      "education_reform": 16,
+      "elections_and_voting": 1160,
+      "energy_policy": 169,
+      "environmental_policy": 123,
+      "epidemic_and_pandemic": 213,
+      "ethnic_and_communal_conflict": 92,
+      "executive_power_consolidation": 149,
+      "fiscal_policy_change": 311,
+      "flood_and_cyclone": 99,
+      "foreign_aid_and_development": 66,
+      "foreign_direct_investment": 35,
+      "foreign_intervention": 206,
+      "government_formation": 683,
+      "human_rights_reform": 178,
+      "human_rights_violation": 278,
+      "humanitarian_crisis": 58,
+      "industrial_policy": 29,
+      "infrastructure_project": 142,
+      "interstate_war": 123,
+      "labor_action": 95,
+      "mass_protest": 394,
+      "migration_and_refugees": 211,
+      "military_coup": 268,
+      "military_policy_and_reform": 191,
+      "monetary_policy_change": 102,
+      "multilateral_agreement": 355,
+      "natural_disaster": 133,
+      "oil_and_gas": 68,
+      "peacekeeping_and_peace_process": 301,
+      "political_corruption": 211,
+      "political_repression": 446,
+      "political_violence": 285,
+      "poverty_and_inequality_crisis": 25,
+      "public_health_reform": 27,
+      "regional_integration": 194,
+      "religious_and_social_movement": 80,
+      "renewable_energy": 6,
+      "resource_conflict": 56,
+      "sanctions_and_arms_embargo": 111,
+      "social_policy_reform": 64,
+      "sport_and_international_event": 96,
+      "technology_breakthrough": 110,
+      "territorial_disputes": 193,
+      "terrorist_attack": 266,
+      "trade_agreement": 146,
+      "trade_dispute": 23,
+      "transitional_justice": 159,
+      "urban_development": 5,
+      "volcanic_eruption": 13,
+      "water_crisis": 4
+    }
+  },
+  "tiers": {
+    "runnable": 47,
+    "thin": 19,
+    "skip": 5
+  },
+  "recipes": {
+    "agricultural_policy": {
+      "n_pos": 74,
+      "tier": "runnable",
+      "written": false
+    },
+    "banking_and_financial_crisis": {
+      "n_pos": 116,
+      "tier": "runnable",
+      "written": false
+    },
+    "bilateral_treaty": {
+      "n_pos": 566,
+      "tier": "runnable",
+      "written": false
+    },
+    "civil_war_and_insurgency": {
+      "n_pos": 517,
+      "tier": "runnable",
+      "written": false
+    },
+    "climate_agreement": {
+      "n_pos": 16,
+      "tier": "thin",
+      "written": false
+    },
+    "constitutional_change": {
+      "n_pos": 408,
+      "tier": "runnable",
+      "written": false
+    },
+    "cultural_and_heritage": {
+      "n_pos": 91,
+      "tier": "runnable",
+      "written": false
+    },
+    "currency_crisis": {
+      "n_pos": 69,
+      "tier": "runnable",
+      "written": false
+    },
+    "cyberattack": {
+      "n_pos": 3,
+      "tier": "skip",
+      "written": false
+    },
+    "decentralization_and_federalism": {
+      "n_pos": 37,
+      "tier": "thin",
+      "written": false
+    },
+    "democratic_transition": {
+      "n_pos": 357,
+      "tier": "runnable",
+      "written": false
+    },
+    "digital_policy": {
+      "n_pos": 8,
+      "tier": "thin",
+      "written": false
+    },
+    "diplomatic_rupture": {
+      "n_pos": 105,
+      "tier": "runnable",
+      "written": false
+    },
+    "drought_and_famine": {
+      "n_pos": 26,
+      "tier": "thin",
+      "written": false
+    },
+    "earthquake": {
+      "n_pos": 16,
+      "tier": "thin",
+      "written": false
+    },
+    "economic_growth_milestone": {
+      "n_pos": 64,
+      "tier": "runnable",
+      "written": false
+    },
+    "economic_liberalization": {
+      "n_pos": 91,
+      "tier": "runnable",
+      "written": false
+    },
+    "economic_nationalization": {
+      "n_pos": 65,
+      "tier": "runnable",
+      "written": false
+    },
+    "economic_recession": {
+      "n_pos": 216,
+      "tier": "runnable",
+      "written": false
+    },
+    "economic_recovery": {
+      "n_pos": 22,
+      "tier": "thin",
+      "written": false
+    },
+    "education_and_research": {
+      "n_pos": 28,
+      "tier": "thin",
+      "written": false
+    },
+    "education_reform": {
+      "n_pos": 15,
+      "tier": "thin",
+      "written": false
+    },
+    "elections_and_voting": {
+      "n_pos": 883,
+      "tier": "runnable",
+      "written": false
+    },
+    "energy_policy": {
+      "n_pos": 137,
+      "tier": "runnable",
+      "written": false
+    },
+    "environmental_policy": {
+      "n_pos": 91,
+      "tier": "runnable",
+      "written": false
+    },
+    "epidemic_and_pandemic": {
+      "n_pos": 165,
+      "tier": "runnable",
+      "written": false
+    },
+    "ethnic_and_communal_conflict": {
+      "n_pos": 76,
+      "tier": "runnable",
+      "written": false
+    },
+    "executive_power_consolidation": {
+      "n_pos": 106,
+      "tier": "runnable",
+      "written": false
+    },
+    "fiscal_policy_change": {
+      "n_pos": 236,
+      "tier": "runnable",
+      "written": false
+    },
+    "flood_and_cyclone": {
+      "n_pos": 49,
+      "tier": "thin",
+      "written": false
+    },
+    "foreign_aid_and_development": {
+      "n_pos": 46,
+      "tier": "thin",
+      "written": false
+    },
+    "foreign_direct_investment": {
+      "n_pos": 21,
+      "tier": "thin",
+      "written": false
+    },
+    "foreign_intervention": {
+      "n_pos": 177,
+      "tier": "runnable",
+      "written": false
+    },
+    "government_formation": {
+      "n_pos": 527,
+      "tier": "runnable",
+      "written": false
+    },
+    "human_rights_reform": {
+      "n_pos": 152,
+      "tier": "runnable",
+      "written": false
+    },
+    "human_rights_violation": {
+      "n_pos": 232,
+      "tier": "runnable",
+      "written": false
+    },
+    "humanitarian_crisis": {
+      "n_pos": 45,
+      "tier": "thin",
+      "written": false
+    },
+    "industrial_policy": {
+      "n_pos": 20,
+      "tier": "thin",
+      "written": false
+    },
+    "infrastructure_project": {
+      "n_pos": 103,
+      "tier": "runnable",
+      "written": false
+    },
+    "interstate_war": {
+      "n_pos": 101,
+      "tier": "runnable",
+      "written": false
+    },
+    "labor_action": {
+      "n_pos": 71,
+      "tier": "runnable",
+      "written": false
+    },
+    "mass_protest": {
+      "n_pos": 336,
+      "tier": "runnable",
+      "written": false
+    },
+    "migration_and_refugees": {
+      "n_pos": 181,
+      "tier": "runnable",
+      "written": false
+    },
+    "military_coup": {
+      "n_pos": 207,
+      "tier": "runnable",
+      "written": false
+    },
+    "military_policy_and_reform": {
+      "n_pos": 162,
+      "tier": "runnable",
+      "written": false
+    },
+    "monetary_policy_change": {
+      "n_pos": 70,
+      "tier": "runnable",
+      "written": false
+    },
+    "multilateral_agreement": {
+      "n_pos": 272,
+      "tier": "runnable",
+      "written": false
+    },
+    "natural_disaster": {
+      "n_pos": 120,
+      "tier": "runnable",
+      "written": false
+    },
+    "oil_and_gas": {
+      "n_pos": 44,
+      "tier": "thin",
+      "written": false
+    },
+    "peacekeeping_and_peace_process": {
+      "n_pos": 245,
+      "tier": "runnable",
+      "written": false
+    },
+    "political_corruption": {
+      "n_pos": 167,
+      "tier": "runnable",
+      "written": false
+    },
+    "political_repression": {
+      "n_pos": 381,
+      "tier": "runnable",
+      "written": false
+    },
+    "political_violence": {
+      "n_pos": 235,
+      "tier": "runnable",
+      "written": false
+    },
+    "poverty_and_inequality_crisis": {
+      "n_pos": 25,
+      "tier": "thin",
+      "written": false
+    },
+    "public_health_reform": {
+      "n_pos": 20,
+      "tier": "thin",
+      "written": false
+    },
+    "regional_integration": {
+      "n_pos": 143,
+      "tier": "runnable",
+      "written": false
+    },
+    "religious_and_social_movement": {
+      "n_pos": 63,
+      "tier": "runnable",
+      "written": false
+    },
+    "renewable_energy": {
+      "n_pos": 2,
+      "tier": "skip",
+      "written": false
+    },
+    "resource_conflict": {
+      "n_pos": 40,
+      "tier": "thin",
+      "written": false
+    },
+    "sanctions_and_arms_embargo": {
+      "n_pos": 95,
+      "tier": "runnable",
+      "written": false
+    },
+    "social_policy_reform": {
+      "n_pos": 46,
+      "tier": "thin",
+      "written": false
+    },
+    "sport_and_international_event": {
+      "n_pos": 84,
+      "tier": "runnable",
+      "written": false
+    },
+    "technology_breakthrough": {
+      "n_pos": 97,
+      "tier": "runnable",
+      "written": false
+    },
+    "territorial_disputes": {
+      "n_pos": 164,
+      "tier": "runnable",
+      "written": false
+    },
+    "terrorist_attack": {
+      "n_pos": 242,
+      "tier": "runnable",
+      "written": false
+    },
+    "trade_agreement": {
+      "n_pos": 111,
+      "tier": "runnable",
+      "written": false
+    },
+    "trade_dispute": {
+      "n_pos": 15,
+      "tier": "thin",
+      "written": false
+    },
+    "transitional_justice": {
+      "n_pos": 128,
+      "tier": "runnable",
+      "written": false
+    },
+    "urban_development": {
+      "n_pos": 5,
+      "tier": "skip",
+      "written": false
+    },
+    "volcanic_eruption": {
+      "n_pos": 6,
+      "tier": "skip",
+      "written": false
+    },
+    "water_crisis": {
+      "n_pos": 2,
+      "tier": "skip",
+      "written": false
+    }
+  }
+}

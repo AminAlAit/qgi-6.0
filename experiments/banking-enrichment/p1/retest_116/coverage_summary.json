@@ -1,0 +1,69 @@
+{
+  "note": "Re-test of P1 screen + P2 AUC eval against the ENRICHED 116-positive/88-country banking positives.csv. Full detail in p1_screen_report_116.json and p2_results_116.json in this dir. This file is a compact hand-verified summary of the key numbers reported to the founder.",
+  "run_date": "2026-07-10",
+  "vehicle": "docker qgi-run31-pilot:py313, bind-mounted qgi-ml + qgi-data, zero installs",
+  "positives_csv": "qgi-ml/data/shape_inputs_v2/banking_and_financial_crisis/positives.csv (116 rows / 88 countries, verified)",
+  "build_features": {
+    "status": "re-ran build_features.py; identical row/country counts to the prior build (7892/185, 8437/229, 8227/185, 8783/229, 6043/142, 7676/157) because these are PANEL-DERIVED (built off the raw WB series for ALL 185-229 countries with data, not filtered to the positive set) -- re-running against the new positives.csv does not change what the candidate panels contain, only which cells screen.py checks.",
+    "country_coverage_check_vs_88_positive_countries": {
+      "credit_gap_1s_fd": "83/88 present at any year (missing: Antigua And Barbuda, Cuba, North Korea, Taiwan, Trinidad And Tobago -- all 5 structurally absent from WB FD.AST.PRVT.GD.ZS, not a build defect)",
+      "credit_gap_1s_fs": "83/88 present (same 5 missing)",
+      "credit_growth_3y_fd": "83/88 present (same 5 missing)",
+      "credit_growth_3y_fs": "83/88 present (same 5 missing)",
+      "stdebt_reserves": "44/88 present at any year -- IDS is EM-only by construction; missing set is entirely advanced economies (Australia, Austria, Belgium, Denmark, Japan, Sweden, Switzerland, UK, US, etc.) plus Cuba/North Korea/Taiwan/Antigua/Trinidad",
+      "m2_reserves": "66/88 present at any year -- narrower gap than stdebt_reserves (WDI-sourced, broader than IDS) but same advanced-economy-shaped hole"
+    }
+  },
+  "g1_coverage_at_positive_cells_pct": {
+    "credit_gap_1s_fd":    {"old_75pos": 76.0, "new_116pos": 78.4, "gate_80": "FAIL"},
+    "credit_gap_1s_fs":    {"old_75pos": 65.3, "new_116pos": 62.1, "gate_80": "FAIL"},
+    "credit_growth_3y_fd": {"old_75pos": 80.0, "new_116pos": 80.2, "gate_80": "PASS"},
+    "credit_growth_3y_fs": {"old_75pos": 70.7, "new_116pos": 65.5, "gate_80": "FAIL"},
+    "stdebt_reserves":     {"old_75pos": 24.0, "new_116pos": 41.4, "gate_80": "FAIL", "delta": "+17.4pp -- big improvement, still fails"},
+    "m2_reserves":         {"old_75pos": 56.0, "new_116pos": 67.2, "gate_80": "FAIL", "delta": "+11.2pp -- improvement, still fails"}
+  },
+  "g2_max_abs_rho_vs_run2_drivers": {
+    "credit_gap_1s_fd": 0.061,
+    "credit_gap_1s_fs": 0.075,
+    "credit_growth_3y_fd": 0.024,
+    "credit_growth_3y_fs": 0.025,
+    "stdebt_reserves": 0.092,
+    "m2_reserves": 0.033,
+    "note": "all 6 candidates pass G2 (<0.5) by a wide margin, same as the first pass -- orthogonality was never the blocker"
+  },
+  "external_fragility_twin_crisis_diagnostic": {
+    "purpose": "why stdebt_reserves/m2_reserves improved a lot (24->41.4%, 56->67.2%) but STILL fail the 80% gate: the EM twin-crisis events are now well covered, but the gate is computed over ALL 116 positives (EM + advanced), and IDS/reserves data is structurally EM-only.",
+    "stdebt_reserves_pass_on_twin_crisis_events": "12/13 PASS (Argentina01, Brazil94, China98, India93, Indonesia97, Mexico94, Nigeria09, Philippines81, Russia98, Thailand97, Turkiye01 all PASS; South Korea97 + South Korea08 FAIL -- Korea graduated out of IDS EM coverage)",
+    "m2_reserves_pass_on_twin_crisis_events": "11/13 PASS (all of the above EXCEPT Russia98 FAILs; South Korea97/08 PASS)",
+    "advanced_economy_events_dragging_down_the_aggregate_gate": "stdebt_reserves: 0% coverage on Australia, Austria, Belgium, Chile, Costa Rica, Croatia, Cyprus, Czechia, Denmark, Estonia, Finland, Greece, Hungary, Iceland, Ireland, Israel, Italy, Japan, Kuwait, Latvia, Lithuania, Netherlands, New Zealand, Norway, Panama, Poland, Portugal, Slovenia, Spain, Sweden, Switzerland, UK, US, Uruguay, Venezuela -- ~30+ events, structurally unfixable with IDS-family data"
+  },
+  "p2_auc_eval": {
+    "baseline_recomputed_on_116pos": {
+      "drivers": ["NV.SRV.TOTL.ZS", "v2x_gender", "MS.MIL.XPND.GD.ZS"],
+      "loco_auc": 0.6383644815482402,
+      "ci95": [0.5629037174126535, 0.7013012447132146],
+      "chosen_window": 15,
+      "old_baseline_75pos_for_contrast": 0.7707246376811594,
+      "note": "baseline AUC DROPPED 0.771 -> 0.638 moving to the representative 116-set. The old 0.771 headline was itself inflated by the advanced-economy-skewed sample (consistent with PLAN.md's pre-existing 'window-selection-fragile' flag). This is the correct comparison point for any candidate's dAUC now -- NOT the stale 0.771."
+    },
+    "only_gate_passer_evaluated": {
+      "candidate": "credit_growth_3y_fd",
+      "recipe_set": ["NV.SRV.TOTL.ZS", "v2x_gender", "MS.MIL.XPND.GD.ZS", "credit_growth_3y_fd"],
+      "loco_auc": 0.6800304215558453,
+      "ci95": [0.6024174484314597, 0.7449109840885033],
+      "delta_auc_point": 0.024753024753024766,
+      "delta_auc_ci95": [-0.058959107749437, 0.111714929943109],
+      "p_value": 0.6193806193806194,
+      "n_pairs": 311,
+      "n_clusters_countries": 78,
+      "verdict": "REJECTED -- dAUC CI crosses zero (does not clear 'CI-lower > 0' acceptance bar). Direction flipped positive vs the first pass (-0.052 on 75-set) but not statistically significant.",
+      "per_country_positive_prob_delta_twin_crisis_countries": {
+        "Mexico": -0.429, "Indonesia": -0.252, "Philippines": -0.127,
+        "South Korea": 0.465, "Brazil": 0.233, "India": 0.417,
+        "Turkiye": 0.064, "Nigeria": 0.097, "Argentina": 0.014, "China": 0.010
+      },
+      "mechanism_alignment_verdict": "MIXED, not concentrated -- 3 of 10 twin-crisis countries with positive events move the WRONG way (Mexico/Indonesia/Philippines), so criterion #2 (lift lands on EM twins specifically, not 2-3 lucky folds) is also not clearly satisfied even setting the CI issue aside."
+    }
+  },
+  "recipe_refit_status": "NOT triggered -- PLAN.md S6 gates the fit_shape_prototype.py re-bake on an ACCEPTED candidate (CI-lower>0); credit_growth_3y_fd was rejected, so canonical_length_T / per_indicator_trajectory_signature are unchanged and no re-fit was run this pass."
+}

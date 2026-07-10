@@ -83,12 +83,70 @@ def test_extract_features_basic():
     })
     feats = drv.extract_features_for_indicator(df, "TestCountry", 2020, window=15)
     assert feats is not None
-    assert feats.shape == (8,)
-    # last_z, mean_z, std_z, slope, accel, t1m, t2m, t3m
+    assert feats.shape == (10,)
+    assert feats.shape == (drv.N_FEATURES_PER_INDICATOR,)
+    # last_z, mean_z, std_z, slope, accel, t1m, t2m, t3m, lag_z2, lag_z3
     # slope should be positive (monotonically increasing)
     assert feats[3] > 0
     # tertile 3 mean > tertile 1 mean (later years higher value)
     assert feats[7] > feats[5]
+
+
+def test_extract_features_lag_slots_match_exact_years():
+    """Per run-3.1 banking wide-net fix #1 (2026-07-10): slots 8/9 are the z-score at
+    EXACTLY year-2 / year-3 (not "last available"), independently verifiable against
+    `last_z` (slot 0, which is z at year-1) on a fully-populated, monotonic series."""
+    df = pd.DataFrame({
+        "country": ["TestCountry"] * 20,
+        "year": list(range(2000, 2020)),  # 2000..2019, all present, no gaps
+        "value": list(range(20)),
+    })
+    feats = drv.extract_features_for_indicator(df, "TestCountry", 2020, window=15)
+    assert feats is not None
+    last_z, lag_z2, lag_z3 = feats[0], feats[8], feats[9]
+    # Fully-populated, evenly-spaced, monotonically increasing raw series => the
+    # z-scored series is also evenly-spaced with a constant step. year-1 -> year-2
+    # -> year-3 should therefore be evenly spaced by the same step as last_z to lag_z2.
+    step = last_z - lag_z2
+    assert step > 0  # increasing series => earlier year => lower z
+    assert abs((lag_z2 - lag_z3) - step) < 1e-9
+
+
+def test_extract_features_lag_slots_leakage_safe():
+    """LEAKAGE-CRITICAL: lag_z2/lag_z3 (and every other feature) must be a pure
+    function of data strictly BEFORE `year` — changing values at `year` or later must
+    not change the extracted feature vector at all."""
+    base_values = list(range(20))
+    df_a = pd.DataFrame({
+        "country": ["TestCountry"] * 21,
+        "year": list(range(2000, 2021)),  # includes year=2020 itself
+        "value": base_values + [999.0],  # value AT year=2020
+    })
+    df_b = pd.DataFrame({
+        "country": ["TestCountry"] * 21,
+        "year": list(range(2000, 2021)),
+        "value": base_values + [-999.0],  # wildly different future value at year=2020
+    })
+    feats_a = drv.extract_features_for_indicator(df_a, "TestCountry", 2020, window=15)
+    feats_b = drv.extract_features_for_indicator(df_b, "TestCountry", 2020, window=15)
+    assert feats_a is not None and feats_b is not None
+    np.testing.assert_array_equal(feats_a, feats_b)
+
+
+def test_extract_features_lag_slot_fallback_on_missing_year():
+    """A gap at exactly year-2 (or year-3) falls back to 0.0 (neutral), never an
+    imputed/forward-filled value from a different year — the fallback documented in
+    the docstring."""
+    kept = [(y, v) for y, v in zip(range(2000, 2020), range(20)) if y != 2018]  # drop year-2 (2018)
+    df = pd.DataFrame({
+        "country": ["TestCountry"] * len(kept),
+        "year": [y for y, _ in kept],
+        "value": [v for _, v in kept],
+    })
+    feats = drv.extract_features_for_indicator(df, "TestCountry", 2020, window=15)
+    assert feats is not None
+    assert feats[8] == 0.0  # lag_z2 falls back to neutral when year-2 is absent
+    assert feats[9] != 0.0  # lag_z3 (year-3=2017) is present and non-degenerate
 
 
 def test_extract_features_insufficient_data_returns_none():
@@ -218,7 +276,7 @@ def test_normalization_propagates_through_build_x_y():
     # Pre-fix: X.shape would be (0, 0) because "Costa_Rica" wouldn't match
     # "Costa Rica". Post-fix: at least one feature row is built.
     assert X.shape[0] == 1, "build_X_y must extract features for multi-word country"
-    assert X.shape[1] == 8  # 8 features per indicator
+    assert X.shape[1] == drv.N_FEATURES_PER_INDICATOR  # features per indicator
     assert y[0] == 1
 
 
