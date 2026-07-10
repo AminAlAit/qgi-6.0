@@ -1,0 +1,170 @@
+{
+  "run2_vdem_block": [
+    "v2excrptps",
+    "v2cltort",
+    "v2xel_frefair",
+    "v2x_clpol"
+  ],
+  "threshold": 0.85,
+  "candidates": {
+    "v2exl_legitlead": {
+      "candidate_id": "v2exl_legitlead",
+      "block_ids": [
+        "v2excrptps",
+        "v2cltort",
+        "v2xel_frefair",
+        "v2x_clpol"
+      ],
+      "n_rows": 202,
+      "n_pos_total": 207,
+      "coverage_at_positive_cells": 0.9758454106280193,
+      "r2": 0.24009601915448697,
+      "multiple_r": 0.48999593789590434,
+      "pairwise_r_vs_block": {
+        "v2excrptps": -0.23345149792163508,
+        "v2cltort": -0.21823715896279827,
+        "v2xel_frefair": -0.2909916411006941,
+        "v2x_clpol": -0.3967309486668614
+      },
+      "ols_coefficients_intercept_first": [
+        1.4634207567704267,
+        -0.2990245696054409,
+        0.2079540303026654,
+        -0.06895116823966338,
+        -2.3412631922357665
+      ],
+      "verdict": "PASS_ORTHOGONAL",
+      "threshold": 0.85,
+      "min_n": 30
+    },
+    "v2pepwrses": {
+      "candidate_id": "v2pepwrses",
+      "block_ids": [
+        "v2excrptps",
+        "v2cltort",
+        "v2xel_frefair",
+        "v2x_clpol"
+      ],
+      "n_rows": 202,
+      "n_pos_total": 207,
+      "coverage_at_positive_cells": 0.9758454106280193,
+      "r2": 0.1596238280018838,
+      "multiple_r": 0.3995295082993042,
+      "pairwise_r_vs_block": {
+        "v2excrptps": 0.2049241722823075,
+        "v2cltort": 0.24881905210641075,
+        "v2xel_frefair": 0.37079939175695487,
+        "v2x_clpol": 0.18166719000503992
+      },
+      "ols_coefficients_intercept_first": [
+        -0.09233633576537234,
+        0.11513525256081703,
+        0.08630225257717945,
+        1.6227559099576547,
+        -0.42591531935526694
+      ],
+      "verdict": "PASS_ORTHOGONAL",
+      "threshold": 0.85,
+      "min_n": 30
+    },
+    "v2stcritapparm": {
+      "candidate_id": "v2stcritapparm",
+      "block_ids": [
+        "v2excrptps",
+        "v2cltort",
+        "v2xel_frefair",
+        "v2x_clpol"
+      ],
+      "n_rows": 181,
+      "n_pos_total": 207,
+      "coverage_at_positive_cells": 0.8743961352657005,
+      "r2": 0.10869966102125206,
+      "multiple_r": 0.3296963163598466,
+      "pairwise_r_vs_block": {
+        "v2excrptps": 0.01877550540293457,
+        "v2cltort": 0.12858312572781827,
+        "v2xel_frefair": 0.16373185922197994,
+        "v2x_clpol": 0.3022733370344719
+      },
+      "ols_coefficients_intercept_first": [
+        -0.9470290212954754,
+        0.08684390359550365,
+        -0.14218118435200722,
+        -0.17408546044923687,
+        1.741438283711383
+      ],
+      "verdict": "PASS_ORTHOGONAL",
+      "threshold": 0.85,
+      "min_n": 30
+    },
+    "v2strenarm": {
+      "candidate_id": "v2strenarm",
+      "block_ids": [
+        "v2excrptps",
+        "v2cltort",
+        "v2xel_frefair",
+        "v2x_clpol"
+      ],
+      "n_rows": 185,
+      "n_pos_total": 207,
+      "coverage_at_positive_cells": 0.893719806763285,
+      "r2": 0.10260012760482662,
+      "multiple_r": 0.32031254674899423,
+      "pairwise_r_vs_block": {
+        "v2excrptps": -0.09025013799815543,
+        "v2cltort": 0.1033470159735224,
+        "v2xel_frefair": 0.05763807860052527,
+        "v2x_clpol": 0.2756578875378357
+      },
+      "ols_coefficients_intercept_first": [
+        0.009834861602547483,
+        -0.0064927975029472895,
+        -0.07675565898881417,
+        -0.544569869068814,
+        1.4823426453811124
+      ],
+      "verdict": "PASS_ORTHOGONAL",
+      "threshold": 0.85,
+      "min_n": 30
+    },
+    "OWID_AUTOCRATIZATION": {
+      "candidate_id": "OWID_AUTOCRATIZATION",
+      "block_ids": [
+        "v2excrptps",
+        "v2cltort",
+        "v2xel_frefair",
+        "v2x_clpol"
+      ],
+      "n_rows": 202,
+      "n_pos_total": 207,
+      "coverage_at_positive_cells": 0.9758454106280193,
+      "r2": 0.09732683285926025,
+      "multiple_r": 0.3119724873434519,
+      "pairwise_r_vs_block": {
+        "v2excrptps": -0.041342969104402084,
+        "v2cltort": 0.17262886007636416,
+        "v2xel_frefair": 0.27679132460540096,
+        "v2x_clpol": 0.2634732002058735
+      },
+      "ols_coefficients_intercept_first": [
+        0.0077667783294228035,
+        -0.030385861900253275,
+        -0.020102198074263347,
+        0.4057713722091418,
+        0.2650446525737187
+      ],
+      "verdict": "PASS_ORTHOGONAL",
+      "threshold": 0.85,
+      "min_n": 30
+    }
+  },
+  "survivors": [
+    "v2exl_legitlead",
+    "v2pepwrses",
+    "v2stcritapparm",
+    "v2strenarm",
+    "OWID_AUTOCRATIZATION"
+  ],
+  "rejected": [],
+  "inconclusive": []
+}

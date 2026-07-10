@@ -1,0 +1,1479 @@
+{
+  "seed": 12345,
+  "recipe_id": "military_coup",
+  "candidate_id": "OWID_AUTOCRATIZATION",
+  "recipe": [
+    "SP.DYN.LE00.IN",
+    "v2excrptps",
+    "v2cltort",
+    "v2xel_frefair",
+    "v2x_clpol",
+    "OWID_AUTOCRATIZATION"
+  ],
+  "locked_window": 25,
+  "baseline": {
+    "drivers": [
+      "SP.DYN.LE00.IN",
+      "v2excrptps",
+      "v2cltort",
+      "v2xel_frefair",
+      "v2x_clpol"
+    ],
+    "loco_auc": 0.651644276745926,
+    "ci95_lo": 0.5979895946273269,
+    "ci95_hi": 0.7011109414570955,
+    "chosen_window": 25
+  },
+  "recipe_fit": {
+    "loco_auc": 0.710519467846339,
+    "ci95_lo": 0.6592015836005657,
+    "ci95_hi": 0.757803939383835,
+    "chosen_window": 25
+  },
+  "d1_coverage_matched_baseline": {
+    "gate_pass": true,
+    "baseline_loco_auc": 0.651644276745926,
+    "anchor": 0.652,
+    "tolerance": 0.03
+  },
+  "d2_missingness_placebo": {
+    "gate_pass": true,
+    "dummy_delta_vs_baseline": {
+      "point": 0.0,
+      "auc_a": 0.651644276745926,
+      "auc_b": 0.651644276745926,
+      "ci95_lo": 0.0,
+      "ci95_hi": 0.0,
+      "p_value": 1.0,
+      "n_pairs": 575,
+      "n_clusters": 72,
+      "n_boot_valid": 1000,
+      "b_eval": 1000
+    },
+    "permuted_delta_vs_baseline": {
+      "point": -0.0155645187522363,
+      "auc_a": 0.6360797579936897,
+      "auc_b": 0.651644276745926,
+      "ci95_lo": -0.0402150811536656,
+      "ci95_hi": 0.007377594159260884,
+      "p_value": 0.18581418581418582,
+      "n_pairs": 575,
+      "n_clusters": 72,
+      "n_boot_valid": 1000,
+      "b_eval": 1000
+    },
+    "gdp_missingness_point_biserial_r": null
+  },
+  "d3_vdem_orthogonality": {
+    "gate_pass": true,
+    "verdict": "PASS_ORTHOGONAL",
+    "applicable": true
+  },
+  "d4_over_couptrap_baseline": {
+    "gate_pass": true,
+    "delta_vs_couptrap": {
+      "point": 0.19497121295904762,
+      "auc_a": 0.710519467846339,
+      "auc_b": 0.5155482548872914,
+      "ci95_lo": 0.1251157845904468,
+      "ci95_hi": 0.2666659784838273,
+      "p_value": 0.001998001998001998,
+      "n_pairs": 575,
+      "n_clusters": 72,
+      "n_boot_valid": 1000,
+      "b_eval": 1000
+    },
+    "couptrap_alone_loco_auc": 0.4915633970454386
+  },
+  "d5_per_country": {
+    "gate_pass": true,
+    "per_country_auc": {
+      "Afghanistan": 0.5,
+      "Algeria": 1.0,
+      "Argentina": 1.0,
+      "Bangladesh": 1.0,
+      "Bolivia": 0.7142857142857143,
+      "Brazil": 1.0,
+      "Burkina Faso": 0.5833333333333334,
+      "Burundi": 0.625,
+      "Chile": 1.0,
+      "Egypt": 0.4166666666666667,
+      "El Salvador": 0.42857142857142855,
+      "Eritrea": 0.6666666666666666,
+      "Ethiopia": 0.8333333333333334,
+      "Fiji": 0.4166666666666667,
+      "Ghana": 0.2916666666666667,
+      "Guatemala": 0.0,
+      "Guinea": 0.75,
+      "Haiti": 0.2,
+      "Honduras": 0.875,
+      "Iraq": 1.0,
+      "Ivory Coast": 1.0,
+      "Kenya": 0.5714285714285714,
+      "Liberia": 0.875,
+      "Libya": 1.0,
+      "Madagascar": 0.5,
+      "Maldives": 1.0,
+      "Mali": 1.0,
+      "Morocco": 1.0,
+      "Myanmar": 0.7,
+      "Nepal": 0.6428571428571429,
+      "Niger": 0.88,
+      "Nigeria": 0.5,
+      "Oman": 0.7692307692307693,
+      "Pakistan": 0.37142857142857144,
+      "Panama": 1.0,
+      "Papua New Guinea": 1.0,
+      "Paraguay": 0.3333333333333333,
+      "Peru": 0.25,
+      "Philippines": 0.5714285714285714,
+      "Qatar": 0.3,
+      "Russia": 0.5384615384615384,
+      "Rwanda": 0.7777777777777778,
+      "Saudi Arabia": 0.6,
+      "Sierra Leone": 0.5,
+      "Somalia": 1.0,
+      "South Korea": 0.8888888888888888,
+      "Spain": 0.5,
+      "Sudan": 0.6666666666666666,
+      "Suriname": 0.8,
+      "Syria": 0.6666666666666666,
+      "Thailand": 0.6666666666666666,
+      "Togo": 0.6428571428571429,
+      "Tunisia": 0.5,
+      "Turkiye": 0.5,
+      "Uganda": 1.0,
+      "Uruguay": 0.4375,
+      "Venezuela": 0.6666666666666666,
+      "Yemen": 0.8888888888888888,
+      "Zambia": 1.0,
+      "Zimbabwe": 1.0
+    },
+    "n_countries": 60
+  },
+  "d6_country_block_bootstrap_provisional": {
+    "gate_pass_no_fdr": true,
+    "delta_vs_baseline": {
+      "point": 0.05887519110041306,
+      "auc_a": 0.710519467846339,
+      "auc_b": 0.651644276745926,
+      "ci95_lo": 0.019164235156879827,
+      "ci95_hi": 0.09738663003831768,
+      "p_value": 0.001998001998001998,
+      "n_pairs": 575,
+      "n_clusters": 72,
+      "n_boot_valid": 1000,
+      "b_eval": 1000
+    }
+  },
+  "d7_temporal_holdout": {
+    "gate_pass": true,
+    "advisory": false,
+    "reason": "holdout_auc_ci_lo=0.5787660329552549 vs chance=0.5",
+    "detail": {
+      "fit_failed": false,
+      "locked_cut_year": 1995,
+      "cut_year_selection": {
+        "locked_cut_year": 1995,
+        "attempts": [
+          {
+            "cut_year": 1985,
+            "n_screen_rows": 486,
+            "n_holdout_rows": 342,
+            "holdout_row_fraction": 0.41304347826086957,
+            "screen_coverage": {
+              "n_pos_total": 124,
+              "n_pos_survive": 63,
+              "n_neg_total": 362,
+              "n_neg_survive": 175,
+              "pos_coverage": 0.5080645161290323,
+              "neg_coverage": 0.48342541436464087,
+              "n_countries_survive": 66,
+              "gate_pass": false
+            },
+            "accepted": false
+          },
+          {
+            "cut_year": 1990,
+            "n_screen_rows": 555,
+            "n_holdout_rows": 273,
+            "holdout_row_fraction": 0.32971014492753625,
+            "screen_coverage": {
+              "n_pos_total": 139,
+              "n_pos_survive": 76,
+              "n_neg_total": 416,
+              "n_neg_survive": 229,
+              "pos_coverage": 0.5467625899280576,
+              "neg_coverage": 0.5504807692307693,
+              "n_countries_survive": 71,
+              "gate_pass": false
+            },
+            "accepted": false
+          },
+          {
+            "cut_year": 1995,
+            "n_screen_rows": 626,
+            "n_holdout_rows": 202,
+            "holdout_row_fraction": 0.24396135265700483,
+            "screen_coverage": {
+              "n_pos_total": 158,
+              "n_pos_survive": 93,
+              "n_neg_total": 468,
+              "n_neg_survive": 281,
+              "pos_coverage": 0.5886075949367089,
+              "neg_coverage": 0.6004273504273504,
+              "n_countries_survive": 71,
+              "gate_pass": true
+            },
+            "accepted": true
+          }
+        ],
+        "min_holdout_frac": 0.1
+      },
+      "architecture": "XGBoost",
+      "window": 25,
+      "selected_indicators": [
+        "SP.DYN.LE00.IN",
+        "v2excrptps",
+        "v2cltort",
+        "v2xel_frefair",
+        "v2x_clpol",
+        "OWID_AUTOCRATIZATION"
+      ],
+      "n_train_rows": 374,
+      "n_train_pos": 93,
+      "n_test_rows": 201,
+      "n_test_pos": 49,
+      "holdout_auc": 0.670515574650913,
+      "holdout_auc_ci95": [
+        0.5787660329552549,
+        0.7584596228559815
+      ],
+      "sensitivity_2008_cohort": {
+        "exclude_year": 2008,
+        "n_total": 201,
+        "n_excluded": 6,
+        "auc_with_cohort": 0.670515574650913,
+        "auc_without_cohort": 0.6656746031746031
+      },
+      "oof": [
+        {
+          "country": "Afghanistan",
+          "year": 1996,
+          "prob": 0.044550392776727676,
+          "label": 1
+        },
+        {
+          "country": "Afghanistan",
+          "year": 2021,
+          "prob": 0.28324997425079346,
+          "label": 1
+        },
+        {
+          "country": "Bangladesh",
+          "year": 2007,
+          "prob": 0.32786133885383606,
+          "label": 1
+        },
+        {
+          "country": "Brazil",
+          "year": 2016,
+          "prob": 0.302373468875885,
+          "label": 1
+        },
+        {
+          "country": "Burkina Faso",
+          "year": 2003,
+          "prob": 0.7974607348442078,
+          "label": 1
+        },
+        {
+          "country": "Burkina Faso",
+          "year": 2015,
+          "prob": 0.8084061741828918,
+          "label": 1
+        },
+        {
+          "country": "Burundi",
+          "year": 1996,
+          "prob": 0.6521250605583191,
+          "label": 1
+        },
+        {
+          "country": "Burundi",
+          "year": 2015,
+          "prob": 0.033360373228788376,
+          "label": 1
+        },
+        {
+          "country": "Egypt",
+          "year": 2013,
+          "prob": 0.06556372344493866,
+          "label": 1
+        },
+        {
+          "country": "Fiji",
+          "year": 2006,
+          "prob": 0.29059499502182007,
+          "label": 1
+        },
+        {
+          "country": "Guinea",
+          "year": 2008,
+          "prob": 0.6954869031906128,
+          "label": 1
+        },
+        {
+          "country": "Guinea",
+          "year": 2021,
+          "prob": 0.8474898338317871,
+          "label": 1
+        },
+        {
+          "country": "Honduras",
+          "year": 2009,
+          "prob": 0.21044017374515533,
+          "label": 1
+        },
+        {
+          "country": "Ivory Coast",
+          "year": 1999,
+          "prob": 0.516106903553009,
+          "label": 1
+        },
+        {
+          "country": "Madagascar",
+          "year": 2009,
+          "prob": 0.5070574283599854,
+          "label": 1
+        },
+        {
+          "country": "Maldives",
+          "year": 2012,
+          "prob": 0.6868919730186462,
+          "label": 1
+        },
+        {
+          "country": "Mali",
+          "year": 2012,
+          "prob": 0.0631401464343071,
+          "label": 1
+        },
+        {
+          "country": "Mali",
+          "year": 2020,
+          "prob": 0.9188709259033203,
+          "label": 1
+        },
+        {
+          "country": "Mali",
+          "year": 2021,
+          "prob": 0.6733134984970093,
+          "label": 1
+        },
+        {
+          "country": "Myanmar",
+          "year": 2021,
+          "prob": 0.25764623284339905,
+          "label": 1
+        },
+        {
+          "country": "Nepal",
+          "year": 2002,
+          "prob": 0.5931040048599243,
+          "label": 1
+        },
+        {
+          "country": "Nepal",
+          "year": 2005,
+          "prob": 0.7960324883460999,
+          "label": 1
+        },
+        {
+          "country": "Niger",
+          "year": 1996,
+          "prob": 0.421760618686676,
+          "label": 1
+        },
+        {
+          "country": "Niger",
+          "year": 1999,
+          "prob": 0.6776595711708069,
+          "label": 1
+        },
+        {
+          "country": "Niger",
+          "year": 2010,
+          "prob": 0.23794971406459808,
+          "label": 1
+        },
+        {
+          "country": "Niger",
+          "year": 2021,
+          "prob": 0.8175365328788757,
+          "label": 1
+        },
+        {
+          "country": "Pakistan",
+          "year": 1996,
+          "prob": 0.6763165593147278,
+          "label": 1
+        },
+        {
+          "country": "Pakistan",
+          "year": 1999,
+          "prob": 0.1720954179763794,
+          "label": 1
+        },
+        {
+          "country": "Pakistan",
+          "year": 2007,
+          "prob": 0.844612717628479,
+          "label": 1
+        },
+        {
+          "country": "Papua New Guinea",
+          "year": 2012,
+          "prob": 0.806837797164917,
+          "label": 1
+        },
+        {
+          "country": "Paraguay",
+          "year": 1996,
+          "prob": 0.16896261274814606,
+          "label": 1
+        },
+        {
+          "country": "Paraguay",
+          "year": 2000,
+          "prob": 0.032243359833955765,
+          "label": 1
+        },
+        {
+          "country": "Philippines",
+          "year": 2003,
+          "prob": 0.7671933770179749,
+          "label": 1
+        },
+        {
+          "country": "Qatar",
+          "year": 1995,
+          "prob": 0.03306523710489273,
+          "label": 1
+        },
+        {
+          "country": "Qatar",
+          "year": 1996,
+          "prob": 0.027664856985211372,
+          "label": 1
+        },
+        {
+          "country": "Sierra Leone",
+          "year": 1996,
+          "prob": 0.2795811891555786,
+          "label": 1
+        },
+        {
+          "country": "Sierra Leone",
+          "year": 1997,
+          "prob": 0.20474109053611755,
+          "label": 1
+        },
+        {
+          "country": "Sudan",
+          "year": 2021,
+          "prob": 0.06524274498224258,
+          "label": 1
+        },
+        {
+          "country": "Thailand",
+          "year": 2006,
+          "prob": 0.6361002326011658,
+          "label": 1
+        },
+        {
+          "country": "Thailand",
+          "year": 2014,
+          "prob": 0.8286420106887817,
+          "label": 1
+        },
+        {
+          "country": "Togo",
+          "year": 2005,
+          "prob": 0.4693930745124817,
+          "label": 1
+        },
+        {
+          "country": "Tunisia",
+          "year": 2021,
+          "prob": 0.23358242213726044,
+          "label": 1
+        },
+        {
+          "country": "Turkiye",
+          "year": 1997,
+          "prob": 0.06159771978855133,
+          "label": 1
+        },
+        {
+          "country": "Turkiye",
+          "year": 2016,
+          "prob": 0.024884909391403198,
+          "label": 1
+        },
+        {
+          "country": "Venezuela",
+          "year": 2002,
+          "prob": 0.18278160691261292,
+          "label": 1
+        },
+        {
+          "country": "Venezuela",
+          "year": 2019,
+          "prob": 0.03365250676870346,
+          "label": 1
+        },
+        {
+          "country": "Yemen",
+          "year": 2014,
+          "prob": 0.6621314883232117,
+          "label": 1
+        },
+        {
+          "country": "Zambia",
+          "year": 1997,
+          "prob": 0.683374285697937,
+          "label": 1
+        },
+        {
+          "country": "Zimbabwe",
+          "year": 2017,
+          "prob": 0.5339651107788086,
+          "label": 1
+        },
+        {
+          "country": "Rwanda",
+          "year": 2007,
+          "prob": 0.4350596070289612,
+          "label": 0
+        },
+        {
+          "country": "Somalia",
+          "year": 2021,
+          "prob": 0.5323102474212646,
+          "label": 0
+        },
+        {
+          "country": "Peru",
+          "year": 1999,
+          "prob": 0.06833846122026443,
+          "label": 0
+        },
+        {
+          "country": "Haiti",
+          "year": 2016,
+          "prob": 0.3489680886268616,
+          "label": 0
+        },
+        {
+          "country": "Russia",
+          "year": 2016,
+          "prob": 0.1312568485736847,
+          "label": 0
+        },
+        {
+          "country": "Guinea",
+          "year": 2006,
+          "prob": 0.5358969569206238,
+          "label": 0
+        },
+        {
+          "country": "Papua New Guinea",
+          "year": 2020,
+          "prob": 0.5417159795761108,
+          "label": 0
+        },
+        {
+          "country": "Nigeria",
+          "year": 1995,
+          "prob": 0.7442598342895508,
+          "label": 0
+        },
+        {
+          "country": "Greece",
+          "year": 2021,
+          "prob": 0.20707018673419952,
+          "label": 0
+        },
+        {
+          "country": "Algeria",
+          "year": 1996,
+          "prob": 0.8380258083343506,
+          "label": 0
+        },
+        {
+          "country": "Argentina",
+          "year": 2015,
+          "prob": 0.1156495064496994,
+          "label": 0
+        },
+        {
+          "country": "Tanzania",
+          "year": 2021,
+          "prob": 0.42175740003585815,
+          "label": 0
+        },
+        {
+          "country": "Pakistan",
+          "year": 2005,
+          "prob": 0.7233927845954895,
+          "label": 0
+        },
+        {
+          "country": "Mali",
+          "year": 2015,
+          "prob": 0.07392094284296036,
+          "label": 0
+        },
+        {
+          "country": "Bulgaria",
+          "year": 2000,
+          "prob": 0.056692153215408325,
+          "label": 0
+        },
+        {
+          "country": "Bulgaria",
+          "year": 2015,
+          "prob": 0.3447829782962799,
+          "label": 0
+        },
+        {
+          "country": "Suriname",
+          "year": 2007,
+          "prob": 0.48115018010139465,
+          "label": 0
+        },
+        {
+          "country": "Tanzania",
+          "year": 2006,
+          "prob": 0.05823849141597748,
+          "label": 0
+        },
+        {
+          "country": "Russia",
+          "year": 2009,
+          "prob": 0.17886587977409363,
+          "label": 0
+        },
+        {
+          "country": "Fiji",
+          "year": 2012,
+          "prob": 0.03912212327122688,
+          "label": 0
+        },
+        {
+          "country": "Russia",
+          "year": 2019,
+          "prob": 0.04095505550503731,
+          "label": 0
+        },
+        {
+          "country": "Uruguay",
+          "year": 2009,
+          "prob": 0.23972350358963013,
+          "label": 0
+        },
+        {
+          "country": "Eritrea",
+          "year": 1999,
+          "prob": 0.32558074593544006,
+          "label": 0
+        },
+        {
+          "country": "Bangladesh",
+          "year": 2008,
+          "prob": 0.25343888998031616,
+          "label": 0
+        },
+        {
+          "country": "Honduras",
+          "year": 2021,
+          "prob": 0.11112486571073532,
+          "label": 0
+        },
+        {
+          "country": "Brazil",
+          "year": 2014,
+          "prob": 0.5087327361106873,
+          "label": 0
+        },
+        {
+          "country": "Burkina Faso",
+          "year": 1996,
+          "prob": 0.9740675091743469,
+          "label": 0
+        },
+        {
+          "country": "Philippines",
+          "year": 2010,
+          "prob": 0.475985586643219,
+          "label": 0
+        },
+        {
+          "country": "Haiti",
+          "year": 2006,
+          "prob": 0.7678372859954834,
+          "label": 0
+        },
+        {
+          "country": "Thailand",
+          "year": 2021,
+          "prob": 0.01059701293706894,
+          "label": 0
+        },
+        {
+          "country": "Fiji",
+          "year": 2019,
+          "prob": 0.7111434936523438,
+          "label": 0
+        },
+        {
+          "country": "Uruguay",
+          "year": 1997,
+          "prob": 0.05716347321867943,
+          "label": 0
+        },
+        {
+          "country": "Azerbaijan",
+          "year": 2006,
+          "prob": 0.07865361124277115,
+          "label": 0
+        },
+        {
+          "country": "Bolivia",
+          "year": 1999,
+          "prob": 0.1581892967224121,
+          "label": 0
+        },
+        {
+          "country": "Sudan",
+          "year": 1997,
+          "prob": 0.12377172708511353,
+          "label": 0
+        },
+        {
+          "country": "Niger",
+          "year": 2009,
+          "prob": 0.09181040525436401,
+          "label": 0
+        },
+        {
+          "country": "Russia",
+          "year": 2014,
+          "prob": 0.0664084181189537,
+          "label": 0
+        },
+        {
+          "country": "Burkina Faso",
+          "year": 1996,
+          "prob": 0.9740675091743469,
+          "label": 0
+        },
+        {
+          "country": "Burkina Faso",
+          "year": 2021,
+          "prob": 0.2339598536491394,
+          "label": 0
+        },
+        {
+          "country": "Jordan",
+          "year": 2015,
+          "prob": 0.06505511701107025,
+          "label": 0
+        },
+        {
+          "country": "Egypt",
+          "year": 2006,
+          "prob": 0.004635410383343697,
+          "label": 0
+        },
+        {
+          "country": "Peru",
+          "year": 2014,
+          "prob": 0.1834878921508789,
+          "label": 0
+        },
+        {
+          "country": "Panama",
+          "year": 1997,
+          "prob": 0.03707863390445709,
+          "label": 0
+        },
+        {
+          "country": "Oman",
+          "year": 1996,
+          "prob": 0.0641692578792572,
+          "label": 0
+        },
+        {
+          "country": "Somalia",
+          "year": 2015,
+          "prob": 0.5932351350784302,
+          "label": 0
+        },
+        {
+          "country": "Ivory Coast",
+          "year": 2015,
+          "prob": 0.9135701656341553,
+          "label": 0
+        },
+        {
+          "country": "Mali",
+          "year": 2006,
+          "prob": 0.02982272207736969,
+          "label": 0
+        },
+        {
+          "country": "Egypt",
+          "year": 2005,
+          "prob": 0.004847661126405001,
+          "label": 0
+        },
+        {
+          "country": "Peru",
+          "year": 2021,
+          "prob": 0.22947055101394653,
+          "label": 0
+        },
+        {
+          "country": "Afghanistan",
+          "year": 2017,
+          "prob": 0.28034982085227966,
+          "label": 0
+        },
+        {
+          "country": "Qatar",
+          "year": 2014,
+          "prob": 0.030715448781847954,
+          "label": 0
+        },
+        {
+          "country": "South Korea",
+          "year": 2003,
+          "prob": 0.04495496675372124,
+          "label": 0
+        },
+        {
+          "country": "Brazil",
+          "year": 2012,
+          "prob": 0.49680769443511963,
+          "label": 0
+        },
+        {
+          "country": "Uruguay",
+          "year": 2021,
+          "prob": 0.19604302942752838,
+          "label": 0
+        },
+        {
+          "country": "Tunisia",
+          "year": 1996,
+          "prob": 0.009691387414932251,
+          "label": 0
+        },
+        {
+          "country": "Venezuela",
+          "year": 2009,
+          "prob": 0.03664799779653549,
+          "label": 0
+        },
+        {
+          "country": "Togo",
+          "year": 2016,
+          "prob": 0.8108123540878296,
+          "label": 0
+        },
+        {
+          "country": "Yemen",
+          "year": 1999,
+          "prob": 0.03571274131536484,
+          "label": 0
+        },
+        {
+          "country": "Guatemala",
+          "year": 1996,
+          "prob": 0.20191770792007446,
+          "label": 0
+        },
+        {
+          "country": "Greece",
+          "year": 2005,
+          "prob": 0.14444415271282196,
+          "label": 0
+        },
+        {
+          "country": "Ghana",
+          "year": 1999,
+          "prob": 0.5743870735168457,
+          "label": 0
+        },
+        {
+          "country": "Lebanon",
+          "year": 2013,
+          "prob": 0.14366759359836578,
+          "label": 0
+        },
+        {
+          "country": "Afghanistan",
+          "year": 2019,
+          "prob": 0.14265702664852142,
+          "label": 0
+        },
+        {
+          "country": "Iran",
+          "year": 2008,
+          "prob": 0.01747436821460724,
+          "label": 0
+        },
+        {
+          "country": "Nigeria",
+          "year": 2008,
+          "prob": 0.9601394534111023,
+          "label": 0
+        },
+        {
+          "country": "Jordan",
+          "year": 1999,
+          "prob": 0.012135937809944153,
+          "label": 0
+        },
+        {
+          "country": "Liberia",
+          "year": 2009,
+          "prob": 0.4500889182090759,
+          "label": 0
+        },
+        {
+          "country": "Tanzania",
+          "year": 2006,
+          "prob": 0.05823849141597748,
+          "label": 0
+        },
+        {
+          "country": "Argentina",
+          "year": 2021,
+          "prob": 0.037478283047676086,
+          "label": 0
+        },
+        {
+          "country": "Zimbabwe",
+          "year": 2021,
+          "prob": 0.1784188449382782,
+          "label": 0
+        },
+        {
+          "country": "Sierra Leone",
+          "year": 2007,
+          "prob": 0.7681066393852234,
+          "label": 0
+        },
+        {
+          "country": "Argentina",
+          "year": 2009,
+          "prob": 0.17259147763252258,
+          "label": 0
+        },
+        {
+          "country": "Bolivia",
+          "year": 1996,
+          "prob": 0.13258372247219086,
+          "label": 0
+        },
+        {
+          "country": "South Korea",
+          "year": 2016,
+          "prob": 0.36618614196777344,
+          "label": 0
+        },
+        {
+          "country": "Uruguay",
+          "year": 1996,
+          "prob": 0.02483166754245758,
+          "label": 0
+        },
+        {
+          "country": "Jordan",
+          "year": 2002,
+          "prob": 0.02406223490834236,
+          "label": 0
+        },
+        {
+          "country": "Oman",
+          "year": 2010,
+          "prob": 0.02539203129708767,
+          "label": 0
+        },
+        {
+          "country": "Syria",
+          "year": 2005,
+          "prob": 0.0382528193295002,
+          "label": 0
+        },
+        {
+          "country": "Papua New Guinea",
+          "year": 2002,
+          "prob": 0.15599888563156128,
+          "label": 0
+        },
+        {
+          "country": "Peru",
+          "year": 2020,
+          "prob": 0.1638389229774475,
+          "label": 0
+        },
+        {
+          "country": "Guatemala",
+          "year": 2006,
+          "prob": 0.08939418196678162,
+          "label": 0
+        },
+        {
+          "country": "Dominican Republic",
+          "year": 2012,
+          "prob": 0.05458800494670868,
+          "label": 0
+        },
+        {
+          "country": "Rwanda",
+          "year": 2002,
+          "prob": 0.8093633651733398,
+          "label": 0
+        },
+        {
+          "country": "South Korea",
+          "year": 1996,
+          "prob": 0.12259240448474884,
+          "label": 0
+        },
+        {
+          "country": "Iraq",
+          "year": 2002,
+          "prob": 0.03713805601000786,
+          "label": 0
+        },
+        {
+          "country": "Brazil",
+          "year": 2003,
+          "prob": 0.0725824236869812,
+          "label": 0
+        },
+        {
+          "country": "Fiji",
+          "year": 1996,
+          "prob": 0.12479853630065918,
+          "label": 0
+        },
+        {
+          "country": "Ghana",
+          "year": 2021,
+          "prob": 0.6687925457954407,
+          "label": 0
+        },
+        {
+          "country": "Madagascar",
+          "year": 2015,
+          "prob": 0.2541557252407074,
+          "label": 0
+        },
+        {
+          "country": "Maldives",
+          "year": 2009,
+          "prob": 0.3838071823120117,
+          "label": 0
+        },
+        {
+          "country": "Bulgaria",
+          "year": 2015,
+          "prob": 0.3447829782962799,
+          "label": 0
+        },
+        {
+          "country": "Cuba",
+          "year": 2005,
+          "prob": 0.1668892800807953,
+          "label": 0
+        },
+        {
+          "country": "Honduras",
+          "year": 2021,
+          "prob": 0.11112486571073532,
+          "label": 0
+        },
+        {
+          "country": "Fiji",
+          "year": 2009,
+          "prob": 0.1331373155117035,
+          "label": 0
+        },
+        {
+          "country": "Guatemala",
+          "year": 2014,
+          "prob": 0.0569666251540184,
+          "label": 0
+        },
+        {
+          "country": "Qatar",
+          "year": 2015,
+          "prob": 0.03200024738907814,
+          "label": 0
+        },
+        {
+          "country": "Peru",
+          "year": 2008,
+          "prob": 0.05666269361972809,
+          "label": 0
+        },
+        {
+          "country": "Morocco",
+          "year": 2019,
+          "prob": 0.12250890582799911,
+          "label": 0
+        },
+        {
+          "country": "Philippines",
+          "year": 1995,
+          "prob": 0.14933057129383087,
+          "label": 0
+        },
+        {
+          "country": "Argentina",
+          "year": 2021,
+          "prob": 0.037478283047676086,
+          "label": 0
+        },
+        {
+          "country": "Brazil",
+          "year": 2012,
+          "prob": 0.49680769443511963,
+          "label": 0
+        },
+        {
+          "country": "Papua New Guinea",
+          "year": 2007,
+          "prob": 0.33337223529815674,
+          "label": 0
+        },
+        {
+          "country": "South Korea",
+          "year": 2003,
+          "prob": 0.04495496675372124,
+          "label": 0
+        },
+        {
+          "country": "Liberia",
+          "year": 1996,
+          "prob": 0.2279692441225052,
+          "label": 0
+        },
+        {
+          "country": "Maldives",
+          "year": 2007,
+          "prob": 0.009593377821147442,
+          "label": 0
+        },
+        {
+          "country": "Saudi Arabia",
+          "year": 1999,
+          "prob": 0.10745391249656677,
+          "label": 0
+        },
+        {
+          "country": "Oman",
+          "year": 2012,
+          "prob": 0.014603856019675732,
+          "label": 0
+        },
+        {
+          "country": "Honduras",
+          "year": 2015,
+          "prob": 0.23099908232688904,
+          "label": 0
+        },
+        {
+          "country": "Russia",
+          "year": 2016,
+          "prob": 0.1312568485736847,
+          "label": 0
+        },
+        {
+          "country": "Jordan",
+          "year": 2021,
+          "prob": 0.1445290744304657,
+          "label": 0
+        },
+        {
+          "country": "Spain",
+          "year": 1996,
+          "prob": 0.05890505015850067,
+          "label": 0
+        },
+        {
+          "country": "Guinea",
+          "year": 2014,
+          "prob": 0.9196932911872864,
+          "label": 0
+        },
+        {
+          "country": "Eritrea",
+          "year": 2009,
+          "prob": 0.1068931519985199,
+          "label": 0
+        },
+        {
+          "country": "Algeria",
+          "year": 1997,
+          "prob": 0.7604382634162903,
+          "label": 0
+        },
+        {
+          "country": "Azerbaijan",
+          "year": 2009,
+          "prob": 0.0636407658457756,
+          "label": 0
+        },
+        {
+          "country": "Zambia",
+          "year": 2003,
+          "prob": 0.20948761701583862,
+          "label": 0
+        },
+        {
+          "country": "Argentina",
+          "year": 2002,
+          "prob": 0.0618760921061039,
+          "label": 0
+        },
+        {
+          "country": "Syria",
+          "year": 2002,
+          "prob": 0.07183580845594406,
+          "label": 0
+        },
+        {
+          "country": "Lebanon",
+          "year": 2021,
+          "prob": 0.5311447978019714,
+          "label": 0
+        },
+        {
+          "country": "Brazil",
+          "year": 2005,
+          "prob": 0.07131587713956833,
+          "label": 0
+        },
+        {
+          "country": "Zimbabwe",
+          "year": 2019,
+          "prob": 0.5833092927932739,
+          "label": 0
+        },
+        {
+          "country": "South Korea",
+          "year": 2002,
+          "prob": 0.03618529811501503,
+          "label": 0
+        },
+        {
+          "country": "Philippines",
+          "year": 2017,
+          "prob": 0.3179444968700409,
+          "label": 0
+        },
+        {
+          "country": "Ghana",
+          "year": 2000,
+          "prob": 0.3978062570095062,
+          "label": 0
+        },
+        {
+          "country": "Zimbabwe",
+          "year": 1995,
+          "prob": 0.12568078935146332,
+          "label": 0
+        },
+        {
+          "country": "Saudi Arabia",
+          "year": 2009,
+          "prob": 0.19070319831371307,
+          "label": 0
+        },
+        {
+          "country": "Oman",
+          "year": 1997,
+          "prob": 0.07334797829389572,
+          "label": 0
+        },
+        {
+          "country": "Uruguay",
+          "year": 1999,
+          "prob": 0.10371418297290802,
+          "label": 0
+        },
+        {
+          "country": "Burundi",
+          "year": 1997,
+          "prob": 0.6727505922317505,
+          "label": 0
+        },
+        {
+          "country": "Pakistan",
+          "year": 2020,
+          "prob": 0.644676923751831,
+          "label": 0
+        },
+        {
+          "country": "Jordan",
+          "year": 1996,
+          "prob": 0.008559135720133781,
+          "label": 0
+        },
+        {
+          "country": "Nigeria",
+          "year": 1999,
+          "prob": 0.3708619177341461,
+          "label": 0
+        },
+        {
+          "country": "Zimbabwe",
+          "year": 1999,
+          "prob": 0.29274752736091614,
+          "label": 0
+        },
+        {
+          "country": "Burundi",
+          "year": 2007,
+          "prob": 0.15841536223888397,
+          "label": 0
+        },
+        {
+          "country": "Iran",
+          "year": 2012,
+          "prob": 0.008209371007978916,
+          "label": 0
+        },
+        {
+          "country": "Dominican Republic",
+          "year": 2002,
+          "prob": 0.05257584899663925,
+          "label": 0
+        },
+        {
+          "country": "Jordan",
+          "year": 2000,
+          "prob": 0.011138785630464554,
+          "label": 0
+        },
+        {
+          "country": "Venezuela",
+          "year": 1996,
+          "prob": 0.32880058884620667,
+          "label": 0
+        },
+        {
+          "country": "Togo",
+          "year": 2016,
+          "prob": 0.8108123540878296,
+          "label": 0
+        },
+        {
+          "country": "Bangladesh",
+          "year": 1996,
+          "prob": 0.261646568775177,
+          "label": 0
+        },
+        {
+          "country": "South Korea",
+          "year": 1995,
+          "prob": 0.1171022281050682,
+          "label": 0
+        },
+        {
+          "country": "Rwanda",
+          "year": 2010,
+          "prob": 0.2713184952735901,
+          "label": 0
+        },
+        {
+          "country": "Sudan",
+          "year": 2012,
+          "prob": 0.1442524492740631,
+          "label": 0
+        },
+        {
+          "country": "Yemen",
+          "year": 1996,
+          "prob": 0.027725445106625557,
+          "label": 0
+        },
+        {
+          "country": "Ivory Coast",
+          "year": 1996,
+          "prob": 0.6151596903800964,
+          "label": 0
+        },
+        {
+          "country": "Madagascar",
+          "year": 1997,
+          "prob": 0.43685659766197205,
+          "label": 0
+        },
+        {
+          "country": "Chile",
+          "year": 2008,
+          "prob": 0.05534636601805687,
+          "label": 0
+        },
+        {
+          "country": "Peru",
+          "year": 2021,
+          "prob": 0.22947055101394653,
+          "label": 0
+        },
+        {
+          "country": "Qatar",
+          "year": 2007,
+          "prob": 0.01749931462109089,
+          "label": 0
+        },
+        {
+          "country": "Ethiopia",
+          "year": 2009,
+          "prob": 0.022469958290457726,
+          "label": 0
+        },
+        {
+          "country": "Eritrea",
+          "year": 2015,
+          "prob": 0.15949109196662903,
+          "label": 0
+        },
+        {
+          "country": "Ghana",
+          "year": 2020,
+          "prob": 0.5557416081428528,
+          "label": 0
+        }
+      ]
+    },
+    "n_holdout_pos": 49
+  },
+  "gates_provisional": {
+    "d1": true,
+    "d2": true,
+    "d3": true,
+    "d4": true,
+    "d5": true,
+    "d6_no_fdr": true,
+    "d7": true
+  }
+}
