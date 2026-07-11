@@ -1,0 +1,91 @@
+{
+  "scope": "oecd_scoped",
+  "run2_driver_block": [
+    "v2csreprss",
+    "v2x_freexp_altinf"
+  ],
+  "dev_proxy_id": "NY.GNP.PCAP.CD",
+  "ortho_threshold": 0.5,
+  "proxy_threshold": 0.5,
+  "candidates": {
+    "BIS.SPP.REAL.YOY": {
+      "candidate_id": "BIS.SPP.REAL.YOY",
+      "scope": "oecd_scoped",
+      "n_pos_total_scoped": 67,
+      "orthogonality_vs_run2": {
+        "block_ids": [
+          "v2csreprss",
+          "v2x_freexp_altinf"
+        ],
+        "n_rows": 56,
+        "coverage_at_positive_cells": 0.835820895522388,
+        "r2": 0.019259780560628048,
+        "multiple_r": 0.13877961147311246,
+        "pairwise_r_vs_block": {
+          "v2csreprss": 0.031142713695219936,
+          "v2x_freexp_altinf": -0.05776639917162306
+        },
+        "threshold": 0.5
+      },
+      "income_proxy": {
+        "proxy_id": "NY.GNP.PCAP.CD",
+        "level": {
+          "n_rows": 56,
+          "r": -0.20011447567317112,
+          "coverage_at_positive_cells": 0.835820895522388
+        },
+        "yoy_first_diff": {
+          "n_rows": 55,
+          "r": 0.09493650271793433,
+          "coverage_at_positive_cells": 0.8208955223880597
+        },
+        "threshold": 0.5
+      },
+      "min_n": 30,
+      "verdict": "PASS_ORTHOGONAL"
+    },
+    "COMMODITY_SHOCK.EXPORT_WEIGHTED": {
+      "candidate_id": "COMMODITY_SHOCK.EXPORT_WEIGHTED",
+      "scope": "oecd_scoped",
+      "n_pos_total_scoped": 67,
+      "orthogonality_vs_run2": {
+        "block_ids": [
+          "v2csreprss",
+          "v2x_freexp_altinf"
+        ],
+        "n_rows": 64,
+        "coverage_at_positive_cells": 0.9552238805970149,
+        "r2": 0.022692561111809617,
+        "multiple_r": 0.15064050289284625,
+        "pairwise_r_vs_block": {
+          "v2csreprss": 0.14315693170463056,
+          "v2x_freexp_altinf": 0.09125706849382224
+        },
+        "threshold": 0.5
+      },
+      "income_proxy": {
+        "proxy_id": "NY.GNP.PCAP.CD",
+        "level": {
+          "n_rows": 64,
+          "r": 0.03830611086649537,
+          "coverage_at_positive_cells": 0.9552238805970149
+        },
+        "yoy_first_diff": {
+          "n_rows": 64,
+          "r": 0.1526861594681611,
+          "coverage_at_positive_cells": 0.9552238805970149
+        },
+        "threshold": 0.5
+      },
+      "min_n": 30,
+      "verdict": "PASS_ORTHOGONAL"
+    }
+  },
+  "survivors": [
+    "BIS.SPP.REAL.YOY",
+    "COMMODITY_SHOCK.EXPORT_WEIGHTED"
+  ],
+  "rejected_collinear_run2": [],
+  "rejected_proxy_confound": [],
+  "inconclusive": []
+}

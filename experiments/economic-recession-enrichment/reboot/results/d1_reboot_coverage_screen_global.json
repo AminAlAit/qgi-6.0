@@ -1,0 +1,2105 @@
+{
+  "label": "global",
+  "n_positive_events": 250,
+  "threshold": 0.8,
+  "candidates": {
+    "BIS.CREDIT_GAP.PRIV_NFC": {
+      "indicator_id": "BIS.CREDIT_GAP.PRIV_NFC",
+      "n_total": 250,
+      "n_t1_covered": 73,
+      "n_t2_covered": 73,
+      "n_t1_and_t2_covered": 73,
+      "t1_coverage_pct": 29.2,
+      "t2_coverage_pct": 29.2,
+      "t1_and_t2_coverage_pct": 29.2,
+      "verdict": "FAIL_COVERAGE",
+      "threshold": 0.8,
+      "panel_country_count": 33,
+      "covered_events": [
+        {
+          "country": "Argentina",
+          "event_year": 2001
+        },
+        {
+          "country": "Argentina",
+          "event_year": 2014
+        },
+        {
+          "country": "Argentina",
+          "event_year": 2020
+        },
+        {
+          "country": "Brazil",
+          "event_year": 2008
+        },
+        {
+          "country": "Brazil",
+          "event_year": 2015
+        },
+        {
+          "country": "Brazil",
+          "event_year": 2020
+        },
+        {
+          "country": "Canada",
+          "event_year": 1982
+        },
+        {
+          "country": "Canada",
+          "event_year": 1990
+        },
+        {
+          "country": "Canada",
+          "event_year": 2008
+        },
+        {
+          "country": "Canada",
+          "event_year": 2020
+        },
+        {
+          "country": "Chile",
+          "event_year": 1997
+        },
+        {
+          "country": "China",
+          "event_year": 2015
+        },
+        {
+          "country": "China",
+          "event_year": 2021
+        },
+        {
+          "country": "Finland",
+          "event_year": 1990
+        },
+        {
+          "country": "Finland",
+          "event_year": 2008
+        },
+        {
+          "country": "France",
+          "event_year": 2008
+        },
+        {
+          "country": "France",
+          "event_year": 2020
+        },
+        {
+          "country": "Germany",
+          "event_year": 1975
+        },
+        {
+          "country": "Germany",
+          "event_year": 1982
+        },
+        {
+          "country": "Germany",
+          "event_year": 1993
+        },
+        {
+          "country": "Germany",
+          "event_year": 2003
+        },
+        {
+          "country": "Germany",
+          "event_year": 2008
+        },
+        {
+          "country": "Germany",
+          "event_year": 2010
+        },
+        {
+          "country": "Greece",
+          "event_year": 1985
+        },
+        {
+          "country": "Greece",
+          "event_year": 2010
+        },
+        {
+          "country": "Hungary",
+          "event_year": 1991
+        },
+        {
+          "country": "India",
+          "event_year": 1991
+        },
+        {
+          "country": "India",
+          "event_year": 2008
+        },
+        {
+          "country": "India",
+          "event_year": 2019
+        },
+        {
+          "country": "Indonesia",
+          "event_year": 1998
+        },
+        {
+          "country": "Indonesia",
+          "event_year": 2008
+        },
+        {
+          "country": "Israel",
+          "event_year": 2003
+        },
+        {
+          "country": "Italy",
+          "event_year": 1993
+        },
+        {
+          "country": "Italy",
+          "event_year": 2008
+        },
+        {
+          "country": "Italy",
+          "event_year": 2012
+        },
+        {
+          "country": "Italy",
+          "event_year": 2020
+        },
+        {
+          "country": "Japan",
+          "event_year": 1979
+        },
+        {
+          "country": "Japan",
+          "event_year": 1993
+        },
+        {
+          "country": "Japan",
+          "event_year": 1998
+        },
+        {
+          "country": "Japan",
+          "event_year": 2008
+        },
+        {
+          "country": "Malaysia",
+          "event_year": 1982
+        },
+        {
+          "country": "Malaysia",
+          "event_year": 1985
+        },
+        {
+          "country": "Malaysia",
+          "event_year": 1996
+        },
+        {
+          "country": "Mexico",
+          "event_year": 2008
+        },
+        {
+          "country": "Netherlands",
+          "event_year": 2011
+        },
+        {
+          "country": "Netherlands",
+          "event_year": 2012
+        },
+        {
+          "country": "Netherlands",
+          "event_year": 2020
+        },
+        {
+          "country": "Norway",
+          "event_year": 2014
+        },
+        {
+          "country": "Poland",
+          "event_year": 2008
+        },
+        {
+          "country": "Portugal",
+          "event_year": 2013
+        },
+        {
+          "country": "Portugal",
+          "event_year": 2020
+        },
+        {
+          "country": "Russia",
+          "event_year": 2008
+        },
+        {
+          "country": "Singapore",
+          "event_year": 2008
+        },
+        {
+          "country": "South Africa",
+          "event_year": 1985
+        },
+        {
+          "country": "South Africa",
+          "event_year": 2018
+        },
+        {
+          "country": "South Korea",
+          "event_year": 1998
+        },
+        {
+          "country": "Spain",
+          "event_year": 2008
+        },
+        {
+          "country": "Thailand",
+          "event_year": 1997
+        },
+        {
+          "country": "Thailand",
+          "event_year": 2009
+        },
+        {
+          "country": "Turkiye",
+          "event_year": 2001
+        },
+        {
+          "country": "Turkiye",
+          "event_year": 2018
+        },
+        {
+          "country": "United Kingdom",
+          "event_year": 1975
+        },
+        {
+          "country": "United Kingdom",
+          "event_year": 1980
+        },
+        {
+          "country": "United Kingdom",
+          "event_year": 1990
+        },
+        {
+          "country": "United Kingdom",
+          "event_year": 2008
+        },
+        {
+          "country": "United Kingdom",
+          "event_year": 2020
+        },
+        {
+          "country": "United States",
+          "event_year": 1973
+        },
+        {
+          "country": "United States",
+          "event_year": 1980
+        },
+        {
+          "country": "United States",
+          "event_year": 1982
+        },
+        {
+          "country": "United States",
+          "event_year": 1990
+        },
+        {
+          "country": "United States",
+          "event_year": 2001
+        },
+        {
+          "country": "United States",
+          "event_year": 2008
+        },
+        {
+          "country": "United States",
+          "event_year": 2020
+        }
+      ]
+    },
+    "BIS.SPP.REAL.YOY": {
+      "indicator_id": "BIS.SPP.REAL.YOY",
+      "n_total": 250,
+      "n_t1_covered": 70,
+      "n_t2_covered": 69,
+      "n_t1_and_t2_covered": 69,
+      "t1_coverage_pct": 28.0,
+      "t2_coverage_pct": 27.6,
+      "t1_and_t2_coverage_pct": 27.6,
+      "verdict": "FAIL_COVERAGE",
+      "threshold": 0.8,
+      "panel_country_count": 41,
+      "covered_events": [
+        {
+          "country": "Brazil",
+          "event_year": 2008
+        },
+        {
+          "country": "Brazil",
+          "event_year": 2015
+        },
+        {
+          "country": "Brazil",
+          "event_year": 2020
+        },
+        {
+          "country": "Canada",
+          "event_year": 1982
+        },
+        {
+          "country": "Canada",
+          "event_year": 1990
+        },
+        {
+          "country": "Canada",
+          "event_year": 2008
+        },
+        {
+          "country": "Canada",
+          "event_year": 2020
+        },
+        {
+          "country": "China",
+          "event_year": 2015
+        },
+        {
+          "country": "China",
+          "event_year": 2021
+        },
+        {
+          "country": "Colombia",
+          "event_year": 1999
+        },
+        {
+          "country": "Croatia",
+          "event_year": 2008
+        },
+        {
+          "country": "Estonia",
+          "event_year": 2008
+        },
+        {
+          "country": "Finland",
+          "event_year": 1990
+        },
+        {
+          "country": "Finland",
+          "event_year": 2008
+        },
+        {
+          "country": "France",
+          "event_year": 1975
+        },
+        {
+          "country": "France",
+          "event_year": 2008
+        },
+        {
+          "country": "France",
+          "event_year": 2020
+        },
+        {
+          "country": "Germany",
+          "event_year": 1975
+        },
+        {
+          "country": "Germany",
+          "event_year": 1982
+        },
+        {
+          "country": "Germany",
+          "event_year": 1993
+        },
+        {
+          "country": "Germany",
+          "event_year": 2003
+        },
+        {
+          "country": "Germany",
+          "event_year": 2008
+        },
+        {
+          "country": "Germany",
+          "event_year": 2010
+        },
+        {
+          "country": "Greece",
+          "event_year": 2010
+        },
+        {
+          "country": "Iceland",
+          "event_year": 2009
+        },
+        {
+          "country": "India",
+          "event_year": 2019
+        },
+        {
+          "country": "Indonesia",
+          "event_year": 2008
+        },
+        {
+          "country": "Israel",
+          "event_year": 2003
+        },
+        {
+          "country": "Italy",
+          "event_year": 1993
+        },
+        {
+          "country": "Italy",
+          "event_year": 2008
+        },
+        {
+          "country": "Italy",
+          "event_year": 2012
+        },
+        {
+          "country": "Italy",
+          "event_year": 2020
+        },
+        {
+          "country": "Japan",
+          "event_year": 1971
+        },
+        {
+          "country": "Japan",
+          "event_year": 1973
+        },
+        {
+          "country": "Japan",
+          "event_year": 1979
+        },
+        {
+          "country": "Japan",
+          "event_year": 1993
+        },
+        {
+          "country": "Japan",
+          "event_year": 1998
+        },
+        {
+          "country": "Japan",
+          "event_year": 2008
+        },
+        {
+          "country": "Lithuania",
+          "event_year": 2008
+        },
+        {
+          "country": "Malaysia",
+          "event_year": 1996
+        },
+        {
+          "country": "Mexico",
+          "event_year": 2008
+        },
+        {
+          "country": "Netherlands",
+          "event_year": 2011
+        },
+        {
+          "country": "Netherlands",
+          "event_year": 2012
+        },
+        {
+          "country": "Netherlands",
+          "event_year": 2020
+        },
+        {
+          "country": "Norway",
+          "event_year": 2014
+        },
+        {
+          "country": "Portugal",
+          "event_year": 2013
+        },
+        {
+          "country": "Portugal",
+          "event_year": 2020
+        },
+        {
+          "country": "Russia",
+          "event_year": 2008
+        },
+        {
+          "country": "Singapore",
+          "event_year": 2008
+        },
+        {
+          "country": "Slovakia",
+          "event_year": 2009
+        },
+        {
+          "country": "South Africa",
+          "event_year": 1985
+        },
+        {
+          "country": "South Africa",
+          "event_year": 2018
+        },
+        {
+          "country": "South Korea",
+          "event_year": 1998
+        },
+        {
+          "country": "Spain",
+          "event_year": 2008
+        },
+        {
+          "country": "Thailand",
+          "event_year": 1997
+        },
+        {
+          "country": "Thailand",
+          "event_year": 2009
+        },
+        {
+          "country": "Turkiye",
+          "event_year": 2018
+        },
+        {
+          "country": "United Kingdom",
+          "event_year": 1975
+        },
+        {
+          "country": "United Kingdom",
+          "event_year": 1980
+        },
+        {
+          "country": "United Kingdom",
+          "event_year": 1990
+        },
+        {
+          "country": "United Kingdom",
+          "event_year": 2008
+        },
+        {
+          "country": "United Kingdom",
+          "event_year": 2020
+        },
+        {
+          "country": "United States",
+          "event_year": 1973
+        },
+        {
+          "country": "United States",
+          "event_year": 1980
+        },
+        {
+          "country": "United States",
+          "event_year": 1982
+        },
+        {
+          "country": "United States",
+          "event_year": 1990
+        },
+        {
+          "country": "United States",
+          "event_year": 2001
+        },
+        {
+          "country": "United States",
+          "event_year": 2008
+        },
+        {
+          "country": "United States",
+          "event_year": 2020
+        }
+      ]
+    },
+    "DSTKMKTXD": {
+      "indicator_id": "DSTKMKTXD",
+      "n_total": 250,
+      "n_t1_covered": 78,
+      "n_t2_covered": 75,
+      "n_t1_and_t2_covered": 75,
+      "t1_coverage_pct": 31.2,
+      "t2_coverage_pct": 30.0,
+      "t1_and_t2_coverage_pct": 30.0,
+      "verdict": "FAIL_COVERAGE",
+      "threshold": 0.8,
+      "panel_country_count": 54,
+      "covered_events": [
+        {
+          "country": "Argentina",
+          "event_year": 2001
+        },
+        {
+          "country": "Argentina",
+          "event_year": 2014
+        },
+        {
+          "country": "Argentina",
+          "event_year": 2020
+        },
+        {
+          "country": "Brazil",
+          "event_year": 2002
+        },
+        {
+          "country": "Brazil",
+          "event_year": 2008
+        },
+        {
+          "country": "Brazil",
+          "event_year": 2015
+        },
+        {
+          "country": "Brazil",
+          "event_year": 2020
+        },
+        {
+          "country": "Canada",
+          "event_year": 2008
+        },
+        {
+          "country": "Canada",
+          "event_year": 2020
+        },
+        {
+          "country": "Chile",
+          "event_year": 1997
+        },
+        {
+          "country": "China",
+          "event_year": 2015
+        },
+        {
+          "country": "China",
+          "event_year": 2021
+        },
+        {
+          "country": "Croatia",
+          "event_year": 2008
+        },
+        {
+          "country": "Egypt",
+          "event_year": 2008
+        },
+        {
+          "country": "Egypt",
+          "event_year": 2014
+        },
+        {
+          "country": "Estonia",
+          "event_year": 2008
+        },
+        {
+          "country": "Finland",
+          "event_year": 2008
+        },
+        {
+          "country": "France",
+          "event_year": 2008
+        },
+        {
+          "country": "France",
+          "event_year": 2020
+        },
+        {
+          "country": "Germany",
+          "event_year": 1993
+        },
+        {
+          "country": "Germany",
+          "event_year": 2003
+        },
+        {
+          "country": "Germany",
+          "event_year": 2008
+        },
+        {
+          "country": "Germany",
+          "event_year": 2010
+        },
+        {
+          "country": "Greece",
+          "event_year": 2010
+        },
+        {
+          "country": "India",
+          "event_year": 2008
+        },
+        {
+          "country": "India",
+          "event_year": 2019
+        },
+        {
+          "country": "Indonesia",
+          "event_year": 1998
+        },
+        {
+          "country": "Indonesia",
+          "event_year": 2008
+        },
+        {
+          "country": "Iran",
+          "event_year": 2012
+        },
+        {
+          "country": "Israel",
+          "event_year": 2003
+        },
+        {
+          "country": "Italy",
+          "event_year": 2008
+        },
+        {
+          "country": "Italy",
+          "event_year": 2012
+        },
+        {
+          "country": "Italy",
+          "event_year": 2020
+        },
+        {
+          "country": "Japan",
+          "event_year": 1993
+        },
+        {
+          "country": "Japan",
+          "event_year": 1998
+        },
+        {
+          "country": "Japan",
+          "event_year": 2008
+        },
+        {
+          "country": "Jordan",
+          "event_year": 2008
+        },
+        {
+          "country": "Jordan",
+          "event_year": 2013
+        },
+        {
+          "country": "Lithuania",
+          "event_year": 2008
+        },
+        {
+          "country": "Mexico",
+          "event_year": 2008
+        },
+        {
+          "country": "Netherlands",
+          "event_year": 2011
+        },
+        {
+          "country": "Netherlands",
+          "event_year": 2012
+        },
+        {
+          "country": "Netherlands",
+          "event_year": 2020
+        },
+        {
+          "country": "Nigeria",
+          "event_year": 2008
+        },
+        {
+          "country": "Nigeria",
+          "event_year": 2016
+        },
+        {
+          "country": "Norway",
+          "event_year": 2014
+        },
+        {
+          "country": "Oman",
+          "event_year": 2016
+        },
+        {
+          "country": "Oman",
+          "event_year": 2020
+        },
+        {
+          "country": "Pakistan",
+          "event_year": 2018
+        },
+        {
+          "country": "Philippines",
+          "event_year": 1998
+        },
+        {
+          "country": "Poland",
+          "event_year": 2008
+        },
+        {
+          "country": "Portugal",
+          "event_year": 2013
+        },
+        {
+          "country": "Portugal",
+          "event_year": 2020
+        },
+        {
+          "country": "Romania",
+          "event_year": 2008
+        },
+        {
+          "country": "Russia",
+          "event_year": 2008
+        },
+        {
+          "country": "Saudi Arabia",
+          "event_year": 1998
+        },
+        {
+          "country": "Singapore",
+          "event_year": 2008
+        },
+        {
+          "country": "Slovakia",
+          "event_year": 2009
+        },
+        {
+          "country": "South Africa",
+          "event_year": 2018
+        },
+        {
+          "country": "South Korea",
+          "event_year": 1998
+        },
+        {
+          "country": "Spain",
+          "event_year": 2008
+        },
+        {
+          "country": "Thailand",
+          "event_year": 1997
+        },
+        {
+          "country": "Thailand",
+          "event_year": 2009
+        },
+        {
+          "country": "Tunisia",
+          "event_year": 2008
+        },
+        {
+          "country": "Tunisia",
+          "event_year": 2016
+        },
+        {
+          "country": "Tunisia",
+          "event_year": 2021
+        },
+        {
+          "country": "Turkiye",
+          "event_year": 1994
+        },
+        {
+          "country": "Turkiye",
+          "event_year": 2001
+        },
+        {
+          "country": "Turkiye",
+          "event_year": 2018
+        },
+        {
+          "country": "United Kingdom",
+          "event_year": 2008
+        },
+        {
+          "country": "United Kingdom",
+          "event_year": 2020
+        },
+        {
+          "country": "United States",
+          "event_year": 2001
+        },
+        {
+          "country": "United States",
+          "event_year": 2008
+        },
+        {
+          "country": "United States",
+          "event_year": 2020
+        },
+        {
+          "country": "Vietnam",
+          "event_year": 2008
+        }
+      ]
+    },
+    "TT.PRI.MRCH.XD.WD": {
+      "indicator_id": "TT.PRI.MRCH.XD.WD",
+      "n_total": 250,
+      "n_t1_covered": 103,
+      "n_t2_covered": 100,
+      "n_t1_and_t2_covered": 100,
+      "t1_coverage_pct": 41.2,
+      "t2_coverage_pct": 40.0,
+      "t1_and_t2_coverage_pct": 40.0,
+      "verdict": "FAIL_COVERAGE",
+      "threshold": 0.8,
+      "panel_country_count": 105,
+      "covered_events": [
+        {
+          "country": "Algeria",
+          "event_year": 2014
+        },
+        {
+          "country": "Angola",
+          "event_year": 2014
+        },
+        {
+          "country": "Angola",
+          "event_year": 2016
+        },
+        {
+          "country": "Argentina",
+          "event_year": 2014
+        },
+        {
+          "country": "Argentina",
+          "event_year": 2020
+        },
+        {
+          "country": "Armenia",
+          "event_year": 2008
+        },
+        {
+          "country": "Bhutan",
+          "event_year": 2020
+        },
+        {
+          "country": "Botswana",
+          "event_year": 2008
+        },
+        {
+          "country": "Brazil",
+          "event_year": 2008
+        },
+        {
+          "country": "Brazil",
+          "event_year": 2015
+        },
+        {
+          "country": "Brazil",
+          "event_year": 2020
+        },
+        {
+          "country": "Brunei",
+          "event_year": 2015
+        },
+        {
+          "country": "Cabo Verde",
+          "event_year": 2020
+        },
+        {
+          "country": "Canada",
+          "event_year": 2008
+        },
+        {
+          "country": "Canada",
+          "event_year": 2020
+        },
+        {
+          "country": "Chad",
+          "event_year": 2017
+        },
+        {
+          "country": "China",
+          "event_year": 2015
+        },
+        {
+          "country": "China",
+          "event_year": 2021
+        },
+        {
+          "country": "Costa Rica",
+          "event_year": 2020
+        },
+        {
+          "country": "Croatia",
+          "event_year": 2008
+        },
+        {
+          "country": "Ecuador",
+          "event_year": 2014
+        },
+        {
+          "country": "Egypt",
+          "event_year": 2008
+        },
+        {
+          "country": "Egypt",
+          "event_year": 2014
+        },
+        {
+          "country": "Eritrea",
+          "event_year": 2016
+        },
+        {
+          "country": "Estonia",
+          "event_year": 2008
+        },
+        {
+          "country": "Ethiopia",
+          "event_year": 2008
+        },
+        {
+          "country": "Finland",
+          "event_year": 2008
+        },
+        {
+          "country": "France",
+          "event_year": 2008
+        },
+        {
+          "country": "France",
+          "event_year": 2020
+        },
+        {
+          "country": "Germany",
+          "event_year": 2008
+        },
+        {
+          "country": "Germany",
+          "event_year": 2010
+        },
+        {
+          "country": "Greece",
+          "event_year": 2010
+        },
+        {
+          "country": "Iceland",
+          "event_year": 2009
+        },
+        {
+          "country": "India",
+          "event_year": 2008
+        },
+        {
+          "country": "India",
+          "event_year": 2019
+        },
+        {
+          "country": "Indonesia",
+          "event_year": 2008
+        },
+        {
+          "country": "Iran",
+          "event_year": 2012
+        },
+        {
+          "country": "Italy",
+          "event_year": 2008
+        },
+        {
+          "country": "Italy",
+          "event_year": 2012
+        },
+        {
+          "country": "Italy",
+          "event_year": 2020
+        },
+        {
+          "country": "Ivory Coast",
+          "event_year": 2017
+        },
+        {
+          "country": "Jamaica",
+          "event_year": 2008
+        },
+        {
+          "country": "Japan",
+          "event_year": 2008
+        },
+        {
+          "country": "Jordan",
+          "event_year": 2008
+        },
+        {
+          "country": "Jordan",
+          "event_year": 2013
+        },
+        {
+          "country": "Kyrgyzstan",
+          "event_year": 2008
+        },
+        {
+          "country": "Lebanon",
+          "event_year": 2021
+        },
+        {
+          "country": "Liberia",
+          "event_year": 2009
+        },
+        {
+          "country": "Liberia",
+          "event_year": 2018
+        },
+        {
+          "country": "Lithuania",
+          "event_year": 2008
+        },
+        {
+          "country": "Madagascar",
+          "event_year": 2010
+        },
+        {
+          "country": "Mauritania",
+          "event_year": 2020
+        },
+        {
+          "country": "Mexico",
+          "event_year": 2008
+        },
+        {
+          "country": "Moldova",
+          "event_year": 2014
+        },
+        {
+          "country": "Moldova",
+          "event_year": 2021
+        },
+        {
+          "country": "Mongolia",
+          "event_year": 2014
+        },
+        {
+          "country": "Mongolia",
+          "event_year": 2017
+        },
+        {
+          "country": "Mongolia",
+          "event_year": 2020
+        },
+        {
+          "country": "Namibia",
+          "event_year": 2016
+        },
+        {
+          "country": "Netherlands",
+          "event_year": 2011
+        },
+        {
+          "country": "Netherlands",
+          "event_year": 2012
+        },
+        {
+          "country": "Netherlands",
+          "event_year": 2020
+        },
+        {
+          "country": "Nigeria",
+          "event_year": 2008
+        },
+        {
+          "country": "Nigeria",
+          "event_year": 2016
+        },
+        {
+          "country": "Norway",
+          "event_year": 2014
+        },
+        {
+          "country": "Oman",
+          "event_year": 2016
+        },
+        {
+          "country": "Oman",
+          "event_year": 2020
+        },
+        {
+          "country": "Pakistan",
+          "event_year": 2018
+        },
+        {
+          "country": "Panama",
+          "event_year": 2008
+        },
+        {
+          "country": "Poland",
+          "event_year": 2008
+        },
+        {
+          "country": "Portugal",
+          "event_year": 2013
+        },
+        {
+          "country": "Portugal",
+          "event_year": 2020
+        },
+        {
+          "country": "Romania",
+          "event_year": 2008
+        },
+        {
+          "country": "Russia",
+          "event_year": 2008
+        },
+        {
+          "country": "Sierra Leone",
+          "event_year": 2014
+        },
+        {
+          "country": "Singapore",
+          "event_year": 2008
+        },
+        {
+          "country": "Slovakia",
+          "event_year": 2009
+        },
+        {
+          "country": "South Africa",
+          "event_year": 2018
+        },
+        {
+          "country": "Spain",
+          "event_year": 2008
+        },
+        {
+          "country": "Sudan",
+          "event_year": 2016
+        },
+        {
+          "country": "Suriname",
+          "event_year": 2012
+        },
+        {
+          "country": "Suriname",
+          "event_year": 2015
+        },
+        {
+          "country": "Syria",
+          "event_year": 2009
+        },
+        {
+          "country": "Syria",
+          "event_year": 2020
+        },
+        {
+          "country": "Tajikistan",
+          "event_year": 2015
+        },
+        {
+          "country": "Thailand",
+          "event_year": 2009
+        },
+        {
+          "country": "Trinidad And Tobago",
+          "event_year": 2015
+        },
+        {
+          "country": "Trinidad And Tobago",
+          "event_year": 2016
+        },
+        {
+          "country": "Tunisia",
+          "event_year": 2008
+        },
+        {
+          "country": "Tunisia",
+          "event_year": 2016
+        },
+        {
+          "country": "Tunisia",
+          "event_year": 2021
+        },
+        {
+          "country": "Turkiye",
+          "event_year": 2018
+        },
+        {
+          "country": "Turkmenistan",
+          "event_year": 2016
+        },
+        {
+          "country": "United Kingdom",
+          "event_year": 2008
+        },
+        {
+          "country": "United Kingdom",
+          "event_year": 2020
+        },
+        {
+          "country": "United States",
+          "event_year": 2008
+        },
+        {
+          "country": "United States",
+          "event_year": 2020
+        },
+        {
+          "country": "Vietnam",
+          "event_year": 2008
+        },
+        {
+          "country": "Yemen",
+          "event_year": 2008
+        },
+        {
+          "country": "Zambia",
+          "event_year": 2008
+        }
+      ]
+    },
+    "COMMODITY_SHOCK.EXPORT_WEIGHTED": {
+      "indicator_id": "COMMODITY_SHOCK.EXPORT_WEIGHTED",
+      "n_total": 250,
+      "n_t1_covered": 190,
+      "n_t2_covered": 190,
+      "n_t1_and_t2_covered": 185,
+      "t1_coverage_pct": 76.0,
+      "t2_coverage_pct": 76.0,
+      "t1_and_t2_coverage_pct": 74.0,
+      "verdict": "FAIL_COVERAGE",
+      "threshold": 0.8,
+      "panel_country_count": 104,
+      "covered_events": [
+        {
+          "country": "Algeria",
+          "event_year": 1986
+        },
+        {
+          "country": "Algeria",
+          "event_year": 2014
+        },
+        {
+          "country": "Angola",
+          "event_year": 2014
+        },
+        {
+          "country": "Angola",
+          "event_year": 2016
+        },
+        {
+          "country": "Argentina",
+          "event_year": 1975
+        },
+        {
+          "country": "Argentina",
+          "event_year": 2001
+        },
+        {
+          "country": "Argentina",
+          "event_year": 2014
+        },
+        {
+          "country": "Argentina",
+          "event_year": 2020
+        },
+        {
+          "country": "Armenia",
+          "event_year": 2008
+        },
+        {
+          "country": "Belarus",
+          "event_year": 2002
+        },
+        {
+          "country": "Bhutan",
+          "event_year": 2020
+        },
+        {
+          "country": "Bolivia",
+          "event_year": 1985
+        },
+        {
+          "country": "Botswana",
+          "event_year": 2008
+        },
+        {
+          "country": "Brazil",
+          "event_year": 1973
+        },
+        {
+          "country": "Brazil",
+          "event_year": 1981
+        },
+        {
+          "country": "Brazil",
+          "event_year": 1982
+        },
+        {
+          "country": "Brazil",
+          "event_year": 1987
+        },
+        {
+          "country": "Brazil",
+          "event_year": 2002
+        },
+        {
+          "country": "Brazil",
+          "event_year": 2008
+        },
+        {
+          "country": "Brazil",
+          "event_year": 2015
+        },
+        {
+          "country": "Brazil",
+          "event_year": 2020
+        },
+        {
+          "country": "Brunei",
+          "event_year": 2015
+        },
+        {
+          "country": "Cabo Verde",
+          "event_year": 2020
+        },
+        {
+          "country": "Canada",
+          "event_year": 1982
+        },
+        {
+          "country": "Canada",
+          "event_year": 1990
+        },
+        {
+          "country": "Canada",
+          "event_year": 2008
+        },
+        {
+          "country": "Canada",
+          "event_year": 2020
+        },
+        {
+          "country": "Chile",
+          "event_year": 1972
+        },
+        {
+          "country": "Chile",
+          "event_year": 1997
+        },
+        {
+          "country": "China",
+          "event_year": 1988
+        },
+        {
+          "country": "China",
+          "event_year": 2015
+        },
+        {
+          "country": "China",
+          "event_year": 2021
+        },
+        {
+          "country": "Colombia",
+          "event_year": 1999
+        },
+        {
+          "country": "Costa Rica",
+          "event_year": 2020
+        },
+        {
+          "country": "Croatia",
+          "event_year": 2008
+        },
+        {
+          "country": "Ecuador",
+          "event_year": 1973
+        },
+        {
+          "country": "Ecuador",
+          "event_year": 1982
+        },
+        {
+          "country": "Ecuador",
+          "event_year": 1986
+        },
+        {
+          "country": "Ecuador",
+          "event_year": 1993
+        },
+        {
+          "country": "Ecuador",
+          "event_year": 1998
+        },
+        {
+          "country": "Ecuador",
+          "event_year": 1999
+        },
+        {
+          "country": "Ecuador",
+          "event_year": 2000
+        },
+        {
+          "country": "Ecuador",
+          "event_year": 2014
+        },
+        {
+          "country": "Egypt",
+          "event_year": 1986
+        },
+        {
+          "country": "Egypt",
+          "event_year": 1988
+        },
+        {
+          "country": "Egypt",
+          "event_year": 1998
+        },
+        {
+          "country": "Egypt",
+          "event_year": 2008
+        },
+        {
+          "country": "Egypt",
+          "event_year": 2014
+        },
+        {
+          "country": "Estonia",
+          "event_year": 2008
+        },
+        {
+          "country": "Ethiopia",
+          "event_year": 2008
+        },
+        {
+          "country": "Finland",
+          "event_year": 1990
+        },
+        {
+          "country": "Finland",
+          "event_year": 2008
+        },
+        {
+          "country": "France",
+          "event_year": 1975
+        },
+        {
+          "country": "France",
+          "event_year": 2008
+        },
+        {
+          "country": "France",
+          "event_year": 2020
+        },
+        {
+          "country": "Germany",
+          "event_year": 1975
+        },
+        {
+          "country": "Germany",
+          "event_year": 1982
+        },
+        {
+          "country": "Germany",
+          "event_year": 1993
+        },
+        {
+          "country": "Germany",
+          "event_year": 2003
+        },
+        {
+          "country": "Germany",
+          "event_year": 2008
+        },
+        {
+          "country": "Germany",
+          "event_year": 2010
+        },
+        {
+          "country": "Ghana",
+          "event_year": 1975
+        },
+        {
+          "country": "Greece",
+          "event_year": 1985
+        },
+        {
+          "country": "Greece",
+          "event_year": 2010
+        },
+        {
+          "country": "Iceland",
+          "event_year": 2009
+        },
+        {
+          "country": "India",
+          "event_year": 1991
+        },
+        {
+          "country": "India",
+          "event_year": 2008
+        },
+        {
+          "country": "India",
+          "event_year": 2019
+        },
+        {
+          "country": "Indonesia",
+          "event_year": 1975
+        },
+        {
+          "country": "Indonesia",
+          "event_year": 1998
+        },
+        {
+          "country": "Indonesia",
+          "event_year": 2008
+        },
+        {
+          "country": "Israel",
+          "event_year": 2003
+        },
+        {
+          "country": "Italy",
+          "event_year": 1993
+        },
+        {
+          "country": "Italy",
+          "event_year": 2008
+        },
+        {
+          "country": "Italy",
+          "event_year": 2012
+        },
+        {
+          "country": "Italy",
+          "event_year": 2020
+        },
+        {
+          "country": "Ivory Coast",
+          "event_year": 1973
+        },
+        {
+          "country": "Ivory Coast",
+          "event_year": 1980
+        },
+        {
+          "country": "Ivory Coast",
+          "event_year": 2017
+        },
+        {
+          "country": "Jamaica",
+          "event_year": 1979
+        },
+        {
+          "country": "Jamaica",
+          "event_year": 2008
+        },
+        {
+          "country": "Japan",
+          "event_year": 1971
+        },
+        {
+          "country": "Japan",
+          "event_year": 1973
+        },
+        {
+          "country": "Japan",
+          "event_year": 1979
+        },
+        {
+          "country": "Japan",
+          "event_year": 1993
+        },
+        {
+          "country": "Japan",
+          "event_year": 1998
+        },
+        {
+          "country": "Japan",
+          "event_year": 2008
+        },
+        {
+          "country": "Jordan",
+          "event_year": 1988
+        },
+        {
+          "country": "Jordan",
+          "event_year": 2008
+        },
+        {
+          "country": "Jordan",
+          "event_year": 2013
+        },
+        {
+          "country": "Kuwait",
+          "event_year": 1982
+        },
+        {
+          "country": "Kuwait",
+          "event_year": 1986
+        },
+        {
+          "country": "Kyrgyzstan",
+          "event_year": 2008
+        },
+        {
+          "country": "Lebanon",
+          "event_year": 2021
+        },
+        {
+          "country": "Lithuania",
+          "event_year": 2008
+        },
+        {
+          "country": "Madagascar",
+          "event_year": 1980
+        },
+        {
+          "country": "Madagascar",
+          "event_year": 2002
+        },
+        {
+          "country": "Madagascar",
+          "event_year": 2010
+        },
+        {
+          "country": "Malaysia",
+          "event_year": 1974
+        },
+        {
+          "country": "Malaysia",
+          "event_year": 1982
+        },
+        {
+          "country": "Malaysia",
+          "event_year": 1985
+        },
+        {
+          "country": "Malaysia",
+          "event_year": 1996
+        },
+        {
+          "country": "Mauritania",
+          "event_year": 2020
+        },
+        {
+          "country": "Mexico",
+          "event_year": 1982
+        },
+        {
+          "country": "Mexico",
+          "event_year": 1983
+        },
+        {
+          "country": "Mexico",
+          "event_year": 2008
+        },
+        {
+          "country": "Moldova",
+          "event_year": 1998
+        },
+        {
+          "country": "Moldova",
+          "event_year": 2014
+        },
+        {
+          "country": "Moldova",
+          "event_year": 2021
+        },
+        {
+          "country": "Mongolia",
+          "event_year": 2017
+        },
+        {
+          "country": "Mongolia",
+          "event_year": 2020
+        },
+        {
+          "country": "Morocco",
+          "event_year": 1979
+        },
+        {
+          "country": "Namibia",
+          "event_year": 2016
+        },
+        {
+          "country": "Netherlands",
+          "event_year": 2011
+        },
+        {
+          "country": "Netherlands",
+          "event_year": 2012
+        },
+        {
+          "country": "Netherlands",
+          "event_year": 2020
+        },
+        {
+          "country": "Nigeria",
+          "event_year": 1978
+        },
+        {
+          "country": "Nigeria",
+          "event_year": 1989
+        },
+        {
+          "country": "Nigeria",
+          "event_year": 2016
+        },
+        {
+          "country": "Norway",
+          "event_year": 2014
+        },
+        {
+          "country": "Oman",
+          "event_year": 1986
+        },
+        {
+          "country": "Oman",
+          "event_year": 2016
+        },
+        {
+          "country": "Oman",
+          "event_year": 2020
+        },
+        {
+          "country": "Pakistan",
+          "event_year": 2018
+        },
+        {
+          "country": "Palestine",
+          "event_year": 2006
+        },
+        {
+          "country": "Panama",
+          "event_year": 2008
+        },
+        {
+          "country": "Paraguay",
+          "event_year": 1982
+        },
+        {
+          "country": "Peru",
+          "event_year": 1976
+        },
+        {
+          "country": "Peru",
+          "event_year": 1985
+        },
+        {
+          "country": "Peru",
+          "event_year": 1988
+        },
+        {
+          "country": "Philippines",
+          "event_year": 1974
+        },
+        {
+          "country": "Philippines",
+          "event_year": 1980
+        },
+        {
+          "country": "Philippines",
+          "event_year": 1982
+        },
+        {
+          "country": "Philippines",
+          "event_year": 1998
+        },
+        {
+          "country": "Poland",
+          "event_year": 2008
+        },
+        {
+          "country": "Portugal",
+          "event_year": 2013
+        },
+        {
+          "country": "Portugal",
+          "event_year": 2020
+        },
+        {
+          "country": "Romania",
+          "event_year": 2008
+        },
+        {
+          "country": "Russia",
+          "event_year": 2008
+        },
+        {
+          "country": "Saudi Arabia",
+          "event_year": 1994
+        },
+        {
+          "country": "Saudi Arabia",
+          "event_year": 1998
+        },
+        {
+          "country": "Singapore",
+          "event_year": 2008
+        },
+        {
+          "country": "Slovakia",
+          "event_year": 2009
+        },
+        {
+          "country": "South Africa",
+          "event_year": 1985
+        },
+        {
+          "country": "South Africa",
+          "event_year": 2018
+        },
+        {
+          "country": "South Korea",
+          "event_year": 1998
+        },
+        {
+          "country": "Spain",
+          "event_year": 1973
+        },
+        {
+          "country": "Spain",
+          "event_year": 2008
+        },
+        {
+          "country": "Sudan",
+          "event_year": 1982
+        },
+        {
+          "country": "Sudan",
+          "event_year": 2013
+        },
+        {
+          "country": "Sudan",
+          "event_year": 2016
+        },
+        {
+          "country": "Suriname",
+          "event_year": 2012
+        },
+        {
+          "country": "Suriname",
+          "event_year": 2015
+        },
+        {
+          "country": "Syria",
+          "event_year": 1988
+        },
+        {
+          "country": "Syria",
+          "event_year": 2009
+        },
+        {
+          "country": "Tanzania",
+          "event_year": 1979
+        },
+        {
+          "country": "Thailand",
+          "event_year": 1997
+        },
+        {
+          "country": "Thailand",
+          "event_year": 2009
+        },
+        {
+          "country": "Togo",
+          "event_year": 1980
+        },
+        {
+          "country": "Trinidad And Tobago",
+          "event_year": 1982
+        },
+        {
+          "country": "Trinidad And Tobago",
+          "event_year": 2015
+        },
+        {
+          "country": "Trinidad And Tobago",
+          "event_year": 2016
+        },
+        {
+          "country": "Tunisia",
+          "event_year": 2008
+        },
+        {
+          "country": "Tunisia",
+          "event_year": 2016
+        },
+        {
+          "country": "Tunisia",
+          "event_year": 2021
+        },
+        {
+          "country": "Turkiye",
+          "event_year": 1994
+        },
+        {
+          "country": "Turkiye",
+          "event_year": 2001
+        },
+        {
+          "country": "Turkiye",
+          "event_year": 2018
+        },
+        {
+          "country": "United Kingdom",
+          "event_year": 1975
+        },
+        {
+          "country": "United Kingdom",
+          "event_year": 1980
+        },
+        {
+          "country": "United Kingdom",
+          "event_year": 1990
+        },
+        {
+          "country": "United Kingdom",
+          "event_year": 2008
+        },
+        {
+          "country": "United Kingdom",
+          "event_year": 2020
+        },
+        {
+          "country": "United States",
+          "event_year": 1973
+        },
+        {
+          "country": "United States",
+          "event_year": 1980
+        },
+        {
+          "country": "United States",
+          "event_year": 1982
+        },
+        {
+          "country": "United States",
+          "event_year": 2001
+        },
+        {
+          "country": "United States",
+          "event_year": 2008
+        },
+        {
+          "country": "United States",
+          "event_year": 2020
+        },
+        {
+          "country": "Venezuela",
+          "event_year": 1998
+        },
+        {
+          "country": "Vietnam",
+          "event_year": 2008
+        },
+        {
+          "country": "Yemen",
+          "event_year": 2008
+        },
+        {
+          "country": "Zambia",
+          "event_year": 1973
+        },
+        {
+          "country": "Zambia",
+          "event_year": 1998
+        },
+        {
+          "country": "Zambia",
+          "event_year": 2008
+        }
+      ]
+    }
+  },
+  "survivors": [],
+  "rejected": [
+    "BIS.CREDIT_GAP.PRIV_NFC",
+    "BIS.SPP.REAL.YOY",
+    "DSTKMKTXD",
+    "TT.PRI.MRCH.XD.WD",
+    "COMMODITY_SHOCK.EXPORT_WEIGHTED"
+  ],
+  "missing_panel": [],
+  "oecd_scoped_subset": {
+    "countries": [],
+    "n_countries": 0,
+    "event_years": [],
+    "n_events": 0
+  }
+}
