@@ -32,3 +32,18 @@ LOW — near-chance baseline + the best mechanisms absent from the panel + borde
 None of the 5 candidates cleared. All blocked at **D1 coverage-at-positive-cells (≥80%)**: credit-level 79.6% (0.4pp short), credit-accel3 73.6%, M2 72.4%, M2-decel3 69.6%, investment 75.6%. Additionally **both credit candidates fail D3 income-proxy** (FD.AST.PRVT.GD.ZS correlates r=0.606 with GDP-per-capita — a development-level proxy, not a business-cycle signal; the acceleration transform doesn't launder it). M2 + investment pass D3/D6 cleanly, blocked only on coverage. GFC-2008 pre-filter: 4/5 not pure-2008 effects (signal uniformly weak, not a shock artifact). 66/66 battery tests pass.
 
 **VERDICT: 0.547 is economic_recession's honest ceiling with the current substrate.** The real blocker is a **SUBSTRATE GAP**, not a search failure: the best recession predictors (yield-curve/term-spread, house prices, confidence) are absent from the panel, and the available macro series (credit/M2) fall short on coverage. → No enrichment possible via the existing pool. The lever that could help is **sourcing new indicator data** (yield-curve series, house-price indices; and an M2/GDP coverage top-up) — a different, bigger project than searching. No live number at risk (recession never LOCKed).
+
+---
+
+## REBOOT OUTCOME (2026-07-11) — RED this pass; 2 live leads remain
+
+Sourced 5 new indicators outside the 250-pool (BIS credit-gap + house-prices, WB equity + terms-of-trade + commodity-shock interaction; crosswalk 106/106; 168 pure-fn tests). **Real coverage screen killed 3 of 5** even OECD-scoped: credit-gap 77.6%, equity 59.7%, ToT 47.8% (FAIL); **house-prices 82.1% + commodity-shock 95.5% (PASS)**. OECD-scoped test on 26 countries / 65-67 events:
+- **Scoped baseline = 0.587** (run-2 drivers on the ex-ante OECD subset — NOT 0.547; scoping lifts it ~4pp, guard #1 worked → no mirage).
+- **Scoped candidate (run-2 + house-prices + commodity-shock) = 0.617, ΔAUC +0.019, CI [−0.096, +0.125], p=0.75** — crosses zero, misses the +0.02 floor. **REJECTED** by: (1) 2008 era-decomposition (pre-2008 AUC **0.427, below chance** — works only in the recent era); (2) D4 lag-decay (commodity-shock is **coincident-only**, t-2/t-3 below chance).
+- Universal ToT/commodity walk: fails coverage (35.6%) + non-significant (+0.002). REJECT.
+
+**VERDICT: RED — 0/5 program record holds. But 2 genuine leads survive for a future pass:**
+1. **House-prices (`BIS.SPP.REAL.YOY`) is the one clean indicator** — passes coverage, orthogonality, income-proxy, placebo, AND lag-decay (leading). It was only tested *jointly* (dragged down by commodity-shock's noise); **never alone with the drivers.** Worth a focused re-test.
+2. **The OECD yield-curve / term-spread — the single strongest predictor — was NEVER sourced** (Cloudflare-blocked; needs a free OECD API key or a browser export). Untested. This is the real remaining shot.
+
+**Also:** the 67-event OECD sample is statistically thin (hold-out couldn't bind) — the honest completion is house-prices + yield-curve **together**, on the OECD set, ideally with a few more OECD recession events for power. Substrate improved but still short of a validated win; recession's honest ceiling with *currently-pullable* data ≈ 0.59 (scoped) / 0.55 (universal). Artifacts: `reboot/`.
