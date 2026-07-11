@@ -1,0 +1,38 @@
+{
+  "run2_vdem_block": [
+    "v2excrptps",
+    "v2csprtcpt"
+  ],
+  "threshold": 0.85,
+  "candidates": {
+    "v2x_regime": {
+      "candidate_id": "v2x_regime",
+      "block_ids": [
+        "v2excrptps",
+        "v2csprtcpt"
+      ],
+      "n_rows": 328,
+      "n_pos_total": 336,
+      "coverage_at_positive_cells": 0.9761904761904762,
+      "r2": 0.4938271199856379,
+      "multiple_r": 0.702728340104224,
+      "pairwise_r_vs_block": {
+        "v2excrptps": 0.453597521339632,
+        "v2csprtcpt": 0.6388590434099203
+      },
+      "ols_coefficients_intercept_first": [
+        1.1143672824087927,
+        0.23137169564412924,
+        0.4031154772562844
+      ],
+      "verdict": "PASS_ORTHOGONAL",
+      "threshold": 0.85,
+      "min_n": 30
+    }
+  },
+  "survivors": [
+    "v2x_regime"
+  ],
+  "rejected": [],
+  "inconclusive": []
+}

@@ -30,3 +30,9 @@ None clears all gates → **0.611 is mass_protest's honest ceiling**; no further
 
 ## Odds (prior)
 Measured economic/demographic candidates are cleaner (lower hindsight) than banking/coup's — **~40–55%** of a real modest lift.
+
+---
+
+## OUTCOME (2026-07-11) — CEILING 0.611
+
+None of the 5 screen survivors clears all 8 gates — **all fail D6** (country-block bootstrap ΔAUC CI-lower ≤ 0 vs the coverage-matched 0.611; none survives BH-FDR, all p_adj ≥ 0.81). Closest: **GDP-growth (`NY.GDP.MKTP.KD.ZG`)** — recipe 0.6355, dAUC **+0.023**, CI [−0.010, +0.054], p=0.16; it *does* beat the protest-trap floor (D4) but not the baseline (D6). Runner-up: prior-protest count (+0.016, D6-fails). Food-production negative, v2x_regime near-zero. **Youth-bulge rejected at D3a** (development-proxy confound in *levels*, r=−0.557 vs GDP-per-capita — poorer countries skew younger, exactly as pre-reg predicted; the YoY first-difference variant passes D3a cleanly but was not pre-registered → optional follow-up candidate). Protest-trap built + leakage-safe (26/26 tests). Per the pre-reg stop rule: **0.611 is mass_protest's honest ceiling; no further indicator search this cycle.** Optional threads: pre-register OWID_POP_YOUNG-YoY; FP.CPI (inflation) coverage-exception (78.9%, 1.1pp short).

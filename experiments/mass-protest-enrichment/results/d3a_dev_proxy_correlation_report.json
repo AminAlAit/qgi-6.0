@@ -1,0 +1,17 @@
+{
+  "candidate_id": "OWID_POP_YOUNG",
+  "dev_proxy_id": "NY.GNP.PCAP.CD",
+  "threshold": 0.5,
+  "n_pos_total": 336,
+  "level": {
+    "n_rows": 279,
+    "r": -0.556688885966286,
+    "coverage_at_positive_cells": 0.8303571428571429
+  },
+  "yoy_first_diff": {
+    "n_rows": 277,
+    "r": -0.009324333396117232,
+    "coverage_at_positive_cells": 0.8244047619047619
+  },
+  "verdict": "REJECT_PROXY_CONFOUND"
+}

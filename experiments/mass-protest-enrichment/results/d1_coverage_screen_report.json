@@ -1,0 +1,115 @@
+{
+  "n_positive_events": 336,
+  "threshold": 0.8,
+  "candidates": {
+    "AG.PRD.FOOD.XD": {
+      "indicator_id": "AG.PRD.FOOD.XD",
+      "n_total": 336,
+      "n_t1_covered": 286,
+      "n_t2_covered": 285,
+      "n_t1_and_t2_covered": 285,
+      "t1_coverage_pct": 85.1,
+      "t2_coverage_pct": 84.8,
+      "t1_and_t2_coverage_pct": 84.8,
+      "verdict": "PASS_COVERAGE",
+      "threshold": 0.8
+    },
+    "NY.GDP.MKTP.KD.ZG": {
+      "indicator_id": "NY.GDP.MKTP.KD.ZG",
+      "n_total": 336,
+      "n_t1_covered": 287,
+      "n_t2_covered": 283,
+      "n_t1_and_t2_covered": 283,
+      "t1_coverage_pct": 85.4,
+      "t2_coverage_pct": 84.2,
+      "t1_and_t2_coverage_pct": 84.2,
+      "verdict": "PASS_COVERAGE",
+      "threshold": 0.8
+    },
+    "OWID_POP_YOUNG": {
+      "indicator_id": "OWID_POP_YOUNG",
+      "n_total": 336,
+      "n_t1_covered": 331,
+      "n_t2_covered": 331,
+      "n_t1_and_t2_covered": 331,
+      "t1_coverage_pct": 98.5,
+      "t2_coverage_pct": 98.5,
+      "t1_and_t2_coverage_pct": 98.5,
+      "verdict": "PASS_COVERAGE",
+      "threshold": 0.8
+    },
+    "FP.CPI.TOTL.ZG": {
+      "indicator_id": "FP.CPI.TOTL.ZG",
+      "n_total": 336,
+      "n_t1_covered": 268,
+      "n_t2_covered": 267,
+      "n_t1_and_t2_covered": 265,
+      "t1_coverage_pct": 79.8,
+      "t2_coverage_pct": 79.5,
+      "t1_and_t2_coverage_pct": 78.9,
+      "verdict": "FAIL_COVERAGE",
+      "threshold": 0.8
+    },
+    "v2x_regime": {
+      "indicator_id": "v2x_regime",
+      "n_total": 336,
+      "n_t1_covered": 328,
+      "n_t2_covered": 328,
+      "n_t1_and_t2_covered": 328,
+      "t1_coverage_pct": 97.6,
+      "t2_coverage_pct": 97.6,
+      "t1_and_t2_coverage_pct": 97.6,
+      "verdict": "PASS_COVERAGE",
+      "threshold": 0.8
+    },
+    "prior_mass_protest_count": {
+      "indicator_id": "prior_mass_protest_count",
+      "n_total": 336,
+      "n_t1_covered": 336,
+      "n_t2_covered": 336,
+      "n_t1_and_t2_covered": 336,
+      "t1_coverage_pct": 100.0,
+      "t2_coverage_pct": 100.0,
+      "t1_and_t2_coverage_pct": 100.0,
+      "verdict": "PASS_COVERAGE",
+      "threshold": 0.8
+    },
+    "years_since_last_mass_protest": {
+      "indicator_id": "years_since_last_mass_protest",
+      "n_total": 336,
+      "n_t1_covered": 336,
+      "n_t2_covered": 336,
+      "n_t1_and_t2_covered": 336,
+      "t1_coverage_pct": 100.0,
+      "t2_coverage_pct": 100.0,
+      "t1_and_t2_coverage_pct": 100.0,
+      "verdict": "PASS_COVERAGE",
+      "threshold": 0.8
+    },
+    "NY.GNP.PCAP.CD": {
+      "indicator_id": "NY.GNP.PCAP.CD",
+      "n_total": 336,
+      "n_t1_covered": 279,
+      "n_t2_covered": 278,
+      "n_t1_and_t2_covered": 277,
+      "t1_coverage_pct": 83.0,
+      "t2_coverage_pct": 82.7,
+      "t1_and_t2_coverage_pct": 82.4,
+      "verdict": "PASS_COVERAGE",
+      "threshold": 0.8
+    }
+  },
+  "survivors": [
+    "AG.PRD.FOOD.XD",
+    "NY.GDP.MKTP.KD.ZG",
+    "OWID_POP_YOUNG",
+    "v2x_regime",
+    "prior_mass_protest_count",
+    "years_since_last_mass_protest",
+    "NY.GNP.PCAP.CD"
+  ],
+  "rejected": [
+    "FP.CPI.TOTL.ZG"
+  ],
+  "missing_panel": []
+}
