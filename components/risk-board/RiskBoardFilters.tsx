@@ -20,13 +20,14 @@
  */
 
 import { useMemo, useState } from "react";
-import { Search, X, Filter, RotateCcw } from "lucide-react";
+import { Search, X, Filter, RotateCcw, Star } from "lucide-react";
 import { RecipeIcon } from "@/components/te-v4-shared/RecipeIcon";
 import { FlagImg } from "@/components/countries-v4-1/FlagImg";
 // 2026-05-29 — touch comment to force Turbopack to re-detect this module's
 // dependency on the updated FlagImg + country-flags lib (cache invalidation
 // guard for the 16-flag-missing fix).
 import { flagFor, iso2For } from "@/lib/te-mock/country-flags";
+import { useUserSettings } from "@/components/settings/useUserSettings";
 import {
   getRecipeRow,
   type BoardCell,
@@ -83,7 +84,12 @@ export function RiskBoardFilters({ recipes, l1Families, countryUniverse }: Props
   // Round-3.5 country multi-select. When N>0, the grid renders with
   // selectedCountries as columns instead of top-10 per recipe. Capped at
   // MAX_SELECTED. Order preserved (first selected = first column).
-  const [selectedCountries, setSelectedCountries] = useState<string[]>([]);
+  // The effective selection (`selectedCountries`, derived below) is the
+  // watchlist until the user edits it, then their manual list. Keeping it
+  // derived — rather than copying the watchlist into state via an effect —
+  // makes the watchlist a default lens with no render side-effects.
+  const [manualCountries, setManualCountries] = useState<string[]>([]);
+  const [userTouchedCountries, setUserTouchedCountries] = useState(false);
   // Country picker free-text typeahead — distinct from the grid filter
   // search of yore. The query narrows the dropdown list, not the rows.
   const [pickerQuery, setPickerQuery] = useState("");
@@ -91,6 +97,25 @@ export function RiskBoardFilters({ recipes, l1Families, countryUniverse }: Props
   // every cell carrying the same country across rows lights up; the rest
   // fade. Null = no hover, normal rendering.
   const [hoveredCountry, setHoveredCountry] = useState<string | null>(null);
+
+  // Watchlist → default lens. The user's watchlist (settings.watchlist, stored
+  // as alpha-2 codes) is mapped to this board's country NAMES via the board's
+  // own iso2For() so the identity matches exactly.
+  const { settings } = useUserSettings();
+  const watchlistNames = useMemo(() => {
+    const codes = new Set(settings.watchlist.map((c) => c.toUpperCase()));
+    if (codes.size === 0) return [] as string[];
+    return countryUniverse.filter((name) => {
+      const i2 = iso2For(name);
+      return i2 ? codes.has(i2.toUpperCase()) : false;
+    });
+  }, [settings.watchlist, countryUniverse]);
+  const watchlistSeed = useMemo(
+    () => watchlistNames.slice(0, MAX_SELECTED),
+    [watchlistNames]
+  );
+  // Derived: the watchlist is the default until the user edits the selection.
+  const selectedCountries = userTouchedCountries ? manualCountries : watchlistSeed;
 
   const toggleL1 = (id: string) => {
     setSelectedL1((prev) => {
@@ -101,21 +126,28 @@ export function RiskBoardFilters({ recipes, l1Families, countryUniverse }: Props
     });
   };
 
+  // Edits operate on the current effective selection (watchlist or manual) and
+  // flip it to manual, so the first edit "adopts" the watchlist then diverges.
   const addCountry = (name: string) => {
-    setSelectedCountries((prev) => {
-      if (prev.includes(name)) return prev;
-      if (prev.length >= MAX_SELECTED) return prev;
-      return [...prev, name];
-    });
     setPickerQuery("");
+    if (selectedCountries.includes(name) || selectedCountries.length >= MAX_SELECTED)
+      return;
+    setUserTouchedCountries(true);
+    setManualCountries([...selectedCountries, name]);
   };
   const removeCountry = (name: string) => {
-    setSelectedCountries((prev) => prev.filter((c) => c !== name));
+    setUserTouchedCountries(true);
+    setManualCountries(selectedCountries.filter((c) => c !== name));
+  };
+  const applyWatchlist = () => {
+    setUserTouchedCountries(true);
+    setManualCountries(watchlistSeed);
   };
 
   const reset = () => {
     setSelectedL1(new Set());
-    setSelectedCountries([]);
+    setUserTouchedCountries(true);
+    setManualCountries([]);
     setPickerQuery("");
   };
 
@@ -137,11 +169,19 @@ export function RiskBoardFilters({ recipes, l1Families, countryUniverse }: Props
     return out;
   }, [pq, countryUniverse, selectedCountries]);
 
-  // Apply L1 filter + always-scored mode → rows for the grid.
+  // Trend focus (user setting) narrows the board to the trends the user acts
+  // on. `showAllTrends` is a local escape hatch to reveal every trend without
+  // touching the saved preference.
+  const [showAllTrends, setShowAllTrends] = useState(false);
+  const trendFocus = settings.trendFocus;
+  const focusActive = !showAllTrends && !!trendFocus && trendFocus.length > 0;
+
+  // Apply L1 filter + trend focus + always-scored mode → rows for the grid.
   const visibleRows = useMemo(() => {
     const rows: Array<{ recipe: RiskBoardRecipeProjection; row: RecipeRow }> = [];
     for (const recipe of recipes) {
       if (selectedL1.size > 0 && !selectedL1.has(recipe.l1_id)) continue;
+      if (focusActive && trendFocus && !trendFocus.includes(recipe.recipe_id)) continue;
       const row = getRecipeRow(recipe.recipe_id);
       if (!row) continue;
       // Round-3.5: scored-only. Coming-soon recipes never enter the grid.
@@ -149,7 +189,7 @@ export function RiskBoardFilters({ recipes, l1Families, countryUniverse }: Props
       rows.push({ recipe, row });
     }
     return rows;
-  }, [recipes, selectedL1]);
+  }, [recipes, selectedL1, focusActive, trendFocus]);
 
   const customMode = selectedCountries.length > 0;
   const activeFilterCount = selectedL1.size + selectedCountries.length;
@@ -256,6 +296,54 @@ export function RiskBoardFilters({ recipes, l1Families, countryUniverse }: Props
         />
 
         <span style={{ flex: 1 }} />
+
+        {trendFocus && trendFocus.length > 0 && (
+          <button
+            type="button"
+            onClick={() => setShowAllTrends((v) => !v)}
+            title={focusActive ? "Show all trends" : "Show only your focus trends"}
+            style={{
+              display: "inline-flex",
+              alignItems: "center",
+              gap: "5px",
+              fontSize: "10.5px",
+              padding: "5px 10px",
+              background: focusActive ? "var(--qgi-accent)" : "transparent",
+              color: focusActive ? "var(--qgi-bg)" : "var(--qgi-accent)",
+              border: "1px solid var(--qgi-accent)",
+              borderRadius: "4px",
+              fontFamily: "ui-monospace, monospace",
+              cursor: "pointer",
+            }}
+          >
+            <Filter size={11} strokeWidth={1.8} />
+            {focusActive ? `Focus: ${trendFocus.length}` : "All trends"}
+          </button>
+        )}
+
+        {watchlistNames.length > 0 && (
+          <button
+            type="button"
+            onClick={applyWatchlist}
+            title="Show your watchlist countries"
+            style={{
+              display: "inline-flex",
+              alignItems: "center",
+              gap: "5px",
+              fontSize: "10.5px",
+              padding: "5px 10px",
+              background: "transparent",
+              color: "var(--qgi-accent)",
+              border: "1px solid var(--qgi-accent)",
+              borderRadius: "4px",
+              fontFamily: "ui-monospace, monospace",
+              cursor: "pointer",
+            }}
+          >
+            <Star size={11} strokeWidth={1.8} />
+            My watchlist
+          </button>
+        )}
 
         {activeFilterCount > 0 && (
           <button

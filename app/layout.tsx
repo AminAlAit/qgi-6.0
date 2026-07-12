@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono, Jost } from "next/font/google";
 import "./globals.css";
 import { DevAdminButton } from "@/components/admin/DevAdminButton";
+import { SessionProviderWrapper } from "@/components/auth/SessionProviderWrapper";
 
 // T16 #309 LOW fix: declare `display: "swap"` so text is visible during
 // webfont download instead of the default "block" FOIT period.
@@ -134,7 +135,7 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(ORGANIZATION_JSON_LD) }}
         />
-        {children}
+        <SessionProviderWrapper>{children}</SessionProviderWrapper>
         <DevAdminButton />
       </body>
     </html>
