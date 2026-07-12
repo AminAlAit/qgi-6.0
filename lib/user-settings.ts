@@ -15,7 +15,7 @@
 export type DefaultLanding = "briefing" | "risk-board" | "trends";
 
 export interface UserSettings {
-  /** ISO-3 country codes the user follows; becomes the default lens. */
+  /** alpha-2 (ISO 3166-1) country codes the user follows; becomes the default lens. */
   watchlist: string[];
   /** Surface opened right after sign-in. */
   defaultLanding: DefaultLanding;
