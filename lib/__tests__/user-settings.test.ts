@@ -9,16 +9,6 @@ describe("sanitizeSettings", () => {
     expect(sanitizeSettings(42)).toEqual(DEFAULT_SETTINGS);
   });
 
-  it("validates the defaultLanding enum, falling back to the default", () => {
-    expect(sanitizeSettings({ defaultLanding: "hacker" }).defaultLanding).toBe(
-      "briefing"
-    );
-    expect(sanitizeSettings({ defaultLanding: "trends" }).defaultLanding).toBe("trends");
-    expect(sanitizeSettings({ defaultLanding: "risk-board" }).defaultLanding).toBe(
-      "risk-board"
-    );
-  });
-
   it("coerces watchlist to a string array, drops non-strings, caps at 200", () => {
     expect(sanitizeSettings({ watchlist: ["US", 1, null, "NG"] }).watchlist).toEqual([
       "US",
@@ -39,9 +29,14 @@ describe("sanitizeSettings", () => {
     ]);
   });
 
-  it("strips unknown/extra fields (e.g. an injected email)", () => {
-    const out = sanitizeSettings({ email: "victim@x.com", watchlist: ["US"] });
+  it("strips unknown/extra fields (injected email, retired defaultLanding)", () => {
+    const out = sanitizeSettings({
+      email: "victim@x.com",
+      defaultLanding: "risk-board",
+      watchlist: ["US"],
+    });
     expect(out).not.toHaveProperty("email");
+    expect(out).not.toHaveProperty("defaultLanding");
     expect(out.watchlist).toEqual(["US"]);
   });
 });

@@ -5,7 +5,6 @@ import { LogOut } from "lucide-react";
 import { useUserSettings } from "@/components/settings/useUserSettings";
 import { WatchlistPicker } from "@/components/settings/WatchlistPicker";
 import { TrendFocusPicker } from "@/components/settings/TrendFocusPicker";
-import type { DefaultLanding } from "@/lib/user-settings";
 
 /**
  * Account & personalization settings. Reached from the top-right avatar menu.
@@ -113,21 +112,6 @@ export default function SettingsPage() {
             onChange={(next) => update({ trendFocus: next })}
           />
         </div>
-        <Divider />
-        <ControlRow
-          label="Default landing view"
-          desc="Which surface opens right after you sign in."
-        >
-          <Segmented<DefaultLanding>
-            value={settings.defaultLanding}
-            onChange={(v) => update({ defaultLanding: v })}
-            options={[
-              { value: "briefing", label: "Briefing" },
-              { value: "risk-board", label: "Risk Board" },
-              { value: "trends", label: "Trends" },
-            ]}
-          />
-        </ControlRow>
       </Section>
 
       {/* Coming next */}
@@ -232,70 +216,6 @@ function Row({ label, value }: { label: string; value: string }) {
       <span className="text-[13px] font-medium" style={{ color: "var(--qgi-text)" }}>
         {value}
       </span>
-    </div>
-  );
-}
-
-function ControlRow({
-  label,
-  desc,
-  children,
-}: {
-  label: string;
-  desc: string;
-  children: React.ReactNode;
-}) {
-  return (
-    <div className="flex items-center justify-between gap-4 px-5 py-3.5">
-      <span className="min-w-0">
-        <span
-          className="block text-[13px] font-medium"
-          style={{ color: "var(--qgi-text)" }}
-        >
-          {label}
-        </span>
-        <span className="block text-[12px]" style={{ color: "var(--qgi-text-dim)" }}>
-          {desc}
-        </span>
-      </span>
-      <span className="shrink-0">{children}</span>
-    </div>
-  );
-}
-
-function Segmented<T extends string>({
-  value,
-  onChange,
-  options,
-}: {
-  value: T;
-  onChange: (v: T) => void;
-  options: { value: T; label: string }[];
-}) {
-  return (
-    <div
-      className="inline-flex rounded-md border p-0.5"
-      style={{ borderColor: "var(--qgi-border)", background: "var(--qgi-bg)" }}
-    >
-      {options.map((o) => {
-        const active = o.value === value;
-        return (
-          <button
-            key={o.value}
-            type="button"
-            onClick={() => onChange(o.value)}
-            aria-pressed={active}
-            className="rounded px-2.5 py-1 text-[12px] font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--qgi-accent)]"
-            style={{
-              background: active ? "var(--qgi-accent)" : "transparent",
-              color: active ? "var(--qgi-bg)" : "var(--qgi-text-muted)",
-              cursor: "pointer",
-            }}
-          >
-            {o.label}
-          </button>
-        );
-      })}
     </div>
   );
 }

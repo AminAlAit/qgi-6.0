@@ -7,8 +7,6 @@ import Link from "next/link";
 import type { Route } from "next";
 import { safeCallbackUrl } from "@/lib/safe-callback";
 import { confirmSignUpAction, resendCodeAction } from "@/lib/auth-actions";
-import { useUserSettings } from "@/components/settings/useUserSettings";
-import { defaultLandingPath } from "@/lib/user-settings";
 
 /** Per-reason sign-in messages, keyed by the code lib/auth-config surfaces. */
 const SIGNIN_MESSAGES: Record<string, string> = {
@@ -24,15 +22,11 @@ const SIGNIN_MESSAGES: Record<string, string> = {
  */
 export function LoginForm() {
   const params = useSearchParams();
-  const { settings } = useUserSettings();
-  // An explicit callbackUrl (e.g. from a gated "Open Dashboard" click) wins and
-  // is sanitized (it's attacker-controllable and we navigate to it manually,
-  // bypassing NextAuth's same-origin guard). On a direct sign-in with no
-  // callbackUrl, honor the user's Default landing view setting.
-  const rawCallback = params.get("callbackUrl");
-  const callbackUrl = rawCallback
-    ? safeCallbackUrl(rawCallback)
-    : defaultLandingPath(settings.defaultLanding);
+  // An explicit callbackUrl (e.g. from a gated "Open Dashboard" click) is
+  // sanitized — it's attacker-controllable and we navigate to it manually,
+  // bypassing NextAuth's same-origin guard. With no callbackUrl, safeCallbackUrl
+  // falls back to /dashboard (the Briefing surface), the default landing.
+  const callbackUrl = safeCallbackUrl(params.get("callbackUrl"));
   // Account-linking bounce: a Google sign-in was blocked because a password
   // account already owns this email (see signIn callback in lib/auth-config).
   const initialError =

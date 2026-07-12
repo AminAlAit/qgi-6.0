@@ -31,12 +31,18 @@ describe("getServerSettings", () => {
     mockSend.mockResolvedValueOnce({
       Item: {
         settings: {
-          S: JSON.stringify({ defaultLanding: "trends", trendFocus: "not-an-array" }),
+          // includes a retired field (defaultLanding) + a bad-typed trendFocus
+          S: JSON.stringify({
+            defaultLanding: "trends",
+            watchlist: ["US", 5],
+            trendFocus: "not-an-array",
+          }),
         },
       },
     });
     const s = await getServerSettings("a@b.com");
-    expect(s?.defaultLanding).toBe("trends");
+    expect(s).not.toHaveProperty("defaultLanding"); // retired field stripped
+    expect(s?.watchlist).toEqual(["US"]); // non-string dropped by sanitize
     expect(s?.trendFocus).toBeNull(); // invalid type coerced by sanitize
   });
 
@@ -64,7 +70,7 @@ describe("putServerSettings", () => {
     mockSend.mockResolvedValueOnce({});
     const ok = await putServerSettings(
       "user@x.com",
-      { watchlist: ["US"], defaultLanding: "risk-board", trendFocus: null },
+      { watchlist: ["US"], trendFocus: null },
       "2026-07-12T00:00:00Z"
     );
     expect(ok).toBe(true);
