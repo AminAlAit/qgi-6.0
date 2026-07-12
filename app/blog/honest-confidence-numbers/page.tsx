@@ -236,7 +236,7 @@ export default function HonestConfidenceNumbersPost() {
 
           <p>
             What is left, honestly measured, is modest. Across the corrected fleet the
-            honest AUCs run from roughly 0.55 to 0.76: meaningfully better than a coin
+            honest AUCs run from roughly 0.55 to 0.75: meaningfully better than a coin
             flip, in some cases considerably so, nowhere close to a crystal ball.
             We&apos;d rather say exactly that than let a flattering percentage imply more
             than the recipe has earned.

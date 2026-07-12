@@ -87,7 +87,7 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
       ? `${recipe.label} · Trends · QG Intelligence`
       : "Trend not found · QG Intelligence",
     description: recipe
-      ? `${recipe.label} trend report card: the signals driving it, precedents, validation, results.`
+      ? `${recipe.label} trend report card: the signals that move with it, precedents, validation, results.`
       : "Trend not found.",
   };
 }
