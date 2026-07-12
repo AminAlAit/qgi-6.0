@@ -2,6 +2,7 @@ import "server-only";
 
 import { DynamoDBClient, GetItemCommand, PutItemCommand } from "@aws-sdk/client-dynamodb";
 import { type UserSettings, sanitizeSettings } from "@/lib/user-settings";
+import { awsRuntimeCredentials } from "@/lib/aws-credentials";
 
 /**
  * DynamoDB store for per-user profile settings (qgi-user-settings).
@@ -22,8 +23,16 @@ const REGION = process.env.AWS_REGION ?? "eu-central-1";
 const TABLE = process.env.QGI_USER_SETTINGS_TABLE ?? "qgi-user-settings";
 
 let _client: DynamoDBClient | undefined;
-function client(): DynamoDBClient {
-  if (!_client) _client = new DynamoDBClient({ region: REGION });
+async function client(): Promise<DynamoDBClient> {
+  if (!_client) {
+    // On Vercel, federate via OIDC (AWS_ROLE_ARN); locally, undefined → the
+    // default chain uses the .env.local STS creds. See lib/aws-credentials.ts.
+    const credentials = await awsRuntimeCredentials();
+    _client = new DynamoDBClient({
+      region: REGION,
+      ...(credentials ? { credentials } : {}),
+    });
+  }
   return _client;
 }
 
@@ -31,9 +40,9 @@ function client(): DynamoDBClient {
 export async function getServerSettings(email: string): Promise<UserSettings | null> {
   if (!email) return null;
   try {
-    const res = await client().send(
-      new GetItemCommand({ TableName: TABLE, Key: { email: { S: email } } })
-    );
+    const res = await (
+      await client()
+    ).send(new GetItemCommand({ TableName: TABLE, Key: { email: { S: email } } }));
     const raw = res.Item?.settings?.S;
     if (!raw) return null;
     return sanitizeSettings(JSON.parse(raw));
@@ -54,7 +63,9 @@ export async function putServerSettings(
 ): Promise<boolean> {
   if (!email) return false;
   try {
-    await client().send(
+    await (
+      await client()
+    ).send(
       new PutItemCommand({
         TableName: TABLE,
         Item: {
