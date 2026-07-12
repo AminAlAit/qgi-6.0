@@ -69,12 +69,12 @@ export function IndicatorSetPanel({
 
   return (
     <PanelBase
-      title="What is driving this trend"
+      title="What moves with this trend"
       familyColor={familyColor}
       titleTooltip={`The ${indicators.length || "N"} indicators whose combined canonical movement shape defines this trend. Each slice is one signal's weight, derived from its SHAP contribution; weights total 100% across the set.`}
       caption={
         indicators.length > 0
-          ? `These are the signals driving this trend: the handful whose combined movement gives it its fingerprint in the data.`
+          ? `These indicators move together with this trend: a correlated blend that gives it its statistical fingerprint. They are associations, not proven drivers.`
           : undefined
       }
       sectionPending={indicators.length === 0 ? "discrimination" : null}

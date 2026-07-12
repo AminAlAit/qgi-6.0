@@ -667,7 +667,7 @@ function MlPanel({ panel, countryTier }: { panel: LeafMlPanel; countryTier?: Ris
             className="text-[10px] tracking-widest uppercase font-semibold mb-2"
             style={{ color: "var(--qgi-text-dim)" }}
           >
-            Top indicators
+            Associated indicators
           </h3>
           <div className="overflow-x-auto">
             <table className="w-full text-xs">

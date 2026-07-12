@@ -38,6 +38,13 @@ const POSTS: Array<{
   tags: string[];
 }> = [
   {
+    slug: "honest-confidence-numbers",
+    title: "Why our confidence numbers just went down — on purpose",
+    date: "2026-07-12",
+    dek: "34 of our 42 live recipe confidence scores were overstated, a multiple-comparisons artifact from picking the best of nine candidate windows. We re-measured every recipe with one honest protocol, corrected the 34, and left the 8 that held up untouched.",
+    tags: ["methodology", "validation", "recipe fleet"],
+  },
+  {
     slug: "twelve-to-thirty",
     title: "Twelve to thirty, in one scan",
     date: "2026-06-25",
