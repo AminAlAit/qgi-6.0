@@ -50,9 +50,14 @@ export function useUserSettings(): {
       .catch(() => {
         /* offline — the localStorage store already has the values */
       });
-    return () => {
-      if (saveTimer.current) clearTimeout(saveTimer.current);
-    };
+    // NOTE: deliberately no unmount cleanup that clears saveTimer. A pending
+    // debounced save must survive unmount — navigating away within 500ms of an
+    // edit (add a country, click a nav link) is an ordinary flow, and canceling
+    // the timer there would silently drop the DynamoDB write (localStorage would
+    // still show it as "saved", breaking cross-device sync). The timeout
+    // callback is a fire-and-forget server action with no setState, so it's safe
+    // after unmount. The only cancellation we want is update() replacing a prior
+    // pending timer with a newer one, which it does itself.
   }, []);
 
   const update = useCallback((patch: Partial<UserSettings>) => {
