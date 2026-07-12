@@ -3,7 +3,7 @@
   "s3_prefix": "frontend-data/te-fleet-run-2/",
   "dest_root": "data/te-fleet-run-2/",
   "count": 94,
-  "total_bytes": 96130078,
+  "total_bytes": 96130080,
   "files": [
     {
       "rel": "activity/program-feed.json",
@@ -17,8 +17,8 @@
     },
     {
       "rel": "cards-v3/agricultural_policy.card.json",
-      "bytes": 54921,
-      "sha256": "0e89a27c66170ba6341f57a2abe595d29aa73c3d3476e777ead92bc06a13c778"
+      "bytes": 54922,
+      "sha256": "b783c679b57b9cfbcc079099c3f32aac9b48593cbbc78f87e6a59e072d53616d"
     },
     {
       "rel": "cards-v3/banking_and_financial_crisis.card.json",
@@ -97,8 +97,8 @@
     },
     {
       "rel": "cards-v3/executive_power_consolidation.card.json",
-      "bytes": 70282,
-      "sha256": "fd439555183bd1c9b731c26a9cadd0f7da61ea503a237127ddf1e85cc0a9d79b"
+      "bytes": 70283,
+      "sha256": "244fe509886642ccf007d2c081defa51ba42b307f43257a10cb158dcef63d705"
     },
     {
       "rel": "cards-v3/fiscal_policy_change.card.json",
