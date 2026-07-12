@@ -62,6 +62,18 @@ variable "fetch_state_machine_arn" {
   default     = ""
 }
 
+variable "cognito_user_pool_arn" {
+  type        = string
+  description = "Cognito user pool ARN. Grants the frontend reader cognito-idp:ListUsers for the account-linking check (auth). Empty string omits the grant."
+  default     = ""
+}
+
+variable "user_settings_table_arn" {
+  type        = string
+  description = "qgi-user-settings DynamoDB table ARN. Grants the frontend reader read/write for per-user profile settings. Empty string omits the grant."
+  default     = ""
+}
+
 variable "tags" {
   type    = map(string)
   default = {}

@@ -17,6 +17,9 @@ module "storage" {
   aws_account_id = var.aws_account_id
   region         = var.region
   tags           = local.tags
+
+  # Frontend auth/profile settings table lives in staging only for now.
+  enable_user_settings = true
 }
 
 # ---------------------------------------------------------------------------
@@ -35,6 +38,7 @@ module "iam" {
   indicator_table_arn          = module.storage.indicator_table_arn
   completion_table_arn         = module.storage.completion_table_arn
   indicator_values_table_arn   = module.storage.indicator_values_table_arn
+  user_settings_table_arn      = module.storage.user_settings_table_arn
   pipeline_a_counter_table_arn = module.storage.pipeline_a_counter_table_arn
   sns_topic_arn                = module.storage.sns_topic_arn
 
@@ -43,6 +47,11 @@ module "iam" {
   # Re-apply after pipeline module runs to lock it down.
   state_machine_arn       = try(module.pipeline.state_machine_arn, "")
   fetch_state_machine_arn = try(module.pipeline.fetch_state_machine_arn, "")
+
+  # Lets the frontend reader do the account-linking existence check
+  # (cognito-idp:ListUsers) that blocks a duplicate Google identity when a
+  # password account already owns the email. See modules/iam/vercel_frontend_reader.tf.
+  cognito_user_pool_arn = module.cognito.user_pool_arn
 
   tags = local.tags
 }

@@ -46,6 +46,8 @@ output "completion_table_arn" { value = aws_dynamodb_table.completion_counters.a
 # #148: indicator values DDB table
 output "indicator_values_table_name" { value = aws_dynamodb_table.indicator_values.name }
 output "indicator_values_table_arn" { value = aws_dynamodb_table.indicator_values.arn }
+output "user_settings_table_name" { value = length(aws_dynamodb_table.user_settings) > 0 ? aws_dynamodb_table.user_settings[0].name : "" }
+output "user_settings_table_arn" { value = length(aws_dynamodb_table.user_settings) > 0 ? aws_dynamodb_table.user_settings[0].arn : "" }
 
 # #FAR-1: Phase 1 Fargate Spot dispatch counter
 output "pipeline_a_counter_table_name" { value = aws_dynamodb_table.pipeline_a_counter.name }
