@@ -14,6 +14,8 @@
  *
  * Env: COGNITO_CLIENT_ID, COGNITO_CLIENT_SECRET, AWS_REGION (default eu-central-1).
  */
+import "server-only";
+
 import { createHmac } from "node:crypto";
 import {
   CognitoIdentityProviderClient,
@@ -25,6 +27,7 @@ import {
   ConfirmForgotPasswordCommand,
   ListUsersCommand,
 } from "@aws-sdk/client-cognito-identity-provider";
+import { awsRuntimeCredentials } from "@/lib/aws-credentials";
 
 const REGION = process.env.AWS_REGION ?? "eu-central-1";
 const CLIENT_ID = process.env.COGNITO_CLIENT_ID ?? "";
@@ -34,14 +37,25 @@ const USER_POOL_ID = process.env.COGNITO_USER_POOL_ID ?? "";
 // Lazy singleton so importing this module never constructs a client (and never
 // throws on missing env) until a call is actually made.
 let _client: CognitoIdentityProviderClient | null = null;
-function client(): CognitoIdentityProviderClient {
+async function client(): Promise<CognitoIdentityProviderClient> {
   if (!CLIENT_ID || !CLIENT_SECRET) {
     throw new CognitoError(
       "ConfigError",
       "Auth is not configured (COGNITO_CLIENT_ID / COGNITO_CLIENT_SECRET missing)."
     );
   }
-  if (!_client) _client = new CognitoIdentityProviderClient({ region: REGION });
+  if (!_client) {
+    // On Vercel, ListUsers (account-linking) needs IAM creds, which the default
+    // chain can't get from OIDC — federate via AWS_ROLE_ARN. Locally, undefined
+    // → default chain uses .env.local creds. The unauthenticated flows
+    // (InitiateAuth/SignUp/…) don't require creds, but passing the provider is
+    // harmless for them. See lib/aws-credentials.ts.
+    const credentials = await awsRuntimeCredentials();
+    _client = new CognitoIdentityProviderClient({
+      region: REGION,
+      ...(credentials ? { credentials } : {}),
+    });
+  }
   return _client;
 }
 
@@ -100,7 +114,9 @@ export interface Tokens {
 /** Email/password sign-in. Returns Cognito tokens (idToken feeds NextAuth). */
 export async function signIn(email: string, password: string): Promise<Tokens> {
   try {
-    const res = await client().send(
+    const res = await (
+      await client()
+    ).send(
       new InitiateAuthCommand({
         AuthFlow: "USER_PASSWORD_AUTH",
         ClientId: CLIENT_ID,
@@ -156,7 +172,9 @@ export async function signIn(email: string, password: string): Promise<Tokens> {
 export async function emailHasPasswordAccount(email: string): Promise<boolean> {
   if (!USER_POOL_ID || !email) return false;
   try {
-    const res = await client().send(
+    const res = await (
+      await client()
+    ).send(
       new ListUsersCommand({
         UserPoolId: USER_POOL_ID,
         // Cognito ListUsers filter syntax: attribute = "value" (quote-escaped).
@@ -180,7 +198,9 @@ export async function signUp(
   password: string
 ): Promise<{ userConfirmed: boolean }> {
   try {
-    const res = await client().send(
+    const res = await (
+      await client()
+    ).send(
       new SignUpCommand({
         ClientId: CLIENT_ID,
         Username: email,
@@ -198,7 +218,9 @@ export async function signUp(
 /** Confirm a sign-up with the emailed code. */
 export async function confirmSignUp(email: string, code: string): Promise<void> {
   try {
-    await client().send(
+    await (
+      await client()
+    ).send(
       new ConfirmSignUpCommand({
         ClientId: CLIENT_ID,
         Username: email,
@@ -214,7 +236,9 @@ export async function confirmSignUp(email: string, code: string): Promise<void> 
 /** Resend the sign-up confirmation code. */
 export async function resendConfirmationCode(email: string): Promise<void> {
   try {
-    await client().send(
+    await (
+      await client()
+    ).send(
       new ResendConfirmationCodeCommand({
         ClientId: CLIENT_ID,
         Username: email,
@@ -229,7 +253,9 @@ export async function resendConfirmationCode(email: string): Promise<void> {
 /** Start a password reset — Cognito emails a code. */
 export async function forgotPassword(email: string): Promise<void> {
   try {
-    await client().send(
+    await (
+      await client()
+    ).send(
       new ForgotPasswordCommand({
         ClientId: CLIENT_ID,
         Username: email,
@@ -248,7 +274,9 @@ export async function confirmForgotPassword(
   newPassword: string
 ): Promise<void> {
   try {
-    await client().send(
+    await (
+      await client()
+    ).send(
       new ConfirmForgotPasswordCommand({
         ClientId: CLIENT_ID,
         Username: email,
