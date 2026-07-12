@@ -12,29 +12,19 @@
  * their preferences will join this schema when that lands.
  */
 
-export type DefaultLanding = "briefing" | "risk-board" | "trends";
-
 export interface UserSettings {
   /** alpha-2 (ISO 3166-1) country codes the user follows; becomes the default lens. */
   watchlist: string[];
-  /** Surface opened right after sign-in. */
-  defaultLanding: DefaultLanding;
   /** Allowlist of trend slugs to show; null = show all. */
   trendFocus: string[] | null;
 }
 
 export const DEFAULT_SETTINGS: UserSettings = {
   watchlist: [],
-  defaultLanding: "briefing",
   trendFocus: null,
 };
 
 const KEY = "qgi-user-settings-v1";
-
-/** Map the default-landing choice to a route. */
-export function defaultLandingPath(v: DefaultLanding): string {
-  return v === "risk-board" ? "/risk-board" : v === "trends" ? "/trends" : "/dashboard";
-}
 
 /**
  * Coerce arbitrary (untrusted / stale / tampered) input into a valid
@@ -44,17 +34,12 @@ export function defaultLandingPath(v: DefaultLanding): string {
  */
 export function sanitizeSettings(input: unknown): UserSettings {
   const o = (input && typeof input === "object" ? input : {}) as Record<string, unknown>;
-  const landing = o.defaultLanding;
   const strArr = (v: unknown): string[] =>
     Array.isArray(v)
       ? v.filter((x): x is string => typeof x === "string").slice(0, 200)
       : [];
   return {
     watchlist: strArr(o.watchlist),
-    defaultLanding:
-      landing === "risk-board" || landing === "trends" || landing === "briefing"
-        ? landing
-        : DEFAULT_SETTINGS.defaultLanding,
     trendFocus: Array.isArray(o.trendFocus) ? strArr(o.trendFocus) : null,
   };
 }
