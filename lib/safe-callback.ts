@@ -27,7 +27,16 @@ export function safeCallbackUrl(
     const base = "http://localhost";
     const u = new URL(raw, base);
     if (u.origin !== base) return fallback;
-    return u.pathname + u.search + u.hash;
+    const out = u.pathname + u.search + u.hash;
+    // Path normalization can collapse a leading segment and leave a `//host`
+    // (or `/\host`) *pathname* even when the resolved origin is same-origin —
+    // e.g. `/..//evil.com` → pathname `//evil.com`. That value is
+    // protocol-relative at the `window.location.href = out` sink and would
+    // navigate off-origin, so we must re-check the OUTPUT, not just the raw
+    // input. (The `/\` arm is belt-and-suspenders; the parser normalizes `\`
+    // to `/` in paths, so it shouldn't fire, but we don't rely on that.)
+    if (out.startsWith("//") || out.startsWith("/\\")) return fallback;
+    return out;
   } catch {
     return fallback;
   }

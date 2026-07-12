@@ -52,6 +52,21 @@ describe("safeCallbackUrl", () => {
     expect(safeCallbackUrl(decodeURIComponent("%2F%5Cevil.com"))).toBe("/dashboard");
   });
 
+  it("rejects the path-collapse bypass (/..//host normalizes to //host)", () => {
+    // These resolve to a same-ORIGIN url but a `//evil.com` pathname, which is
+    // protocol-relative at the window.location.href sink — the output guard
+    // must catch them, not just the raw-input guard.
+    expect(safeCallbackUrl("/..//evil.com")).toBe("/dashboard");
+    expect(safeCallbackUrl("/x/../..//evil.com")).toBe("/dashboard");
+    expect(safeCallbackUrl("/.//evil.com")).toBe("/dashboard");
+    expect(safeCallbackUrl("/%2e%2e//evil.com")).toBe("/dashboard");
+  });
+
+  it("keeps a same-origin path that a backslash collapses to one slash", () => {
+    // `/..\evil.com` → pathname `/evil.com` — same-origin, harmless, kept.
+    expect(safeCallbackUrl("/..\\evil.com")).toBe("/evil.com");
+  });
+
   it("rejects a same-host-prefix homograph (//localhost.evil.com)", () => {
     expect(safeCallbackUrl("//localhost.evil.com/x")).toBe("/dashboard");
   });
