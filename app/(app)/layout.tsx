@@ -1,6 +1,7 @@
 import { Sidebar } from "@/components/nav/Sidebar";
 import { PresentationWrapper } from "@/components/nav/PresentationWrapper";
 import { TourProvider } from "@/components/tour/TourProvider";
+import { UserMenu } from "@/components/auth/UserMenu";
 import manifest from "@/data/te-fleet-run-2/MANIFEST.json";
 
 /**
@@ -50,6 +51,9 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
           {children}
         </main>
       </div>
+      {/* Top-right account menu (avatar → dropdown with Settings + Sign out).
+          Fixed/floating so it sits above page content on every gated page. */}
+      <UserMenu />
       {/* Tour-design 2026-05-18 — auto-fire on first visit (cookie-persisted),
           manual re-trigger from the sidebar "Take the tour" link. Content
           authored from 5-persona convergence. */}
