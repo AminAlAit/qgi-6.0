@@ -3,7 +3,7 @@
   "s3_prefix": "frontend-data/te-fleet-run-2/",
   "dest_root": "data/te-fleet-run-2/",
   "count": 94,
-  "total_bytes": 96039977,
+  "total_bytes": 96130078,
   "files": [
     {
       "rel": "activity/program-feed.json",
@@ -17,13 +17,13 @@
     },
     {
       "rel": "cards-v3/agricultural_policy.card.json",
-      "bytes": 52997,
-      "sha256": "28e39dc0599f857fac5af95ea761f0325b5c1cba9ff93a97675dd7316cf97895"
+      "bytes": 54921,
+      "sha256": "0e89a27c66170ba6341f57a2abe595d29aa73c3d3476e777ead92bc06a13c778"
     },
     {
       "rel": "cards-v3/banking_and_financial_crisis.card.json",
-      "bytes": 54841,
-      "sha256": "f5bd2c3d3dcb4ad5cc6d20993a15bf1369fc5829e22917fd877dfa10a852c6bb"
+      "bytes": 56845,
+      "sha256": "1e1fcfc7ddbdab8d97c860ca57ce2203d4d1df91986043798a2331d1f8535ccf"
     },
     {
       "rel": "cards-v3/bilateral_treaty.card.json",
@@ -32,8 +32,8 @@
     },
     {
       "rel": "cards-v3/civil_war_and_insurgency.card.json",
-      "bytes": 159196,
-      "sha256": "b07338847faa75c46f51728387c737974792ee3f8f9b08aa649153429349ef29"
+      "bytes": 164403,
+      "sha256": "84be840704ea2dd1a01217bf68eebd8217dd47eca453293cce301b6ba0ae55ff"
     },
     {
       "rel": "cards-v3/constitutional_change.card.json",
@@ -42,38 +42,38 @@
     },
     {
       "rel": "cards-v3/currency_crisis.card.json",
-      "bytes": 53082,
-      "sha256": "00215250cd7358439b74184b184490f74a6d5bbf9dc6f170dd1722c02941d84b"
+      "bytes": 54952,
+      "sha256": "0b82c3342d55617a8145270176ed5e298d682dcaf00ce27aa7a13b425469ce50"
     },
     {
       "rel": "cards-v3/democratic_transition.card.json",
-      "bytes": 118627,
-      "sha256": "5cd99f9fa5ba3adde97f795f4fe14c8d84b9213dc4549c7a5eac703c657a07d4"
+      "bytes": 122551,
+      "sha256": "f2030c23136850474db9deb96fc8666b65b63fe97a1c46be72cd5a6591e425d6"
     },
     {
       "rel": "cards-v3/diplomatic_rupture.card.json",
-      "bytes": 63243,
-      "sha256": "c16cae2d16bd8e41b4292405332af0de781427f51f5f847690c879d029510a3f"
+      "bytes": 65486,
+      "sha256": "2aa8d998b7aea1a7cbda8237ca3f313e1a3a7aa1367989a4b2f5b5e4ae4e1ec2"
     },
     {
       "rel": "cards-v3/economic_growth_milestone.card.json",
-      "bytes": 58748,
-      "sha256": "ba5a4c862192c128a114e9ad354b3f87080bc870a5b84755eeba2a948ff32adc"
+      "bytes": 60956,
+      "sha256": "f1bc1c18733f55513b99d7ef8973c831a44f5afea82d400365bbdd020fe53593"
     },
     {
       "rel": "cards-v3/economic_liberalization.card.json",
-      "bytes": 53473,
-      "sha256": "6f27c1fcc0a75ce53053abffa228e97b0e7b831b95e481118c5cde54b1a2c054"
+      "bytes": 55358,
+      "sha256": "8db02893bd2d3ff5d9b806e26b4abe6f6dca70a6333189215a9cdd093ee7ac04"
     },
     {
       "rel": "cards-v3/economic_nationalization.card.json",
-      "bytes": 52392,
-      "sha256": "9add574ba10a6f675cd2be51416b7e192e694b03041204a5015e323be467f214"
+      "bytes": 54305,
+      "sha256": "8eff1b08097a52eab195d4192f1002fc33c4ff3761026fffb4374fb4d9b909bd"
     },
     {
       "rel": "cards-v3/economic_recession.card.json",
-      "bytes": 85280,
-      "sha256": "79bce07af77f4cd37e3d9e79e3b88b2510a342b541aeb7d15c37514a3f747fdc"
+      "bytes": 88170,
+      "sha256": "480b5dd9d4103793caff35ad785fc4063129b4006e9c4743b8f3f06894d1bd6b"
     },
     {
       "rel": "cards-v3/elections_and_voting.card.json",
@@ -82,8 +82,8 @@
     },
     {
       "rel": "cards-v3/energy_policy.card.json",
-      "bytes": 73789,
-      "sha256": "2a5188c74b252c57745c3818b4fc48b6c69557a9f7cbb9eb266b72bd7946360d"
+      "bytes": 76365,
+      "sha256": "f96e9170ec5c1ebbdfb1a4e40e955cf9addf7119d12458b3d1ce226ce5f557ea"
     },
     {
       "rel": "cards-v3/epidemic_and_pandemic.card.json",
@@ -92,33 +92,33 @@
     },
     {
       "rel": "cards-v3/ethnic_and_communal_conflict.card.json",
-      "bytes": 54101,
-      "sha256": "017488e4bf51b15d07ef44f54aaa3ce008de47f9500665f5e5d329a98c8af8e8"
+      "bytes": 55992,
+      "sha256": "73026b962a8e8362be2a8c242e29ab127ac1304ac02ed75e962d7356e7a82652"
     },
     {
       "rel": "cards-v3/executive_power_consolidation.card.json",
-      "bytes": 67905,
-      "sha256": "1fe25d86f65484051b19f73430b9a1eeb6fc1681edf49cb662da68ee4abeb0dc"
+      "bytes": 70282,
+      "sha256": "fd439555183bd1c9b731c26a9cadd0f7da61ea503a237127ddf1e85cc0a9d79b"
     },
     {
       "rel": "cards-v3/fiscal_policy_change.card.json",
-      "bytes": 92145,
-      "sha256": "d00ba6618ea5ad0666df20b56af4bcf71430fb0bccf8a4f15566cdc968250e19"
+      "bytes": 95239,
+      "sha256": "062559c64408feee41ad2b30e8e0928de9230da5d1286dab0bacf52d81cc39ec"
     },
     {
       "rel": "cards-v3/foreign_intervention.card.json",
-      "bytes": 81934,
-      "sha256": "b425526208307ac99dfa143b52a4cb1d0d35924edbbc75e0be5471ca9a6ceb11"
+      "bytes": 84878,
+      "sha256": "63c757c2621d91305d089fdf5ed680968ce080d68608c094763ee1fb5fb1a067"
     },
     {
       "rel": "cards-v3/government_formation.card.json",
-      "bytes": 155941,
-      "sha256": "c9284a9298526bb16ba88bbdf10c124f769a4644751ebfbc6be275910a6f1fb9"
+      "bytes": 160920,
+      "sha256": "93652d60ca7d408a09a7cc0e5bc1812ced740a2ff76381be7d390251cb17d4e9"
     },
     {
       "rel": "cards-v3/human_rights_reform.card.json",
-      "bytes": 71242,
-      "sha256": "44c2dd2f9dabd3130361eac991e5b05123e387a63e1be31d6a8907b67ec4816f"
+      "bytes": 73698,
+      "sha256": "ad08a973e3e97ac1f6b645e76473ab0e1fb755f1246c9c283e5b1ef6b3cfa664"
     },
     {
       "rel": "cards-v3/human_rights_violation.card.json",
@@ -127,8 +127,8 @@
     },
     {
       "rel": "cards-v3/infrastructure_project.card.json",
-      "bytes": 55112,
-      "sha256": "432d7d8a4d4725a2a89d572d39ebd87d78ee52082e4f4874d149ddd3b70aa1e7"
+      "bytes": 57062,
+      "sha256": "ba0425f81c4584d0de5986e288ee06df1e1d8984f415af975c296b914dfdb71b"
     },
     {
       "rel": "cards-v3/interstate_war.card.json",
@@ -137,33 +137,33 @@
     },
     {
       "rel": "cards-v3/labor_action.card.json",
-      "bytes": 59657,
-      "sha256": "5feabe78c5b670fe28332ce5a6b8e3a96db5fbeda26ba0bff4faf28caf05abe4"
+      "bytes": 61868,
+      "sha256": "d9eaf513fe068433bc73525eeae5d0dd8c0571049ffff8597a09ffd19822bd15"
     },
     {
       "rel": "cards-v3/mass_protest.card.json",
-      "bytes": 108605,
-      "sha256": "79e95974bf6bb0950388dadba48fbd5296982b136d125f86a365cba53cdbc53b"
+      "bytes": 112163,
+      "sha256": "d3f73f77c8a1a840c1412843510d008f014deac7be481181349da7ae8b0a15ba"
     },
     {
       "rel": "cards-v3/migration_and_refugees.card.json",
-      "bytes": 82677,
-      "sha256": "f643e02c8d933adc8c6bab634df371d1094b19a466b021423658b9fdc22441a5"
+      "bytes": 85472,
+      "sha256": "e4d10d3c336d1f3f9899100097b4ed82354d68ea39bf2b90017d346d5f72f9d9"
     },
     {
       "rel": "cards-v3/military_coup.card.json",
-      "bytes": 88227,
-      "sha256": "98d22524fdfc10578176df24e932967c8b1072af95e9efccbd4fad404d7fe9b9"
+      "bytes": 91252,
+      "sha256": "30be66f922bf1474c11f448dbaf7359870f6a3f653f97c9d04902a8394d4b03b"
     },
     {
       "rel": "cards-v3/military_policy_and_reform.card.json",
-      "bytes": 78720,
-      "sha256": "5cd88aa7f343ba637bf8769e9d37b56ed02b1f3df5ec8b6a9d4a6b1b292f9fcf"
+      "bytes": 81444,
+      "sha256": "c2a37d496c698a5b6f4bf4906ea7ebcbc90a951faa9ddcf2ad04f154c043cb13"
     },
     {
       "rel": "cards-v3/monetary_policy_change.card.json",
-      "bytes": 48937,
-      "sha256": "b36175b4bc347295066bf2a60267b4c8da1dd20b575d3d4db31049daa3167682"
+      "bytes": 50690,
+      "sha256": "89449e83b14935b301b98d3aa3e449872fe2a399afb4bfd7e3af85317db9944e"
     },
     {
       "rel": "cards-v3/multilateral_agreement.card.json",
@@ -177,13 +177,13 @@
     },
     {
       "rel": "cards-v3/peacekeeping_and_peace_process.card.json",
-      "bytes": 95479,
-      "sha256": "c9124b158b3c1a70c11575a09995b138a2ed9679418ca332752a547948837edd"
+      "bytes": 98730,
+      "sha256": "b5179e0630c173a62f1093ae365a43d611ba2c4b5fa67f8f1a2364cc6ab1222a"
     },
     {
       "rel": "cards-v3/political_corruption.card.json",
-      "bytes": 72537,
-      "sha256": "e8cb707111d59f677c33501bde783d0b861c62f00047947c5038c5cb0a7dd083"
+      "bytes": 74937,
+      "sha256": "9ff2bbc310fe271a2efe8df2ea1a30a6701e1d395789a347f02bc44355ee23b7"
     },
     {
       "rel": "cards-v3/political_repression.card.json",
@@ -192,43 +192,43 @@
     },
     {
       "rel": "cards-v3/political_violence.card.json",
-      "bytes": 86548,
-      "sha256": "25530edc572f7a52dfc5874fbb3e92bf97743e2e0086eedfde025b506103887a"
+      "bytes": 89452,
+      "sha256": "ae328edd75accbe30666f8b1fb0ee18a5b781c2ca2522698382dcce52eb3e464"
     },
     {
       "rel": "cards-v3/regional_integration.card.json",
-      "bytes": 70305,
-      "sha256": "0fdcfa18baa7e502d0fcd4387d984a6c2009869488f3869926b35ffd8804f791"
+      "bytes": 72833,
+      "sha256": "f49cf4d09af98743c2424e7f97b905117745ba34f15b5e5642004f199448db16"
     },
     {
       "rel": "cards-v3/religious_and_social_movement.card.json",
-      "bytes": 61905,
-      "sha256": "d3f6f3d87157bdd87a15e73bd5d1447c5f2e8be15eee2a36cabeaf8ddb8db80b"
+      "bytes": 64227,
+      "sha256": "49f75a8f0e71eddab198b0fe8e25aba2dcd7c344da4c4f4b5ab2910573e1fb1e"
     },
     {
       "rel": "cards-v3/sanctions_and_arms_embargo.card.json",
-      "bytes": 63767,
-      "sha256": "5d0b2d2e0a2c65759d890f158aecd749f87db8d2c67cb7f2ae3b9903f2f8a690"
+      "bytes": 66087,
+      "sha256": "c0a008e2f304a93dc6d4b3472c95fc4c39cfa1cb24707920e91686ed0d010692"
     },
     {
       "rel": "cards-v3/technology_breakthrough.card.json",
-      "bytes": 53767,
-      "sha256": "37a770c2879b24b3a4b3b7b0cf425e3b20d1b1b4443492a35e63b0b9450f3f96"
+      "bytes": 55734,
+      "sha256": "1bae76a42891f1c57364c8f3fb1e072312df5a043eb381c46d8060c1f271fe02"
     },
     {
       "rel": "cards-v3/territorial_disputes.card.json",
-      "bytes": 80078,
-      "sha256": "5ca2d9456af35c3fa3e6e598280a18ad03d7f7020837ff53551700bbcb04f506"
+      "bytes": 82960,
+      "sha256": "b56d3acf5d34734cea422dd7ae5a6d2cda6c352d7c627c135559b29735a771f9"
     },
     {
       "rel": "cards-v3/terrorist_attack.card.json",
-      "bytes": 85153,
-      "sha256": "2faac82ef8de9d9fe7c6882cc163a338f83e0f9b8e32c94f44179cb21e635f93"
+      "bytes": 88038,
+      "sha256": "cb55ef87697f5c175802d441fd5c66f7c23111f03f11d26b55ebbd14825ffb17"
     },
     {
       "rel": "cards-v3/trade_agreement.card.json",
-      "bytes": 63091,
-      "sha256": "8671d91355dfaac5b31ece70287d8c0c94643ac2b3c00509d5c14880d32c4345"
+      "bytes": 65332,
+      "sha256": "254204492797cc5037359fb02eed159894f2893c383d5fc2fedf3e7cc9c1fcc4"
     },
     {
       "rel": "cards-v3/transitional_justice.card.json",
