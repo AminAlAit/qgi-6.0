@@ -2,6 +2,21 @@ import type { NextConfig } from "next";
 import { withSentryConfig } from "@sentry/nextjs";
 
 /**
+ * Hard guard against the single worst auth foot-gun: SKIP_AUTH bypasses all
+ * gating (dev pre-paywall posture), and the documented default in Vercel is
+ * `true`. Nothing else stops that value from being set in the Production
+ * environment scope by mistake, which would silently disable the login wall on
+ * qgintelligence.com. This runs at build time on Vercel, so a prod build with
+ * SKIP_AUTH=true fails loudly instead of shipping wide open. (Preview/dev are
+ * unaffected — VERCEL_ENV is only "production" for prod deploys.)
+ */
+if (process.env.VERCEL_ENV === "production" && process.env.SKIP_AUTH === "true") {
+  throw new Error(
+    "SKIP_AUTH=true is not allowed in a production deploy — it disables the auth gate. Unset it in the Vercel Production environment."
+  );
+}
+
+/**
  * #748 PR-3 (#751) — Retired precedent slugs (2026-05-17).
  *
  * These slugs used to 301-redirect to `/precedents`. That route is now

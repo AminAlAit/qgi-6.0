@@ -1,23 +1,17 @@
-import Link from "next/link";
 import type { Metadata } from "next";
+import { Suspense } from "react";
+import Link from "next/link";
+import { LoginForm } from "@/components/auth/LoginForm";
 
 /**
- * Login page — #429 (2026-04-24): both auth paths are currently broken
- * in prod (Google OAuth returns 500 because GOOGLE_CLIENT_ID is unset on
- * Vercel; email magic-link form has no handler). Rather than ship two
- * dead buttons that users can click and get 500s / silent reloads, the
- * page renders a "Sign-in coming soon" banner while SKIP_AUTH=true is
- * still the production posture.
- *
- * When auth goes live (#448 M3 work), restore the Google form +
- * wire the email magic-link to signIn("email", ...).
- *
- * Route is kept alive so existing links + middleware redirects resolve.
- * noindex on metadata so Google doesn't surface a coming-soon page.
+ * Login page. "Continue with Google" (live) + native email/password
+ * (via the NextAuth Credentials provider → Cognito, live once the pool is
+ * applied). Replaces the #429 "coming soon" stub as part of the #448 auth work.
+ * noindex.
  */
 export const metadata: Metadata = {
   title: "Sign in · QG Intelligence",
-  description: "Sign-in coming soon. Contact amin@qgintelligence.com for early access.",
+  description: "Sign in to QG Intelligence.",
   robots: { index: false, follow: false },
 };
 
@@ -28,14 +22,14 @@ export default function LoginPage() {
       style={{ backgroundColor: "var(--qgi-bg)" }}
     >
       <div
-        className="w-full max-w-md rounded-lg border p-8"
+        className="w-full max-w-md rounded-lg border p-8 flex flex-col items-center"
         style={{
           backgroundColor: "var(--qgi-surface)",
           borderColor: "var(--qgi-border)",
         }}
       >
         {/* Logo */}
-        <div className="text-center mb-8">
+        <div className="text-center mb-6">
           <span
             className="font-data text-lg tracking-[0.25em] font-semibold"
             style={{ color: "var(--qgi-accent)" }}
@@ -50,66 +44,14 @@ export default function LoginPage() {
           </p>
         </div>
 
-        {/* Coming-soon banner */}
-        <div
-          className="rounded border p-5 mb-6"
-          style={{
-            borderColor: "var(--qgi-accent)",
-            backgroundColor: "var(--qgi-accent-glow, rgba(56, 189, 248, 0.08))",
-          }}
-        >
-          <div
-            className="text-[10px] tracking-widest uppercase mb-2"
-            style={{ color: "var(--qgi-accent)" }}
-          >
-            Sign-in coming soon
-          </div>
-          <p className="text-sm leading-relaxed" style={{ color: "var(--qgi-text)" }}>
-            Account creation is not yet open. The dashboard and all country intelligence
-            pages are publicly browsable today, no login needed.
-          </p>
-        </div>
+        <h1 className="text-lg font-semibold mb-6" style={{ color: "var(--qgi-text)" }}>
+          Sign in
+        </h1>
 
-        {/* What you can do now */}
-        <div className="space-y-3 mb-6">
-          <Link
-            href="/countries"
-            className="block w-full text-center py-2.5 rounded text-sm font-medium tracking-wide transition-all hover:brightness-110"
-            style={{
-              backgroundColor: "var(--qgi-accent)",
-              color: "var(--qgi-bg)",
-            }}
-          >
-            Explore Countries
-          </Link>
-          <Link
-            href="/dashboard"
-            className="block w-full text-center py-2.5 rounded text-sm tracking-wide border transition-colors hover:bg-[var(--qgi-surface-2)]"
-            style={{
-              borderColor: "var(--qgi-border)",
-              color: "var(--qgi-text)",
-            }}
-          >
-            Open Dashboard
-          </Link>
-        </div>
+        <Suspense fallback={null}>
+          <LoginForm />
+        </Suspense>
 
-        {/* Early access contact */}
-        <p
-          className="text-center text-xs leading-relaxed"
-          style={{ color: "var(--qgi-text-dim)" }}
-        >
-          Interested in early access for your team? Email{" "}
-          <a
-            href="mailto:amin@qgintelligence.com?subject=QGI%20Early%20Access"
-            className="underline hover:text-[var(--qgi-accent)]"
-            style={{ color: "var(--qgi-text-muted)" }}
-          >
-            amin@qgintelligence.com
-          </a>
-        </p>
-
-        {/* Back to landing */}
         <div className="mt-6 text-center">
           <Link
             href="/"
