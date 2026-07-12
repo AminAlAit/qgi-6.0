@@ -34,3 +34,9 @@ variable "enable_cascade" {
   default     = true
   description = "When false, all Cascade/SCDI/ML1 SQS queues and Glue tables are skipped. Default true preserves existing staging behaviour."
 }
+
+variable "enable_user_settings" {
+  type        = bool
+  default     = false
+  description = "When true, create the qgi-user-settings DynamoDB table (frontend auth/profile store). Default false so qa/prod don't create it until the frontend ships there; staging sets it true."
+}

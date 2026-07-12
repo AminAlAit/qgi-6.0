@@ -554,6 +554,37 @@ resource "aws_dynamodb_table" "indicator_values" {
 }
 
 # ---------------------------------------------------------------------------
+# qgi-user-settings — per-user frontend profile settings (watchlist, default
+# landing view, trend focus, methodology verbosity, analogue floor, …).
+# Keyed on the signed-in user's email (both Google and Cognito users have one).
+# Read + written by the frontend reader IAM user via server actions. Small,
+# low-traffic (one item per user), PAY_PER_REQUEST. PITR on so a bad write is
+# recoverable.
+# ---------------------------------------------------------------------------
+resource "aws_dynamodb_table" "user_settings" {
+  # Gated so it only exists where the frontend auth/profile store is wired
+  # (staging today). Mirrors the enable_cascade convention.
+  count        = var.enable_user_settings ? 1 : 0
+  name         = "qgi-user-settings"
+  billing_mode = "PAY_PER_REQUEST"
+  hash_key     = "email"
+
+  attribute {
+    name = "email"
+    type = "S"
+  }
+
+  # Live user data — match the guard on the other stateful tables (#929):
+  # protect against accidental deletion + make a bad write recoverable.
+  deletion_protection_enabled = true
+  point_in_time_recovery {
+    enabled = true
+  }
+
+  tags = var.tags
+}
+
+# ---------------------------------------------------------------------------
 # CloudWatch alarm — qgi-indicator-values write capacity surge guard (#157)
 #
 # 2026-04-08: a bug in pipeline-a-completer caused it to mirror every
