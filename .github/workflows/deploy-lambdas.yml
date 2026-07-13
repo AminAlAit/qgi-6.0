@@ -98,8 +98,6 @@ jobs:
           for NAME in $CHANGED; do
             LAMBDA_DIR="lambdas/$NAME"
             [ -f "$LAMBDA_DIR/lambda_function.py" ] || { echo "skip $NAME (no lambda_function.py)"; continue; }
-            # pipeline-c-poc is being retired (issue #61) — skip
-            [ "$NAME" = "pipeline-c-poc" ] && { echo "skip $NAME (retired)"; continue; }
 
             AWS_NAME="qgi-$NAME"
 
@@ -223,7 +221,6 @@ jobs:
           DRIFT=0
           for NAME in $CHANGED; do
             [ -f "lambdas/$NAME/lambda_function.py" ] || continue
-            [ "$NAME" = "pipeline-c-poc" ] && continue
             AWS_NAME="qgi-$NAME"
             LAST_MOD=$(aws lambda get-function-configuration \
               --function-name "$AWS_NAME" \
