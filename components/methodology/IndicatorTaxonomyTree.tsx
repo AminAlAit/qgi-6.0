@@ -4,12 +4,16 @@
  * Indicator taxonomy — the indicators counterpart to TaxonomyHorizontalTree.
  *
  * Same horizontal L→R dendrogram, but the three layers are
- *   provider (World Bank / V-Dem / FAOSTAT)  →  theme  →  indicator.
+ *   provider (World Bank / V-Dem / UCDP / FAOSTAT / …8 total)  →  theme  →
+ *   indicator.
  * Default view shows provider → theme; click a theme to reveal its
  * indicators. Hover an indicator to surface how many recipes it feeds.
  *
- * Source: data/indicator-catalog.json — the 109 active in-play indicators
- * (assembled from the pipeline's indicators.json + the fleet V-Dem set).
+ * Source: data/indicator-catalog.json — 250 indicators across 8 providers
+ * (109 originally ingested + 136 activated from the 250-run bench + 5 top-ups).
+ * Rows
+ * with recipe_count:0 render as "tracked" (in the catalog, not yet feeding a
+ * trend). Provider colour + order come from lib/indicator-providers.
  *
  * Mobile (<640px): replaces the fixed 880px SVG with a vertical accordion
  * list so no content is clipped.
@@ -17,6 +21,7 @@
 import { useState, useMemo } from "react";
 import { useResponsiveLayout } from "@/lib/hooks/useMediaQuery";
 import catalog from "@/data/indicator-catalog.json";
+import { PROVIDER_COLOR, PROVIDER_ORDER } from "@/lib/indicator-providers";
 
 interface CatalogEntry {
   code: string;
@@ -27,14 +32,6 @@ interface CatalogEntry {
   recipe_count?: number;
   in_play?: boolean;
 }
-
-const PROVIDER_COLOR: Record<string, string> = {
-  "World Bank": "#38bdf8",
-  "V-Dem": "#7B5EE6",
-  FAOSTAT: "#3FBF8F",
-};
-// Provider display order (largest first).
-const PROVIDER_ORDER = ["World Bank", "V-Dem", "FAOSTAT"];
 
 const COL_X = { L1: 24, L2: 250, L3: 500 };
 const ROW_HEIGHT = 30;

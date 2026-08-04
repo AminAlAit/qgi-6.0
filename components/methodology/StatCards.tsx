@@ -2,7 +2,9 @@
  * Metric-card stat strip (#529, refactored 2026-04-29).
  *
  * Replaces the single-line stat strip with a tasteful card grid + monochrome
- * provider logos for World Bank / V-Dem / FAOSTAT. No cheese.
+ * provider logos. The provider strip is data-driven from the methodology-stats
+ * breakdown (bespoke logos for World Bank / V-Dem / FAOSTAT, monogram marks for
+ * the rest) so it can't drift from the headline count. No cheese.
  */
 import Link from "next/link";
 import type { Route } from "next";
@@ -49,6 +51,12 @@ function MiniStat({ value, label, sub }: { value: string; label: string; sub?: s
 export default function StatCards() {
   const breakdown =
     (stats as { indicator_breakdown?: Record<string, number> }).indicator_breakdown || {};
+  // Provider strip is data-driven from the breakdown (largest first) so it can
+  // never drift from the headline count — the reason this file exists.
+  const providerEntries = Object.entries(breakdown).sort(
+    (a, b) => b[1] - a[1] || a[0].localeCompare(b[0])
+  );
+  const providerCount = providerEntries.length;
 
   return (
     <section
@@ -134,7 +142,7 @@ export default function StatCards() {
           <MiniStat
             value={stats.indicator_count.toString()}
             label="Indicators"
-            sub="across 3 providers"
+            sub={`across ${providerCount} providers`}
           />
           <span
             className="mt-6 text-[11px] tracking-wider uppercase transition-colors group-hover:text-[var(--qgi-accent)]"
@@ -159,22 +167,10 @@ export default function StatCards() {
         >
           Indicator providers
         </div>
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
-          <ProviderCell
-            name="World Bank"
-            count={breakdown["World Bank"] || 69}
-            logo={<WBLogo />}
-          />
-          <ProviderCell
-            name="V-Dem"
-            count={breakdown["V-Dem"] || 35}
-            logo={<VDemLogo />}
-          />
-          <ProviderCell
-            name="FAOSTAT"
-            count={breakdown["FAOSTAT"] || 5}
-            logo={<FAOLogo />}
-          />
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-x-6 gap-y-5">
+          {providerEntries.map(([name, count]) => (
+            <ProviderCell key={name} name={name} count={count} logo={logoFor(name)} />
+          ))}
         </div>
       </div>
     </section>
@@ -218,6 +214,43 @@ function ProviderCell({
 }
 
 // ─── Monochrome provider logos (text-mark) ───────────────────────────────
+
+// Shorter marks for providers whose name won't fit a 36px monogram circle.
+const PROVIDER_SHORT: Record<string, string> = { ILOSTAT: "ILO" };
+
+function logoFor(name: string): React.ReactNode {
+  switch (name) {
+    case "World Bank":
+      return <WBLogo />;
+    case "V-Dem":
+      return <VDemLogo />;
+    case "FAOSTAT":
+      return <FAOLogo />;
+    default:
+      return <MonogramLogo label={PROVIDER_SHORT[name] ?? name} />;
+  }
+}
+
+// Fallback text-mark for providers without a bespoke logo (UCDP, UNHCR,
+// ILOSTAT, OWID, UNDP), matching the monochrome house style.
+function MonogramLogo({ label }: { label: string }) {
+  return (
+    <svg viewBox="0 0 36 36" className="w-7 h-7" aria-label={label}>
+      <circle cx="18" cy="18" r="16" fill="none" stroke="#a1a8b3" strokeWidth="1.5" />
+      <text
+        x="18"
+        y="21"
+        textAnchor="middle"
+        fontSize={label.length > 4 ? 7 : 9}
+        fill="#a1a8b3"
+        fontWeight="600"
+        letterSpacing="0"
+      >
+        {label}
+      </text>
+    </svg>
+  );
+}
 
 function WBLogo() {
   return (

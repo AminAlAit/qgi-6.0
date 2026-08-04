@@ -8,6 +8,8 @@
  * SCDI = "Single Correlating Dyadic Index" (founder-correct as of 2026-04-29).
  */
 
+import { TOTAL_INDICATORS, TOTAL_INDICATOR_PROVIDERS } from "@/lib/site-stats";
+
 const TERMS: { id: string; short: string; long: string; visual: React.ReactNode }[] = [
   {
     id: "event",
@@ -18,7 +20,7 @@ const TERMS: { id: string; short: string; long: string; visual: React.ReactNode 
   {
     id: "indicator",
     short: "Indicator",
-    long: "A single time-series QGI ingests: GDP per capita, V-Dem polyarchy score, Gini coefficient, FAOSTAT food-price index. Currently 109 indicators across 3 sources.",
+    long: `A single time-series QGI ingests: GDP per capita, V-Dem polyarchy score, Gini coefficient, FAOSTAT food-price index. Currently ${TOTAL_INDICATORS} indicators across ${TOTAL_INDICATOR_PROVIDERS} sources.`,
     visual: <Sparkline />,
   },
   {

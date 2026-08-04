@@ -218,7 +218,7 @@ export default function MethodologyPage() {
                 the single indicator that most improves cross-validated separation, and
                 stop when the gains plateau. The walk also picks the window length, in
                 years, over which the trajectory is read. A typical trend ends up resting
-                on a handful of indicators, not all 109.
+                on a handful of indicators, not all 250.
               </DetailCard>
               <DetailCard title="Resemblance scoring">
                 A country&rsquo;s recent trajectory on the selected indicators is
@@ -272,8 +272,9 @@ export default function MethodologyPage() {
               className="text-sm leading-relaxed mb-4"
               style={{ color: "var(--qgi-text)" }}
             >
-              {TOTAL_INDICATORS} open-data indicators from the World Bank, V-Dem and
-              FAOSTAT, spanning the economy, governance, rights, conflict and society.
+              {TOTAL_INDICATORS} open-data indicators from eight public providers — the
+              World Bank, V-Dem, UCDP and FAOSTAT among them — spanning the economy,
+              governance, rights, conflict and society.
             </p>
             <IndicatorTaxonomyTree />
             <p className="mt-3 mb-12 text-sm">

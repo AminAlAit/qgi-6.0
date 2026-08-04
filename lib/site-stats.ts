@@ -11,20 +11,23 @@
  * This module is the ONE place where pipeline-scope numbers live. Every
  * surface that renders a stat about "QGI scale" should import from here.
  *
- * The constants below have been triangulated against:
- *   - qgi-docs/architecture/pipeline-phases.md     ("58 indicators, 214 countries")
- *   - qgi-docs/architecture/system-overview.md     ("58 indicators")
- *   - qgi-docs/internal/testing/persona-panel-2026-04-18.md ("214 countries, 58 indicators")
- *   - qgi-docs/external/articles/serbia-eu-candidate-high-risk-short.md
- *   - qgi-docs/external/reports/fsi-demo-april-2026.md
+ * Provenance of the indicator count (250): the 109 originally ingested (World
+ * Bank 69 + FAOSTAT 5 + V-Dem 35, verified 2026-05-31 from the staging data
+ * lake) plus 136 activated from the 250-run candidate bench (qgi-ml/enrichment/
+ * 250-run/selected-141.json, post-license-audit — of the 141, 5 were excluded:
+ * 1 already live + 4 same-measure duplicates) plus 5 vetted top-ups from the
+ * reachable pool to reach the round 250. See data/indicator-catalog.json.
  *
- * Disambiguation: 58 ≠ 74. The pipeline currently SCORES 58 indicators
- * (z-score + RRF). The CATALOG holds 74 (69 World Bank + 5 FAO). Surfaces
- * that talk about "data we use" use 58; the methodology page can reference
- * the catalog separately when explaining the roadmap.
- *
- * "Scored this cycle" (89 in V1.9.1) is loaded dynamically from
- * country-risks.json and is NOT a constant — see `getScoredThisCycle()`.
+ * Disambiguation — three DIFFERENT indicator populations appear on the site;
+ * do not collapse them:
+ *   - PANEL / CATALOG = 250 across 8 providers (TOTAL_INDICATORS /
+ *     TOTAL_INDICATOR_CATALOG). "The indicators we track" — powers the
+ *     methodology surfaces (StatCards, taxonomy tree, Glossary, CascadeFlow).
+ *   - LIVE SCORING RUN = the current te-fleet vintage's set (run-2: 63, see
+ *     data/te-fleet-run-2/MANIFEST.json). Powers the briefing "signals tracked"
+ *     footer — deliberately the run number, not the panel.
+ *   - "Scored this cycle" is loaded dynamically from country-risks.json and is
+ *     NOT a constant — see `getScoredThisCycle()`.
  */
 
 import type { CountryRisksData } from "./country-risks";
@@ -37,19 +40,32 @@ import type { CountryRisksData } from "./country-risks";
 export const TOTAL_COUNTRIES = 214;
 
 /**
- * Number of indicators currently active / scored by the pipeline.
- * Verified 2026-05-31 from the staging data lake: World Bank 69 + FAOSTAT 5
- * (indicators.json status=process) + V-Dem 35 (fleet set) = 109. The earlier
- * hardcoded 104 had no backing list; the verified roster lives in
- * data/indicator-catalog.json and powers /methodology/indicators.
+ * Number of indicators in the active panel. 250 across 8 providers: the 109
+ * originally ingested (World Bank 69 + FAOSTAT 5 + V-Dem 35, verified
+ * 2026-05-31) plus 136 activated from the 250-run candidate bench
+ * (qgi-ml/enrichment/250-run/selected-141.json, post-license-audit set — of the
+ * 141, 5 were excluded: 1 already live [GC.TAX.TOTL.GD.ZS] + 4 same-measure
+ * duplicates [FB.BNK.NPLS.ZS, FS-001, v2x_freexp, v2x_execorr]) plus 5 vetted
+ * top-ups from the reachable pool (SI.POV.DDAY, SL.EMP.VULN.ZS, SH.STA.ODFC.ZS,
+ * FS-019, LOSS). Union breakdown: WB 99 · V-Dem 90 · UCDP 19 · FAOSTAT 13 ·
+ * UNHCR 11 · ILOSTAT 8 · OWID 5 · UNDP 5. Not every indicator yet feeds a trend;
+ * the ones still "tracked, not yet recipe-carrying" are marked recipe_count:0 in
+ * data/indicator-catalog.json, which powers /methodology/indicators.
  */
-export const TOTAL_INDICATORS = 109;
+export const TOTAL_INDICATORS = 250;
 
 /**
- * Total indicators in the active catalog. Equal to the scored count; the
- * fuller WB+FAOSTAT dispatcher holds 275 with most on hold pending ingestion.
+ * Total indicators in the active catalog (data/indicator-catalog.json). Equal
+ * to the panel count above — the display catalog is now the panel.
  */
-export const TOTAL_INDICATOR_CATALOG = 109;
+export const TOTAL_INDICATOR_CATALOG = 250;
+
+/**
+ * Distinct providers feeding the indicator panel. Must equal the number of keys
+ * in data/methodology-stats.json `indicator_breakdown` (locked by the
+ * site-stats test): World Bank, V-Dem, UCDP, FAOSTAT, UNHCR, ILOSTAT, OWID, UNDP.
+ */
+export const TOTAL_INDICATOR_PROVIDERS = 8;
 
 /**
  * Countries covered by the live NEWS layer (Risk Board "Topics" + per-country
