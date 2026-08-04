@@ -6,16 +6,26 @@
   "categories_with_data": 71,
   "unique_source_urls": 7378,
   "unique_source_domains": 785,
-  "indicator_count": 109,
+  "indicator_count": 250,
   "indicator_breakdown": {
-    "World Bank": 69,
-    "V-Dem": 35,
-    "FAOSTAT": 5
+    "World Bank": 99,
+    "V-Dem": 90,
+    "UCDP": 19,
+    "FAOSTAT": 13,
+    "UNHCR": 11,
+    "ILOSTAT": 8,
+    "OWID": 5,
+    "UNDP": 5
   },
   "indicator_providers": [
     "World Bank",
     "V-Dem",
-    "FAOSTAT"
+    "UCDP",
+    "FAOSTAT",
+    "UNHCR",
+    "ILOSTAT",
+    "OWID",
+    "UNDP"
   ],
   "earliest_event_year": 1903,
   "latest_event_year": 2026

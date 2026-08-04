@@ -20,6 +20,7 @@ import {
   Gauge,
 } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
+import { TOTAL_INDICATORS } from "@/lib/site-stats";
 
 const ACCENT = "var(--qgi-accent)";
 
@@ -151,7 +152,7 @@ export function CascadeFlow() {
           <Node
             Icon={Database}
             label="Indicators"
-            sub="109 public, open-data signals"
+            sub={`${TOTAL_INDICATORS} public, open-data signals`}
             tint="#38bdf8"
           />
           <Connector symbol="→" />

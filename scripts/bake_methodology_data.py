@@ -250,14 +250,29 @@ def bake_methodology_stats(taxonomy: dict, source: dict, events: list[dict]) -> 
         "categories_with_data": len(categories_used),
         "unique_source_urls": source["unique_urls"],
         "unique_source_domains": source["unique_domains"],
-        # Indicator stats — verified-actual as of 2026-04-29:
-        #   60 World Bank + 39 V-Dem v16 + 5 FAOSTAT = 104 indicators in production.
-        #   ILOSTAT is NOT yet integrated — referenced as "next" but no live
-        #   indicators in qgi_data.indicators_completed. Correct any drift here
-        #   when ILO ingests land.
-        "indicator_count": 104,
-        "indicator_breakdown": {"World Bank": 60, "V-Dem v16": 39, "FAOSTAT": 5},
-        "indicator_providers": ["World Bank", "V-Dem v16", "FAOSTAT"],
+        # Indicator stats — active panel is 250 across 8 providers: the 109
+        # originally ingested (WB 69 + V-Dem 35 + FAOSTAT 5) + 136 activated from
+        # the 250-run bench (qgi-ml/enrichment/250-run/selected-141.json,
+        # post-license-audit; of the 141, 5 excluded = 1 already live + 4
+        # same-measure duplicates) + 5 vetted top-ups from the reachable pool.
+        # Breakdown keys must match the StatCards logo lookup ("V-Dem", not
+        # "V-Dem v16"). These are a fallback — the live roster lives in
+        # data/indicator-catalog.json.
+        "indicator_count": 250,
+        "indicator_breakdown": {
+            "World Bank": 99,
+            "V-Dem": 90,
+            "UCDP": 19,
+            "FAOSTAT": 13,
+            "UNHCR": 11,
+            "ILOSTAT": 8,
+            "OWID": 5,
+            "UNDP": 5,
+        },
+        "indicator_providers": [
+            "World Bank", "V-Dem", "UCDP", "FAOSTAT",
+            "UNHCR", "ILOSTAT", "OWID", "UNDP",
+        ],
         "earliest_event_year": min((e["year"] for e in events), default=None),
         "latest_event_year": max((e["year"] for e in events), default=None),
     }

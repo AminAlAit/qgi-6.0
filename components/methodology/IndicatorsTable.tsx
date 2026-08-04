@@ -7,6 +7,7 @@
  */
 import { useMemo, useState } from "react";
 import catalog from "@/data/indicator-catalog.json";
+import { PROVIDER_COLOR } from "@/lib/indicator-providers";
 
 interface CatalogEntry {
   code: string;
@@ -17,12 +18,6 @@ interface CatalogEntry {
   recipe_count?: number;
   in_play?: boolean;
 }
-
-const PROVIDER_COLOR: Record<string, string> = {
-  "World Bank": "#38bdf8",
-  "V-Dem": "#7B5EE6",
-  FAOSTAT: "#3FBF8F",
-};
 
 export default function IndicatorsTable() {
   const all = (catalog as { indicators: CatalogEntry[] }).indicators;

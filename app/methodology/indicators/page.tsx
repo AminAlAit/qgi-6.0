@@ -9,6 +9,7 @@ import IndicatorsTable from "@/components/methodology/IndicatorsTable";
 import StatPie from "@/components/methodology/StatPie";
 import { PIE_PALETTE, type PieSlice } from "@/components/methodology/pie-data";
 import catalog from "@/data/indicator-catalog.json";
+import { PROVIDER_COLOR } from "@/lib/indicator-providers";
 
 interface CatEntry {
   provider: string;
@@ -16,12 +17,6 @@ interface CatEntry {
 }
 const ENTRIES = (catalog as { indicators: CatEntry[] }).indicators;
 const TOTAL = ENTRIES.length;
-
-const PROVIDER_COLOR: Record<string, string> = {
-  "World Bank": "#38bdf8",
-  "V-Dem": "#7B5EE6",
-  FAOSTAT: "#3FBF8F",
-};
 
 function countBy(key: "provider" | "theme"): PieSlice[] {
   const m = new Map<string, number>();
@@ -44,7 +39,7 @@ const THEME_SLICES = countBy("theme");
 export const metadata: Metadata = {
   title: "All indicators · QGI Methodology",
   description:
-    "Every open-data indicator QGI currently tracks, with its provider, theme, and how many trends it feeds. World Bank, V-Dem and FAOSTAT.",
+    "Every open-data indicator QGI currently tracks, with its provider, theme, and how many trends it feeds. Eight providers: World Bank, V-Dem, UCDP, FAOSTAT, UNHCR, ILOSTAT, OWID and UNDP.",
   alternates: { canonical: "https://qgintelligence.com/methodology/indicators" },
   openGraph: {
     title: "All indicators · QGI Methodology",
@@ -92,8 +87,9 @@ export default function MethodologyIndicatorsPage() {
               style={{ color: "var(--qgi-text-muted)" }}
             >
               QGI reads {TOTAL} open-data indicators, every one public and citable, drawn
-              from the World Bank, V-Dem and FAOSTAT. They span the economy, governance,
-              rights, conflict and society, the raw signals a trend is built from.
+              from eight providers — the World Bank, V-Dem, UCDP and FAOSTAT among them.
+              They span the economy, governance, rights, conflict and society, the raw
+              signals a trend is built from.
             </p>
             <p className="mt-4 text-sm">
               <Link
