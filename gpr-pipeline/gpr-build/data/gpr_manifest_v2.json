@@ -1,0 +1,42 @@
+{
+ "manifest_version": "2.0",
+ "purpose": "Ledger for the QGI-GPR v2 backfill (target table gkg_gpr_flags_v2). SEPARATE from gpr_manifest.json (v1 ledger for gkg_gpr_flags). These are two independent extractions and two independent tables \u00e2\u20ac\u201d the v1 ledger's immutable_through does NOT block v2 slices. Before ANY Phase A INSERT into gkg_gpr_flags_v2, check THIS file. Append-only \u00e2\u20ac\u201d never delete or overwrite a closed segment.",
+ "never_rebuy_rule": "If a slice's end-date <= immutable_through, that date range is closed for this v2 table. Read from BigQuery qgi_gdelt.gkg_gpr_flags_v2 or the S3 Parquet exports. Raw GKG (gdelt-bq.gdeltv2.gkg_partitioned) is paid and touched ONLY for date ranges strictly after immutable_through.",
+ "dictionary_version": "3.0.0",
+ "source_table": "gdelt-bq.gdeltv2.gkg_partitioned",
+ "owned_table": "extreme-lattice-344211.qgi_gdelt.gkg_gpr_flags_v2",
+ "sql_template": "qgi-ml/gpr-build/gpr_rollup_v2.sql",
+ "renderer": "qgi-ml/gpr-build/gpr_rollup_v2.py",
+ "s3_export_prefix": "s3://qgi-data-lake-222222222222/gdelt/gpr/flags_v2/",
+ "s3_monthly_rollup": "s3://qgi-data-lake-222222222222/dashboard/gpr-monthly-v2.json",
+ "immutable_through": "2026-05",
+ "segments_compiled": [
+  {
+   "slice_id": "2015-02-18_2026-06-01",
+   "dictionary_version": "3.0.0",
+   "bytes_scanned_tb": 2.627,
+   "cost_usd": 10.17,
+   "owned_table": "extreme-lattice-344211.qgi_gdelt.gkg_gpr_flags_v2",
+   "note": "expanded v3 backfill; validation ~= v1 (no keyword gain)"
+  }
+ ],
+ "cost_to_date": {
+  "tb_billed": 0.0,
+  "usd_over_free_tier": 0.0,
+  "monthly_budget_usd": 50
+ },
+ "planned_backfill": {
+  "slice_start": "2015-02-18",
+  "slice_end_exclusive": "2026-06-02",
+  "estimated_tb": 2.627,
+  "estimated_usd_over_free_tier": 10.17,
+  "status": "PENDING \u00e2\u20ac\u201d founder must run after dry-run cost-ack",
+  "dry_run_command": "python gpr_rollup_v2.py --phase A --slice 2015-02-18 2026-06-02",
+  "execute_command": "python gpr_rollup_v2.py --phase A --slice 2015-02-18 2026-06-02 --execute --confirm"
+ },
+ "v1_ledger_note": "The v1 ledger (gpr_manifest.json) covers gkg_gpr_flags (v1 table, dict v2.1, immutable_through=2026-05). The v2 ledger (THIS FILE) covers gkg_gpr_flags_v2 (dict v3.0.0). These are INDEPENDENT. The v1 table is NOT modified \u00e2\u20ac\u201d it is the backup/fallback. After the v2 table is validated, the v1 table may be queried for comparison but should NOT be deleted until v2 clears the r>0.9 gate.",
+ "schema_additions_vs_v1": {
+  "matched_themes": "ARRAY<STRING> \u00e2\u20ac\u201d GPR-relevant raw GKG theme tokens per doc, captured via the broad-capture regex from the v3 dictionary. Enables re-flagging from the owned table (~$0.30) without re-scanning raw GKG (~$10). Stored at doc-country granularity."
+ },
+ "recovery_note": "S3 as durable asset, BQ as rebuildable cache. If the owned v2 BQ table is lost: (1) re-CREATE using gpr_rollup_v2.py --phase A --print-sql; (2) load from S3 Parquet exports under s3_export_prefix using bq load --source_format=PARQUET \u00e2\u20ac\u201d zero BigQuery scan bytes. Never re-scan raw GKG to recover data already in S3."
+}
