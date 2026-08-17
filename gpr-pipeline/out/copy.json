@@ -1,0 +1,268 @@
+{
+ "gpr-movers-week": {
+  "type": "gpr_movers",
+  "title": "Colombia jumps, Belgium eases this week",
+  "subSegments": [
+   {
+    "t": "QGI-GPR, the week of May 25."
+   },
+   {
+    "t": "Colombia",
+    "c": "teal"
+   },
+   {
+    "t": "rose most amid pre-election armed-group clashes;"
+   },
+   {
+    "t": "Belgium",
+    "c": "red"
+   },
+   {
+    "t": "fell most, with no clear driver behind the move. These track risk-flagged news coverage, not conflict."
+   }
+  ],
+  "items": [
+   {
+    "rank": 1,
+    "name": "Colombia",
+    "pct": 12.88,
+    "tier": "C",
+    "highlight": true
+   },
+   {
+    "rank": 2,
+    "name": "Egypt",
+    "pct": 10.47,
+    "tier": "A"
+   },
+   {
+    "rank": 3,
+    "name": "Finland",
+    "pct": 5.44,
+    "tier": "A"
+   },
+   {
+    "rank": 4,
+    "name": "Philippines",
+    "pct": 5.11,
+    "tier": "B"
+   },
+   {
+    "rank": 5,
+    "name": "Israel",
+    "pct": 3.54,
+    "tier": "B"
+   },
+   {
+    "rank": 1,
+    "name": "Belgium",
+    "pct": -16.24,
+    "tier": "A",
+    "highlight": true,
+    "tag": "no clear event"
+   },
+   {
+    "rank": 2,
+    "name": "Indonesia",
+    "pct": -14.39,
+    "tier": "B"
+   },
+   {
+    "rank": 3,
+    "name": "Denmark",
+    "pct": -13.32,
+    "tier": "A",
+    "tag": "no clear event"
+   },
+   {
+    "rank": 4,
+    "name": "Norway",
+    "pct": -10.99,
+    "tier": "B",
+    "tag": "no clear event"
+   },
+   {
+    "rank": 5,
+    "name": "Saudi Arabia",
+    "pct": -10.01,
+    "tier": "A",
+    "tag": "no clear event"
+   }
+  ],
+  "split_after": 5,
+  "axis": "QGI-GPR change, week of May 25 vs May 18, 2026",
+  "note": "44 validated countries · weekly share of risk-flagged news coverage · weekly moves are noisier than the monthly signal",
+  "foot": "GPR is movement in the risk signal, not its level. Not a forecast.",
+  "caption": "Colombia's risk signal rose most of the 44 countries tracked the week of May 25 amid pre-election armed-group clashes. Belgium's fell most, with no clear driver behind the move. Not a forecast. qgintelligence.com"
+ },
+ "gpr-risers-week": {
+  "type": "gpr_movers",
+  "title": "Colombia leads the week's risk risers",
+  "subSegments": [
+   {
+    "t": "Where the QGI-GPR signal rose most, the week of May 25."
+   },
+   {
+    "t": "Colombia",
+    "c": "teal"
+   },
+   {
+    "t": "led amid pre-election armed-group clashes. A read on risk news, not conflict itself."
+   }
+  ],
+  "items": [
+   {
+    "rank": 1,
+    "name": "Colombia",
+    "pct": 12.88,
+    "tier": "C",
+    "highlight": true
+   },
+   {
+    "rank": 2,
+    "name": "Egypt",
+    "pct": 10.47,
+    "tier": "A"
+   },
+   {
+    "rank": 3,
+    "name": "Finland",
+    "pct": 5.44,
+    "tier": "A"
+   },
+   {
+    "rank": 4,
+    "name": "Philippines",
+    "pct": 5.11,
+    "tier": "B"
+   },
+   {
+    "rank": 5,
+    "name": "Israel",
+    "pct": 3.54,
+    "tier": "B"
+   },
+   {
+    "rank": 6,
+    "name": "Brazil",
+    "pct": 3.37,
+    "tier": "B"
+   },
+   {
+    "rank": 7,
+    "name": "Hong Kong",
+    "pct": 2.38,
+    "tier": "B"
+   },
+   {
+    "rank": 8,
+    "name": "Chile",
+    "pct": 2.01,
+    "tier": "C"
+   },
+   {
+    "rank": 9,
+    "name": "Mexico",
+    "pct": 1.03,
+    "tier": "B"
+   },
+   {
+    "rank": 10,
+    "name": "Hungary",
+    "pct": 0.53,
+    "tier": "B"
+   }
+  ],
+  "axis": "QGI-GPR change, week of May 25 vs May 18, 2026",
+  "note": "44 validated countries · weekly share of risk-flagged news coverage · weekly moves are noisier than the monthly signal",
+  "foot": "GPR is movement in the risk signal, not its level. Not a forecast.",
+  "caption": "Colombia led the world's risk risers the week of May 25 amid pre-election armed-group clashes. QGI-GPR tracks risk-flagged news coverage, not conflict. Not a forecast. qgintelligence.com"
+ },
+ "gpr-fallers-week": {
+  "type": "gpr_movers",
+  "title": "Belgium leads the week's risk fallers",
+  "subSegments": [
+   {
+    "t": "Where the QGI-GPR signal fell most, the week of May 25."
+   },
+   {
+    "t": "Belgium",
+    "c": "red"
+   },
+   {
+    "t": "fell most, with no clear driver behind the move. Weekly falls can reflect a shift in coverage mix, not real de-escalation."
+   }
+  ],
+  "items": [
+   {
+    "rank": 1,
+    "name": "Belgium",
+    "pct": -16.24,
+    "tier": "A",
+    "highlight": true,
+    "tag": "no clear event"
+   },
+   {
+    "rank": 2,
+    "name": "Indonesia",
+    "pct": -14.39,
+    "tier": "B"
+   },
+   {
+    "rank": 3,
+    "name": "Denmark",
+    "pct": -13.32,
+    "tier": "A",
+    "tag": "no clear event"
+   },
+   {
+    "rank": 4,
+    "name": "Norway",
+    "pct": -10.99,
+    "tier": "B",
+    "tag": "no clear event"
+   },
+   {
+    "rank": 5,
+    "name": "Saudi Arabia",
+    "pct": -10.01,
+    "tier": "A",
+    "tag": "no clear event"
+   },
+   {
+    "rank": 6,
+    "name": "Tunisia",
+    "pct": -8.54,
+    "tier": "C"
+   },
+   {
+    "rank": 7,
+    "name": "Turkey",
+    "pct": -7.34,
+    "tier": "A"
+   },
+   {
+    "rank": 8,
+    "name": "Taiwan",
+    "pct": -7.21,
+    "tier": "A"
+   },
+   {
+    "rank": 9,
+    "name": "Poland",
+    "pct": -7.07,
+    "tier": "A"
+   },
+   {
+    "rank": 10,
+    "name": "Germany",
+    "pct": -6.92,
+    "tier": "A"
+   }
+  ],
+  "axis": "QGI-GPR change, week of May 25 vs May 18, 2026",
+  "note": "44 validated countries · weekly share of risk-flagged news coverage · a fall is a smaller share of risk-flagged coverage, not necessarily lower real risk",
+  "foot": "GPR is movement in the risk signal, not its level. Not a forecast.",
+  "caption": "Belgium's risk signal fell most of the 44 countries tracked the week of May 25, with no clear driver behind the move. A fall is a smaller share of risk-flagged coverage, not necessarily lower real risk. Not a forecast. qgintelligence.com"
+ }
+}

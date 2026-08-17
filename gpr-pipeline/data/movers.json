@@ -1,0 +1,211 @@
+{
+ "latest_week": "2026-05-25",
+ "prior_week": "2026-05-18",
+ "n_countries": 44,
+ "n_compared": 44,
+ "generated_at": null,
+ "risers": [
+  {
+   "iso3": "COL",
+   "name": "Colombia",
+   "fips": "CO",
+   "pct": 12.88,
+   "tier": "C",
+   "gpr_share_now": 0.4771,
+   "gpr_share_prior": 0.4226,
+   "rank": 1
+  },
+  {
+   "iso3": "EGY",
+   "name": "Egypt",
+   "fips": "EG",
+   "pct": 10.47,
+   "tier": "A",
+   "gpr_share_now": 0.4842,
+   "gpr_share_prior": 0.4384,
+   "rank": 2
+  },
+  {
+   "iso3": "FIN",
+   "name": "Finland",
+   "fips": "FI",
+   "pct": 5.44,
+   "tier": "A",
+   "gpr_share_now": 0.3766,
+   "gpr_share_prior": 0.3572,
+   "rank": 3
+  },
+  {
+   "iso3": "PHL",
+   "name": "Philippines",
+   "fips": "RP",
+   "pct": 5.11,
+   "tier": "B",
+   "gpr_share_now": 0.4399,
+   "gpr_share_prior": 0.4186,
+   "rank": 4
+  },
+  {
+   "iso3": "ISR",
+   "name": "Israel",
+   "fips": "IS",
+   "pct": 3.54,
+   "tier": "B",
+   "gpr_share_now": 0.8254,
+   "gpr_share_prior": 0.7972,
+   "rank": 5
+  },
+  {
+   "iso3": "BRA",
+   "name": "Brazil",
+   "fips": "BR",
+   "pct": 3.37,
+   "tier": "B",
+   "gpr_share_now": 0.3803,
+   "gpr_share_prior": 0.3679,
+   "rank": 6
+  },
+  {
+   "iso3": "HKG",
+   "name": "Hong Kong",
+   "fips": "HK",
+   "pct": 2.38,
+   "tier": "B",
+   "gpr_share_now": 0.3452,
+   "gpr_share_prior": 0.3372,
+   "rank": 7
+  },
+  {
+   "iso3": "CHL",
+   "name": "Chile",
+   "fips": "CI",
+   "pct": 2.01,
+   "tier": "C",
+   "gpr_share_now": 0.3111,
+   "gpr_share_prior": 0.305,
+   "rank": 8
+  },
+  {
+   "iso3": "MEX",
+   "name": "Mexico",
+   "fips": "MX",
+   "pct": 1.03,
+   "tier": "B",
+   "gpr_share_now": 0.4035,
+   "gpr_share_prior": 0.3994,
+   "rank": 9
+  },
+  {
+   "iso3": "HUN",
+   "name": "Hungary",
+   "fips": "HU",
+   "pct": 0.53,
+   "tier": "B",
+   "gpr_share_now": 0.3727,
+   "gpr_share_prior": 0.3708,
+   "rank": 10
+  }
+ ],
+ "fallers": [
+  {
+   "iso3": "BEL",
+   "name": "Belgium",
+   "fips": "BE",
+   "pct": -16.24,
+   "tier": "A",
+   "gpr_share_now": 0.4064,
+   "gpr_share_prior": 0.4852,
+   "rank": 1
+  },
+  {
+   "iso3": "IDN",
+   "name": "Indonesia",
+   "fips": "ID",
+   "pct": -14.39,
+   "tier": "B",
+   "gpr_share_now": 0.3053,
+   "gpr_share_prior": 0.3566,
+   "rank": 2
+  },
+  {
+   "iso3": "DNK",
+   "name": "Denmark",
+   "fips": "DA",
+   "pct": -13.32,
+   "tier": "A",
+   "gpr_share_now": 0.3126,
+   "gpr_share_prior": 0.3607,
+   "rank": 3
+  },
+  {
+   "iso3": "NOR",
+   "name": "Norway",
+   "fips": "NO",
+   "pct": -10.99,
+   "tier": "B",
+   "gpr_share_now": 0.4055,
+   "gpr_share_prior": 0.4556,
+   "rank": 4
+  },
+  {
+   "iso3": "SAU",
+   "name": "Saudi Arabia",
+   "fips": "SA",
+   "pct": -10.01,
+   "tier": "A",
+   "gpr_share_now": 0.6042,
+   "gpr_share_prior": 0.6714,
+   "rank": 5
+  },
+  {
+   "iso3": "TUN",
+   "name": "Tunisia",
+   "fips": "TS",
+   "pct": -8.54,
+   "tier": "C",
+   "gpr_share_now": 0.3508,
+   "gpr_share_prior": 0.3836,
+   "rank": 6
+  },
+  {
+   "iso3": "TUR",
+   "name": "Turkey",
+   "fips": "TU",
+   "pct": -7.34,
+   "tier": "A",
+   "gpr_share_now": 0.4021,
+   "gpr_share_prior": 0.4339,
+   "rank": 7
+  },
+  {
+   "iso3": "TWN",
+   "name": "Taiwan",
+   "fips": "TW",
+   "pct": -7.21,
+   "tier": "A",
+   "gpr_share_now": 0.343,
+   "gpr_share_prior": 0.3696,
+   "rank": 8
+  },
+  {
+   "iso3": "POL",
+   "name": "Poland",
+   "fips": "PL",
+   "pct": -7.07,
+   "tier": "A",
+   "gpr_share_now": 0.4576,
+   "gpr_share_prior": 0.4924,
+   "rank": 9
+  },
+  {
+   "iso3": "DEU",
+   "name": "Germany",
+   "fips": "GM",
+   "pct": -6.92,
+   "tier": "A",
+   "gpr_share_now": 0.3671,
+   "gpr_share_prior": 0.3944,
+   "rank": 10
+  }
+ ]
+}
