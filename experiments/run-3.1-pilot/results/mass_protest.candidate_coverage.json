@@ -1,0 +1,240 @@
+{
+  "FP.CPI.TOTL.ZG": {
+    "w5": {
+      "pos_coverage": 0.7827,
+      "neg_coverage": 0.6776,
+      "n_pos_survive": 263,
+      "n_countries_survive": 116
+    },
+    "w10": {
+      "pos_coverage": 0.7827,
+      "neg_coverage": 0.6815,
+      "n_pos_survive": 263,
+      "n_countries_survive": 116
+    }
+  },
+  "SL.UEM.TOTL.ZS": {
+    "w5": {
+      "pos_coverage": 0.5565,
+      "neg_coverage": 0.5149,
+      "n_pos_survive": 187,
+      "n_countries_survive": 118
+    },
+    "w10": {
+      "pos_coverage": 0.5565,
+      "neg_coverage": 0.5149,
+      "n_pos_survive": 187,
+      "n_countries_survive": 118
+    }
+  },
+  "SL.UEM.1524.ZS": {
+    "w5": {
+      "pos_coverage": 0.5565,
+      "neg_coverage": 0.5149,
+      "n_pos_survive": 187,
+      "n_countries_survive": 118
+    },
+    "w10": {
+      "pos_coverage": 0.5565,
+      "neg_coverage": 0.5149,
+      "n_pos_survive": 187,
+      "n_countries_survive": 118
+    }
+  },
+  "SI.POV.GINI": {
+    "w5": {
+      "pos_coverage": 0.2351,
+      "neg_coverage": 0.2054,
+      "n_pos_survive": 79,
+      "n_countries_survive": 64
+    },
+    "w10": {
+      "pos_coverage": 0.3125,
+      "neg_coverage": 0.2788,
+      "n_pos_survive": 105,
+      "n_countries_survive": 82
+    }
+  },
+  "AG.PRD.FOOD.XD": {
+    "w5": {
+      "pos_coverage": 0.8423,
+      "neg_coverage": 0.7798,
+      "n_pos_survive": 283,
+      "n_countries_survive": 119
+    },
+    "w10": {
+      "pos_coverage": 0.8423,
+      "neg_coverage": 0.7798,
+      "n_pos_survive": 283,
+      "n_countries_survive": 119
+    }
+  },
+  "NY.GDP.MKTP.KD.ZG": {
+    "w5": {
+      "pos_coverage": 0.8363,
+      "neg_coverage": 0.7738,
+      "n_pos_survive": 281,
+      "n_countries_survive": 119
+    },
+    "w10": {
+      "pos_coverage": 0.8363,
+      "neg_coverage": 0.7738,
+      "n_pos_survive": 281,
+      "n_countries_survive": 119
+    }
+  },
+  "SP.POP.0014.TO.ZS": {
+    "w5": {
+      "pos_coverage": 0.8958,
+      "neg_coverage": 0.869,
+      "n_pos_survive": 301,
+      "n_countries_survive": 119
+    },
+    "w10": {
+      "pos_coverage": 0.8958,
+      "neg_coverage": 0.869,
+      "n_pos_survive": 301,
+      "n_countries_survive": 119
+    }
+  },
+  "OWID_POP_YOUNG": {
+    "w5": {
+      "pos_coverage": 0.9673,
+      "neg_coverage": 0.9474,
+      "n_pos_survive": 325,
+      "n_countries_survive": 120
+    },
+    "w10": {
+      "pos_coverage": 0.9673,
+      "neg_coverage": 0.9474,
+      "n_pos_survive": 325,
+      "n_countries_survive": 120
+    }
+  },
+  "OWID_SLUM_SHARE": {
+    "w5": {
+      "pos_coverage": 0.2143,
+      "neg_coverage": 0.1875,
+      "n_pos_survive": 72,
+      "n_countries_survive": 99
+    },
+    "w10": {
+      "pos_coverage": 0.3661,
+      "neg_coverage": 0.3641,
+      "n_pos_survive": 123,
+      "n_countries_survive": 104
+    }
+  },
+  "v2csreprss": {
+    "w5": {
+      "pos_coverage": 0.9732,
+      "neg_coverage": 0.9216,
+      "n_pos_survive": 327,
+      "n_countries_survive": 120
+    },
+    "w10": {
+      "pos_coverage": 0.9732,
+      "neg_coverage": 0.9216,
+      "n_pos_survive": 327,
+      "n_countries_survive": 120
+    }
+  },
+  "OWID_AUTOCRATIZATION": {
+    "w5": {
+      "pos_coverage": 0.9762,
+      "neg_coverage": 0.9286,
+      "n_pos_survive": 328,
+      "n_countries_survive": 121
+    },
+    "w10": {
+      "pos_coverage": 0.9762,
+      "neg_coverage": 0.9286,
+      "n_pos_survive": 328,
+      "n_countries_survive": 121
+    }
+  },
+  "v2x_regime": {
+    "w5": {
+      "pos_coverage": 0.9732,
+      "neg_coverage": 0.9216,
+      "n_pos_survive": 327,
+      "n_countries_survive": 120
+    },
+    "w10": {
+      "pos_coverage": 0.9732,
+      "neg_coverage": 0.9216,
+      "n_pos_survive": 327,
+      "n_countries_survive": 120
+    }
+  },
+  "v2smarrest": {
+    "w5": {
+      "pos_coverage": 0.4881,
+      "neg_coverage": 0.4514,
+      "n_pos_survive": 164,
+      "n_countries_survive": 119
+    },
+    "w10": {
+      "pos_coverage": 0.4881,
+      "neg_coverage": 0.4514,
+      "n_pos_survive": 164,
+      "n_countries_survive": 119
+    }
+  },
+  "v2elpeace": {
+    "w5": {
+      "pos_coverage": 0.869,
+      "neg_coverage": 0.7837,
+      "n_pos_survive": 292,
+      "n_countries_survive": 119
+    },
+    "w10": {
+      "pos_coverage": 0.8899,
+      "neg_coverage": 0.8234,
+      "n_pos_survive": 299,
+      "n_countries_survive": 119
+    }
+  },
+  "v2x_libdem": {
+    "w5": {
+      "pos_coverage": 0.9702,
+      "neg_coverage": 0.9167,
+      "n_pos_survive": 326,
+      "n_countries_survive": 120
+    },
+    "w10": {
+      "pos_coverage": 0.9702,
+      "neg_coverage": 0.9167,
+      "n_pos_survive": 326,
+      "n_countries_survive": 120
+    }
+  },
+  "v2x_polyarchy": {
+    "w5": {
+      "pos_coverage": 0.9732,
+      "neg_coverage": 0.9216,
+      "n_pos_survive": 327,
+      "n_countries_survive": 120
+    },
+    "w10": {
+      "pos_coverage": 0.9732,
+      "neg_coverage": 0.9216,
+      "n_pos_survive": 327,
+      "n_countries_survive": 120
+    }
+  },
+  "UCDP_GED_UNREST_EVENTS": {
+    "w5": {
+      "pos_coverage": 0.0208,
+      "neg_coverage": 0.0238,
+      "n_pos_survive": 7,
+      "n_countries_survive": 7
+    },
+    "w10": {
+      "pos_coverage": 0.0327,
+      "neg_coverage": 0.0298,
+      "n_pos_survive": 11,
+      "n_countries_survive": 8
+    }
+  }
+}

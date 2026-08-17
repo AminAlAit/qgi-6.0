@@ -1,0 +1,1337 @@
+[
+  {
+    "trend": "epidemic_and_pandemic",
+    "shipped": 0.8794,
+    "honest": 0.8588,
+    "honest_mean": 0.8318,
+    "honest_sd": 0.0199,
+    "honest_ci95_lo": 0.8151,
+    "honest_ci95_hi": 0.8929,
+    "delta": -0.0206,
+    "verdict": "OK",
+    "n_indicators": 6,
+    "card_window": 10,
+    "chosen_windows": [
+      10,
+      10,
+      10
+    ],
+    "n_pos_now": 135,
+    "n_pos_card": 160,
+    "single_country_dominance": 0.807,
+    "per_seed_auc": [
+      0.8588,
+      0.8256,
+      0.8111
+    ],
+    "indicators": [
+      "AG.PRD.FOOD.XD",
+      "FP.CPI.TOTL.ZG",
+      "v2pepwrgen",
+      "NE.IMP.GNFS.CD",
+      "SH.DYN.MORT",
+      "v2csprtcpt"
+    ]
+  },
+  {
+    "trend": "currency_crisis",
+    "shipped": 0.8572,
+    "honest": 0.7546,
+    "honest_mean": 0.7329,
+    "honest_sd": 0.0352,
+    "honest_ci95_lo": 0.6735,
+    "honest_ci95_hi": 0.8239,
+    "delta": -0.1026,
+    "verdict": "MIRAGE",
+    "n_indicators": 5,
+    "card_window": 3,
+    "chosen_windows": [
+      3,
+      3,
+      5
+    ],
+    "n_pos_now": 48,
+    "n_pos_card": 71,
+    "single_country_dominance": 0.464,
+    "per_seed_auc": [
+      0.7546,
+      0.7609,
+      0.6832
+    ],
+    "indicators": [
+      "BN.CAB.XOKA.GD.ZS",
+      "NE.IMP.GNFS.CD",
+      "v2jureform",
+      "NY.GDP.MKTP.CD",
+      "NY.GDP.DEFL.KD.ZG"
+    ]
+  },
+  {
+    "trend": "religious_and_social_movement",
+    "shipped": 0.8186,
+    "honest": 0.6753,
+    "honest_mean": 0.6207,
+    "honest_sd": 0.0393,
+    "honest_ci95_lo": 0.5674,
+    "honest_ci95_hi": 0.7718,
+    "delta": -0.1433,
+    "verdict": "MIRAGE",
+    "n_indicators": 7,
+    "card_window": 21,
+    "chosen_windows": [
+      21,
+      12,
+      25
+    ],
+    "n_pos_now": 39,
+    "n_pos_card": 62,
+    "single_country_dominance": 0.364,
+    "per_seed_auc": [
+      0.6753,
+      0.6029,
+      0.584
+    ],
+    "indicators": [
+      "v2x_rule",
+      "v2csprtcpt",
+      "NY.GDP.MKTP.KD.ZG",
+      "SH.DYN.MORT",
+      "SM.POP.NETM",
+      "v2x_clpol",
+      "v2x_regime"
+    ]
+  },
+  {
+    "trend": "labor_action",
+    "shipped": 0.8145,
+    "honest": 0.6885,
+    "honest_mean": 0.6843,
+    "honest_sd": 0.0315,
+    "honest_ci95_lo": 0.5873,
+    "honest_ci95_hi": 0.7776,
+    "delta": -0.126,
+    "verdict": "MIRAGE",
+    "n_indicators": 6,
+    "card_window": 18,
+    "chosen_windows": [
+      18,
+      5,
+      25
+    ],
+    "n_pos_now": 45,
+    "n_pos_card": 74,
+    "single_country_dominance": 0.321,
+    "per_seed_auc": [
+      0.6885,
+      0.6439,
+      0.7206
+    ],
+    "indicators": [
+      "v2x_clpriv",
+      "v2psprlnks",
+      "SP.POP.TOTL",
+      "v2pepwrgen",
+      "v2x_clpol",
+      "v2lgbicam"
+    ]
+  },
+  {
+    "trend": "sanctions_and_arms_embargo",
+    "shipped": 0.807,
+    "honest": 0.7441,
+    "honest_mean": 0.7221,
+    "honest_sd": 0.0159,
+    "honest_ci95_lo": 0.6656,
+    "honest_ci95_hi": 0.8112,
+    "delta": -0.0629,
+    "verdict": "MIRAGE",
+    "n_indicators": 5,
+    "card_window": 15,
+    "chosen_windows": [
+      12,
+      12,
+      12
+    ],
+    "n_pos_now": 70,
+    "n_pos_card": 93,
+    "single_country_dominance": 0.314,
+    "per_seed_auc": [
+      0.7441,
+      0.7067,
+      0.7156
+    ],
+    "indicators": [
+      "v2cseeorgs",
+      "NE.CON.GOVT.ZS",
+      "v2csprtcpt",
+      "v2mecenefm",
+      "v2x_partip"
+    ]
+  },
+  {
+    "trend": "monetary_policy_change",
+    "shipped": 0.783,
+    "honest": 0.617,
+    "honest_mean": 0.6319,
+    "honest_sd": 0.0432,
+    "honest_ci95_lo": 0.5305,
+    "honest_ci95_hi": 0.6972,
+    "delta": -0.166,
+    "verdict": "MIRAGE",
+    "n_indicators": 3,
+    "card_window": 3,
+    "chosen_windows": [
+      15,
+      3,
+      3
+    ],
+    "n_pos_now": 52,
+    "n_pos_card": 70,
+    "single_country_dominance": 0.242,
+    "per_seed_auc": [
+      0.617,
+      0.5881,
+      0.6907
+    ],
+    "indicators": [
+      "FI.RES.TOTL.CD",
+      "NY.GDP.DEFL.KD.ZG",
+      "v2excrptps"
+    ]
+  },
+  {
+    "trend": "executive_power_consolidation",
+    "shipped": 0.7816,
+    "honest": 0.6331,
+    "honest_mean": 0.6702,
+    "honest_sd": 0.0286,
+    "honest_ci95_lo": 0.5525,
+    "honest_ci95_hi": 0.7095,
+    "delta": -0.1486,
+    "verdict": "MIRAGE",
+    "n_indicators": 9,
+    "card_window": 7,
+    "chosen_windows": [
+      7,
+      7,
+      3
+    ],
+    "n_pos_now": 63,
+    "n_pos_card": 105,
+    "single_country_dominance": 0.351,
+    "per_seed_auc": [
+      0.6331,
+      0.7026,
+      0.6748
+    ],
+    "indicators": [
+      "v2csprtcpt",
+      "v2jureform",
+      "v2pepwrort",
+      "v2cltort",
+      "v2x_rule",
+      "NY.GNP.PCAP.CD",
+      "v2xel_frefair",
+      "v2csreprss",
+      "v2psprlnks"
+    ]
+  },
+  {
+    "trend": "economic_nationalization",
+    "shipped": 0.7806,
+    "honest": 0.6951,
+    "honest_mean": 0.646,
+    "honest_sd": 0.0375,
+    "honest_ci95_lo": 0.6095,
+    "honest_ci95_hi": 0.7687,
+    "delta": -0.0856,
+    "verdict": "MIRAGE",
+    "n_indicators": 4,
+    "card_window": 10,
+    "chosen_windows": [
+      18,
+      10,
+      12
+    ],
+    "n_pos_now": 57,
+    "n_pos_card": 69,
+    "single_country_dominance": 0.457,
+    "per_seed_auc": [
+      0.6951,
+      0.639,
+      0.604
+    ],
+    "indicators": [
+      "v2svdomaut",
+      "v2pepwrses",
+      "v2csprtcpt",
+      "v2x_gender"
+    ]
+  },
+  {
+    "trend": "technology_breakthrough",
+    "shipped": 0.7732,
+    "honest": 0.6893,
+    "honest_mean": 0.662,
+    "honest_sd": 0.0213,
+    "honest_ci95_lo": 0.622,
+    "honest_ci95_hi": 0.7543,
+    "delta": -0.0839,
+    "verdict": "MIRAGE",
+    "n_indicators": 5,
+    "card_window": 12,
+    "chosen_windows": [
+      21,
+      21,
+      25
+    ],
+    "n_pos_now": 73,
+    "n_pos_card": 62,
+    "single_country_dominance": 0.35,
+    "per_seed_auc": [
+      0.6893,
+      0.6594,
+      0.6372
+    ],
+    "indicators": [
+      "MS.MIL.MPRT.KD",
+      "SM.POP.NETM",
+      "v2svdomaut",
+      "SP.DYN.TFRT.IN",
+      "v2pepwrgen"
+    ]
+  },
+  {
+    "trend": "banking_and_financial_crisis",
+    "shipped": 0.7707,
+    "honest": 0.6381,
+    "honest_mean": 0.6056,
+    "honest_sd": 0.0239,
+    "honest_ci95_lo": 0.5612,
+    "honest_ci95_hi": 0.6985,
+    "delta": -0.1326,
+    "verdict": "MIRAGE",
+    "n_indicators": 3,
+    "card_window": 25,
+    "chosen_windows": [
+      15,
+      18,
+      15
+    ],
+    "n_pos_now": 83,
+    "n_pos_card": 75,
+    "single_country_dominance": 0.459,
+    "per_seed_auc": [
+      0.6381,
+      0.5971,
+      0.5815
+    ],
+    "indicators": [
+      "NV.SRV.TOTL.ZS",
+      "v2x_gender",
+      "MS.MIL.XPND.GD.ZS"
+    ]
+  },
+  {
+    "trend": "economic_growth_milestone",
+    "shipped": 0.7374,
+    "honest": 0.6184,
+    "honest_mean": 0.6464,
+    "honest_sd": 0.0213,
+    "honest_ci95_lo": 0.5248,
+    "honest_ci95_hi": 0.7059,
+    "delta": -0.119,
+    "verdict": "MIRAGE",
+    "n_indicators": 5,
+    "card_window": 25,
+    "chosen_windows": [
+      10,
+      3,
+      12
+    ],
+    "n_pos_now": 45,
+    "n_pos_card": 69,
+    "single_country_dominance": 0.29,
+    "per_seed_auc": [
+      0.6184,
+      0.67,
+      0.6508
+    ],
+    "indicators": [
+      "v2pepwrgen",
+      "NE.GDI.TOTL.ZS",
+      "SH.DYN.MORT",
+      "v2x_libdem",
+      "SP.POP.TOTL"
+    ]
+  },
+  {
+    "trend": "agricultural_policy",
+    "shipped": 0.7362,
+    "honest": 0.6098,
+    "honest_mean": 0.6141,
+    "honest_sd": 0.0218,
+    "honest_ci95_lo": 0.5363,
+    "honest_ci95_hi": 0.6738,
+    "delta": -0.1263,
+    "verdict": "MIRAGE",
+    "n_indicators": 3,
+    "card_window": 10,
+    "chosen_windows": [
+      10,
+      25,
+      10
+    ],
+    "n_pos_now": 72,
+    "n_pos_card": 79,
+    "single_country_dominance": 0.227,
+    "per_seed_auc": [
+      0.6098,
+      0.6427,
+      0.5899
+    ],
+    "indicators": [
+      "v2x_clpriv",
+      "v2lgbicam",
+      "v2pepwrort"
+    ]
+  },
+  {
+    "trend": "diplomatic_rupture",
+    "shipped": 0.7334,
+    "honest": 0.6553,
+    "honest_mean": 0.6271,
+    "honest_sd": 0.0238,
+    "honest_ci95_lo": 0.5857,
+    "honest_ci95_hi": 0.725,
+    "delta": -0.0781,
+    "verdict": "MIRAGE",
+    "n_indicators": 4,
+    "card_window": 10,
+    "chosen_windows": [
+      21,
+      10,
+      10
+    ],
+    "n_pos_now": 69,
+    "n_pos_card": 102,
+    "single_country_dominance": 0.31,
+    "per_seed_auc": [
+      0.6553,
+      0.597,
+      0.6291
+    ],
+    "indicators": [
+      "FM.LBL.BMNY.GD.ZS",
+      "NY.GDP.DEFL.KD.ZG",
+      "v2cseeorgs",
+      "SP.POP.TOTL"
+    ]
+  },
+  {
+    "trend": "foreign_intervention",
+    "shipped": 0.7227,
+    "honest": 0.6763,
+    "honest_mean": 0.6724,
+    "honest_sd": 0.0061,
+    "honest_ci95_lo": 0.6173,
+    "honest_ci95_hi": 0.732,
+    "delta": -0.0464,
+    "verdict": "INFLATED",
+    "n_indicators": 5,
+    "card_window": 25,
+    "chosen_windows": [
+      25,
+      25,
+      25
+    ],
+    "n_pos_now": 110,
+    "n_pos_card": 174,
+    "single_country_dominance": 0.283,
+    "per_seed_auc": [
+      0.6763,
+      0.6772,
+      0.6639
+    ],
+    "indicators": [
+      "v2x_gender",
+      "SP.DYN.LE00.IN",
+      "NY.GDP.MKTP.KD.ZG",
+      "v2xeg_eqprotec",
+      "v2stfisccap"
+    ]
+  },
+  {
+    "trend": "regional_integration",
+    "shipped": 0.722,
+    "honest": 0.658,
+    "honest_mean": 0.6528,
+    "honest_sd": 0.0091,
+    "honest_ci95_lo": 0.5985,
+    "honest_ci95_hi": 0.7088,
+    "delta": -0.064,
+    "verdict": "MIRAGE",
+    "n_indicators": 3,
+    "card_window": 25,
+    "chosen_windows": [
+      18,
+      15,
+      25
+    ],
+    "n_pos_now": 136,
+    "n_pos_card": 138,
+    "single_country_dominance": 0.213,
+    "per_seed_auc": [
+      0.658,
+      0.64,
+      0.6603
+    ],
+    "indicators": [
+      "v2xlg_legcon",
+      "v2x_partip",
+      "v2pepwrort"
+    ]
+  },
+  {
+    "trend": "transitional_justice",
+    "shipped": 0.7205,
+    "honest": 0.7169,
+    "honest_mean": 0.6598,
+    "honest_sd": 0.0445,
+    "honest_ci95_lo": 0.6596,
+    "honest_ci95_hi": 0.7669,
+    "delta": -0.0036,
+    "verdict": "OK",
+    "n_indicators": 5,
+    "card_window": 25,
+    "chosen_windows": [
+      25,
+      3,
+      5
+    ],
+    "n_pos_now": 123,
+    "n_pos_card": 128,
+    "single_country_dominance": 0.286,
+    "per_seed_auc": [
+      0.7169,
+      0.6543,
+      0.6082
+    ],
+    "indicators": [
+      "v2cseeorgs",
+      "v2pepwrort",
+      "v2xlg_legcon",
+      "v2x_polyarchy",
+      "v2csreprss"
+    ]
+  },
+  {
+    "trend": "human_rights_violation",
+    "shipped": 0.7193,
+    "honest": 0.709,
+    "honest_mean": 0.6705,
+    "honest_sd": 0.028,
+    "honest_ci95_lo": 0.6622,
+    "honest_ci95_hi": 0.754,
+    "delta": -0.0104,
+    "verdict": "OK",
+    "n_indicators": 3,
+    "card_window": 15,
+    "chosen_windows": [
+      15,
+      15,
+      25
+    ],
+    "n_pos_now": 166,
+    "n_pos_card": 232,
+    "single_country_dominance": 0.215,
+    "per_seed_auc": [
+      0.709,
+      0.6591,
+      0.6434
+    ],
+    "indicators": [
+      "v2cltort",
+      "NE.IMP.GNFS.ZS",
+      "NE.EXP.GNFS.ZS"
+    ]
+  },
+  {
+    "trend": "trade_agreement",
+    "shipped": 0.7108,
+    "honest": 0.6236,
+    "honest_mean": 0.6224,
+    "honest_sd": 0.0319,
+    "honest_ci95_lo": 0.5487,
+    "honest_ci95_hi": 0.6932,
+    "delta": -0.0872,
+    "verdict": "MIRAGE",
+    "n_indicators": 4,
+    "card_window": 3,
+    "chosen_windows": [
+      3,
+      18,
+      3
+    ],
+    "n_pos_now": 70,
+    "n_pos_card": 108,
+    "single_country_dominance": 0.282,
+    "per_seed_auc": [
+      0.6236,
+      0.5827,
+      0.6608
+    ],
+    "indicators": [
+      "NY.GDP.DEFL.KD.ZG",
+      "EG.ELC.ACCS.UR.ZS",
+      "NV.AGR.TOTL.ZS",
+      "NY.GNP.PCAP.CD"
+    ]
+  },
+  {
+    "trend": "interstate_war",
+    "shipped": 0.7087,
+    "honest": 0.6896,
+    "honest_mean": 0.6626,
+    "honest_sd": 0.0191,
+    "honest_ci95_lo": 0.6053,
+    "honest_ci95_hi": 0.7647,
+    "delta": -0.0191,
+    "verdict": "OK",
+    "n_indicators": 4,
+    "card_window": 18,
+    "chosen_windows": [
+      18,
+      7,
+      15
+    ],
+    "n_pos_now": 55,
+    "n_pos_card": 101,
+    "single_country_dominance": 0.361,
+    "per_seed_auc": [
+      0.6896,
+      0.6469,
+      0.6514
+    ],
+    "indicators": [
+      "NE.CON.PRVT.ZS",
+      "v2x_rule",
+      "v2pepwrses",
+      "v2mecenefm"
+    ]
+  },
+  {
+    "trend": "territorial_disputes",
+    "shipped": 0.7065,
+    "honest": 0.6381,
+    "honest_mean": 0.6169,
+    "honest_sd": 0.0233,
+    "honest_ci95_lo": 0.5715,
+    "honest_ci95_hi": 0.6964,
+    "delta": -0.0684,
+    "verdict": "MIRAGE",
+    "n_indicators": 5,
+    "card_window": 21,
+    "chosen_windows": [
+      10,
+      21,
+      15
+    ],
+    "n_pos_now": 106,
+    "n_pos_card": 162,
+    "single_country_dominance": 0.289,
+    "per_seed_auc": [
+      0.6381,
+      0.6281,
+      0.5844
+    ],
+    "indicators": [
+      "NY.GNP.PCAP.CD",
+      "v2x_neopat",
+      "SM.POP.NETM",
+      "AG.PRD.FOOD.XD",
+      "v2pepwrsoc"
+    ]
+  },
+  {
+    "trend": "ethnic_and_communal_conflict",
+    "shipped": 0.6986,
+    "honest": 0.6062,
+    "honest_mean": 0.6117,
+    "honest_sd": 0.0048,
+    "honest_ci95_lo": 0.5261,
+    "honest_ci95_hi": 0.682,
+    "delta": -0.0924,
+    "verdict": "MIRAGE",
+    "n_indicators": 2,
+    "card_window": 21,
+    "chosen_windows": [
+      15,
+      18,
+      10
+    ],
+    "n_pos_now": 64,
+    "n_pos_card": 79,
+    "single_country_dominance": 0.176,
+    "per_seed_auc": [
+      0.6062,
+      0.6178,
+      0.6112
+    ],
+    "indicators": [
+      "v2pepwrsoc",
+      "v2x_partip"
+    ]
+  },
+  {
+    "trend": "democratic_transition",
+    "shipped": 0.6967,
+    "honest": 0.6539,
+    "honest_mean": 0.6656,
+    "honest_sd": 0.0084,
+    "honest_ci95_lo": 0.6113,
+    "honest_ci95_hi": 0.6955,
+    "delta": -0.0428,
+    "verdict": "INFLATED",
+    "n_indicators": 5,
+    "card_window": 7,
+    "chosen_windows": [
+      12,
+      7,
+      12
+    ],
+    "n_pos_now": 218,
+    "n_pos_card": 354,
+    "single_country_dominance": 0.195,
+    "per_seed_auc": [
+      0.6539,
+      0.6734,
+      0.6694
+    ],
+    "indicators": [
+      "v2x_neopat",
+      "v2x_partip",
+      "SP.POP.TOTL",
+      "v2excrptps",
+      "v2x_corr"
+    ]
+  },
+  {
+    "trend": "economic_liberalization",
+    "shipped": 0.6919,
+    "honest": 0.578,
+    "honest_mean": 0.5965,
+    "honest_sd": 0.0141,
+    "honest_ci95_lo": 0.4986,
+    "honest_ci95_hi": 0.6574,
+    "delta": -0.114,
+    "verdict": "MIRAGE",
+    "n_indicators": 1,
+    "card_window": 5,
+    "chosen_windows": [
+      25,
+      7,
+      5
+    ],
+    "n_pos_now": 64,
+    "n_pos_card": 88,
+    "single_country_dominance": 0.225,
+    "per_seed_auc": [
+      0.578,
+      0.5992,
+      0.6123
+    ],
+    "indicators": [
+      "NY.GDP.MKTP.KD.ZG"
+    ]
+  },
+  {
+    "trend": "civil_war_and_insurgency",
+    "shipped": 0.6882,
+    "honest": 0.651,
+    "honest_mean": 0.6394,
+    "honest_sd": 0.0088,
+    "honest_ci95_lo": 0.6133,
+    "honest_ci95_hi": 0.6847,
+    "delta": -0.0371,
+    "verdict": "INFLATED",
+    "n_indicators": 4,
+    "card_window": 12,
+    "chosen_windows": [
+      10,
+      12,
+      12
+    ],
+    "n_pos_now": 328,
+    "n_pos_card": 511,
+    "single_country_dominance": 0.029,
+    "per_seed_auc": [
+      0.651,
+      0.6373,
+      0.6299
+    ],
+    "indicators": [
+      "v2x_clpriv",
+      "MS.MIL.XPND.GD.ZS",
+      "v2x_rule",
+      "v2pepwrort"
+    ]
+  },
+  {
+    "trend": "military_coup",
+    "shipped": 0.6858,
+    "honest": 0.6516,
+    "honest_mean": 0.6272,
+    "honest_sd": 0.0177,
+    "honest_ci95_lo": 0.598,
+    "honest_ci95_hi": 0.7011,
+    "delta": -0.0342,
+    "verdict": "INFLATED",
+    "n_indicators": 5,
+    "card_window": 25,
+    "chosen_windows": [
+      25,
+      18,
+      10
+    ],
+    "n_pos_now": 142,
+    "n_pos_card": 203,
+    "single_country_dominance": 0.117,
+    "per_seed_auc": [
+      0.6516,
+      0.6197,
+      0.6102
+    ],
+    "indicators": [
+      "SP.DYN.LE00.IN",
+      "v2excrptps",
+      "v2cltort",
+      "v2xel_frefair",
+      "v2x_clpol"
+    ]
+  },
+  {
+    "trend": "political_repression",
+    "shipped": 0.6847,
+    "honest": 0.6621,
+    "honest_mean": 0.6528,
+    "honest_sd": 0.0066,
+    "honest_ci95_lo": 0.6238,
+    "honest_ci95_hi": 0.7024,
+    "delta": -0.0227,
+    "verdict": "OK",
+    "n_indicators": 5,
+    "card_window": 10,
+    "chosen_windows": [
+      5,
+      3,
+      7
+    ],
+    "n_pos_now": 226,
+    "n_pos_card": 373,
+    "single_country_dominance": 0.14,
+    "per_seed_auc": [
+      0.6621,
+      0.6486,
+      0.6477
+    ],
+    "indicators": [
+      "v2clkill",
+      "v2csreprss",
+      "v2lgqstexp",
+      "AG.PRD.FOOD.XD",
+      "v2x_libdem"
+    ]
+  },
+  {
+    "trend": "infrastructure_project",
+    "shipped": 0.6843,
+    "honest": 0.6534,
+    "honest_mean": 0.6145,
+    "honest_sd": 0.03,
+    "honest_ci95_lo": 0.5609,
+    "honest_ci95_hi": 0.7327,
+    "delta": -0.0309,
+    "verdict": "INFLATED",
+    "n_indicators": 1,
+    "card_window": 12,
+    "chosen_windows": [
+      12,
+      18,
+      3
+    ],
+    "n_pos_now": 57,
+    "n_pos_card": 100,
+    "single_country_dominance": 0.394,
+    "per_seed_auc": [
+      0.6534,
+      0.5805,
+      0.6096
+    ],
+    "indicators": [
+      "NE.CON.GOVT.ZS"
+    ]
+  },
+  {
+    "trend": "political_corruption",
+    "shipped": 0.6813,
+    "honest": 0.6268,
+    "honest_mean": 0.6482,
+    "honest_sd": 0.0197,
+    "honest_ci95_lo": 0.5783,
+    "honest_ci95_hi": 0.674,
+    "delta": -0.0545,
+    "verdict": "INFLATED",
+    "n_indicators": 2,
+    "card_window": 5,
+    "chosen_windows": [
+      7,
+      5,
+      3
+    ],
+    "n_pos_now": 160,
+    "n_pos_card": 165,
+    "single_country_dominance": 0.158,
+    "per_seed_auc": [
+      0.6268,
+      0.6745,
+      0.6433
+    ],
+    "indicators": [
+      "v2mecenefm",
+      "SP.POP.TOTL"
+    ]
+  },
+  {
+    "trend": "energy_policy",
+    "shipped": 0.6779,
+    "honest": 0.639,
+    "honest_mean": 0.6096,
+    "honest_sd": 0.0308,
+    "honest_ci95_lo": 0.5702,
+    "honest_ci95_hi": 0.6984,
+    "delta": -0.0389,
+    "verdict": "INFLATED",
+    "n_indicators": 4,
+    "card_window": 10,
+    "chosen_windows": [
+      7,
+      18,
+      7
+    ],
+    "n_pos_now": 97,
+    "n_pos_card": 136,
+    "single_country_dominance": 0.209,
+    "per_seed_auc": [
+      0.639,
+      0.5671,
+      0.6229
+    ],
+    "indicators": [
+      "MS.MIL.MPRT.KD",
+      "SM.POP.NETM",
+      "v2exl_legitlead",
+      "v2svdomaut"
+    ]
+  },
+  {
+    "trend": "peacekeeping_and_peace_process",
+    "shipped": 0.675,
+    "honest": 0.6388,
+    "honest_mean": 0.6385,
+    "honest_sd": 0.0082,
+    "honest_ci95_lo": 0.5876,
+    "honest_ci95_hi": 0.6861,
+    "delta": -0.0363,
+    "verdict": "INFLATED",
+    "n_indicators": 3,
+    "card_window": 15,
+    "chosen_windows": [
+      15,
+      15,
+      10
+    ],
+    "n_pos_now": 153,
+    "n_pos_card": 244,
+    "single_country_dominance": 0.175,
+    "per_seed_auc": [
+      0.6388,
+      0.6283,
+      0.6484
+    ],
+    "indicators": [
+      "v2clkill",
+      "NV.SRV.TOTL.ZS",
+      "NY.GDP.MKTP.KD.ZG"
+    ]
+  },
+  {
+    "trend": "military_policy_and_reform",
+    "shipped": 0.6723,
+    "honest": 0.6218,
+    "honest_mean": 0.6218,
+    "honest_sd": 0.0,
+    "honest_ci95_lo": 0.5725,
+    "honest_ci95_hi": 0.6704,
+    "delta": -0.0505,
+    "verdict": "INFLATED",
+    "n_indicators": 3,
+    "card_window": 15,
+    "chosen_windows": [
+      15
+    ],
+    "n_pos_now": 153,
+    "n_pos_card": 161,
+    "single_country_dominance": 0.185,
+    "per_seed_auc": [
+      0.6218
+    ],
+    "indicators": [
+      "v2cseeorgs",
+      "v2exl_legitlead",
+      "v2csreprss"
+    ]
+  },
+  {
+    "trend": "fiscal_policy_change",
+    "shipped": 0.6623,
+    "honest": 0.5929,
+    "honest_mean": 0.5929,
+    "honest_sd": 0.0,
+    "honest_ci95_lo": 0.5344,
+    "honest_ci95_hi": 0.6468,
+    "delta": -0.0694,
+    "verdict": "MIRAGE",
+    "n_indicators": 3,
+    "card_window": 10,
+    "chosen_windows": [
+      12
+    ],
+    "n_pos_now": 146,
+    "n_pos_card": 232,
+    "single_country_dominance": 0.271,
+    "per_seed_auc": [
+      0.5929
+    ],
+    "indicators": [
+      "NV.IND.MANF.ZS",
+      "v2x_clphy",
+      "SP.DYN.TFRT.IN"
+    ]
+  },
+  {
+    "trend": "economic_recession",
+    "shipped": 0.6611,
+    "honest": 0.5934,
+    "honest_mean": 0.5934,
+    "honest_sd": 0.0,
+    "honest_ci95_lo": 0.5433,
+    "honest_ci95_hi": 0.6433,
+    "delta": -0.0677,
+    "verdict": "MIRAGE",
+    "n_indicators": 3,
+    "card_window": 10,
+    "chosen_windows": [
+      7
+    ],
+    "n_pos_now": 172,
+    "n_pos_card": 215,
+    "single_country_dominance": 0.229,
+    "per_seed_auc": [
+      0.5934
+    ],
+    "indicators": [
+      "v2x_gender",
+      "BN.CAB.XOKA.GD.ZS",
+      "v2xlg_legcon"
+    ]
+  },
+  {
+    "trend": "multilateral_agreement",
+    "shipped": 0.6592,
+    "honest": 0.6476,
+    "honest_mean": 0.6476,
+    "honest_sd": 0.0,
+    "honest_ci95_lo": 0.5966,
+    "honest_ci95_hi": 0.6958,
+    "delta": -0.0116,
+    "verdict": "OK",
+    "n_indicators": 3,
+    "card_window": 25,
+    "chosen_windows": [
+      25
+    ],
+    "n_pos_now": 139,
+    "n_pos_card": 271,
+    "single_country_dominance": 0.206,
+    "per_seed_auc": [
+      0.6476
+    ],
+    "indicators": [
+      "MS.MIL.MPRT.KD",
+      "v2x_clpriv",
+      "v2lgbicam"
+    ]
+  },
+  {
+    "trend": "elections_and_voting",
+    "shipped": 0.656,
+    "honest": 0.646,
+    "honest_mean": 0.646,
+    "honest_sd": 0.0,
+    "honest_ci95_lo": 0.6251,
+    "honest_ci95_hi": 0.6667,
+    "delta": -0.0099,
+    "verdict": "OK",
+    "n_indicators": 4,
+    "card_window": 3,
+    "chosen_windows": [
+      3
+    ],
+    "n_pos_now": 836,
+    "n_pos_card": 865,
+    "single_country_dominance": 0.007,
+    "per_seed_auc": [
+      0.646
+    ],
+    "indicators": [
+      "v2x_libdem",
+      "v2xel_frefair",
+      "v2x_clpol",
+      "v2pepwrsoc"
+    ]
+  },
+  {
+    "trend": "mass_protest",
+    "shipped": 0.6551,
+    "honest": 0.611,
+    "honest_mean": 0.611,
+    "honest_sd": 0.0,
+    "honest_ci95_lo": 0.5684,
+    "honest_ci95_hi": 0.6512,
+    "delta": -0.044,
+    "verdict": "INFLATED",
+    "n_indicators": 3,
+    "card_window": 5,
+    "chosen_windows": [
+      5
+    ],
+    "n_pos_now": 215,
+    "n_pos_card": 334,
+    "single_country_dominance": 0.121,
+    "per_seed_auc": [
+      0.611
+    ],
+    "indicators": [
+      "SM.POP.RHCR.EO",
+      "v2excrptps",
+      "v2csprtcpt"
+    ]
+  },
+  {
+    "trend": "natural_disaster",
+    "shipped": 0.6377,
+    "honest": 0.6268,
+    "honest_mean": 0.6268,
+    "honest_sd": 0.0,
+    "honest_ci95_lo": 0.5659,
+    "honest_ci95_hi": 0.6794,
+    "delta": -0.0109,
+    "verdict": "OK",
+    "n_indicators": 1,
+    "card_window": 21,
+    "chosen_windows": [
+      21
+    ],
+    "n_pos_now": 118,
+    "n_pos_card": 119,
+    "single_country_dominance": 0.095,
+    "per_seed_auc": [
+      0.6268
+    ],
+    "indicators": [
+      "v2x_freexp_altinf"
+    ]
+  },
+  {
+    "trend": "human_rights_reform",
+    "shipped": 0.6306,
+    "honest": 0.5915,
+    "honest_mean": 0.5915,
+    "honest_sd": 0.0,
+    "honest_ci95_lo": 0.5292,
+    "honest_ci95_hi": 0.6527,
+    "delta": -0.0391,
+    "verdict": "INFLATED",
+    "n_indicators": 2,
+    "card_window": 15,
+    "chosen_windows": [
+      15
+    ],
+    "n_pos_now": 95,
+    "n_pos_card": 150,
+    "single_country_dominance": 0.25,
+    "per_seed_auc": [
+      0.5915
+    ],
+    "indicators": [
+      "SL.TLF.CACT.FE.ZS",
+      "SP.DYN.TFRT.IN"
+    ]
+  },
+  {
+    "trend": "political_violence",
+    "shipped": 0.6301,
+    "honest": 0.5484,
+    "honest_mean": 0.5484,
+    "honest_sd": 0.0,
+    "honest_ci95_lo": 0.5067,
+    "honest_ci95_hi": 0.5921,
+    "delta": -0.0817,
+    "verdict": "MIRAGE",
+    "n_indicators": 2,
+    "card_window": 3,
+    "chosen_windows": [
+      3
+    ],
+    "n_pos_now": 210,
+    "n_pos_card": 233,
+    "single_country_dominance": 0.084,
+    "per_seed_auc": [
+      0.5484
+    ],
+    "indicators": [
+      "SP.POP.TOTL",
+      "SP.DYN.LE00.IN"
+    ]
+  },
+  {
+    "trend": "terrorist_attack",
+    "shipped": 0.6278,
+    "honest": 0.5748,
+    "honest_mean": 0.5748,
+    "honest_sd": 0.0,
+    "honest_ci95_lo": 0.535,
+    "honest_ci95_hi": 0.6186,
+    "delta": -0.053,
+    "verdict": "INFLATED",
+    "n_indicators": 2,
+    "card_window": 3,
+    "chosen_windows": [
+      5
+    ],
+    "n_pos_now": 241,
+    "n_pos_card": 238,
+    "single_country_dominance": 0.043,
+    "per_seed_auc": [
+      0.5748
+    ],
+    "indicators": [
+      "v2excrptps",
+      "v2pepwrort"
+    ]
+  },
+  {
+    "trend": "migration_and_refugees",
+    "shipped": 0.6162,
+    "honest": 0.5537,
+    "honest_mean": 0.5537,
+    "honest_sd": 0.0,
+    "honest_ci95_lo": 0.5053,
+    "honest_ci95_hi": 0.6046,
+    "delta": -0.0624,
+    "verdict": "MIRAGE",
+    "n_indicators": 1,
+    "card_window": 5,
+    "chosen_windows": [
+      5
+    ],
+    "n_pos_now": 176,
+    "n_pos_card": 180,
+    "single_country_dominance": 0.218,
+    "per_seed_auc": [
+      0.5537
+    ],
+    "indicators": [
+      "v2cseeorgs"
+    ]
+  },
+  {
+    "trend": "bilateral_treaty",
+    "shipped": 0.5977,
+    "honest": 0.5711,
+    "honest_mean": 0.5711,
+    "honest_sd": 0.0,
+    "honest_ci95_lo": 0.5386,
+    "honest_ci95_hi": 0.6083,
+    "delta": -0.0266,
+    "verdict": "OK",
+    "n_indicators": 2,
+    "card_window": 21,
+    "chosen_windows": [
+      25
+    ],
+    "n_pos_now": 325,
+    "n_pos_card": 563,
+    "single_country_dominance": 0.04,
+    "per_seed_auc": [
+      0.5711
+    ],
+    "indicators": [
+      "NY.GDP.PCAP.CD",
+      "NY.GNP.PCAP.CD"
+    ]
+  },
+  {
+    "trend": "constitutional_change",
+    "shipped": 0.5916,
+    "honest": 0.5898,
+    "honest_mean": 0.5898,
+    "honest_sd": 0.0,
+    "honest_ci95_lo": 0.5518,
+    "honest_ci95_hi": 0.6268,
+    "delta": -0.0018,
+    "verdict": "OK",
+    "n_indicators": 2,
+    "card_window": 18,
+    "chosen_windows": [
+      18
+    ],
+    "n_pos_now": 291,
+    "n_pos_card": 402,
+    "single_country_dominance": 0.098,
+    "per_seed_auc": [
+      0.5898
+    ],
+    "indicators": [
+      "v2x_neopat",
+      "SP.POP.TOTL"
+    ]
+  },
+  {
+    "trend": "government_formation",
+    "shipped": 0.5794,
+    "honest": 0.5489,
+    "honest_mean": 0.5489,
+    "honest_sd": 0.0,
+    "honest_ci95_lo": 0.517,
+    "honest_ci95_hi": 0.5823,
+    "delta": -0.0305,
+    "verdict": "INFLATED",
+    "n_indicators": 2,
+    "card_window": 18,
+    "chosen_windows": [
+      21
+    ],
+    "n_pos_now": 380,
+    "n_pos_card": 519,
+    "single_country_dominance": 0.095,
+    "per_seed_auc": [
+      0.5489
+    ],
+    "indicators": [
+      "v2clkill",
+      "NY.GDP.DEFL.KD.ZG"
+    ]
+  }
+]

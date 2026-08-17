@@ -1,0 +1,110 @@
+[
+  {
+    "window": 3,
+    "coverage_pass": false,
+    "n_pos_total": 242,
+    "n_pos_survive": 18,
+    "n_neg_total": 726,
+    "n_neg_survive": 29,
+    "pos_coverage": 0.0743801652892562,
+    "neg_coverage": 0.03994490358126722,
+    "n_countries_survive": 19,
+    "global_auc": 0.49233716475095785
+  },
+  {
+    "window": 5,
+    "coverage_pass": false,
+    "n_pos_total": 242,
+    "n_pos_survive": 23,
+    "n_neg_total": 726,
+    "n_neg_survive": 42,
+    "pos_coverage": 0.09504132231404959,
+    "neg_coverage": 0.05785123966942149,
+    "n_countries_survive": 26,
+    "global_auc": 0.494824016563147
+  },
+  {
+    "window": 7,
+    "coverage_pass": false,
+    "n_pos_total": 242,
+    "n_pos_survive": 26,
+    "n_neg_total": 726,
+    "n_neg_survive": 50,
+    "pos_coverage": 0.10743801652892562,
+    "neg_coverage": 0.06887052341597796,
+    "n_countries_survive": 26,
+    "global_auc": 0.6053846153846154
+  },
+  {
+    "window": 10,
+    "coverage_pass": false,
+    "n_pos_total": 242,
+    "n_pos_survive": 29,
+    "n_neg_total": 726,
+    "n_neg_survive": 59,
+    "pos_coverage": 0.11983471074380166,
+    "neg_coverage": 0.081267217630854,
+    "n_countries_survive": 28,
+    "global_auc": 0.5493863237872589
+  },
+  {
+    "window": 12,
+    "coverage_pass": false,
+    "n_pos_total": 242,
+    "n_pos_survive": 23,
+    "n_neg_total": 726,
+    "n_neg_survive": 50,
+    "pos_coverage": 0.09504132231404959,
+    "neg_coverage": 0.06887052341597796,
+    "n_countries_survive": 25,
+    "global_auc": 0.43478260869565216
+  },
+  {
+    "window": 15,
+    "coverage_pass": false,
+    "n_pos_total": 242,
+    "n_pos_survive": 21,
+    "n_neg_total": 726,
+    "n_neg_survive": 45,
+    "pos_coverage": 0.08677685950413223,
+    "neg_coverage": 0.06198347107438017,
+    "n_countries_survive": 24,
+    "global_auc": 0.7322751322751323
+  },
+  {
+    "window": 18,
+    "coverage_pass": false,
+    "n_pos_total": 242,
+    "n_pos_survive": 16,
+    "n_neg_total": 726,
+    "n_neg_survive": 43,
+    "pos_coverage": 0.06611570247933884,
+    "neg_coverage": 0.05922865013774105,
+    "n_countries_survive": 24,
+    "global_auc": 0.4738372093023256
+  },
+  {
+    "window": 21,
+    "coverage_pass": false,
+    "n_pos_total": 242,
+    "n_pos_survive": 12,
+    "n_neg_total": 726,
+    "n_neg_survive": 38,
+    "pos_coverage": 0.049586776859504134,
+    "neg_coverage": 0.05234159779614325,
+    "n_countries_survive": 22,
+    "global_auc": 0.48464912280701755
+  },
+  {
+    "window": 25,
+    "coverage_pass": false,
+    "n_pos_total": 242,
+    "n_pos_survive": 7,
+    "n_neg_total": 726,
+    "n_neg_survive": 28,
+    "pos_coverage": 0.028925619834710745,
+    "neg_coverage": 0.03856749311294766,
+    "n_countries_survive": 17,
+    "global_auc": 0.17346938775510204
+  }
+]

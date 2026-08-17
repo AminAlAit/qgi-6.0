@@ -1,0 +1,401 @@
+{
+  "seed": 12345,
+  "recipe_id": "economic_recession_oecd_scoped",
+  "scope": "oecd_scoped_ex_ante",
+  "oecd_scoped_country_ids": [
+    "canada",
+    "chile",
+    "colombia",
+    "costa_rica",
+    "czechia",
+    "estonia",
+    "finland",
+    "france",
+    "germany",
+    "greece",
+    "hungary",
+    "iceland",
+    "israel",
+    "italy",
+    "japan",
+    "lithuania",
+    "mexico",
+    "netherlands",
+    "norway",
+    "poland",
+    "portugal",
+    "singapore",
+    "slovakia",
+    "south_korea",
+    "spain",
+    "turkiye",
+    "united_kingdom",
+    "united_states"
+  ],
+  "n_scoped_countries_with_events": 28,
+  "n_pos_samples": 67,
+  "recipe_indicators": [
+    "v2csreprss",
+    "v2x_freexp_altinf",
+    "OECD.TERM_SPREAD"
+  ],
+  "new_indicators": [
+    "OECD.TERM_SPREAD"
+  ],
+  "baseline": {
+    "drivers": [
+      "v2csreprss",
+      "v2x_freexp_altinf"
+    ],
+    "loco_auc": 0.5873527101335428,
+    "ci95_lo": 0.5008189144618344,
+    "ci95_hi": 0.6621785322937296,
+    "chosen_window": 15,
+    "note": "SCOPED baseline per guard #1 -- run-2's drivers refit on the OECD-scoped samples, NOT the universal 0.547 anchor."
+  },
+  "candidate": {
+    "loco_auc": 0.599869593566616,
+    "ci95_lo": 0.4920113351570818,
+    "ci95_hi": 0.6929574655243611,
+    "chosen_window": 12
+  },
+  "pairing": {
+    "n_pairs": 150,
+    "n_a": 150,
+    "n_b": 257,
+    "label_mismatches": 0
+  },
+  "delta_auc_vs_scoped_baseline": {
+    "point": 0.013910019560965048,
+    "auc_a": 0.599869593566616,
+    "auc_b": 0.5859595740056509,
+    "ci95_lo": -0.12454252285352808,
+    "ci95_hi": 0.15646574909033384,
+    "p_value": 0.8665667166416792,
+    "n_pairs": 150,
+    "n_clusters": 25,
+    "n_boot_valid": 2000,
+    "b_eval": 2000
+  },
+  "floor_gate_pass_ci_lower_gt_0.02": false,
+  "d5_per_country": {
+    "gate_pass": true,
+    "per_country_auc": {
+      "Canada": 0.7,
+      "Finland": 1.0,
+      "France": 0.7777777777777778,
+      "Germany": 0.8571428571428571,
+      "Greece": 0.5,
+      "Iceland": 1.0,
+      "Israel": 0.6,
+      "Italy": 0.5,
+      "Japan": 0.0,
+      "Lithuania": 1.0,
+      "Mexico": 0.0,
+      "Netherlands": 0.25,
+      "Norway": 0.8888888888888888,
+      "Poland": 0.6666666666666666,
+      "Portugal": 0.375,
+      "Slovakia": 1.0,
+      "Spain": 0.25,
+      "United Kingdom": 1.0,
+      "United States": 0.5714285714285714
+    },
+    "n_countries": 19
+  },
+  "era2008_decomposition_candidate_genuine_refit": {
+    "window": 12,
+    "exclude_year": 2008,
+    "pre_cutoff": 2008,
+    "n_2008_positives": 14,
+    "n_total_positives": 67,
+    "pct_2008_of_positives": 20.895522388059703,
+    "full_sample": {
+      "loco_auc": 0.599869593566616,
+      "ci95_lo": 0.4920113351570818,
+      "ci95_hi": 0.6929574655243611,
+      "n_rows": 150,
+      "n_pos": 43,
+      "fit_failed": false,
+      "per_country_auc": {
+        "Canada": 0.7,
+        "Finland": 1.0,
+        "France": 0.7777777777777778,
+        "Germany": 0.8571428571428571,
+        "Greece": 0.5,
+        "Iceland": 1.0,
+        "Israel": 0.6,
+        "Italy": 0.5,
+        "Japan": 0.0,
+        "Lithuania": 1.0,
+        "Mexico": 0.0,
+        "Netherlands": 0.25,
+        "Norway": 0.8888888888888888,
+        "Poland": 0.6666666666666666,
+        "Portugal": 0.375,
+        "Slovakia": 1.0,
+        "Spain": 0.25,
+        "United Kingdom": 1.0,
+        "United States": 0.5714285714285714
+      }
+    },
+    "excl_2008": {
+      "loco_auc": 0.5738934733683421,
+      "ci95_lo": 0.4580797445732718,
+      "ci95_hi": 0.6986953079903219,
+      "n_rows": 117,
+      "n_pos": 31,
+      "fit_failed": false,
+      "per_country_auc": {
+        "Canada": 0.5333333333333333,
+        "France": 0.6666666666666666,
+        "Germany": 0.9428571428571428,
+        "Greece": 1.0,
+        "Israel": 0.6666666666666666,
+        "Italy": 1.0,
+        "Netherlands": 0.09523809523809523,
+        "Norway": 0.5,
+        "Portugal": 0.5,
+        "Slovakia": 1.0,
+        "United Kingdom": 1.0,
+        "United States": 0.2777777777777778
+      }
+    },
+    "pre_2008_era": {
+      "loco_auc": 0.6607142857142857,
+      "ci95_lo": 0.4585547587223243,
+      "ci95_hi": 0.8217194385598924,
+      "n_rows": 42,
+      "n_pos": 14,
+      "fit_failed": false,
+      "per_country_auc": {
+        "Canada": 0.8,
+        "France": 1.0,
+        "Germany": 0.8125,
+        "United States": 0.7
+      }
+    },
+    "verdict": {
+      "verdict": "PASS_ERA_CHECK",
+      "reject": false,
+      "reason": "auc_full=0.599869593566616 auc_excl_2008=0.5738934733683421 auc_pre2008_era=0.6607142857142857 all clear chance=0.5"
+    }
+  },
+  "era2008_decomposition_baseline_genuine_refit": {
+    "window": 15,
+    "exclude_year": 2008,
+    "pre_cutoff": 2008,
+    "n_2008_positives": 14,
+    "n_total_positives": 67,
+    "pct_2008_of_positives": 20.895522388059703,
+    "full_sample": {
+      "loco_auc": 0.5873527101335428,
+      "ci95_lo": 0.5008189144618344,
+      "ci95_hi": 0.6621785322937296,
+      "n_rows": 257,
+      "n_pos": 67,
+      "fit_failed": false,
+      "per_country_auc": {
+        "Canada": 0.85,
+        "Chile": 0.5,
+        "Colombia": 0.6666666666666666,
+        "Costa Rica": 0.09090909090909091,
+        "Czechia": 0.8,
+        "Estonia": 1.0,
+        "Finland": 0.6666666666666666,
+        "France": 1.0,
+        "Germany": 0.8095238095238095,
+        "Greece": 0.7272727272727273,
+        "Hungary": 0.5555555555555556,
+        "Iceland": 0.8571428571428571,
+        "Israel": 0.0,
+        "Italy": 0.5714285714285714,
+        "Japan": 0.16666666666666666,
+        "Lithuania": 0.3333333333333333,
+        "Mexico": 0.5555555555555556,
+        "Netherlands": 0.6363636363636364,
+        "Norway": 0.7272727272727273,
+        "Poland": 0.8461538461538461,
+        "Portugal": 0.42857142857142855,
+        "Singapore": 0.6666666666666666,
+        "Slovakia": 0.0,
+        "South Korea": 1.0,
+        "Spain": 0.5,
+        "Turkiye": 0.3333333333333333,
+        "United Kingdom": 0.76,
+        "United States": 0.2857142857142857
+      }
+    },
+    "excl_2008": {
+      "loco_auc": 0.6179827626368507,
+      "ci95_lo": 0.5103470995553232,
+      "ci95_hi": 0.7081085744301718,
+      "n_rows": 215,
+      "n_pos": 53,
+      "fit_failed": false,
+      "per_country_auc": {
+        "Canada": 0.9333333333333333,
+        "Chile": 0.8,
+        "Colombia": 1.0,
+        "Costa Rica": 0.14285714285714285,
+        "Czechia": 1.0,
+        "Finland": 1.0,
+        "France": 0.9166666666666666,
+        "Germany": 0.8571428571428571,
+        "Greece": 0.5,
+        "Hungary": 0.75,
+        "Iceland": 0.6666666666666666,
+        "Israel": 0.75,
+        "Italy": 0.2857142857142857,
+        "Japan": 0.2,
+        "Mexico": 0.3333333333333333,
+        "Netherlands": 0.6666666666666666,
+        "Norway": 0.9,
+        "Portugal": 0.5,
+        "Slovakia": 1.0,
+        "South Korea": 1.0,
+        "Spain": 0.0,
+        "Turkiye": 0.3333333333333333,
+        "United Kingdom": 0.7,
+        "United States": 0.5
+      }
+    },
+    "pre_2008_era": {
+      "loco_auc": 0.6375180375180375,
+      "ci95_lo": 0.5263304541655057,
+      "ci95_hi": 0.7486290892794056,
+      "n_rows": 134,
+      "n_pos": 35,
+      "fit_failed": false,
+      "per_country_auc": {
+        "Canada": 1.0,
+        "Chile": 0.75,
+        "Colombia": 1.0,
+        "Czechia": 1.0,
+        "Finland": 1.0,
+        "France": 1.0,
+        "Germany": 0.4375,
+        "Greece": 0.75,
+        "Hungary": 0.6666666666666666,
+        "Israel": 1.0,
+        "Italy": 0.14285714285714285,
+        "Mexico": 0.5,
+        "South Korea": 0.8,
+        "Spain": 0.5,
+        "Turkiye": 1.0,
+        "United Kingdom": 0.6666666666666666,
+        "United States": 0.6
+      }
+    },
+    "verdict": {
+      "verdict": "PASS_ERA_CHECK",
+      "reject": false,
+      "reason": "auc_full=0.5873527101335428 auc_excl_2008=0.6179827626368507 auc_pre2008_era=0.6375180375180375 all clear chance=0.5"
+    }
+  },
+  "era2008_delta_posthoc_crosscheck": {
+    "n_pairs_total": 150,
+    "with_2008": {
+      "point": 0.013910019560965048,
+      "auc_a": 0.599869593566616,
+      "auc_b": 0.5859595740056509,
+      "ci95_lo": -0.12857534461152886,
+      "ci95_hi": 0.1569166680583854,
+      "p_value": 0.8311688311688312,
+      "n_pairs": 150,
+      "n_clusters": 25,
+      "n_boot_valid": 1000,
+      "b_eval": 1000
+    },
+    "excl_2008": {
+      "point": -0.0018754688672167896,
+      "auc_a": 0.6462865716429107,
+      "auc_b": 0.6481620405101275,
+      "ci95_lo": -0.1432224308162981,
+      "ci95_hi": 0.17466160584604204,
+      "p_value": 0.955044955044955,
+      "n_pairs": 117,
+      "n_clusters": 25,
+      "n_boot_valid": 1000,
+      "b_eval": 1000
+    },
+    "pre_2008_era": {
+      "point": 0.017857142857142905,
+      "auc_a": 0.7117346938775511,
+      "auc_b": 0.6938775510204082,
+      "ci95_lo": -0.18942099567099563,
+      "ci95_hi": 0.37012499999999987,
+      "p_value": 0.6713286713286714,
+      "n_pairs": 42,
+      "n_clusters": 13,
+      "n_boot_valid": 1000,
+      "b_eval": 1000
+    }
+  },
+  "d2_missingness_placebo": {
+    "OECD.TERM_SPREAD": {
+      "dummy_loco_auc": 0.683329710932406,
+      "dummy_delta_vs_baseline": {
+        "point": 0.09737013692675511,
+        "auc_a": 0.683329710932406,
+        "auc_b": 0.5859595740056509,
+        "ci95_lo": -0.030039880760554374,
+        "ci95_hi": 0.2460772872691478,
+        "p_value": 0.15784215784215785,
+        "n_pairs": 150,
+        "n_clusters": 25,
+        "n_boot_valid": 1000,
+        "b_eval": 1000
+      },
+      "permuted_loco_auc": 0.535970441208433,
+      "permuted_delta_vs_baseline": {
+        "point": -0.04998913279721795,
+        "auc_a": 0.535970441208433,
+        "auc_b": 0.5859595740056509,
+        "ci95_lo": -0.17441227121630826,
+        "ci95_hi": 0.09199526594263435,
+        "p_value": 0.45554445554445555,
+        "n_pairs": 150,
+        "n_clusters": 25,
+        "n_boot_valid": 1000,
+        "b_eval": 1000
+      },
+      "gate_pass": true
+    }
+  },
+  "d4_lag_decay": {
+    "OECD.TERM_SPREAD": {
+      "auc_normal_t1_window": {
+        "loco_auc": 0.49706585524885893,
+        "n_rows": 150
+      },
+      "auc_shifted_minus1_year": {
+        "loco_auc": 0.5610961365678346,
+        "n_rows": 148
+      },
+      "verdict": {
+        "verdict": "PASS_LEADING",
+        "reject": false,
+        "reason": "auc_t1_only=0.49706585524885893 auc_t2t3_only=0.5610961365678346"
+      }
+    }
+  },
+  "d7_temporal_holdout": {
+    "gate_pass": false,
+    "n_holdout_pos": 0,
+    "holdout_auc_ci_lo": null,
+    "detail": {
+      "fit_failed": true,
+      "reason": "pick_cut_year: no candidate in [1990, 1995, 2000, 2005, 2010, 2015] cleared BOTH the screening-side coverage gate AND holdout_row_fraction >= 0.1. See `attempts` in the raised context for the per-candidate trace -- re-choose the candidate list by hand (attempts=[{'cut_year': 1990, 'n_screen_rows': 70, 'n_holdout_rows': 198, 'holdout_row_fraction': 0.7388059701492538, 'screen_coverage': {'n_pos_total': 18, 'n_pos_survive': 7, 'n_neg_total': 52, 'n_neg_survive': 7, 'pos_coverage': 0.3888888888888889, 'neg_coverage': 0.1346153846153846, 'n_countries_survive': 4, 'gate_pass': False}, 'accepted': False}, {'cut_year': 1995, 'n_screen_rows': 112, 'n_holdout_rows': 156, 'holdout_row_fraction': 0.582089552238806, 'screen_coverage': {'n_pos_total': 27, 'n_pos_survive': 11, 'n_neg_total': 85, 'n_neg_survive': 18, 'pos_coverage': 0.4074074074074074, 'neg_coverage': 0.21176470588235294, 'n_countries_survive': 9, 'gate_pass': False}, 'accepted': False}, {'cut_year': 2000, 'n_screen_rows': 127, 'n_holdout_rows': 141, 'holdout_row_fraction': 0.5261194029850746, 'screen_coverage': {'n_pos_total': 31, 'n_pos_survive': 11, 'n_neg_total': 96, 'n_neg_survive': 22, 'pos_coverage': 0.3548387096774194, 'neg_coverage': 0.22916666666666666, 'n_countries_survive': 10, 'gate_pass': False}, 'accepted': False}, {'cut_year': 2005, 'n_screen_rows': 145, 'n_holdout_rows': 123, 'holdout_row_fraction': 0.458955223880597, 'screen_coverage': {'n_pos_total': 35, 'n_pos_survive': 14, 'n_neg_total': 110, 'n_neg_survive': 28, 'pos_coverage': 0.4, 'neg_coverage': 0.2545454545454545, 'n_countries_survive': 13, 'gate_pass': False}, 'accepted': False}, {'cut_year': 2010, 'n_screen_rows': 194, 'n_holdout_rows': 74, 'holdout_row_fraction': 0.27611940298507465, 'screen_coverage': {'n_pos_total': 51, 'n_pos_survive': 28, 'n_neg_total': 143, 'n_neg_survive': 54, 'pos_coverage': 0.5490196078431373, 'neg_coverage': 0.3776223776223776, 'n_countries_survive': 23, 'gate_pass': False}, 'accepted': False}, {'cut_year': 2015, 'n_screen_rows': 236, 'n_holdout_rows': 32, 'holdout_row_fraction': 0.11940298507462686, 'screen_coverage': {'n_pos_total': 58, 'n_pos_survive': 35, 'n_neg_total': 178, 'n_neg_survive': 86, 'pos_coverage': 0.603448275862069, 'neg_coverage': 0.48314606741573035, 'n_countries_survive': 24, 'gate_pass': False}, 'accepted': False}])"
+    }
+  },
+  "overall_gates": {
+    "floor_ci_lower_gt_0.02": false,
+    "per_country_breadth": true,
+    "era2008_not_rejected": true,
+    "placebo_near_null_all": true,
+    "lag_decay_leading_all": true,
+    "temporal_holdout": true
+  },
+  "overall_clears_full_battery": false
+}

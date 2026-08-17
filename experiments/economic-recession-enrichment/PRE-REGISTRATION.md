@@ -47,3 +47,17 @@ Sourced 5 new indicators outside the 250-pool (BIS credit-gap + house-prices, WB
 2. **The OECD yield-curve / term-spread — the single strongest predictor — was NEVER sourced** (Cloudflare-blocked; needs a free OECD API key or a browser export). Untested. This is the real remaining shot.
 
 **Also:** the 67-event OECD sample is statistically thin (hold-out couldn't bind) — the honest completion is house-prices + yield-curve **together**, on the OECD set, ideally with a few more OECD recession events for power. Substrate improved but still short of a validated win; recession's honest ceiling with *currently-pullable* data ≈ 0.59 (scoped) / 0.55 (universal). Artifacts: `reboot/`.
+
+---
+
+## YIELD-CURVE ADDENDUM (2026-07-11) — the last lead closed; RED holds
+
+The OECD Cloudflare block was cleared (browser-assisted human "verify" click, then same-origin bulk fetch from the cleared page) and the **yield curve was finally sourced**: OECD `DSD_STES@DF_FINMARK`, annual IRLT (10-yr) & IR3TIB (3-mo), **47 REF_AREAs incl. big EMs, 1956-2025** → `reboot/raw/oecd_finmark_rates.csv`; built `OECD.TERM_SPREAD` (=IRLT−IR3TIB), `OECD.IRLT`, `OECD.IR3TIB` panels (`reboot/build_oecd_rates.py`, 5 tests pass; 32-34 roster countries).
+
+**1. Coverage — FAIL (the primary killer).** t1&t2 on the 67-event OECD-scoped set: TERM_SPREAD **64.2%**, IRLT 70.1%, IR3TIB 71.6%; global (250 events) **19.6%**. Of the 24 scoped misses, **15 have BOTH rate legs absent** (Japan '71/'73/'79, Mexico '82/'83, Chile, Spain, Greece, Hungary, Turkey '94/'01/'18, Singapore) → an overnight-rate (IRSTCI) fallback tops out at ~72%, still < 80%. No temporal restriction rescues it (OECD & onset≥1990 = 73.5%). The yield curve is **not adoptable** on QGI's recession event set — the interest-rate substrate doesn't reach far enough back or across enough EMs.
+
+**2. Exploratory signal on the 43 covered events (NOT adoptable — below coverage gate).** run-2 + TERM_SPREAD vs coverage-matched baseline: candidate 0.600, ΔAUC **+0.014, CI [−0.125, +0.156], p=0.87** — indistinguishable from zero; per-country AUCs are pure small-n noise (Japan 0.0, Mexico 0.0, Spain 0.25 vs Iceland/Finland/UK 1.0). So the gap is not *only* missing data — the yield curve shows **no signal even where present** in our setup. `reboot/results/exploratory_yieldcurve.json`.
+
+**3. House-prices-ALONE re-test (the other pending lead).** run-2 + BIS.SPP.REAL.YOY: candidate 0.630, ΔAUC **+0.031, CI [−0.076, +0.128]** (n.s.) AND **REJECTED by the 2008 era-decomposition** (signal 2008-concentrated). Not a win. `reboot/results/exploratory_houseprices_alone.json`.
+
+**FINAL VERDICT: both surviving leads are now closed — RED confirmed. economic_recession's honest ceiling stands at ~0.59 scoped / 0.55 universal, and the reboot is DONE.** The 0/5 program record holds (banking 0.638, coup 0.652, protest 0.611, recession 0.55–0.59, terrorist broken). The only thing that could ever move recession is a *different, bigger* project: materially deepen the event set for the countries/eras where rate data exists (advanced economies, post-1985) — not indicator search. Yield curve pulled, tested, honestly dead. Artifacts: `reboot/build_oecd_rates.py`, `reboot/run_exploratory_leads.py`, `reboot/results/exploratory_*.json`, `reboot/results/yieldcurve_coverage_*.json`.

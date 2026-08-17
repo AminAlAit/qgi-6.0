@@ -1,0 +1,133 @@
+{
+  "recipe_id": "terrorist_attack",
+  "seed": 12345,
+  "architecture": "XGBoost",
+  "n_pos_raw_positives_csv": 242,
+  "n_pos_samples_built": 242,
+  "n_neg_samples_built": 726,
+  "candidate_pool_size": 248,
+  "top40_after_univariate_screen": [
+    "SL.TLF.CACT.FE.ZS",
+    "SL.UEM.1524.ZS",
+    "NY.GDP.PETR.RT.ZS",
+    "SL.UEM.TOTL.ZS",
+    "v2svstterr",
+    "v2csantimv",
+    "NY.GDP.TOTL.RT.ZS",
+    "v2clkill",
+    "SL.EMP.TOTL.SP.ZS",
+    "v2xnp_client",
+    "v2cltort",
+    "IT.NET.USER.ZS",
+    "v2pepwrort",
+    "v2excrptps",
+    "v2x_clphy",
+    "v2xnp_regcorr",
+    "SP.DYN.TFRT.IN",
+    "v2x_execorr",
+    "FI.RES.TOTL.MO",
+    "SH.DYN.MORT",
+    "v2xeg_eqprotec",
+    "v2pepwrses",
+    "v2pepwrgen",
+    "v2x_corr",
+    "UNHCR_FORCDISP_TOTAL",
+    "MS.MIL.TOTL.P1",
+    "v2stfisccap",
+    "v2xel_frefair",
+    "TC-002",
+    "v2x_gender",
+    "v2cltrnslw",
+    "IT.CEL.SETS.P2",
+    "OWID_STATECAP",
+    "v2x_pubcorr",
+    "v2elpeace",
+    "NY.GDP.MKTP.KD",
+    "NV.IND.MANF.ZS",
+    "v2clrspct",
+    "v2x_clpriv",
+    "v2lgbicam"
+  ],
+  "max_steps": 12,
+  "delta_step": 0.005,
+  "greedy_selected_indicators": [
+    "NY.GDP.PETR.RT.ZS",
+    "v2x_clpriv",
+    "NY.GDP.MKTP.KD"
+  ],
+  "greedy_chosen_window": 21,
+  "greedy_final_global_auc_reported_by_walk": 0.660641516037901,
+  "greedy_history": [
+    {
+      "step": 1,
+      "candidate": "NY.GDP.PETR.RT.ZS",
+      "window": 18,
+      "auc": 0.6056373694872994,
+      "lift_over_previous": 0.1056373694872994,
+      "selected_after": [
+        "NY.GDP.PETR.RT.ZS"
+      ]
+    },
+    {
+      "step": 2,
+      "candidate": "v2x_clpriv",
+      "window": 21,
+      "auc": 0.6184156420076597,
+      "lift_over_previous": 0.012778272520360345,
+      "selected_after": [
+        "NY.GDP.PETR.RT.ZS",
+        "v2x_clpriv"
+      ]
+    },
+    {
+      "step": 3,
+      "candidate": "NY.GDP.MKTP.KD",
+      "window": 21,
+      "auc": 0.660641516037901,
+      "lift_over_previous": 0.04222587403024125,
+      "selected_after": [
+        "NY.GDP.PETR.RT.ZS",
+        "v2x_clpriv",
+        "NY.GDP.MKTP.KD"
+      ]
+    },
+    {
+      "step": 4,
+      "candidate": "v2stfisccap",
+      "window": 21,
+      "auc": 0.6578513758444554,
+      "lift_over_previous": -0.0027901401934455894,
+      "selected_after": [
+        "NY.GDP.PETR.RT.ZS",
+        "v2x_clpriv",
+        "NY.GDP.MKTP.KD",
+        "v2stfisccap"
+      ]
+    }
+  ],
+  "greedy_early_abort_floor_unreachable": false,
+  "final_fit_argmax_window": 21,
+  "final_fit_loco_auc": 0.660641516037901,
+  "final_fit_ci95_lo": 0.6187885274768397,
+  "final_fit_ci95_hi": 0.7038698181145147,
+  "coverage_at_greedy_chosen_window": {
+    "n_pos_total": 242,
+    "n_pos_survive": 199,
+    "n_neg_total": 726,
+    "n_neg_survive": 603,
+    "pos_coverage": 0.8223140495867769,
+    "neg_coverage": 0.8305785123966942,
+    "n_countries_survive": 70
+  },
+  "coverage_gate_ok_at_greedy_chosen_window": true,
+  "coverage_at_final_fit_argmax_window": {
+    "n_pos_total": 242,
+    "n_pos_survive": 199,
+    "n_neg_total": 726,
+    "n_neg_survive": 603,
+    "pos_coverage": 0.8223140495867769,
+    "neg_coverage": 0.8305785123966942,
+    "n_countries_survive": 70
+  },
+  "coverage_gate_ok_at_final_fit_argmax_window": true
+}

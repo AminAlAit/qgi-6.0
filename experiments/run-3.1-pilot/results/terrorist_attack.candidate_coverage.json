@@ -1,0 +1,162 @@
+[
+  {
+    "indicator": "NY.GDP.PCAP.CD",
+    "depth_years": "1960-2024",
+    "n_countries_nonnull": 212,
+    "coverage_at_pos_t1_t2": 0.9339,
+    "n_pos_covered": 226,
+    "n_pos_total": 242
+  },
+  {
+    "indicator": "OWID_POP_YOUNG",
+    "depth_years": "1950-2023",
+    "n_countries_nonnull": 196,
+    "coverage_at_pos_t1_t2": 1.0,
+    "n_pos_covered": 242,
+    "n_pos_total": 242
+  },
+  {
+    "indicator": "SP.POP.0014.TO.ZS",
+    "depth_years": "1960-2024",
+    "n_countries_nonnull": 215,
+    "coverage_at_pos_t1_t2": 0.9917,
+    "n_pos_covered": 240,
+    "n_pos_total": 242
+  },
+  {
+    "indicator": "v2pepwrses",
+    "depth_years": "1789-2025",
+    "n_countries_nonnull": 175,
+    "coverage_at_pos_t1_t2": 0.9959,
+    "n_pos_covered": 241,
+    "n_pos_total": 242
+  },
+  {
+    "indicator": "v2pepwrsoc",
+    "depth_years": "1789-2025",
+    "n_countries_nonnull": 175,
+    "coverage_at_pos_t1_t2": 0.9959,
+    "n_pos_covered": 241,
+    "n_pos_total": 242
+  },
+  {
+    "indicator": "GE.EST",
+    "depth_years": "1996-2023",
+    "n_countries_nonnull": 204,
+    "coverage_at_pos_t1_t2": 0.4463,
+    "n_pos_covered": 108,
+    "n_pos_total": 242
+  },
+  {
+    "indicator": "RQ.EST",
+    "depth_years": "1996-2023",
+    "n_countries_nonnull": 204,
+    "coverage_at_pos_t1_t2": 0.4463,
+    "n_pos_covered": 108,
+    "n_pos_total": 242
+  },
+  {
+    "indicator": "CC.EST",
+    "depth_years": "1996-2023",
+    "n_countries_nonnull": 204,
+    "coverage_at_pos_t1_t2": 0.4463,
+    "n_pos_covered": 108,
+    "n_pos_total": 242
+  },
+  {
+    "indicator": "RL.EST",
+    "depth_years": "1996-2023",
+    "n_countries_nonnull": 204,
+    "coverage_at_pos_t1_t2": 0.4463,
+    "n_pos_covered": 108,
+    "n_pos_total": 242
+  },
+  {
+    "indicator": "PV.EST",
+    "depth_years": "1996-2023",
+    "n_countries_nonnull": 204,
+    "coverage_at_pos_t1_t2": 0.4463,
+    "n_pos_covered": 108,
+    "n_pos_total": 242
+  },
+  {
+    "indicator": "OWID_STATECAP",
+    "depth_years": "1960-2015",
+    "n_countries_nonnull": 165,
+    "coverage_at_pos_t1_t2": 0.876,
+    "n_pos_covered": 212,
+    "n_pos_total": 242
+  },
+  {
+    "indicator": "UCDP_SB_CONFLICT_COUNT",
+    "depth_years": "1946-2025",
+    "n_countries_nonnull": 105,
+    "coverage_at_pos_t1_t2": 0.4091,
+    "n_pos_covered": 99,
+    "n_pos_total": 242
+  },
+  {
+    "indicator": "UCDP_YEARS_SINCE_LAST_CONFLICT",
+    "depth_years": "1989-2025",
+    "n_countries_nonnull": 16,
+    "coverage_at_pos_t1_t2": 0.0744,
+    "n_pos_covered": 18,
+    "n_pos_total": 242
+  },
+  {
+    "indicator": "UCDP_GED_TOTAL_DEATHS",
+    "depth_years": "1989-2024",
+    "n_countries_nonnull": 16,
+    "coverage_at_pos_t1_t2": 0.0537,
+    "n_pos_covered": 13,
+    "n_pos_total": 242
+  },
+  {
+    "indicator": "UCDP_SB_ONSET",
+    "depth_years": "1946-2024",
+    "n_countries_nonnull": 160,
+    "coverage_at_pos_t1_t2": 0.938,
+    "n_pos_covered": 227,
+    "n_pos_total": 242
+  },
+  {
+    "indicator": "SI.POV.GINI",
+    "depth_years": "1963-2025",
+    "n_countries_nonnull": 170,
+    "coverage_at_pos_t1_t2": 0.1653,
+    "n_pos_covered": 40,
+    "n_pos_total": 242
+  },
+  {
+    "indicator": "v2xeg_eqprotec",
+    "depth_years": "1789-2025",
+    "n_countries_nonnull": 175,
+    "coverage_at_pos_t1_t2": 0.9959,
+    "n_pos_covered": 241,
+    "n_pos_total": 242
+  },
+  {
+    "indicator": "v2exl_legitlead",
+    "depth_years": "1900-2023",
+    "n_countries_nonnull": 175,
+    "coverage_at_pos_t1_t2": 0.9959,
+    "n_pos_covered": 241,
+    "n_pos_total": 242
+  },
+  {
+    "indicator": "v2svstterr",
+    "depth_years": "1789-2025",
+    "n_countries_nonnull": 173,
+    "coverage_at_pos_t1_t2": 0.9917,
+    "n_pos_covered": 240,
+    "n_pos_total": 242
+  },
+  {
+    "indicator": "OWID_AUTOCRATIZATION",
+    "depth_years": "1900-2025",
+    "n_countries_nonnull": 175,
+    "coverage_at_pos_t1_t2": 0.9959,
+    "n_pos_covered": 241,
+    "n_pos_total": 242
+  }
+]
