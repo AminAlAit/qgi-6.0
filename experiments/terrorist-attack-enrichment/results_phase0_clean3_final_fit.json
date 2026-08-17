@@ -1,0 +1,44 @@
+{
+  "recipe_id": "terrorist_attack",
+  "seed": 12345,
+  "drivers": [
+    "v2xel_frefair",
+    "MS.MIL.XPND.GD.ZS",
+    "SL.UEM.1524.ZS"
+  ],
+  "n_pos_samples_built": 242,
+  "n_neg_samples_built": 726,
+  "architecture": "XGBoost",
+  "argmax_window": {
+    "chosen_window": 25,
+    "loco_auc": 0.5616902616902617,
+    "ci95_lo": 0.5005851098324918,
+    "ci95_hi": 0.6183836255575446,
+    "coverage": {
+      "n_pos_total": 242,
+      "n_pos_survive": 126,
+      "n_neg_total": 726,
+      "n_neg_survive": 370,
+      "pos_coverage": 0.5206611570247934,
+      "neg_coverage": 0.509641873278237,
+      "n_countries_survive": 68
+    },
+    "coverage_gate_ok": false
+  },
+  "locked_window_10": {
+    "loco_auc": 0.5189873417721519,
+    "ci95_lo": 0.4688252448422261,
+    "ci95_hi": 0.5702241996079925,
+    "coverage": {
+      "n_pos_total": 242,
+      "n_pos_survive": 158,
+      "n_neg_total": 726,
+      "n_neg_survive": 444,
+      "pos_coverage": 0.6528925619834711,
+      "neg_coverage": 0.6115702479338843,
+      "n_countries_survive": 69
+    },
+    "coverage_gate_ok": true
+  },
+  "note": "window=10 is the ONLY WINDOW_GRID cell where this 3-driver set clears coverage_gate_ok per results_clean3_joint_coverage.json -- PRE-REGISTRATION.md \u00a72 item 3 requires the LOCKED window (10), not an argmax, for the Phase 0 deliverable number. Reporting both for transparency; locked_window_10 is the number of record if this set is adopted as Phase 0's baseline."
+}

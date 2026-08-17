@@ -1,0 +1,28 @@
+{
+  "recipe_id": "economic_recession",
+  "drivers": [
+    "v2csreprss",
+    "v2x_freexp_altinf"
+  ],
+  "seed": 12345,
+  "n_pos_raw_positives_csv": 250,
+  "n_pos_samples_built": 250,
+  "n_neg_samples_built": 750,
+  "chosen_window": 3,
+  "loco_auc": 0.547030447387732,
+  "ci95_lo": 0.5066492561123317,
+  "ci95_hi": 0.5892745894427397,
+  "coverage_at_chosen_window": {
+    "n_pos_total": 250,
+    "n_pos_survive": 242,
+    "n_neg_total": 750,
+    "n_neg_survive": 687,
+    "pos_coverage": 0.968,
+    "neg_coverage": 0.916,
+    "n_countries_survive": 103
+  },
+  "architecture": "XGBoost",
+  "stored_run2_loco_auc": 0.6978,
+  "stored_run2_n_pos": 102,
+  "stored_run2_source": "qgi-docs/internal/decisions/f-ml-1-econ-recession-DECISION.md (F-ML-1 walk 2, 2026-05-22, XGBoost pre-trigger result)"
+}

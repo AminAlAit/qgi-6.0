@@ -7,7 +7,7 @@
   ],
   "g1_coverage_min": 0.8,
   "g2_max_abs_rho": 0.5,
-  "n_positives": 75,
+  "n_positives": 116,
   "candidates": {
     "credit_gap_1s_fd": {
       "mechanism": "credit (domestic bank credit boom)",
@@ -17,9 +17,9 @@
       "n_rows": 7892,
       "n_countries": 185,
       "g1_coverage": {
-        "coverage_pct": 0.76,
-        "n_pass": 57,
-        "n_total": 75,
+        "coverage_pct": 0.7844827586206896,
+        "n_pass": 91,
+        "n_total": 116,
         "gate_pass": false,
         "threshold": 0.8,
         "per_event": [
@@ -33,6 +33,20 @@
           {
             "country": "Angola",
             "event_year": 2020,
+            "t1_present": true,
+            "t2_present": true,
+            "pass": true
+          },
+          {
+            "country": "Antigua And Barbuda",
+            "event_year": 2009,
+            "t1_present": false,
+            "t2_present": false,
+            "pass": false
+          },
+          {
+            "country": "Argentina",
+            "event_year": 2001,
             "t1_present": true,
             "t2_present": true,
             "pass": true
@@ -59,15 +73,22 @@
             "pass": true
           },
           {
-            "country": "Austria",
-            "event_year": 2014,
+            "country": "Azerbaijan",
+            "event_year": 1995,
+            "t1_present": false,
+            "t2_present": false,
+            "pass": false
+          },
+          {
+            "country": "Bahrain",
+            "event_year": 2008,
             "t1_present": true,
             "t2_present": true,
             "pass": true
           },
           {
-            "country": "Bahrain",
-            "event_year": 2008,
+            "country": "Bangladesh",
+            "event_year": 1987,
             "t1_present": true,
             "t2_present": true,
             "pass": true
@@ -94,22 +115,22 @@
             "pass": true
           },
           {
-            "country": "Brunei",
-            "event_year": 1997,
-            "t1_present": false,
-            "t2_present": false,
-            "pass": false
+            "country": "Bolivia",
+            "event_year": 1994,
+            "t1_present": true,
+            "t2_present": true,
+            "pass": true
+          },
+          {
+            "country": "Brazil",
+            "event_year": 1994,
+            "t1_present": true,
+            "t2_present": true,
+            "pass": true
           },
           {
             "country": "Bulgaria",
             "event_year": 1990,
-            "t1_present": false,
-            "t2_present": false,
-            "pass": false
-          },
-          {
-            "country": "Bulgaria",
-            "event_year": 1996,
             "t1_present": false,
             "t2_present": false,
             "pass": false
@@ -122,8 +143,36 @@
             "pass": true
           },
           {
+            "country": "Cameroon",
+            "event_year": 1987,
+            "t1_present": true,
+            "t2_present": true,
+            "pass": true
+          },
+          {
             "country": "Chile",
             "event_year": 1982,
+            "t1_present": true,
+            "t2_present": true,
+            "pass": true
+          },
+          {
+            "country": "China",
+            "event_year": 1998,
+            "t1_present": true,
+            "t2_present": true,
+            "pass": true
+          },
+          {
+            "country": "Colombia",
+            "event_year": 1998,
+            "t1_present": true,
+            "t2_present": true,
+            "pass": true
+          },
+          {
+            "country": "Costa Rica",
+            "event_year": 1994,
             "t1_present": true,
             "t2_present": true,
             "pass": true
@@ -171,8 +220,36 @@
             "pass": true
           },
           {
+            "country": "Ecuador",
+            "event_year": 1998,
+            "t1_present": true,
+            "t2_present": true,
+            "pass": true
+          },
+          {
+            "country": "Egypt",
+            "event_year": 1988,
+            "t1_present": true,
+            "t2_present": true,
+            "pass": true
+          },
+          {
+            "country": "Estonia",
+            "event_year": 1992,
+            "t1_present": false,
+            "t2_present": false,
+            "pass": false
+          },
+          {
             "country": "Finland",
             "event_year": 1993,
+            "t1_present": false,
+            "t2_present": false,
+            "pass": false
+          },
+          {
+            "country": "Georgia",
+            "event_year": 1998,
             "t1_present": false,
             "t2_present": false,
             "pass": false
@@ -194,6 +271,20 @@
           {
             "country": "Greece",
             "event_year": 2015,
+            "t1_present": true,
+            "t2_present": true,
+            "pass": true
+          },
+          {
+            "country": "Guatemala",
+            "event_year": 2001,
+            "t1_present": true,
+            "t2_present": true,
+            "pass": true
+          },
+          {
+            "country": "Honduras",
+            "event_year": 1999,
             "t1_present": true,
             "t2_present": true,
             "pass": true
@@ -227,6 +318,20 @@
             "pass": true
           },
           {
+            "country": "India",
+            "event_year": 1993,
+            "t1_present": true,
+            "t2_present": true,
+            "pass": true
+          },
+          {
+            "country": "Indonesia",
+            "event_year": 1997,
+            "t1_present": true,
+            "t2_present": true,
+            "pass": true
+          },
+          {
             "country": "Ireland",
             "event_year": 2007,
             "t1_present": true,
@@ -243,6 +348,13 @@
           {
             "country": "Ireland",
             "event_year": 2010,
+            "t1_present": true,
+            "t2_present": true,
+            "pass": true
+          },
+          {
+            "country": "Israel",
+            "event_year": 1983,
             "t1_present": true,
             "t2_present": true,
             "pass": true
@@ -311,8 +423,29 @@
             "pass": true
           },
           {
+            "country": "Jordan",
+            "event_year": 1989,
+            "t1_present": true,
+            "t2_present": true,
+            "pass": true
+          },
+          {
             "country": "Kazakhstan",
             "event_year": 2008,
+            "t1_present": true,
+            "t2_present": true,
+            "pass": true
+          },
+          {
+            "country": "Kenya",
+            "event_year": 1992,
+            "t1_present": true,
+            "t2_present": true,
+            "pass": true
+          },
+          {
+            "country": "Kuwait",
+            "event_year": 1982,
             "t1_present": true,
             "t2_present": true,
             "pass": true
@@ -346,6 +479,27 @@
             "pass": false
           },
           {
+            "country": "Madagascar",
+            "event_year": 1988,
+            "t1_present": true,
+            "t2_present": true,
+            "pass": true
+          },
+          {
+            "country": "Mali",
+            "event_year": 1989,
+            "t1_present": true,
+            "t2_present": true,
+            "pass": true
+          },
+          {
+            "country": "Mexico",
+            "event_year": 1994,
+            "t1_present": true,
+            "t2_present": true,
+            "pass": true
+          },
+          {
             "country": "Mozambique",
             "event_year": 1998,
             "t1_present": true,
@@ -355,6 +509,13 @@
           {
             "country": "Mozambique",
             "event_year": 2016,
+            "t1_present": true,
+            "t2_present": true,
+            "pass": true
+          },
+          {
+            "country": "Nepal",
+            "event_year": 2011,
             "t1_present": true,
             "t2_present": true,
             "pass": true
@@ -374,6 +535,20 @@
             "pass": true
           },
           {
+            "country": "Nicaragua",
+            "event_year": 2000,
+            "t1_present": true,
+            "t2_present": true,
+            "pass": true
+          },
+          {
+            "country": "Nigeria",
+            "event_year": 2009,
+            "t1_present": true,
+            "t2_present": true,
+            "pass": true
+          },
+          {
             "country": "North Korea",
             "event_year": 1976,
             "t1_present": false,
@@ -388,11 +563,39 @@
             "pass": true
           },
           {
+            "country": "Pakistan",
+            "event_year": 1998,
+            "t1_present": true,
+            "t2_present": true,
+            "pass": true
+          },
+          {
+            "country": "Panama",
+            "event_year": 1988,
+            "t1_present": true,
+            "t2_present": true,
+            "pass": true
+          },
+          {
             "country": "Paraguay",
             "event_year": 2002,
             "t1_present": true,
             "t2_present": true,
             "pass": true
+          },
+          {
+            "country": "Philippines",
+            "event_year": 1981,
+            "t1_present": true,
+            "t2_present": true,
+            "pass": true
+          },
+          {
+            "country": "Poland",
+            "event_year": 1992,
+            "t1_present": false,
+            "t2_present": false,
+            "pass": false
           },
           {
             "country": "Portugal",
@@ -402,8 +605,22 @@
             "pass": true
           },
           {
+            "country": "Russia",
+            "event_year": 1998,
+            "t1_present": false,
+            "t2_present": false,
+            "pass": false
+          },
+          {
             "country": "Slovenia",
             "event_year": 2013,
+            "t1_present": true,
+            "t2_present": true,
+            "pass": true
+          },
+          {
+            "country": "South Africa",
+            "event_year": 1985,
             "t1_present": true,
             "t2_present": true,
             "pass": true
@@ -479,6 +696,20 @@
             "pass": true
           },
           {
+            "country": "Taiwan",
+            "event_year": 1995,
+            "t1_present": false,
+            "t2_present": false,
+            "pass": false
+          },
+          {
+            "country": "Tanzania",
+            "event_year": 1987,
+            "t1_present": true,
+            "t2_present": true,
+            "pass": true
+          },
+          {
             "country": "Thailand",
             "event_year": 1997,
             "t1_present": true,
@@ -491,6 +722,27 @@
             "t1_present": false,
             "t2_present": false,
             "pass": false
+          },
+          {
+            "country": "Turkiye",
+            "event_year": 2001,
+            "t1_present": true,
+            "t2_present": true,
+            "pass": true
+          },
+          {
+            "country": "Uganda",
+            "event_year": 1994,
+            "t1_present": true,
+            "t2_present": true,
+            "pass": true
+          },
+          {
+            "country": "Ukraine",
+            "event_year": 2014,
+            "t1_present": true,
+            "t2_present": true,
+            "pass": true
           },
           {
             "country": "United Kingdom",
@@ -529,10 +781,38 @@
           },
           {
             "country": "Venezuela",
+            "event_year": 1994,
+            "t1_present": true,
+            "t2_present": true,
+            "pass": true
+          },
+          {
+            "country": "Venezuela",
+            "event_year": 2017,
+            "t1_present": false,
+            "t2_present": true,
+            "pass": false
+          },
+          {
+            "country": "Venezuela",
             "event_year": 2018,
             "t1_present": false,
             "t2_present": false,
             "pass": false
+          },
+          {
+            "country": "Venezuela",
+            "event_year": 2019,
+            "t1_present": false,
+            "t2_present": false,
+            "pass": false
+          },
+          {
+            "country": "Vietnam",
+            "event_year": 2012,
+            "t1_present": true,
+            "t2_present": true,
+            "pass": true
           },
           {
             "country": "Zambia",
@@ -544,6 +824,13 @@
           {
             "country": "Zambia",
             "event_year": 2020,
+            "t1_present": true,
+            "t2_present": true,
+            "pass": true
+          },
+          {
+            "country": "Zimbabwe",
+            "event_year": 2004,
             "t1_present": true,
             "t2_present": true,
             "pass": true
@@ -581,9 +868,9 @@
       "n_rows": 8437,
       "n_countries": 229,
       "g1_coverage": {
-        "coverage_pct": 0.6533333333333333,
-        "n_pass": 49,
-        "n_total": 75,
+        "coverage_pct": 0.6206896551724138,
+        "n_pass": 72,
+        "n_total": 116,
         "gate_pass": false,
         "threshold": 0.8,
         "per_event": [
@@ -600,6 +887,20 @@
             "t1_present": false,
             "t2_present": false,
             "pass": false
+          },
+          {
+            "country": "Antigua And Barbuda",
+            "event_year": 2009,
+            "t1_present": false,
+            "t2_present": false,
+            "pass": false
+          },
+          {
+            "country": "Argentina",
+            "event_year": 2001,
+            "t1_present": true,
+            "t2_present": true,
+            "pass": true
           },
           {
             "country": "Australia",
@@ -623,15 +924,22 @@
             "pass": true
           },
           {
-            "country": "Austria",
-            "event_year": 2014,
+            "country": "Azerbaijan",
+            "event_year": 1995,
+            "t1_present": false,
+            "t2_present": false,
+            "pass": false
+          },
+          {
+            "country": "Bahrain",
+            "event_year": 2008,
             "t1_present": true,
             "t2_present": true,
             "pass": true
           },
           {
-            "country": "Bahrain",
-            "event_year": 2008,
+            "country": "Bangladesh",
+            "event_year": 1987,
             "t1_present": true,
             "t2_present": true,
             "pass": true
@@ -658,22 +966,22 @@
             "pass": true
           },
           {
-            "country": "Brunei",
-            "event_year": 1997,
-            "t1_present": false,
-            "t2_present": false,
-            "pass": false
+            "country": "Bolivia",
+            "event_year": 1994,
+            "t1_present": true,
+            "t2_present": true,
+            "pass": true
+          },
+          {
+            "country": "Brazil",
+            "event_year": 1994,
+            "t1_present": true,
+            "t2_present": true,
+            "pass": true
           },
           {
             "country": "Bulgaria",
             "event_year": 1990,
-            "t1_present": false,
-            "t2_present": false,
-            "pass": false
-          },
-          {
-            "country": "Bulgaria",
-            "event_year": 1996,
             "t1_present": false,
             "t2_present": false,
             "pass": false
@@ -686,8 +994,36 @@
             "pass": true
           },
           {
+            "country": "Cameroon",
+            "event_year": 1987,
+            "t1_present": true,
+            "t2_present": true,
+            "pass": true
+          },
+          {
             "country": "Chile",
             "event_year": 1982,
+            "t1_present": false,
+            "t2_present": false,
+            "pass": false
+          },
+          {
+            "country": "China",
+            "event_year": 1998,
+            "t1_present": true,
+            "t2_present": true,
+            "pass": true
+          },
+          {
+            "country": "Colombia",
+            "event_year": 1998,
+            "t1_present": true,
+            "t2_present": true,
+            "pass": true
+          },
+          {
+            "country": "Costa Rica",
+            "event_year": 1994,
             "t1_present": false,
             "t2_present": false,
             "pass": false
@@ -735,8 +1071,36 @@
             "pass": true
           },
           {
+            "country": "Ecuador",
+            "event_year": 1998,
+            "t1_present": false,
+            "t2_present": false,
+            "pass": false
+          },
+          {
+            "country": "Egypt",
+            "event_year": 1988,
+            "t1_present": true,
+            "t2_present": true,
+            "pass": true
+          },
+          {
+            "country": "Estonia",
+            "event_year": 1992,
+            "t1_present": false,
+            "t2_present": false,
+            "pass": false
+          },
+          {
             "country": "Finland",
             "event_year": 1993,
+            "t1_present": false,
+            "t2_present": false,
+            "pass": false
+          },
+          {
+            "country": "Georgia",
+            "event_year": 1998,
             "t1_present": false,
             "t2_present": false,
             "pass": false
@@ -761,6 +1125,20 @@
             "t1_present": true,
             "t2_present": true,
             "pass": true
+          },
+          {
+            "country": "Guatemala",
+            "event_year": 2001,
+            "t1_present": false,
+            "t2_present": false,
+            "pass": false
+          },
+          {
+            "country": "Honduras",
+            "event_year": 1999,
+            "t1_present": false,
+            "t2_present": false,
+            "pass": false
           },
           {
             "country": "Hungary",
@@ -791,6 +1169,20 @@
             "pass": true
           },
           {
+            "country": "India",
+            "event_year": 1993,
+            "t1_present": true,
+            "t2_present": true,
+            "pass": true
+          },
+          {
+            "country": "Indonesia",
+            "event_year": 1997,
+            "t1_present": false,
+            "t2_present": false,
+            "pass": false
+          },
+          {
             "country": "Ireland",
             "event_year": 2007,
             "t1_present": true,
@@ -807,6 +1199,13 @@
           {
             "country": "Ireland",
             "event_year": 2010,
+            "t1_present": true,
+            "t2_present": true,
+            "pass": true
+          },
+          {
+            "country": "Israel",
+            "event_year": 1983,
             "t1_present": true,
             "t2_present": true,
             "pass": true
@@ -875,11 +1274,32 @@
             "pass": true
           },
           {
+            "country": "Jordan",
+            "event_year": 1989,
+            "t1_present": true,
+            "t2_present": true,
+            "pass": true
+          },
+          {
             "country": "Kazakhstan",
             "event_year": 2008,
             "t1_present": false,
             "t2_present": false,
             "pass": false
+          },
+          {
+            "country": "Kenya",
+            "event_year": 1992,
+            "t1_present": true,
+            "t2_present": true,
+            "pass": true
+          },
+          {
+            "country": "Kuwait",
+            "event_year": 1982,
+            "t1_present": true,
+            "t2_present": true,
+            "pass": true
           },
           {
             "country": "Latvia",
@@ -910,6 +1330,27 @@
             "pass": false
           },
           {
+            "country": "Madagascar",
+            "event_year": 1988,
+            "t1_present": true,
+            "t2_present": true,
+            "pass": true
+          },
+          {
+            "country": "Mali",
+            "event_year": 1989,
+            "t1_present": true,
+            "t2_present": true,
+            "pass": true
+          },
+          {
+            "country": "Mexico",
+            "event_year": 1994,
+            "t1_present": false,
+            "t2_present": false,
+            "pass": false
+          },
+          {
             "country": "Mozambique",
             "event_year": 1998,
             "t1_present": true,
@@ -919,6 +1360,13 @@
           {
             "country": "Mozambique",
             "event_year": 2016,
+            "t1_present": true,
+            "t2_present": true,
+            "pass": true
+          },
+          {
+            "country": "Nepal",
+            "event_year": 2011,
             "t1_present": true,
             "t2_present": true,
             "pass": true
@@ -938,6 +1386,20 @@
             "pass": false
           },
           {
+            "country": "Nicaragua",
+            "event_year": 2000,
+            "t1_present": false,
+            "t2_present": false,
+            "pass": false
+          },
+          {
+            "country": "Nigeria",
+            "event_year": 2009,
+            "t1_present": true,
+            "t2_present": true,
+            "pass": true
+          },
+          {
             "country": "North Korea",
             "event_year": 1976,
             "t1_present": false,
@@ -952,11 +1414,39 @@
             "pass": false
           },
           {
+            "country": "Pakistan",
+            "event_year": 1998,
+            "t1_present": true,
+            "t2_present": true,
+            "pass": true
+          },
+          {
+            "country": "Panama",
+            "event_year": 1988,
+            "t1_present": false,
+            "t2_present": false,
+            "pass": false
+          },
+          {
             "country": "Paraguay",
             "event_year": 2002,
             "t1_present": true,
             "t2_present": true,
             "pass": true
+          },
+          {
+            "country": "Philippines",
+            "event_year": 1981,
+            "t1_present": true,
+            "t2_present": true,
+            "pass": true
+          },
+          {
+            "country": "Poland",
+            "event_year": 1992,
+            "t1_present": false,
+            "t2_present": false,
+            "pass": false
           },
           {
             "country": "Portugal",
@@ -966,8 +1456,22 @@
             "pass": true
           },
           {
+            "country": "Russia",
+            "event_year": 1998,
+            "t1_present": false,
+            "t2_present": false,
+            "pass": false
+          },
+          {
             "country": "Slovenia",
             "event_year": 2013,
+            "t1_present": true,
+            "t2_present": true,
+            "pass": true
+          },
+          {
+            "country": "South Africa",
+            "event_year": 1985,
             "t1_present": true,
             "t2_present": true,
             "pass": true
@@ -1043,6 +1547,20 @@
             "pass": true
           },
           {
+            "country": "Taiwan",
+            "event_year": 1995,
+            "t1_present": false,
+            "t2_present": false,
+            "pass": false
+          },
+          {
+            "country": "Tanzania",
+            "event_year": 1987,
+            "t1_present": true,
+            "t2_present": true,
+            "pass": true
+          },
+          {
             "country": "Thailand",
             "event_year": 1997,
             "t1_present": false,
@@ -1053,6 +1571,27 @@
             "country": "Trinidad And Tobago",
             "event_year": 2008,
             "t1_present": false,
+            "t2_present": false,
+            "pass": false
+          },
+          {
+            "country": "Turkiye",
+            "event_year": 2001,
+            "t1_present": false,
+            "t2_present": false,
+            "pass": false
+          },
+          {
+            "country": "Uganda",
+            "event_year": 1994,
+            "t1_present": false,
+            "t2_present": false,
+            "pass": false
+          },
+          {
+            "country": "Ukraine",
+            "event_year": 2014,
+            "t1_present": true,
             "t2_present": false,
             "pass": false
           },
@@ -1093,10 +1632,38 @@
           },
           {
             "country": "Venezuela",
+            "event_year": 1994,
+            "t1_present": true,
+            "t2_present": true,
+            "pass": true
+          },
+          {
+            "country": "Venezuela",
+            "event_year": 2017,
+            "t1_present": false,
+            "t2_present": false,
+            "pass": false
+          },
+          {
+            "country": "Venezuela",
             "event_year": 2018,
             "t1_present": false,
             "t2_present": false,
             "pass": false
+          },
+          {
+            "country": "Venezuela",
+            "event_year": 2019,
+            "t1_present": false,
+            "t2_present": false,
+            "pass": false
+          },
+          {
+            "country": "Vietnam",
+            "event_year": 2012,
+            "t1_present": true,
+            "t2_present": true,
+            "pass": true
           },
           {
             "country": "Zambia",
@@ -1108,6 +1675,13 @@
           {
             "country": "Zambia",
             "event_year": 2020,
+            "t1_present": true,
+            "t2_present": true,
+            "pass": true
+          },
+          {
+            "country": "Zimbabwe",
+            "event_year": 2004,
             "t1_present": true,
             "t2_present": true,
             "pass": true
@@ -1145,9 +1719,9 @@
       "n_rows": 8227,
       "n_countries": 185,
       "g1_coverage": {
-        "coverage_pct": 0.8,
-        "n_pass": 60,
-        "n_total": 75,
+        "coverage_pct": 0.8017241379310345,
+        "n_pass": 93,
+        "n_total": 116,
         "gate_pass": true,
         "threshold": 0.8,
         "per_event": [
@@ -1161,6 +1735,20 @@
           {
             "country": "Angola",
             "event_year": 2020,
+            "t1_present": true,
+            "t2_present": true,
+            "pass": true
+          },
+          {
+            "country": "Antigua And Barbuda",
+            "event_year": 2009,
+            "t1_present": false,
+            "t2_present": false,
+            "pass": false
+          },
+          {
+            "country": "Argentina",
+            "event_year": 2001,
             "t1_present": true,
             "t2_present": true,
             "pass": true
@@ -1187,15 +1775,22 @@
             "pass": true
           },
           {
-            "country": "Austria",
-            "event_year": 2014,
+            "country": "Azerbaijan",
+            "event_year": 1995,
+            "t1_present": false,
+            "t2_present": false,
+            "pass": false
+          },
+          {
+            "country": "Bahrain",
+            "event_year": 2008,
             "t1_present": true,
             "t2_present": true,
             "pass": true
           },
           {
-            "country": "Bahrain",
-            "event_year": 2008,
+            "country": "Bangladesh",
+            "event_year": 1987,
             "t1_present": true,
             "t2_present": true,
             "pass": true
@@ -1222,11 +1817,18 @@
             "pass": true
           },
           {
-            "country": "Brunei",
-            "event_year": 1997,
-            "t1_present": false,
-            "t2_present": false,
-            "pass": false
+            "country": "Bolivia",
+            "event_year": 1994,
+            "t1_present": true,
+            "t2_present": true,
+            "pass": true
+          },
+          {
+            "country": "Brazil",
+            "event_year": 1994,
+            "t1_present": true,
+            "t2_present": true,
+            "pass": true
           },
           {
             "country": "Bulgaria",
@@ -1237,14 +1839,14 @@
           },
           {
             "country": "Bulgaria",
-            "event_year": 1996,
+            "event_year": 2014,
             "t1_present": true,
             "t2_present": true,
             "pass": true
           },
           {
-            "country": "Bulgaria",
-            "event_year": 2014,
+            "country": "Cameroon",
+            "event_year": 1987,
             "t1_present": true,
             "t2_present": true,
             "pass": true
@@ -1252,6 +1854,27 @@
           {
             "country": "Chile",
             "event_year": 1982,
+            "t1_present": true,
+            "t2_present": true,
+            "pass": true
+          },
+          {
+            "country": "China",
+            "event_year": 1998,
+            "t1_present": true,
+            "t2_present": true,
+            "pass": true
+          },
+          {
+            "country": "Colombia",
+            "event_year": 1998,
+            "t1_present": true,
+            "t2_present": true,
+            "pass": true
+          },
+          {
+            "country": "Costa Rica",
+            "event_year": 1994,
             "t1_present": true,
             "t2_present": true,
             "pass": true
@@ -1299,8 +1922,36 @@
             "pass": true
           },
           {
+            "country": "Ecuador",
+            "event_year": 1998,
+            "t1_present": true,
+            "t2_present": true,
+            "pass": true
+          },
+          {
+            "country": "Egypt",
+            "event_year": 1988,
+            "t1_present": true,
+            "t2_present": true,
+            "pass": true
+          },
+          {
+            "country": "Estonia",
+            "event_year": 1992,
+            "t1_present": false,
+            "t2_present": false,
+            "pass": false
+          },
+          {
             "country": "Finland",
             "event_year": 1993,
+            "t1_present": false,
+            "t2_present": false,
+            "pass": false
+          },
+          {
+            "country": "Georgia",
+            "event_year": 1998,
             "t1_present": false,
             "t2_present": false,
             "pass": false
@@ -1322,6 +1973,20 @@
           {
             "country": "Greece",
             "event_year": 2015,
+            "t1_present": true,
+            "t2_present": true,
+            "pass": true
+          },
+          {
+            "country": "Guatemala",
+            "event_year": 2001,
+            "t1_present": true,
+            "t2_present": true,
+            "pass": true
+          },
+          {
+            "country": "Honduras",
+            "event_year": 1999,
             "t1_present": true,
             "t2_present": true,
             "pass": true
@@ -1355,6 +2020,20 @@
             "pass": true
           },
           {
+            "country": "India",
+            "event_year": 1993,
+            "t1_present": true,
+            "t2_present": true,
+            "pass": true
+          },
+          {
+            "country": "Indonesia",
+            "event_year": 1997,
+            "t1_present": true,
+            "t2_present": true,
+            "pass": true
+          },
+          {
             "country": "Ireland",
             "event_year": 2007,
             "t1_present": true,
@@ -1371,6 +2050,13 @@
           {
             "country": "Ireland",
             "event_year": 2010,
+            "t1_present": true,
+            "t2_present": true,
+            "pass": true
+          },
+          {
+            "country": "Israel",
+            "event_year": 1983,
             "t1_present": true,
             "t2_present": true,
             "pass": true
@@ -1439,8 +2125,29 @@
             "pass": true
           },
           {
+            "country": "Jordan",
+            "event_year": 1989,
+            "t1_present": true,
+            "t2_present": true,
+            "pass": true
+          },
+          {
             "country": "Kazakhstan",
             "event_year": 2008,
+            "t1_present": true,
+            "t2_present": true,
+            "pass": true
+          },
+          {
+            "country": "Kenya",
+            "event_year": 1992,
+            "t1_present": true,
+            "t2_present": true,
+            "pass": true
+          },
+          {
+            "country": "Kuwait",
+            "event_year": 1982,
             "t1_present": true,
             "t2_present": true,
             "pass": true
@@ -1474,6 +2181,27 @@
             "pass": false
           },
           {
+            "country": "Madagascar",
+            "event_year": 1988,
+            "t1_present": true,
+            "t2_present": true,
+            "pass": true
+          },
+          {
+            "country": "Mali",
+            "event_year": 1989,
+            "t1_present": true,
+            "t2_present": true,
+            "pass": true
+          },
+          {
+            "country": "Mexico",
+            "event_year": 1994,
+            "t1_present": true,
+            "t2_present": true,
+            "pass": true
+          },
+          {
             "country": "Mozambique",
             "event_year": 1998,
             "t1_present": true,
@@ -1483,6 +2211,13 @@
           {
             "country": "Mozambique",
             "event_year": 2016,
+            "t1_present": true,
+            "t2_present": true,
+            "pass": true
+          },
+          {
+            "country": "Nepal",
+            "event_year": 2011,
             "t1_present": true,
             "t2_present": true,
             "pass": true
@@ -1502,6 +2237,20 @@
             "pass": true
           },
           {
+            "country": "Nicaragua",
+            "event_year": 2000,
+            "t1_present": true,
+            "t2_present": true,
+            "pass": true
+          },
+          {
+            "country": "Nigeria",
+            "event_year": 2009,
+            "t1_present": true,
+            "t2_present": true,
+            "pass": true
+          },
+          {
             "country": "North Korea",
             "event_year": 1976,
             "t1_present": false,
@@ -1516,11 +2265,39 @@
             "pass": true
           },
           {
+            "country": "Pakistan",
+            "event_year": 1998,
+            "t1_present": true,
+            "t2_present": true,
+            "pass": true
+          },
+          {
+            "country": "Panama",
+            "event_year": 1988,
+            "t1_present": true,
+            "t2_present": true,
+            "pass": true
+          },
+          {
             "country": "Paraguay",
             "event_year": 2002,
             "t1_present": true,
             "t2_present": true,
             "pass": true
+          },
+          {
+            "country": "Philippines",
+            "event_year": 1981,
+            "t1_present": true,
+            "t2_present": true,
+            "pass": true
+          },
+          {
+            "country": "Poland",
+            "event_year": 1992,
+            "t1_present": false,
+            "t2_present": false,
+            "pass": false
           },
           {
             "country": "Portugal",
@@ -1530,8 +2307,22 @@
             "pass": true
           },
           {
+            "country": "Russia",
+            "event_year": 1998,
+            "t1_present": false,
+            "t2_present": false,
+            "pass": false
+          },
+          {
             "country": "Slovenia",
             "event_year": 2013,
+            "t1_present": true,
+            "t2_present": true,
+            "pass": true
+          },
+          {
+            "country": "South Africa",
+            "event_year": 1985,
             "t1_present": true,
             "t2_present": true,
             "pass": true
@@ -1607,6 +2398,20 @@
             "pass": true
           },
           {
+            "country": "Taiwan",
+            "event_year": 1995,
+            "t1_present": false,
+            "t2_present": false,
+            "pass": false
+          },
+          {
+            "country": "Tanzania",
+            "event_year": 1987,
+            "t1_present": true,
+            "t2_present": true,
+            "pass": true
+          },
+          {
             "country": "Thailand",
             "event_year": 1997,
             "t1_present": true,
@@ -1619,6 +2424,27 @@
             "t1_present": false,
             "t2_present": false,
             "pass": false
+          },
+          {
+            "country": "Turkiye",
+            "event_year": 2001,
+            "t1_present": true,
+            "t2_present": true,
+            "pass": true
+          },
+          {
+            "country": "Uganda",
+            "event_year": 1994,
+            "t1_present": true,
+            "t2_present": true,
+            "pass": true
+          },
+          {
+            "country": "Ukraine",
+            "event_year": 2014,
+            "t1_present": true,
+            "t2_present": true,
+            "pass": true
           },
           {
             "country": "United Kingdom",
@@ -1657,10 +2483,38 @@
           },
           {
             "country": "Venezuela",
+            "event_year": 1994,
+            "t1_present": true,
+            "t2_present": true,
+            "pass": true
+          },
+          {
+            "country": "Venezuela",
+            "event_year": 2017,
+            "t1_present": false,
+            "t2_present": true,
+            "pass": false
+          },
+          {
+            "country": "Venezuela",
             "event_year": 2018,
             "t1_present": false,
             "t2_present": false,
             "pass": false
+          },
+          {
+            "country": "Venezuela",
+            "event_year": 2019,
+            "t1_present": false,
+            "t2_present": false,
+            "pass": false
+          },
+          {
+            "country": "Vietnam",
+            "event_year": 2012,
+            "t1_present": true,
+            "t2_present": true,
+            "pass": true
           },
           {
             "country": "Zambia",
@@ -1672,6 +2526,13 @@
           {
             "country": "Zambia",
             "event_year": 2020,
+            "t1_present": true,
+            "t2_present": true,
+            "pass": true
+          },
+          {
+            "country": "Zimbabwe",
+            "event_year": 2004,
             "t1_present": true,
             "t2_present": true,
             "pass": true
@@ -1709,9 +2570,9 @@
       "n_rows": 8783,
       "n_countries": 229,
       "g1_coverage": {
-        "coverage_pct": 0.7066666666666667,
-        "n_pass": 53,
-        "n_total": 75,
+        "coverage_pct": 0.6551724137931034,
+        "n_pass": 76,
+        "n_total": 116,
         "gate_pass": false,
         "threshold": 0.8,
         "per_event": [
@@ -1725,6 +2586,20 @@
           {
             "country": "Angola",
             "event_year": 2020,
+            "t1_present": true,
+            "t2_present": true,
+            "pass": true
+          },
+          {
+            "country": "Antigua And Barbuda",
+            "event_year": 2009,
+            "t1_present": false,
+            "t2_present": false,
+            "pass": false
+          },
+          {
+            "country": "Argentina",
+            "event_year": 2001,
             "t1_present": true,
             "t2_present": true,
             "pass": true
@@ -1751,15 +2626,22 @@
             "pass": true
           },
           {
-            "country": "Austria",
-            "event_year": 2014,
+            "country": "Azerbaijan",
+            "event_year": 1995,
+            "t1_present": false,
+            "t2_present": false,
+            "pass": false
+          },
+          {
+            "country": "Bahrain",
+            "event_year": 2008,
             "t1_present": true,
             "t2_present": true,
             "pass": true
           },
           {
-            "country": "Bahrain",
-            "event_year": 2008,
+            "country": "Bangladesh",
+            "event_year": 1987,
             "t1_present": true,
             "t2_present": true,
             "pass": true
@@ -1786,11 +2668,18 @@
             "pass": true
           },
           {
-            "country": "Brunei",
-            "event_year": 1997,
-            "t1_present": false,
-            "t2_present": false,
-            "pass": false
+            "country": "Bolivia",
+            "event_year": 1994,
+            "t1_present": true,
+            "t2_present": true,
+            "pass": true
+          },
+          {
+            "country": "Brazil",
+            "event_year": 1994,
+            "t1_present": true,
+            "t2_present": true,
+            "pass": true
           },
           {
             "country": "Bulgaria",
@@ -1801,14 +2690,14 @@
           },
           {
             "country": "Bulgaria",
-            "event_year": 1996,
+            "event_year": 2014,
             "t1_present": true,
             "t2_present": true,
             "pass": true
           },
           {
-            "country": "Bulgaria",
-            "event_year": 2014,
+            "country": "Cameroon",
+            "event_year": 1987,
             "t1_present": true,
             "t2_present": true,
             "pass": true
@@ -1816,6 +2705,27 @@
           {
             "country": "Chile",
             "event_year": 1982,
+            "t1_present": false,
+            "t2_present": false,
+            "pass": false
+          },
+          {
+            "country": "China",
+            "event_year": 1998,
+            "t1_present": true,
+            "t2_present": true,
+            "pass": true
+          },
+          {
+            "country": "Colombia",
+            "event_year": 1998,
+            "t1_present": true,
+            "t2_present": true,
+            "pass": true
+          },
+          {
+            "country": "Costa Rica",
+            "event_year": 1994,
             "t1_present": false,
             "t2_present": false,
             "pass": false
@@ -1863,8 +2773,36 @@
             "pass": true
           },
           {
+            "country": "Ecuador",
+            "event_year": 1998,
+            "t1_present": false,
+            "t2_present": false,
+            "pass": false
+          },
+          {
+            "country": "Egypt",
+            "event_year": 1988,
+            "t1_present": true,
+            "t2_present": true,
+            "pass": true
+          },
+          {
+            "country": "Estonia",
+            "event_year": 1992,
+            "t1_present": false,
+            "t2_present": false,
+            "pass": false
+          },
+          {
             "country": "Finland",
             "event_year": 1993,
+            "t1_present": false,
+            "t2_present": false,
+            "pass": false
+          },
+          {
+            "country": "Georgia",
+            "event_year": 1998,
             "t1_present": false,
             "t2_present": false,
             "pass": false
@@ -1889,6 +2827,20 @@
             "t1_present": true,
             "t2_present": true,
             "pass": true
+          },
+          {
+            "country": "Guatemala",
+            "event_year": 2001,
+            "t1_present": false,
+            "t2_present": false,
+            "pass": false
+          },
+          {
+            "country": "Honduras",
+            "event_year": 1999,
+            "t1_present": false,
+            "t2_present": false,
+            "pass": false
           },
           {
             "country": "Hungary",
@@ -1919,6 +2871,20 @@
             "pass": true
           },
           {
+            "country": "India",
+            "event_year": 1993,
+            "t1_present": true,
+            "t2_present": true,
+            "pass": true
+          },
+          {
+            "country": "Indonesia",
+            "event_year": 1997,
+            "t1_present": false,
+            "t2_present": false,
+            "pass": false
+          },
+          {
             "country": "Ireland",
             "event_year": 2007,
             "t1_present": true,
@@ -1935,6 +2901,13 @@
           {
             "country": "Ireland",
             "event_year": 2010,
+            "t1_present": true,
+            "t2_present": true,
+            "pass": true
+          },
+          {
+            "country": "Israel",
+            "event_year": 1983,
             "t1_present": true,
             "t2_present": true,
             "pass": true
@@ -2003,11 +2976,32 @@
             "pass": true
           },
           {
+            "country": "Jordan",
+            "event_year": 1989,
+            "t1_present": true,
+            "t2_present": true,
+            "pass": true
+          },
+          {
             "country": "Kazakhstan",
             "event_year": 2008,
             "t1_present": false,
             "t2_present": false,
             "pass": false
+          },
+          {
+            "country": "Kenya",
+            "event_year": 1992,
+            "t1_present": true,
+            "t2_present": true,
+            "pass": true
+          },
+          {
+            "country": "Kuwait",
+            "event_year": 1982,
+            "t1_present": true,
+            "t2_present": true,
+            "pass": true
           },
           {
             "country": "Latvia",
@@ -2038,6 +3032,27 @@
             "pass": false
           },
           {
+            "country": "Madagascar",
+            "event_year": 1988,
+            "t1_present": true,
+            "t2_present": true,
+            "pass": true
+          },
+          {
+            "country": "Mali",
+            "event_year": 1989,
+            "t1_present": true,
+            "t2_present": true,
+            "pass": true
+          },
+          {
+            "country": "Mexico",
+            "event_year": 1994,
+            "t1_present": false,
+            "t2_present": false,
+            "pass": false
+          },
+          {
             "country": "Mozambique",
             "event_year": 1998,
             "t1_present": true,
@@ -2047,6 +3062,13 @@
           {
             "country": "Mozambique",
             "event_year": 2016,
+            "t1_present": true,
+            "t2_present": true,
+            "pass": true
+          },
+          {
+            "country": "Nepal",
+            "event_year": 2011,
             "t1_present": true,
             "t2_present": true,
             "pass": true
@@ -2066,6 +3088,20 @@
             "pass": false
           },
           {
+            "country": "Nicaragua",
+            "event_year": 2000,
+            "t1_present": false,
+            "t2_present": false,
+            "pass": false
+          },
+          {
+            "country": "Nigeria",
+            "event_year": 2009,
+            "t1_present": true,
+            "t2_present": true,
+            "pass": true
+          },
+          {
             "country": "North Korea",
             "event_year": 1976,
             "t1_present": false,
@@ -2080,11 +3116,39 @@
             "pass": false
           },
           {
+            "country": "Pakistan",
+            "event_year": 1998,
+            "t1_present": true,
+            "t2_present": true,
+            "pass": true
+          },
+          {
+            "country": "Panama",
+            "event_year": 1988,
+            "t1_present": false,
+            "t2_present": false,
+            "pass": false
+          },
+          {
             "country": "Paraguay",
             "event_year": 2002,
             "t1_present": true,
             "t2_present": true,
             "pass": true
+          },
+          {
+            "country": "Philippines",
+            "event_year": 1981,
+            "t1_present": true,
+            "t2_present": true,
+            "pass": true
+          },
+          {
+            "country": "Poland",
+            "event_year": 1992,
+            "t1_present": false,
+            "t2_present": false,
+            "pass": false
           },
           {
             "country": "Portugal",
@@ -2094,8 +3158,22 @@
             "pass": true
           },
           {
+            "country": "Russia",
+            "event_year": 1998,
+            "t1_present": false,
+            "t2_present": false,
+            "pass": false
+          },
+          {
             "country": "Slovenia",
             "event_year": 2013,
+            "t1_present": true,
+            "t2_present": true,
+            "pass": true
+          },
+          {
+            "country": "South Africa",
+            "event_year": 1985,
             "t1_present": true,
             "t2_present": true,
             "pass": true
@@ -2171,6 +3249,20 @@
             "pass": true
           },
           {
+            "country": "Taiwan",
+            "event_year": 1995,
+            "t1_present": false,
+            "t2_present": false,
+            "pass": false
+          },
+          {
+            "country": "Tanzania",
+            "event_year": 1987,
+            "t1_present": true,
+            "t2_present": true,
+            "pass": true
+          },
+          {
             "country": "Thailand",
             "event_year": 1997,
             "t1_present": false,
@@ -2183,6 +3275,27 @@
             "t1_present": false,
             "t2_present": false,
             "pass": false
+          },
+          {
+            "country": "Turkiye",
+            "event_year": 2001,
+            "t1_present": false,
+            "t2_present": false,
+            "pass": false
+          },
+          {
+            "country": "Uganda",
+            "event_year": 1994,
+            "t1_present": false,
+            "t2_present": false,
+            "pass": false
+          },
+          {
+            "country": "Ukraine",
+            "event_year": 2014,
+            "t1_present": true,
+            "t2_present": true,
+            "pass": true
           },
           {
             "country": "United Kingdom",
@@ -2221,10 +3334,38 @@
           },
           {
             "country": "Venezuela",
+            "event_year": 1994,
+            "t1_present": true,
+            "t2_present": true,
+            "pass": true
+          },
+          {
+            "country": "Venezuela",
+            "event_year": 2017,
+            "t1_present": false,
+            "t2_present": false,
+            "pass": false
+          },
+          {
+            "country": "Venezuela",
             "event_year": 2018,
             "t1_present": false,
             "t2_present": false,
             "pass": false
+          },
+          {
+            "country": "Venezuela",
+            "event_year": 2019,
+            "t1_present": false,
+            "t2_present": false,
+            "pass": false
+          },
+          {
+            "country": "Vietnam",
+            "event_year": 2012,
+            "t1_present": true,
+            "t2_present": true,
+            "pass": true
           },
           {
             "country": "Zambia",
@@ -2236,6 +3377,13 @@
           {
             "country": "Zambia",
             "event_year": 2020,
+            "t1_present": true,
+            "t2_present": true,
+            "pass": true
+          },
+          {
+            "country": "Zimbabwe",
+            "event_year": 2004,
             "t1_present": true,
             "t2_present": true,
             "pass": true
@@ -2273,9 +3421,9 @@
       "n_rows": 6043,
       "n_countries": 142,
       "g1_coverage": {
-        "coverage_pct": 0.24,
-        "n_pass": 18,
-        "n_total": 75,
+        "coverage_pct": 0.41379310344827586,
+        "n_pass": 48,
+        "n_total": 116,
         "gate_pass": false,
         "threshold": 0.8,
         "per_event": [
@@ -2289,6 +3437,20 @@
           {
             "country": "Angola",
             "event_year": 2020,
+            "t1_present": true,
+            "t2_present": true,
+            "pass": true
+          },
+          {
+            "country": "Antigua And Barbuda",
+            "event_year": 2009,
+            "t1_present": false,
+            "t2_present": false,
+            "pass": false
+          },
+          {
+            "country": "Argentina",
+            "event_year": 2001,
             "t1_present": true,
             "t2_present": true,
             "pass": true
@@ -2315,11 +3477,11 @@
             "pass": false
           },
           {
-            "country": "Austria",
-            "event_year": 2014,
-            "t1_present": false,
-            "t2_present": false,
-            "pass": false
+            "country": "Azerbaijan",
+            "event_year": 1995,
+            "t1_present": true,
+            "t2_present": true,
+            "pass": true
           },
           {
             "country": "Bahrain",
@@ -2327,6 +3489,13 @@
             "t1_present": false,
             "t2_present": false,
             "pass": false
+          },
+          {
+            "country": "Bangladesh",
+            "event_year": 1987,
+            "t1_present": true,
+            "t2_present": true,
+            "pass": true
           },
           {
             "country": "Belarus",
@@ -2350,11 +3519,18 @@
             "pass": false
           },
           {
-            "country": "Brunei",
-            "event_year": 1997,
-            "t1_present": false,
-            "t2_present": false,
-            "pass": false
+            "country": "Bolivia",
+            "event_year": 1994,
+            "t1_present": true,
+            "t2_present": true,
+            "pass": true
+          },
+          {
+            "country": "Brazil",
+            "event_year": 1994,
+            "t1_present": true,
+            "t2_present": true,
+            "pass": true
           },
           {
             "country": "Bulgaria",
@@ -2365,14 +3541,14 @@
           },
           {
             "country": "Bulgaria",
-            "event_year": 1996,
+            "event_year": 2014,
             "t1_present": true,
             "t2_present": true,
             "pass": true
           },
           {
-            "country": "Bulgaria",
-            "event_year": 2014,
+            "country": "Cameroon",
+            "event_year": 1987,
             "t1_present": true,
             "t2_present": true,
             "pass": true
@@ -2380,6 +3556,27 @@
           {
             "country": "Chile",
             "event_year": 1982,
+            "t1_present": false,
+            "t2_present": false,
+            "pass": false
+          },
+          {
+            "country": "China",
+            "event_year": 1998,
+            "t1_present": true,
+            "t2_present": true,
+            "pass": true
+          },
+          {
+            "country": "Colombia",
+            "event_year": 1998,
+            "t1_present": true,
+            "t2_present": true,
+            "pass": true
+          },
+          {
+            "country": "Costa Rica",
+            "event_year": 1994,
             "t1_present": false,
             "t2_present": false,
             "pass": false
@@ -2427,11 +3624,39 @@
             "pass": false
           },
           {
+            "country": "Ecuador",
+            "event_year": 1998,
+            "t1_present": true,
+            "t2_present": true,
+            "pass": true
+          },
+          {
+            "country": "Egypt",
+            "event_year": 1988,
+            "t1_present": true,
+            "t2_present": true,
+            "pass": true
+          },
+          {
+            "country": "Estonia",
+            "event_year": 1992,
+            "t1_present": false,
+            "t2_present": false,
+            "pass": false
+          },
+          {
             "country": "Finland",
             "event_year": 1993,
             "t1_present": false,
             "t2_present": false,
             "pass": false
+          },
+          {
+            "country": "Georgia",
+            "event_year": 1998,
+            "t1_present": true,
+            "t2_present": true,
+            "pass": true
           },
           {
             "country": "Ghana",
@@ -2453,6 +3678,20 @@
             "t1_present": false,
             "t2_present": false,
             "pass": false
+          },
+          {
+            "country": "Guatemala",
+            "event_year": 2001,
+            "t1_present": true,
+            "t2_present": true,
+            "pass": true
+          },
+          {
+            "country": "Honduras",
+            "event_year": 1999,
+            "t1_present": true,
+            "t2_present": true,
+            "pass": true
           },
           {
             "country": "Hungary",
@@ -2483,6 +3722,20 @@
             "pass": false
           },
           {
+            "country": "India",
+            "event_year": 1993,
+            "t1_present": true,
+            "t2_present": true,
+            "pass": true
+          },
+          {
+            "country": "Indonesia",
+            "event_year": 1997,
+            "t1_present": true,
+            "t2_present": true,
+            "pass": true
+          },
+          {
             "country": "Ireland",
             "event_year": 2007,
             "t1_present": false,
@@ -2499,6 +3752,13 @@
           {
             "country": "Ireland",
             "event_year": 2010,
+            "t1_present": false,
+            "t2_present": false,
+            "pass": false
+          },
+          {
+            "country": "Israel",
+            "event_year": 1983,
             "t1_present": false,
             "t2_present": false,
             "pass": false
@@ -2567,11 +3827,32 @@
             "pass": false
           },
           {
+            "country": "Jordan",
+            "event_year": 1989,
+            "t1_present": true,
+            "t2_present": true,
+            "pass": true
+          },
+          {
             "country": "Kazakhstan",
             "event_year": 2008,
             "t1_present": true,
             "t2_present": true,
             "pass": true
+          },
+          {
+            "country": "Kenya",
+            "event_year": 1992,
+            "t1_present": true,
+            "t2_present": true,
+            "pass": true
+          },
+          {
+            "country": "Kuwait",
+            "event_year": 1982,
+            "t1_present": false,
+            "t2_present": false,
+            "pass": false
           },
           {
             "country": "Latvia",
@@ -2602,6 +3883,27 @@
             "pass": false
           },
           {
+            "country": "Madagascar",
+            "event_year": 1988,
+            "t1_present": true,
+            "t2_present": true,
+            "pass": true
+          },
+          {
+            "country": "Mali",
+            "event_year": 1989,
+            "t1_present": false,
+            "t2_present": false,
+            "pass": false
+          },
+          {
+            "country": "Mexico",
+            "event_year": 1994,
+            "t1_present": true,
+            "t2_present": true,
+            "pass": true
+          },
+          {
             "country": "Mozambique",
             "event_year": 1998,
             "t1_present": true,
@@ -2611,6 +3913,13 @@
           {
             "country": "Mozambique",
             "event_year": 2016,
+            "t1_present": true,
+            "t2_present": true,
+            "pass": true
+          },
+          {
+            "country": "Nepal",
+            "event_year": 2011,
             "t1_present": true,
             "t2_present": true,
             "pass": true
@@ -2630,6 +3939,20 @@
             "pass": false
           },
           {
+            "country": "Nicaragua",
+            "event_year": 2000,
+            "t1_present": true,
+            "t2_present": true,
+            "pass": true
+          },
+          {
+            "country": "Nigeria",
+            "event_year": 2009,
+            "t1_present": true,
+            "t2_present": true,
+            "pass": true
+          },
+          {
             "country": "North Korea",
             "event_year": 1976,
             "t1_present": false,
@@ -2644,11 +3967,39 @@
             "pass": false
           },
           {
+            "country": "Pakistan",
+            "event_year": 1998,
+            "t1_present": true,
+            "t2_present": true,
+            "pass": true
+          },
+          {
+            "country": "Panama",
+            "event_year": 1988,
+            "t1_present": false,
+            "t2_present": false,
+            "pass": false
+          },
+          {
             "country": "Paraguay",
             "event_year": 2002,
             "t1_present": true,
             "t2_present": true,
             "pass": true
+          },
+          {
+            "country": "Philippines",
+            "event_year": 1981,
+            "t1_present": true,
+            "t2_present": true,
+            "pass": true
+          },
+          {
+            "country": "Poland",
+            "event_year": 1992,
+            "t1_present": false,
+            "t2_present": false,
+            "pass": false
           },
           {
             "country": "Portugal",
@@ -2658,8 +4009,22 @@
             "pass": false
           },
           {
+            "country": "Russia",
+            "event_year": 1998,
+            "t1_present": true,
+            "t2_present": true,
+            "pass": true
+          },
+          {
             "country": "Slovenia",
             "event_year": 2013,
+            "t1_present": false,
+            "t2_present": false,
+            "pass": false
+          },
+          {
+            "country": "South Africa",
+            "event_year": 1985,
             "t1_present": false,
             "t2_present": false,
             "pass": false
@@ -2735,6 +4100,20 @@
             "pass": false
           },
           {
+            "country": "Taiwan",
+            "event_year": 1995,
+            "t1_present": false,
+            "t2_present": false,
+            "pass": false
+          },
+          {
+            "country": "Tanzania",
+            "event_year": 1987,
+            "t1_present": true,
+            "t2_present": true,
+            "pass": true
+          },
+          {
             "country": "Thailand",
             "event_year": 1997,
             "t1_present": true,
@@ -2747,6 +4126,27 @@
             "t1_present": false,
             "t2_present": false,
             "pass": false
+          },
+          {
+            "country": "Turkiye",
+            "event_year": 2001,
+            "t1_present": true,
+            "t2_present": true,
+            "pass": true
+          },
+          {
+            "country": "Uganda",
+            "event_year": 1994,
+            "t1_present": true,
+            "t2_present": true,
+            "pass": true
+          },
+          {
+            "country": "Ukraine",
+            "event_year": 2014,
+            "t1_present": true,
+            "t2_present": true,
+            "pass": true
           },
           {
             "country": "United Kingdom",
@@ -2785,10 +4185,38 @@
           },
           {
             "country": "Venezuela",
+            "event_year": 1994,
+            "t1_present": false,
+            "t2_present": false,
+            "pass": false
+          },
+          {
+            "country": "Venezuela",
+            "event_year": 2017,
+            "t1_present": false,
+            "t2_present": false,
+            "pass": false
+          },
+          {
+            "country": "Venezuela",
             "event_year": 2018,
             "t1_present": false,
             "t2_present": false,
             "pass": false
+          },
+          {
+            "country": "Venezuela",
+            "event_year": 2019,
+            "t1_present": false,
+            "t2_present": false,
+            "pass": false
+          },
+          {
+            "country": "Vietnam",
+            "event_year": 2012,
+            "t1_present": true,
+            "t2_present": true,
+            "pass": true
           },
           {
             "country": "Zambia",
@@ -2800,6 +4228,13 @@
           {
             "country": "Zambia",
             "event_year": 2020,
+            "t1_present": true,
+            "t2_present": true,
+            "pass": true
+          },
+          {
+            "country": "Zimbabwe",
+            "event_year": 2004,
             "t1_present": true,
             "t2_present": true,
             "pass": true
@@ -2837,9 +4272,9 @@
       "n_rows": 7676,
       "n_countries": 157,
       "g1_coverage": {
-        "coverage_pct": 0.56,
-        "n_pass": 42,
-        "n_total": 75,
+        "coverage_pct": 0.6724137931034483,
+        "n_pass": 78,
+        "n_total": 116,
         "gate_pass": false,
         "threshold": 0.8,
         "per_event": [
@@ -2853,6 +4288,20 @@
           {
             "country": "Angola",
             "event_year": 2020,
+            "t1_present": true,
+            "t2_present": true,
+            "pass": true
+          },
+          {
+            "country": "Antigua And Barbuda",
+            "event_year": 2009,
+            "t1_present": false,
+            "t2_present": false,
+            "pass": false
+          },
+          {
+            "country": "Argentina",
+            "event_year": 2001,
             "t1_present": true,
             "t2_present": true,
             "pass": true
@@ -2879,15 +4328,22 @@
             "pass": false
           },
           {
-            "country": "Austria",
-            "event_year": 2014,
-            "t1_present": false,
-            "t2_present": false,
-            "pass": false
+            "country": "Azerbaijan",
+            "event_year": 1995,
+            "t1_present": true,
+            "t2_present": true,
+            "pass": true
           },
           {
             "country": "Bahrain",
             "event_year": 2008,
+            "t1_present": true,
+            "t2_present": true,
+            "pass": true
+          },
+          {
+            "country": "Bangladesh",
+            "event_year": 1987,
             "t1_present": true,
             "t2_present": true,
             "pass": true
@@ -2914,11 +4370,18 @@
             "pass": false
           },
           {
-            "country": "Brunei",
-            "event_year": 1997,
-            "t1_present": false,
-            "t2_present": false,
-            "pass": false
+            "country": "Bolivia",
+            "event_year": 1994,
+            "t1_present": true,
+            "t2_present": true,
+            "pass": true
+          },
+          {
+            "country": "Brazil",
+            "event_year": 1994,
+            "t1_present": true,
+            "t2_present": true,
+            "pass": true
           },
           {
             "country": "Bulgaria",
@@ -2929,14 +4392,14 @@
           },
           {
             "country": "Bulgaria",
-            "event_year": 1996,
+            "event_year": 2014,
             "t1_present": true,
             "t2_present": true,
             "pass": true
           },
           {
-            "country": "Bulgaria",
-            "event_year": 2014,
+            "country": "Cameroon",
+            "event_year": 1987,
             "t1_present": true,
             "t2_present": true,
             "pass": true
@@ -2944,6 +4407,27 @@
           {
             "country": "Chile",
             "event_year": 1982,
+            "t1_present": true,
+            "t2_present": true,
+            "pass": true
+          },
+          {
+            "country": "China",
+            "event_year": 1998,
+            "t1_present": true,
+            "t2_present": true,
+            "pass": true
+          },
+          {
+            "country": "Colombia",
+            "event_year": 1998,
+            "t1_present": true,
+            "t2_present": true,
+            "pass": true
+          },
+          {
+            "country": "Costa Rica",
+            "event_year": 1994,
             "t1_present": true,
             "t2_present": true,
             "pass": true
@@ -2991,11 +4475,39 @@
             "pass": true
           },
           {
+            "country": "Ecuador",
+            "event_year": 1998,
+            "t1_present": true,
+            "t2_present": true,
+            "pass": true
+          },
+          {
+            "country": "Egypt",
+            "event_year": 1988,
+            "t1_present": true,
+            "t2_present": true,
+            "pass": true
+          },
+          {
+            "country": "Estonia",
+            "event_year": 1992,
+            "t1_present": false,
+            "t2_present": false,
+            "pass": false
+          },
+          {
             "country": "Finland",
             "event_year": 1993,
             "t1_present": false,
             "t2_present": false,
             "pass": false
+          },
+          {
+            "country": "Georgia",
+            "event_year": 1998,
+            "t1_present": true,
+            "t2_present": true,
+            "pass": true
           },
           {
             "country": "Ghana",
@@ -3017,6 +4529,20 @@
             "t1_present": false,
             "t2_present": false,
             "pass": false
+          },
+          {
+            "country": "Guatemala",
+            "event_year": 2001,
+            "t1_present": true,
+            "t2_present": true,
+            "pass": true
+          },
+          {
+            "country": "Honduras",
+            "event_year": 1999,
+            "t1_present": true,
+            "t2_present": true,
+            "pass": true
           },
           {
             "country": "Hungary",
@@ -3047,6 +4573,20 @@
             "pass": true
           },
           {
+            "country": "India",
+            "event_year": 1993,
+            "t1_present": true,
+            "t2_present": true,
+            "pass": true
+          },
+          {
+            "country": "Indonesia",
+            "event_year": 1997,
+            "t1_present": true,
+            "t2_present": true,
+            "pass": true
+          },
+          {
             "country": "Ireland",
             "event_year": 2007,
             "t1_present": false,
@@ -3066,6 +4606,13 @@
             "t1_present": false,
             "t2_present": false,
             "pass": false
+          },
+          {
+            "country": "Israel",
+            "event_year": 1983,
+            "t1_present": true,
+            "t2_present": true,
+            "pass": true
           },
           {
             "country": "Italy",
@@ -3131,8 +4678,29 @@
             "pass": true
           },
           {
+            "country": "Jordan",
+            "event_year": 1989,
+            "t1_present": true,
+            "t2_present": true,
+            "pass": true
+          },
+          {
             "country": "Kazakhstan",
             "event_year": 2008,
+            "t1_present": true,
+            "t2_present": true,
+            "pass": true
+          },
+          {
+            "country": "Kenya",
+            "event_year": 1992,
+            "t1_present": true,
+            "t2_present": true,
+            "pass": true
+          },
+          {
+            "country": "Kuwait",
+            "event_year": 1982,
             "t1_present": true,
             "t2_present": true,
             "pass": true
@@ -3166,6 +4734,27 @@
             "pass": false
           },
           {
+            "country": "Madagascar",
+            "event_year": 1988,
+            "t1_present": true,
+            "t2_present": true,
+            "pass": true
+          },
+          {
+            "country": "Mali",
+            "event_year": 1989,
+            "t1_present": false,
+            "t2_present": false,
+            "pass": false
+          },
+          {
+            "country": "Mexico",
+            "event_year": 1994,
+            "t1_present": true,
+            "t2_present": true,
+            "pass": true
+          },
+          {
             "country": "Mozambique",
             "event_year": 1998,
             "t1_present": true,
@@ -3175,6 +4764,13 @@
           {
             "country": "Mozambique",
             "event_year": 2016,
+            "t1_present": true,
+            "t2_present": true,
+            "pass": true
+          },
+          {
+            "country": "Nepal",
+            "event_year": 2011,
             "t1_present": true,
             "t2_present": true,
             "pass": true
@@ -3194,6 +4790,20 @@
             "pass": true
           },
           {
+            "country": "Nicaragua",
+            "event_year": 2000,
+            "t1_present": true,
+            "t2_present": true,
+            "pass": true
+          },
+          {
+            "country": "Nigeria",
+            "event_year": 2009,
+            "t1_present": true,
+            "t2_present": true,
+            "pass": true
+          },
+          {
             "country": "North Korea",
             "event_year": 1976,
             "t1_present": false,
@@ -3208,8 +4818,36 @@
             "pass": true
           },
           {
+            "country": "Pakistan",
+            "event_year": 1998,
+            "t1_present": true,
+            "t2_present": true,
+            "pass": true
+          },
+          {
+            "country": "Panama",
+            "event_year": 1988,
+            "t1_present": true,
+            "t2_present": true,
+            "pass": true
+          },
+          {
             "country": "Paraguay",
             "event_year": 2002,
+            "t1_present": true,
+            "t2_present": true,
+            "pass": true
+          },
+          {
+            "country": "Philippines",
+            "event_year": 1981,
+            "t1_present": true,
+            "t2_present": true,
+            "pass": true
+          },
+          {
+            "country": "Poland",
+            "event_year": 1992,
             "t1_present": true,
             "t2_present": true,
             "pass": true
@@ -3222,11 +4860,25 @@
             "pass": false
           },
           {
+            "country": "Russia",
+            "event_year": 1998,
+            "t1_present": false,
+            "t2_present": false,
+            "pass": false
+          },
+          {
             "country": "Slovenia",
             "event_year": 2013,
             "t1_present": false,
             "t2_present": false,
             "pass": false
+          },
+          {
+            "country": "South Africa",
+            "event_year": 1985,
+            "t1_present": true,
+            "t2_present": true,
+            "pass": true
           },
           {
             "country": "South Korea",
@@ -3299,6 +4951,20 @@
             "pass": true
           },
           {
+            "country": "Taiwan",
+            "event_year": 1995,
+            "t1_present": false,
+            "t2_present": false,
+            "pass": false
+          },
+          {
+            "country": "Tanzania",
+            "event_year": 1987,
+            "t1_present": true,
+            "t2_present": true,
+            "pass": true
+          },
+          {
             "country": "Thailand",
             "event_year": 1997,
             "t1_present": true,
@@ -3311,6 +4977,27 @@
             "t1_present": false,
             "t2_present": false,
             "pass": false
+          },
+          {
+            "country": "Turkiye",
+            "event_year": 2001,
+            "t1_present": true,
+            "t2_present": true,
+            "pass": true
+          },
+          {
+            "country": "Uganda",
+            "event_year": 1994,
+            "t1_present": true,
+            "t2_present": true,
+            "pass": true
+          },
+          {
+            "country": "Ukraine",
+            "event_year": 2014,
+            "t1_present": true,
+            "t2_present": true,
+            "pass": true
           },
           {
             "country": "United Kingdom",
@@ -3349,10 +5036,38 @@
           },
           {
             "country": "Venezuela",
+            "event_year": 1994,
+            "t1_present": true,
+            "t2_present": true,
+            "pass": true
+          },
+          {
+            "country": "Venezuela",
+            "event_year": 2017,
+            "t1_present": false,
+            "t2_present": false,
+            "pass": false
+          },
+          {
+            "country": "Venezuela",
             "event_year": 2018,
             "t1_present": false,
             "t2_present": false,
             "pass": false
+          },
+          {
+            "country": "Venezuela",
+            "event_year": 2019,
+            "t1_present": false,
+            "t2_present": false,
+            "pass": false
+          },
+          {
+            "country": "Vietnam",
+            "event_year": 2012,
+            "t1_present": true,
+            "t2_present": true,
+            "pass": true
           },
           {
             "country": "Zambia",
@@ -3364,6 +5079,13 @@
           {
             "country": "Zambia",
             "event_year": 2020,
+            "t1_present": true,
+            "t2_present": true,
+            "pass": true
+          },
+          {
+            "country": "Zimbabwe",
+            "event_year": 2004,
             "t1_present": true,
             "t2_present": true,
             "pass": true

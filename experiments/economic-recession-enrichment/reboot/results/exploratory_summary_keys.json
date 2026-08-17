@@ -1,0 +1,58 @@
+{
+  "yieldcurve": {
+    "tag": "yieldcurve",
+    "delta_keys": [],
+    "report_keys": [
+      "seed",
+      "recipe_id",
+      "scope",
+      "oecd_scoped_country_ids",
+      "n_scoped_countries_with_events",
+      "n_pos_samples",
+      "recipe_indicators",
+      "new_indicators",
+      "baseline",
+      "candidate",
+      "pairing",
+      "delta_auc_vs_scoped_baseline",
+      "floor_gate_pass_ci_lower_gt_0.02",
+      "d5_per_country",
+      "era2008_decomposition_candidate_genuine_refit",
+      "era2008_decomposition_baseline_genuine_refit",
+      "era2008_delta_posthoc_crosscheck",
+      "d2_missingness_placebo",
+      "d4_lag_decay",
+      "d7_temporal_holdout",
+      "overall_gates",
+      "overall_clears_full_battery"
+    ]
+  },
+  "houseprices_alone": {
+    "tag": "houseprices_alone",
+    "delta_keys": [],
+    "report_keys": [
+      "seed",
+      "recipe_id",
+      "scope",
+      "oecd_scoped_country_ids",
+      "n_scoped_countries_with_events",
+      "n_pos_samples",
+      "recipe_indicators",
+      "new_indicators",
+      "baseline",
+      "candidate",
+      "pairing",
+      "delta_auc_vs_scoped_baseline",
+      "floor_gate_pass_ci_lower_gt_0.02",
+      "d5_per_country",
+      "era2008_decomposition_candidate_genuine_refit",
+      "era2008_decomposition_baseline_genuine_refit",
+      "era2008_delta_posthoc_crosscheck",
+      "d2_missingness_placebo",
+      "d4_lag_decay",
+      "d7_temporal_holdout",
+      "overall_gates",
+      "overall_clears_full_battery"
+    ]
+  }
+}

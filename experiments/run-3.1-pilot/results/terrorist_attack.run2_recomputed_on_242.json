@@ -1,0 +1,30 @@
+{
+  "recipe_id": "terrorist_attack",
+  "drivers": [
+    "VC.BTL.DETH",
+    "VC.IDP.NWDS",
+    "DT.TDS.DECT.EX.ZS",
+    "MS.MIL.XPND.GD.ZS",
+    "v2xel_frefair",
+    "SL.UEM.1524.ZS"
+  ],
+  "seed": 12345,
+  "n_pos_raw_positives_csv": 242,
+  "n_pos_samples_built": 242,
+  "n_neg_samples_built": 726,
+  "chosen_window": 15,
+  "loco_auc": 0.7322751322751323,
+  "ci95_lo": 0.5914398574425732,
+  "ci95_hi": 0.8407825878948779,
+  "coverage_at_chosen_window": {
+    "n_pos_total": 242,
+    "n_pos_survive": 21,
+    "n_neg_total": 726,
+    "n_neg_survive": 45,
+    "pos_coverage": 0.08677685950413223,
+    "neg_coverage": 0.06198347107438017,
+    "n_countries_survive": 24
+  },
+  "architecture": "XGBoost",
+  "stored_run2_reference": "qgi-data/reference/shap-importances-terrorist_attack.json (no loco_auc stored there, only SHAP importances/directions from the F-ML-1 walk)"
+}

@@ -1,0 +1,30 @@
+{
+  "recipe_id": "military_coup",
+  "drivers": [
+    "SP.DYN.LE00.IN",
+    "v2excrptps",
+    "v2cltort",
+    "v2xel_frefair",
+    "v2x_clpol"
+  ],
+  "seed": 12345,
+  "n_pos_raw_positives_csv": 207,
+  "n_pos_samples_built": 207,
+  "n_neg_samples_built": 621,
+  "chosen_window": 25,
+  "loco_auc": 0.651644276745926,
+  "ci95_lo": 0.5979895946273269,
+  "ci95_hi": 0.7011109414570955,
+  "coverage_at_chosen_window": {
+    "n_pos_total": 207,
+    "n_pos_survive": 142,
+    "n_neg_total": 621,
+    "n_neg_survive": 433,
+    "pos_coverage": 0.6859903381642513,
+    "neg_coverage": 0.6972624798711755,
+    "n_countries_survive": 72
+  },
+  "architecture": "XGBoost",
+  "stored_run2_loco_auc": 0.6767869106809126,
+  "stored_run2_n_pos": 203
+}
