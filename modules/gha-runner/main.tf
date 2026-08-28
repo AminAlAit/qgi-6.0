@@ -160,7 +160,7 @@ resource "aws_launch_template" "runner" {
 resource "aws_autoscaling_group" "runner" {
   name                = local.name_prefix
   vpc_zone_identifier = [var.subnet_id]
-  desired_capacity    = 1
+  desired_capacity    = var.desired_capacity
   min_size            = 0
   max_size            = 1
 
