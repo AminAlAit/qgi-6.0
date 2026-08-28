@@ -41,6 +41,29 @@ variable "tags" {
   default     = {}
 }
 
+variable "desired_capacity" {
+  description = <<-EOT
+    How many runners to keep warm.
+
+    0 = switched off but fully restorable: the launch template, IAM role, PAT
+    secret and this module's config all remain. Flip back to 1 and apply to get
+    a runner in ~2 minutes.
+
+    Set to 0 for qgi-frontend on 2026-08-28: measured over 14 days the runner
+    showed 0.4% mean CPU and not one hour above 20% - it was idling 24/7 at
+    ~$17.30/month. This is a Terraform variable rather than a console change
+    because the ASG is managed here; changing desired capacity in the console
+    would be silently reverted by the next apply.
+  EOT
+  type        = number
+  default     = 1
+
+  validation {
+    condition     = var.desired_capacity >= 0 && var.desired_capacity <= 1
+    error_message = "desired_capacity must be 0 or 1; max_size for this ASG is 1."
+  }
+}
+
 variable "name_prefix" {
   description = "Prefix for created resource names. Defaults to a deterministic value derived from `runner_label`."
   type        = string

@@ -1,0 +1,11 @@
+# Shell scripts and Terraform templates MUST keep LF endings.
+#
+# Without this, a Windows checkout converts cloud-init.sh.tftpl to CRLF, and the
+# next `terraform apply` rewrites the launch template's user_data with \r\n. The
+# script starts `#!/bin/bash`, so a trailing \r makes the kernel look for the
+# interpreter "/bin/bash\r" and the runner never boots. Found 2026-08-28 while
+# planning a one-line desired_capacity change: the plan wanted to rewrite 150
+# lines of user_data purely because of line endings.
+*.sh      text eol=lf
+*.tftpl   text eol=lf
+*.bash    text eol=lf

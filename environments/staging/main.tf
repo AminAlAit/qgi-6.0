@@ -280,5 +280,14 @@ module "gha_runner_frontend" {
 
   instance_type = "c7g.medium"
 
+  # Switched OFF 2026-08-28. Measured over 14 days: 0.4% mean CPU, zero hours
+  # above 20% - no build had run in a fortnight while it billed ~$17.30/month
+  # (spot $12.97 + public IPv4 $2.87 + 20GB gp3 $1.46, all released on
+  # termination since delete_on_termination = true).
+  #
+  # CI is still wanted for this repo, so this is a PAUSE, not a retirement.
+  # Set back to 1 and apply to restore; nothing here has been deleted.
+  desired_capacity = 0
+
   tags = local.tags
 }
