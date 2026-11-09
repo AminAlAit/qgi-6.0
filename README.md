@@ -1,46 +1,22 @@
-# qgi-frontend
+# QGI 6.0 — QGI Macroscope Next.js 16 Analytical Terminal (qgi-frontend, 2026)
 
-Next.js 16 / React 19 / TypeScript app for **QG Intelligence** (Quantitative Geopolitical Intelligence). Live at **[qgintelligence.com](https://qgintelligence.com)**, deployed on Vercel (auto-deploy on push to `main`).
+> [!IMPORTANT]
+> **Historical Archive (`QGI v6.0`):** This repository was one of the 7 polyrepo components of **QGI 6.0** (March–August 2026). It has been consolidated with full commit history into **QGI 7.0** at [`AminAlAit/qgi/tree/main/frontend`](https://github.com/AminAlAit/qgi/tree/main/frontend) (Live at [qgintelligence.com](https://qgintelligence.com)).
 
-## Run locally
+## QGI Generational Lineage (`v1.0` → `v7.0`)
 
-```bash
-npm install
-npm run dev
-# → http://localhost:3000
-```
+| Generation | Period | Architecture & Milestone | Repository |
+|---|---|---|---|
+| **QGI 1.0** | Mar–Oct 2023 | Initial Pairwise Country Correlation Engine & Streamlit Prototype | `AminAlAit/trojan`, `AminAlAit/trojan-streamlit` |
+| **QGI 2.0** | Nov 2023 | Soft Power & Institutional Composite Index Prototype | `AminAlAit/trojan-2.0` |
+| **QGI 3.0** | Jan–Feb 2024 | Standalone Multi-Page Streamlit Analytical Terminal | [`AminAlAit/qgi-streamlit`](https://github.com/AminAlAit/qgi-streamlit) |
+| **QGI 4.0** | Feb–Sep 2025 | Local SCDI Formalization, MySQL→Parquet Engine (Pipelines A–E) & X Bot v1 | `AminAlAit/qgi-4.0` |
+| **QGI 5.0** | Sep 2025–Mar 2026 | First-Generation AWS Cloud Migration (Decoupled Lambda & Batch Microservices) | `AminAlAit/qgi-pipeline-a/b/c-*` |
+| **QGI 6.0** | Mar–Aug 2026 | **7-Repo Multi-Account AWS Cloud (14.3B FFT Correlations) & Trajectory Engine (42 Models)** | `AminAlAit/qgi-{aws-tf,infra,pipeline,data,ml,frontend}` |
+| **QGI 7.0** | Oct 2026–Present | **Unified Public Monorepo & Sovereign IP Vault (Active Production)** | [`AminAlAit/qgi`](https://github.com/AminAlAit/qgi) & `AminAlAit/qgi-docs` |
 
-## Required environment
+---
 
-| Variable               | Default                      | Purpose                                        |
-| ---------------------- | ---------------------------- | ---------------------------------------------- |
-| `SKIP_AUTH`            | `true`                       | Bypass NextAuth in dev (pre-paywall posture)   |
-| `AWS_REGION`           | `eu-central-1`               | Athena + DynamoDB region for live data loaders |
-| `QGI_DATA_LAKE_BUCKET` | `qgi-data-lake-222222222222` | Staging data lake S3 bucket                    |
+## Component Scope in QGI 6.0
 
-Optional (set in `.env.local` if you need them):
-
-- `ATHENA_WORKGROUP` (default `QGI-Lambda-Workgroup`)
-- `ATHENA_OUTPUT_LOCATION` (default `s3://${BUCKET}/query_results/`)
-
-## Where things live
-
-- `app/` — Next.js App Router routes
-  - `app/(app)/...` — auth-gated app shell (dashboard, countries, signals, patterns, precedents)
-  - `app/about/`, `app/methodology/`, `app/reports/`, `app/blog/`, `app/legal/` — public marketing pages
-- `components/` — shared UI (PublicNav, PublicFooter, SkipLink, charts, SEO)
-- `lib/` — data loaders, types, business logic
-- `data/` — baked JSON consumed at build/SSR (country-risks, ranking, taxonomy)
-- `public/` — static assets
-
-## Conventions
-
-- **Single source of truth for counts**: `lib/site-stats.ts` (`TOTAL_COUNTRIES`, `TOTAL_INDICATORS`, `TOTAL_LOCKED`, etc.). Never hardcode counts elsewhere.
-- **Brand**: "QG Intelligence" (with space). "QGI" alone is fine as acronym.
-- **No em-dashes** in user-facing prose. Hyphens / commas / colons only.
-- **Reversibility pattern**: page redesigns back up the old page to `_classic-backup/page.tsx` (Next.js ignores `_`-prefixed dirs).
-- **Tests**: vitest. Run `npx vitest run` before commit (also enforced via pre-push hook).
-
-## Full architecture
-
-See [`qgi-docs/architecture/frontend.md`](https://github.com/AminAlAit/qgi-docs/blob/main/architecture/frontend.md).
+Powered the zero-database Next.js 16 analytical terminal at [qgintelligence.com](https://qgintelligence.com), serving pre-baked S3 risk matrices and Trajectory Engine vintages. Consolidated into [rontend/](https://github.com/AminAlAit/qgi/tree/main/frontend) in QGI 7.0.
