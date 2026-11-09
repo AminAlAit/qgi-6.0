@@ -1,101 +1,22 @@
-# qgi-aws-tf
+# QGI 6.0 — AWS Organization & Management Account IaC (qgi-aws-tf, 2026)
 
-Terraform hub repository for Amin's AWS organisation and the QGI (Quantitative Geopolitical Intelligence) pipeline infrastructure.
+> [!IMPORTANT]
+> **Historical Archive (`QGI v6.0`):** This repository was one of the 7 polyrepo components of **QGI 6.0** (March–August 2026). It has been consolidated with full commit history into **QGI 7.0** at [`AminAlAit/qgi/tree/main/infra/management`](https://github.com/AminAlAit/qgi/tree/main/infra/management) (Live at [qgintelligence.com](https://qgintelligence.com)).
 
-**Management account:** `111111111111` · **Region:** `eu-central-1`
+## QGI Generational Lineage (`v1.0` → `v7.0`)
 
----
-
-## What this repo does
-
-Manages the **management account only**:
-- AWS Organizations structure
-- CloudTrail (multi-region, management events)
-- IAM Identity Center (SSO) — users and permission sets
-- OIDC roles for GitHub Actions (ECR push, Lambda deploy, key rotation)
-- Terraform state backend (S3 + DynamoDB)
-
-QGI pipeline infrastructure lives in [`qgi-infra`](https://github.com/AminAlAit/qgi-infra). Application code lives in [`qgi-pipeline`](https://github.com/AminAlAit/qgi-pipeline).
+| Generation | Period | Architecture & Milestone | Repository |
+|---|---|---|---|
+| **QGI 1.0** | Mar–Oct 2023 | Initial Pairwise Country Correlation Engine & Streamlit Prototype | `AminAlAit/trojan`, `AminAlAit/trojan-streamlit` |
+| **QGI 2.0** | Nov 2023 | Soft Power & Institutional Composite Index Prototype | `AminAlAit/trojan-2.0` |
+| **QGI 3.0** | Jan–Feb 2024 | Standalone Multi-Page Streamlit Analytical Terminal | [`AminAlAit/qgi-streamlit`](https://github.com/AminAlAit/qgi-streamlit) |
+| **QGI 4.0** | Feb–Sep 2025 | Local SCDI Formalization, MySQL→Parquet Engine (Pipelines A–E) & X Bot v1 | `AminAlAit/qgi-4.0` |
+| **QGI 5.0** | Sep 2025–Mar 2026 | First-Generation AWS Cloud Migration (Decoupled Lambda & Batch Microservices) | `AminAlAit/qgi-pipeline-a/b/c-*` |
+| **QGI 6.0** | Mar–Aug 2026 | **7-Repo Multi-Account AWS Cloud (14.3B FFT Correlations) & Trajectory Engine (42 Models)** | `AminAlAit/qgi-{aws-tf,infra,pipeline,data,ml,frontend}` |
+| **QGI 7.0** | Oct 2026–Present | **Unified Public Monorepo & Sovereign IP Vault (Active Production)** | [`AminAlAit/qgi`](https://github.com/AminAlAit/qgi) & `AminAlAit/qgi-docs` |
 
 ---
 
-## AWS account structure (as of March 2026)
+## Component Scope in QGI 6.0
 
-| Account | ID | Purpose |
-|---------|-----|---------|
-| Management (Amin) | `111111111111` | Org root, CloudTrail, OIDC roles, state backend |
-| `qgi-legacy` | `555555555555` | Old hand-built pipeline — read-only, do not deploy here |
-| `qgi-prod` | `444444444444` | Terraform-managed production pipeline |
-| `qgi-staging` | `222222222222` | Terraform-managed staging environment |
-| `qgi-qa` | `333333333333` | Terraform-managed QA environment |
-| `personal-website` | `666666666666` | aminalait.com infrastructure |
-
----
-
-## QGI — what it is
-
-QGI ingests World Bank economic/political indicator data for ~200 countries, computes FFT-based cross-correlations (SCDIs) between every country pair for every indicator, and synthesises them into Patterns. The end product is **QGI Macroscope** — a strategic intelligence dashboard.
-
-### Pipeline architecture
-
-```
-EventBridge Scheduler (monthly, 6am Berlin, 1st of month)
-  └── Step Functions: qgi-indicator-monthly-updater
-        ├── Phase 0: Janitor — purge queues, clean temp data
-        ├── Phase 1: Ingestion — fetch World Bank data → dispatch → workers → reporter
-        ├── Phase 2: Compute — AWS Batch SCDI computation (Graviton Spot)
-        ├── Phase 3: Glue — MSCK REPAIR TABLE on scdis and patterns
-        ├── Phase 4: Synthesis — dispatcher → SQS → workers → pattern generation
-        └── Phase 5: Audit — DLQ scan, ops report
-```
-
----
-
-## Environment strategy
-
-| Environment | AWS Account | Deploy trigger |
-|-------------|-------------|----------------|
-| staging | `qgi-staging` (`222222222222`) | push to `main` in qgi-pipeline / qgi-infra |
-| qa | `qgi-qa` (`333333333333`) | tag `rc-*` |
-| prod | `qgi-prod` (`444444444444`) | tag `v*` |
-
----
-
-## Related repos
-
-| Repo | Responsibility |
-|------|---------------|
-| [`qgi-infra`](https://github.com/AminAlAit/qgi-infra) | Pipeline Terraform — staging/QA/prod environments |
-| [`qgi-pipeline`](https://github.com/AminAlAit/qgi-pipeline) | Lambda + Batch application code |
-| [`cloud-resume-aws-tf`](https://github.com/AminAlAit/cloud-resume-aws-tf) | aminalait.com infrastructure |
-| [`cloud-resume-web`](https://github.com/AminAlAit/cloud-resume-web) | aminalait.com frontend |
-| **This repo** | Management account IaC only |
-
----
-
-## Conventions
-
-- **Runtime:** Python 3.13 (Graviton/arm64)
-- **Region:** `eu-central-1` exclusively
-- **Naming:** `qgi-` prefix for pipeline, `qgi-api-` for website-facing endpoints
-- **Tags:** `Project=qgi`, `Environment=<env>`, `ManagedBy=terraform`, `Owner=amin.al-ait`
-- **State:** `s3://qgi-aws-tf-state-111111111111/management/terraform.tfstate` + DynamoDB lock `qgi-aws-tf-state-lock`
-
-See [CLAUDE.md](CLAUDE.md) for Claude Code-specific instructions.
-
----
-
-## Codespace — multi-repo setup
-
-This repo is the **hub Codespace** for the entire system. When a Codespace is created here, sibling repos are automatically cloned alongside it:
-
-- The `setup.sh` in `.devcontainer/` runs on every new Codespace and calls `git clone` (or `git pull`) for each sibling repo — no manual action needed.
-- All repos land under `/workspaces/` next to each other.
-
-**To get the VS Code multi-root sidebar** (all repos visible side-by-side in the Explorer):
-
-1. Open the Command Palette (`Ctrl+Shift+P` / `Cmd+Shift+P`) → **"Open Workspace from File"**
-2. Select `qgi-hub.code-workspace` at the root of this repo
-3. VS Code will reload and show all repos in the sidebar — this persists for the lifetime of the Codespace
-
-VS Code may also prompt you automatically with _"Do you want to open the workspace file?"_ when the Codespace first starts — clicking yes has the same effect.
+Managed the root AWS Organization (111111111111), Service Control Policies (SCPs), cross-account IAM OIDC roles, and central ECR repositories during the QGI 6.0 polyrepo era. Consolidated into [infra/management/](https://github.com/AminAlAit/qgi/tree/main/infra/management) in QGI 7.0.
