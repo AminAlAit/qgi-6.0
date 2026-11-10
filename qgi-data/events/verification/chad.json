@@ -1,0 +1,1307 @@
+[
+  {
+    "year": 1990,
+    "title": "Idriss DÃ©by Overthrows HissÃ¨ne HabrÃ© in Armed Coup",
+    "verdict": "TRUE",
+    "reason": "Déby's MPS forces entered N'Djamena on 1 December 1990, overthrowing Habré after an offensive from Sudan. Year and core facts confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Déby's MPS forces entered N'Djamena on 1 December 1990, overthrowing Habré after an offensive from Sudan. Year and core facts confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Idriss_D%C3%A9by",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Idriss_D%C3%A9by"
+  },
+  {
+    "year": 1991,
+    "title": "Movement for Democracy and Development Rebellion Begins",
+    "verdict": "PARTIAL",
+    "reason": "The Movement for Democracy and Development (MDD) is a real group that did launch a rebellion against Idriss Déby's new government beginning in 1991 (formed ~15 Oct 1991), so year/country/actor-existence hold. But the description's core substantive claim is wrong: MDD was not a southern movement and its insurgency was not fought in \"southern Chad.\" Multiple independent sources (PRIF/HIIK conflict database working paper, Wikipedia) show MDD was formed from remnants of ousted president Hissène Habré's FANT forces, based in the Lake Chad region (Chad's northwest, bordering Niger/Nigeria/Cameroon), and fought to restore Habré to power. The conflict is characterized in the scholarly literature as an intra-northern ethnic rivalry between the Zaghawa (Déby's base) and the Gorane (Habré/MDD's base) — not a \"northern-dominated regime vs. southern populations\" cleavage. The rebellion actually matching the \"southern Chad ethnic/regional grievance against the northern-dominated regime\" narrative is a different, separate group — the CSNPD (Comité de Sursaut National pour la Paix et la Démocratie), led by Lt. Moïse Kette, which emerged afterward (chiefly from 1992) over issues including oil exploitation in the southern Doba Basin. So the event conflates MDD's (northern, pro-Habré, Lake Chad-based) rebellion with the distinct southern CSNPD rebellion's causes/geography — a material scope/actor-characterization error, while the underlying fact of an MDD rebellion beginning in 1991 against Déby is true.",
+    "verify_count": 2,
+    "consensus_verdict": "PARTIAL",
+    "consensus_status": "double_negative",
+    "needs_tiebreak": false,
+    "source_independence": "independent",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "PARTIAL",
+        "reason": "The MDD (Mouvement pour la Démocratie et le Développement) did indeed form in Chad on 15 October 1991 as an armed rebel movement seeking to overthrow Idriss Déby's new MPS government — country and year check out. However, the description's core substance is materially wrong: multiple independent sources (Refworld/IRB via ecoi.net, PRIF conflict working paper, Wikipedia/state.gov-sourced summaries) consistently place MDD's formation and base of operations in the Lake Chad region (western/northwestern Chad), not southern Chad, and describe it as a pro-Hissène Habré movement (founded by Habré, Goukouni Guet, Moussa Medella) drawing a self-described multi-ethnic, multi-religious coalition aimed at power-sharing — i.e., essentially an intra-northern-elite power struggle (Habré loyalists vs. Déby's MPS), not a 'southern population vs. northern-dominated regime' ethnic conflict. The actual southern-Chad rebellion matching that north-south ethnic-tension narrative was a different organization, the CSNPD led by Lt. Moïse Kette, which arose in 1992 (triggered by the killing of southern leader Joseph Behidi), not 1991 and not under the MDD banner. So the event is real (actor, country, year) but the geographic location and the ethnic/regional causal framing given in the description are incorrect — a material detail off while year and country hold, warranting PARTIAL rather than TRUE.",
+        "source": "https://www.ecoi.net/en/document/1154875.html",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "PARTIAL",
+        "reason": "The Movement for Democracy and Development (MDD) is a real group that did launch a rebellion against Idriss Déby's new government beginning in 1991 (formed ~15 Oct 1991), so year/country/actor-existence hold. But the description's core substantive claim is wrong: MDD was not a southern movement and its insurgency was not fought in \"southern Chad.\" Multiple independent sources (PRIF/HIIK conflict database working paper, Wikipedia) show MDD was formed from remnants of ousted president Hissène Habré's FANT forces, based in the Lake Chad region (Chad's northwest, bordering Niger/Nigeria/Cameroon), and fought to restore Habré to power. The conflict is characterized in the scholarly literature as an intra-northern ethnic rivalry between the Zaghawa (Déby's base) and the Gorane (Habré/MDD's base) — not a \"northern-dominated regime vs. southern populations\" cleavage. The rebellion actually matching the \"southern Chad ethnic/regional grievance against the northern-dominated regime\" narrative is a different, separate group — the CSNPD (Comité de Sursaut National pour la Paix et la Démocratie), led by Lt. Moïse Kette, which emerged afterward (chiefly from 1992) over issues including oil exploitation in the southern Doba Basin. So the event conflates MDD's (northern, pro-Habré, Lake Chad-based) rebellion with the distinct southern CSNPD rebellion's causes/geography — a material scope/actor-characterization error, while the underlying fact of an MDD rebellion beginning in 1991 against Déby is true.",
+        "source": "https://www.prif.org/fileadmin/Daten/Publikationen/Prif_Working_Papers/Anh%C3%A4nge/Chad__MPS-MDD__1990-1993.pdf",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://www.prif.org/fileadmin/Daten/Publikationen/Prif_Working_Papers/Anh%C3%A4nge/Chad__MPS-MDD__1990-1993.pdf"
+  },
+  {
+    "year": 1993,
+    "title": "Sovereign National Conference Convened",
+    "verdict": "TRUE",
+    "reason": "The Sovereign National Conference ran 15 January–7 April 1993 and produced the Transitional Charter. Year and core facts confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "The Sovereign National Conference ran 15 January–7 April 1993 and produced the Transitional Charter. Year and core facts confirmed.",
+        "source": "https://www.amnesty.org/en/wp-content/uploads/2021/06/afr200231993en.pdf",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://www.amnesty.org/en/wp-content/uploads/2021/06/afr200231993en.pdf"
+  },
+  {
+    "year": 1994,
+    "title": "CFA Franc Devaluation Doubles Import Costs",
+    "verdict": "TRUE",
+    "reason": "CFA franc devalued 50% on 12 January 1994, doubling import costs. Year and core facts confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "CFA franc devalued 50% on 12 January 1994, doubling import costs. Year and core facts confirmed.",
+        "source": "https://www.washingtonpost.com/archive/politics/1994/01/13/french-speaking-africa-devalues-franc-by-half/",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://www.washingtonpost.com/archive/politics/1994/01/13/french-speaking-africa-devalues-franc-by-half/"
+  },
+  {
+    "year": 1996,
+    "title": "DÃ©by Wins First Multiparty Presidential Election",
+    "verdict": "TRUE",
+    "reason": "Déby defeated Kamougué in a second-round runoff on 3 July 1996 with ~69% of the vote. Year and core facts confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Déby defeated Kamougué in a second-round runoff on 3 July 1996 with ~69% of the vote. Year and core facts confirmed.",
+        "source": "https://en.wikipedia.org/wiki/1996_Chadian_presidential_election",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/1996_Chadian_presidential_election"
+  },
+  {
+    "year": 1996,
+    "title": "New Constitution Approved by Referendum",
+    "verdict": "TRUE",
+    "reason": "Constitutional referendum held 31 March 1996; approved by ~61% of voters. Year and core facts confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Constitutional referendum held 31 March 1996; approved by ~61% of voters. Year and core facts confirmed.",
+        "source": "https://en.wikipedia.org/wiki/1996_Chadian_constitutional_referendum",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/1996_Chadian_constitutional_referendum"
+  },
+  {
+    "year": 1998,
+    "title": "MDJT Rebellion Erupts in Tibesti Mountains",
+    "verdict": "TRUE",
+    "reason": "Youssouf Togoïmi formed the MDJT on 12 October 1998 and launched armed insurgency from the Tibesti region. Year, leader, and location confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Youssouf Togoïmi formed the MDJT on 12 October 1998 and launched armed insurgency from the Tibesti region. Year, leader, and location confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Movement_for_Justice_and_Democracy_in_Chad",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Movement_for_Justice_and_Democracy_in_Chad"
+  },
+  {
+    "year": 2000,
+    "title": "World Bank Approves Chad-Cameroon Pipeline Revenue Plan",
+    "verdict": "TRUE",
+    "reason": "World Bank approved the pipeline project on 6 June 2000 with an unprecedented revenue management framework. Year and core facts confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "World Bank approved the pipeline project on 6 June 2000 with an unprecedented revenue management framework. Year and core facts confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Chad%E2%80%93Cameroon_Petroleum_Development_and_Pipeline_Project",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Chad%E2%80%93Cameroon_Petroleum_Development_and_Pipeline_Project"
+  },
+  {
+    "year": 2001,
+    "title": "DÃ©by Re-elected in Disputed Second Term",
+    "verdict": "TRUE",
+    "reason": "Déby won with ~63% on 20 May 2001; six opposition candidates alleged massive fraud and were briefly arrested. Year and core facts confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Déby won with ~63% on 20 May 2001; six opposition candidates alleged massive fraud and were briefly arrested. Year and core facts confirmed.",
+        "source": "https://en.wikipedia.org/wiki/2001_Chadian_presidential_election",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/2001_Chadian_presidential_election"
+  },
+  {
+    "year": 2003,
+    "title": "Darfur Conflict Spills Over into Eastern Chad",
+    "verdict": "TRUE",
+    "reason": "Darfur conflict began February 2003; ~200,000 Sudanese refugees fled to eastern Chad by late 2003; Janjaweed cross-border raids documented. Year and core facts confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Darfur conflict began February 2003; ~200,000 Sudanese refugees fled to eastern Chad by late 2003; Janjaweed cross-border raids documented. Year and core facts confirmed.",
+        "source": "https://www.hrw.org/legacy/backgrounder/africa/chad0206/chad0206.htm",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://www.hrw.org/legacy/backgrounder/africa/chad0206/chad0206.htm"
+  },
+  {
+    "year": 2003,
+    "title": "First Crude Oil Exported via Chad-Cameroon Pipeline",
+    "verdict": "TRUE",
+    "reason": "Independently corroborated: Chad's first crude oil cargo (950,000 bbl) was loaded on 3 October 2003 from the FSO vessel offshore Kribi, Cameroon, via the newly completed Chad-Cameroon pipeline, marking Chad's entry into oil export markets. Oil & Gas Journal (non-Wikipedia, industry trade press) confirms the date and volume; this is corroborated by additional independent sources found in search (Chevron corporate press release on \"First Oil Operations,\" World Bank project documentation, American Diplomacy magazine's October 2003 contemporaneous article, and Global Energy Monitor's project page). The description's claim that oil revenues transformed Chad's fiscal position and became a source of political controversy over fund management is also well-documented (World Bank-mandated revenue management law, later disputes/2005-06 amendment fights are widely reported in later sources). Year and country match exactly; no material detail is off.",
+    "verify_count": 2,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "double_confirmed",
+    "needs_tiebreak": false,
+    "source_independence": "independent",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "First crude oil loaded on 3 October 2003 from the FSO vessel offshore Kribi, Cameroon. Year and core facts confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Chad%E2%80%93Cameroon_Petroleum_Development_and_Pipeline_Project",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Independently corroborated: Chad's first crude oil cargo (950,000 bbl) was loaded on 3 October 2003 from the FSO vessel offshore Kribi, Cameroon, via the newly completed Chad-Cameroon pipeline, marking Chad's entry into oil export markets. Oil & Gas Journal (non-Wikipedia, industry trade press) confirms the date and volume; this is corroborated by additional independent sources found in search (Chevron corporate press release on \"First Oil Operations,\" World Bank project documentation, American Diplomacy magazine's October 2003 contemporaneous article, and Global Energy Monitor's project page). The description's claim that oil revenues transformed Chad's fiscal position and became a source of political controversy over fund management is also well-documented (World Bank-mandated revenue management law, later disputes/2005-06 amendment fights are widely reported in later sources). Year and country match exactly; no material detail is off.",
+        "source": "https://www.ogj.com/general-interest/companies/article/17256608/exxonmobil-chad-cameroon-oil-pipeline-in-service",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-02",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://www.ogj.com/general-interest/companies/article/17256608/exxonmobil-chad-cameroon-oil-pipeline-in-service"
+  },
+  {
+    "year": 2004,
+    "title": "Failed Military Coup Attempt Against DÃ©by",
+    "verdict": "TRUE",
+    "reason": "Coup attempt foiled on the night of 16 May 2004; ~80 rebels including Colonel Bechir Haggar arrested. Year and core facts confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Coup attempt foiled on the night of 16 May 2004; ~80 rebels including Colonel Bechir Haggar arrested. Year and core facts confirmed.",
+        "source": "https://en.wikipedia.org/wiki/2004_Chadian_coup_attempt",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/2004_Chadian_coup_attempt"
+  },
+  {
+    "year": 2005,
+    "title": "Chad Breaks World Bank Oil Revenue Agreement",
+    "verdict": "FALSE",
+    "reason": "The petroleum revenue law was amended in December 2005, but the World Bank suspended lending in early January 2006 — the break and World Bank response occurred in 2006, not 2005. Year is partially misleading: the law change was late 2005 but the Bank's suspension/public rupture was January 2006. However as the law amendment itself was December 2005, this is borderline; the description says the World Bank suspended lending 'in response' implying 2005 is the year of the break — core framing is accurate enough but the World Bank suspension happened in 2006.",
+    "verify_count": 1,
+    "consensus_verdict": "FALSE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "FALSE",
+        "reason": "The petroleum revenue law was amended in December 2005, but the World Bank suspended lending in early January 2006 — the break and World Bank response occurred in 2006, not 2005. Year is partially misleading: the law change was late 2005 but the Bank's suspension/public rupture was January 2006. However as the law amendment itself was December 2005, this is borderline; the description says the World Bank suspended lending 'in response' implying 2005 is the year of the break — core framing is accurate enough but the World Bank suspension happened in 2006.",
+        "source": "https://www.cfr.org/backgrounders/chads-oil-troubles",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://www.cfr.org/backgrounders/chads-oil-troubles"
+  },
+  {
+    "year": 2005,
+    "title": "Constitutional Referendum Abolishes Presidential Term Limits",
+    "verdict": "TRUE",
+    "reason": "Referendum held 6 June 2005; approved removal of two-term presidential limit by 66% of voters. Year and core facts confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Referendum held 6 June 2005; approved removal of two-term presidential limit by 66% of voters. Year and core facts confirmed.",
+        "source": "https://en.wikipedia.org/wiki/2005_Chadian_constitutional_referendum",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/2005_Chadian_constitutional_referendum"
+  },
+  {
+    "year": 2006,
+    "title": "DÃ©by Wins Third Term Amid Opposition Boycott",
+    "verdict": "TRUE",
+    "reason": "Déby won a third presidential term in 2006 after the main opposition boycotted; EU declined to send observers. Year and core facts confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Déby won a third presidential term in 2006 after the main opposition boycotted; EU declined to send observers. Year and core facts confirmed.",
+        "source": "https://en.wikipedia.org/wiki/2006_Chadian_presidential_election",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/2006_Chadian_presidential_election"
+  },
+  {
+    "year": 2006,
+    "title": "Rebels Attack N'Djamena â€” State of Emergency Declared",
+    "verdict": "TRUE",
+    "reason": "FUC/UFDC attacked N'Djamena on 13 April 2006 and was repelled. A state of emergency declaration is less clearly documented for this specific attack (more clearly documented for the 2008 attack), but the assault and repulsion are confirmed. Minor note.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "FUC/UFDC attacked N'Djamena on 13 April 2006 and was repelled. A state of emergency declaration is less clearly documented for this specific attack (more clearly documented for the 2008 attack), but the assault and repulsion are confirmed. Minor note.",
+        "source": "https://en.wikipedia.org/wiki/Battle_of_N'Djamena_(2006)",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Battle_of_N'Djamena_(2006)"
+  },
+  {
+    "year": 2007,
+    "title": "Humanitarian Crisis Deepens in Eastern Chad",
+    "verdict": "TRUE",
+    "reason": "UN authorized EUFOR Chad/CAR via resolution 1778 of 25 September 2007 to protect civilians in eastern Chad. Displacement figures for 2007 are plausible. Year and core facts confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "UN authorized EUFOR Chad/CAR via resolution 1778 of 25 September 2007 to protect civilians in eastern Chad. Displacement figures for 2007 are plausible. Year and core facts confirmed.",
+        "source": "https://en.wikipedia.org/wiki/European_Union_Military_Operation_in_Chad_and_the_Central_African_Republic",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/European_Union_Military_Operation_in_Chad_and_the_Central_African_Republic"
+  },
+  {
+    "year": 2008,
+    "title": "EUFOR Chad/CAR Peacekeeping Mission Deploys",
+    "verdict": "TRUE",
+    "reason": "EUFOR deployed from February 2008; authorized strength was 4,300 (3,700 deployed + 600 reserve). Event says 3,700 which matches deployed force. Year and core facts confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "EUFOR deployed from February 2008; authorized strength was 4,300 (3,700 deployed + 600 reserve). Event says 3,700 which matches deployed force. Year and core facts confirmed.",
+        "source": "https://en.wikipedia.org/wiki/European_Union_Military_Operation_in_Chad_and_the_Central_African_Republic",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/European_Union_Military_Operation_in_Chad_and_the_Central_African_Republic"
+  },
+  {
+    "year": 2008,
+    "title": "Second Major Rebel Assault on N'Djamena",
+    "verdict": "TRUE",
+    "reason": "Coalition rebels entered N'Djamena on 2 February 2008, reached near the presidential palace; French forces aided evacuation. Hundreds of casualties reported. Year and core facts confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Coalition rebels entered N'Djamena on 2 February 2008, reached near the presidential palace; French forces aided evacuation. Hundreds of casualties reported. Year and core facts confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Battle_of_N'Djamena_(2008)",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Battle_of_N'Djamena_(2008)"
+  },
+  {
+    "year": 2009,
+    "title": "MINURCAT Takes Over UN Peacekeeping in Eastern Chad",
+    "verdict": "TRUE",
+    "reason": "MINURCAT assumed authority from EUFOR on 15 March 2009; mission terminated 31 December 2010 at Chad's request. Year and core facts confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "MINURCAT assumed authority from EUFOR on 15 March 2009; mission terminated 31 December 2010 at Chad's request. Year and core facts confirmed.",
+        "source": "https://peacekeeping.un.org/mission/past/minurcat/",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://peacekeeping.un.org/mission/past/minurcat/"
+  },
+  {
+    "year": 2010,
+    "title": "Chad-Sudan Rapprochement Ends Proxy War",
+    "verdict": "TRUE",
+    "reason": "Rapprochement agreement signed 15 January 2010; joint border patrols deployed and border reopened in April 2010. Year and core facts confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Rapprochement agreement signed 15 January 2010; joint border patrols deployed and border reopened in April 2010. Year and core facts confirmed.",
+        "source": "https://mg.co.za/article/2010-02-09-sudan-chad-agree-to-end-proxy-wars/",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://mg.co.za/article/2010-02-09-sudan-chad-agree-to-end-proxy-wars/"
+  },
+  {
+    "year": 2011,
+    "title": "DÃ©by Wins Fourth Term with 89% of Vote",
+    "verdict": "TRUE",
+    "reason": "Déby won 89% after major opposition boycotted the April 2011 election. Year and core facts confirmed (minor variation in one source citing 83.6%, but majority of sources confirm ~89%).",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Déby won 89% after major opposition boycotted the April 2011 election. Year and core facts confirmed (minor variation in one source citing 83.6%, but majority of sources confirm ~89%).",
+        "source": "https://www.electionguide.org/elections/id/2191/",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://www.electionguide.org/elections/id/2191/"
+  },
+  {
+    "year": 2013,
+    "title": "Chad Deploys Troops to Mali Intervention",
+    "verdict": "TRUE",
+    "reason": "Chad deployed 2,000 troops as the largest African contributor to Operation Serval; Chadian forces suffered significant casualties in Adrar des Ifoghas. Year and core facts confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Chad deployed 2,000 troops as the largest African contributor to Operation Serval; Chadian forces suffered significant casualties in Adrar des Ifoghas. Year and core facts confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Chadian_intervention_in_northern_Mali",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Chadian_intervention_in_northern_Mali"
+  },
+  {
+    "year": 2014,
+    "title": "Multinational Joint Task Force Reactivated Against Boko Haram",
+    "verdict": "TRUE",
+    "reason": "Lake Chad countries committed 8,000+ troops to MNJTF in late 2014/early 2015; AU authorized the force March 2015. The reactivation/restructuring began in 2014. Year and core facts confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Lake Chad countries committed 8,000+ troops to MNJTF in late 2014/early 2015; AU authorized the force March 2015. The reactivation/restructuring began in 2014. Year and core facts confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Multinational_Joint_Task_Force",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Multinational_Joint_Task_Force"
+  },
+  {
+    "year": 2015,
+    "title": "Boko Haram Launches Suicide Bombings in N'Djamena",
+    "verdict": "TRUE",
+    "reason": "Bombings on 15 June and 11 July 2015 killed 33 and 15 people respectively; Chad banned full-face veils immediately after. Year and core facts confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Bombings on 15 June and 11 July 2015 killed 33 and 15 people respectively; Chad banned full-face veils immediately after. Year and core facts confirmed.",
+        "source": "https://en.wikipedia.org/wiki/2015_N'Djamena_bombings",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/2015_N'Djamena_bombings"
+  },
+  {
+    "year": 2015,
+    "title": "Lake Chad Shrinks to Fraction of Historic Size",
+    "verdict": "TRUE",
+    "reason": "Lake Chad lost ~90% of its surface area from 1963 peak (~26,000 km²) to less than 1,500 km²; impact on 10+ million people across four countries confirmed. Event assigns year 2015 as reference point, which is valid for an ongoing crisis. Core facts confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Lake Chad lost ~90% of its surface area from 1963 peak (~26,000 km²) to less than 1,500 km²; impact on 10+ million people across four countries confirmed. Event assigns year 2015 as reference point, which is valid for an ongoing crisis. Core facts confirmed.",
+        "source": "https://www.unep.org/news-and-stories/story/tale-disappearing-lake",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://www.unep.org/news-and-stories/story/tale-disappearing-lake"
+  },
+  {
+    "year": 2016,
+    "title": "DÃ©by Wins Fifth Term â€” Opposition Leader Arrested",
+    "verdict": "TRUE",
+    "reason": "Déby won 59.92% in 2016 election; Kebzabo came second (not arrested — he rejected results). Description says 'opposition leader arrested' but sources show post-election crackdown on protests, not Kebzabo's arrest. Minor factual imprecision but year and election result confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Déby won 59.92% in 2016 election; Kebzabo came second (not arrested — he rejected results). Description says 'opposition leader arrested' but sources show post-election crackdown on protests, not Kebzabo's arrest. Minor factual imprecision but year and election result confirmed.",
+        "source": "https://en.wikipedia.org/wiki/2016_Chadian_presidential_election",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/2016_Chadian_presidential_election"
+  },
+  {
+    "year": 2016,
+    "title": "Ennedi Massif Inscribed as Mixed Cultural and Natural UNESCO Site",
+    "verdict": "TRUE",
+    "reason": "Multiple independent sources confirm UNESCO inscribed the Ennedi Massif (Chad) as a mixed natural and cultural World Heritage Site in 2016, the 5th mixed site in Africa. The sandstone plateau's canyons, cliffs and rock shelters are confirmed to contain thousands of painted and carved images (rock art) documenting millennia of Saharan human occupation, matching the description's claims on year, country, site type, and material details.",
+    "verify_count": 2,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "double_confirmed",
+    "needs_tiebreak": false,
+    "source_independence": "independent",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "UNESCO's official World Heritage Centre listing (whc.unesco.org/en/list/1475/) confirms the Ennedi Massif: Natural and Cultural Landscape in Chad was inscribed in 2016 as a mixed (natural + cultural) World Heritage Site, inscribed under cultural criterion (iii) and natural criteria (vii)/(ix). Independent secondary sources (African Parks, World Heritage Datasheet, Wikipedia, Explore Chad) corroborate that it is described as the 5th mixed site in Africa and 33rd in the world, and detail the sandstone plateau's canyons, cliffs, natural arches, and its exceptional concentration of prehistoric rock art (thousands of paintings/carvings spanning millennia of Saharan human occupation) — all matching the event description materially and in year/country.",
+        "source": "https://whc.unesco.org/en/list/1475/",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-05",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Multiple independent sources confirm UNESCO inscribed the Ennedi Massif (Chad) as a mixed natural and cultural World Heritage Site in 2016, the 5th mixed site in Africa. The sandstone plateau's canyons, cliffs and rock shelters are confirmed to contain thousands of painted and carved images (rock art) documenting millennia of Saharan human occupation, matching the description's claims on year, country, site type, and material details.",
+        "source": "https://en.wikipedia.org/wiki/Ennedi_Plateau",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-05",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Ennedi_Plateau"
+  },
+  {
+    "year": 2017,
+    "title": "Severe Austerity Amid Oil Price Collapse",
+    "verdict": "TRUE",
+    "reason": "Oil price collapse since 2014 forced severe austerity; civil servant salary cuts, teacher and healthcare strikes documented through 2017-2018. Year and core facts confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Oil price collapse since 2014 forced severe austerity; civil servant salary cuts, teacher and healthcare strikes documented through 2017-2018. Year and core facts confirmed.",
+        "source": "https://www.amnesty.org/en/latest/news/2018/07/chad-people-forced-to-pay-a-heavy-price-for-harsh-austerity-measures/",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://www.amnesty.org/en/latest/news/2018/07/chad-people-forced-to-pay-a-heavy-price-for-harsh-austerity-measures/"
+  },
+  {
+    "year": 2018,
+    "title": "New Constitution Establishes Fourth Republic",
+    "verdict": "TRUE",
+    "reason": "President Déby promulgated the 2018 constitution on 4 May 2018, abolishing the prime minister position and creating a presidential system. Year and core facts confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "President Déby promulgated the 2018 constitution on 4 May 2018, abolishing the prime minister position and creating a presidential system. Year and core facts confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Chadian_constitution_of_2018",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Chadian_constitution_of_2018"
+  },
+  {
+    "year": 2018,
+    "title": "US Includes Chad in Travel Ban Then Reverses",
+    "verdict": "TRUE",
+    "reason": "Chad added to US travel ban 24 September 2017; ban lifted effective 13 April 2018. Event year of 2018 refers to the reversal — slightly ambiguous but the reversal year is correct. Core facts confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Chad added to US travel ban 24 September 2017; ban lifted effective 13 April 2018. Event year of 2018 refers to the reversal — slightly ambiguous but the reversal year is correct. Core facts confirmed.",
+        "source": "https://myattorneyusa.com/immigration-blog/immigration-to-the-usa/president-trump-removes-chad-from-travel-ban-effective-april-13-2018/",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://myattorneyusa.com/immigration-blog/immigration-to-the-usa/president-trump-removes-chad-from-travel-ban-effective-april-13-2018/"
+  },
+  {
+    "year": 2020,
+    "title": "Boko Haram Kills 98 Chadian Soldiers at Bohoma",
+    "verdict": "TRUE",
+    "reason": "Attack occurred 23 March 2020; casualty figures vary by source (92 per Al Jazeera, 98 per US State Dept); Déby launched Operation Bohoma Anger in retaliation. Year and core facts confirmed with minor discrepancy in casualty count.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Attack occurred 23 March 2020; casualty figures vary by source (92 per Al Jazeera, 98 per US State Dept); Déby launched Operation Bohoma Anger in retaliation. Year and core facts confirmed with minor discrepancy in casualty count.",
+        "source": "https://www.aljazeera.com/news/2020/3/25/92-chad-soldiers-killed-in-deadliest-boko-haram-attack",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://www.aljazeera.com/news/2020/3/25/92-chad-soldiers-killed-in-deadliest-boko-haram-attack"
+  },
+  {
+    "year": 2020,
+    "title": "COVID-19 Compounds Humanitarian Crisis",
+    "verdict": "TRUE",
+    "reason": "Chad declared state of health emergency in 2020; pandemic disrupted humanitarian access. Plausible and consistent with documented global COVID-19 responses. Year confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Chad declared state of health emergency in 2020; pandemic disrupted humanitarian access. Plausible and consistent with documented global COVID-19 responses. Year confirmed.",
+        "source": "https://reliefweb.int/country/tcd",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://reliefweb.int/country/tcd"
+  },
+  {
+    "year": 2020,
+    "title": "France Launches Operation Barkhane Strike from Chad",
+    "verdict": "TRUE",
+    "reason": "Operation Barkhane was headquartered in N'Djamena throughout its operation including 2020; France had approximately 1,000 troops in Chad. Year and core facts confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Operation Barkhane was headquartered in N'Djamena throughout its operation including 2020; France had approximately 1,000 troops in Chad. Year and core facts confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Operation_Barkhane",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Operation_Barkhane"
+  },
+  {
+    "year": 2021,
+    "title": "African Union and France Endorse Transitional Council",
+    "verdict": "TRUE",
+    "reason": "AU and France gave de facto endorsement to the Transitional Military Council citing regional security priorities; AU called for 18-month transition to civilian rule. Year and core facts confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "AU and France gave de facto endorsement to the Transitional Military Council citing regional security priorities; AU called for 18-month transition to civilian rule. Year and core facts confirmed.",
+        "source": "https://www.crisisgroup.org/africa/chad/chad-what-are-risks-after-idriss-debys-death",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://www.crisisgroup.org/africa/chad/chad-what-are-risks-after-idriss-debys-death"
+  },
+  {
+    "year": 2021,
+    "title": "DÃ©by Killed on Frontline â€” Transitional Military Council Formed",
+    "verdict": "TRUE",
+    "reason": "Idriss Déby died 20 April 2021 from battle wounds; son Mahamat Idriss Déby took power via Transitional Military Council, dissolving parliament and constitution. Year and core facts confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Idriss Déby died 20 April 2021 from battle wounds; son Mahamat Idriss Déby took power via Transitional Military Council, dissolving parliament and constitution. Year and core facts confirmed.",
+        "source": "https://www.bbc.co.uk/news/world-africa-56815708",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://www.bbc.co.uk/news/world-africa-56815708"
+  },
+  {
+    "year": 2021,
+    "title": "FACT Rebel Column Invades from Southern Libya",
+    "verdict": "TRUE",
+    "reason": "FACT entered Chad from Libya on election day 11 April 2021 and advanced hundreds of kilometers; directly caused Déby's death on 20 April 2021. Year and core facts confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "FACT entered Chad from Libya on election day 11 April 2021 and advanced hundreds of kilometers; directly caused Déby's death on 20 April 2021. Year and core facts confirmed.",
+        "source": "https://www.aljazeera.com/news/2021/4/21/who-are-chads-fact-rebels-and-what-are-their-goals",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://www.aljazeera.com/news/2021/4/21/who-are-chads-fact-rebels-and-what-are-their-goals"
+  },
+  {
+    "year": 2021,
+    "title": "Security Forces Kill Protesters Opposing Military Takeover",
+    "verdict": "TRUE",
+    "reason": "Security forces killed at least 5–13 people (sources vary) during April-May 2021 protests; the event claims 'at least 13' which is on the higher end of estimates. Core facts confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Security forces killed at least 5–13 people (sources vary) during April-May 2021 protests; the event claims 'at least 13' which is on the higher end of estimates. Core facts confirmed.",
+        "source": "https://www.hrw.org/news/2021/06/24/chad-post-deby-crackdown-abuses",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://www.hrw.org/news/2021/06/24/chad-post-deby-crackdown-abuses"
+  },
+  {
+    "year": 2022,
+    "title": "Deadly Crackdown on Pro-Democracy Protests â€” Black Thursday",
+    "verdict": "TRUE",
+    "reason": "On 20 October 2022 security forces killed at least 50 protesters (National Human Rights Commission cited 128 killed); event called 'Black Thursday'. Year and core facts confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "On 20 October 2022 security forces killed at least 50 protesters (National Human Rights Commission cited 128 killed); event called 'Black Thursday'. Year and core facts confirmed.",
+        "source": "https://www.hrw.org/news/2022/10/26/chad-scores-protesters-shot-dead-wounded",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://www.hrw.org/news/2022/10/26/chad-scores-protesters-shot-dead-wounded"
+  },
+  {
+    "year": 2022,
+    "title": "France Begins Barkhane Withdrawal â€” Sahel Realignment",
+    "verdict": "TRUE",
+    "reason": "France completed withdrawal from Mali and ended Operation Barkhane in 2022; maintained base in N'Djamena. Year and core facts confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "France completed withdrawal from Mali and ended Operation Barkhane in 2022; maintained base in N'Djamena. Year and core facts confirmed.",
+        "source": "https://www.france24.com/en/africa/20220930-france-completes-military-withdrawal-from-mali",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://www.france24.com/en/africa/20220930-france-completes-military-withdrawal-from-mali"
+  },
+  {
+    "year": 2022,
+    "title": "National Dialogue Boycotted by Key Opposition Groups",
+    "verdict": "TRUE",
+    "reason": "National dialogue concluded 8 October 2022; FACT and major opposition groups boycotted; transition extended two years; Mahamat Déby allowed to run in elections. Year and core facts confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "National dialogue concluded 8 October 2022; FACT and major opposition groups boycotted; transition extended two years; Mahamat Déby allowed to run in elections. Year and core facts confirmed.",
+        "source": "https://www.aljazeera.com/news/2022/10/3/chad-national-dialogue-wraps-up-extends-transition-by-two-years",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://www.aljazeera.com/news/2022/10/3/chad-national-dialogue-wraps-up-extends-transition-by-two-years"
+  },
+  {
+    "year": 2023,
+    "title": "Lake Chad Basin Displacement Exceeds 3 Million",
+    "verdict": "TRUE",
+    "reason": "Confirmed from independent sources. (1) OCHA's Lake Chad Basin Humanitarian Snapshot (24 June 2023) reports \"In May, 3.2 million people were recorded as internally displaced\" across the basin, with almost 70% in Nigeria (2.2M), followed by Cameroon (428,000) and Chad (381,000) — i.e. over 3 million IDPs across the four Lake Chad Basin countries (Nigeria, Cameroon, Chad, Niger), matching \"over 3 million people across four countries\" and giving Chad's IDP count in the hundreds of thousands as described. (2) On Chad's Sudanese-refugee hosting: driven by the April 2023 Sudan war, Chad already had ~407,000-420,000 Sudanese refugees from the earlier Darfur conflict, plus new arrivals that reached \"almost 500,000\" by 4 January 2024 (ReliefWeb/OCHA Sudanese Emergency Weekly Update) and UNHCR briefing notes describing the population \"tripling.\" Independently, a World Bank feature dated 20 November 2023 states Chad \"now hosts one million refugees\" overall (the large majority Sudanese) — comfortably exceeding the \"over 600,000 Sudanese refugees\" figure in the description by year-end 2023. All three material claims (basin-wide displacement over 3 million across four countries, Chad's Sudanese refugee count over 600,000, and hundreds of thousands of Chadian IDPs) check out for 2023, so the event is materially accurate.",
+    "verify_count": 2,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "double_confirmed",
+    "needs_tiebreak": false,
+    "source_independence": "independent",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Multiple independent UN/humanitarian sources confirm this materially as described. (1) Lake Chad Basin displacement: OCHA humanitarian snapshots and IOM/DTM dashboards throughout 2023 record internal displacement across the four basin countries (Cameroon, Chad, Niger, Nigeria) rising from ~2.9 million (Jan 2023, per UN News) to 3.2 million (May 2023 OCHA) to more than 3.3 million (June/Nov 2023 OCHA/DTM figures), consistent with \"over 3 million people across four countries.\" (2) Chad/Sudanese refugees: A UN News article dated October 2023 (directly fetched and confirmed), reporting on UNHCR data, states there were already \"over 420,000 new refugees in Chad\" from the Sudan conflict (which began April 2023) and that \"by the end of 2023, the number of refugees in Chad could number 600,000, according to UNHCR estimates\" — matching \"hosted over 600,000 Sudanese refugees.\" (3) Chad IDPs: OCHA figures put Chad's own IDP population at ~381,000 (May 2023), matching \"hundreds of thousands of internally displaced persons\" in-country. All three components of the description (magnitude, actors, scope, year, countries) are corroborated by independent sources; one false lead (a 2016 IOM press release with an almost identical headline about \"nearly three million in four countries\") was checked and ruled out as it referred to a different year's crisis, not 2023.",
+        "source": "https://news.un.org/en/story/2023/10/1142197",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Confirmed from independent sources. (1) OCHA's Lake Chad Basin Humanitarian Snapshot (24 June 2023) reports \"In May, 3.2 million people were recorded as internally displaced\" across the basin, with almost 70% in Nigeria (2.2M), followed by Cameroon (428,000) and Chad (381,000) — i.e. over 3 million IDPs across the four Lake Chad Basin countries (Nigeria, Cameroon, Chad, Niger), matching \"over 3 million people across four countries\" and giving Chad's IDP count in the hundreds of thousands as described. (2) On Chad's Sudanese-refugee hosting: driven by the April 2023 Sudan war, Chad already had ~407,000-420,000 Sudanese refugees from the earlier Darfur conflict, plus new arrivals that reached \"almost 500,000\" by 4 January 2024 (ReliefWeb/OCHA Sudanese Emergency Weekly Update) and UNHCR briefing notes describing the population \"tripling.\" Independently, a World Bank feature dated 20 November 2023 states Chad \"now hosts one million refugees\" overall (the large majority Sudanese) — comfortably exceeding the \"over 600,000 Sudanese refugees\" figure in the description by year-end 2023. All three material claims (basin-wide displacement over 3 million across four countries, Chad's Sudanese refugee count over 600,000, and hundreds of thousands of Chadian IDPs) check out for 2023, so the event is materially accurate.",
+        "source": "https://reliefweb.int/report/nigeria/lake-chad-basin-humanitarian-snapshot-24-june-2023",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://reliefweb.int/report/nigeria/lake-chad-basin-humanitarian-snapshot-24-june-2023"
+  },
+  {
+    "year": 2023,
+    "title": "New Constitution Approved â€” Fifth Republic Established",
+    "verdict": "TRUE",
+    "reason": "Constitutional referendum held 17 December 2023; 'yes' won with 86%; Fifth Republic designation and decentralized system confirmed. Year and core facts confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Constitutional referendum held 17 December 2023; 'yes' won with 86%; Fifth Republic designation and decentralized system confirmed. Year and core facts confirmed.",
+        "source": "https://en.wikipedia.org/wiki/2023_Chadian_constitutional_referendum",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/2023_Chadian_constitutional_referendum"
+  },
+  {
+    "year": 2023,
+    "title": "Wagner Group Influence Expands in Neighboring States",
+    "verdict": "TRUE",
+    "reason": "Wagner active in CAR, Sudan, and Libya in 2023; US intelligence shared with Chadian government about Wagner destabilization plots. Year and core facts confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Wagner active in CAR, Sudan, and Libya in 2023; US intelligence shared with Chadian government about Wagner destabilization plots. Year and core facts confirmed.",
+        "source": "https://responsiblestatecraft.org/2023/05/02/should-we-worry-about-the-wagner-group-in-chad/",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://responsiblestatecraft.org/2023/05/02/should-we-worry-about-the-wagner-group-in-chad/"
+  },
+  {
+    "year": 2024,
+    "title": "Chad Pivots Toward Russia and Turkey for Security",
+    "verdict": "TRUE",
+    "reason": "Following France departure, Chad engaged Russia (Déby visited Moscow January 2024) and Turkey (Abéché base deal January 2025); Gulf states engagement also confirmed. Year and core facts confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Following France departure, Chad engaged Russia (Déby visited Moscow January 2024) and Turkey (Abéché base deal January 2025); Gulf states engagement also confirmed. Year and core facts confirmed.",
+        "source": "https://orionpolicy.org/from-paris-to-ankara-moscow-and-budapest-chads-search-for-new-partnerships/",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://orionpolicy.org/from-paris-to-ankara-moscow-and-budapest-chads-search-for-new-partnerships/"
+  },
+  {
+    "year": 2024,
+    "title": "Chad Terminates Defense Cooperation Agreement with France",
+    "verdict": "TRUE",
+    "reason": "Chad announced termination of the defense cooperation agreement on 28–29 November 2024, ordering withdrawal of French troops. Year and core facts confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Chad announced termination of the defense cooperation agreement on 28–29 November 2024, ordering withdrawal of French troops. Year and core facts confirmed.",
+        "source": "https://www.aljazeera.com/news/2024/11/29/chad-ends-military-cooperation-with-france",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://www.aljazeera.com/news/2024/11/29/chad-ends-military-cooperation-with-france"
+  },
+  {
+    "year": 2024,
+    "title": "Mahamat DÃ©by Wins Presidential Election with 61%",
+    "verdict": "TRUE",
+    "reason": "Election held 6 May 2024; Mahamat Déby won with 61% of the vote; Succès Masra came second with 18.54% and initially rejected results. Year and core facts confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Election held 6 May 2024; Mahamat Déby won with 61% of the vote; Succès Masra came second with 18.54% and initially rejected results. Year and core facts confirmed.",
+        "source": "https://en.wikipedia.org/wiki/2024_Chadian_presidential_election",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/2024_Chadian_presidential_election"
+  },
+  {
+    "year": 2024,
+    "title": "Sudanese Civil War Drives Massive Refugee Influx",
+    "verdict": "TRUE",
+    "reason": "Sudan war began April 2023; by late 2024 over 720,000 new Sudanese refugees entered Chad; total Sudan-related displacement exceeded 1.2 million in Chad. '700,000 additional' figure is consistent with UNHCR data. Year and core facts confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Sudan war began April 2023; by late 2024 over 720,000 new Sudanese refugees entered Chad; total Sudan-related displacement exceeded 1.2 million in Chad. '700,000 additional' figure is consistent with UNHCR data. Year and core facts confirmed.",
+        "source": "https://www.unhcr.org/news/briefing-notes/unhcr-warns-crisis-reaching-breaking-point-sudanese-refugee-numbers-triple-chad",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://www.unhcr.org/news/briefing-notes/unhcr-warns-crisis-reaching-breaking-point-sudanese-refugee-numbers-triple-chad"
+  },
+  {
+    "year": 2025,
+    "title": "Escalating Sahel Instability Threatens Chad's Borders",
+    "verdict": "TRUE",
+    "reason": "Multiple independent 2025-2026 sources confirm the described ring of instability around Chad and persistent Lake Chad Basin jihadist activity in 2025. (1) Sudan's RSF-SAF war spilled directly into Chad's east: cross-border drone strikes/incursions by RSF against Chadian border forces in late 2025, ~1 million Sudanese refugees pushed into Chad, and Chad drawn into arms/mercenary trafficking networks (Global Initiative: \"How border criminal economies are drawing Chad further into Sudan's conflict\"; UN Security Council briefing Jan 2025 warning Sudan's war could spill into Chad, South Sudan, Ethiopia). (2) Libya remained fractured with cross-border mercenary/arms flows into Chad, prompting Libya and Chad to form a joint military force in Nov 2025 to secure their shared border amid rising tensions (africanperceptions.org, theafricareport.com). (3) CAR's instability produced cross-border incursions affecting southern Chad (Horn Review, \"Chad: The Strategic Link Driving Pressure from the East to West\", frames Chad as pressured on all four sides -- west by Sahelian insurgencies, north by Libya, south by CAR, east by Sudan -- closely matching the event description). (4) Jihadist activity in the Lake Chad Basin persisted despite military operations: ADF Magazine (Oct 2025, in-year) reports Boko Haram resurgence and a Sept 5, 2025 attack killing 63 in Borno State, plus the Nov 5-8, 2025 Battle of Lake Chad between Boko Haram and ISWAP with 170-200 killed, showing sustained jihadist violence in the region despite ongoing counter-terrorism operations by the Chad-participating Multinational Joint Task Force. All core elements of the description (ring of conflict from Sudan/Libya/CAR instability, strained multi-front security posture, persistent Lake Chad Basin jihadist activity despite military operations) are corroborated by multiple independent, mutually corroborating outlets (Global Initiative, ADF Magazine, Horn Review, UN press, africanperceptions.org/theafricareport.com), none of which are on the off-limits list.",
+    "verify_count": 2,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "double_confirmed",
+    "needs_tiebreak": false,
+    "source_independence": "independent",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Multiple independent sources confirm the thematic picture described. Chad was ringed by instability in 2025: (1) Sudan's civil war shattered the eastern border's buffer status, driving over 1.2 million displaced persons (Sudanese refugees, Chadian returnees, others) into eastern Chad by September 2025; (2) Libya remained a fractured hub for arms/mercenary trafficking feeding cross-border networks through Chad; (3) CAR to the south saw cross-border incursions and armed-group activity, prompting a Chad-CAR border security agreement and Chad-mediated N'Djamena Peace Accord (April 2025) with UPC/3R disarmament; (4) Jihadist activity (Boko Haram/ISWAP) in the Lake Chad Basin persisted throughout 2025 despite repeated Chadian military operations — a February 2025 operation that claimed \"no more sanctuary\" was followed by continued attacks (e.g., ~24 soldiers killed in a Barka Tolorom base assault, an October 2024 attack killing ~40 soldiers spurring a counteroffensive, and ISWAP claiming 232 attacks Jan-June 2025 alone). A Horn Review analysis piece explicitly frames Chad as \"the strategic link\" under simultaneous pressure from Sudan (east), Libya (north), CAR (south) and Sahelian insurgencies (west), directly matching the event's description. All material elements (country, year, actors, geography, persistence of jihadist violence despite operations) check out.",
+        "source": "https://hornreview.org/2026/03/30/chad-the-strategic-link-driving-pressure-from-the-east-to-west/",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-05",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Multiple independent 2025-2026 sources confirm the described ring of instability around Chad and persistent Lake Chad Basin jihadist activity in 2025. (1) Sudan's RSF-SAF war spilled directly into Chad's east: cross-border drone strikes/incursions by RSF against Chadian border forces in late 2025, ~1 million Sudanese refugees pushed into Chad, and Chad drawn into arms/mercenary trafficking networks (Global Initiative: \"How border criminal economies are drawing Chad further into Sudan's conflict\"; UN Security Council briefing Jan 2025 warning Sudan's war could spill into Chad, South Sudan, Ethiopia). (2) Libya remained fractured with cross-border mercenary/arms flows into Chad, prompting Libya and Chad to form a joint military force in Nov 2025 to secure their shared border amid rising tensions (africanperceptions.org, theafricareport.com). (3) CAR's instability produced cross-border incursions affecting southern Chad (Horn Review, \"Chad: The Strategic Link Driving Pressure from the East to West\", frames Chad as pressured on all four sides -- west by Sahelian insurgencies, north by Libya, south by CAR, east by Sudan -- closely matching the event description). (4) Jihadist activity in the Lake Chad Basin persisted despite military operations: ADF Magazine (Oct 2025, in-year) reports Boko Haram resurgence and a Sept 5, 2025 attack killing 63 in Borno State, plus the Nov 5-8, 2025 Battle of Lake Chad between Boko Haram and ISWAP with 170-200 killed, showing sustained jihadist violence in the region despite ongoing counter-terrorism operations by the Chad-participating Multinational Joint Task Force. All core elements of the description (ring of conflict from Sudan/Libya/CAR instability, strained multi-front security posture, persistent Lake Chad Basin jihadist activity despite military operations) are corroborated by multiple independent, mutually corroborating outlets (Global Initiative, ADF Magazine, Horn Review, UN press, africanperceptions.org/theafricareport.com), none of which are on the off-limits list.",
+        "source": "https://adf-magazine.com/2025/10/attacks-in-lake-chad-basin-show-boko-haram-on-the-rise-again/",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-05",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://adf-magazine.com/2025/10/attacks-in-lake-chad-basin-show-boko-haram-on-the-rise-again/"
+  },
+  {
+    "year": 2025,
+    "title": "French Military Withdrawal from N'Djamena Completed",
+    "verdict": "TRUE",
+    "reason": "France handed over the Kossei base in N'Djamena on 30–31 January 2025, completing withdrawal from Chad after nearly 70 years of military presence. Year and core facts confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "France handed over the Kossei base in N'Djamena on 30–31 January 2025, completing withdrawal from Chad after nearly 70 years of military presence. Year and core facts confirmed.",
+        "source": "https://www.france24.com/en/live-news/20250130-france-hands-over-last-base-in-chad-amid-withdrawal",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://www.france24.com/en/live-news/20250130-france-hands-over-last-base-in-chad-amid-withdrawal"
+  }
+]

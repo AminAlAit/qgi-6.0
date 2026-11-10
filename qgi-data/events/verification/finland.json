@@ -1,0 +1,1038 @@
+[
+  {
+    "year": 1990,
+    "title": "Soviet Trade Collapse Triggers Deep Economic Depression",
+    "verdict": "TRUE",
+    "reason": "The Soviet Union withdrew from its bilateral trade agreement with Finland in December 1990, causing Finnish exports to the USSR to fall abruptly. This, combined with a domestic credit bubble burst, triggered Finland's worst peacetime depression since the 1930s, with GDP contracting ~12% peak-to-trough.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "The Soviet Union withdrew from its bilateral trade agreement with Finland in December 1990, causing Finnish exports to the USSR to fall abruptly. This, combined with a domestic credit bubble burst, triggered Finland's worst peacetime depression since the 1930s, with GDP contracting ~12% peak-to-trough.",
+        "source": "https://en.wikipedia.org/wiki/Early_1990s_depression_in_Finland",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Early_1990s_depression_in_Finland"
+  },
+  {
+    "year": 1991,
+    "title": "Fortress of Suomenlinna Inscribed as UNESCO World Heritage Site",
+    "verdict": "TRUE",
+    "reason": "Multiple independent sources confirm Suomenlinna (Helsinki, Finland) was inscribed on the UNESCO World Heritage List in 1991. Construction began in 1748 under the Swedish Crown, designed by Admiral Augustin Ehrensvärd applying Vauban's bastion fortification principles; the fortress was renamed from Sveaborg to Suomenlinna in a May 1918 ceremony following Finnish independence (Dec 1917), matching the description's 'after Finnish independence in 1917.' UNESCO's official rationale cites it as an outstanding example of 17th/18th-century European military architecture, exactly matching the event description. All material details (country, year, actors, scope) hold.",
+    "verify_count": 2,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "double_confirmed",
+    "needs_tiebreak": false,
+    "source_independence": "independent",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed via independent web search and Wikipedia fetch: Suomenlinna (site #583) was inscribed on the UNESCO World Heritage List in 1991 (15th session). Construction began in 1748 under the Swedish Crown, designed by Swedish Admiral Augustin Ehrensvärd applying Vauban's bastion fortification principles, on islands at the entrance to Helsinki's harbor. UNESCO's official listing describes it as an outstanding example of 17th- and 18th-century European military architecture/bastion system, matching the description closely. Minor immaterial nuance: the fortress's renaming to 'Suomenlinna' is documented as occurring on 12 May 1918 (a ceremonial flag-raising following the Finnish Civil War), i.e., shortly after Finland's December 1917 independence declaration, rather than in 1917 itself — but the description's phrasing 'renamed ... after Finnish independence in 1917' is reasonably read as 'renamed as a consequence of the 1917 independence' and does not affect the core 1991 UNESCO inscription event being verified. Core claim (year, country, event) fully confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Suomenlinna",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-05",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Multiple independent sources confirm Suomenlinna (Helsinki, Finland) was inscribed on the UNESCO World Heritage List in 1991. Construction began in 1748 under the Swedish Crown, designed by Admiral Augustin Ehrensvärd applying Vauban's bastion fortification principles; the fortress was renamed from Sveaborg to Suomenlinna in a May 1918 ceremony following Finnish independence (Dec 1917), matching the description's 'after Finnish independence in 1917.' UNESCO's official rationale cites it as an outstanding example of 17th/18th-century European military architecture, exactly matching the event description. All material details (country, year, actors, scope) hold.",
+        "source": "https://suomenlinna.fi/en/suomenlinna-world-heritage/",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-05",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://suomenlinna.fi/en/suomenlinna-world-heritage/"
+  },
+  {
+    "year": 1991,
+    "title": "Markka Devalued as Banking Crisis Deepens",
+    "verdict": "TRUE",
+    "reason": "Finland devalued the markka in November 1991 as the banking sector faced insolvency. The government had attempted to avoid devaluation through wage negotiations but the exchange rate peg collapsed under capital outflows, worsening the burden of foreign-currency loans for Finnish firms.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Finland devalued the markka in November 1991 as the banking sector faced insolvency. The government had attempted to avoid devaluation through wage negotiations but the exchange rate peg collapsed under capital outflows, worsening the burden of foreign-currency loans for Finnish firms.",
+        "source": "https://en.wikipedia.org/wiki/1990s_Finnish_banking_crisis",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/1990s_Finnish_banking_crisis"
+  },
+  {
+    "year": 1992,
+    "title": "Markka Floated Freely After Fixed Exchange Rate Abandoned",
+    "verdict": "TRUE",
+    "reason": "Finland let the markka float on 8 September 1992 during the European currency crisis after the Bank of Finland exhausted its foreign reserves. The markka immediately fell ~13% and depreciated further, which ultimately helped export competitiveness and anchored the recovery.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Finland let the markka float on 8 September 1992 during the European currency crisis after the Bank of Finland exhausted its foreign reserves. The markka immediately fell ~13% and depreciated further, which ultimately helped export competitiveness and anchored the recovery.",
+        "source": "https://en.wikipedia.org/wiki/Finnish_markka",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Finnish_markka"
+  },
+  {
+    "year": 1992,
+    "title": "New Treaty with Russia Replaces Cold War FCMA Pact",
+    "verdict": "TRUE",
+    "reason": "On 20 January 1992, Finland and Russia signed the Treaty on the Foundations of Relations, replacing the 1948 FCMA treaty. The new treaty contained no military obligations and was based on sovereign equality, formally ending Finlandization.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "On 20 January 1992, Finland and Russia signed the Treaty on the Foundations of Relations, replacing the 1948 FCMA treaty. The new treaty contained no military obligations and was based on sovereign equality, formally ending Finlandization.",
+        "source": "https://www.washingtonpost.com/archive/politics/1992/01/21/russia-finland-sign-political-treaty/84e04ce2-40e9-4b2d-ac5c-843b1174f543/",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://www.washingtonpost.com/archive/politics/1992/01/21/russia-finland-sign-political-treaty/84e04ce2-40e9-4b2d-ac5c-843b1174f543/"
+  },
+  {
+    "year": 1993,
+    "title": "Government Bank Bailout Exceeds 10% of GDP",
+    "verdict": "TRUE",
+    "reason": "The Finnish parliament unanimously endorsed a blanket guarantee for the banking sector in February 1993, with total government commitments widely estimated at over 10% of GDP. Unemployment rose from 3.5% to 18.9% and real GDP contracted approximately 13% peak-to-trough.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "The Finnish parliament unanimously endorsed a blanket guarantee for the banking sector in February 1993, with total government commitments widely estimated at over 10% of GDP. Unemployment rose from 3.5% to 18.9% and real GDP contracted approximately 13% peak-to-trough.",
+        "source": "https://en.wikipedia.org/wiki/Finnish_banking_crisis_of_the_1990s",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Finnish_banking_crisis_of_the_1990s"
+  },
+  {
+    "year": 1994,
+    "title": "Finland Joins NATO Partnership for Peace Program",
+    "verdict": "TRUE",
+    "reason": "Finland joined NATO's Partnership for Peace programme in 1994, following the summit in Brussels in January 1994 that launched PfP. Finland participated in PfP frameworks for nearly three decades while maintaining formal military non-alignment before full NATO accession in 2023.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Finland joined NATO's Partnership for Peace programme in 1994, following the summit in Brussels in January 1994 that launched PfP. Finland participated in PfP frameworks for nearly three decades while maintaining formal military non-alignment before full NATO accession in 2023.",
+        "source": "https://www.nato.int/cps/ic/natohq/topics_49594.htm",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://www.nato.int/cps/ic/natohq/topics_49594.htm"
+  },
+  {
+    "year": 1994,
+    "title": "Martti Ahtisaari Elected President in First Direct Election",
+    "verdict": "TRUE",
+    "reason": "Social Democrat Martti Ahtisaari won Finland's first direct presidential election in February 1994, defeating Elisabeth Rehn in the second round with 53.9% of the vote. He was inaugurated 1 March 1994 and later received the 2008 Nobel Peace Prize.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Social Democrat Martti Ahtisaari won Finland's first direct presidential election in February 1994, defeating Elisabeth Rehn in the second round with 53.9% of the vote. He was inaugurated 1 March 1994 and later received the 2008 Nobel Peace Prize.",
+        "source": "https://en.wikipedia.org/wiki/1994_Finnish_presidential_election",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/1994_Finnish_presidential_election"
+  },
+  {
+    "year": 1995,
+    "title": "Finland Joins the European Union",
+    "verdict": "TRUE",
+    "reason": "Finland acceded to the European Union on 1 January 1995 following a referendum on 16 October 1994 in which 56.9% voted in favour. The accession marked Finland's decisive Western orientation after decades of Cold War neutrality.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Finland acceded to the European Union on 1 January 1995 following a referendum on 16 October 1994 in which 56.9% voted in favour. The accession marked Finland's decisive Western orientation after decades of Cold War neutrality.",
+        "source": "https://en.wikipedia.org/wiki/1995_enlargement_of_the_European_Union",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/1995_enlargement_of_the_European_Union"
+  },
+  {
+    "year": 1995,
+    "title": "Nokia Emerges as Global Mobile Phone Leader",
+    "verdict": "TRUE",
+    "reason": "Nokia's operating profit reached $1 billion in 1995 and its workforce nearly doubled, marking its emergence as a dominant mobile phone force. Nokia formally became the world's largest mobile phone manufacturer in 1998 (surpassing Motorola), so the title's 'emerges' is accurate for 1995 even though the #1 claim is slightly early; the event is substantively real.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Nokia's operating profit reached $1 billion in 1995 and its workforce nearly doubled, marking its emergence as a dominant mobile phone force. Nokia formally became the world's largest mobile phone manufacturer in 1998 (surpassing Motorola), so the title's 'emerges' is accurate for 1995 even though the #1 claim is slightly early; the event is substantively real.",
+        "source": "https://en.wikipedia.org/wiki/Nokia",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Nokia"
+  },
+  {
+    "year": 1999,
+    "title": "Finland Among First Countries to Adopt the Euro",
+    "verdict": "TRUE",
+    "reason": "Finland was one of the eleven founding eurozone members that adopted the euro on 1 January 1999, surrendering independent monetary policy to the ECB. Euro banknotes and coins followed on 1 January 2002.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Finland was one of the eleven founding eurozone members that adopted the euro on 1 January 1999, surrendering independent monetary policy to the ECB. Euro banknotes and coins followed on 1 January 2002.",
+        "source": "https://economy-finance.ec.europa.eu/euro/eu-countries-and-euro/finland-and-euro_en",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://economy-finance.ec.europa.eu/euro/eu-countries-and-euro/finland-and-euro_en"
+  },
+  {
+    "year": 1999,
+    "title": "Finland Holds EU Council Presidency",
+    "verdict": "TRUE",
+    "reason": "Finland held the rotating Presidency of the Council of the EU from 1 July to 31 December 1999. The presidency culminated in the Helsinki European Council (10-11 December 1999), which made major decisions on EU enlargement and security policy, including the Northern Dimension initiative.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Finland held the rotating Presidency of the Council of the EU from 1 July to 31 December 1999. The presidency culminated in the Helsinki European Council (10-11 December 1999), which made major decisions on EU enlargement and security policy, including the Northern Dimension initiative.",
+        "source": "https://www.emerald.com/ebr/article/doi/10.1108/ebr.1999.05499fab.003/46259/Finland-s-EU-presidency-1-July-1999-January-2000",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://www.emerald.com/ebr/article/doi/10.1108/ebr.1999.05499fab.003/46259/Finland-s-EU-presidency-1-July-1999-January-2000"
+  },
+  {
+    "year": 2000,
+    "title": "Tarja Halonen Elected as Finland's First Female President",
+    "verdict": "TRUE",
+    "reason": "Social Democrat Tarja Halonen won the second round of the presidential election in February 2000 with 51.6%, becoming Finland's first female head of state. She was inaugurated 1 March 2000 and served two terms until 2012.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Social Democrat Tarja Halonen won the second round of the presidential election in February 2000 with 51.6%, becoming Finland's first female head of state. She was inaugurated 1 March 2000 and served two terms until 2012.",
+        "source": "https://en.wikipedia.org/wiki/Tarja_Halonen",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Tarja_Halonen"
+  },
+  {
+    "year": 2002,
+    "title": "Euro Banknotes and Coins Enter Circulation",
+    "verdict": "TRUE",
+    "reason": "Euro banknotes and coins entered circulation in Finland on 1 January 2002, replacing the Finnish markka. A Bank of Finland survey found 75% of respondents considered the changeover simple and easy; the dual-circulation period ended 28 February 2002.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Euro banknotes and coins entered circulation in Finland on 1 January 2002, replacing the Finnish markka. A Bank of Finland survey found 75% of respondents considered the changeover simple and easy; the dual-circulation period ended 28 February 2002.",
+        "source": "https://economy-finance.ec.europa.eu/euro/eu-countries-and-euro/finland-and-euro_en",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://economy-finance.ec.europa.eu/euro/eu-countries-and-euro/finland-and-euro_en"
+  },
+  {
+    "year": 2003,
+    "title": "Finland Tops First PISA Education Rankings",
+    "verdict": "TRUE",
+    "reason": "Finland was the top overall performer among OECD countries in the 2000 and 2003 PISA studies, with Finnish 15-year-olds leading in reading, mathematics (score 544), and science. The results triggered worldwide interest in the Finnish comprehensive school model.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Finland was the top overall performer among OECD countries in the 2000 and 2003 PISA studies, with Finnish 15-year-olds leading in reading, mathematics (score 544), and science. The results triggered worldwide interest in the Finnish comprehensive school model.",
+        "source": "https://en.wikipedia.org/wiki/Programme_for_International_Student_Assessment",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Programme_for_International_Student_Assessment"
+  },
+  {
+    "year": 2007,
+    "title": "Jokela School Shooting Shocks the Nation",
+    "verdict": "TRUE",
+    "reason": "On 7 November 2007, 18-year-old Pekka-Eric Auvinen killed eight people at Jokela High School in Tuusula before fatally shooting himself. The massacre prompted Finland to revisit EU firearms legislation and sparked national debate on gun control.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "On 7 November 2007, 18-year-old Pekka-Eric Auvinen killed eight people at Jokela High School in Tuusula before fatally shooting himself. The massacre prompted Finland to revisit EU firearms legislation and sparked national debate on gun control.",
+        "source": "https://en.wikipedia.org/wiki/Jokela_school_shooting",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Jokela_school_shooting"
+  },
+  {
+    "year": 2008,
+    "title": "Global Financial Crisis Ends Finland's Growth Boom",
+    "verdict": "TRUE",
+    "reason": "The 2008 global financial crisis caused real per capita GDP in Finland to fall 6.7% in 2009, ending a growth period in which Nokia had driven GDP per capita up ~55% since 1995. Finland's recovery was exceptionally slow; GDP did not return to pre-crisis levels for a decade.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "The 2008 global financial crisis caused real per capita GDP in Finland to fall 6.7% in 2009, ending a growth period in which Nokia had driven GDP per capita up ~55% since 1995. Finland's recovery was exceptionally slow; GDP did not return to pre-crisis levels for a decade.",
+        "source": "https://ec.europa.eu/economy_finance/publications/pages/publication13551_en.pdf",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://ec.europa.eu/economy_finance/publications/pages/publication13551_en.pdf"
+  },
+  {
+    "year": 2008,
+    "title": "Russia-Georgia War Raises Finnish Security Concerns",
+    "verdict": "TRUE",
+    "reason": "Russia's August 2008 invasion of Georgia did raise security concerns in Finland and prompted some reassessment of Finland's defence partnerships. However, Finnish public opinion remained firmly against NATO membership, with support staying around 20–25%, and PM Vanhanen reiterated Finland had no plans to join NATO.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Russia's August 2008 invasion of Georgia did raise security concerns in Finland and prompted some reassessment of Finland's defence partnerships. However, Finnish public opinion remained firmly against NATO membership, with support staying around 20–25%, and PM Vanhanen reiterated Finland had no plans to join NATO.",
+        "source": "https://en.wikipedia.org/wiki/Finland%E2%80%93NATO_relations",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Finland%E2%80%93NATO_relations"
+  },
+  {
+    "year": 2008,
+    "title": "Second School Shooting at Kauhajoki",
+    "verdict": "TRUE",
+    "reason": "On 23 September 2008, 22-year-old Matti Saari killed ten people at the Kauhajoki campus of Seinäjoki University of Applied Sciences before fatally shooting himself. The event led to stricter firearms legislation including raised minimum age requirements.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "On 23 September 2008, 22-year-old Matti Saari killed ten people at the Kauhajoki campus of Seinäjoki University of Applied Sciences before fatally shooting himself. The event led to stricter firearms legislation including raised minimum age requirements.",
+        "source": "https://en.wikipedia.org/wiki/Kauhajoki_school_shooting",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Kauhajoki_school_shooting"
+  },
+  {
+    "year": 2010,
+    "title": "Finland Participates in Greek Bailout Despite Domestic Opposition",
+    "verdict": "TRUE",
+    "reason": "Finland participated in eurozone rescue packages for Greece, Portugal, and Ireland, and the bailouts directly fuelled the rise of the Finns Party. Finland famously demanded collateral for its Greek loans, reflecting intense domestic Euroscepticism.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Finland participated in eurozone rescue packages for Greece, Portugal, and Ireland, and the bailouts directly fuelled the rise of the Finns Party. Finland famously demanded collateral for its Greek loans, reflecting intense domestic Euroscepticism.",
+        "source": "https://www.tandfonline.com/doi/full/10.1080/21699763.2018.1520141",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://www.tandfonline.com/doi/full/10.1080/21699763.2018.1520141"
+  },
+  {
+    "year": 2011,
+    "title": "Finns Party Surges in Parliamentary Elections",
+    "verdict": "TRUE",
+    "reason": "The Finns Party won 19.1% of the vote in the April 2011 parliamentary elections, up from 4.1% in 2007 — the largest electoral gain for any Finnish party in the post-war era. The surge was driven by Euroscepticism over bailout packages and anti-immigration sentiment.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "The Finns Party won 19.1% of the vote in the April 2011 parliamentary elections, up from 4.1% in 2007 — the largest electoral gain for any Finnish party in the post-war era. The surge was driven by Euroscepticism over bailout packages and anti-immigration sentiment.",
+        "source": "https://en.wikipedia.org/wiki/2011_Finnish_parliamentary_election",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/2011_Finnish_parliamentary_election"
+  },
+  {
+    "year": 2013,
+    "title": "Nokia Sells Mobile Phone Division to Microsoft",
+    "verdict": "TRUE",
+    "reason": "Microsoft announced the acquisition of Nokia's Devices and Services business on 3 September 2013 for approximately €5.44 billion (€3.79B + €1.65B patent licence). The deal closed in April 2014, marking the end of Nokia's era as a Finnish mobile phone icon.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Microsoft announced the acquisition of Nokia's Devices and Services business on 3 September 2013 for approximately €5.44 billion (€3.79B + €1.65B patent licence). The deal closed in April 2014, marking the end of Nokia's era as a Finnish mobile phone icon.",
+        "source": "https://news.microsoft.com/source/2013/09/03/microsoft-to-acquire-nokias-devices-services-business-license-nokias-patents-and-mapping-services/",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://news.microsoft.com/source/2013/09/03/microsoft-to-acquire-nokias-devices-services-business-license-nokias-patents-and-mapping-services/"
+  },
+  {
+    "year": 2014,
+    "title": "Crimea Annexation Triggers Major Finnish Defense Review",
+    "verdict": "TRUE",
+    "reason": "Russia's annexation of Crimea in March 2014 prompted Finland to sign a Host Nation Support agreement with NATO in September 2014 and to significantly increase defence spending. Finland also obtained Enhanced Opportunity Partner status at the Wales Summit.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Russia's annexation of Crimea in March 2014 prompted Finland to sign a Host Nation Support agreement with NATO in September 2014 and to significantly increase defence spending. Finland also obtained Enhanced Opportunity Partner status at the Wales Summit.",
+        "source": "https://en.wikipedia.org/wiki/Finland%E2%80%93NATO_relations",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Finland%E2%80%93NATO_relations"
+  },
+  {
+    "year": 2015,
+    "title": "Record Asylum Seeker Arrivals During European Migration Crisis",
+    "verdict": "TRUE",
+    "reason": "Finland received 32,476 asylum applications in 2015 — nearly ten times the 2014 figure and the highest per-capita increase in the EU. More than 60% of applicants came from Iraq, reshaping Finnish immigration policy and fuelling anti-immigration sentiment.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Finland received 32,476 asylum applications in 2015 — nearly ten times the 2014 figure and the highest per-capita increase in the EU. More than 60% of applicants came from Iraq, reshaping Finnish immigration policy and fuelling anti-immigration sentiment.",
+        "source": "https://en.wikipedia.org/wiki/Immigration_to_Finland",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Immigration_to_Finland"
+  },
+  {
+    "year": 2015,
+    "title": "Sipila Government Launches Competitiveness Austerity Package",
+    "verdict": "TRUE",
+    "reason": "Prime Minister Juha Sipilä's government, formed in May 2015, introduced the Competitiveness Pact targeting a 5% reduction in unit labour costs through wage freezes, extended working hours, and cuts to public spending. The pact was finalised in 2016 and covered 86.5% of wage earners.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Prime Minister Juha Sipilä's government, formed in May 2015, introduced the Competitiveness Pact targeting a 5% reduction in unit labour costs through wage freezes, extended working hours, and cuts to public spending. The pact was finalised in 2016 and covered 86.5% of wage earners.",
+        "source": "https://en.wikipedia.org/wiki/Juha_Sipil%C3%A4",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Juha_Sipil%C3%A4"
+  },
+  {
+    "year": 2017,
+    "title": "Finland Celebrates 100th Anniversary of Independence",
+    "verdict": "TRUE",
+    "reason": "Finland celebrated the centennial of its 6 December 1917 independence declaration with a year-long programme under the theme 'Together', involving over 600,000 participants and 5,000 projects. Landmarks worldwide were illuminated in Finnish blue and white.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Finland celebrated the centennial of its 6 December 1917 independence declaration with a year-long programme under the theme 'Together', involving over 600,000 participants and 5,000 projects. Landmarks worldwide were illuminated in Finnish blue and white.",
+        "source": "https://en.wikipedia.org/wiki/Finland_100",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Finland_100"
+  },
+  {
+    "year": 2017,
+    "title": "World's First National Basic Income Experiment Launched",
+    "verdict": "TRUE",
+    "reason": "Finland launched the world's first statutory basic income experiment on 1 January 2017, paying 2,000 randomly selected unemployed people €560/month for two years with no conditions. Results showed small employment gains (6 extra days of work) but significant wellbeing improvements.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Finland launched the world's first statutory basic income experiment on 1 January 2017, paying 2,000 randomly selected unemployed people €560/month for two years with no conditions. Results showed small employment gains (6 extra days of work) but significant wellbeing improvements.",
+        "source": "https://stm.fi/en/-/perustulokokeilun-tulokset-tyollisyysvaikutukset-vahaisia-toimeentulo-ja-psyykkinen-terveys-koettiin-paremmaksi",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://stm.fi/en/-/perustulokokeilun-tulokset-tyollisyysvaikutukset-vahaisia-toimeentulo-ja-psyykkinen-terveys-koettiin-paremmaksi"
+  },
+  {
+    "year": 2019,
+    "title": "Sanna Marin Becomes World's Youngest Sitting Prime Minister",
+    "verdict": "TRUE",
+    "reason": "Sanna Marin was inaugurated as Prime Minister on 10 December 2019 at age 34, becoming the youngest sitting head of government in the world at that time. Her five-party coalition included four party leaders who were women, three under 35.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Sanna Marin was inaugurated as Prime Minister on 10 December 2019 at age 34, becoming the youngest sitting head of government in the world at that time. Her five-party coalition included four party leaders who were women, three under 35.",
+        "source": "https://en.wikipedia.org/wiki/Sanna_Marin",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Sanna_Marin"
+  },
+  {
+    "year": 2020,
+    "title": "State of Emergency Declared Over COVID-19 Pandemic",
+    "verdict": "TRUE",
+    "reason": "The Finnish government declared a state of emergency on 16 March 2020 — the first invocation of emergency powers since WWII. The Uusimaa region (including Helsinki) was sealed off from 28 March to 15 April 2020, and Finland's early response kept infection rates among the lowest in Europe.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "The Finnish government declared a state of emergency on 16 March 2020 — the first invocation of emergency powers since WWII. The Uusimaa region (including Helsinki) was sealed off from 28 March to 15 April 2020, and Finland's early response kept infection rates among the lowest in Europe.",
+        "source": "https://en.wikipedia.org/wiki/COVID-19_pandemic_in_Finland",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/COVID-19_pandemic_in_Finland"
+  },
+  {
+    "year": 2022,
+    "title": "Finland Applies for NATO Membership After Russia Invades Ukraine",
+    "verdict": "TRUE",
+    "reason": "Russia's full-scale invasion of Ukraine in February 2022 caused NATO support in Finland to surge from ~20% to over 70%. Finland formally submitted its NATO application in Brussels on 18 May 2022 alongside Sweden, ending over 75 years of military non-alignment.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Russia's full-scale invasion of Ukraine in February 2022 caused NATO support in Finland to surge from ~20% to over 70%. Finland formally submitted its NATO application in Brussels on 18 May 2022 alongside Sweden, ending over 75 years of military non-alignment.",
+        "source": "https://en.wikipedia.org/wiki/Finland%E2%80%93NATO_relations",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Finland%E2%80%93NATO_relations"
+  },
+  {
+    "year": 2022,
+    "title": "Finland Sends Military Aid to Ukraine",
+    "verdict": "TRUE",
+    "reason": "Finland broke with its long-held policy of not supplying arms to conflict zones on 27 February 2022, announcing the first military aid package to Ukraine four days after Russia's invasion. Subsequent packages included assault rifles, anti-tank weapons, artillery, and ammunition.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Finland broke with its long-held policy of not supplying arms to conflict zones on 27 February 2022, announcing the first military aid package to Ukraine four days after Russia's invasion. Subsequent packages included assault rifles, anti-tank weapons, artillery, and ammunition.",
+        "source": "https://www.defmin.fi/en/topical/press_releases_and_news/press_release_archive/2022/finland_to_send_arms_assistance_to_ukraine.12488.news",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://www.defmin.fi/en/topical/press_releases_and_news/press_release_archive/2022/finland_to_send_arms_assistance_to_ukraine.12488.news"
+  },
+  {
+    "year": 2022,
+    "title": "Russia Cuts Gas Supply to Finland",
+    "verdict": "TRUE",
+    "reason": "Gazprom halted all natural gas deliveries to Finland on 21 May 2022 after Finnish state energy company Gasum refused to pay in rubles in violation of the euro-denominated contract. Before the cutoff, Russia supplied 100% of Finland's natural gas.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Gazprom halted all natural gas deliveries to Finland on 21 May 2022 after Finnish state energy company Gasum refused to pay in rubles in violation of the euro-denominated contract. Before the cutoff, Russia supplied 100% of Finland's natural gas.",
+        "source": "https://www.euronews.com/2022/05/21/russia-cuts-gas-supplies-to-finland-for-refusing-to-pay-in-roubles",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://www.euronews.com/2022/05/21/russia-cuts-gas-supplies-to-finland-for-refusing-to-pay-in-roubles"
+  },
+  {
+    "year": 2023,
+    "title": "Balticconnector Gas Pipeline Damaged by Chinese Vessel",
+    "verdict": "TRUE",
+    "reason": "On 8 October 2023, the Balticconnector pipeline between Finland and Estonia was damaged when the anchor of the Chinese-flagged vessel Newnew Polar Bear dragged along the seabed. Telecommunications cables were also severed; repairs took approximately seven months.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "On 8 October 2023, the Balticconnector pipeline between Finland and Estonia was damaged when the anchor of the Chinese-flagged vessel Newnew Polar Bear dragged along the seabed. Telecommunications cables were also severed; repairs took approximately seven months.",
+        "source": "https://www.euronews.com/2023/10/25/finland-blames-chinese-ship-for-baltic-sea-gas-pipeline-damage",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://www.euronews.com/2023/10/25/finland-blames-chinese-ship-for-baltic-sea-gas-pipeline-damage"
+  },
+  {
+    "year": 2023,
+    "title": "Conservative Coalition Replaces Marin Government After Elections",
+    "verdict": "TRUE",
+    "reason": "The April 2023 parliamentary elections saw the National Coalition Party win with 20.8%, narrowly ahead of the Finns Party at 20.1%. Petteri Orpo formed a right-wing four-party coalition government sworn in on 20 June 2023, replacing Marin's centre-left government.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "The April 2023 parliamentary elections saw the National Coalition Party win with 20.8%, narrowly ahead of the Finns Party at 20.1%. Petteri Orpo formed a right-wing four-party coalition government sworn in on 20 June 2023, replacing Marin's centre-left government.",
+        "source": "https://en.wikipedia.org/wiki/2023_Finnish_parliamentary_election",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/2023_Finnish_parliamentary_election"
+  },
+  {
+    "year": 2023,
+    "title": "Finland Closes Entire Eastern Border Over Russian Hybrid Warfare",
+    "verdict": "TRUE",
+    "reason": "Finland closed all eight eastern border crossings with Russia in November–December 2023 after approximately 1,300 undocumented migrants crossed in weeks. Helsinki accused Moscow of orchestrating the flows as hybrid warfare retaliation for Finland's NATO membership and US defence cooperation.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Finland closed all eight eastern border crossings with Russia in November–December 2023 after approximately 1,300 undocumented migrants crossed in weeks. Helsinki accused Moscow of orchestrating the flows as hybrid warfare retaliation for Finland's NATO membership and US defence cooperation.",
+        "source": "https://www.aljazeera.com/news/2023/12/14/finland-set-to-again-shut-its-entire-border-with-russia",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://www.aljazeera.com/news/2023/12/14/finland-set-to-again-shut-its-entire-border-with-russia"
+  },
+  {
+    "year": 2023,
+    "title": "Finland Officially Joins NATO as 31st Member",
+    "verdict": "TRUE",
+    "reason": "Finland became the 31st NATO member on 4 April 2023, after Turkey's parliament ratified the accession on 30 March 2023. The accession added 1,340 km of new NATO border with Russia, more than doubling the alliance's existing frontier with Moscow.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Finland became the 31st NATO member on 4 April 2023, after Turkey's parliament ratified the accession on 30 March 2023. The accession added 1,340 km of new NATO border with Russia, more than doubling the alliance's existing frontier with Moscow.",
+        "source": "https://en.wikipedia.org/wiki/Accession_of_Finland_to_NATO",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Accession_of_Finland_to_NATO"
+  },
+  {
+    "year": 2023,
+    "title": "Olkiluoto 3 Nuclear Reactor Begins Regular Operation",
+    "verdict": "TRUE",
+    "reason": "Olkiluoto 3 started regular electricity production on 16 April 2023 and entered commercial operation on 1 May 2023, after construction delays stretching back to 2005. The 1,600 MW EPR reactor is Europe's most powerful nuclear unit and produced 31% of Finland's electricity in 2023.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Olkiluoto 3 started regular electricity production on 16 April 2023 and entered commercial operation on 1 May 2023, after construction delays stretching back to 2005. The 1,600 MW EPR reactor is Europe's most powerful nuclear unit and produced 31% of Finland's electricity in 2023.",
+        "source": "https://www.powermag.com/olkiluoto-3-finally-online-in-finland-germany-closes-last-three-nuclear-plants/",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://www.powermag.com/olkiluoto-3-finally-online-in-finland-germany-closes-last-three-nuclear-plants/"
+  },
+  {
+    "year": 2024,
+    "title": "Alexander Stubb Elected President",
+    "verdict": "TRUE",
+    "reason": "National Coalition Party candidate Alexander Stubb won the presidential runoff on 11 February 2024, defeating Pekka Haavisto 51.6% to 48.4%, and was inaugurated on 1 March 2024. His election reinforced Finland's pro-NATO and pro-EU foreign policy consensus.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "National Coalition Party candidate Alexander Stubb won the presidential runoff on 11 February 2024, defeating Pekka Haavisto 51.6% to 48.4%, and was inaugurated on 1 March 2024. His election reinforced Finland's pro-NATO and pro-EU foreign policy consensus.",
+        "source": "https://en.wikipedia.org/wiki/2024_Finnish_presidential_election",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/2024_Finnish_presidential_election"
+  },
+  {
+    "year": 2024,
+    "title": "Finland Signs Defense Cooperation Agreement with United States",
+    "verdict": "TRUE",
+    "reason": "Finland and the United States signed the Defence Cooperation Agreement (DCA) on 18 December 2023; the Finnish parliament ratified it unanimously on 1 July 2024 and it entered into force on 1 September 2024. The agreement grants US forces access to 15 Finnish military bases.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Finland and the United States signed the Defence Cooperation Agreement (DCA) on 18 December 2023; the Finnish parliament ratified it unanimously on 1 July 2024 and it entered into force on 1 September 2024. The agreement grants US forces access to 15 Finnish military bases.",
+        "source": "https://en.wikipedia.org/wiki/Agreement_on_Defense_Cooperation_between_Finland_and_the_United_States_of_America",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Agreement_on_Defense_Cooperation_between_Finland_and_the_United_States_of_America"
+  },
+  {
+    "year": 2024,
+    "title": "Parliament Passes Controversial Emergency Border Law",
+    "verdict": "TRUE",
+    "reason": "The Finnish parliament adopted the Act on Temporary Measures to Combat Instrumentalized Migration on 12 July 2024 (167 of 200 votes), entering into force 22 July 2024. The law allows border guards to push back asylum seekers when a foreign state is suspected of using migration for national-security purposes, drawing criticism from Amnesty International.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "The Finnish parliament adopted the Act on Temporary Measures to Combat Instrumentalized Migration on 12 July 2024 (167 of 200 votes), entering into force 22 July 2024. The law allows border guards to push back asylum seekers when a foreign state is suspected of using migration for national-security purposes, drawing criticism from Amnesty International.",
+        "source": "https://www.loc.gov/item/global-legal-monitor/2024-07-17/finland-parliament-addresses-russias-instrumentalized-immigration/",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://www.loc.gov/item/global-legal-monitor/2024-07-17/finland-parliament-addresses-russias-instrumentalized-immigration/"
+  },
+  {
+    "year": 2025,
+    "title": "Finland's Eastern Border Remains Sealed Amid Ongoing Tensions",
+    "verdict": "TRUE",
+    "reason": "All eight Finnish–Russian land border crossings have remained closed since 15 December 2023. In April 2025 the government confirmed the closure would continue indefinitely, and in June 2025 parliament extended the Border Security Act until 31 December 2026, cementing the complete severing of land-border relations with Russia.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "All eight Finnish–Russian land border crossings have remained closed since 15 December 2023. In April 2025 the government confirmed the closure would continue indefinitely, and in June 2025 parliament extended the Border Security Act until 31 December 2026, cementing the complete severing of land-border relations with Russia.",
+        "source": "https://valtioneuvosto.fi/en/situation-at-finlands-eastern-border",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://valtioneuvosto.fi/en/situation-at-finlands-eastern-border"
+  }
+]

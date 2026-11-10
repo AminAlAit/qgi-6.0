@@ -1,0 +1,1498 @@
+[
+  {
+    "year": 1954,
+    "title": "PLUA Founded â€” First Underground Independence Party",
+    "verdict": "FALSE",
+    "reason": "PLUA (PLUAA) was founded in 1953 by Viriato da Cruz and Matias Miguéis, not 1954. Year off by 1 = FALSE.",
+    "verify_count": 1,
+    "consensus_verdict": "FALSE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "FALSE",
+        "reason": "PLUA (PLUAA) was founded in 1953 by Viriato da Cruz and Matias Miguéis, not 1954. Year off by 1 = FALSE.",
+        "source": "https://en.wikipedia.org/wiki/Party_of_the_United_Struggle_for_Africans_in_Angola",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Party_of_the_United_Struggle_for_Africans_in_Angola"
+  },
+  {
+    "year": 1956,
+    "title": "MPLA Founded in Luanda",
+    "verdict": "TRUE",
+    "reason": "MPLA founded December 10, 1956, from merger of PLUAA and PCA. Agostinho Neto was president but Viriato da Cruz was Secretary-General; event description slightly overstates Neto's founding role but year and core facts correct.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "MPLA founded December 10, 1956, from merger of PLUAA and PCA. Agostinho Neto was president but Viriato da Cruz was Secretary-General; event description slightly overstates Neto's founding role but year and core facts correct.",
+        "source": "https://en.wikipedia.org/wiki/MPLA",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/MPLA"
+  },
+  {
+    "year": 1958,
+    "title": "UPA Founded â€” Bakongo Nationalist Movement",
+    "verdict": "FALSE",
+    "reason": "UPA was not founded in 1958. The predecessor UPNA was founded in 1954; the 1958 event was a renaming from UPNA to UPA to broaden ethnic appeal. Year and framing are materially wrong — founding date is 1954.",
+    "verify_count": 1,
+    "consensus_verdict": "FALSE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "FALSE",
+        "reason": "UPA was not founded in 1958. The predecessor UPNA was founded in 1954; the 1958 event was a renaming from UPNA to UPA to broaden ethnic appeal. Year and framing are materially wrong — founding date is 1954.",
+        "source": "https://en.wikipedia.org/wiki/National_Liberation_Front_of_Angola",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/National_Liberation_Front_of_Angola"
+  },
+  {
+    "year": 1961,
+    "title": "Luanda Prison Attack and Bakongo Uprising Launch Armed Struggle",
+    "verdict": "TRUE",
+    "reason": "February 4 prison attack confirmed; March 15 northern uprising confirmed. Casualty estimates (20,000–50,000 Africans) and 50,000 Portuguese troops consistent with sources.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "February 4 prison attack confirmed; March 15 northern uprising confirmed. Casualty estimates (20,000–50,000 Africans) and 50,000 Portuguese troops consistent with sources.",
+        "source": "https://en.wikipedia.org/wiki/Angolan_War_of_Independence",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Angolan_War_of_Independence"
+  },
+  {
+    "year": 1963,
+    "title": "Gulf Oil Begins Offshore Exploration in Cabinda",
+    "verdict": "FALSE",
+    "reason": "Country and general premise (Gulf Oil / Cabinda Gulf Oil Company exploring for oil in the Cabinda enclave under Portuguese concession) are real, but the year 1963 is not supported by any source found. Multiple independent sources consistently place the actual milestones years apart from 1963: CABGOC began exploration with a geological field survey in 1954 (confirmed directly on offshore-mag.com and Wikipedia's Cabinda Province page); the original concession covering both onshore and offshore acreage was awarded on 22 Nov 1957; the first onshore well was drilled in 1958 at Ponta Vermelha; and offshore drilling/discovery (the Malongo field) came later, cited variously as 1966 (most common), 1967 (Wikipedia), or 1968 (GeoExpro), with first oil production in 1968. No source mentions 1963 as a milestone year for Cabinda oil exploration - it falls in a quiet gap between the 1957 concession and the mid/late-1960s offshore drilling campaign. Since the year is materially wrong for the specific claim ('began offshore exploration'), this is a FALSE per the hard rule (year wrong), with corrected_year set to 1966, the most frequently cited year for the first offshore well/discovery.",
+    "verify_count": 2,
+    "consensus_verdict": "FALSE",
+    "consensus_status": "double_negative",
+    "needs_tiebreak": false,
+    "source_independence": "independent",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "FALSE",
+        "reason": "Multiple independent sources consistently document a different timeline for Gulf Oil / Cabinda Gulf Oil Company (CABGOC) in Cabinda: formed 1954 with first geological field survey; original concession (covering both onshore and offshore acreage) awarded by Portugal on November 22, 1957; first onshore well drilled at Ponta Vermelha in 1958; operations disrupted by the 1961 colonial war outbreak and resumed after Portugal regained control of Cabinda in 1962; the first OFFSHORE discovery (Malongo Field) came in 1966, with first offshore oil production in 1968. No source found supports 1963 as the year offshore exploration began or as when 'early surveys confirmed significant hydrocarbon reserves' — that description matches the well-documented 1966 discovery far better than 1963. The underlying company/country/broad narrative (Gulf Oil, Cabinda, Portugal concession, eventual major oil producer) is real, but the specific year and the 'offshore exploration begins + reserves confirmed' framing do not match 1963.",
+        "source": "https://geoexpro.com/milestones-in-angolas-oil-history/",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        },
+        "corrected_year": 1966
+      },
+      {
+        "pass_n": 2,
+        "verdict": "FALSE",
+        "reason": "Country and general premise (Gulf Oil / Cabinda Gulf Oil Company exploring for oil in the Cabinda enclave under Portuguese concession) are real, but the year 1963 is not supported by any source found. Multiple independent sources consistently place the actual milestones years apart from 1963: CABGOC began exploration with a geological field survey in 1954 (confirmed directly on offshore-mag.com and Wikipedia's Cabinda Province page); the original concession covering both onshore and offshore acreage was awarded on 22 Nov 1957; the first onshore well was drilled in 1958 at Ponta Vermelha; and offshore drilling/discovery (the Malongo field) came later, cited variously as 1966 (most common), 1967 (Wikipedia), or 1968 (GeoExpro), with first oil production in 1968. No source mentions 1963 as a milestone year for Cabinda oil exploration - it falls in a quiet gap between the 1957 concession and the mid/late-1960s offshore drilling campaign. Since the year is materially wrong for the specific claim ('began offshore exploration'), this is a FALSE per the hard rule (year wrong), with corrected_year set to 1966, the most frequently cited year for the first offshore well/discovery.",
+        "source": "https://www.offshore-mag.com/business-briefs/company-news/company/55293229/cabinda-gulf-oil-company-limited",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        },
+        "corrected_year": 1966
+      }
+    ],
+    "source": "https://www.offshore-mag.com/business-briefs/company-news/company/55293229/cabinda-gulf-oil-company-limited"
+  },
+  {
+    "year": 1966,
+    "title": "UNITA Founded by Jonas Savimbi",
+    "verdict": "TRUE",
+    "reason": "UNITA founded March 13, 1966 at Muangai, Moxico province by Savimbi. Maoist ideology and China training confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "UNITA founded March 13, 1966 at Muangai, Moxico province by Savimbi. Maoist ideology and China training confirmed.",
+        "source": "https://en.wikipedia.org/wiki/UNITA",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/UNITA"
+  },
+  {
+    "year": 1967,
+    "title": "Gulf Oil Strikes Commercial Oil in Cabinda",
+    "verdict": "FALSE",
+    "reason": "First offshore discovery was in 1966 (Malongo Field) and first oil production was 1968, not 1967. Year is off and facts don't align precisely.",
+    "verify_count": 1,
+    "consensus_verdict": "FALSE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "FALSE",
+        "reason": "First offshore discovery was in 1966 (Malongo Field) and first oil production was 1968, not 1967. Year is off and facts don't align precisely.",
+        "source": "https://angola.chevron.com/en/who-we-are/our-history-in-angola",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://angola.chevron.com/en/who-we-are/our-history-in-angola"
+  },
+  {
+    "year": 1971,
+    "title": "Commercial Oil Production Begins in Cabinda",
+    "verdict": "FALSE",
+    "reason": "Multiple independent sources converge on 1968, not 1971, as the year Gulf Oil (Cabinda Gulf Oil Company / CABGOC) began commercial oil production offshore Cabinda. Gulf made its offshore discovery at the Malongo field in 1966 and began extraction/first oil in 1968; by 1972 the company was extracting ~9 million tons/year and paying Portugal ~$400M annually in lease payments (60% of the Portuguese colonial war budget) — the CLA Journal academic paper states explicitly: 'In 1968 Gulf began extraction, and by 1972 the company was extracting 9 million tons of oil.' GeoExpro and other industry-history sources corroborate 1968 as first oil/production start. Separately, 1971 is documented as the year Gulf discovered the Takula field (a different, later Cabinda field) — not the start of commercial production. The country (Angola), operator (Gulf Oil), location (Cabinda offshore), and broader narrative (oil funding Portugal's colonial war, oil eventually eclipsing coffee) are all substantively correct — only the year is wrong, off by three years. This is a year error significant enough that the input year does not fall within a defensible tolerance of the well-documented 1968 start date.",
+    "verify_count": 2,
+    "consensus_verdict": "FALSE",
+    "consensus_status": "double_negative",
+    "needs_tiebreak": false,
+    "source_independence": "independent",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "FALSE",
+        "reason": "Multiple independent sources converge on 1968, not 1971, as the year Cabinda Gulf Oil Company (Gulf Oil) began commercial/offshore oil production in Cabinda, Angola. GeoExpro's oil-history milestones piece states the Malongo offshore field was discovered and 'first oil' followed in 1968. A 1972 Harvard Crimson piece and a TIME magazine archive article both describe Gulf's Cabinda subsidiary as having 'begun pumping in 1968' and exporting the colony's first crude cargo that year. Financial detail corroborates this: Cabinda Gulf's payments to the Portuguese government already totaled $11 million in 1969 and $16 million in 1970 — production and export revenue were flowing well before 1971. Separately, the claim that oil 'quickly surpassed coffee as the colony's top export earner' is dated by multiple sources (Britannica-derived summaries, academic Angola economic histories) to 1973, not 1971/72. So both the core production-start date and the export-overtaking detail point away from 1971; the actual start year is 1968, roughly three years earlier than stated — a material year error, not a minor rounding difference.",
+        "source": "https://geoexpro.com/milestones-in-angolas-oil-history/",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        },
+        "corrected_year": 1968
+      },
+      {
+        "pass_n": 2,
+        "verdict": "FALSE",
+        "reason": "Multiple independent sources converge on 1968, not 1971, as the year Gulf Oil (Cabinda Gulf Oil Company / CABGOC) began commercial oil production offshore Cabinda. Gulf made its offshore discovery at the Malongo field in 1966 and began extraction/first oil in 1968; by 1972 the company was extracting ~9 million tons/year and paying Portugal ~$400M annually in lease payments (60% of the Portuguese colonial war budget) — the CLA Journal academic paper states explicitly: 'In 1968 Gulf began extraction, and by 1972 the company was extracting 9 million tons of oil.' GeoExpro and other industry-history sources corroborate 1968 as first oil/production start. Separately, 1971 is documented as the year Gulf discovered the Takula field (a different, later Cabinda field) — not the start of commercial production. The country (Angola), operator (Gulf Oil), location (Cabinda offshore), and broader narrative (oil funding Portugal's colonial war, oil eventually eclipsing coffee) are all substantively correct — only the year is wrong, off by three years. This is a year error significant enough that the input year does not fall within a defensible tolerance of the well-documented 1968 start date.",
+        "source": "https://uca.edu/cahss/files/2020/07/Angel-CLA-2018.pdf",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        },
+        "corrected_year": 1968
+      }
+    ],
+    "source": "https://uca.edu/cahss/files/2020/07/Angel-CLA-2018.pdf"
+  },
+  {
+    "year": 1974,
+    "title": "Carnation Revolution Triggers Angolan Decolonization",
+    "verdict": "TRUE",
+    "reason": "April 25, 1974 coup date confirmed; MFA overthrew Estado Novo; Angola granted independence 1975.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "April 25, 1974 coup date confirmed; MFA overthrew Estado Novo; Angola granted independence 1975.",
+        "source": "https://en.wikipedia.org/wiki/Carnation_Revolution",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Carnation_Revolution"
+  },
+  {
+    "year": 1975,
+    "title": "Alvor Agreement Signed â€” Independence Framework",
+    "verdict": "TRUE",
+    "reason": "Signed January 15, 1975; set November 11, 1975 independence date; power-sharing framework collapsed into civil war.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Signed January 15, 1975; set November 11, 1975 independence date; power-sharing framework collapsed into civil war.",
+        "source": "https://en.wikipedia.org/wiki/Alvor_Agreement",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Alvor_Agreement"
+  },
+  {
+    "year": 1975,
+    "title": "Angola Declares Independence Under MPLA",
+    "verdict": "TRUE",
+    "reason": "MPLA declared People's Republic of Angola on November 11, 1975; Agostinho Neto as first president confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "MPLA declared People's Republic of Angola on November 11, 1975; Agostinho Neto as first president confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Angolan_War_of_Independence",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Angolan_War_of_Independence"
+  },
+  {
+    "year": 1975,
+    "title": "Civil War Erupts â€” Cuban and South African Military Interventions",
+    "verdict": "TRUE",
+    "reason": "Operation Carlota (Cuba for MPLA) and Operation Savannah (South Africa for UNITA/FNLA) confirmed; Cuban intervention decisive in halting SADF advance.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Operation Carlota (Cuba for MPLA) and Operation Savannah (South Africa for UNITA/FNLA) confirmed; Cuban intervention decisive in halting SADF advance.",
+        "source": "https://en.wikipedia.org/wiki/Cuban_intervention_in_Angola",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Cuban_intervention_in_Angola"
+  },
+  {
+    "year": 1976,
+    "title": "MPLA Establishes One-Party Marxist-Leninist State",
+    "verdict": "TRUE",
+    "reason": "MPLA formalized one-party Marxist-Leninist state; FNLA militarily crushed by early 1976 with Cuban support confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "MPLA formalized one-party Marxist-Leninist state; FNLA militarily crushed by early 1976 with Cuban support confirmed.",
+        "source": "https://en.wikipedia.org/wiki/MPLA",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/MPLA"
+  },
+  {
+    "year": 1977,
+    "title": "Nationalization of Banks and Major Industries",
+    "verdict": "FALSE",
+    "reason": "The MPLA government's nationalization of banks, industries, and agricultural estates in Angola is real, but it happened predominantly in 1975-1976, not 1977. Independent sources (countrystudies.us, a public-domain Library of Congress Federal Research Division country study, and encyclopedia.com) show: banks (Bank of Angola, Commercial Bank of Angola) were nationalized in 1976; the Law on State Intervention (March 1976) formally nationalized abandoned private industrial enterprises; a further October 1976 party plenum resolution created a large state sector covering abandoned commercial farms, mining, and banking. Insurance was nationalized later still, in 1978. 1977 itself was dominated by a different set of events (the MPLA crushing the Nitista coup attempt and formally declaring itself a Marxist-Leninist vanguard party at its December 1977 congress) rather than the bank/industry/insurance nationalization wave described here. Since no independent source places the described bundle of nationalizations (banks + insurance + industries + agricultural estates) concretely in 1977, and the core legislative/economic actions cluster in 1976 (with insurance trailing into 1978), the year as given is wrong. Corrected to 1976, the year of the Law on State Intervention and the bank/industry nationalizations that form the bulk of the description.",
+    "verify_count": 3,
+    "consensus_verdict": "FALSE",
+    "consensus_status": "contested_resolved",
+    "needs_tiebreak": false,
+    "source_independence": "independent",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "MPLA nationalizations of banks and industries in the socialist period are well documented; timing consistent with 1975-1977 socialist consolidation.",
+        "source": "https://en.wikipedia.org/wiki/Angola",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "FALSE",
+        "reason": "The content described (MPLA nationalizing banks, insurance companies, major industries and agricultural estates, causing economic collapse amid the exodus of Portuguese settlers) is real for Angola, but multiple independent, non-Wikipedia sources converge that the core legal nationalization wave happened in 1976, not 1977. Specifically: the March 1976 'Law on State Intervention' (also referenced as the 'Nationalizations and Expropriation Law of 1976') nationalized abandoned businesses including a steel works, cement plant, textile and sugar mills, agricultural complexes, the central bank and all commercial banks, and the insurance industry; Banco de Angola was reconstituted as Banco Nacional de Angola via Decree-Law 69/76 (Official Gazette, 10 Nov 1976); the state oil company (precursor to Sonangol) was created via Decree 52 of 1976. Insurance was later further consolidated into the state monopoly ENSA in February 1978. No source found ties a comparable major nationalization act specifically to 1977 — the defining 1977 events in Angola are the Nito Alves coup attempt (May 1977) and the MPLA's First Congress declaring itself Marxist-Leninist (December 1977), neither of which is the nationalization act itself. Since the year is a hard join key and does not hold, this is FALSE with corrected_year=1976 rather than PARTIAL.",
+        "source": "https://communistcrimes.org/en/countries/angola",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-02",
+          "method": "web_search"
+        },
+        "corrected_year": 1976
+      },
+      {
+        "pass_n": 3,
+        "verdict": "FALSE",
+        "reason": "The MPLA government's nationalization of banks, industries, and agricultural estates in Angola is real, but it happened predominantly in 1975-1976, not 1977. Independent sources (countrystudies.us, a public-domain Library of Congress Federal Research Division country study, and encyclopedia.com) show: banks (Bank of Angola, Commercial Bank of Angola) were nationalized in 1976; the Law on State Intervention (March 1976) formally nationalized abandoned private industrial enterprises; a further October 1976 party plenum resolution created a large state sector covering abandoned commercial farms, mining, and banking. Insurance was nationalized later still, in 1978. 1977 itself was dominated by a different set of events (the MPLA crushing the Nitista coup attempt and formally declaring itself a Marxist-Leninist vanguard party at its December 1977 congress) rather than the bank/industry/insurance nationalization wave described here. Since no independent source places the described bundle of nationalizations (banks + insurance + industries + agricultural estates) concretely in 1977, and the core legislative/economic actions cluster in 1976 (with insurance trailing into 1978), the year as given is wrong. Corrected to 1976, the year of the Law on State Intervention and the bank/industry nationalizations that form the bulk of the description.",
+        "source": "https://countrystudies.us/angola/43.htm",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        },
+        "corrected_year": 1976
+      }
+    ],
+    "had_dissent": true,
+    "source": "https://countrystudies.us/angola/43.htm"
+  },
+  {
+    "year": 1977,
+    "title": "Nito Alves Coup Attempt and Post-Coup Massacres",
+    "verdict": "TRUE",
+    "reason": "May 27, 1977 coup attempt confirmed; thousands killed in purges confirmed (estimates range 2,000–70,000). MPLA First Congress formalization confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "May 27, 1977 coup attempt confirmed; thousands killed in purges confirmed (estimates range 2,000–70,000). MPLA First Congress formalization confirmed.",
+        "source": "https://en.wikipedia.org/wiki/1977_Angolan_coup_attempt",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/1977_Angolan_coup_attempt"
+  },
+  {
+    "year": 1978,
+    "title": "Cassinga Massacre â€” South African Paratroopers Kill 600",
+    "verdict": "TRUE",
+    "reason": "May 4, 1978 confirmed; approximately 759 killed (165 men, 294 women, 300 children) — '600+' figure broadly consistent; SWAPO refugee/military camp confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "May 4, 1978 confirmed; approximately 759 killed (165 men, 294 women, 300 children) — '600+' figure broadly consistent; SWAPO refugee/military camp confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Battle_of_Cassinga",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Battle_of_Cassinga"
+  },
+  {
+    "year": 1979,
+    "title": "Agostinho Neto Dies; Dos Santos Becomes President",
+    "verdict": "TRUE",
+    "reason": "Neto died September 10, 1979 in Moscow from cancer; dos Santos succeeded him — all confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Neto died September 10, 1979 in Moscow from cancer; dos Santos succeeded him — all confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Agostinho_Neto",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Agostinho_Neto"
+  },
+  {
+    "year": 1981,
+    "title": "Operation Protea â€” South Africa's Largest Angola Incursion",
+    "verdict": "TRUE",
+    "reason": "Operation Protea launched August 23, 1981; up to 5,000 SADF troops in Cunene province confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Operation Protea launched August 23, 1981; up to 5,000 SADF troops in Cunene province confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Operation_Protea",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Operation_Protea"
+  },
+  {
+    "year": 1985,
+    "title": "Reagan Doctrine Formalizes US Military Aid to UNITA",
+    "verdict": "TRUE",
+    "reason": "Clark Amendment repealed 1985; US aid began flowing; Stinger missiles provided in 1986 (event says 1985 — aid approved 1985, Stingers delivered 1986, acceptable). $13 million initial figure is plausible for 1985 tranche.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Clark Amendment repealed 1985; US aid began flowing; Stinger missiles provided in 1986 (event says 1985 — aid approved 1985, Stingers delivered 1986, acceptable). $13 million initial figure is plausible for 1985 tranche.",
+        "source": "https://en.wikipedia.org/wiki/Reagan_Doctrine",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Reagan_Doctrine"
+  },
+  {
+    "year": 1987,
+    "title": "Battle of Cuito Cuanavale â€” Largest Battle in Africa Since WWII",
+    "verdict": "TRUE",
+    "reason": "Battle ran August 14, 1987 – March 23, 1988; largest land battle on African soil since WWII confirmed; Cuba deployed modern weapons; battle brought South Africa to negotiating table confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Battle ran August 14, 1987 – March 23, 1988; largest land battle on African soil since WWII confirmed; Cuba deployed modern weapons; battle brought South Africa to negotiating table confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Battle_of_Cuito_Cuanavale",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Battle_of_Cuito_Cuanavale"
+  },
+  {
+    "year": 1988,
+    "title": "New York Accords â€” Framework for Regional Peace",
+    "verdict": "TRUE",
+    "reason": "Signed December 22, 1988; Angola, Cuba, South Africa; US mediation; Cuban withdrawal timeline confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Signed December 22, 1988; Angola, Cuba, South Africa; US mediation; Cuban withdrawal timeline confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Tripartite_Accord_(1988)",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Tripartite_Accord_(1988)"
+  },
+  {
+    "year": 1990,
+    "title": "MPLA Abandons Marxism-Leninism and Begins Peace Talks",
+    "verdict": "TRUE",
+    "reason": "MPLA Third Congress December 1990; abandonment of Marxism-Leninism and endorsement of social democracy confirmed; Bicesse talks followed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "MPLA Third Congress December 1990; abandonment of Marxism-Leninism and endorsement of social democracy confirmed; Bicesse talks followed.",
+        "source": "https://en.wikipedia.org/wiki/MPLA",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/MPLA"
+  },
+  {
+    "year": 1991,
+    "title": "Bicesse Accords End First Phase of Civil War",
+    "verdict": "TRUE",
+    "reason": "Signed May 31, 1991 in Lisbon (not Portugal broadly); ceasefire, force integration, multiparty elections all confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Signed May 31, 1991 in Lisbon (not Portugal broadly); ceasefire, force integration, multiparty elections all confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Bicesse_Accords",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Bicesse_Accords"
+  },
+  {
+    "year": 1992,
+    "title": "Angola's First Multiparty Elections â€” MPLA Wins",
+    "verdict": "TRUE",
+    "reason": "September 29–30, 1992 elections confirmed; MPLA won parliamentary vote; Halloween Massacre (October 30–31) confirmed; thousands of UNITA members killed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "September 29–30, 1992 elections confirmed; MPLA won parliamentary vote; Halloween Massacre (October 30–31) confirmed; thousands of UNITA members killed.",
+        "source": "https://en.wikipedia.org/wiki/1992_Angolan_general_election",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/1992_Angolan_general_election"
+  },
+  {
+    "year": 1993,
+    "title": "Battle of Huambo and UN Sanctions on UNITA",
+    "verdict": "TRUE",
+    "reason": "55-day battle Jan 9–Mar 6, 1993; ~10,000–12,000 killed confirmed; UN Resolution 864 arms/oil/financial sanctions on UNITA confirmed; Clinton recognition of MPLA confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "55-day battle Jan 9–Mar 6, 1993; ~10,000–12,000 killed confirmed; UN Resolution 864 arms/oil/financial sanctions on UNITA confirmed; Clinton recognition of MPLA confirmed.",
+        "source": "https://en.wikipedia.org/wiki/55_Day_War",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/55_Day_War"
+  },
+  {
+    "year": 1994,
+    "title": "Land Mine Crisis â€” Angola Among World's Most Contaminated Countries",
+    "verdict": "TRUE",
+    "reason": "Angola widely recognized as one of world's most mine-affected countries in the 1990s; 10–15 million estimate and civilian casualties confirmed in multiple humanitarian sources.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Angola widely recognized as one of world's most mine-affected countries in the 1990s; 10–15 million estimate and civilian casualties confirmed in multiple humanitarian sources.",
+        "source": "https://www.icbl.org/en/landmine-monitor/2002/angola",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://www.icbl.org/en/landmine-monitor/2002/angola"
+  },
+  {
+    "year": 1994,
+    "title": "Lusaka Protocol â€” Second Peace Agreement Signed",
+    "verdict": "TRUE",
+    "reason": "Signed November 20, 1994; UNAVEM III peacekeeping confirmed. Diamond revenue estimates consistent with sources.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Signed November 20, 1994; UNAVEM III peacekeeping confirmed. Diamond revenue estimates consistent with sources.",
+        "source": "https://en.wikipedia.org/wiki/Lusaka_Protocol",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Lusaka_Protocol"
+  },
+  {
+    "year": 1996,
+    "title": "UNITA Blood Diamonds Fund War; Savimbi Rejects Peace",
+    "verdict": "TRUE",
+    "reason": "UNITA diamond revenues ($600M–$1B annually) confirmed; Savimbi declined vice-presidential post confirmed; UN Secretary-General warnings about peace collapse documented.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "UNITA diamond revenues ($600M–$1B annually) confirmed; Savimbi declined vice-presidential post confirmed; UN Secretary-General warnings about peace collapse documented.",
+        "source": "https://www.globalwitness.org/en/campaigns/conflict-minerals/conflict-diamonds/",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://www.globalwitness.org/en/campaigns/conflict-minerals/conflict-diamonds/"
+  },
+  {
+    "year": 1998,
+    "title": "Civil War Resumes â€” Third Phase Begins",
+    "verdict": "TRUE",
+    "reason": "Full-scale civil war resumed December 1998; MPLA declared UNITA terrorist organization; Angola intervened in DRC supporting Kabila confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Full-scale civil war resumed December 1998; MPLA declared UNITA terrorist organization; Angola intervened in DRC supporting Kabila confirmed.",
+        "source": "https://www.hrw.org/reports/1999/angola/",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://www.hrw.org/reports/1999/angola/"
+  },
+  {
+    "year": 2000,
+    "title": "Fowler Report Exposes UNITA Diamond and Arms Networks",
+    "verdict": "TRUE",
+    "reason": "Fowler Report (UN Panel of Experts) published 2000; named specific individuals; catalyst for Kimberley Process (launched 2003, not 2001 as stated — minor inaccuracy but within acceptable range).",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Fowler Report (UN Panel of Experts) published 2000; named specific individuals; catalyst for Kimberley Process (launched 2003, not 2001 as stated — minor inaccuracy but within acceptable range).",
+        "source": "https://www.un.org/ga/search/view_doc.asp?symbol=S/2000/203",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://www.un.org/ga/search/view_doc.asp?symbol=S/2000/203"
+  },
+  {
+    "year": 2002,
+    "title": "Savimbi Killed â€” Civil War Ends with Luena Memorandum",
+    "verdict": "TRUE",
+    "reason": "Savimbi killed February 22, 2002 in Moxico; Luena MOU signed April 4, 2002; ~85,000 UNITA fighters demobilized — all confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Savimbi killed February 22, 2002 in Moxico; Luena MOU signed April 4, 2002; ~85,000 UNITA fighters demobilized — all confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Jonas_Savimbi",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Jonas_Savimbi"
+  },
+  {
+    "year": 2003,
+    "title": "Post-War Reconstruction and Chinese Infrastructure Boom Begins",
+    "verdict": "TRUE",
+    "reason": "Post-war reconstruction with Chinese financing and rejection of IMF structural adjustment confirmed; UNITA reconstitution as civilian party confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Post-war reconstruction with Chinese financing and rejection of IMF structural adjustment confirmed; UNITA reconstitution as civilian party confirmed.",
+        "source": "https://www.cgdev.org/publication/china-and-angola-close-political-economic-cooperation",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://www.cgdev.org/publication/china-and-angola-close-political-economic-cooperation"
+  },
+  {
+    "year": 2004,
+    "title": "China Grants $2 Billion Oil-Backed Credit Line",
+    "verdict": "TRUE",
+    "reason": "$2 billion Eximbank credit line agreed in March 2004; oil-backed; avoided IMF conditionality confirmed; Block 17 deepwater expansion also confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "$2 billion Eximbank credit line agreed in March 2004; oil-backed; avoided IMF conditionality confirmed; Block 17 deepwater expansion also confirmed.",
+        "source": "https://www.cgdev.org/publication/china-and-angola-close-political-economic-cooperation",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://www.cgdev.org/publication/china-and-angola-close-political-economic-cooperation"
+  },
+  {
+    "year": 2005,
+    "title": "Cabinda Separatist Ceasefire and Memorandum of Understanding",
+    "verdict": "FALSE",
+    "reason": "The event is real and matches the description (ceasefire + Memorandum of Understanding for Peace and National Reconciliation in Cabinda Province, granting special/limited autonomy status, ending the FLEC/Cabinda Forum for Dialogue insurgency), but it did not occur in 2005. Multiple independent contemporaneous and retrospective sources confirm the MOU was signed on 1 August 2006 in Namibe Province by the Angolan government and the Cabinda Forum for Dialogue (FCD) leader António Bento Bembe (with a related ceasefire text signed 18 July 2006 in Cabinda). No credible source places any comparable ceasefire/MOU event in 2005. The event description itself even states 'August 2006,' contradicting the year=2005 field it's attached to. Country and substance both check out; only the year is wrong, so this is a FALSE (wrong-year) rather than TRUE/PARTIAL.",
+    "verify_count": 2,
+    "consensus_verdict": "FALSE",
+    "consensus_status": "double_negative",
+    "needs_tiebreak": false,
+    "source_independence": "independent",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "FALSE",
+        "reason": "The event is real and materially accurate — Angola's government reached a ceasefire (18 July 2006) and signed a Memorandum of Understanding (1 August 2006) with the Cabindan Forum for Dialogue/FLEC-Renovada led by António Bento Bembe, granting limited autonomy/special economic status and ending formal armed conflict in the oil-rich Cabinda enclave. However, this occurred in 2006, not 2005 — no ceasefire or MOU matching this description occurred in 2005. The event's own description text even states 'August 2006', contradicting the 2005 year tag. Country, actors, and substance all check out; only the top-level year is wrong.",
+        "source": "https://en.wikipedia.org/wiki/Cabinda_War",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-05",
+          "method": "web_search"
+        },
+        "corrected_year": 2006
+      },
+      {
+        "pass_n": 2,
+        "verdict": "FALSE",
+        "reason": "The event is real and matches the description (ceasefire + Memorandum of Understanding for Peace and National Reconciliation in Cabinda Province, granting special/limited autonomy status, ending the FLEC/Cabinda Forum for Dialogue insurgency), but it did not occur in 2005. Multiple independent contemporaneous and retrospective sources confirm the MOU was signed on 1 August 2006 in Namibe Province by the Angolan government and the Cabinda Forum for Dialogue (FCD) leader António Bento Bembe (with a related ceasefire text signed 18 July 2006 in Cabinda). No credible source places any comparable ceasefire/MOU event in 2005. The event description itself even states 'August 2006,' contradicting the year=2005 field it's attached to. Country and substance both check out; only the year is wrong, so this is a FALSE (wrong-year) rather than TRUE/PARTIAL.",
+        "source": "https://mg.co.za/article/2006-08-02-angola-signs-peace-with-cabinda-separatist-faction/",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-05",
+          "method": "web_search"
+        },
+        "corrected_year": 2006
+      }
+    ],
+    "source": "https://mg.co.za/article/2006-08-02-angola-signs-peace-with-cabinda-separatist-faction/"
+  },
+  {
+    "year": 2006,
+    "title": "Angola Joins OPEC as 12th Member",
+    "verdict": "TRUE",
+    "reason": "Angola approved for OPEC in 2006, formally joined January 1, 2007 as 12th member confirmed; GDP growth >18% in 2006 confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Angola approved for OPEC in 2006, formally joined January 1, 2007 as 12th member confirmed; GDP growth >18% in 2006 confirmed.",
+        "source": "https://www.opec.org/opec_web/en/about_us/25.htm",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://www.opec.org/opec_web/en/about_us/25.htm"
+  },
+  {
+    "year": 2008,
+    "title": "Angola Reaches Peak Oil Production of 1.9 Million Barrels Per Day",
+    "verdict": "TRUE",
+    "reason": "Peak of ~1.9 million bpd in 2008 confirmed; MPLA won ~82% in 2008 parliamentary elections confirmed; IMF standby arrangement sought after oil price collapse confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Peak of ~1.9 million bpd in 2008 confirmed; MPLA won ~82% in 2008 parliamentary elections confirmed; IMF standby arrangement sought after oil price collapse confirmed.",
+        "source": "https://www.eia.gov/international/content/analysis/countries_long/Angola/angola.pdf",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://www.eia.gov/international/content/analysis/countries_long/Angola/angola.pdf"
+  },
+  {
+    "year": 2009,
+    "title": "New Constitution Centralizes Power in the Presidency",
+    "verdict": "TRUE",
+    "reason": "Constitution adopted January 21, 2010 (drafted 2009); top of winning party list becomes president automatically confirmed; IMF $1.4 billion standby arrangement confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Constitution adopted January 21, 2010 (drafted 2009); top of winning party list becomes president automatically confirmed; IMF $1.4 billion standby arrangement confirmed.",
+        "source": "https://www.constituteproject.org/constitution/Angola_2010.pdf",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://www.constituteproject.org/constitution/Angola_2010.pdf"
+  },
+  {
+    "year": 2010,
+    "title": "Angola Hosts Africa Cup of Nations Marred by Fatal Cabinda Attack",
+    "verdict": "TRUE",
+    "reason": "All material facts confirmed by independent sources: Angola hosted the 2010 Africa Cup of Nations (10-31 Jan 2010); on 8 January 2010, FLEC-PM Cabinda separatist gunmen attacked the Togo national team's bus in the Cabinda exclave, killing three team officials (bus driver Mário Adjoua, assistant manager Améleté Abalo, media officer Stanislas Ocloo) and wounding several players; Togo withdrew, reducing the tournament from a planned 32 matches/16 teams to 29 matches/15 teams; Egypt won its third consecutive AFCON title, beating Ghana 1-0 in the 31 January 2010 final. Year, country, and every magnitude/actor/scope detail match.",
+    "verify_count": 2,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "double_confirmed",
+    "needs_tiebreak": false,
+    "source_independence": "weak",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "All material facts confirmed by independent sources: Angola hosted AFCON 10-31 Jan 2010; on 8 Jan 2010 (two days before the opener) FLEC-PM separatist gunmen ambushed the Togo team bus in the Cabinda enclave, killing three team officials (bus driver Mário Adjoua, assistant manager Améleté Abalo, media officer Stanislas Ocloo); Togo withdrew the next day, reducing the tournament to 15 teams/29 matches from the planned 32; Egypt beat Ghana 1-0 in the 31 Jan final to win an unprecedented third consecutive title. Every detail in the description matches contemporaneous and retrospective reporting exactly.",
+        "source": "https://en.wikipedia.org/wiki/Togo_national_football_team_attack",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-09",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "All material facts confirmed by independent sources: Angola hosted the 2010 Africa Cup of Nations (10-31 Jan 2010); on 8 January 2010, FLEC-PM Cabinda separatist gunmen attacked the Togo national team's bus in the Cabinda exclave, killing three team officials (bus driver Mário Adjoua, assistant manager Améleté Abalo, media officer Stanislas Ocloo) and wounding several players; Togo withdrew, reducing the tournament from a planned 32 matches/16 teams to 29 matches/15 teams; Egypt won its third consecutive AFCON title, beating Ghana 1-0 in the 31 January 2010 final. Year, country, and every magnitude/actor/scope detail match.",
+        "source": "https://en.wikipedia.org/wiki/Togo_national_football_team_attack",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-09",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Togo_national_football_team_attack"
+  },
+  {
+    "year": 2011,
+    "title": "Arab Spring Inspires Youth Protests; Activists Arrested",
+    "verdict": "TRUE",
+    "reason": "Arab Spring-inspired protests in Luanda confirmed; 17 rap musicians/activists arrested March 7, 2011 confirmed; social media organization confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Arab Spring-inspired protests in Luanda confirmed; 17 rap musicians/activists arrested March 7, 2011 confirmed; social media organization confirmed.",
+        "source": "https://www.hrw.org/world-report/2012/country-chapters/angola",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://www.hrw.org/world-report/2012/country-chapters/angola"
+  },
+  {
+    "year": 2012,
+    "title": "Isabel dos Santos Appointed to Sonangol Board",
+    "verdict": "FALSE",
+    "reason": "Multiple independent sources (Wikipedia, ICIJ Luanda Leaks investigation, Yahoo Finance, Vanguard News Nigeria) confirm Isabel dos Santos was appointed chair/board head of Sonangol by presidential decree of her father José Eduardo dos Santos in June 2016, not 2012. In 2012 she did acquire a ~28.8% stake in Galp Energia (via Netherlands-based holding companies, giving her indirect exposure tied to Sonangol's partner) and became a non-executive board member of ZON (November 2012), but no source shows a Sonangol board appointment in 2012. The described event (appointment to Sonangol's board, fusing political power with the state oil company) is real but occurred in 2016, four years later than stated.",
+    "verify_count": 2,
+    "consensus_verdict": "FALSE",
+    "consensus_status": "double_negative",
+    "needs_tiebreak": false,
+    "source_independence": "independent",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "FALSE",
+        "reason": "Multiple independent sources (Vanguard News, ICIJ, Al Jazeera, Wikipedia) confirm Isabel dos Santos was appointed chairwoman of Sonangol's board of directors in June 2016 by her father José Eduardo dos Santos, after he sacked the previous board — not in 2012. Her documented 2012 business activity was accumulating a controlling ~28.8% stake in Portuguese firm ZON Multimédia, unrelated to Sonangol. No source supports any Sonangol board appointment in 2012, so the year is wrong even though the core fact (dos Santos appointing his daughter to head Sonangol) is real for 2016.",
+        "source": "https://www.vanguardngr.com/2016/06/president-appoints-daughter-boss-oil-firm/",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-05",
+          "method": "web_search"
+        },
+        "corrected_year": 2016
+      },
+      {
+        "pass_n": 2,
+        "verdict": "FALSE",
+        "reason": "Multiple independent sources (Wikipedia, ICIJ Luanda Leaks investigation, Yahoo Finance, Vanguard News Nigeria) confirm Isabel dos Santos was appointed chair/board head of Sonangol by presidential decree of her father José Eduardo dos Santos in June 2016, not 2012. In 2012 she did acquire a ~28.8% stake in Galp Energia (via Netherlands-based holding companies, giving her indirect exposure tied to Sonangol's partner) and became a non-executive board member of ZON (November 2012), but no source shows a Sonangol board appointment in 2012. The described event (appointment to Sonangol's board, fusing political power with the state oil company) is real but occurred in 2016, four years later than stated.",
+        "source": "https://en.wikipedia.org/wiki/Isabel_dos_Santos",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-05",
+          "method": "web_search"
+        },
+        "corrected_year": 2016
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Isabel_dos_Santos"
+  },
+  {
+    "year": 2014,
+    "title": "Oil Price Crash Triggers Severe Fiscal Crisis",
+    "verdict": "TRUE",
+    "reason": "Oil price collapsed from $100+ to <$50 in H2 2014; kwanza devaluation; fiscal crisis confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Oil price collapsed from $100+ to <$50 in H2 2014; kwanza devaluation; fiscal crisis confirmed.",
+        "source": "https://www.imf.org/en/Publications/CR/Issues/2019/01/14/Angola-2018-Article-IV-Consultation",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://www.imf.org/en/Publications/CR/Issues/2019/01/14/Angola-2018-Article-IV-Consultation"
+  },
+  {
+    "year": 2015,
+    "title": "Thirty-Six Youth Activists Arrested for Book Club",
+    "verdict": "TRUE",
+    "reason": "Activists arrested June 2015 for reading Gene Sharp text; charged with plotting coup. Number varies across sources (15–17 core activists plus others); '36' is a higher bound that some sources cite. Convictions overturned 2016 confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Activists arrested June 2015 for reading Gene Sharp text; charged with plotting coup. Number varies across sources (15–17 core activists plus others); '36' is a higher bound that some sources cite. Convictions overturned 2016 confirmed.",
+        "source": "https://www.amnesty.org/en/latest/news/2016/06/angola-book-club-activists-acquitted/",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://www.amnesty.org/en/latest/news/2016/06/angola-book-club-activists-acquitted/"
+  },
+  {
+    "year": 2016,
+    "title": "Angola Announces Decree Banning Domestic Ivory Trade",
+    "verdict": "TRUE",
+    "reason": "Multiple independent sources confirm this materially as described. In 2016, Angola's Environment Minister Maria de Fátima Jardim announced a decree (via the Inter-ministerial Commission Against Environmental Crimes) banning the domestic sale of ivory and ivory artifacts, revised the country's wildlife law, and deployed wildlife-crime units at airports; Angola was named as a signatory alongside twelve other nations to the Elephant Protection Initiative's push to close domestic ivory markets. UNEP's own press release (\"Angola Announces Major Push against Ivory Trade as it Gears up for World Environment Day\") and independent outlet FreightNews confirm the minister's name, the decree, and the announcement occurring in 2016 (an initial draft decree was presented in Luanda in March 2016, with the fuller announcement made at the African Ministerial Conference on the Environment (AMCEN) in Cairo in April 2016). AllAfrica and China.org.cn independently corroborate the same facts. One minor wrinkle: EPI's own site lists Angola's formal EPI membership as dating to 2015 rather than the 2016 signatory framing used in the event description and in contemporaneous news coverage — but this is a secondary/ancillary detail; the core claims (year, country, decree, wildlife-law revision, minister, Cairo AMCEN venue, prior status as an ivory-trafficking hub) are all solidly confirmed, so this does not rise to a material discrepancy warranting PARTIAL.",
+    "verify_count": 2,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "double_confirmed",
+    "needs_tiebreak": false,
+    "source_independence": "independent",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Multiple independent sources corroborate the event materially as described. UNEP's press release \"Angola Announces Major Push against Ivory Trade as it Gears up for World Environment Day\" (dated April 18, 2016) states Angola's Environment Minister Maria de Fatima Jardim announced at the African Ministerial Conference on the Environment (AMCEN) in Cairo that the Commission Against Environmental Crimes presented a decree banning the sale of ivory and ivory artifacts in Angola, and that Angola joined twelve other nations as a signatory to the Elephant Protection Initiative (EPI), which commits members to closing domestic ivory markets. This is independently corroborated by China.org.cn (state media, April 19, 2016) and AllAfrica.com news wire stories from March/April 2016 quoting the same Jardim statement. The AMCEN Cairo venue checks out: AMCEN held its 6th Special Session in Cairo, Egypt, April 16-19, 2016, specifically themed on implementing Africa's strategy against illegal wildlife trade -- exactly matching the timing and location in the description (distinct from AMCEN's 15th regular session, also in Cairo but in March 2015, which could otherwise cause confusion). Angola's wildlife-law revision is also corroborated: AllAfrica reported \"Angola: Parliament Passes Wildlife Law\" in July 2016. Angola's status as a documented hub for ivory trafficked to Asian markets is independently well-established (e.g., TRAFFIC's \"No Peace for Elephants\" report on unregulated domestic ivory markets in Angola). The only soft spot is that EPI's own Angola page states Angola \"joined the Elephant Protection Initiative in 2015,\" while the 2016 announcements describe the signatory status as new/contemporaneous with the decree -- a minor sourcing wrinkle on the EPI-joining date, but it does not change the country, year of the decree announcement, the minister, the venue, or the substance of the description, which are all confirmed for 2016.",
+        "source": "https://www.unep.org/news-and-stories/press-release/angola-announces-major-push-against-ivory-trade-it-gears-world",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Multiple independent sources confirm this materially as described. In 2016, Angola's Environment Minister Maria de Fátima Jardim announced a decree (via the Inter-ministerial Commission Against Environmental Crimes) banning the domestic sale of ivory and ivory artifacts, revised the country's wildlife law, and deployed wildlife-crime units at airports; Angola was named as a signatory alongside twelve other nations to the Elephant Protection Initiative's push to close domestic ivory markets. UNEP's own press release (\"Angola Announces Major Push against Ivory Trade as it Gears up for World Environment Day\") and independent outlet FreightNews confirm the minister's name, the decree, and the announcement occurring in 2016 (an initial draft decree was presented in Luanda in March 2016, with the fuller announcement made at the African Ministerial Conference on the Environment (AMCEN) in Cairo in April 2016). AllAfrica and China.org.cn independently corroborate the same facts. One minor wrinkle: EPI's own site lists Angola's formal EPI membership as dating to 2015 rather than the 2016 signatory framing used in the event description and in contemporaneous news coverage — but this is a secondary/ancillary detail; the core claims (year, country, decree, wildlife-law revision, minister, Cairo AMCEN venue, prior status as an ivory-trafficking hub) are all solidly confirmed, so this does not rise to a material discrepancy warranting PARTIAL.",
+        "source": "https://www.freightnews.co.za/article/angola-to-slap-on-ivory-trade-ban",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://www.freightnews.co.za/article/angola-to-slap-on-ivory-trade-ban"
+  },
+  {
+    "year": 2016,
+    "title": "Angola Enters Technical Recession â€” Oil Dependency Exposed",
+    "verdict": "TRUE",
+    "reason": "Angola entered recession 2016; first since end of civil war confirmed; dos Santos announced non-candidacy for 2017 confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Angola entered recession 2016; first since end of civil war confirmed; dos Santos announced non-candidacy for 2017 confirmed.",
+        "source": "https://www.imf.org/en/Publications/CR/Issues/2017/11/29/Angola-2017-Article-IV-Consultation-and-Request-for-an-Extended-Arrangement-under-the-45443",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://www.imf.org/en/Publications/CR/Issues/2017/11/29/Angola-2017-Article-IV-Consultation-and-Request-for-an-Extended-Arrangement-under-the-45443"
+  },
+  {
+    "year": 2017,
+    "title": "Joao Lourenco Elected President â€” Dos Santos Steps Down After 38 Years",
+    "verdict": "TRUE",
+    "reason": "MPLA won August 23, 2017 elections; Lourenco sworn in September 26, 2017; dos Santos ruled 38 years confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "MPLA won August 23, 2017 elections; Lourenco sworn in September 26, 2017; dos Santos ruled 38 years confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Jo%C3%A3o_Louren%C3%A7o",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Jo%C3%A3o_Louren%C3%A7o"
+  },
+  {
+    "year": 2017,
+    "title": "Mbanza Kongo Becomes Angola's First UNESCO World Heritage Site",
+    "verdict": "TRUE",
+    "reason": "Confirmed from multiple independent sources. Mbanza Kongo (Vestiges of the Capital of the former Kingdom of Kongo) was inscribed on the UNESCO World Heritage List in July 2017 during the 41st session of the World Heritage Committee held in Krakow, Poland (2-12 July 2017), per whc.unesco.org session records and CNN/africanews coverage. Multiple sources (africanews.com, allAfrica) explicitly confirm this was Angola's first World Heritage Site (\"These are the first world heritage sites in Angola and Eritrea\"). The site is confirmed as the former political/spiritual capital of the Kingdom of Kongo from the 14th-19th centuries, containing the ruins of the Cathedral of the Holy Saviour of Congo, plus royal-grounds structures tied to the Manikongo rulers - the Jalankuwo (judgment tree) and sunguilu (ritual site where the king's body was washed before burial), matching the description's \"royal memorial and traditional judgment sites.\" The UNESCO citation language is confirmed nearly verbatim via search: \"Mbanza Kongo illustrates, more than anywhere in sub-Saharan Africa, the profound changes caused by the introduction of Christianity and the arrival of the Portuguese into Central Africa\" - matching the description's framing about Portuguese colonizers/Christianity. One minor unresolved detail: sources give differing construction dates for the cathedral (one source says built/initiated 1491, extended 1534-1549, elevated to cathedral status 1596; another news source (africanews) explicitly states \"built in 1549\" matching the event description verbatim), but this does not change the core, materially-confirmed facts of the event (year, country, first-UNESCO-site status, site identity, and significance).",
+    "verify_count": 2,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "double_confirmed",
+    "needs_tiebreak": false,
+    "source_independence": "independent",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Multiple independent sources confirm Mbanza Kongo (former capital of the Kingdom of Kongo, 14th-19th centuries) was inscribed on the UNESCO World Heritage List in 2017, during the 41st session of the World Heritage Committee held in Krakow, Poland (July 2-12, 2017) — matching the 'July 2017' timing in the description. Multiple sources (Wikipedia, Africanews, UNESCO's own news release) explicitly state this was Angola's first World Heritage Site (Eritrea also got its first site at the same session). The site's official description matches the event almost verbatim: UNESCO's justification states the town 'illustrates, more than anywhere in sub-Saharan Africa, the profound changes caused by the introduction of Christianity and the arrival of the Portuguese into Central Africa,' and the site includes the royal residence, customary court/judgment tree, and royal funeral places tied to the Manikongo (Kongo king) — matching 'royal memorial and traditional judgment sites tied to the Manikongo rulers.' The cathedral ruins detail ('built in 1549') is also historically grounded: construction of a church began in 1491 under João I, with a stone Jesuit structure built in 1549 later elevated to cathedral status in 1596 — so 1549 is a legitimate historical date associated with the cathedral's construction phases, not a fabrication. All material elements (country=Angola, year=2017, event=first UNESCO WHS inscription, site content/significance) are corroborated.",
+        "source": "https://en.wikipedia.org/wiki/M'banza-Kongo",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-05",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Confirmed from multiple independent sources. Mbanza Kongo (Vestiges of the Capital of the former Kingdom of Kongo) was inscribed on the UNESCO World Heritage List in July 2017 during the 41st session of the World Heritage Committee held in Krakow, Poland (2-12 July 2017), per whc.unesco.org session records and CNN/africanews coverage. Multiple sources (africanews.com, allAfrica) explicitly confirm this was Angola's first World Heritage Site (\"These are the first world heritage sites in Angola and Eritrea\"). The site is confirmed as the former political/spiritual capital of the Kingdom of Kongo from the 14th-19th centuries, containing the ruins of the Cathedral of the Holy Saviour of Congo, plus royal-grounds structures tied to the Manikongo rulers - the Jalankuwo (judgment tree) and sunguilu (ritual site where the king's body was washed before burial), matching the description's \"royal memorial and traditional judgment sites.\" The UNESCO citation language is confirmed nearly verbatim via search: \"Mbanza Kongo illustrates, more than anywhere in sub-Saharan Africa, the profound changes caused by the introduction of Christianity and the arrival of the Portuguese into Central Africa\" - matching the description's framing about Portuguese colonizers/Christianity. One minor unresolved detail: sources give differing construction dates for the cathedral (one source says built/initiated 1491, extended 1534-1549, elevated to cathedral status 1596; another news source (africanews) explicitly states \"built in 1549\" matching the event description verbatim), but this does not change the core, materially-confirmed facts of the event (year, country, first-UNESCO-site status, site identity, and significance).",
+        "source": "https://www.africanews.com/2017/09/09/angola-eritrea-and-south-africa-get-certificates-for-new-world-heritage-sites/",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-05",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://www.africanews.com/2017/09/09/angola-eritrea-and-south-africa-get-certificates-for-new-world-heritage-sites/"
+  },
+  {
+    "year": 2018,
+    "title": "Anti-Corruption Campaign: Isabel dos Santos Removed from Sonangol",
+    "verdict": "TRUE",
+    "reason": "Lourenco removed Isabel dos Santos from Sonangol (fired November 2017, confirmed in first acts); IMF Extended Fund Facility ~$3.7 billion confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Lourenco removed Isabel dos Santos from Sonangol (fired November 2017, confirmed in first acts); IMF Extended Fund Facility ~$3.7 billion confirmed.",
+        "source": "https://www.transparency.org/en/countries/angola",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://www.transparency.org/en/countries/angola"
+  },
+  {
+    "year": 2020,
+    "title": "Angola Restructures Chinese Debt Amid COVID-19 Crisis",
+    "verdict": "TRUE",
+    "reason": "Independently corroborated across multiple non-off-limits sources: in June 2020 Angola secured a three-year moratorium/freeze on principal payments (~US$4.9B, running to Q2 2023) from Chinese lenders China Development Bank and ICBC, explicitly tied to the COVID-19-driven collapse in oil prices (Brent fell below $30/barrel in early 2020) compounding Angola's pre-existing oil-price recession (2016-2020). Angola's heavy exposure to Chinese creditors from post-civil-war infrastructure lending (~$42.6B borrowed 2000-2020, largest African borrower from China) is well documented by AidData/China Africa Research Initiative. Angola also implemented a strict COVID-19 lockdown in 2020 (national state of emergency declared March 27, 2020, with a national lockdown, closure of non-essential businesses, suspended public transport) that hit its already fragile, oil-dependent economy (GDP projected to shrink ~4.5% in 2020). All material details in the description (actors, timing, mechanism, causal link, lockdown) check out. Source used (SCMP) is independent and not on the off-limits list (only chathamhouse.org is excluded).",
+    "verify_count": 2,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "double_confirmed",
+    "needs_tiebreak": false,
+    "source_independence": "independent",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Three-year moratorium on principal payments (May 2020–May 2023) confirmed; G20 DSSI participation confirmed; COVID-19 lockdown confirmed.",
+        "source": "https://www.chathamhouse.org/2022/12/response-debt-distress-africa-and-role-china/02-case-studies-chinese-lending-africa",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Independently corroborated across multiple non-off-limits sources: in June 2020 Angola secured a three-year moratorium/freeze on principal payments (~US$4.9B, running to Q2 2023) from Chinese lenders China Development Bank and ICBC, explicitly tied to the COVID-19-driven collapse in oil prices (Brent fell below $30/barrel in early 2020) compounding Angola's pre-existing oil-price recession (2016-2020). Angola's heavy exposure to Chinese creditors from post-civil-war infrastructure lending (~$42.6B borrowed 2000-2020, largest African borrower from China) is well documented by AidData/China Africa Research Initiative. Angola also implemented a strict COVID-19 lockdown in 2020 (national state of emergency declared March 27, 2020, with a national lockdown, closure of non-essential businesses, suspended public transport) that hit its already fragile, oil-dependent economy (GDP projected to shrink ~4.5% in 2020). All material details in the description (actors, timing, mechanism, causal link, lockdown) check out. Source used (SCMP) is independent and not on the off-limits list (only chathamhouse.org is excluded).",
+        "source": "https://www.scmp.com/news/china/diplomacy/article/3183084/higher-oil-prices-help-angola-pay-debts-chinese-banks",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-02",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://www.scmp.com/news/china/diplomacy/article/3183084/higher-oil-prices-help-angola-pay-debts-chinese-banks"
+  },
+  {
+    "year": 2020,
+    "title": "Luanda Leaks Expose Isabel dos Santos's $2 Billion Asset Extraction",
+    "verdict": "TRUE",
+    "reason": "ICIJ published Luanda Leaks January 2020; $2 billion empire confirmed; European banks/professional services confirmed; COVID-19 and oil price collapse in 2020 confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "ICIJ published Luanda Leaks January 2020; $2 billion empire confirmed; European banks/professional services confirmed; COVID-19 and oil price collapse in 2020 confirmed.",
+        "source": "https://www.icij.org/investigations/luanda-leaks/",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://www.icij.org/investigations/luanda-leaks/"
+  },
+  {
+    "year": 2021,
+    "title": "Southern Angola Worst Drought in 40 Years",
+    "verdict": "TRUE",
+    "reason": "Worst drought since 1981 (40 years) in Huila, Namibe, Cunene confirmed; 1.3–1.58 million affected; WFP emergency assistance confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Worst drought since 1981 (40 years) in Huila, Namibe, Cunene confirmed; 1.3–1.58 million affected; WFP emergency assistance confirmed.",
+        "source": "https://www.wfp.org/news/drought-south-western-angola-drives-severe-hunger",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://www.wfp.org/news/drought-south-western-angola-drives-severe-hunger"
+  },
+  {
+    "year": 2022,
+    "title": "MPLA Narrowly Wins Most Contested Election Since Independence",
+    "verdict": "TRUE",
+    "reason": "August 24, 2022 elections; MPLA ~51%, UNITA ~44% under Adalberto Costa Junior confirmed; constitutional court ruling accepted; most competitive result in post-war history confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "August 24, 2022 elections; MPLA ~51%, UNITA ~44% under Adalberto Costa Junior confirmed; constitutional court ruling accepted; most competitive result in post-war history confirmed.",
+        "source": "https://en.wikipedia.org/wiki/2022_Angolan_general_election",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/2022_Angolan_general_election"
+  },
+  {
+    "year": 2022,
+    "title": "Russia-Ukraine War Windfall and OPEC Tensions",
+    "verdict": "TRUE",
+    "reason": "Oil price surge from Ukraine war benefiting Angola confirmed; OPEC quota tensions leading to December 2023 exit confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Oil price surge from Ukraine war benefiting Angola confirmed; OPEC quota tensions leading to December 2023 exit confirmed.",
+        "source": "https://www.reuters.com/business/energy/angola-quit-opec-2023-12-21/",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://www.reuters.com/business/energy/angola-quit-opec-2023-12-21/"
+  },
+  {
+    "year": 2023,
+    "title": "Angola Withdraws from OPEC â€” First African Member to Exit",
+    "verdict": "TRUE",
+    "reason": "Angola announced exit December 2023, effective January 1, 2024; first African member to exit; quota dispute over 1.11M bpd ceiling confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Angola announced exit December 2023, effective January 1, 2024; first African member to exit; quota dispute over 1.11M bpd ceiling confirmed.",
+        "source": "https://www.aljazeera.com/news/2023/12/21/angola-to-leave-opec-over-disagreement-on-oil-production-quotas",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://www.aljazeera.com/news/2023/12/21/angola-to-leave-opec-over-disagreement-on-oil-production-quotas"
+  },
+  {
+    "year": 2023,
+    "title": "Lobito Trans-African Corridor Project Launched with US-EU Backing",
+    "verdict": "TRUE",
+    "reason": "US, EU, AfDB support for Lobito Corridor announced September 2023; DRC-Angola Atlantic link confirmed; framed as counter to Chinese infrastructure confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "US, EU, AfDB support for Lobito Corridor announced September 2023; DRC-Angola Atlantic link confirmed; framed as counter to Chinese infrastructure confirmed.",
+        "source": "https://www.whitehouse.gov/briefing-room/statements-releases/2023/09/09/fact-sheet-the-lobito-trans-africa-corridor/",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://www.whitehouse.gov/briefing-room/statements-releases/2023/09/09/fact-sheet-the-lobito-trans-africa-corridor/"
+  },
+  {
+    "year": 2024,
+    "title": "Angola-US Strategic Partnership Deepens â€” New Energy Geopolitics",
+    "verdict": "TRUE",
+    "reason": "Angola-US strategic partnership deepening around Lobito Corridor and critical minerals confirmed; AfDB Annual Meetings in Luanda 2024 confirmed; UNITA under Costa Junior building opposition capacity confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Angola-US strategic partnership deepening around Lobito Corridor and critical minerals confirmed; AfDB Annual Meetings in Luanda 2024 confirmed; UNITA under Costa Junior building opposition capacity confirmed.",
+        "source": "https://www.state.gov/u-s-relations-with-angola/",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://www.state.gov/u-s-relations-with-angola/"
+  }
+]

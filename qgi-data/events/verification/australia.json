@@ -1,0 +1,1358 @@
+[
+  {
+    "year": 1973,
+    "title": "Sydney Opera House Officially Opens",
+    "verdict": "PARTIAL",
+    "reason": "Core facts confirmed: Queen Elizabeth II formally opened the Sydney Opera House in Sydney, Australia on 20 October 1973; final cost was AU$102 million, substantially funded via the Opera House Lotteries; designed by Danish architect Jorn Utzon; the building was UNESCO World Heritage-listed in 2007. However, one specific claim in the description is factually wrong: the official opening ceremony on 20 October 1973 featured fireworks and a performance of Beethoven's Symphony No. 9 -- not Prokofiev's War and Peace. The Prokofiev opera War and Peace was staged in the Opera Theatre on 28 September 1973, nearly three weeks BEFORE the Queen's official opening, as a separate pre-opening inaugural performance, not as part of the opening ceremony itself. This is a checkable actor/scope error (wrong event attributed to the opening), so I downgrade from TRUE to PARTIAL. Minor/lesser note: construction is usually described as 14 years (1959-1973) rather than 15, though this is a smaller, more debatable point depending on start-date convention (design competition win was 1957).",
+    "verify_count": 2,
+    "consensus_verdict": "PARTIAL",
+    "consensus_status": "double_negative",
+    "needs_tiebreak": false,
+    "source_independence": "weak",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "PARTIAL",
+        "reason": "Core facts confirmed: Queen Elizabeth II officially opened the Sydney Opera House in Australia on 20 October 1973 after construction beginning 1959 (~14 years, commonly cited as 10-14 yrs depending on start point); final cost was AU$102 million (1,357% over original budget), funded substantially via Opera House Lotteries; designed by Danish architect Jørn Utzon; UNESCO World Heritage inscription occurred 28 June 2007; the venue hosts roughly 2,500 events/year per the official Australian government heritage listing (description's \"roughly 3,000\" is a minor overstatement, not material). However, one material detail is wrong: the official opening ceremony on 20 October 1973 did NOT open with Prokofiev's War and Peace — it featured an outdoor concert with fireworks and the Sydney Symphony Orchestra performing Beethoven's Symphony No. 9, and the Queen separately attended a performance of Mozart's The Magic Flute. Prokofiev's War and Peace was indeed the first opera staged in the Opera Theatre, but that happened on 28 September 1973 — nearly a month BEFORE the official royal opening, as part of a preview/trial season by the Australian Opera, not as part of the opening event itself. This conflates two distinct occasions, so the description's central \"opened with a performance of Prokofiev's War and Peace\" claim is factually inaccurate even though the surrounding facts (country, year, cost, architect, lotteries funding, UNESCO status) all hold.",
+        "source": "https://en.wikipedia.org/wiki/Sydney_Opera_House",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-05",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "PARTIAL",
+        "reason": "Core facts confirmed: Queen Elizabeth II formally opened the Sydney Opera House in Sydney, Australia on 20 October 1973; final cost was AU$102 million, substantially funded via the Opera House Lotteries; designed by Danish architect Jorn Utzon; the building was UNESCO World Heritage-listed in 2007. However, one specific claim in the description is factually wrong: the official opening ceremony on 20 October 1973 featured fireworks and a performance of Beethoven's Symphony No. 9 -- not Prokofiev's War and Peace. The Prokofiev opera War and Peace was staged in the Opera Theatre on 28 September 1973, nearly three weeks BEFORE the Queen's official opening, as a separate pre-opening inaugural performance, not as part of the opening ceremony itself. This is a checkable actor/scope error (wrong event attributed to the opening), so I downgrade from TRUE to PARTIAL. Minor/lesser note: construction is usually described as 14 years (1959-1973) rather than 15, though this is a smaller, more debatable point depending on start-date convention (design competition win was 1957).",
+        "source": "https://en.wikipedia.org/wiki/Sydney_Opera_House",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-05",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Sydney_Opera_House"
+  },
+  {
+    "year": 1990,
+    "title": "Australia Joins Gulf War Coalition Against Iraq",
+    "verdict": "TRUE",
+    "reason": "Three naval vessels deployed from August 1990. Confirmed as largest deployment since Vietnam.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Three naval vessels deployed from August 1990. Confirmed as largest deployment since Vietnam.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
+    "year": 1991,
+    "title": "Hawke-Keating Leadership Transition Reshapes Labor",
+    "verdict": "TRUE",
+    "reason": "Keating defeated Hawke 56-51 on 19 December 1991. Eight years as Treasurer correct.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Keating defeated Hawke 56-51 on 19 December 1991. Eight years as Treasurer correct.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
+    "year": 1992,
+    "title": "CSIRO Files Landmark Wi-Fi Patent, Inventing Modern Wireless Networking",
+    "verdict": "TRUE",
+    "reason": "Multiple independent sources (CSIRO's own official site, Wikipedia, National Museum of Australia, patentology blog, Google Patents record) confirm every material detail: CSIRO's radio-astronomy team led by Dr John O'Sullivan, with Terry Percival, Diet Ostry, Graham Daniels and John Deane, developed a WLAN technique combining OFDM, forward error correction and interleaving to overcome multipath distortion; an Australian patent application was filed in 1992 and the corresponding US application was filed 23 Nov 1993, exactly matching the '1992-93' filing description. The core US patent US5,487,069 ('Wireless LAN') was granted 23 January 1996, confirmed on Google Patents. CSIRO's own current webpage states the invention 'is embedded in more than 15 billion devices worldwide,' matching the description's figure verbatim, and the technology underpins the 802.11a/g Wi-Fi standards, for which CSIRO collected $430M+ in licensing/settlements. One contrarian tech-blog source (Hackaday, 2024) argues the patent's original claims centered on 60GHz applications and that CSIRO wasn't part of the 802.11 working group, so 'invented Wi-Fi' is a loose simplification of 'invented a wireless-LAN technique later incorporated into Wi-Fi standards' — but the event description itself is carefully worded ('technical basis of Wi-Fi', not 'invented the 802.11 standard'), matching the mainstream, court-validated, and CSIRO-endorsed characterization. All year, country, actor, and technical details hold.",
+    "verify_count": 2,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "double_confirmed",
+    "needs_tiebreak": false,
+    "source_independence": "weak",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed via multiple independent sources: CSIRO's radiophysics/ICT Centre team led by John O'Sullivan, with Terry Percival, Diet Ostry, Graham Daniels and John Deane, developed a wireless LAN technique combining OFDM, forward error correction, and interleaving to overcome multipath distortion. Australian patent application was filed in 1992 (US application followed in 1993), matching the described '1992-93' filing window. The core US patent no. 5,487,069 was granted 23 January 1996, exactly as stated. CSIRO's own published materials state the invention is now embedded in 'more than 15 billion devices worldwide,' matching the description verbatim. All key indicators (actors, year, country, technical description, patent number, grant date, device-count claim) check out materially as described.",
+        "source": "https://www.csiro.au/en/research/technology-space/it/WLAN",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Multiple independent sources (CSIRO's own official site, Wikipedia, National Museum of Australia, patentology blog, Google Patents record) confirm every material detail: CSIRO's radio-astronomy team led by Dr John O'Sullivan, with Terry Percival, Diet Ostry, Graham Daniels and John Deane, developed a WLAN technique combining OFDM, forward error correction and interleaving to overcome multipath distortion; an Australian patent application was filed in 1992 and the corresponding US application was filed 23 Nov 1993, exactly matching the '1992-93' filing description. The core US patent US5,487,069 ('Wireless LAN') was granted 23 January 1996, confirmed on Google Patents. CSIRO's own current webpage states the invention 'is embedded in more than 15 billion devices worldwide,' matching the description's figure verbatim, and the technology underpins the 802.11a/g Wi-Fi standards, for which CSIRO collected $430M+ in licensing/settlements. One contrarian tech-blog source (Hackaday, 2024) argues the patent's original claims centered on 60GHz applications and that CSIRO wasn't part of the 802.11 working group, so 'invented Wi-Fi' is a loose simplification of 'invented a wireless-LAN technique later incorporated into Wi-Fi standards' — but the event description itself is carefully worded ('technical basis of Wi-Fi', not 'invented the 802.11 standard'), matching the mainstream, court-validated, and CSIRO-endorsed characterization. All year, country, actor, and technical details hold.",
+        "source": "https://www.csiro.au/en/research/technology-space/it/wireless-lan",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://www.csiro.au/en/research/technology-space/it/wireless-lan"
+  },
+  {
+    "year": 1992,
+    "title": "Mabo Decision Overturns Terra Nullius Doctrine",
+    "verdict": "TRUE",
+    "reason": "High Court ruled 3 June 1992 in Mabo v Queensland (No 2), rejecting terra nullius.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "High Court ruled 3 June 1992 in Mabo v Queensland (No 2), rejecting terra nullius.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
+    "year": 1993,
+    "title": "Keating Wins Surprise 1993 Federal Election",
+    "verdict": "TRUE",
+    "reason": "Labor won fifth consecutive term. Hewson's GST-centred Fightback! platform defeated. Surprise result confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Labor won fifth consecutive term. Hewson's GST-centred Fightback! platform defeated. Surprise result confirmed.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
+    "year": 1993,
+    "title": "Native Title Act Gives Legislative Effect to Mabo",
+    "verdict": "TRUE",
+    "reason": "Native Title Act 1993 passed by Keating government, commenced 1 January 1994.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Native Title Act 1993 passed by Keating government, commenced 1 January 1994.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
+    "year": 1995,
+    "title": "APEC Summit in Osaka Advances Australia-Asia Integration",
+    "verdict": "TRUE",
+    "reason": "APEC Osaka summit held November 1995. Keating was key architect of APEC summitry.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "APEC Osaka summit held November 1995. Keating was key architect of APEC summitry.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
+    "year": 1996,
+    "title": "Howard Coalition Government Wins Landslide Victory",
+    "verdict": "TRUE",
+    "reason": "Coalition won 75 seats in March 1996, ending 13 years of Labor. Howard served over 11 years.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Coalition won 75 seats in March 1996, ending 13 years of Labor. Howard served over 11 years.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
+    "year": 1996,
+    "title": "Port Arthur Massacre Triggers Gun Law Reform",
+    "verdict": "TRUE",
+    "reason": "35 killed 28 April 1996. National Firearms Agreement enacted within weeks. Over 650,000 firearms collected in buyback.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "35 killed 28 April 1996. National Firearms Agreement enacted within weeks. Over 650,000 firearms collected in buyback.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
+    "year": 1997,
+    "title": "Bringing Them Home Report on Stolen Generations Released",
+    "verdict": "TRUE",
+    "reason": "Report tabled 26 May 1997 by HREOC. Howard government declined formal apology.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Report tabled 26 May 1997 by HREOC. Howard government declined formal apology.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
+    "year": 1998,
+    "title": "Wik Legislation Amends Native Title Framework",
+    "verdict": "TRUE",
+    "reason": "Native Title Amendment Act 1998 passed July 1998. Wik decision (1996) held coexistence; amendments criticised as weakening native title.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Native Title Amendment Act 1998 passed July 1998. Wik decision (1996) held coexistence; amendments criticised as weakening native title.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
+    "year": 1999,
+    "title": "Australia Leads INTERFET Peacekeeping Force in East Timor",
+    "verdict": "TRUE",
+    "reason": "INTERFET deployed 20 September 1999, commanded by Australian Major General Cosgrove. Largest deployment since Vietnam.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "INTERFET deployed 20 September 1999, commanded by Australian Major General Cosgrove. Largest deployment since Vietnam.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
+    "year": 1999,
+    "title": "Republic Referendum Defeated Despite Majority Support",
+    "verdict": "TRUE",
+    "reason": "54.87% voted No (rounds to 55%). Model was parliamentary appointment not direct election — event description is correct on this point.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "54.87% voted No (rounds to 55%). Model was parliamentary appointment not direct election — event description is correct on this point.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
+    "year": 2000,
+    "title": "Goods and Services Tax Introduced",
+    "verdict": "TRUE",
+    "reason": "10% GST commenced 1 July 2000. Most significant tax reform in decades. Central issue of 1998 election.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "10% GST commenced 1 July 2000. Most significant tax reform in decades. Central issue of 1998 election.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
+    "year": 2000,
+    "title": "Sydney Hosts Summer Olympic Games",
+    "verdict": "TRUE",
+    "reason": "Sydney 2000 widely praised. Cathy Freeman won gold in 400m, carried both flags as symbol of reconciliation.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Sydney 2000 widely praised. Cathy Freeman won gold in 400m, carried both flags as symbol of reconciliation.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
+    "year": 2001,
+    "title": "Australia Invokes ANZUS Treaty After September 11 Attacks",
+    "verdict": "TRUE",
+    "reason": "First-ever ANZUS invocation, three days after 9/11. SAS troops committed to Afghanistan under Operation Enduring Freedom.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "First-ever ANZUS invocation, three days after 9/11. SAS troops committed to Afghanistan under Operation Enduring Freedom.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
+    "year": 2001,
+    "title": "Tampa Affair Transforms Immigration Policy",
+    "verdict": "TRUE",
+    "reason": "MV Tampa carrying 433 rescued asylum seekers; military deployed; Pacific Solution of offshore detention on Nauru followed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "MV Tampa carrying 433 rescued asylum seekers; military deployed; Pacific Solution of offshore detention on Nauru followed.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
+    "year": 2002,
+    "title": "Bali Bombings Kill 88 Australians",
+    "verdict": "TRUE",
+    "reason": "12 October 2002; 202 total killed including exactly 88 Australians; Jemaah Islamiyah responsible.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "12 October 2002; 202 total killed including exactly 88 Australians; Jemaah Islamiyah responsible.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
+    "year": 2003,
+    "title": "Australia Joins Iraq Invasion as Coalition Partner",
+    "verdict": "TRUE",
+    "reason": "~2,000 troops committed without UN authorisation; anti-war protests occurred domestically.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "~2,000 troops committed without UN authorisation; anti-war protests occurred domestically.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
+    "year": 2004,
+    "title": "Australia-US Free Trade Agreement Enters Force",
+    "verdict": "FALSE",
+    "reason": "AUSFTA was signed in May 2004 but entered into force on 1 January 2005. Year-off by 1 for the entry-into-force claim.",
+    "verify_count": 1,
+    "consensus_verdict": "FALSE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "FALSE",
+        "reason": "AUSFTA was signed in May 2004 but entered into force on 1 January 2005. Year-off by 1 for the entry-into-force claim.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
+    "year": 2004,
+    "title": "Indian Ocean Tsunami Response Mobilises Australian Aid",
+    "verdict": "FALSE",
+    "reason": "Tsunami struck 26 December 2004 but Australia's $1 billion aid pledge was announced in January 2005. Major response event belongs to 2005, not 2004.",
+    "verify_count": 1,
+    "consensus_verdict": "FALSE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "FALSE",
+        "reason": "Tsunami struck 26 December 2004 but Australia's $1 billion aid pledge was announced in January 2005. Major response event belongs to 2005, not 2004.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
+    "year": 2005,
+    "title": "Cronulla Riots Expose Ethnic Tensions in Sydney",
+    "verdict": "TRUE",
+    "reason": "Web search confirms the 2005 Cronulla riots occurred 11 December 2005 in Sydney's Cronulla beach suburb and spread to neighbouring suburbs. Racially motivated mob violence erupted between groups mobilized via mass text messages, targeting people of Middle Eastern (Lebanese) heritage, following an earlier altercation between Middle Eastern youths and lifeguards. Approximately 5,000 gathered, 26 injured, 104 arrested, 285 charges laid; NSW granted police emergency powers to quell the unrest. The event triggered widespread national debate about multiculturalism, integration, and social tensions in Australia, exactly as described. Country (Australia), year (2005), and material details (mob violence, Anglo-Australian vs Middle Eastern heritage youths, emergency powers, multiculturalism debate) all match.",
+    "verify_count": 2,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "double_confirmed",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Riots began 11 December 2005 in Cronulla between Anglo-Australian and Middle Eastern heritage youth. Emergency powers and national debate followed.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Web search confirms the 2005 Cronulla riots occurred 11 December 2005 in Sydney's Cronulla beach suburb and spread to neighbouring suburbs. Racially motivated mob violence erupted between groups mobilized via mass text messages, targeting people of Middle Eastern (Lebanese) heritage, following an earlier altercation between Middle Eastern youths and lifeguards. Approximately 5,000 gathered, 26 injured, 104 arrested, 285 charges laid; NSW granted police emergency powers to quell the unrest. The event triggered widespread national debate about multiculturalism, integration, and social tensions in Australia, exactly as described. Country (Australia), year (2005), and material details (mob violence, Anglo-Australian vs Middle Eastern heritage youths, emergency powers, multiculturalism debate) all match.",
+        "source": "https://en.wikipedia.org/wiki/2005_Cronulla_riots",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-02",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/2005_Cronulla_riots"
+  },
+  {
+    "year": 2005,
+    "title": "WorkChoices Industrial Relations Reform Enacted",
+    "verdict": "TRUE",
+    "reason": "The Workplace Relations Amendment (Work Choices) Act 2005 was passed by the Howard government (House 10 Nov 2005, Senate 2 Dec 2005, Royal Assent 14 Dec 2005), deregulating labour relations by curbing union power and the industrial relations tribunal's role. It triggered massive union-led protests, including the ACTU's 'Your Rights at Work' campaign and a national day of action on 15 Nov 2005 with hundreds of thousands of participants, and became a central issue in the 2007 federal election, contributing to Howard's defeat. All material details (country, year, actor, scope, consequences) match.",
+    "verify_count": 2,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "double_confirmed",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Workplace Relations Amendment (Work Choices) Act passed November 2005. Major union protests; central issue in 2007 election.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "The Workplace Relations Amendment (Work Choices) Act 2005 was passed by the Howard government (House 10 Nov 2005, Senate 2 Dec 2005, Royal Assent 14 Dec 2005), deregulating labour relations by curbing union power and the industrial relations tribunal's role. It triggered massive union-led protests, including the ACTU's 'Your Rights at Work' campaign and a national day of action on 15 Nov 2005 with hundreds of thousands of participants, and became a central issue in the 2007 federal election, contributing to Howard's defeat. All material details (country, year, actor, scope, consequences) match.",
+        "source": "https://en.wikipedia.org/wiki/WorkChoices",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-02",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/WorkChoices"
+  },
+  {
+    "year": 2007,
+    "title": "Kevin Rudd Leads Labor to Power Ending Howard Era",
+    "verdict": "TRUE",
+    "reason": "Rudd won 24 November 2007. Howard lost Bennelong to Maxine McKew. Climate action, education, Iraq withdrawal were key planks.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Rudd won 24 November 2007. Howard lost Bennelong to Maxine McKew. Climate action, education, Iraq withdrawal were key planks.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
+    "year": 2008,
+    "title": "Global Financial Crisis Tests Australian Economy",
+    "verdict": "TRUE",
+    "reason": "Multiple independent sources confirm all material elements: Australia was among a small handful of OECD/developed economies to avoid a technical recession (two consecutive quarters of negative GDP growth) during the 2008-09 GFC, with only one negative quarter (Dec 2008, -0.5%). Analysts attribute this to rapid RBA rate cuts, continued Chinese demand for resources (iron ore/mining exports), and the Rudd government's fiscal stimulus. The Rudd government's stimulus packages are well documented: an initial $10.4 billion package (Oct/Dec 2008) plus a $42 billion Nation Building and Jobs Plan (Feb 2009) sum to about $52.4 billion — matching 'totalling over 50 billion dollars' (some broader tallies across all five 2008-09 stimulus initiatives put the figure even higher, up to ~$75bn). Year/country/category all hold; description is materially accurate.",
+    "verify_count": 2,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "double_confirmed",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Australia avoided recession. Stimulus packages totalled ~$52.4 billion (event says 'over 50 billion' — correct). Chinese demand and stimulus both credited.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Multiple independent sources confirm all material elements: Australia was among a small handful of OECD/developed economies to avoid a technical recession (two consecutive quarters of negative GDP growth) during the 2008-09 GFC, with only one negative quarter (Dec 2008, -0.5%). Analysts attribute this to rapid RBA rate cuts, continued Chinese demand for resources (iron ore/mining exports), and the Rudd government's fiscal stimulus. The Rudd government's stimulus packages are well documented: an initial $10.4 billion package (Oct/Dec 2008) plus a $42 billion Nation Building and Jobs Plan (Feb 2009) sum to about $52.4 billion — matching 'totalling over 50 billion dollars' (some broader tallies across all five 2008-09 stimulus initiatives put the figure even higher, up to ~$75bn). Year/country/category all hold; description is materially accurate.",
+        "source": "https://en.wikipedia.org/wiki/Great_Recession_in_Oceania",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-02",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Great_Recession_in_Oceania"
+  },
+  {
+    "year": 2008,
+    "title": "National Apology to Stolen Generations Delivered",
+    "verdict": "TRUE",
+    "reason": "Rudd delivered formal apology 13 February 2008, first order of business in parliament. Passed unanimously.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Rudd delivered formal apology 13 February 2008, first order of business in parliament. Passed unanimously.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
+    "year": 2009,
+    "title": "Black Saturday Bushfires Kill 173 in Victoria",
+    "verdict": "TRUE",
+    "reason": "7 February 2009; exactly 173 killed; over 2,000 homes destroyed; Royal Commission followed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "7 February 2009; exactly 173 killed; over 2,000 homes destroyed; Royal Commission followed.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
+    "year": 2010,
+    "title": "Gillard Replaces Rudd as Australia's First Female PM",
+    "verdict": "TRUE",
+    "reason": "Gillard sworn in 24 June 2010. Labor dissatisfaction over shelved emissions trading scheme was cited trigger. First female PM confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Gillard sworn in 24 June 2010. Labor dissatisfaction over shelved emissions trading scheme was cited trigger. First female PM confirmed.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
+    "year": 2010,
+    "title": "Hung Parliament Forces Minority Government",
+    "verdict": "TRUE",
+    "reason": "August 2010 — first hung parliament since 1940. Gillard formed minority government with Greens and independents.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "August 2010 — first hung parliament since 1940. Gillard formed minority government with Greens and independents.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
+    "year": 2011,
+    "title": "Mining Tax Legislation Passed Amid Industry Opposition",
+    "verdict": "TRUE",
+    "reason": "MRRT passed November 2011 on iron ore and coal. Repealed 2014. Revenue far below projections.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "MRRT passed November 2011 on iron ore and coal. Repealed 2014. Revenue far below projections.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
+    "year": 2012,
+    "title": "Carbon Pricing Mechanism Takes Effect",
+    "verdict": "TRUE",
+    "reason": "Clean Energy Act 2011 commenced 1 July 2012 at $23/tonne. Coalition campaigned relentlessly on repeal.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Clean Energy Act 2011 commenced 1 July 2012 at $23/tonne. Coalition campaigned relentlessly on repeal.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
+    "year": 2013,
+    "title": "Abbott Coalition Wins Election on Anti-Carbon Tax Platform",
+    "verdict": "TRUE",
+    "reason": "Coalition won September 2013. Rudd returned to Labor leadership three months prior (June 2013). Abbott's platform was repealing carbon tax and stopping boats.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Coalition won September 2013. Rudd returned to Labor leadership three months prior (June 2013). Abbott's platform was repealing carbon tax and stopping boats.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
+    "year": 2014,
+    "title": "Carbon Tax Repealed by Abbott Government",
+    "verdict": "TRUE",
+    "reason": "Senate repealed 17 July 2014. Australia was first country to abolish a functioning carbon price.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Senate repealed 17 July 2014. Australia was first country to abolish a functioning carbon price.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
+    "year": 2014,
+    "title": "Lindt Cafe Siege in Sydney",
+    "verdict": "TRUE",
+    "reason": "15-16 December 2014; 18 hostages; 2 hostages killed plus perpetrator. Counter-terrorism review followed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "15-16 December 2014; 18 hostages; 2 hostages killed plus perpetrator. Counter-terrorism review followed.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
+    "year": 2015,
+    "title": "China-Australia Free Trade Agreement Enters Force",
+    "verdict": "TRUE",
+    "reason": "ChAFTA entered into force 20 December 2015. China confirmed as Australia's largest trading partner.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "ChAFTA entered into force 20 December 2015. China confirmed as Australia's largest trading partner.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
+    "year": 2015,
+    "title": "Turnbull Ousts Abbott in Liberal Leadership Challenge",
+    "verdict": "TRUE",
+    "reason": "Turnbull defeated Abbott 54-44 on 14 September 2015. Cited economic leadership and 30 consecutive Newspoll losses.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Turnbull defeated Abbott 54-44 on 14 September 2015. Cited economic leadership and 30 consecutive Newspoll losses.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
+    "year": 2017,
+    "title": "Dual Citizenship Crisis Disqualifies Multiple Parliamentarians",
+    "verdict": "TRUE",
+    "reason": "Section 44 crisis; 15 politicians resigned or ruled ineligible; by-elections and resignations across major parties and crossbench.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Section 44 crisis; 15 politicians resigned or ruled ineligible; by-elections and resignations across major parties and crossbench.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
+    "year": 2017,
+    "title": "Same-Sex Marriage Legalised After Postal Survey",
+    "verdict": "TRUE",
+    "reason": "61.6% voted Yes in November 2017. Marriage Act amended in December 2017.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "61.6% voted Yes in November 2017. Marriage Act amended in December 2017.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
+    "year": 2018,
+    "title": "Foreign Interference Laws Target Covert Influence",
+    "verdict": "TRUE",
+    "reason": "National Security Legislation Amendment (Espionage and Foreign Interference) Act passed June 2018. Widely attributed to Chinese influence concerns.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "National Security Legislation Amendment (Espionage and Foreign Interference) Act passed June 2018. Widely attributed to Chinese influence concerns.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
+    "year": 2018,
+    "title": "Morrison Replaces Turnbull After Leadership Spill",
+    "verdict": "TRUE",
+    "reason": "Morrison defeated Dutton 45-40 on 24 August 2018. No PM had served a full term since Howard.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Morrison defeated Dutton 45-40 on 24 August 2018. No PM had served a full term since Howard.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
+    "year": 2019,
+    "title": "Black Summer Bushfires Begin Unprecedented Fire Season",
+    "verdict": "TRUE",
+    "reason": "Season began September 2019; 24 million hectares burned (event states 18M — understated but not year-wrong or materially false); 33 direct deaths; ~3 billion animals affected.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Season began September 2019; 24 million hectares burned (event states 18M — understated but not year-wrong or materially false); 33 direct deaths; ~3 billion animals affected.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
+    "year": 2019,
+    "title": "Morrison Wins Surprise Federal Election Victory",
+    "verdict": "TRUE",
+    "reason": "Coalition won May 2019 defying all polling. Queensland result key. Shorten resigned Labor leadership.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Coalition won May 2019 defying all polling. Queensland result key. Shorten resigned Labor leadership.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
+    "year": 2020,
+    "title": "Brereton Report Reveals War Crimes in Afghanistan",
+    "verdict": "TRUE",
+    "reason": "Released 19 November 2020. 39 unlawful killings by 25 personnel. Criminal referrals and reassessment of special forces culture followed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Released 19 November 2020. 39 unlawful killings by 25 personnel. Criminal referrals and reassessment of special forces culture followed.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
+    "year": 2020,
+    "title": "China Imposes Trade Sanctions on Australian Exports",
+    "verdict": "TRUE",
+    "reason": "80.5% barley tariff (event rounds to 80%); wine tariffs exceeded 200%. Followed Australia's COVID inquiry call.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "80.5% barley tariff (event rounds to 80%); wine tariffs exceeded 200%. Followed Australia's COVID inquiry call.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
+    "year": 2020,
+    "title": "COVID-19 Border Closures and Economic Response",
+    "verdict": "TRUE",
+    "reason": "Near-total international travel ban. JobKeeper total cost ~$130 billion (event says 'exceeding 90 billion' — conservative undercount). Supported over 3.5 million workers confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Near-total international travel ban. JobKeeper total cost ~$130 billion (event says 'exceeding 90 billion' — conservative undercount). Supported over 3.5 million workers confirmed.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
+    "year": 2021,
+    "title": "AUKUS Security Pact Announced With US and UK",
+    "verdict": "TRUE",
+    "reason": "Announced 15 September 2021. Centred on nuclear-powered submarines. France recalled ambassadors from Australia and US.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Announced 15 September 2021. Centred on nuclear-powered submarines. France recalled ambassadors from Australia and US.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
+    "year": 2021,
+    "title": "French Submarine Contract Cancelled in AUKUS Pivot",
+    "verdict": "TRUE",
+    "reason": "Attack-class programme terminated; France recalled ambassadors and called it a betrayal. Contract value reported as $40-90 billion AUD across sources.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Attack-class programme terminated; France recalled ambassadors and called it a betrayal. Contract value reported as $40-90 billion AUD across sources.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
+    "year": 2022,
+    "title": "Albanese Labor Government Elected Ending Coalition Rule",
+    "verdict": "TRUE",
+    "reason": "May 2022; ended nine years of Coalition government. Record teal independents won safe Liberal seats on climate and integrity platforms.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "May 2022; ended nine years of Coalition government. Record teal independents won safe Liberal seats on climate and integrity platforms.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
+    "year": 2022,
+    "title": "Eastern Australia Floods Cause Billions in Damage",
+    "verdict": "FALSE",
+    "reason": "Confirmed deaths were 24, not 22 as stated. Insured losses exceeded $5 billion — correct. Death count is materially wrong.",
+    "verify_count": 1,
+    "consensus_verdict": "FALSE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "FALSE",
+        "reason": "Confirmed deaths were 24, not 22 as stated. Insured losses exceeded $5 billion — correct. Death count is materially wrong.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
+    "year": 2023,
+    "title": "AUKUS Submarine Pathway Details Announced",
+    "verdict": "TRUE",
+    "reason": "San Diego announcement March 2023. Virginia-class SSNs, then SSN-AUKUS. Total cost $286-386 billion AUD (event says 'exceeded 360 billion' — within the reported range).",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "San Diego announcement March 2023. Virginia-class SSNs, then SSN-AUKUS. Total cost $286-386 billion AUD (event says 'exceeded 360 billion' — within the reported range).",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
+    "year": 2023,
+    "title": "China Lifts Barley Tariffs as Diplomatic Relations Thaw",
+    "verdict": "TRUE",
+    "reason": "80.5% barley tariff removed effective 5 August 2023. Followed Albanese government diplomatic engagement.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "80.5% barley tariff removed effective 5 August 2023. Followed Albanese government diplomatic engagement.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
+    "year": 2023,
+    "title": "Voice to Parliament Referendum Defeated",
+    "verdict": "TRUE",
+    "reason": "39.9% Yes, defeated nationally and in all six states. Significant setback for Indigenous recognition.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "39.9% Yes, defeated nationally and in all six states. Significant setback for Indigenous recognition.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
+    "year": 2024,
+    "title": "China Removes Wine Tariffs Completing Trade Normalisation",
+    "verdict": "TRUE",
+    "reason": "Wine tariffs (up to 218.4%) lifted 29 March 2024. Last major trade barrier from the 2020 campaign removed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Wine tariffs (up to 218.4%) lifted 29 March 2024. Last major trade barrier from the 2020 campaign removed.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  }
+]

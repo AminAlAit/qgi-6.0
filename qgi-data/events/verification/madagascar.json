@@ -1,0 +1,1324 @@
+[
+  {
+    "year": 1950,
+    "title": "Post-1947 Uprising: Colonial Repression and Nationalist Suppression",
+    "verdict": "TRUE",
+    "reason": "Well-documented. Nationalist leaders imprisoned/exiled after the 1947 uprising; MDRM dissolved 1947; leaders sentenced to death/life imprisonment. Repression through early 1950s is confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Well-documented. Nationalist leaders imprisoned/exiled after the 1947 uprising; MDRM dissolved 1947; leaders sentenced to death/life imprisonment. Repression through early 1950s is confirmed.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
+    "year": 1952,
+    "title": "Forced Labor Formally Abolished in French Madagascar",
+    "verdict": "FALSE",
+    "reason": "The formal abolition of the prestation forced-labor system across French colonial territories, including Madagascar, was enacted by law no. 46-645 of 11 April 1946 (the 'Loi Houphouët-Boigny'), following the 1944 Brazzaville Conference recommendations and post-WWII international pressure. Multiple independent sources (EHNE/Sorbonne encyclopedia, France Info) confirm this 1946 date and describe exactly the pattern in the description (formal abolition while economic coercion persisted in practice). 1952 instead corresponds to a different, later French law (Loi n° 52-1322 du 15 décembre 1952) that established a broader 'Code du travail' (labor code) for overseas territories, regulating wages/conditions -- it was not the act that abolished forced labor, since that had already been abolished six years earlier. The year is materially wrong by 6 years, so this does not verify as described for 1952.",
+    "verify_count": 2,
+    "consensus_verdict": "FALSE",
+    "consensus_status": "double_negative",
+    "needs_tiebreak": false,
+    "source_independence": "independent",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "FALSE",
+        "reason": "The event is real in substance but the year is wrong. France's formal abolition of forced/prestation labor across its colonial territories — including Madagascar — was enacted by the \"Loi Houphouët-Boigny\" (Law No. 46-645), adopted 11 April 1946, following the 1944 Brazzaville Conference commitments and post-war international/domestic pressure. Multiple independent sources converge on 1946, not 1952: Wikipedia's Félix Houphouët-Boigny article confirms the law's 11 April 1946 date; the EHNE (Encyclopédie d'histoire numérique de l'Europe) entry on forced labor in European colonies states the possibility of forced labor \"remained law until 1946\" when the indigénat/forced-labor regime was suppressed; a World History summary of Madagascar's colonial period states \"Only at the end of 1946 was compulsory labour abolished, after much opposition from the representatives of the French settlers,\" specifically in the Madagascar context (and notes settlers subsequently defied the ban in coffee regions in 1946-47, feeding into the 1947 uprising); and the Wikipedia \"Indigénat\" article places the legal dismantling of the forced-labor/native-code regime in the 1944-1947 phase. No source found ties a comparable formal abolition event to 1952 for Madagascar or French colonies generally (1952 instead corresponds to a later, broader \"Code du travail des territoires d'outre-mer,\" which is a distinct labor-code event, not the forced-labor abolition described). Description substance (symbolic abolition following international pressure, continued de facto economic coercion) matches the 1946 law closely, so this looks like a straightforward year mislabel of a real event.",
+        "source": "https://en.wikipedia.org/wiki/F%C3%A9lix_Houphou%C3%ABt-Boigny",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        },
+        "corrected_year": 1946
+      },
+      {
+        "pass_n": 2,
+        "verdict": "FALSE",
+        "reason": "The formal abolition of the prestation forced-labor system across French colonial territories, including Madagascar, was enacted by law no. 46-645 of 11 April 1946 (the 'Loi Houphouët-Boigny'), following the 1944 Brazzaville Conference recommendations and post-WWII international pressure. Multiple independent sources (EHNE/Sorbonne encyclopedia, France Info) confirm this 1946 date and describe exactly the pattern in the description (formal abolition while economic coercion persisted in practice). 1952 instead corresponds to a different, later French law (Loi n° 52-1322 du 15 décembre 1952) that established a broader 'Code du travail' (labor code) for overseas territories, regulating wages/conditions -- it was not the act that abolished forced labor, since that had already been abolished six years earlier. The year is materially wrong by 6 years, so this does not verify as described for 1952.",
+        "source": "https://ehne.fr/en/encyclopedia/themes/europe-europeans-and-world/forced-migration-and-work-in-european-colonies/forced-labor-in-european-colonies",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        },
+        "corrected_year": 1946
+      }
+    ],
+    "source": "https://ehne.fr/en/encyclopedia/themes/europe-europeans-and-world/forced-migration-and-work-in-european-colonies/forced-labor-in-european-colonies"
+  },
+  {
+    "year": 1956,
+    "title": "Loi Cadre Grants Madagascar Internal Autonomy",
+    "verdict": "TRUE",
+    "reason": "Confirmed. Loi-cadre enacted June 23, 1956. Tsiranana's Social Democratic Party (PSD) won territorial elections. Provincial assemblies and Grand Council established.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed. Loi-cadre enacted June 23, 1956. Tsiranana's Social Democratic Party (PSD) won territorial elections. Provincial assemblies and Grand Council established.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
+    "year": 1958,
+    "title": "Madagascar Votes to Join French Community as Autonomous Republic",
+    "verdict": "TRUE",
+    "reason": "Confirmed. September 28, 1958 referendum. Malagasy Republic proclaimed October 14, 1958. Tsiranana headed provisional government.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed. September 28, 1958 referendum. Malagasy Republic proclaimed October 14, 1958. Tsiranana headed provisional government.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
+    "year": 1960,
+    "title": "Madagascar Achieves Full Independence from France",
+    "verdict": "TRUE",
+    "reason": "Confirmed. Full independence June 26, 1960. Tsiranana as president. No armed conflict.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed. Full independence June 26, 1960. Tsiranana as president. No armed conflict.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
+    "year": 1962,
+    "title": "Tsiranana Government Suppresses Political Opposition",
+    "verdict": "TRUE",
+    "reason": "Broadly confirmed. Tsiranana progressively restricted opposition and operated as a dominant-party state. Specific details about 1962 as the year of key restrictions are consistent with the historical record.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Broadly confirmed. Tsiranana progressively restricted opposition and operated as a dominant-party state. Specific details about 1962 as the year of key restrictions are consistent with the historical record.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
+    "year": 1964,
+    "title": "Madagascar Joins Organisation of African Unity",
+    "verdict": "FALSE",
+    "reason": "Year is wrong by more than 1 year. The OAU was founded May 25, 1963, and Madagascar signed the charter August 10, 1963. Madagascar was a founding member in 1963, not 1964.",
+    "verify_count": 1,
+    "consensus_verdict": "FALSE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "FALSE",
+        "reason": "Year is wrong by more than 1 year. The OAU was founded May 25, 1963, and Madagascar signed the charter August 10, 1963. Madagascar was a founding member in 1963, not 1964.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
+    "year": 1970,
+    "title": "Southern Drought Triggers Famine in Grand Sud Region",
+    "verdict": "TRUE",
+    "reason": "Independently corroborated by two separate English Wikipedia articles. The \"Kere (famine)\" article lists a documented famine cycle named \"Menaleogne\"/\"Zaramofo\" spanning 1970-1972 in Madagascar's Deep South (Grand Sud), triggered by drought/El Niño, severe enough that the government distributed emergency bread aid and it later triggered a proclamation of Antandroy secession. The separate \"Rotaka\" article independently confirms that \"impoverished peasants in Androy\" rose up in 1971 in part due to \"the failure of the government to provide disaster relief in response to a serious drought,\" and that a Kere famine event in the south around this time fed into the 1971-72 rotaka uprising that toppled President Tsiranana's government. Both sources agree on country (Madagascar), region (Androy/Deep South, encompassing the Androy and Mahafaly areas), the causal mechanism (drought → famine, \"Kere\"), and the timeframe (1970-1972, matching the given start year of 1970). The specific magnitude (\"hundreds of thousands affected\") and the \"international\" (vs. domestic government) framing of food aid were not independently quantified/confirmed in the sources found, but these are minor, plausible details consistent with the well-documented scale of the region's recurring Kere famines, and do not contradict the core, well-corroborated event. No off-limits domains were used.",
+    "verify_count": 2,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "double_confirmed",
+    "needs_tiebreak": false,
+    "source_independence": "weak",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Independent corroboration found: Wikipedia's \"Kere (famine)\" article contains a historical table entry for a famine named \"Menaleogne\" ('Red Pounder'), also called \"Zaramofo\" ('Distribution of Bread'), dated 1970–1972, caused by El Niño-driven drought, geographically scoped to Madagascar's \"Deep South\" (the region comprising Androy and Mahafaly territories, i.e. the Grand Sud), with impact described as having \"triggered proclamation of Antandroy secession\" — the government distributed bread as emergency food aid during the crisis. This matches the core claims: country (Madagascar), year (1970 as the drought/famine's start year, continuing into 1971-72), region and affected peoples (Grand Sud, Androy, Mahafaly), causal mechanism (drought), and emergency food-aid response. Related searches on the 1971-72 \"Rotaka\" uprising and Antandroy unrest corroborate that a severe famine/drought crisis in this exact period and region fed into major political consequences, consistent with the description's claim that \"the crisis highlighted the chronic vulnerability of southern Madagascar to climate variability.\" One detail is not independently confirmed: the description specifies \"international food aid,\" whereas my best source describes government-distributed bread aid rather than explicitly international assistance — a minor, non-disqualifying gap given the other strong matches on country, year, region, cause, and scale of crisis. No off-limits domains were used (none were listed as off-limits).",
+        "source": "https://en.wikipedia.org/wiki/Kere_(famine)",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Independently corroborated by two separate English Wikipedia articles. The \"Kere (famine)\" article lists a documented famine cycle named \"Menaleogne\"/\"Zaramofo\" spanning 1970-1972 in Madagascar's Deep South (Grand Sud), triggered by drought/El Niño, severe enough that the government distributed emergency bread aid and it later triggered a proclamation of Antandroy secession. The separate \"Rotaka\" article independently confirms that \"impoverished peasants in Androy\" rose up in 1971 in part due to \"the failure of the government to provide disaster relief in response to a serious drought,\" and that a Kere famine event in the south around this time fed into the 1971-72 rotaka uprising that toppled President Tsiranana's government. Both sources agree on country (Madagascar), region (Androy/Deep South, encompassing the Androy and Mahafaly areas), the causal mechanism (drought → famine, \"Kere\"), and the timeframe (1970-1972, matching the given start year of 1970). The specific magnitude (\"hundreds of thousands affected\") and the \"international\" (vs. domestic government) framing of food aid were not independently quantified/confirmed in the sources found, but these are minor, plausible details consistent with the well-documented scale of the region's recurring Kere famines, and do not contradict the core, well-corroborated event. No off-limits domains were used.",
+        "source": "https://en.wikipedia.org/wiki/Kere_(famine)",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Kere_(famine)"
+  },
+  {
+    "year": 1971,
+    "title": "Peasant Revolt and Urban Labor Strikes Challenge Tsiranana Rule",
+    "verdict": "TRUE",
+    "reason": "Confirmed. April 1971 MONIMA armed uprising in Androy led by Monja Jaona. Government suppressed it harshly (45 killed, 847 detained). Urban strikes and student protests also confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed. April 1971 MONIMA armed uprising in Androy led by Monja Jaona. Government suppressed it harshly (45 killed, 847 detained). Urban strikes and student protests also confirmed.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
+    "year": 1972,
+    "title": "French Cooperation Accords Renegotiated, Military Expelled",
+    "verdict": "TRUE",
+    "reason": "Confirmed. Ramanantsoa government renegotiated the French cooperation accords, expelled French military, and withdrew from the Franc Zone.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed. Ramanantsoa government renegotiated the French cooperation accords, expelled French military, and withdrew from the Franc Zone.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
+    "year": 1972,
+    "title": "May Revolution Overthrows Tsiranana, Ends First Republic",
+    "verdict": "TRUE",
+    "reason": "Confirmed. Mass protests from May 1972. Tsiranana transferred power to General Ramanantsoa. Demands included end of French neocolonial dominance.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed. Mass protests from May 1972. Tsiranana transferred power to General Ramanantsoa. Demands included end of French neocolonial dominance.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
+    "year": 1973,
+    "title": "Malagasization of Education System Implemented",
+    "verdict": "TRUE",
+    "reason": "Confirmed. Ramanantsoa government replaced French with Malagasy as primary medium of instruction. Rapid implementation created teacher shortages and quality decline.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed. Ramanantsoa government replaced French with Malagasy as primary medium of instruction. Rapid implementation created teacher shortages and quality decline.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
+    "year": 1975,
+    "title": "Ratsiraka Seizes Power and Declares Socialist Revolution",
+    "verdict": "TRUE",
+    "reason": "Confirmed. Colonel Ratsimandrava assassinated February 11, 1975 after just 6 days in office. Ratsiraka selected head of state June 15, 1975; confirmed by referendum December 21, 1975. Boky Mena published. Democratic Republic of Madagascar proclaimed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed. Colonel Ratsimandrava assassinated February 11, 1975 after just 6 days in office. Ratsiraka selected head of state June 15, 1975; confirmed by referendum December 21, 1975. Boky Mena published. Democratic Republic of Madagascar proclaimed.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
+    "year": 1975,
+    "title": "Socialist Nationalizations Sweep Banks and Key Sectors",
+    "verdict": "TRUE",
+    "reason": "Confirmed. Ratsiraka nationalized banks, insurance, and key export sectors under his socialist program.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed. Ratsiraka nationalized banks, insurance, and key export sectors under his socialist program.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
+    "year": 1976,
+    "title": "Forced Agricultural Cooperatives Cause Rice Production Collapse",
+    "verdict": "TRUE",
+    "reason": "Confirmed. Socialist cooperative farming policy implemented. Rice production decline and food shortages are well-documented consequences.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed. Socialist cooperative farming policy implemented. Rice production decline and food shortages are well-documented consequences.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
+    "year": 1979,
+    "title": "First IMF Structural Adjustment Program Forces Liberalization",
+    "verdict": "TRUE",
+    "reason": "Confirmed. Madagascar signed its first IMF/World Bank structural adjustment program in the late 1970s requiring liberalization in exchange for emergency loans.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed. Madagascar signed its first IMF/World Bank structural adjustment program in the late 1970s requiring liberalization in exchange for emergency loans.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
+    "year": 1980,
+    "title": "Socialist Economic Model Collapses, GDP Contracts Sharply",
+    "verdict": "TRUE",
+    "reason": "Confirmed. Madagascar experienced one of sub-Saharan Africa's worst economic performances in this period. GDP per capita fell sharply under combined effects of failed socialist policies and oil price shocks.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed. Madagascar experienced one of sub-Saharan Africa's worst economic performances in this period. GDP per capita fell sharply under combined effects of failed socialist policies and oil price shocks.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
+    "year": 1984,
+    "title": "Export Processing Zone Legislation Attracts Garment Investors",
+    "verdict": "TRUE",
+    "reason": "Confirmed. EPZ legislation passed mid-1980s, attracting Asian garment manufacturers. Eventually employed over 100,000 workers.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed. EPZ legislation passed mid-1980s, attracting Asian garment manufacturers. Eventually employed over 100,000 workers.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
+    "year": 1985,
+    "title": "Cyclone Kamisy Kills Over 300 in Northwest Madagascar",
+    "verdict": "FALSE",
+    "reason": "Year is wrong by 1 year. Cyclone Kamisy struck April 1984, not 1985. Death toll was approximately 68 overall (not over 300). Hit Mahajanga (Majunga) in northwest — region is correct.",
+    "verify_count": 1,
+    "consensus_verdict": "FALSE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "FALSE",
+        "reason": "Year is wrong by 1 year. Cyclone Kamisy struck April 1984, not 1985. Death toll was approximately 68 overall (not over 300). Hit Mahajanga (Majunga) in northwest — region is correct.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
+    "year": 1988,
+    "title": "Madagascar's State Banks Reach Crisis as Parastatal Loans Sour",
+    "verdict": "TRUE",
+    "reason": "A World Bank Project Completion Report (Report No. 7179, dated April 4, 1988) on Madagascar's industrial development bank BNI (Bankin'ny Indostria) confirms the core facts almost verbatim. It states that by end-1985 BNI's nonperforming portfolio was FMG 70 billion out of a total FMG 155 billion portfolio (≈45%) — matching the description's \"FMG 70 billion, or roughly 45%, of BNI's loans nonperforming\" exactly. It further states the banking system's total loan portfolio was FMG 355 billion, of which FMG 110 billion were classified as doubtful/contentious — an exact match to \"total banking-system doubtful loans reaching FMG 110 billion out of a FMG 355 billion portfolio.\" The report attributes BNI's overexposure to government-directed lending to large, loss-making parastatals (\"demonstrated the Government's strong de facto influence on major operational and financial decisions\"), matching the description's \"government interference in lending decisions and heavy exposure to loss-making parastatals.\" A separate source (nationsencyclopedia.com, drawing on the 1997-2001 State Dept. Country Commercial Guide) confirms Madagascar's three national banks were BNI (industrial), BTM (rural), and BFV (commerce) — matching \"Madagascar's three national banks\" — and confirms that \"Economic reforms in 1988 allowed private foreign investment in the banking sector for the first time since the banks were nationalized,\" consistent with a 1988 reform-program timeline; the WB report itself (dated April 1988) discusses a tripartite banking reform \"presently under consideration\" involving BNI and the other two national banks, consistent with formal launch later in 1988. I was unable to directly pull the Laeven-Valencia database appendix table itself (IMF/SSRN PDFs returned 403 Forbidden to WebFetch) to independently confirm their exact \"1988 onset\" coding, but every checkable, quantifiable fact in the description is corroborated near-exactly by a contemporaneous, authoritative primary source (the World Bank), so I'm confident in a TRUE verdict despite that one unverified secondary attribution.",
+    "verify_count": 2,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "double_confirmed",
+    "needs_tiebreak": false,
+    "source_independence": "weak",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Independently verified via World Bank archival documents. World Bank Report No. 7179 (BNI Project Completion Report, based on a 1986 mission using Dec. 31, 1985 portfolio data) confirms: BNI's total loan portfolio was ~FMG 120 billion, of which FMG 70 billion (45%) was non-performing — matching the description's figures exactly. The same source material (corroborated across search results) confirms system-wide doubtful loans of FMG 110 billion out of a FMG 355 billion banking-system portfolio at end-1985. The document also confirms Madagascar's three state-controlled national banks (BNI/industry, BTM/agriculture, BFV or BTV/commerce) and reform plans centered on \"portfolio restructuring based on rehabilitation plans for major parastatals\" — matching the description's cause (government interference, parastatal loan exposure). Separately, World Bank/country-history sources confirm a Public Sector Adjustment Credit (PSAC) was extended in 1988 whose objectives explicitly included liberalizing/reforming the state-owned banking system, and that a new Banking Law was adopted in April 1988 opening the sector to foreign private participation — consistent with \"authorities...launch a formal banking-sector reform program in 1988 covering Madagascar's three national banks.\" Economic-history sources also describe 1988-1990 as Madagascar's crisis period with external debt exceeding 160% of GNP in 1988. I could not independently pull the raw Laeven-Valencia database table to confirm their exact 1988 onset coding (paywalled/inaccessible PDFs), but this is a secondary attribution detail; the core facts (BNI/system nonperforming loan crisis, parastatal-driven causes, 1988 reform program, three national banks) are corroborated by independent, authoritative primary-source World Bank documents, none of which are on any exclusion list.",
+        "source": "https://documents1.worldbank.org/curated/en/315441468088172616/txt/multi-page.txt (World Bank Report No. 7179, BNI Project Completion Report — confirms FMG 70bn/45% nonperforming of FMG 120bn portfolio, three national banks, parastatal rehabilitation reform focus)",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-09",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "A World Bank Project Completion Report (Report No. 7179, dated April 4, 1988) on Madagascar's industrial development bank BNI (Bankin'ny Indostria) confirms the core facts almost verbatim. It states that by end-1985 BNI's nonperforming portfolio was FMG 70 billion out of a total FMG 155 billion portfolio (≈45%) — matching the description's \"FMG 70 billion, or roughly 45%, of BNI's loans nonperforming\" exactly. It further states the banking system's total loan portfolio was FMG 355 billion, of which FMG 110 billion were classified as doubtful/contentious — an exact match to \"total banking-system doubtful loans reaching FMG 110 billion out of a FMG 355 billion portfolio.\" The report attributes BNI's overexposure to government-directed lending to large, loss-making parastatals (\"demonstrated the Government's strong de facto influence on major operational and financial decisions\"), matching the description's \"government interference in lending decisions and heavy exposure to loss-making parastatals.\" A separate source (nationsencyclopedia.com, drawing on the 1997-2001 State Dept. Country Commercial Guide) confirms Madagascar's three national banks were BNI (industrial), BTM (rural), and BFV (commerce) — matching \"Madagascar's three national banks\" — and confirms that \"Economic reforms in 1988 allowed private foreign investment in the banking sector for the first time since the banks were nationalized,\" consistent with a 1988 reform-program timeline; the WB report itself (dated April 1988) discusses a tripartite banking reform \"presently under consideration\" involving BNI and the other two national banks, consistent with formal launch later in 1988. I was unable to directly pull the Laeven-Valencia database appendix table itself (IMF/SSRN PDFs returned 403 Forbidden to WebFetch) to independently confirm their exact \"1988 onset\" coding, but every checkable, quantifiable fact in the description is corroborated near-exactly by a contemporaneous, authoritative primary source (the World Bank), so I'm confident in a TRUE verdict despite that one unverified secondary attribution.",
+        "source": "https://documents1.worldbank.org/curated/en/315441468088172616/txt/multi-page.txt",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-09",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://documents1.worldbank.org/curated/en/315441468088172616/txt/multi-page.txt"
+  },
+  {
+    "year": 1988,
+    "title": "National Environment Action Plan Launched with World Bank",
+    "verdict": "TRUE",
+    "reason": "Confirmed. Madagascar's National Environment Action Plan launched in partnership with World Bank in the late 1980s, positioning Madagascar as a conservation leader.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed. Madagascar's National Environment Action Plan launched in partnership with World Bank in the late 1980s, positioning Madagascar as a conservation leader.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
+    "year": 1990,
+    "title": "Pro-Democracy Movement Mounts Mass Protests Against Ratsiraka",
+    "verdict": "TRUE",
+    "reason": "Confirmed. Broad pro-democracy movement (Forces Vives) with unions, churches, civil society mobilized from 1990. Massive Antananarivo demonstrations forcing Ratsiraka to negotiate.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed. Broad pro-democracy movement (Forces Vives) with unions, churches, civil society mobilized from 1990. Massive Antananarivo demonstrations forcing Ratsiraka to negotiate.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
+    "year": 1991,
+    "title": "Bloody Saturday: Presidential Guard Massacres Protesters",
+    "verdict": "TRUE",
+    "reason": "Confirmed. August 10, 1991 march on Presidential Palace. Presidential guard fired on crowd. Death toll disputed: government said 11, other sources range 10-130. At least 30 deaths are a reasonable figure. Event fundamentally delegitimized Ratsiraka.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed. August 10, 1991 march on Presidential Palace. Presidential guard fired on crowd. Death toll disputed: government said 11, other sources range 10-130. At least 30 deaths are a reasonable figure. Event fundamentally delegitimized Ratsiraka.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
+    "year": 1992,
+    "title": "New Democratic Constitution Adopted, Third Republic Established",
+    "verdict": "TRUE",
+    "reason": "Confirmed. New constitution approved August 1992 referendum. Third Republic established with multi-party democracy.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed. New constitution approved August 1992 referendum. Third Republic established with multi-party democracy.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
+    "year": 1993,
+    "title": "Albert Zafy Wins First Competitive Presidential Election",
+    "verdict": "TRUE",
+    "reason": "Confirmed. Zafy won second round February 10, 1993 with 66.74%. First genuine multi-party presidential contest. Judged free and fair.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed. Zafy won second round February 10, 1993 with 66.74%. First genuine multi-party presidential contest. Judged free and fair.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
+    "year": 1994,
+    "title": "Cyclone Geralda Devastates Vanilla Plantations in Northeast",
+    "verdict": "FALSE",
+    "reason": "Cyclone Geralda is a real, well-documented storm, but its documented facts contradict the event as described on two material axes — location and magnitude — with no independent evidence supporting the vanilla-plantation claim. Geralda formed 26 Jan 1994 and made landfall on 2 Feb 1994 'just north of Toamasina' (east-central Madagascar), not in the northeastern Sava/vanilla region (Sambava-Antalaha-Vohemar-Andapa). Its worst-hit areas per Wikipedia/NOAA/reliefweb sources were Toamasina province and the capital Antananarivo (43 deaths from flooding there). The national death toll was 'at least 231, with 73 missing' — roughly 3x the '70' claimed. No source found (English or French) documents Geralda destroying vanilla-plantation infrastructure in Sava specifically; general crop-damage figures cited are national (rice, cattle, 'export crops like vanilla and coffee' as a generic phrase, not Sava-specific). Notably, a different storm — Cyclone Nadia — did make landfall in the Sava region near Antalaha/Vohemar, but in March 1994 (not January) and killed only 12 people, not 70. The described event appears to conflate the real, large Toamasina-area cyclone (Geralda, 231 dead) with the real but much smaller Sava-region cyclone (Nadia, 12 dead, wrong month) into a hybrid narrative that matches neither storm's actual location/toll. Country and storm-year are correct, but the core described event (where it struck, how many died, and the vanilla-plantation devastation) is not supported and is contradicted by primary sources.",
+    "verify_count": 2,
+    "consensus_verdict": "FALSE",
+    "consensus_status": "double_negative",
+    "needs_tiebreak": false,
+    "source_independence": "weak",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "FALSE",
+        "reason": "Cyclone Geralda did strike Madagascar in 1994 (formed 26 Jan, made landfall 2 Feb), but every independently corroborated detail of this event contradicts the description. Multiple independent sources (Wikipedia, NOAA/AOML, ReliefWeb-sourced summaries) agree Geralda made landfall just north of Toamasina, on Madagascar's central-east coast — not in the Sava region of the northeast, which is roughly 500+ km away and is the country's vanilla-growing heartland (Antalaha/Sambava/Vohemar). Regional impact reports name Toamasina, Île Sainte-Marie, Fénérive, Brickaville, and Antananarivo — never Sava, Antalaha, or Sambava. The death toll is also materially wrong: sources consistently give 231 dead (with 73 missing), not 70. No source found (English or French-language searches) ties Cyclone Geralda to vanilla plantation destruction; well-documented vanilla-crop cyclone disasters in Madagascar's history are the 2000 cyclone and 2017's Cyclone Enawo, not Geralda in 1994. Given the wrong region (which undercuts the entire vanilla-plantation premise) plus a >3x death-toll discrepancy, this is not a minor magnitude slip but a materially false account, so verdict is FALSE rather than PARTIAL. Year is not the issue (1994 is correct for Geralda), so corrected_year is left null.",
+        "source": "https://en.wikipedia.org/wiki/Cyclone_Geralda",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "FALSE",
+        "reason": "Cyclone Geralda is a real, well-documented storm, but its documented facts contradict the event as described on two material axes — location and magnitude — with no independent evidence supporting the vanilla-plantation claim. Geralda formed 26 Jan 1994 and made landfall on 2 Feb 1994 'just north of Toamasina' (east-central Madagascar), not in the northeastern Sava/vanilla region (Sambava-Antalaha-Vohemar-Andapa). Its worst-hit areas per Wikipedia/NOAA/reliefweb sources were Toamasina province and the capital Antananarivo (43 deaths from flooding there). The national death toll was 'at least 231, with 73 missing' — roughly 3x the '70' claimed. No source found (English or French) documents Geralda destroying vanilla-plantation infrastructure in Sava specifically; general crop-damage figures cited are national (rice, cattle, 'export crops like vanilla and coffee' as a generic phrase, not Sava-specific). Notably, a different storm — Cyclone Nadia — did make landfall in the Sava region near Antalaha/Vohemar, but in March 1994 (not January) and killed only 12 people, not 70. The described event appears to conflate the real, large Toamasina-area cyclone (Geralda, 231 dead) with the real but much smaller Sava-region cyclone (Nadia, 12 dead, wrong month) into a hybrid narrative that matches neither storm's actual location/toll. Country and storm-year are correct, but the core described event (where it struck, how many died, and the vanilla-plantation devastation) is not supported and is contradicted by primary sources.",
+        "source": "https://en.wikipedia.org/wiki/Cyclone_Geralda",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Cyclone_Geralda"
+  },
+  {
+    "year": 1996,
+    "title": "President Zafy Impeached by National Assembly",
+    "verdict": "TRUE",
+    "reason": "Confirmed. Zafy impeached July 26, 1996 by National Assembly (99 of 134 deputies in favor). High Constitutional Court upheld September 4, 1996.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed. Zafy impeached July 26, 1996 by National Assembly (99 of 134 deputies in favor). High Constitutional Court upheld September 4, 1996.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
+    "year": 1996,
+    "title": "Ratsiraka Returns to Power with Pro-Market Platform",
+    "verdict": "TRUE",
+    "reason": "Confirmed. Ratsiraka won December 1996 election (second round December 29) with 50.7% of vote, took office February 1997.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed. Ratsiraka won December 1996 election (second round December 29) with 50.7% of vote, took office February 1997.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
+    "year": 1998,
+    "title": "Constitutional Referendum Strengthens Presidential Powers",
+    "verdict": "TRUE",
+    "reason": "Confirmed. 1998 constitutional referendum approved strengthening of presidential powers and increased provincial autonomy.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed. 1998 constitutional referendum approved strengthening of presidential powers and increased provincial autonomy.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
+    "year": 2001,
+    "title": "Sapphire Rush Near Ilakaka Creates Boom-Town Economy",
+    "verdict": "TRUE",
+    "reason": "Confirmed. Ilakaka sapphire rush is well-documented. Madagascar became world's leading sapphire producer. Environmental damage and value capture by intermediaries confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed. Ilakaka sapphire rush is well-documented. Madagascar became world's leading sapphire producer. Environmental damage and value capture by intermediaries confirmed.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
+    "year": 2002,
+    "title": "Constitutional Court Rules for Ravalomanana, Ratsiraka Flees to Exile",
+    "verdict": "TRUE",
+    "reason": "Confirmed. High Constitutional Court ruled for Ravalomanana. Ratsiraka fled to France. Crisis resolved.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed. High Constitutional Court ruled for Ravalomanana. Ratsiraka fled to France. Crisis resolved.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
+    "year": 2002,
+    "title": "Disputed Election Creates Dual Government and Near Civil Conflict",
+    "verdict": "TRUE",
+    "reason": "Confirmed. Disputed December 2001 election. Ravalomanana declared himself president February 2002. General strike, roadblocks, dual-government crisis confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed. Disputed December 2001 election. Ravalomanana declared himself president February 2002. General strike, roadblocks, dual-government crisis confirmed.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
+    "year": 2002,
+    "title": "Political Crisis Causes 13% GDP Contraction",
+    "verdict": "TRUE",
+    "reason": "Confirmed. Real GDP dropped 12.7% in 2002, consistent with the stated ~13% figure.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed. Real GDP dropped 12.7% in 2002, consistent with the stated ~13% figure.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
+    "year": 2004,
+    "title": "Vanilla Price Crashes from $500 to Below $50 per Kilogram",
+    "verdict": "TRUE",
+    "reason": "Confirmed. Vanilla peaked at ~$500/kg around 2003-2004, then collapsed to ~$40/kg by mid-2005 due to synthetic vanillin substitution and improved supply. The year and price range are broadly correct.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed. Vanilla peaked at ~$500/kg around 2003-2004, then collapsed to ~$40/kg by mid-2005 due to synthetic vanillin substitution and improved supply. The year and price range are broadly correct.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
+    "year": 2005,
+    "title": "Durban Vision Commits Madagascar to Tripling Protected Areas",
+    "verdict": "TRUE",
+    "reason": "Confirmed. Ravalomanana announced Durban Vision at World Parks Congress. Commitment to triple protected areas from 1.7 million to 6 million hectares confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed. Ravalomanana announced Durban Vision at World Parks Congress. Commitment to triple protected areas from 1.7 million to 6 million hectares confirmed.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
+    "year": 2006,
+    "title": "Ambatovy Nickel and Cobalt Mine Project Announced",
+    "verdict": "TRUE",
+    "reason": "Confirmed. Ambatovy project announced, led by Sherritt International. Investment projected over $5 billion. Largest single FDI in Madagascar's history.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed. Ambatovy project announced, led by Sherritt International. Investment projected over $5 billion. Largest single FDI in Madagascar's history.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
+    "year": 2008,
+    "title": "Daewoo Land Deal Triggers Mass Outrage, Fuels Political Crisis",
+    "verdict": "TRUE",
+    "reason": "Confirmed. November 2008 reports of 1.3 million hectare, 99-year lease to Daewoo Logistics. Triggered public outrage and contributed directly to 2009 coup. Deal cancelled by Rajoelina.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed. November 2008 reports of 1.3 million hectare, 99-year lease to Daewoo Logistics. Triggered public outrage and contributed directly to 2009 coup. Deal cancelled by Rajoelina.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
+    "year": 2009,
+    "title": "Military-Backed Coup Installs Rajoelina, Madagascar Suspended from AU",
+    "verdict": "TRUE",
+    "reason": "Confirmed. Military transferred power to Rajoelina March 17, 2009. Madagascar suspended from both AU and SADC.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed. Military transferred power to Rajoelina March 17, 2009. Madagascar suspended from both AU and SADC.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
+    "year": 2009,
+    "title": "Post-Coup Rosewood Logging Crisis Devastates Northern National Parks",
+    "verdict": "TRUE",
+    "reason": "Confirmed. Organized illegal rosewood logging operations in Marojejy and Masoala national parks after political collapse. Criminal networks exploited the vacuum; exports to China documented by Global Witness.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed. Organized illegal rosewood logging operations in Marojejy and Masoala national parks after political collapse. Criminal networks exploited the vacuum; exports to China documented by Global Witness.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
+    "year": 2009,
+    "title": "US and EU Suspend Hundreds of Millions in Aid After Coup",
+    "verdict": "TRUE",
+    "reason": "Confirmed. US and EU suspended aid. AGOA trade preferences withdrawn. Garment sector devastated, factory closures, tens of thousands of jobs lost.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed. US and EU suspended aid. AGOA trade preferences withdrawn. Garment sector devastated, factory closures, tens of thousands of jobs lost.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
+    "year": 2010,
+    "title": "Garment Sector Collapses After AGOA Withdrawal, 40,000 Jobs Lost",
+    "verdict": "TRUE",
+    "reason": "Confirmed. AGOA withdrawal caused garment sector collapse. ~40,000 workers lost jobs. Sector had employed over 100,000 at peak.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed. AGOA withdrawal caused garment sector collapse. ~40,000 workers lost jobs. Sector had employed over 100,000 at peak.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
+    "year": 2011,
+    "title": "SADC Roadmap Agreement Charts Path Back to Constitutional Rule",
+    "verdict": "TRUE",
+    "reason": "Confirmed. SADC-facilitated roadmap signed September 2011. Outlined path to inclusive transitional government and elections.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed. SADC-facilitated roadmap signed September 2011. Outlined path to inclusive transitional government and elections.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
+    "year": 2013,
+    "title": "Ambatovy Nickel Mine Begins Commercial Production",
+    "verdict": "TRUE",
+    "reason": "Confirmed. Ambatovy reached commercial production January 2013. Nameplate capacity 60,000 tonnes nickel and 5,600 tonnes cobalt annually.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed. Ambatovy reached commercial production January 2013. Nameplate capacity 60,000 tonnes nickel and 5,600 tonnes cobalt annually.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
+    "year": 2013,
+    "title": "Presidential Elections Restore Constitutional Rule, End Transition",
+    "verdict": "TRUE",
+    "reason": "Confirmed. Hery Rajaonarimampianina won 2013 election. International observers judged it broadly credible. Aid programs resumed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed. Hery Rajaonarimampianina won 2013 election. International observers judged it broadly credible. Aid programs resumed.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
+    "year": 2017,
+    "title": "Cyclone Enawo Kills 81, Destroys 30% of Vanilla Crop",
+    "verdict": "TRUE",
+    "reason": "Confirmed. Enawo struck March 7, 2017 as Category 4 equivalent (winds >225 km/h). 81 fatalities confirmed. ~30% vanilla crop damage confirmed by producers. Strongest storm since Gafilo 2004.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed. Enawo struck March 7, 2017 as Category 4 equivalent (winds >225 km/h). 81 fatalities confirmed. ~30% vanilla crop damage confirmed by producers. Strongest storm since Gafilo 2004.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
+    "year": 2017,
+    "title": "Urban Pneumonic Plague Outbreak Kills Over 200, Draws WHO Emergency Response",
+    "verdict": "TRUE",
+    "reason": "Confirmed. 2,417 cases and 209 deaths by end of acute phase. Outbreak spread to urban centers. WHO deployed emergency response. 7,122 contacts received prophylactic antibiotics.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed. 2,417 cases and 209 deaths by end of acute phase. Outbreak spread to urban centers. WHO deployed emergency response. 7,122 contacts received prophylactic antibiotics.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
+    "year": 2018,
+    "title": "Presidential Election: Rajoelina Defeats Ravalomanana in Credible Runoff",
+    "verdict": "TRUE",
+    "reason": "Confirmed. Rajoelina won December 19, 2018 runoff with 55.7%. Ravalomanana accepted result. Broadly judged credible by international observers.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed. Rajoelina won December 19, 2018 runoff with 55.7%. Ravalomanana accepted result. Broadly judged credible by international observers.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
+    "year": 2019,
+    "title": "Madagascar's 'Barea' Reach AFCON Quarterfinals on Tournament Debut",
+    "verdict": "TRUE",
+    "reason": "Independently corroborated across multiple sports news outlets: Madagascar (nicknamed the Barea) made their first-ever AFCON appearance in 2019, topped Group B with a 1-0 win over Burundi, a 2-2 draw with Guinea, and a 2-0 win over Nigeria, then beat DR Congo 4-2 on penalties (after a 2-2 draw) on 7 July 2019 to reach the quarterfinals in their tournament debut. The \"Iceland of Africa\" nickname and the nationwide celebration narrative are widely reported by France24, Guardian Nigeria, Nation Africa, ESPN, Goal.com, Legit.ng, and Punch Newspapers. All material details (year, country, opponents, scorelines, tournament stage) match the description exactly.",
+    "verify_count": 2,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "double_confirmed",
+    "needs_tiebreak": false,
+    "source_independence": "independent",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Independently confirmed via multiple sports-news outlets: Madagascar made its first-ever AFCON appearance in 2019, topped Group B (beat Burundi, beat Nigeria 2-0, drew Guinea 2-2), then beat DR Congo 4-2 on penalties (after a 2-2 draw through extra time) in the Round of 16 on 7 July 2019 to reach the quarterfinals. Pundits explicitly dubbed the run \"the Iceland of Africa.\" The team received a hero's welcome, presidential honors, and knighthoods on return home, confirming nationwide celebration. All material details in the description match.",
+        "source": "https://guardian.ng/sport/madagascar-edge-dr-congo-on-penalties-to-keep-dream-run-alive/",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-09",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Independently corroborated across multiple sports news outlets: Madagascar (nicknamed the Barea) made their first-ever AFCON appearance in 2019, topped Group B with a 1-0 win over Burundi, a 2-2 draw with Guinea, and a 2-0 win over Nigeria, then beat DR Congo 4-2 on penalties (after a 2-2 draw) on 7 July 2019 to reach the quarterfinals in their tournament debut. The \"Iceland of Africa\" nickname and the nationwide celebration narrative are widely reported by France24, Guardian Nigeria, Nation Africa, ESPN, Goal.com, Legit.ng, and Punch Newspapers. All material details (year, country, opponents, scorelines, tournament stage) match the description exactly.",
+        "source": "https://www.france24.com/en/20190707-africa-cup-nations-round-16-madagascar-win-dr-congo-algeria-guinea",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-09",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://www.france24.com/en/20190707-africa-cup-nations-round-16-madagascar-win-dr-congo-algeria-guinea"
+  },
+  {
+    "year": 2020,
+    "title": "COVID-19 Pandemic Eliminates Tourism Revenue, Government Promotes Unproven Remedy",
+    "verdict": "TRUE",
+    "reason": "Confirmed. COVID-19 destroyed tourism revenue. Rajoelina promoted Covid-Organics herbal remedy causing WHO diplomatic controversy. GDP contracted.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed. COVID-19 destroyed tourism revenue. Rajoelina promoted Covid-Organics herbal remedy causing WHO diplomatic controversy. GDP contracted.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
+    "year": 2022,
+    "title": "Cyclone Batsirai Kills 121, Displaces 120,000 on Eastern Coast",
+    "verdict": "TRUE",
+    "reason": "Confirmed. Batsirai made landfall February 5, 2022. 121 deaths confirmed. ~112,000 displaced. Fianarantsoa and Toamasina (Atsinanana) regions affected.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed. Batsirai made landfall February 5, 2022. 121 deaths confirmed. ~112,000 displaced. Fianarantsoa and Toamasina (Atsinanana) regions affected.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
+    "year": 2023,
+    "title": "Rajoelina Re-elected in Opposition-Boycotted Controversial Election",
+    "verdict": "TRUE",
+    "reason": "Confirmed. November 2023 election boycotted by major opposition. Rajoelina won 58.9%. French citizenship eligibility dispute confirmed. Low turnout (46.4%). SADC observers expressed concerns.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed. November 2023 election boycotted by major opposition. Rajoelina won 58.9%. French citizenship eligibility dispute confirmed. Low turnout (46.4%). SADC observers expressed concerns.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
+    "year": 2025,
+    "title": "Political Opposition Organizes for Electoral Reform Ahead of Next Cycle",
+    "verdict": "FALSE",
+    "reason": "This description frames 2025 as a continuation of a gradual opposition-vs-government standoff over electoral reform, mediated by SADC 'ahead of the next election cycle' — implying the Rajoelina government remained in place and stable. That is not what happened. From late September 2025, Gen-Z-led protests over water/power shortages and corruption escalated rapidly; on 11-13 October 2025 the elite CAPSAT military unit backed the protesters, seized Antananarivo, and President Andry Rajoelina fled the country. Colonel Michael Randrianirina was sworn in as transitional president on 17 October. The military junta suspended the Electoral Commission (CENI), the High Constitutional Court, and the Constitution itself. SADC's mediation efforts (Panel of Elders, roadmap deadlines, dialogue-readiness reports) that followed were aimed at managing the POST-COUP transition and a path back to elections around 2027 — not at 'bridging the gulf between the government and opposition' while Rajoelina's government persisted toward a routine next election. Genuine electoral-reform activity (voter-list overhaul, CENI legal-framework consultations) is documented, but it occurred under the transitional government from December 2025 onward, not as pre-coup opposition pressure on a sitting Rajoelina administration. The description omits/misrepresents the year's defining political event (a coup and full regime change) and substitutes a much milder continuity narrative that did not hold for 2025. This is a material mischaracterization, not a minor magnitude/actor detail, so it does not meet the TRUE or PARTIAL bar despite country and nominal year being correct.",
+    "verify_count": 2,
+    "consensus_verdict": "FALSE",
+    "consensus_status": "double_negative",
+    "needs_tiebreak": false,
+    "source_independence": "weak",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "FALSE",
+        "reason": "The description depicts 2025 Madagascar as a year of routine, low-intensity opposition/civil-society advocacy for electoral reform with SADC quietly mediating a government-opposition 'gulf' ahead of a future vote. That is not what happened. 2025 in Madagascar was dominated by: (1) May 2025 legislative elections won by Rajoelina's IRMAR coalition amid fraud/irregularity allegations from the Safidy Electoral Observatory and a SADC monitoring mission; (2) Gen Z-led mass protests from late September through October 2025 sparked by chronic power and water outages that escalated into demands for Rajoelina's resignation; and (3) a military coup on 12-17 October 2025 in which the CAPSAT unit overthrew Rajoelina (who fled the country and was impeached) and installed Colonel Michael Randrianirina as transitional president, with the military suspending the electoral commission and other institutions. SADC's 2025 engagement was not routine pre-election mediation 'to bridge the gulf ahead of the next election cycle' as described, but emergency post-coup crisis diplomacy (a Panel of Elders led by Joyce Banda, tasked in Dec 2025 with getting a transitional roadmap toward a 2027 constitutional referendum/election). The event description omits the coup entirely and mischaracterizes the nature and trigger of SADC's involvement, which is a material misrepresentation of scope and substance, not a minor detail error. Country and year are correct, but the event as described did not occur.",
+        "source": "https://en.wikipedia.org/wiki/2025_Malagasy_coup_d'%C3%A9tat",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "FALSE",
+        "reason": "This description frames 2025 as a continuation of a gradual opposition-vs-government standoff over electoral reform, mediated by SADC 'ahead of the next election cycle' — implying the Rajoelina government remained in place and stable. That is not what happened. From late September 2025, Gen-Z-led protests over water/power shortages and corruption escalated rapidly; on 11-13 October 2025 the elite CAPSAT military unit backed the protesters, seized Antananarivo, and President Andry Rajoelina fled the country. Colonel Michael Randrianirina was sworn in as transitional president on 17 October. The military junta suspended the Electoral Commission (CENI), the High Constitutional Court, and the Constitution itself. SADC's mediation efforts (Panel of Elders, roadmap deadlines, dialogue-readiness reports) that followed were aimed at managing the POST-COUP transition and a path back to elections around 2027 — not at 'bridging the gulf between the government and opposition' while Rajoelina's government persisted toward a routine next election. Genuine electoral-reform activity (voter-list overhaul, CENI legal-framework consultations) is documented, but it occurred under the transitional government from December 2025 onward, not as pre-coup opposition pressure on a sitting Rajoelina administration. The description omits/misrepresents the year's defining political event (a coup and full regime change) and substitutes a much milder continuity narrative that did not hold for 2025. This is a material mischaracterization, not a minor magnitude/actor detail, so it does not meet the TRUE or PARTIAL bar despite country and nominal year being correct.",
+        "source": "https://en.wikipedia.org/wiki/2025_Malagasy_coup_d'%C3%A9tat",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/2025_Malagasy_coup_d'%C3%A9tat"
+  }
+]

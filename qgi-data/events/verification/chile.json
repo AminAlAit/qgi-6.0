@@ -1,0 +1,1818 @@
+[
+  {
+    "year": 1952,
+    "title": "Women Vote in First Chilean Presidential Election",
+    "verdict": "TRUE",
+    "reason": "Confirmed: first presidential election with women's suffrage; Ibanez won with 46.8%. Women gained suffrage in 1949, first exercised in presidential election 1952.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed: first presidential election with women's suffrage; Ibanez won with 46.8%. Women gained suffrage in 1949, first exercised in presidential election 1952.",
+        "source": "https://en.wikipedia.org/wiki/1952_Chilean_presidential_election",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/1952_Chilean_presidential_election"
+  },
+  {
+    "year": 1953,
+    "title": "Central Ãšnica de Trabajadores (CUT) Founded",
+    "verdict": "TRUE",
+    "reason": "Two independent, non-Wikipedia sources confirm the CUT (Central Única de Trabajadores) was founded in Chile on February 12, 1953, under Clotario Blest, unifying previously fragmented labor organizations (both factions of the CTCH, the anarcho-syndicalist MUNT, the public employees' Junta Nacional de Empleados, and other sectoral bodies) into a single federation. Memoria Chilena (Chile's National Library) confirms it unified public sector, education, and industrial workers and operated as the primary organized-labor voice until being dissolved after the 1973 coup — materially matching the description's claim of unifying fragmented unions and playing a central labor/political role for roughly two decades. No material detail (year, country, actors, scope) is off.",
+    "verify_count": 2,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "double_confirmed",
+    "needs_tiebreak": false,
+    "source_independence": "independent",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Founded February 12, 1953 under Clotario Blest. Confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Workers'_United_Center_of_Chile",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Two independent, non-Wikipedia sources confirm the CUT (Central Única de Trabajadores) was founded in Chile on February 12, 1953, under Clotario Blest, unifying previously fragmented labor organizations (both factions of the CTCH, the anarcho-syndicalist MUNT, the public employees' Junta Nacional de Empleados, and other sectoral bodies) into a single federation. Memoria Chilena (Chile's National Library) confirms it unified public sector, education, and industrial workers and operated as the primary organized-labor voice until being dissolved after the 1973 coup — materially matching the description's claim of unifying fragmented unions and playing a central labor/political role for roughly two decades. No material detail (year, country, actors, scope) is off.",
+        "source": "https://www.memoriachilena.gob.cl/602/w3-article-96204.html",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-02",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://www.memoriachilena.gob.cl/602/w3-article-96204.html"
+  },
+  {
+    "year": 1954,
+    "title": "General Strike Against Klein-Saks Austerity Program",
+    "verdict": "FALSE",
+    "reason": "The Klein-Saks Mission did not exist in 1954. Multiple independent sources confirm negotiations to hire the US consulting firm began in April 1955 (\"on April 8, Julius Klein informed that the Chilean government contacted him to negotiate...\"), the contract was signed around July 1955, and the mission operated in Chile 1955-1958. The CUT's general strike explicitly against the Klein-Saks wage-freeze/austerity plan was declared in July 1955 (with further strikes in August 1955), not 1954. CUT did organize labor unrest in 1954 (e.g., a Sept 3, 1954 strike of ~50,000 workers), but this predated and was unrelated to Klein-Saks specifically -- it targeted Ibáñez's general economic conditions before the mission was ever invited. The event as described conflates the real, well-documented 1955 anti-Klein-Saks general strike with the wrong year (1954), so year+causal-attribution to Klein-Saks do not both hold. Corrected year: 1955.",
+    "verify_count": 3,
+    "consensus_verdict": "FALSE",
+    "consensus_status": "contested_resolved",
+    "needs_tiebreak": false,
+    "source_independence": "independent",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Klein-Saks Mission was hired in 1955 (not 1954). However, the strike described may have occurred in 1955-56 when the stabilization plan was implemented. The event year of 1954 appears slightly off — the Klein-Saks Mission arrived in 1955. Minor discrepancy but the broader context of labor resistance to austerity is confirmed.",
+        "source": "https://en.sperohope.com/misi-n-klein-saks-antecedentes",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "FALSE",
+        "reason": "Convergent evidence from multiple independent sources (Memoria Chilena/Biblioteca Nacional de Chile, Wikipedia's Misión Klein-Saks article, ResearchGate/SciELO academic paper on the mission's hiring, and general historiography of Ibáñez's second term) establishes that the Klein-Saks Mission was not invited/contracted until 1955 (contract signed and mission arrived in Chile on July 3, 1955; it began substantive work in September 1955; the stabilization/austerity program with wage freezes was adopted in December 1955). It therefore could not have been the target of a strike in 1954 — the program simply did not exist yet. Chile did see a real CUT-organized general strike in 1954 (led by Clotario Blest, around May Day), but it protested Ibáñez's general inflation/economic policy broadly, not the Klein-Saks plan, which is the specific causal driver named in this event's description ('wage freezes...imposed under the Klein-Saks stabilization plan invited by President Ibáñez'). The strike that actually matches the description — CUT mobilizing specifically against Klein-Saks-driven wage freezes/austerity — was called for January 9, 1956, and multiple sources describe it as a failure (workers' strike capacity exhausted, leading to disorganization of the labor movement), which also contradicts this event's claim of a successful mass mobilization of 'hundreds of thousands.' Given both the year and the outcome/magnitude are off, this is a material mismatch, not a minor detail — hence FALSE rather than PARTIAL, with the real underlying event most plausibly dated to 1956.",
+        "source": "https://www.memoriachilena.gob.cl/602/w3-article-93004.html",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-02",
+          "method": "web_search"
+        },
+        "corrected_year": 1956
+      },
+      {
+        "pass_n": 3,
+        "verdict": "FALSE",
+        "reason": "The Klein-Saks Mission did not exist in 1954. Multiple independent sources confirm negotiations to hire the US consulting firm began in April 1955 (\"on April 8, Julius Klein informed that the Chilean government contacted him to negotiate...\"), the contract was signed around July 1955, and the mission operated in Chile 1955-1958. The CUT's general strike explicitly against the Klein-Saks wage-freeze/austerity plan was declared in July 1955 (with further strikes in August 1955), not 1954. CUT did organize labor unrest in 1954 (e.g., a Sept 3, 1954 strike of ~50,000 workers), but this predated and was unrelated to Klein-Saks specifically -- it targeted Ibáñez's general economic conditions before the mission was ever invited. The event as described conflates the real, well-documented 1955 anti-Klein-Saks general strike with the wrong year (1954), so year+causal-attribution to Klein-Saks do not both hold. Corrected year: 1955.",
+        "source": "https://es.wikipedia.org/wiki/Misi%C3%B3n_Klein-Saks",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        },
+        "corrected_year": 1955
+      }
+    ],
+    "had_dissent": true,
+    "source": "https://es.wikipedia.org/wiki/Misi%C3%B3n_Klein-Saks"
+  },
+  {
+    "year": 1955,
+    "title": "Nuevo Trato Copper Law Passed",
+    "verdict": "TRUE",
+    "reason": "Independent (non-Wikipedia) sourcing confirms Chile enacted the \"Nuevo Trato del Cobre\" (New Deal copper law) in 1955 under President Carlos Ibáñez del Campo (Law 11,828, May 5, 1955), which reduced/restructured effective tax rates and offered commercial, accounting and exchange-control benefits to the major foreign copper producers to stimulate investment and production. A separate independent search confirms Anaconda owned Chuquicamata and El Salvador, and Kennecott owned El Teniente — the two companies named in the event description as the intended beneficiaries — and that 1955 is used as the baseline year for measuring their subsequent investment/profit performance under this regime, consistent with the law's 1955 enactment. The description's framing (tax incentives to Anaconda/Kennecott in exchange for production/investment increases, and the law fueling nationalist debate over foreign ownership of copper, later culminating in \"Chileanization\" and full nationalization) matches the historical record found. One minor caveat: EBSCO's account emphasizes the law failed to attract the hoped-for increase in investment from the companies, so \"increased copper output\" is a modest overstatement of otherwise-disappointing investment results, but this is not material enough to change the year/country/core-mechanism match, so I rate this TRUE rather than PARTIAL.",
+    "verify_count": 2,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "double_confirmed",
+    "needs_tiebreak": false,
+    "source_independence": "independent",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed: 'Nuevo Trato' (New Treatment) copper law enacted in 1955, aimed at Anaconda and Kennecott. Description of tax incentives vs nationalist criticism is accurate.",
+        "source": "https://en.wikipedia.org/wiki/Chilean_nationalization_of_copper",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Independent (non-Wikipedia) sourcing confirms Chile enacted the \"Nuevo Trato del Cobre\" (New Deal copper law) in 1955 under President Carlos Ibáñez del Campo (Law 11,828, May 5, 1955), which reduced/restructured effective tax rates and offered commercial, accounting and exchange-control benefits to the major foreign copper producers to stimulate investment and production. A separate independent search confirms Anaconda owned Chuquicamata and El Salvador, and Kennecott owned El Teniente — the two companies named in the event description as the intended beneficiaries — and that 1955 is used as the baseline year for measuring their subsequent investment/profit performance under this regime, consistent with the law's 1955 enactment. The description's framing (tax incentives to Anaconda/Kennecott in exchange for production/investment increases, and the law fueling nationalist debate over foreign ownership of copper, later culminating in \"Chileanization\" and full nationalization) matches the historical record found. One minor caveat: EBSCO's account emphasizes the law failed to attract the hoped-for increase in investment from the companies, so \"increased copper output\" is a modest overstatement of otherwise-disappointing investment results, but this is not material enough to change the year/country/core-mechanism match, so I rate this TRUE rather than PARTIAL.",
+        "source": "https://www.ebsco.com/research-starters/politics-and-government/frei-chileanizes-chiles-copper-industry",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-02",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://www.ebsco.com/research-starters/politics-and-government/frei-chileanizes-chiles-copper-industry"
+  },
+  {
+    "year": 1956,
+    "title": "FRAP Left Coalition Formed",
+    "verdict": "TRUE",
+    "reason": "Confirmed: FRAP formed February 28, 1956, uniting Socialist and Communist parties. Ran Allende in 1958 and 1964.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed: FRAP formed February 28, 1956, uniting Socialist and Communist parties. Ran Allende in 1958 and 1964.",
+        "source": "https://en.wikipedia.org/wiki/FRAP_(Chile)",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/FRAP_(Chile)"
+  },
+  {
+    "year": 1957,
+    "title": "Christian Democratic Party Founded",
+    "verdict": "TRUE",
+    "reason": "Founded July 28, 1957 via merger of Falange Nacional and other groups. Eduardo Frei Montalva elected 1964. Confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Founded July 28, 1957 via merger of Falange Nacional and other groups. Eduardo Frei Montalva elected 1964. Confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Christian_Democratic_Party_(Chile)",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Christian_Democratic_Party_(Chile)"
+  },
+  {
+    "year": 1958,
+    "title": "Jorge Alessandri Wins Presidency; Communist Party Re-Legalized",
+    "verdict": "TRUE",
+    "reason": "Confirmed: Alessandri won September 1958 election; Communist Party re-legalized same year. Allende was the FRAP runner-up.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed: Alessandri won September 1958 election; Communist Party re-legalized same year. Allende was the FRAP runner-up.",
+        "source": "https://en.wikipedia.org/wiki/1958_Chilean_presidential_election",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/1958_Chilean_presidential_election"
+  },
+  {
+    "year": 1960,
+    "title": "Great Chilean Earthquake and Tsunami â€” Largest Ever Recorded",
+    "verdict": "TRUE",
+    "reason": "Magnitude 9.5 confirmed. Death toll cited as 'up to 6,000' is at the high end; most sources say 1,655-5,700. Waves 'up to 25 meters' is consistent with reported tsunami heights. Minor numeric discrepancy in death toll — VERIFIED with note.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Magnitude 9.5 confirmed. Death toll cited as 'up to 6,000' is at the high end; most sources say 1,655-5,700. Waves 'up to 25 meters' is consistent with reported tsunami heights. Minor numeric discrepancy in death toll — VERIFIED with note.",
+        "source": "https://en.wikipedia.org/wiki/1960_Valdivia_earthquake",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/1960_Valdivia_earthquake"
+  },
+  {
+    "year": 1961,
+    "title": "Alliance for Progress Engagement Ties Chile to Cold War Strategy",
+    "verdict": "TRUE",
+    "reason": "Confirmed: Chile was a priority recipient of Alliance for Progress funds after 1960 earthquake and as Cold War counterweight to Cuba.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed: Chile was a priority recipient of Alliance for Progress funds after 1960 earthquake and as Cold War counterweight to Cuba.",
+        "source": "https://en.wikipedia.org/wiki/Alliance_for_Progress",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Alliance_for_Progress"
+  },
+  {
+    "year": 1963,
+    "title": "First Agrarian Reform Law Passed Under Alessandri",
+    "verdict": "FALSE",
+    "reason": "The event is real and materially accurate in description (Alessandri, under U.S. Alliance for Progress and domestic pressure, enacted Chile's first agrarian reform law permitting expropriation of abandoned/poorly-managed land, criticized as inadequate by left and right, and setting legal precedent for Frei/Allende's later reforms) — but the year is wrong. Multiple independent, non-off-limits sources converge on Law No. 15.020 being promulgated on 15 November 1962 (published in the Diario Oficial on 27 November 1962), not 1963. Corroborating sources include the Uruguayan Parliament library catalog (pmb.parlamento.gub.uy, confirming \"LEY 15.020 (15/11/1962)\" signed by President Jorge Alessandri Rodríguez for agrarian reform in Chile), a RAND Corporation paper titled 'Politics and Agrarian Reform Bureaucracies in Chile: 1962-1964', and the Universidad de Concepción's Archivo Luis David Cruz Ocampo listing of Ley no. 15.020. Since the year does not hold (country and substance do, but the join-key year is off by one), this is scored FALSE with corrected_year=1962 per the hard rules, rather than PARTIAL.",
+    "verify_count": 3,
+    "consensus_verdict": "FALSE",
+    "consensus_status": "contested_resolved",
+    "needs_tiebreak": false,
+    "source_independence": "independent",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed: Alessandri enacted a limited agrarian reform law in 1963, known as the 'Reforma del Macetero' for its limited scope. CORA created. Accurate description.",
+        "source": "https://en.wikipedia.org/wiki/Chilean_land_reform",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "FALSE",
+        "reason": "The event as described (Alessandri's first agrarian reform law, Law No. 15.020, allowing expropriation of abandoned/poorly-managed land, under Alliance for Progress pressure, criticized by left and right as inadequate/the \"Ley Maceta\" or \"flowerpot reform,\" and setting precedent for Frei's and Allende's more sweeping reforms) is real and materially accurate in every respect except the year. Multiple independent sources (Memoria Chilena/Biblioteca Nacional de Chile; a Universidad de Chile thesis repository; SciELO Chile) converge that Law 15.020 was promulgated on November 15, 1962, not 1963. A related 1963 measure (constitutional amendment Law 15.295, enabling expropriation of land voluntarily offered for sale) is a distinct, secondary legal instrument, not \"the first agrarian reform law.\" Since the year is a join key and is materially wrong by a full year, this is a FALSE verdict with corrected_year 1962, per the hard rule that year errors are reported as FALSE.",
+        "source": "https://www.memoriachilena.gob.cl/602/w3-article-3536.html",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-02",
+          "method": "web_search"
+        },
+        "corrected_year": 1962
+      },
+      {
+        "pass_n": 3,
+        "verdict": "FALSE",
+        "reason": "The event is real and materially accurate in description (Alessandri, under U.S. Alliance for Progress and domestic pressure, enacted Chile's first agrarian reform law permitting expropriation of abandoned/poorly-managed land, criticized as inadequate by left and right, and setting legal precedent for Frei/Allende's later reforms) — but the year is wrong. Multiple independent, non-off-limits sources converge on Law No. 15.020 being promulgated on 15 November 1962 (published in the Diario Oficial on 27 November 1962), not 1963. Corroborating sources include the Uruguayan Parliament library catalog (pmb.parlamento.gub.uy, confirming \"LEY 15.020 (15/11/1962)\" signed by President Jorge Alessandri Rodríguez for agrarian reform in Chile), a RAND Corporation paper titled 'Politics and Agrarian Reform Bureaucracies in Chile: 1962-1964', and the Universidad de Concepción's Archivo Luis David Cruz Ocampo listing of Ley no. 15.020. Since the year does not hold (country and substance do, but the join-key year is off by one), this is scored FALSE with corrected_year=1962 per the hard rules, rather than PARTIAL.",
+        "source": "https://pmb.parlamento.gub.uy/pmb/opac_css/index.php?lvl=categ_see&id=141005",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        },
+        "corrected_year": 1962
+      }
+    ],
+    "had_dissent": true,
+    "source": "https://pmb.parlamento.gub.uy/pmb/opac_css/index.php?lvl=categ_see&id=141005"
+  },
+  {
+    "year": 1964,
+    "title": "Eduardo Frei Montalva Elected President with U.S. Covert Support",
+    "verdict": "TRUE",
+    "reason": "Frei won with ~56% (event says 55.6%, Wikipedia says 56%). CIA spent $3 million in covert support — event says 'millions', confirmed. Minor percentage discrepancy.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Frei won with ~56% (event says 55.6%, Wikipedia says 56%). CIA spent $3 million in covert support — event says 'millions', confirmed. Minor percentage discrepancy.",
+        "source": "https://en.wikipedia.org/wiki/1964_Chilean_presidential_election",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/1964_Chilean_presidential_election"
+  },
+  {
+    "year": 1965,
+    "title": "Chileanization of Copper and Comprehensive Agrarian Reform",
+    "verdict": "FALSE",
+    "reason": "The underlying phenomena are real but neither reform was actually enacted in 1965. Frei took office Nov 1964 and sent presidential messages/bills for both the copper Chileanization plan and the agrarian reform to Congress around 1965 (Dec 1964 initial Kennecott/Anaconda agreements; agrarian reform bill sent to Congress Nov 1965), but the actual laws were passed later: Ley 16.425 'Chilenización del Cobre' was promulgated Jan 25, 1966 (per Codelco's own official history: 'la chilenización del cobre, iniciada en 1966, partió con la aprobación por parte del Congreso de la ley 16.425'), and the mixed company giving the state 51% of El Teniente (Kennecott) was formed in 1967. The Comprehensive Agrarian Reform Law (Ley 16.640) was promulgated July 28, 1967 (confirmed via Chile's National Library, memoriachilena.gob.cl), not 1965. Moreover, the 51% state stake in Anaconda's main mines (Chuquicamata, El Salvador) — as opposed to just a 25% stake in the new Exótica mine — was not achieved until the June 26, 1969 Frei-Anaconda agreement. So the event as described (both reforms 'enacted'/'acquiring 51%' simultaneously in 1965) does not match the historical record on year: the real legislative enactments span 1966 (copper law), 1967 (El Teniente 51% + agrarian reform law), and 1969 (Anaconda 51%). 1967 is the best single-year approximation since that is when the agrarian reform law was actually enacted and when the Kennecott/El Teniente mixed company reached 51% state ownership, the closest true 'simultaneous' convergence of the two reforms.",
+    "verify_count": 3,
+    "consensus_verdict": "FALSE",
+    "consensus_status": "contested_resolved",
+    "needs_tiebreak": false,
+    "source_independence": "independent",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed: In 1965 Chile purchased 51% of El Teniente from Kennecott. Agrarian Reform Law also enacted. Consistent with sources.",
+        "source": "https://en.wikipedia.org/wiki/Chilean_nationalization_of_copper",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "FALSE",
+        "reason": "Both reforms described are real but neither was enacted in 1965, and the \"51% Anaconda\" detail is also wrong. (1) Frei's initial Chileanization framework agreements date to December 1964, giving Chile 51% of Kennecott's Braden/El Teniente subsidiary but only 25% of a new Anaconda mine (Exotica) — not 51% of Anaconda. The enabling Chileanization Law 16.425 was published January 25, 1966, and the El Teniente mixed company (SMETSA, 51% state) was formed in 1967. Chile did not get to 51% of Anaconda's main mines until the separate June 1969 \"negotiated nationalization\" agreement. (2) The comprehensive Agrarian Reform Law (16.640) was submitted to Congress by Frei on November 22, 1965, but was held up and not passed/enacted until July 16, 1967 — three years into his term, not simultaneously with a 1965 copper deal. So while \"Chileanization\" and the agrarian reform are both genuine, historically significant Frei-era reforms, they were not co-enacted in 1965 as described; the year is wrong and the 51%-Anaconda detail is materially inaccurate. Closest defensible single year for the described package of concrete enactments (agrarian law passage + El Teniente 51% mixed company) is 1967.",
+        "source": "https://alertaley.cl/25-de-enero-de-1966-se-publico-la-ley-16-425-de-chilenizacion-del-cobre/",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-02",
+          "method": "web_search"
+        },
+        "corrected_year": 1967
+      },
+      {
+        "pass_n": 3,
+        "verdict": "FALSE",
+        "reason": "The underlying phenomena are real but neither reform was actually enacted in 1965. Frei took office Nov 1964 and sent presidential messages/bills for both the copper Chileanization plan and the agrarian reform to Congress around 1965 (Dec 1964 initial Kennecott/Anaconda agreements; agrarian reform bill sent to Congress Nov 1965), but the actual laws were passed later: Ley 16.425 'Chilenización del Cobre' was promulgated Jan 25, 1966 (per Codelco's own official history: 'la chilenización del cobre, iniciada en 1966, partió con la aprobación por parte del Congreso de la ley 16.425'), and the mixed company giving the state 51% of El Teniente (Kennecott) was formed in 1967. The Comprehensive Agrarian Reform Law (Ley 16.640) was promulgated July 28, 1967 (confirmed via Chile's National Library, memoriachilena.gob.cl), not 1965. Moreover, the 51% state stake in Anaconda's main mines (Chuquicamata, El Salvador) — as opposed to just a 25% stake in the new Exótica mine — was not achieved until the June 26, 1969 Frei-Anaconda agreement. So the event as described (both reforms 'enacted'/'acquiring 51%' simultaneously in 1965) does not match the historical record on year: the real legislative enactments span 1966 (copper law), 1967 (El Teniente 51% + agrarian reform law), and 1969 (Anaconda 51%). 1967 is the best single-year approximation since that is when the agrarian reform law was actually enacted and when the Kennecott/El Teniente mixed company reached 51% state ownership, the closest true 'simultaneous' convergence of the two reforms.",
+        "source": "https://www.memoriachilena.gob.cl/602/w3-article-59505.html",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        },
+        "corrected_year": 1967
+      }
+    ],
+    "had_dissent": true,
+    "source": "https://www.memoriachilena.gob.cl/602/w3-article-59505.html"
+  },
+  {
+    "year": 1966,
+    "title": "Massacre at El Salvador Mining Settlement",
+    "verdict": "TRUE",
+    "reason": "Confirmed: Massacre occurred March 11, 1966, at El Salvador settlement during a strike. Army troops sent by Defense Minister under Frei. Event says '8 killed' — exact figure not confirmed by web sources but Spanish-language sources confirm the event and approximate casualties. VERIFIED with note.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed: Massacre occurred March 11, 1966, at El Salvador settlement during a strike. Army troops sent by Defense Minister under Frei. Event says '8 killed' — exact figure not confirmed by web sources but Spanish-language sources confirm the event and approximate casualties. VERIFIED with note.",
+        "source": "https://fesuc.cl/masacre-de-el-salvador-chile-11-de-marzo-de-1966/",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://fesuc.cl/masacre-de-el-salvador-chile-11-de-marzo-de-1966/"
+  },
+  {
+    "year": 1967,
+    "title": "MIR Founded; Peasant Unions Legalized",
+    "verdict": "FALSE",
+    "reason": "MIR was founded October 12, 1965, NOT 1967. Year is off by 2 years. FALSE per year-off criterion.",
+    "verify_count": 1,
+    "consensus_verdict": "FALSE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "FALSE",
+        "reason": "MIR was founded October 12, 1965, NOT 1967. Year is off by 2 years. FALSE per year-off criterion.",
+        "source": "https://en.wikipedia.org/wiki/Revolutionary_Left_Movement_(Chile)",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Revolutionary_Left_Movement_(Chile)"
+  },
+  {
+    "year": 1969,
+    "title": "'Tacnazo' Military Uprising Reveals Armed Forces Discontent",
+    "verdict": "TRUE",
+    "reason": "Confirmed: Tacnazo occurred October 21, 1969, led by General Roberto Viaux. Protests over military pay. Frei defused it.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed: Tacnazo occurred October 21, 1969, led by General Roberto Viaux. Protests over military pay. Frei defused it.",
+        "source": "https://en.wikipedia.org/wiki/Tacnazo_insurrection",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Tacnazo_insurrection"
+  },
+  {
+    "year": 1970,
+    "title": "Salvador Allende Elected; CIA Plot to Block His Inauguration",
+    "verdict": "TRUE",
+    "reason": "Allende won 36.6% confirmed. CIA Track II confirmed. Schneider was Army Commander-in-Chief, constitutionalist, killed while resisting kidnapping. Confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Allende won 36.6% confirmed. CIA Track II confirmed. Schneider was Army Commander-in-Chief, constitutionalist, killed while resisting kidnapping. Confirmed.",
+        "source": "https://en.wikipedia.org/wiki/1970_Chilean_presidential_election",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/1970_Chilean_presidential_election"
+  },
+  {
+    "year": 1971,
+    "title": "Unanimous Congressional Nationalization of Copper Mines",
+    "verdict": "TRUE",
+    "reason": "Multiple independent (non-Wikipedia) sources confirm the core facts: on July 11, 1971, the Chilean Congress passed a constitutional amendment nationalizing the large-scale copper industry. Jacobin (2023) explicitly states: \"on July 11, 1971, the Chilean Congress unanimously approved the nationalization of all large-scale copper mines,\" confirming the unanimous vote detail. The U.S. State Department Office of the Historian corroborates the date: \"The Chilean Congress passed the nationalization amendment on July 11, 1971, and it became law five days later\" (as Law 17.450, effective July 16, 1971). Additional search results (NBER working paper, Springer Mineral Economics article) confirm the nationalized mines included Chuquicamata and El Teniente (previously Anaconda- and Kennecott-owned) and that the resulting state entity became the Chilean Copper Corporation, precursor to CODELCO. The only detail I could not independently corroborate off Wikipedia was the specific phrase \"second independence,\" but this is a minor rhetorical/framing detail, not a material fact about what happened, when, or who was involved — year, country, actor (Congress), unanimity, and scope (major copper mines nationalized into state ownership) all check out against independent sources.",
+    "verify_count": 2,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "double_confirmed",
+    "needs_tiebreak": false,
+    "source_independence": "independent",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "July 11, 1971 — unanimous vote confirmed. CODELCO formally created. Confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Chilean_nationalization_of_copper",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Multiple independent (non-Wikipedia) sources confirm the core facts: on July 11, 1971, the Chilean Congress passed a constitutional amendment nationalizing the large-scale copper industry. Jacobin (2023) explicitly states: \"on July 11, 1971, the Chilean Congress unanimously approved the nationalization of all large-scale copper mines,\" confirming the unanimous vote detail. The U.S. State Department Office of the Historian corroborates the date: \"The Chilean Congress passed the nationalization amendment on July 11, 1971, and it became law five days later\" (as Law 17.450, effective July 16, 1971). Additional search results (NBER working paper, Springer Mineral Economics article) confirm the nationalized mines included Chuquicamata and El Teniente (previously Anaconda- and Kennecott-owned) and that the resulting state entity became the Chilean Copper Corporation, precursor to CODELCO. The only detail I could not independently corroborate off Wikipedia was the specific phrase \"second independence,\" but this is a minor rhetorical/framing detail, not a material fact about what happened, when, or who was involved — year, country, actor (Congress), unanimity, and scope (major copper mines nationalized into state ownership) all check out against independent sources.",
+        "source": "https://jacobin.com/2023/09/chile-coup-salvador-allende-copper-industry-pollution-environmental-policy",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-02",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://jacobin.com/2023/09/chile-coup-salvador-allende-copper-industry-pollution-environmental-policy"
+  },
+  {
+    "year": 1971,
+    "title": "Allende Accelerates Agrarian Reform and Urban Land Redistribution",
+    "verdict": "TRUE",
+    "reason": "Independent sources confirm both halves of the event. (1) Agrarian acceleration: a declassified CIA Intelligence Memorandum (hosted on Wikisource, a domain distinct from the off-limits wikipedia.org) gives hard numbers: Allende's government expropriated 3,281 farms totaling 13.0 million acres (25% of farmland, 34% of irrigated land) between Nov 1970 and Sept 1972, versus 1,408 farms / 8.8 million acres (19%/25%) expropriated by Frei over his full six-year term (Nov 1964-Nov 1970) — explicitly noting 'the pace of expropriation speeded up markedly' and that Allende targeted the most productive farms. NACLA (nacla.org, independent) corroborates: 'During Allende's first two years, nearly all the remaining large estates were expropriated.' Other reporting puts cumulative Allende redistribution at ~2.4M hectares by end of 1971 alone (vs Frei's 3.5M-ha six-year total), and academic work (Bellisario, Journal of Agrarian Change/Wiley) confirms expropriated fundos were converted into asentamientos/cooperatives, with a shift to CERA state-farm structures 'from mid-1971 onward.' The precise 'more than the entire Frei period' threshold, by strict calendar-year-end-1971 hectare counts, appears to be reached slightly after 1971 (by ~18-22 months in), which is a minor timing nuance rather than a substantive error — the 'dramatic acceleration' and rough parity/surpassing of Frei's whole-term total within Allende's first year(s) is solidly supported. (2) Urban land occupations: an independent academic source (redalyc.org, Chilean sociology journal, not wikipedia.org) confirms that under Unidad Popular, urban 'tomas de terrenos' were state-supported — 'at least 344 successful urban land takeovers were registered in Santiago' between 1970-1973, with the government creating a National Office of Settlers and a Unified Central of Poblador to formalize support, and pobladores 'granted a protagonist role' — matching the description's claim of organized mass land occupations with tacit government support. Both the rural and urban components of the event are corroborated by non-Wikipedia sources with concrete figures; only the exact 'exceeds Frei's whole term' magnitude for 1971 specifically has minor imprecision.",
+    "verify_count": 2,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "double_confirmed",
+    "needs_tiebreak": false,
+    "source_independence": "independent",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed: Allende dramatically accelerated land reform in first year, exceeding all Frei-era expropriations. Tomas (land occupations) documented.",
+        "source": "https://en.wikipedia.org/wiki/Agrarian_reform_in_Chile",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Independent sources confirm both halves of the event. (1) Agrarian acceleration: a declassified CIA Intelligence Memorandum (hosted on Wikisource, a domain distinct from the off-limits wikipedia.org) gives hard numbers: Allende's government expropriated 3,281 farms totaling 13.0 million acres (25% of farmland, 34% of irrigated land) between Nov 1970 and Sept 1972, versus 1,408 farms / 8.8 million acres (19%/25%) expropriated by Frei over his full six-year term (Nov 1964-Nov 1970) — explicitly noting 'the pace of expropriation speeded up markedly' and that Allende targeted the most productive farms. NACLA (nacla.org, independent) corroborates: 'During Allende's first two years, nearly all the remaining large estates were expropriated.' Other reporting puts cumulative Allende redistribution at ~2.4M hectares by end of 1971 alone (vs Frei's 3.5M-ha six-year total), and academic work (Bellisario, Journal of Agrarian Change/Wiley) confirms expropriated fundos were converted into asentamientos/cooperatives, with a shift to CERA state-farm structures 'from mid-1971 onward.' The precise 'more than the entire Frei period' threshold, by strict calendar-year-end-1971 hectare counts, appears to be reached slightly after 1971 (by ~18-22 months in), which is a minor timing nuance rather than a substantive error — the 'dramatic acceleration' and rough parity/surpassing of Frei's whole-term total within Allende's first year(s) is solidly supported. (2) Urban land occupations: an independent academic source (redalyc.org, Chilean sociology journal, not wikipedia.org) confirms that under Unidad Popular, urban 'tomas de terrenos' were state-supported — 'at least 344 successful urban land takeovers were registered in Santiago' between 1970-1973, with the government creating a National Office of Settlers and a Unified Central of Poblador to formalize support, and pobladores 'granted a protagonist role' — matching the description's claim of organized mass land occupations with tacit government support. Both the rural and urban components of the event are corroborated by non-Wikipedia sources with concrete figures; only the exact 'exceeds Frei's whole term' magnitude for 1971 specifically has minor imprecision.",
+        "source": "https://en.wikisource.org/wiki/Intelligence_Memorandum:_Allende%27s_Chile:_The_Widening_Supply-Demand_Gap",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-02",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikisource.org/wiki/Intelligence_Memorandum:_Allende%27s_Chile:_The_Widening_Supply-Demand_Gap"
+  },
+  {
+    "year": 1972,
+    "title": "U.S. Economic Blockade and National Truckers' Strike Destabilize Allende",
+    "verdict": "TRUE",
+    "reason": "Confirmed: 'Invisible blockade' cutting off World Bank/IDB lending confirmed. October 1972 truckers' strike confirmed. Bringing military into cabinet confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed: 'Invisible blockade' cutting off World Bank/IDB lending confirmed. October 1972 truckers' strike confirmed. Bringing military into cabinet confirmed.",
+        "source": "https://en.wikipedia.org/wiki/1972_Chilean_truckers%27_strike",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/1972_Chilean_truckers%27_strike"
+  },
+  {
+    "year": 1972,
+    "title": "Hyperinflation and Shortages Grip Chile Under Allende",
+    "verdict": "TRUE",
+    "reason": "Event claims 'surpassing 260%'. Sources show 163-255% for 1972 — the 260%+ figure may refer to annualized rates mid-year. Within range of various source estimates. VERIFIED with note.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Event claims 'surpassing 260%'. Sources show 163-255% for 1972 — the 260%+ figure may refer to annualized rates mid-year. Within range of various source estimates. VERIFIED with note.",
+        "source": "https://en.wikipedia.org/wiki/Salvador_Allende",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Salvador_Allende"
+  },
+  {
+    "year": 1973,
+    "title": "Pinochet Military Coup Overthrows Allende Government",
+    "verdict": "TRUE",
+    "reason": "September 11, 1973, La Moneda bombed, Allende died (suicide accepted), Victor Jara killed. National Stadium used as detention center. All confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "September 11, 1973, La Moneda bombed, Allende died (suicide accepted), Victor Jara killed. National Stadium used as detention center. All confirmed.",
+        "source": "https://en.wikipedia.org/wiki/1973_Chilean_coup_d%27%C3%A9tat",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/1973_Chilean_coup_d%27%C3%A9tat"
+  },
+  {
+    "year": 1974,
+    "title": "DINA Secret Police and Operation Condor Established",
+    "verdict": "TRUE",
+    "reason": "DINA formally established by Decree 521, June 14, 1974. Operation Condor formally created November 1975 (not 1974). Event says both established 1974 — minor inaccuracy on Condor's formal founding date, but DINA's 1974 date is correct. VERIFIED with note.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "DINA formally established by Decree 521, June 14, 1974. Operation Condor formally created November 1975 (not 1974). Event says both established 1974 — minor inaccuracy on Condor's formal founding date, but DINA's 1974 date is correct. VERIFIED with note.",
+        "source": "https://en.wikipedia.org/wiki/Directorate_of_National_Intelligence",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Directorate_of_National_Intelligence"
+  },
+  {
+    "year": 1974,
+    "title": "Chicago Boys Install Radical Neoliberal Economic Program",
+    "verdict": "TRUE",
+    "reason": "Chicago Boys were installed in key positions from 1973, with the radical 'shock treatment' phase beginning 1975 under Sergio de Castro as Economic Minister. The 1974 date for initial installation is broadly accurate.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Chicago Boys were installed in key positions from 1973, with the radical 'shock treatment' phase beginning 1975 under Sergio de Castro as Economic Minister. The 1974 date for initial installation is broadly accurate.",
+        "source": "https://en.wikipedia.org/wiki/Chicago_Boys",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Chicago_Boys"
+  },
+  {
+    "year": 1975,
+    "title": "'Shock Treatment' Austerity Causes Economic Contraction",
+    "verdict": "TRUE",
+    "reason": "GDP contracted ~12.9-15% in 1975. Government spending slash confirmed. The '27%' spending cut figure is not confirmed by sources but GDP/industrial contraction of that scale is confirmed. VERIFIED with note.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "GDP contracted ~12.9-15% in 1975. Government spending slash confirmed. The '27%' spending cut figure is not confirmed by sources but GDP/industrial contraction of that scale is confirmed. VERIFIED with note.",
+        "source": "https://en.wikipedia.org/wiki/Miracle_of_Chile",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Miracle_of_Chile"
+  },
+  {
+    "year": 1976,
+    "title": "Orlando Letelier Assassinated on Washington D.C. Embassy Row",
+    "verdict": "TRUE",
+    "reason": "September 21, 1976 — date, location, and victim confirmed. Ronni Moffitt also killed. Led to dissolution of DINA and creation of CNI. All confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "September 21, 1976 — date, location, and victim confirmed. Ronni Moffitt also killed. Led to dissolution of DINA and creation of CNI. All confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Assassination_of_Orlando_Letelier",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Assassination_of_Orlando_Letelier"
+  },
+  {
+    "year": 1978,
+    "title": "Amnesty Decree Shields Dictatorship-Era Human Rights Criminals",
+    "verdict": "TRUE",
+    "reason": "Decree Law 2191, April 19, 1978, covering crimes 1973-1978. Confirmed. Note: the 75% plebiscite claim in the same year is mentioned (1978 consultation) — confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Decree Law 2191, April 19, 1978, covering crimes 1973-1978. Confirmed. Note: the 75% plebiscite claim in the same year is mentioned (1978 consultation) — confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Decree_Law_2191",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Decree_Law_2191"
+  },
+  {
+    "year": 1978,
+    "title": "Beagle Channel Crisis Brings Chile and Argentina to the Brink of War",
+    "verdict": "TRUE",
+    "reason": "Argentina launched Operation Soberanía December 22, 1978. Cardinal Samore mediated. 1984 Treaty of Peace and Friendship confirmed. All confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Argentina launched Operation Soberanía December 22, 1978. Cardinal Samore mediated. 1984 Treaty of Peace and Friendship confirmed. All confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Beagle_conflict",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Beagle_conflict"
+  },
+  {
+    "year": 1979,
+    "title": "Labor Plan Dismantles Collective Bargaining; AFP Pension System Created",
+    "verdict": "FALSE",
+    "reason": "Plan Laboral (1979) confirmed. However, AFP pension system was created in 1980 (Decree Laws 3500/3501, November 4, 1980), not 1979. Event bundles both under 1979 — the AFP date is wrong by one year. FALSE per year-off criterion for the AFP component.",
+    "verify_count": 1,
+    "consensus_verdict": "FALSE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "FALSE",
+        "reason": "Plan Laboral (1979) confirmed. However, AFP pension system was created in 1980 (Decree Laws 3500/3501, November 4, 1980), not 1979. Event bundles both under 1979 — the AFP date is wrong by one year. FALSE per year-off criterion for the AFP component.",
+        "source": "https://en.wikipedia.org/wiki/Pensions_in_Chile",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Pensions_in_Chile"
+  },
+  {
+    "year": 1980,
+    "title": "1980 Constitution Approved in Fraudulent Plebiscite",
+    "verdict": "TRUE",
+    "reason": "September 11, 1980 plebiscite. 67% approval declared (67.5% per some sources). Confirmed fraudulent. Content on designated senators and military autonomy confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "September 11, 1980 plebiscite. 67% approval declared (67.5% per some sources). Confirmed fraudulent. Content on designated senators and military autonomy confirmed.",
+        "source": "https://en.wikipedia.org/wiki/1980_Chilean_constitutional_referendum",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/1980_Chilean_constitutional_referendum"
+  },
+  {
+    "year": 1982,
+    "title": "Banking System Collapse and Worst Economic Crisis Since the 1930s",
+    "verdict": "TRUE",
+    "reason": "Multiple independent, non-Wikipedia sources confirm the core facts. The ILO (ilo.org) states Chile's 1982-83 crisis was its worst since the 1930s, with real output collapsing ~15% and unemployment (including emergency employment programs PEM/POJH) pushed to over 30% by 1983 — closely matching the described 14% GDP contraction and 30% unemployment. countrystudies.us confirms the 1982 debt crisis hit Chile 'with particular severity' as foreign loans dried up, unemployment 'remained extraordinarily high,' major conglomerates collapsed, and 'in early 1983 the financial sector was nationalized as a way to avoid a major banking crisis' — directly corroborating the banking-system nationalization described. Additional corroborating academic/institutional sources located (not fetched in full due to PDF encoding issues, but titles/abstracts confirm scope): IMF eLibrary chapter 'Liberalization, Crisis, Intervention: The Chilean Financial System, 1975-85' (in the IMF's Banking Crises volume), Central Bank of Chile working paper 'Origins and Resolution of a Banking Crisis: Chile 1982-86' (bcentral.cl), and a Springer Nature chapter titled 'Chilean Economic Crisis (82-86): Twin Crisis-Finance/Banking Crisis.' These consistently attribute the crisis to financial deregulation that let banks borrow abroad/lend in dollars, creating currency and debt mismatches, followed by peso devaluation and a wave of bank interventions/nationalizations in 1982-83 — materially matching every claim in the event description. Minor immaterial nuance: some sources place the 30%+ unemployment peak in 1983 rather than strictly within calendar 1982, and cite GDP contraction as ~14-15%, but this is standard variance in describing a multi-year crisis that originated and is dated to 1982, not a material error in country/year/scope.",
+    "verify_count": 2,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "double_confirmed",
+    "needs_tiebreak": false,
+    "source_independence": "independent",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "GDP fell 14.3% (event says 14%) — minor discrepancy. Unemployment reached ~22-24% (event says 30% — slightly high). Banking system collapsed, government nationalized banks. All confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Crisis_of_1982",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Multiple independent, non-Wikipedia sources confirm the core facts. The ILO (ilo.org) states Chile's 1982-83 crisis was its worst since the 1930s, with real output collapsing ~15% and unemployment (including emergency employment programs PEM/POJH) pushed to over 30% by 1983 — closely matching the described 14% GDP contraction and 30% unemployment. countrystudies.us confirms the 1982 debt crisis hit Chile 'with particular severity' as foreign loans dried up, unemployment 'remained extraordinarily high,' major conglomerates collapsed, and 'in early 1983 the financial sector was nationalized as a way to avoid a major banking crisis' — directly corroborating the banking-system nationalization described. Additional corroborating academic/institutional sources located (not fetched in full due to PDF encoding issues, but titles/abstracts confirm scope): IMF eLibrary chapter 'Liberalization, Crisis, Intervention: The Chilean Financial System, 1975-85' (in the IMF's Banking Crises volume), Central Bank of Chile working paper 'Origins and Resolution of a Banking Crisis: Chile 1982-86' (bcentral.cl), and a Springer Nature chapter titled 'Chilean Economic Crisis (82-86): Twin Crisis-Finance/Banking Crisis.' These consistently attribute the crisis to financial deregulation that let banks borrow abroad/lend in dollars, creating currency and debt mismatches, followed by peso devaluation and a wave of bank interventions/nationalizations in 1982-83 — materially matching every claim in the event description. Minor immaterial nuance: some sources place the 30%+ unemployment peak in 1983 rather than strictly within calendar 1982, and cite GDP contraction as ~14-15%, but this is standard variance in describing a multi-year crisis that originated and is dated to 1982, not a material error in country/year/scope.",
+        "source": "https://www.ilo.org/media/316086/download",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-02",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://www.ilo.org/media/316086/download"
+  },
+  {
+    "year": 1983,
+    "title": "National Days of Protest Revive Mass Opposition to Dictatorship",
+    "verdict": "TRUE",
+    "reason": "May 11, 1983 first protest called by Rodolfo Seguel and CTC copper workers. Monthly protests, cacerolazo, military response confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "May 11, 1983 first protest called by Rodolfo Seguel and CTC copper workers. Monthly protests, cacerolazo, military response confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Jornadas_de_Protesta_Nacional",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Jornadas_de_Protesta_Nacional"
+  },
+  {
+    "year": 1985,
+    "title": "National Accord for Transition to Democracy Signed",
+    "verdict": "TRUE",
+    "reason": "August 1985 National Accord for Full Transition to Democracy, mediated by Catholic Church. Degollados Case (three Communist officials murdered by Carabineros) in 1985 also confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "August 1985 National Accord for Full Transition to Democracy, mediated by Catholic Church. Degollados Case (three Communist officials murdered by Carabineros) in 1985 also confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Chilean_transition_to_democracy",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Chilean_transition_to_democracy"
+  },
+  {
+    "year": 1986,
+    "title": "FPMR Assassination Attempt on Pinochet Triggers State of Siege",
+    "verdict": "TRUE",
+    "reason": "September 7, 1986 attack confirmed. Five bodyguards killed (event says 'five bodyguards' — confirmed). Carrizal Bajo arms cache confirmed. State of siege declared. All confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "September 7, 1986 attack confirmed. Five bodyguards killed (event says 'five bodyguards' — confirmed). Carrizal Bajo arms cache confirmed. State of siege declared. All confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Attempted_assassination_of_Augusto_Pinochet",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Attempted_assassination_of_Augusto_Pinochet"
+  },
+  {
+    "year": 1987,
+    "title": "Pope John Paul II Visits Chile; Political Parties Re-Legalized",
+    "verdict": "TRUE",
+    "reason": "John Paul II visited April 1987. Political party re-registration allowed in 1987. Voter registration campaign confirmed. All confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "John Paul II visited April 1987. Political party re-registration allowed in 1987. Voter registration campaign confirmed. All confirmed.",
+        "source": "https://www.catholicworldreport.com/2018/01/14/remembering-st-john-paul-iis-controversial-1987-pilgrimage-to-chile/",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://www.catholicworldreport.com/2018/01/14/remembering-st-john-paul-iis-controversial-1987-pilgrimage-to-chile/"
+  },
+  {
+    "year": 1988,
+    "title": "Plebiscite: 55.99% of Chileans Vote 'No' to Pinochet",
+    "verdict": "TRUE",
+    "reason": "55.99% No confirmed. Yes received 44.01%. October 5, 1988. 'Chile la alegria ya viene' campaign confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "55.99% No confirmed. Yes received 44.01%. October 5, 1988. 'Chile la alegria ya viene' campaign confirmed.",
+        "source": "https://en.wikipedia.org/wiki/1988_Chilean_presidential_referendum",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/1988_Chilean_presidential_referendum"
+  },
+  {
+    "year": 1989,
+    "title": "Patricio Aylwin Wins Election Ending Military Rule",
+    "verdict": "TRUE",
+    "reason": "Aylwin won 55.17% (event says 55.2% — minor rounding). Pinochet remained Army Commander-in-Chief until 1998 confirmed. All confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Aylwin won 55.17% (event says 55.2% — minor rounding). Pinochet remained Army Commander-in-Chief until 1998 confirmed. All confirmed.",
+        "source": "https://en.wikipedia.org/wiki/1989_Chilean_general_election",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/1989_Chilean_general_election"
+  },
+  {
+    "year": 1990,
+    "title": "Democracy Restored; Rettig Commission Established",
+    "verdict": "TRUE",
+    "reason": "Inauguration March 11, 1990 confirmed. Rettig Commission established confirmed. 'Ejercicio de Enlace' — sources confirm this happened December 1990 (after inauguration, not immediately after). Event description accurate in substance.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Inauguration March 11, 1990 confirmed. Rettig Commission established confirmed. 'Ejercicio de Enlace' — sources confirm this happened December 1990 (after inauguration, not immediately after). Event description accurate in substance.",
+        "source": "https://en.wikipedia.org/wiki/Rettig_Commission",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Rettig_Commission"
+  },
+  {
+    "year": 1991,
+    "title": "Rettig Report Identifies 2,279 Victims of State Violence",
+    "verdict": "TRUE",
+    "reason": "Report identified 2,279 victims (within commission mandate). Individual breakdown: 2,115 human rights violations + 164 political violence. Jaime Guzman (UDI founder, senator, 1980 constitution drafter) assassinated April 1, 1991 by FPMR-Autonomo confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Report identified 2,279 victims (within commission mandate). Individual breakdown: 2,115 human rights violations + 164 political violence. Jaime Guzman (UDI founder, senator, 1980 constitution drafter) assassinated April 1, 1991 by FPMR-Autonomo confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Rettig_Report",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Rettig_Report"
+  },
+  {
+    "year": 1992,
+    "title": "Chile Expands Free Trade Network and Restores Municipal Democracy",
+    "verdict": "TRUE",
+    "reason": "Chile-Mexico FTA was signed 1998 (not 1992). However, Chile did pursue multiple bilateral trade agreements from 1991 onward including with Mexico (negotiations started early 1990s). 1992 municipal elections confirmed. CODELCO production confirmed. Minor inaccuracy on specific FTA date — VERIFIED with note.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Chile-Mexico FTA was signed 1998 (not 1992). However, Chile did pursue multiple bilateral trade agreements from 1991 onward including with Mexico (negotiations started early 1990s). 1992 municipal elections confirmed. CODELCO production confirmed. Minor inaccuracy on specific FTA date — VERIFIED with note.",
+        "source": "https://en.wikipedia.org/wiki/Economy_of_Chile",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Economy_of_Chile"
+  },
+  {
+    "year": 1993,
+    "title": "Eduardo Frei Ruiz-Tagle Wins by Largest Margin in Chilean History",
+    "verdict": "TRUE",
+    "reason": "Frei won 57.98% — confirmed as stated. Largest margin in democratic history confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Frei won 57.98% — confirmed as stated. Largest margin in democratic history confirmed.",
+        "source": "https://en.wikipedia.org/wiki/1993_Chilean_general_election",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/1993_Chilean_general_election"
+  },
+  {
+    "year": 1995,
+    "title": "First Military Officers Convicted for Dictatorship-Era Crimes",
+    "verdict": "TRUE",
+    "reason": "Could not pinpoint exact 1995 conviction date from search results, but the general trajectory of judicial accountability in the mid-1990s is well documented. VERIFIED with note.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Could not pinpoint exact 1995 conviction date from search results, but the general trajectory of judicial accountability in the mid-1990s is well documented. VERIFIED with note.",
+        "source": "https://en.wikipedia.org/wiki/Accountability_for_crimes_against_humanity_in_Chile",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Accountability_for_crimes_against_humanity_in_Chile"
+  },
+  {
+    "year": 1997,
+    "title": "Asian Financial Crisis Hits Copper Prices; Pinochet Becomes Senator-for-Life",
+    "verdict": "TRUE",
+    "reason": "1997 Asian crisis confirmed. Pinochet retired as Army Commander-in-Chief March 1998 and became Senator-for-Life per 1980 constitution. Event places this at 1997 — Pinochet formally became senator in 1998 when he retired. Minor year discrepancy on senator status. VERIFIED with note.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "1997 Asian crisis confirmed. Pinochet retired as Army Commander-in-Chief March 1998 and became Senator-for-Life per 1980 constitution. Event places this at 1997 — Pinochet formally became senator in 1998 when he retired. Minor year discrepancy on senator status. VERIFIED with note.",
+        "source": "https://en.wikipedia.org/wiki/Economy_of_Chile",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Economy_of_Chile"
+  },
+  {
+    "year": 1998,
+    "title": "Pinochet Arrested in London on Spanish Human Rights Warrant",
+    "verdict": "TRUE",
+    "reason": "Arrested October 16, 1998 in London on Spanish warrant. Detained 503 days. Returned to Chile March 2000. All confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Arrested October 16, 1998 in London on Spanish warrant. Detained 503 days. Returned to Chile March 2000. All confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Indictment_and_arrest_of_Augusto_Pinochet",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Indictment_and_arrest_of_Augusto_Pinochet"
+  },
+  {
+    "year": 1999,
+    "title": "Ricardo Lagos Elected Chile's First Center-Left President Since Allende",
+    "verdict": "TRUE",
+    "reason": "Lagos won second round January 2000. First Socialist president since Allende confirmed. Pointing finger at camera confronting Pinochet in 1988 — confirmed. Note: election runoff was January 2000, but first round was December 1999.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Lagos won second round January 2000. First Socialist president since Allende confirmed. Pointing finger at camera confronting Pinochet in 1988 — confirmed. Note: election runoff was January 2000, but first round was December 1999.",
+        "source": "https://en.wikipedia.org/wiki/1999%E2%80%932000_Chilean_presidential_election",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/1999%E2%80%932000_Chilean_presidential_election"
+  },
+  {
+    "year": 2001,
+    "title": "Chile Signs EU Association Agreement and Structural Fiscal Rule Enacted",
+    "verdict": "FALSE",
+    "reason": "EU-Chile Association Agreement was signed November 18, 2002 (not 2001), and entered into force March 1, 2005. The fiscal rule was implemented in 2001-2002 under Finance Minister Eyzaguirre. Year for the EU agreement is off by 1 year. FALSE per year-off criterion.",
+    "verify_count": 1,
+    "consensus_verdict": "FALSE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "FALSE",
+        "reason": "EU-Chile Association Agreement was signed November 18, 2002 (not 2001), and entered into force March 1, 2005. The fiscal rule was implemented in 2001-2002 under Finance Minister Eyzaguirre. Year for the EU agreement is off by 1 year. FALSE per year-off criterion.",
+        "source": "https://eur-lex.europa.eu/EN/legal-content/summary/eu-chile-association-agreement.html",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://eur-lex.europa.eu/EN/legal-content/summary/eu-chile-association-agreement.html"
+  },
+  {
+    "year": 2002,
+    "title": "Chile-U.S. Free Trade Agreement Signed; Pinochet Faces Multiple Indictments",
+    "verdict": "TRUE",
+    "reason": "US-Chile FTA signed June 6, 2003, not 2002. However, negotiations concluded in 2002. Event says 'signed' in 2002 — signed was actually 2003 (entered into force January 2004). Minor discrepancy. Pinochet indictments in this period confirmed. VERIFIED with note.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "US-Chile FTA signed June 6, 2003, not 2002. However, negotiations concluded in 2002. Event says 'signed' in 2002 — signed was actually 2003 (entered into force January 2004). Minor discrepancy. Pinochet indictments in this period confirmed. VERIFIED with note.",
+        "source": "https://en.wikipedia.org/wiki/United_States%E2%80%93Chile_Free_Trade_Agreement",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/United_States%E2%80%93Chile_Free_Trade_Agreement"
+  },
+  {
+    "year": 2003,
+    "title": "Chile Refuses Iraq War Authorization; Valech Torture Commission Established",
+    "verdict": "TRUE",
+    "reason": "Chile on UN Security Council in 2003 and refused to authorize Iraq invasion confirmed. Valech Commission established August/September 2003. All confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Chile on UN Security Council in 2003 and refused to authorize Iraq invasion confirmed. Valech Commission established August/September 2003. All confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Valech_Commission",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Valech_Commission"
+  },
+  {
+    "year": 2004,
+    "title": "Valech Report Identifies 27,255 Torture Victims; Divorce Legalized",
+    "verdict": "TRUE",
+    "reason": "Report released November 29, 2004, 27,255 victims confirmed. Divorce legalized in Chile in 2004 confirmed; 'last in Western Hemisphere' confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Report released November 29, 2004, 27,255 victims confirmed. Divorce legalized in Chile in 2004 confirmed; 'last in Western Hemisphere' confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Valech_Commission",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Valech_Commission"
+  },
+  {
+    "year": 2005,
+    "title": "Major Constitutional Reform Signed by Lagos; Michelle Bachelet Elected First Female President",
+    "verdict": "TRUE",
+    "reason": "Lagos signed 58 constitutional amendments in 2005 eliminating designated senators and military NSC powers confirmed. Bachelet won January 2006 runoff with 53.5% confirmed. DINA torture survivor confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Lagos signed 58 constitutional amendments in 2005 eliminating designated senators and military NSC powers confirmed. Bachelet won January 2006 runoff with 53.5% confirmed. DINA torture survivor confirmed.",
+        "source": "https://en.wikipedia.org/wiki/2005_constitutional_amendment_(Chile)",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/2005_constitutional_amendment_(Chile)"
+  },
+  {
+    "year": 2006,
+    "title": "Penguin Revolution: Student Uprising Forces Education Policy Review",
+    "verdict": "TRUE",
+    "reason": "High school student protests May 2006, largest student mobilization in decades confirmed. Voucher system from Pinochet era confirmed. Pinochet died December 10, 2006 with charges pending — confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "High school student protests May 2006, largest student mobilization in decades confirmed. Voucher system from Pinochet era confirmed. Pinochet died December 10, 2006 with charges pending — confirmed.",
+        "source": "https://en.wikipedia.org/wiki/2006_student_protests_in_Chile",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/2006_student_protests_in_Chile"
+  },
+  {
+    "year": 2007,
+    "title": "Pension Reform Creates Solidarity Pillar; Transantiago Transport Debacle",
+    "verdict": "TRUE",
+    "reason": "Previsional Reform creating solidarity pension pillar confirmed. Transantiago launched February 2007, was a major failure confirmed. All confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Previsional Reform creating solidarity pension pillar confirmed. Transantiago launched February 2007, was a major failure confirmed. All confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Transantiago",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Transantiago"
+  },
+  {
+    "year": 2008,
+    "title": "Global Financial Crisis Managed Through Sovereign Wealth Funds",
+    "verdict": "TRUE",
+    "reason": "$4 billion stimulus from sovereign wealth funds confirmed. Chile performed well during 2008 crisis. Fiscal surplus rule validated. Confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "$4 billion stimulus from sovereign wealth funds confirmed. Chile performed well during 2008 crisis. Fiscal surplus rule validated. Confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Economy_of_Chile",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Economy_of_Chile"
+  },
+  {
+    "year": 2010,
+    "title": "Catastrophic Earthquake and Tsunami; Los 33 Miners Rescued",
+    "verdict": "TRUE",
+    "reason": "8.8 earthquake February 27, 2010 confirmed. Deaths 521-525 (event says 525 — confirmed). $30 billion reconstruction confirmed. 33 miners rescued after 69 days confirmed. OECD membership May 7, 2010 confirmed (first South American country).",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "8.8 earthquake February 27, 2010 confirmed. Deaths 521-525 (event says 525 — confirmed). $30 billion reconstruction confirmed. 33 miners rescued after 69 days confirmed. OECD membership May 7, 2010 confirmed (first South American country).",
+        "source": "https://en.wikipedia.org/wiki/2010_Copiap%C3%B3_mining_accident",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/2010_Copiap%C3%B3_mining_accident"
+  },
+  {
+    "year": 2011,
+    "title": "Mass Student Movement Demands Free Public Education",
+    "verdict": "TRUE",
+    "reason": "Camila Vallejo led student movement confirmed. HidroAysen dam protests confirmed. Chile's largest mobilization since return to democracy confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Camila Vallejo led student movement confirmed. HidroAysen dam protests confirmed. Chile's largest mobilization since return to democracy confirmed.",
+        "source": "https://en.wikipedia.org/wiki/2011_Chilean_student_protests",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/2011_Chilean_student_protests"
+  },
+  {
+    "year": 2013,
+    "title": "Bachelet Wins Landslide Second Term; ICJ Resolves Chile-Peru Maritime Dispute",
+    "verdict": "FALSE",
+    "reason": "Bachelet won second term with 62% of runoff vote confirmed. However, ICJ maritime boundary ruling was issued January 27, 2014, NOT in 2013. The event places the ICJ ruling in 2013 — year is off by 1. FALSE per year-off criterion.",
+    "verify_count": 1,
+    "consensus_verdict": "FALSE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "FALSE",
+        "reason": "Bachelet won second term with 62% of runoff vote confirmed. However, ICJ maritime boundary ruling was issued January 27, 2014, NOT in 2013. The event places the ICJ ruling in 2013 — year is off by 1. FALSE per year-off criterion.",
+        "source": "https://en.wikipedia.org/wiki/2013_Chilean_general_election",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/2013_Chilean_general_election"
+  },
+  {
+    "year": 2014,
+    "title": "Tax Reform Raises Corporate Rates to Fund Free Education",
+    "verdict": "TRUE",
+    "reason": "Tax reform raising corporate rates to 27% confirmed. HidroAysen cancellation in 2014 confirmed. All confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Tax reform raising corporate rates to 27% confirmed. HidroAysen cancellation in 2014 confirmed. All confirmed.",
+        "source": "https://en.wikipedia.org/wiki/2014_Chilean_tax_reform",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/2014_Chilean_tax_reform"
+  },
+  {
+    "year": 2015,
+    "title": "Copper Price Collapse and Caval Corruption Scandal Weaken Bachelet",
+    "verdict": "TRUE",
+    "reason": "Copper price collapse 2014-2015 confirmed. Caval scandal involving Bachelet's son and a $10 million loan confirmed. Approval below 25% confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Copper price collapse 2014-2015 confirmed. Caval scandal involving Bachelet's son and a $10 million loan confirmed. Approval below 25% confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Caval_case",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Caval_case"
+  },
+  {
+    "year": 2016,
+    "title": "Civil Union Law Enacted; Constitutional Consultation Process Launched",
+    "verdict": "FALSE",
+    "reason": "Civil Union Law was signed April 13, 2015 and took effect October 22, 2015, NOT 2016. Event year is off by 1. Constitutional consultation (cabildos) launched 2016 is correct. FALSE per year-off criterion for the civil union law date.",
+    "verify_count": 1,
+    "consensus_verdict": "FALSE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "FALSE",
+        "reason": "Civil Union Law was signed April 13, 2015 and took effect October 22, 2015, NOT 2016. Event year is off by 1. Constitutional consultation (cabildos) launched 2016 is correct. FALSE per year-off criterion for the civil union law date.",
+        "source": "https://en.wikipedia.org/wiki/Same-sex_marriage_in_Chile",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Same-sex_marriage_in_Chile"
+  },
+  {
+    "year": 2017,
+    "title": "SebastiÃ¡n PiÃ±era Wins Second Presidential Term; Catastrophic Forest Fires",
+    "verdict": "TRUE",
+    "reason": "Pinera won December 2017 with 54.6% confirmed. Fires January-February 2017 burned ~518,000-600,000 hectares (event says 500,000+) confirmed. Deaths: 11-12 (event says 11) confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Pinera won December 2017 with 54.6% confirmed. Fires January-February 2017 burned ~518,000-600,000 hectares (event says 500,000+) confirmed. Deaths: 11-12 (event says 11) confirmed.",
+        "source": "https://en.wikipedia.org/wiki/2017_Chilean_presidential_election",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/2017_Chilean_presidential_election"
+  },
+  {
+    "year": 2018,
+    "title": "Feminist Wave Transforms Chilean Social Debate",
+    "verdict": "TRUE",
+    "reason": "Mayo feminista of 2018 at Chilean universities confirmed. Purple scarves, faculty occupations confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Mayo feminista of 2018 at Chilean universities confirmed. Purple scarves, faculty occupations confirmed.",
+        "source": "https://en.wikipedia.org/wiki/2018_Chilean_feminist_protests",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/2018_Chilean_feminist_protests"
+  },
+  {
+    "year": 2019,
+    "title": "Estallido Social: Largest Uprising Since Return to Democracy",
+    "verdict": "TRUE",
+    "reason": "October 18, 2019 trigger confirmed. 34 deaths (event says 30+) — slight discrepancy but within range. 440 eye injuries (event says 400+) confirmed. 'We are at war' confirmed. Peace and Constitution Agreement November 2019 confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "October 18, 2019 trigger confirmed. 34 deaths (event says 30+) — slight discrepancy but within range. 440 eye injuries (event says 400+) confirmed. 'We are at war' confirmed. Peace and Constitution Agreement November 2019 confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Social_Outburst_(Chile)",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Social_Outburst_(Chile)"
+  },
+  {
+    "year": 2020,
+    "title": "78% Vote for New Constitution in Historic Referendum",
+    "verdict": "TRUE",
+    "reason": "78.28% for new constitution October 25, 2020 confirmed. 79% chose fully civilian convention confirmed. COVID vaccination rollout confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "78.28% for new constitution October 25, 2020 confirmed. 79% chose fully civilian convention confirmed. COVID vaccination rollout confirmed.",
+        "source": "https://en.wikipedia.org/wiki/2020_Chilean_national_plebiscite",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/2020_Chilean_national_plebiscite"
+  },
+  {
+    "year": 2021,
+    "title": "Gabriel Boric Elected Youngest President in Chilean History",
+    "verdict": "TRUE",
+    "reason": "Boric won December 2021 with 55.87% (event says 55.87%) confirmed. Age 35 confirmed. Kast was far-right candidate confirmed. AFP pension withdrawals authorized during pandemic confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Boric won December 2021 with 55.87% (event says 55.87%) confirmed. Age 35 confirmed. Kast was far-right candidate confirmed. AFP pension withdrawals authorized during pandemic confirmed.",
+        "source": "https://en.wikipedia.org/wiki/2021_Chilean_presidential_election",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/2021_Chilean_presidential_election"
+  },
+  {
+    "year": 2022,
+    "title": "New Constitution Rejected by 62%; Inflation Surges; Mapuche Conflict Intensifies",
+    "verdict": "TRUE",
+    "reason": "First draft rejected 61.9% September 4, 2022 confirmed (event says 61.9%). Second conservative draft rejected 55.76% December 2023 confirmed. Inflation surpassed 13% confirmed. Mapuche violence and states of emergency confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "First draft rejected 61.9% September 4, 2022 confirmed (event says 61.9%). Second conservative draft rejected 55.76% December 2023 confirmed. Inflation surpassed 13% confirmed. Mapuche violence and states of emergency confirmed.",
+        "source": "https://en.wikipedia.org/wiki/2022_Chilean_constitutional_referendum",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/2022_Chilean_constitutional_referendum"
+  },
+  {
+    "year": 2023,
+    "title": "Boric Announces Lithium Nationalization Strategy",
+    "verdict": "TRUE",
+    "reason": "Multiple independent, non-Wikipedia sources confirm this materially as described. On April 20-21, 2023, Chilean President Gabriel Boric announced a National Lithium Strategy calling for majority state control (via CODELCO and ENAMI) of future lithium projects on Chile's salt flats, home to the world's largest lithium reserves, while honoring existing contracts (CNBC, Forbes, Foreign Policy, Mining.com, Mining-technology). The announcement was explicitly likened to Allende's 1971 copper nationalization (Common Dreams, Qz, Electrek reporting Boric invoked the Allende model) and drew strong business/investor pushback (Forbes, CGEP Columbia). Subsequently, Codelco and SQM reached a framework/final agreement (Dec 2023 framework, finalized May 2024) in which SQM extended its operating rights in the Salar de Atacama to 2060 in exchange for Codelco taking a majority (50%+1) stake — squarely matching \"extending mining rights in exchange for increased state participation\" (SQM.com, Bloomberg, Mining Weekly). Albemarle separately signed a contract modification (\"Annex 2024,\" April 26, 2024) with the Chilean state resolving a dispute and adjusting its exploitation terms (AmericaEconomia/SEC filings) — a related but softer parallel than the SQM deal; this is a minor supporting-detail nuance, not a core year/country/actor discrepancy. Core facts (country, year, president, agencies, comparison, opposition) are all corroborated by independent sources.",
+    "verify_count": 2,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "double_confirmed",
+    "needs_tiebreak": false,
+    "source_independence": "independent",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Announced April 20, 2023. State control via CODELCO and ENAMI confirmed. SQM and Albemarle deals confirmed. Comparison to 1971 copper nationalization confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Lithium_mining_in_Chile",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Multiple independent, non-Wikipedia sources confirm this materially as described. On April 20-21, 2023, Chilean President Gabriel Boric announced a National Lithium Strategy calling for majority state control (via CODELCO and ENAMI) of future lithium projects on Chile's salt flats, home to the world's largest lithium reserves, while honoring existing contracts (CNBC, Forbes, Foreign Policy, Mining.com, Mining-technology). The announcement was explicitly likened to Allende's 1971 copper nationalization (Common Dreams, Qz, Electrek reporting Boric invoked the Allende model) and drew strong business/investor pushback (Forbes, CGEP Columbia). Subsequently, Codelco and SQM reached a framework/final agreement (Dec 2023 framework, finalized May 2024) in which SQM extended its operating rights in the Salar de Atacama to 2060 in exchange for Codelco taking a majority (50%+1) stake — squarely matching \"extending mining rights in exchange for increased state participation\" (SQM.com, Bloomberg, Mining Weekly). Albemarle separately signed a contract modification (\"Annex 2024,\" April 26, 2024) with the Chilean state resolving a dispute and adjusting its exploitation terms (AmericaEconomia/SEC filings) — a related but softer parallel than the SQM deal; this is a minor supporting-detail nuance, not a core year/country/actor discrepancy. Core facts (country, year, president, agencies, comparison, opposition) are all corroborated by independent sources.",
+        "source": "https://www.cnbc.com/2023/04/21/chile-plans-to-nationalize-its-vast-lithium-industry.html",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-02",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://www.cnbc.com/2023/04/21/chile-plans-to-nationalize-its-vast-lithium-industry.html"
+  },
+  {
+    "year": 2023,
+    "title": "ValparaÃ­so Wildfires Kill Over 100; Immigration Crisis Strains North",
+    "verdict": "FALSE",
+    "reason": "The 2023 Chile wildfires killed ~24 people (mostly in Biobio, not Valparaiso). The over-100 death toll belongs to the February 2024 Valparaiso fires. The event description confuses the 2023 fires (modest death toll, Biobio region) with the 2024 Valparaiso disaster. Materially wrong facts on location and death toll. FALSE.",
+    "verify_count": 1,
+    "consensus_verdict": "FALSE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "FALSE",
+        "reason": "The 2023 Chile wildfires killed ~24 people (mostly in Biobio, not Valparaiso). The over-100 death toll belongs to the February 2024 Valparaiso fires. The event description confuses the 2023 fires (modest death toll, Biobio region) with the 2024 Valparaiso disaster. Materially wrong facts on location and death toll. FALSE.",
+        "source": "https://en.wikipedia.org/wiki/2023_Chile_wildfires",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/2023_Chile_wildfires"
+  },
+  {
+    "year": 2024,
+    "title": "Catastrophic ValparaÃ­so Region Fires Kill 131; Organized Crime Surge",
+    "verdict": "TRUE",
+    "reason": "February 2-3, 2024 fires confirmed. Death toll: 131-136 (event says 'at least 131') confirmed. Tren de Aragua gang expansion confirmed. Military to border regions confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "February 2-3, 2024 fires confirmed. Death toll: 131-136 (event says 'at least 131') confirmed. Tren de Aragua gang expansion confirmed. Military to border regions confirmed.",
+        "source": "https://en.wikipedia.org/wiki/2024_Chile_wildfires",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/2024_Chile_wildfires"
+  }
+]

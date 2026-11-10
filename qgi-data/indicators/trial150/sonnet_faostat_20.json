@@ -1,0 +1,162 @@
+[
+  {
+    "id_string": "QCL.0015.5312",
+    "numeric_id": 1,
+    "name": "Wheat — Area harvested",
+    "status": "process",
+    "category": "Agriculture",
+    "description": "Total area harvested for wheat in 1000 hectares, from FAOSTAT QCL domain (item 0015, element 5312). Leading indicator for global food supply; sharp year-on-year contractions are early warning signals for wheat-importing country instability."
+  },
+  {
+    "id_string": "QCL.0015.5510",
+    "numeric_id": 2,
+    "name": "Wheat — Production",
+    "status": "process",
+    "category": "Agriculture",
+    "description": "Total wheat production in tonnes, from FAOSTAT QCL domain (item 0015, element 5510). Supply-side complement to area harvested; yield shocks drive export restrictions and food price crises with documented geopolitical cascades."
+  },
+  {
+    "id_string": "QCL.0027.5510",
+    "numeric_id": 3,
+    "name": "Rice, paddy — Production",
+    "status": "process",
+    "category": "Agriculture",
+    "description": "Total paddy rice production in tonnes, from FAOSTAT QCL domain (item 0027, element 5510). Primary caloric staple for over 3 billion people; production shortfalls in Asia are a leading indicator for social unrest and refugee movements."
+  },
+  {
+    "id_string": "QCL.0056.5510",
+    "numeric_id": 4,
+    "name": "Maize — Production",
+    "status": "process",
+    "category": "Agriculture",
+    "description": "Total maize (corn) production in tonnes, from FAOSTAT QCL domain (item 0056, element 5510). Dual-use staple for human food and animal feed; production volatility affects meat prices globally and is a lagging indicator of drought stress."
+  },
+  {
+    "id_string": "QCL.0015.5419",
+    "numeric_id": 5,
+    "name": "Wheat — Yield",
+    "status": "process",
+    "category": "Agriculture",
+    "description": "Wheat yield in hectograms per hectare (hg/ha), from FAOSTAT QCL domain (item 0015, element 5419). Measures productivity per unit land; yield stagnation or decline signals soil degradation, climate stress, or input scarcity — all geopolitically destabilising."
+  },
+  {
+    "id_string": "RL.6620.5110",
+    "numeric_id": 6,
+    "name": "Arable land — Area",
+    "status": "process",
+    "category": "Agriculture",
+    "description": "Total arable land area in 1000 hectares, from FAOSTAT RL domain (item 6620, element 5110). Structural measure of food production capacity; long-run decline indicates land degradation or urbanisation and constrains future production ceilings."
+  },
+  {
+    "id_string": "RL.6650.5110",
+    "numeric_id": 7,
+    "name": "Cropland — Area",
+    "status": "process",
+    "category": "Agriculture",
+    "description": "Total cropland area in 1000 hectares (arable land plus permanent crops), from FAOSTAT RL domain (item 6650, element 5110). Broader than arable land; changes reflect agricultural land conversion, a key driver of food-security and environmental risk."
+  },
+  {
+    "id_string": "RL.6655.5110",
+    "numeric_id": 8,
+    "name": "Permanent meadows and pastures — Area",
+    "status": "process",
+    "category": "Agriculture",
+    "description": "Total area of permanent meadows and pastures in 1000 hectares, from FAOSTAT RL domain (item 6655, element 5110). Proxy for livestock carrying capacity; rapid loss indicates desertification or land conversion and correlates with pastoral-conflict events."
+  },
+  {
+    "id_string": "RFN.3102.5157",
+    "numeric_id": 9,
+    "name": "Fertilizers — Nitrogen (N), Agricultural Use",
+    "status": "process",
+    "category": "Agriculture",
+    "description": "Agricultural use of nitrogen fertilizer in tonnes of nutrient, from FAOSTAT RFN domain (item 3102, element 5157). Critical input indicator; sudden drops signal economic collapse, sanctions, or supply disruptions, presaging harvest failures 1–2 seasons ahead."
+  },
+  {
+    "id_string": "RFN.3103.5157",
+    "numeric_id": 10,
+    "name": "Fertilizers — Phosphate (P2O5), Agricultural Use",
+    "status": "process",
+    "category": "Agriculture",
+    "description": "Agricultural use of phosphate fertilizer (P2O5) in tonnes of nutrient, from FAOSTAT RFN domain (item 3103, element 5157). Non-substitutable plant nutrient; import dependency on a handful of exporting countries makes this a geopolitical chokepoint indicator."
+  },
+  {
+    "id_string": "FS.21010.6121",
+    "numeric_id": 11,
+    "name": "Average dietary energy supply adequacy",
+    "status": "process",
+    "category": "Food Security",
+    "description": "Average dietary energy supply as a percentage of average dietary energy requirement (%), from FAOSTAT FS domain (item 21010, element 6121). Macro-level food availability signal; values below 100% indicate structural caloric deficits and elevated famine risk."
+  },
+  {
+    "id_string": "FS.21016.6121",
+    "numeric_id": 12,
+    "name": "Prevalence of undernourishment",
+    "status": "process",
+    "category": "Food Security",
+    "description": "Share of population with insufficient caloric intake (%), from FAOSTAT FS domain (item 21016, element 6121); published as 3-year rolling averages. SDG 2.1.1 indicator; high or rising prevalence is a confirmed leading indicator for internal conflict and refugee outflows."
+  },
+  {
+    "id_string": "FS.21035.6121",
+    "numeric_id": 13,
+    "name": "Cereal import dependency ratio",
+    "status": "process",
+    "category": "Food Security",
+    "description": "Net cereal imports as a percentage of domestic cereal supply available for food (%), from FAOSTAT FS domain (item 21035, element 6121). Countries above 25% are structurally exposed to global price spikes and export bans — a leading geopolitical vulnerability metric."
+  },
+  {
+    "id_string": "FS.21043.6121",
+    "numeric_id": 14,
+    "name": "Prevalence of severe food insecurity (FIES)",
+    "status": "process",
+    "category": "Food Security",
+    "description": "Share of population experiencing severe food insecurity based on the Food Insecurity Experience Scale (%), from FAOSTAT FS domain (item 21043, element 6121). Experience-based complement to caloric measures; rising trends precede social unrest by 6–18 months."
+  },
+  {
+    "id_string": "FS.21033.6121",
+    "numeric_id": 15,
+    "name": "Depth of food deficit",
+    "status": "process",
+    "category": "Food Security",
+    "description": "Average kcal per person per day below the minimum dietary energy requirement among the undernourished population (kcal/capita/day), from FAOSTAT FS domain (item 21033, element 6121). Intensity measure that distinguishes shallow from severe undernourishment; critical for famine early warning."
+  },
+  {
+    "id_string": "FBS.2901.664",
+    "numeric_id": 16,
+    "name": "Food supply — Dietary energy (kcal/capita/day)",
+    "status": "process",
+    "category": "Food Security",
+    "description": "Total food energy available for human consumption in kcal per capita per day across all commodities, from FAOSTAT FBS domain (item 2901 grand total, element 664). Country-level national food availability benchmark; complements PoU by providing absolute supply levels without modelling assumptions."
+  },
+  {
+    "id_string": "FBS.2901.674",
+    "numeric_id": 17,
+    "name": "Food supply — Protein (g/capita/day)",
+    "status": "process",
+    "category": "Food Security",
+    "description": "Total protein available for human consumption in grams per capita per day across all commodities, from FAOSTAT FBS domain (item 2901 grand total, element 674). Dietary quality signal; protein deficit is linked to child stunting and reduced economic productivity, relevant to long-run political stability."
+  },
+  {
+    "id_string": "TCL.0079.5910",
+    "numeric_id": 18,
+    "name": "Cereals — Export value",
+    "status": "process",
+    "category": "Trade",
+    "description": "Total export value of cereals in thousand USD, from FAOSTAT TCL domain (item 0079 cereals aggregate, element 5910). Trade-flow indicator capturing cereal export revenue; sudden drops signal export bans, sanctions, or production collapses that ripple into food-importing country stability."
+  },
+  {
+    "id_string": "TCL.0079.5610",
+    "numeric_id": 19,
+    "name": "Cereals — Import quantity",
+    "status": "process",
+    "category": "Trade",
+    "description": "Total import volume of cereals in tonnes, from FAOSTAT TCL domain (item 0079 cereals aggregate, element 5610). Demand-side trade flow; spikes reveal emergency restocking after domestic shortfalls; combined with export value it flags bilateral trade disruptions relevant to recipe pattern matching."
+  },
+  {
+    "id_string": "RFN.3104.5157",
+    "numeric_id": 20,
+    "name": "Fertilizers — Potash (K2O), Agricultural Use",
+    "status": "process",
+    "category": "Agriculture",
+    "description": "Agricultural use of potash fertilizer (K2O) in tonnes of nutrient, from FAOSTAT RFN domain (item 3104, element 5157). Highly concentrated global supply (Belarus/Russia/Canada); sanctions or trade disruptions directly constrain agricultural output and serve as a leading geopolitical stress indicator."
+  }
+]
