@@ -1,0 +1,174 @@
+{
+  "schema_version": 1,
+  "filed": "1970-01-01",
+  "purpose": "Per-recipe canonical shape prototype lock per Stage 6 pre-reg.",
+  "pre_reg_lineage": {
+    "stage_6": "e4f9e7a"
+  },
+  "metadata": {
+    "file_sha256": "06a6f42c031b9d79685af4d7cdd107575609bf67d5dcca8093d1faaae96b1b34",
+    "n_recipes_with_prototype": 1,
+    "n_recipes_substrate_inadequate": 0
+  },
+  "recipes": {
+    "civil_war_and_insurgency": {
+      "recipe_id": "civil_war_and_insurgency",
+      "indicator_ids": [
+        "v2cacamps",
+        "v2x_clphy",
+        "v2csreprss",
+        "SM.POP.NETM",
+        "SP.DYN.LE00.IN"
+      ],
+      "canonical_length_T": {
+        "point": 5,
+        "posterior_iqr": [
+          5,
+          5
+        ],
+        "method": "tariq_v1_emit_acf_panel_pooled"
+      },
+      "per_indicator_trajectory_signature": {
+        "v2cacamps": {
+          "fpca_component_scores": [],
+          "fpca_cumulative_variance_explained": 0.0,
+          "fpca_basis": "gp_fallback_no_fpca_basis",
+          "posterior_mean_trajectory": [
+            7.2735640228411365,
+            11.456351932903056,
+            17.395353392778475,
+            27.84232145498398,
+            35.52915682169961
+          ],
+          "posterior_cov_diag": [
+            22.058756297492508,
+            17.575131110387826,
+            13.328944859723226,
+            17.575131113313226,
+            22.05875629905256
+          ],
+          "cov_diag_source": "posterior_gp_f_r_empirical_cov_diag",
+          "gp_fallback_variant": "v3_no_instance_gp_lognormal_ell",
+          "gp_fallback_amendment": "F-H-4-A1+F-H-4-A3"
+        },
+        "v2x_clphy": {
+          "fpca_component_scores": [],
+          "fpca_cumulative_variance_explained": 0.0,
+          "fpca_basis": "gp_fallback_no_fpca_basis",
+          "posterior_mean_trajectory": [
+            2.1157013281514265,
+            -1.3594535655265052,
+            0.7281102383497982,
+            15.291512670102913,
+            4.154913893962386
+          ],
+          "posterior_cov_diag": [
+            0.09288695633431053,
+            0.09287032190631726,
+            0.09286599493762242,
+            0.09287032190616447,
+            0.09288695633435054
+          ],
+          "cov_diag_source": "posterior_gp_f_r_empirical_cov_diag",
+          "gp_fallback_variant": "v3_no_instance_gp_lognormal_ell",
+          "gp_fallback_amendment": "F-H-4-A1+F-H-4-A3"
+        },
+        "v2csreprss": {
+          "fpca_component_scores": [],
+          "fpca_cumulative_variance_explained": 0.0,
+          "fpca_basis": "gp_fallback_no_fpca_basis",
+          "posterior_mean_trajectory": [
+            32.66497126821024,
+            55.88068169507028,
+            81.78276280140582,
+            109.43782783855558,
+            144.53677382717595
+          ],
+          "posterior_cov_diag": [
+            115.74439203571617,
+            88.93762047827985,
+            67.81273418050436,
+            88.93762047885251,
+            115.7443920357653
+          ],
+          "cov_diag_source": "posterior_gp_f_r_empirical_cov_diag",
+          "gp_fallback_variant": "v3_no_instance_gp_lognormal_ell",
+          "gp_fallback_amendment": "F-H-4-A1+F-H-4-A3"
+        },
+        "SM.POP.NETM": {
+          "fpca_component_scores": [],
+          "fpca_cumulative_variance_explained": 0.0,
+          "fpca_basis": "gp_fallback_no_fpca_basis",
+          "posterior_mean_trajectory": [
+            0.19462015695780355,
+            -1.1985516761003239,
+            0.04076570274278038,
+            -1.5492643321757236,
+            -0.9642493103319014
+          ],
+          "posterior_cov_diag": [
+            0.014645610482035784,
+            0.01464560936816774,
+            0.014645609367447505,
+            0.014645609368167414,
+            0.014645610482036595
+          ],
+          "cov_diag_source": "posterior_gp_f_r_empirical_cov_diag",
+          "gp_fallback_variant": "v3_no_instance_gp_lognormal_ell",
+          "gp_fallback_amendment": "F-H-4-A1+F-H-4-A3"
+        },
+        "SP.DYN.LE00.IN": {
+          "fpca_component_scores": [],
+          "fpca_cumulative_variance_explained": 0.0,
+          "fpca_basis": "gp_fallback_no_fpca_basis",
+          "posterior_mean_trajectory": [
+            1.161403878027393,
+            1.2417933238474934,
+            1.3705584149044447,
+            1.5340108991537504,
+            1.7027964901627475
+          ],
+          "posterior_cov_diag": [
+            0.0034386559221185465,
+            0.0017092192876571072,
+            0.0018852550947126004,
+            0.001709219287661477,
+            0.003438655922116289
+          ],
+          "cov_diag_source": "posterior_gp_f_r_empirical_cov_diag",
+          "gp_fallback_variant": "v3_no_instance_gp_lognormal_ell",
+          "gp_fallback_amendment": "F-H-4-A1+F-H-4-A3"
+        }
+      },
+      "fit_method": "hierarchical_bayes_gp_fallback",
+      "fit_method_commit_sha": "663e030bce5176c3f02297990fd471bf11eda741",
+      "n_training_positives": 256,
+      "training_data_snapshot_sha": {
+        "s3_path": "local-laptop-scale",
+        "sha256": "bf2ab25e6b76aac94e871256204ab47d0ced562e8fe7fb9f9c61369408019c94"
+      },
+      "substrate_audit": {
+        "g1_n_pos_geq_10": true,
+        "g2_n_countries_geq_5": true,
+        "g3_density_geq_0_85": true,
+        "g4_censoring_clean": true
+      },
+      "cohort_calibration_ref": "qgi-docs/methodology/ml-validation/civil_war_and_insurgency/shape-calibration-table.md",
+      "schema_version": 1,
+      "divergences_observed": {
+        "n_divergences": 3,
+        "n_post_warmup_draws": 4000,
+        "divergence_rate": 0.00075
+      }
+    }
+  },
+  "amendments": [
+    {
+      "date": "2026-05-20",
+      "amendment_id": "F-H-4-A5",
+      "change": "Add \u00a73.1.5 cascade exit clause for \u00a73.1.4 NUTS-gate failure after operational-tooling exhaustion: route to ADVISORY-ONLY.",
+      "ratification": "8-seat ratified 8/8 APPROVE with Tariq + Marcus operational riders",
+      "pre_reg_amendment_commit": "pending_merge"
+    }
+  ]
+}

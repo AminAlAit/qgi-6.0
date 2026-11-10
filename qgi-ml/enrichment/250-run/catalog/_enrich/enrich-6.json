@@ -1,0 +1,412 @@
+[
+  {
+    "code": "TC-002",
+    "why": "Cereal import volumes capture structural food-import dependency and vulnerability to global commodity price shocks — countries heavily reliant on external grain are acutely exposed when export bans or freight disruptions hit, making this a structural supply-side risk signal distinct from price-anomaly indicators already in the pool.",
+    "country_coverage": 175,
+    "coverage_confidence": "high",
+    "year_start": 1961,
+    "year_end": 2023,
+    "coverage_note": "FAOSTAT Supply Utilization Accounts; near-universal coverage from 1961; small island micro-states and some early-1960s newly-independent states have gaps.",
+    "trends": [
+      {
+        "trend_id": "drought_and_famine",
+        "lift_bucket": "High",
+        "lift_pct": "+10-18%",
+        "reason": "Cereal import dependency directly amplifies famine risk when global supply contracts; high-import-reliant countries face acute shortfall on supply shocks."
+      },
+      {
+        "trend_id": "humanitarian_crisis",
+        "lift_bucket": "High",
+        "lift_pct": "+8-15%",
+        "reason": "Food import shocks are a documented trigger of humanitarian emergencies; the volume signal captures supply-side exposure independently of price."
+      },
+      {
+        "trend_id": "mass_protest",
+        "lift_bucket": "Medium",
+        "lift_pct": "+5-10%",
+        "reason": "Food price spikes transmitted via import dependency are a primary trigger of bread-price protests; import volume is a plausible upstream predictor."
+      },
+      {
+        "trend_id": "poverty_and_inequality_crisis",
+        "lift_bucket": "Medium",
+        "lift_pct": "+4-8%",
+        "reason": "Import-dependent food systems concentrate cost shocks on lower-income households, amplifying inequality crises when global prices spike."
+      },
+      {
+        "trend_id": "trade_dispute",
+        "lift_bucket": "Low",
+        "lift_pct": "+2-5%",
+        "reason": "Large cereal-importing nations are more likely to be affected by food trade disputes, but the link to specific dispute events is indirect."
+      }
+    ]
+  },
+  {
+    "code": "OWID_WJPRULEOFLAW",
+    "why": "The WJP Rule of Law overall index is a dense composite (8 sub-indices) measuring constraints on government power, corruption absence, open government, fundamental rights, order and security, and civil/criminal justice — a systematic summary of institutional quality that captures cross-cutting governance deterioration preceding multiple event types, with annual panel structure suited to greedy feature selection.",
+    "country_coverage": 140,
+    "coverage_confidence": "high",
+    "year_start": 2012,
+    "year_end": 2024,
+    "coverage_note": "WJP covers ~140 countries annually from 2012; does not cover all fragile or micro states; history shorter than V-Dem alternatives.",
+    "trends": [
+      {
+        "trend_id": "political_corruption",
+        "lift_bucket": "High",
+        "lift_pct": "+12-20%",
+        "reason": "Overall rule-of-law is the closest aggregate measure of systemic corruption and institutional degradation; expects to be a top-5 feature for this Trend."
+      },
+      {
+        "trend_id": "political_repression",
+        "lift_bucket": "High",
+        "lift_pct": "+10-18%",
+        "reason": "Fundamental-rights and constraints-on-government sub-dimensions make this composite a leading indicator of repressive episodes."
+      },
+      {
+        "trend_id": "democratic_transition",
+        "lift_bucket": "High",
+        "lift_pct": "+10-16%",
+        "reason": "Rule-of-law trajectory (improvement or collapse) is causally central to democratic transition events in both directions."
+      },
+      {
+        "trend_id": "human_rights_violation",
+        "lift_bucket": "Medium",
+        "lift_pct": "+6-12%",
+        "reason": "Civil/criminal justice and fundamental-rights sub-indices are directly relevant to human rights violation patterns."
+      },
+      {
+        "trend_id": "executive_power_consolidation",
+        "lift_bucket": "Medium",
+        "lift_pct": "+6-10%",
+        "reason": "Erosion in constraints-on-government dimension reliably precedes executive consolidation episodes."
+      }
+    ]
+  },
+  {
+    "code": "EN.CLC.MDAT.ZS",
+    "why": "This WB fixed decadal average (1990–2009) captures the share of a country's population historically exposed to droughts, floods, and extreme temperatures — a structural baseline for climate-related fragility that does not change year-to-year and is uncorrelated with annual fluctuations, adding independent structural variance as a static covariate.",
+    "country_coverage": 185,
+    "coverage_confidence": "high",
+    "year_start": 2009,
+    "year_end": 2009,
+    "coverage_note": "Single fixed value per country (1990-2009 average from EM-DAT); treat as static covariate — year values reflect the measurement window, not an annual time series.",
+    "trends": [
+      {
+        "trend_id": "natural_disaster",
+        "lift_bucket": "High",
+        "lift_pct": "+12-20%",
+        "reason": "Percentage exposed to climate-related disasters is essentially a summary natural-disaster vulnerability index; expected to dominate this Trend's top-40."
+      },
+      {
+        "trend_id": "drought_and_famine",
+        "lift_bucket": "High",
+        "lift_pct": "+10-18%",
+        "reason": "Baseline drought/flood exposure is the structural precondition for drought-and-famine events; persistent top-feature as a static discriminator."
+      },
+      {
+        "trend_id": "flood_and_cyclone",
+        "lift_bucket": "High",
+        "lift_pct": "+10-16%",
+        "reason": "Historical flood exposure directly indexes structural flood-and-cyclone risk; strong baseline discriminator across countries."
+      },
+      {
+        "trend_id": "humanitarian_crisis",
+        "lift_bucket": "Medium",
+        "lift_pct": "+6-12%",
+        "reason": "Climate-exposed countries face higher baseline humanitarian crisis risk; static covariate adds structural differentiation independent of annual variation."
+      },
+      {
+        "trend_id": "migration_and_refugees",
+        "lift_bucket": "Medium",
+        "lift_pct": "+5-9%",
+        "reason": "Climate hazard exposure is a documented structural driver of displacement and migration; informative for the pre-event structural context."
+      }
+    ]
+  },
+  {
+    "code": "UNHCR_ASYAPP_NEW_COO",
+    "why": "Annual asylum application flows by country of origin are a push-factor signal aggregating international judgements about persecution and conflict intensity — thousands of individuals simultaneously choosing to flee constitutes a distributed early-warning system sensitive to rapidly deteriorating governance and conflict conditions, capturing emerging crises before they appear in annual governance indices.",
+    "country_coverage": 190,
+    "coverage_confidence": "high",
+    "year_start": 1990,
+    "year_end": 2024,
+    "coverage_note": "UNHCR POPSTATS near-universal; some micro-states and closed autocracies have structural underreporting, but coverage is very broad.",
+    "trends": [
+      {
+        "trend_id": "migration_and_refugees",
+        "lift_bucket": "High",
+        "lift_pct": "+15-25%",
+        "reason": "Asylum application flow from origin country is definitionally the upstream driver of this Trend; expects to be among the single strongest features."
+      },
+      {
+        "trend_id": "political_repression",
+        "lift_bucket": "High",
+        "lift_pct": "+12-20%",
+        "reason": "Surge in asylum claims is a direct revealed-preference measure of repression intensity; strong leading signal for repression escalation."
+      },
+      {
+        "trend_id": "human_rights_violation",
+        "lift_bucket": "High",
+        "lift_pct": "+10-18%",
+        "reason": "Asylum claimants cite persecution and rights violations as legal basis; the flow aggregates international assessment of human rights conditions."
+      },
+      {
+        "trend_id": "civil_war_and_insurgency",
+        "lift_bucket": "Medium",
+        "lift_pct": "+8-14%",
+        "reason": "Insurgency-driven displacement produces large asylum outflows; correlated but with some lag relative to combat onset."
+      },
+      {
+        "trend_id": "humanitarian_crisis",
+        "lift_bucket": "Medium",
+        "lift_pct": "+6-12%",
+        "reason": "Mass asylum applications frequently coincide with broader humanitarian emergencies; plausible co-predictor."
+      }
+    ]
+  },
+  {
+    "code": "OWID_STATECAP_COERCE",
+    "why": "The Hanson-Sigman coercive state capacity sub-dimension measures a government's control over territory and monopoly on the legitimate use of force — the foundational prerequisite for conflict suppression and public order. It captures state fragility specifically on the coercion axis, distinct from extractive or administrative capacity, providing unique predictive value for conflict-related Trends.",
+    "country_coverage": 177,
+    "coverage_confidence": "medium",
+    "year_start": 1960,
+    "year_end": 2015,
+    "coverage_note": "Hanson-Sigman dataset ends 2015; no updates planned — treat as a structural slow-moving baseline covariate; increasingly stale for post-2015 windows.",
+    "trends": [
+      {
+        "trend_id": "civil_war_and_insurgency",
+        "lift_bucket": "High",
+        "lift_pct": "+10-18%",
+        "reason": "Coercive capacity directly governs whether the state can suppress insurgencies; low scores are a well-validated conflict onset predictor."
+      },
+      {
+        "trend_id": "military_coup",
+        "lift_bucket": "High",
+        "lift_pct": "+8-15%",
+        "reason": "Coercive capacity fragmentation (competing armed actors) is a structural coup prerequisite; this dimension captures that fragmentation."
+      },
+      {
+        "trend_id": "political_repression",
+        "lift_bucket": "Medium",
+        "lift_pct": "+5-10%",
+        "reason": "Both very low (state too weak to repress) and moderate (state resorting to force) scores correlate with repression events through different mechanisms."
+      },
+      {
+        "trend_id": "ethnic_and_communal_conflict",
+        "lift_bucket": "Medium",
+        "lift_pct": "+6-11%",
+        "reason": "Weak territorial control enables communal militias to operate; coercive capacity is a plausible structural discriminator."
+      },
+      {
+        "trend_id": "territorial_disputes",
+        "lift_bucket": "Medium",
+        "lift_pct": "+5-9%",
+        "reason": "Inability to control territory correlates with disputed zones being actively contested; the sub-dimension is a proximate structural measure."
+      }
+    ]
+  },
+  {
+    "code": "v2xnp_client",
+    "why": "The V-Dem Clientelism Index measures vote buying, patron-client linkages, and particularism in political exchange — the degree to which political competition operates through selective benefit distribution rather than programmatic policy. Clientelism is a structural enabler of corruption cycles, election fraud, and regime durability that is distinct from corruption indices alone, capturing the organizational logic through which resources are extracted and distributed.",
+    "country_coverage": 180,
+    "coverage_confidence": "high",
+    "year_start": 1900,
+    "year_end": 2024,
+    "coverage_note": "V-Dem near-universal coverage from 1900; expert-coded with good developing-country representation; modern period (post-1970) most reliable.",
+    "trends": [
+      {
+        "trend_id": "political_corruption",
+        "lift_bucket": "High",
+        "lift_pct": "+10-18%",
+        "reason": "Clientelism is the organizational machinery of political corruption; expected to be among the top structural features for this Trend."
+      },
+      {
+        "trend_id": "elections_and_voting",
+        "lift_bucket": "High",
+        "lift_pct": "+8-15%",
+        "reason": "Vote buying and patron-client electoral mobilization are definitionally election-related phenomena; strong mechanistic link to electoral fraud and contestation events."
+      },
+      {
+        "trend_id": "executive_power_consolidation",
+        "lift_bucket": "Medium",
+        "lift_pct": "+6-11%",
+        "reason": "Clientelistic regimes entrench executive power by co-opting potential opposition through selective distribution; plausible structural antecedent."
+      },
+      {
+        "trend_id": "mass_protest",
+        "lift_bucket": "Medium",
+        "lift_pct": "+5-9%",
+        "reason": "High clientelism correlates with protest events when excluded groups lose patron-network access or when networks visibly collapse under fiscal stress."
+      },
+      {
+        "trend_id": "democratic_transition",
+        "lift_bucket": "Medium",
+        "lift_pct": "+5-9%",
+        "reason": "Clientelism levels predict the difficulty and trajectory of democratic transitions; well-supported structural feature in the democratization literature."
+      }
+    ]
+  },
+  {
+    "code": "IDMC_DIS_NEW_DISP_POP",
+    "why": "Disaster new displacements normalized by population provides a cross-country-comparable intensity metric for how severely disaster events displace populations relative to country size — a size-adjusted shock measure critical for ML: it prevents large-population countries from dominating the feature space and enables meaningful comparison between small and large countries.",
+    "country_coverage": 150,
+    "coverage_confidence": "medium",
+    "year_start": 2008,
+    "year_end": 2024,
+    "coverage_note": "IDMC disaster displacement coverage starts 2008; countries with no events carry informative zero values; sparser for low-hazard or small countries.",
+    "trends": [
+      {
+        "trend_id": "natural_disaster",
+        "lift_bucket": "High",
+        "lift_pct": "+12-20%",
+        "reason": "Population-normalized disaster displacement is among the most direct intensity measures for natural disaster events; expected top-feature."
+      },
+      {
+        "trend_id": "flood_and_cyclone",
+        "lift_bucket": "High",
+        "lift_pct": "+10-18%",
+        "reason": "Flood and cyclone events dominate global disaster displacement; this normalized series captures their proportional impact effectively."
+      },
+      {
+        "trend_id": "humanitarian_crisis",
+        "lift_bucket": "High",
+        "lift_pct": "+8-15%",
+        "reason": "Large-scale disaster displacement triggers humanitarian crisis declarations; per-capita normalization makes cross-context comparison reliable for the model."
+      },
+      {
+        "trend_id": "migration_and_refugees",
+        "lift_bucket": "Medium",
+        "lift_pct": "+5-10%",
+        "reason": "Disaster displacement contributes to refugee and migration flows, particularly when internal displacement converts to cross-border movement."
+      },
+      {
+        "trend_id": "drought_and_famine",
+        "lift_bucket": "Medium",
+        "lift_pct": "+4-8%",
+        "reason": "Drought-driven displacement is captured in IDMC disaster data; per-capita normalization aids the signal where population size varies widely."
+      }
+    ]
+  },
+  {
+    "code": "v2regantireg",
+    "why": "Anti-regime sentiment strength measures the breadth and intensity of opposition to the incumbent regime among both population and elite segments — a direct pre-mobilization signal that captures latent political tension before it erupts into protests, coups, or repression events. It is distinct from formal opposition party strength, capturing diffuse sentiment across society and elite networks.",
+    "country_coverage": 180,
+    "coverage_confidence": "high",
+    "year_start": 1900,
+    "year_end": 2024,
+    "coverage_note": "V-Dem expert-coded; near-universal coverage from 1900; annual cadence with good developing-country expert networks.",
+    "trends": [
+      {
+        "trend_id": "mass_protest",
+        "lift_bucket": "High",
+        "lift_pct": "+12-20%",
+        "reason": "Anti-regime sentiment is the most direct attitudinal precursor to mass protest mobilization; expected to be a dominant feature for this Trend."
+      },
+      {
+        "trend_id": "military_coup",
+        "lift_bucket": "High",
+        "lift_pct": "+10-16%",
+        "reason": "Elite anti-regime sentiment is a necessary condition for coup plotters to build internal support; strong structural link to coup onset."
+      },
+      {
+        "trend_id": "democratic_transition",
+        "lift_bucket": "Medium",
+        "lift_pct": "+7-13%",
+        "reason": "Sustained high anti-regime sentiment is a structural driver of democratic transitions; well-supported in comparative politics literature."
+      },
+      {
+        "trend_id": "executive_power_consolidation",
+        "lift_bucket": "Medium",
+        "lift_pct": "+6-12%",
+        "reason": "High anti-regime sentiment provokes pre-emptive executive consolidation to suppress opposition; plausible leading indicator."
+      },
+      {
+        "trend_id": "political_repression",
+        "lift_bucket": "Medium",
+        "lift_pct": "+6-11%",
+        "reason": "Rising anti-regime sentiment triggers repressive responses; the sentiment measure leads the repression measure temporally."
+      }
+    ]
+  },
+  {
+    "code": "OWID_WJPRULEOFLAW_ORDER",
+    "why": "The WJP Order and Security sub-index specifically measures crime control, absence of civil conflict, and violence against civilians — the security dimension of rule of law separated from the broader governance composite. Its specificity to physical security and civil order makes it more directly predictive of violence-related Trends than the overall WJP index, capturing institutional failure modes that precede conflict escalation.",
+    "country_coverage": 140,
+    "coverage_confidence": "high",
+    "year_start": 2012,
+    "year_end": 2024,
+    "coverage_note": "Same WJP panel as overall index; ~140 countries annually from 2012; stable panel composition.",
+    "trends": [
+      {
+        "trend_id": "political_violence",
+        "lift_bucket": "High",
+        "lift_pct": "+12-20%",
+        "reason": "Order and security sub-index directly measures violence against civilians and civil conflict; definitionally the strongest feature for this Trend."
+      },
+      {
+        "trend_id": "civil_war_and_insurgency",
+        "lift_bucket": "High",
+        "lift_pct": "+10-17%",
+        "reason": "Deterioration in order-and-security captures the breakdown of state coercive capacity that enables insurgency; strong leading signal."
+      },
+      {
+        "trend_id": "terrorist_attack",
+        "lift_bucket": "High",
+        "lift_pct": "+8-15%",
+        "reason": "Crime control and civilian violence sub-dimensions correlate directly with terrorism frequency; this sub-index outperforms the overall index here."
+      },
+      {
+        "trend_id": "ethnic_and_communal_conflict",
+        "lift_bucket": "Medium",
+        "lift_pct": "+6-11%",
+        "reason": "Communal violence contributes to and is captured by the order-and-security dimension; plausible top-40 feature."
+      },
+      {
+        "trend_id": "political_repression",
+        "lift_bucket": "Medium",
+        "lift_pct": "+5-9%",
+        "reason": "Low order-and-security scores co-occur with repressive security environments; secondary but informative signal."
+      }
+    ]
+  },
+  {
+    "code": "UCDP_GED_CIV_DEATHS",
+    "why": "GED civilian deaths aggregate best-estimate fatalities across all organized violence types (state-based, non-state, one-sided) for a country-year — uniquely capturing direct civilian harm from the full spectrum of violence rather than just combatant casualties. This is the most comprehensive lethality measure for civilian populations and captures deliberate targeting patterns diagnostic of atrocity and repression events.",
+    "country_coverage": 150,
+    "coverage_confidence": "high",
+    "year_start": 1989,
+    "year_end": 2023,
+    "coverage_note": "UCDP GED covers conflict-affected countries 1989-2023; zero-inflated but informative zeros for peaceful countries; sparse for low-violence years in otherwise active regions.",
+    "trends": [
+      {
+        "trend_id": "human_rights_violation",
+        "lift_bucket": "High",
+        "lift_pct": "+15-25%",
+        "reason": "Civilian fatalities from organized violence are the most direct quantitative measure of severe human rights violations; expected top-feature."
+      },
+      {
+        "trend_id": "political_violence",
+        "lift_bucket": "High",
+        "lift_pct": "+15-22%",
+        "reason": "GED civilian deaths aggregate all organized violence types targeting civilians; definitionally central to this Trend."
+      },
+      {
+        "trend_id": "civil_war_and_insurgency",
+        "lift_bucket": "High",
+        "lift_pct": "+10-18%",
+        "reason": "Civilian casualty levels are a primary indicator of civil war intensity; civilian-specific deaths distinguish deliberate targeting from collateral harm."
+      },
+      {
+        "trend_id": "humanitarian_crisis",
+        "lift_bucket": "High",
+        "lift_pct": "+10-16%",
+        "reason": "Civilian death tolls trigger international humanitarian crisis responses; the series captures the severity threshold driving crisis classification."
+      },
+      {
+        "trend_id": "political_repression",
+        "lift_bucket": "Medium",
+        "lift_pct": "+6-12%",
+        "reason": "One-sided violence deaths against civilians are included in this aggregate — a direct measure of state and non-state repression lethality."
+      }
+    ]
+  }
+]

@@ -1,0 +1,428 @@
+{
+ "elections_and_voting": {
+  "id": "elections_and_voting",
+  "name": "Elections & Voting",
+  "group": "A · Political Power",
+  "icon": "vote"
+ },
+ "government_formation": {
+  "id": "government_formation",
+  "name": "Government Formation",
+  "group": "A · Political Power",
+  "icon": "landmark"
+ },
+ "constitutional_change": {
+  "id": "constitutional_change",
+  "name": "Constitutional Change",
+  "group": "A · Political Power",
+  "icon": "scroll-text"
+ },
+ "decentralization_and_federalism": {
+  "id": "decentralization_and_federalism",
+  "name": "Decentralization & Federalism",
+  "group": "A · Political Power",
+  "icon": "network"
+ },
+ "democratic_transition": {
+  "id": "democratic_transition",
+  "name": "Democratic Transition",
+  "group": "A · Political Power",
+  "icon": "sunrise"
+ },
+ "executive_power_consolidation": {
+  "id": "executive_power_consolidation",
+  "name": "Executive Power Consolidation",
+  "group": "A · Political Power",
+  "icon": "crown"
+ },
+ "military_coup": {
+  "id": "military_coup",
+  "name": "Military Coup",
+  "group": "A · Political Power",
+  "icon": "sword"
+ },
+ "transitional_justice": {
+  "id": "transitional_justice",
+  "name": "Transitional Justice",
+  "group": "A · Political Power",
+  "icon": "scale"
+ },
+ "peacekeeping_and_peace_process": {
+  "id": "peacekeeping_and_peace_process",
+  "name": "Peacekeeping & Peace Process",
+  "group": "A · Political Power",
+  "icon": "handshake"
+ },
+ "interstate_war": {
+  "id": "interstate_war",
+  "name": "Interstate War",
+  "group": "B · Conflict & Violence",
+  "icon": "swords"
+ },
+ "civil_war_and_insurgency": {
+  "id": "civil_war_and_insurgency",
+  "name": "Civil War & Insurgency",
+  "group": "B · Conflict & Violence",
+  "icon": "flame"
+ },
+ "terrorist_attack": {
+  "id": "terrorist_attack",
+  "name": "Terrorist Attack",
+  "group": "B · Conflict & Violence",
+  "icon": "bomb"
+ },
+ "foreign_intervention": {
+  "id": "foreign_intervention",
+  "name": "Foreign Intervention",
+  "group": "B · Conflict & Violence",
+  "icon": "plane-takeoff"
+ },
+ "ethnic_and_communal_conflict": {
+  "id": "ethnic_and_communal_conflict",
+  "name": "Ethnic & Communal Conflict",
+  "group": "B · Conflict & Violence",
+  "icon": "users"
+ },
+ "political_violence": {
+  "id": "political_violence",
+  "name": "Political Violence",
+  "group": "B · Conflict & Violence",
+  "icon": "triangle-alert"
+ },
+ "political_repression": {
+  "id": "political_repression",
+  "name": "Political Repression",
+  "group": "C · Governance & Rights",
+  "icon": "lock"
+ },
+ "political_corruption": {
+  "id": "political_corruption",
+  "name": "Political Corruption",
+  "group": "C · Governance & Rights",
+  "icon": "banknote"
+ },
+ "human_rights_violation": {
+  "id": "human_rights_violation",
+  "name": "Human Rights Violation",
+  "group": "C · Governance & Rights",
+  "icon": "shield-alert"
+ },
+ "human_rights_reform": {
+  "id": "human_rights_reform",
+  "name": "Human Rights Reform",
+  "group": "C · Governance & Rights",
+  "icon": "shield-check"
+ },
+ "military_policy_and_reform": {
+  "id": "military_policy_and_reform",
+  "name": "Military Policy & Reform",
+  "group": "C · Governance & Rights",
+  "icon": "shield"
+ },
+ "currency_crisis": {
+  "id": "currency_crisis",
+  "name": "Currency Crisis",
+  "group": "D · Economic Stress",
+  "icon": "coins"
+ },
+ "banking_and_financial_crisis": {
+  "id": "banking_and_financial_crisis",
+  "name": "Banking & Financial Crisis",
+  "group": "D · Economic Stress",
+  "icon": "piggy-bank"
+ },
+ "economic_recession": {
+  "id": "economic_recession",
+  "name": "Economic Recession",
+  "group": "D · Economic Stress",
+  "icon": "trending-down"
+ },
+ "fiscal_policy_change": {
+  "id": "fiscal_policy_change",
+  "name": "Fiscal Policy Change",
+  "group": "D · Economic Stress",
+  "icon": "calculator"
+ },
+ "monetary_policy_change": {
+  "id": "monetary_policy_change",
+  "name": "Monetary Policy Change",
+  "group": "D · Economic Stress",
+  "icon": "circle-dollar-sign"
+ },
+ "economic_liberalization": {
+  "id": "economic_liberalization",
+  "name": "Economic Liberalization",
+  "group": "D · Economic Stress",
+  "icon": "lock-open"
+ },
+ "economic_nationalization": {
+  "id": "economic_nationalization",
+  "name": "Economic Nationalization",
+  "group": "D · Economic Stress",
+  "icon": "building-2"
+ },
+ "economic_recovery": {
+  "id": "economic_recovery",
+  "name": "Economic Recovery",
+  "group": "D · Economic Stress",
+  "icon": "trending-up"
+ },
+ "economic_growth_milestone": {
+  "id": "economic_growth_milestone",
+  "name": "Economic Growth Milestone",
+  "group": "D · Economic Stress",
+  "icon": "chart-bar"
+ },
+ "trade_agreement": {
+  "id": "trade_agreement",
+  "name": "Trade Agreement",
+  "group": "D · Economic Stress",
+  "icon": "handshake"
+ },
+ "trade_dispute": {
+  "id": "trade_dispute",
+  "name": "Trade Dispute",
+  "group": "D · Economic Stress",
+  "icon": "octagon-alert"
+ },
+ "foreign_direct_investment": {
+  "id": "foreign_direct_investment",
+  "name": "Foreign Direct Investment",
+  "group": "D · Economic Stress",
+  "icon": "arrow-right-left"
+ },
+ "industrial_policy": {
+  "id": "industrial_policy",
+  "name": "Industrial Policy",
+  "group": "D · Economic Stress",
+  "icon": "factory"
+ },
+ "sanctions_and_arms_embargo": {
+  "id": "sanctions_and_arms_embargo",
+  "name": "Sanctions & Arms Embargo",
+  "group": "D · Economic Stress",
+  "icon": "ban"
+ },
+ "foreign_aid_and_development": {
+  "id": "foreign_aid_and_development",
+  "name": "Foreign Aid & Development",
+  "group": "D · Economic Stress",
+  "icon": "hand-heart"
+ },
+ "mass_protest": {
+  "id": "mass_protest",
+  "name": "Mass Protest",
+  "group": "E · Social Mobilization",
+  "icon": "megaphone"
+ },
+ "labor_action": {
+  "id": "labor_action",
+  "name": "Labor Action",
+  "group": "E · Social Mobilization",
+  "icon": "hard-hat"
+ },
+ "social_policy_reform": {
+  "id": "social_policy_reform",
+  "name": "Social Policy Reform",
+  "group": "E · Social Mobilization",
+  "icon": "heart-handshake"
+ },
+ "public_health_reform": {
+  "id": "public_health_reform",
+  "name": "Public Health Reform",
+  "group": "E · Social Mobilization",
+  "icon": "stethoscope"
+ },
+ "poverty_and_inequality_crisis": {
+  "id": "poverty_and_inequality_crisis",
+  "name": "Poverty & Inequality Crisis",
+  "group": "E · Social Mobilization",
+  "icon": "trending-down"
+ },
+ "religious_and_social_movement": {
+  "id": "religious_and_social_movement",
+  "name": "Religious & Social Movement",
+  "group": "E · Social Mobilization",
+  "icon": "star"
+ },
+ "migration_and_refugees": {
+  "id": "migration_and_refugees",
+  "name": "Migration & Refugees",
+  "group": "E · Social Mobilization",
+  "icon": "arrow-right-from-line"
+ },
+ "bilateral_treaty": {
+  "id": "bilateral_treaty",
+  "name": "Bilateral Treaty",
+  "group": "F · Diplomacy & Geopolitics",
+  "icon": "file-pen-line"
+ },
+ "multilateral_agreement": {
+  "id": "multilateral_agreement",
+  "name": "Multilateral Agreement",
+  "group": "F · Diplomacy & Geopolitics",
+  "icon": "globe"
+ },
+ "diplomatic_rupture": {
+  "id": "diplomatic_rupture",
+  "name": "Diplomatic Rupture",
+  "group": "F · Diplomacy & Geopolitics",
+  "icon": "unlink"
+ },
+ "territorial_disputes": {
+  "id": "territorial_disputes",
+  "name": "Territorial Disputes",
+  "group": "F · Diplomacy & Geopolitics",
+  "icon": "map-pin"
+ },
+ "regional_integration": {
+  "id": "regional_integration",
+  "name": "Regional Integration",
+  "group": "F · Diplomacy & Geopolitics",
+  "icon": "link"
+ },
+ "earthquake": {
+  "id": "earthquake",
+  "name": "Earthquake",
+  "group": "G · Humanitarian Crisis",
+  "icon": "activity"
+ },
+ "flood_and_cyclone": {
+  "id": "flood_and_cyclone",
+  "name": "Flood & Cyclone",
+  "group": "G · Humanitarian Crisis",
+  "icon": "waves"
+ },
+ "volcanic_eruption": {
+  "id": "volcanic_eruption",
+  "name": "Volcanic Eruption",
+  "group": "G · Humanitarian Crisis",
+  "icon": "mountain"
+ },
+ "natural_disaster": {
+  "id": "natural_disaster",
+  "name": "Natural Disaster",
+  "group": "G · Humanitarian Crisis",
+  "icon": "cloud-lightning"
+ },
+ "drought_and_famine": {
+  "id": "drought_and_famine",
+  "name": "Drought & Famine",
+  "group": "G · Humanitarian Crisis",
+  "icon": "wheat"
+ },
+ "epidemic_and_pandemic": {
+  "id": "epidemic_and_pandemic",
+  "name": "Epidemic & Pandemic",
+  "group": "G · Humanitarian Crisis",
+  "icon": "biohazard"
+ },
+ "humanitarian_crisis": {
+  "id": "humanitarian_crisis",
+  "name": "Humanitarian Crisis",
+  "group": "G · Humanitarian Crisis",
+  "icon": "heart"
+ },
+ "water_crisis": {
+  "id": "water_crisis",
+  "name": "Water Crisis",
+  "group": "G · Humanitarian Crisis",
+  "icon": "droplet"
+ },
+ "energy_policy": {
+  "id": "energy_policy",
+  "name": "Energy Policy",
+  "group": "H · Structural Trends",
+  "icon": "zap"
+ },
+ "oil_and_gas": {
+  "id": "oil_and_gas",
+  "name": "Oil & Gas",
+  "group": "H · Structural Trends",
+  "icon": "fuel"
+ },
+ "renewable_energy": {
+  "id": "renewable_energy",
+  "name": "Renewable Energy",
+  "group": "H · Structural Trends",
+  "icon": "wind"
+ },
+ "environmental_policy": {
+  "id": "environmental_policy",
+  "name": "Environmental Policy",
+  "group": "H · Structural Trends",
+  "icon": "leaf"
+ },
+ "climate_agreement": {
+  "id": "climate_agreement",
+  "name": "Climate Agreement",
+  "group": "H · Structural Trends",
+  "icon": "thermometer"
+ },
+ "resource_conflict": {
+  "id": "resource_conflict",
+  "name": "Resource Conflict",
+  "group": "H · Structural Trends",
+  "icon": "pickaxe"
+ },
+ "infrastructure_project": {
+  "id": "infrastructure_project",
+  "name": "Infrastructure Project",
+  "group": "H · Structural Trends",
+  "icon": "construction"
+ },
+ "urban_development": {
+  "id": "urban_development",
+  "name": "Urban Development",
+  "group": "H · Structural Trends",
+  "icon": "building"
+ },
+ "education_reform": {
+  "id": "education_reform",
+  "name": "Education Reform",
+  "group": "H · Structural Trends",
+  "icon": "graduation-cap"
+ },
+ "education_and_research": {
+  "id": "education_and_research",
+  "name": "Education & Research",
+  "group": "H · Structural Trends",
+  "icon": "book-open"
+ },
+ "digital_policy": {
+  "id": "digital_policy",
+  "name": "Digital Policy",
+  "group": "H · Structural Trends",
+  "icon": "wifi"
+ },
+ "technology_breakthrough": {
+  "id": "technology_breakthrough",
+  "name": "Technology Breakthrough",
+  "group": "H · Structural Trends",
+  "icon": "cpu"
+ },
+ "cyberattack": {
+  "id": "cyberattack",
+  "name": "Cyberattack",
+  "group": "H · Structural Trends",
+  "icon": "shield-x"
+ },
+ "cultural_and_heritage": {
+  "id": "cultural_and_heritage",
+  "name": "Cultural & Heritage",
+  "group": "H · Structural Trends",
+  "icon": "library"
+ },
+ "sport_and_international_event": {
+  "id": "sport_and_international_event",
+  "name": "Sport & International Event",
+  "group": "H · Structural Trends",
+  "icon": "trophy"
+ },
+ "agricultural_policy": {
+  "id": "agricultural_policy",
+  "name": "Agricultural Policy",
+  "group": "H · Structural Trends",
+  "icon": "sprout"
+ }
+}

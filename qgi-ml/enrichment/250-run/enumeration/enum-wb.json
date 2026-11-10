@@ -1,0 +1,3426 @@
+[
+  {
+    "code": "AG.CON.FERT.ZS",
+    "name": "Fertilizer consumption (kilograms per hectare of arable land)",
+    "category": "Environment",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Agricultural input intensity; food security stress proxy"
+  },
+  {
+    "code": "AG.LND.AGRI.ZS",
+    "name": "Agricultural land (% of land area)",
+    "category": "Environment",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Land-use structure; rural livelihood base"
+  },
+  {
+    "code": "AG.LND.ARBL.HA.PC",
+    "name": "Arable land (hectares per person)",
+    "category": "Environment",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Per-capita food production capacity; scarcity signal"
+  },
+  {
+    "code": "AG.LND.FRST.ZS",
+    "name": "Forest area (% of land area)",
+    "category": "Environment",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Natural resource base; deforestation conflict signal"
+  },
+  {
+    "code": "AG.LND.IRIG.AG.ZS",
+    "name": "Agricultural irrigated land (% of total agricultural land)",
+    "category": "Environment",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Water dependency for food; drought vulnerability"
+  },
+  {
+    "code": "AG.LND.PRCP.MM",
+    "name": "Average precipitation in depth (mm per year)",
+    "category": "Environment",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Climate baseline; water stress driver"
+  },
+  {
+    "code": "AG.PRD.CROP.XD",
+    "name": "Crop production index (2014-2016 = 100)",
+    "category": "Environment",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Agricultural output trend; food security indicator"
+  },
+  {
+    "code": "AG.PRD.LVSK.XD",
+    "name": "Livestock production index (2014-2016 = 100)",
+    "category": "Environment",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Rural economy health; protein access proxy"
+  },
+  {
+    "code": "AG.YLD.CREL.KG",
+    "name": "Cereal yield (kg per hectare)",
+    "category": "Environment",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Agricultural productivity; food price pressure upstream"
+  },
+  {
+    "code": "BG.GSR.NFSV.GD.ZS",
+    "name": "Trade in services (% of GDP)",
+    "category": "Trade",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Services trade openness; economic diversification"
+  },
+  {
+    "code": "BM.GSR.GNFS.CD",
+    "name": "Imports of goods and services (BoP, current US$)",
+    "category": "Trade",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Import volume; external dependency"
+  },
+  {
+    "code": "BM.GSR.NFSV.CD",
+    "name": "Service imports (BoP, current US$)",
+    "category": "Trade",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Services import level; knowledge economy integration"
+  },
+  {
+    "code": "BN.FIN.TOTL.CD",
+    "name": "Net financial account (BoP, current US$)",
+    "category": "Finance",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Capital flow balance; external financing position"
+  },
+  {
+    "code": "BN.GSR.FCTY.CD",
+    "name": "Net primary income (BoP, current US$)",
+    "category": "Economic",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Factor income balance; repatriation pressure"
+  },
+  {
+    "code": "BN.KLT.DINV.CD",
+    "name": "Foreign direct investment, net (BoP, current US$)",
+    "category": "Finance",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Net FDI; investor confidence composite"
+  },
+  {
+    "code": "BN.KLT.PTXL.CD",
+    "name": "Portfolio Investment, net (BoP, current US$)",
+    "category": "Finance",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Portfolio flows; hot-money volatility signal"
+  },
+  {
+    "code": "BX.GSR.CCIS.ZS",
+    "name": "ICT service exports (% of service exports, BoP)",
+    "category": "Trade",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Digital export sophistication; tech sector depth"
+  },
+  {
+    "code": "BX.GSR.GNFS.CD",
+    "name": "Exports of goods and services (BoP, current US$)",
+    "category": "Trade",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Total export receipts; external revenue"
+  },
+  {
+    "code": "BX.GSR.MRCH.CD",
+    "name": "Goods exports (BoP, current US$)",
+    "category": "Trade",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Merchandise export level; commodity dependence context"
+  },
+  {
+    "code": "BX.GSR.NFSV.CD",
+    "name": "Service exports (BoP, current US$)",
+    "category": "Trade",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Service sector export earnings"
+  },
+  {
+    "code": "BX.GSR.ROYL.CD",
+    "name": "Charges for use of intellectual property, receipts (BoP, current US$)",
+    "category": "Trade",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "IP export income; innovation economy signal"
+  },
+  {
+    "code": "BX.PEF.TOTL.CD.WD",
+    "name": "Portfolio equity, net inflows (BoP, current US$)",
+    "category": "Finance",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Equity capital inflows; risk appetite indicator"
+  },
+  {
+    "code": "BX.TRF.PWKR.DT.GD.ZS",
+    "name": "Personal remittances, received (% of GDP)",
+    "category": "Economic",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Remittance dependency; diaspora economy signal"
+  },
+  {
+    "code": "CM.MKT.INDX.ZG",
+    "name": "S&P Global Equity Indices (annual % change)",
+    "category": "Finance",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Equity market returns; investor sentiment"
+  },
+  {
+    "code": "CM.MKT.LCAP.GD.ZS",
+    "name": "Market capitalization of listed domestic companies (% of GDP)",
+    "category": "Finance",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Financial market depth; capital market development"
+  },
+  {
+    "code": "CM.MKT.TRAD.GD.ZS",
+    "name": "Stocks traded, total value (% of GDP)",
+    "category": "Finance",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Market liquidity; financial activity level"
+  },
+  {
+    "code": "CM.MKT.TRNR",
+    "name": "Stocks traded, turnover ratio of domestic shares (%)",
+    "category": "Finance",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Market efficiency; speculation activity proxy"
+  },
+  {
+    "code": "DT.DOD.DECT.CD",
+    "name": "External debt stocks, total (DOD, current US$)",
+    "category": "Government",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Absolute external debt stock; sovereign burden"
+  },
+  {
+    "code": "DT.DOD.PVLX.CD",
+    "name": "Present value of external debt (current US$)",
+    "category": "Government",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "NPV of debt obligations; sustainability measure"
+  },
+  {
+    "code": "DT.DOD.PVLX.GN.ZS",
+    "name": "Present value of external debt (% of GNI)",
+    "category": "Government",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Debt burden relative to income; sustainability ratio"
+  },
+  {
+    "code": "DT.TDS.DECT.CD",
+    "name": "Total debt service (DOD, current US$)",
+    "category": "Government",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Debt servicing cost in absolute terms"
+  },
+  {
+    "code": "DT.TDS.DECT.GN.ZS",
+    "name": "Total debt service (% of GNI)",
+    "category": "Government",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Debt service relative to GNI; debt stress ratio"
+  },
+  {
+    "code": "DT.DOD.MLAT.CD",
+    "name": "PPG, multilateral (DOD, current US$)",
+    "category": "Government",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Multilateral debt exposure; institutional creditor share"
+  },
+  {
+    "code": "DT.DOD.BLAT.CD",
+    "name": "PPG, bilateral (DOD, current US$)",
+    "category": "Government",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Bilateral debt; geopolitical creditor dependency"
+  },
+  {
+    "code": "DT.DOD.DPNG.CD",
+    "name": "PPG, bonds (DOD, current US$)",
+    "category": "Finance",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Bond market debt; market-rate financing exposure"
+  },
+  {
+    "code": "DT.DOD.PRPG.CD",
+    "name": "Private nonguaranteed debt (DOD, current US$)",
+    "category": "Finance",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Private sector external borrowing"
+  },
+  {
+    "code": "DT.INT.DECT.EX.ZS",
+    "name": "Interest payments on external debt (% of exports of goods, services and primary income)",
+    "category": "Government",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Interest burden vs export capacity"
+  },
+  {
+    "code": "DT.INT.DECT.GN.ZS",
+    "name": "Interest payments on external debt (% of GNI)",
+    "category": "Government",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Interest payments relative to GNI"
+  },
+  {
+    "code": "EG.CFT.ACCS.ZS",
+    "name": "Access to clean fuels and technologies for cooking (% of population)",
+    "category": "Energy",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Energy poverty; health-risk proxy for rural populations"
+  },
+  {
+    "code": "EG.ELC.ACCS.ZS",
+    "name": "Access to electricity (% of population)",
+    "category": "Infrastructure",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "National electrification rate; development baseline"
+  },
+  {
+    "code": "EG.ELC.COAL.ZS",
+    "name": "Electricity production from coal sources (% of total)",
+    "category": "Energy",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Fossil fuel dependency in power; environmental pressure"
+  },
+  {
+    "code": "EG.ELC.FOSL.ZS",
+    "name": "Electricity production from oil, gas and coal sources (% of total)",
+    "category": "Energy",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Fossil fuel power share; transition risk"
+  },
+  {
+    "code": "EG.ELC.HYRO.ZS",
+    "name": "Electricity production from hydroelectric sources (% of total)",
+    "category": "Energy",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Hydro power share; climate-weather dependency"
+  },
+  {
+    "code": "EG.ELC.NGAS.ZS",
+    "name": "Electricity production from natural gas sources (% of total)",
+    "category": "Energy",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Gas dependency for power; price shock exposure"
+  },
+  {
+    "code": "EG.ELC.NUCL.ZS",
+    "name": "Electricity production from nuclear sources (% of total)",
+    "category": "Energy",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Nuclear power share; strategic energy mix"
+  },
+  {
+    "code": "EG.ELC.RNWX.KH",
+    "name": "Electricity production from renewable sources, excluding hydroelectric (kWh)",
+    "category": "Energy",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Non-hydro renewable capacity; energy transition pace"
+  },
+  {
+    "code": "EG.ELC.RNWX.ZS",
+    "name": "Electricity production from renewable sources, excluding hydroelectric (% of total)",
+    "category": "Energy",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Renewable energy share ex-hydro; transition signal"
+  },
+  {
+    "code": "EG.FEC.RNEW.ZS",
+    "name": "Renewable energy consumption (% of total final energy consumption)",
+    "category": "Energy",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Overall renewable consumption; green transition indicator"
+  },
+  {
+    "code": "EG.GDP.PUSE.KO.ZS",
+    "name": "Energy intensity level of primary energy (MJ/$2017 PPP GDP)",
+    "category": "Energy",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Energy efficiency of economy; industrial structure signal"
+  },
+  {
+    "code": "EG.USE.COMM.FO.ZS",
+    "name": "Fossil fuel energy consumption (% of total)",
+    "category": "Energy",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Fossil dependency overall; climate vulnerability"
+  },
+  {
+    "code": "EG.USE.ELEC.KH.PC",
+    "name": "Electric power consumption (kWh per capita)",
+    "category": "Energy",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Energy use per capita; industrialization level"
+  },
+  {
+    "code": "EG.USE.PCAP.KG.OE",
+    "name": "Energy use (kg of oil equivalent per capita)",
+    "category": "Energy",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Total energy consumption per capita; economic activity"
+  },
+  {
+    "code": "EN.ATM.CO2E.KT",
+    "name": "CO2 emissions (kt)",
+    "category": "Environment",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Absolute emissions; industrial capacity proxy"
+  },
+  {
+    "code": "EN.ATM.CO2E.PC",
+    "name": "CO2 emissions (metric tons per capita)",
+    "category": "Environment",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Per-capita emissions; energy/industrial structure"
+  },
+  {
+    "code": "EN.ATM.METH.KT.CE",
+    "name": "Methane emissions (kt of CO2 equivalent)",
+    "category": "Environment",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Agricultural/energy methane; climate commitment signal"
+  },
+  {
+    "code": "EN.ATM.NOXE.KT.CE",
+    "name": "Nitrous oxide emissions (thousand metric tons of CO2 equivalent)",
+    "category": "Environment",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Agricultural emissions; industrial/farming intensity"
+  },
+  {
+    "code": "EN.POP.DNST",
+    "name": "Population density (people per sq. km of land area)",
+    "category": "Demographic",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Urbanization pressure; resource competition density"
+  },
+  {
+    "code": "ER.H2O.FWTL.ZS",
+    "name": "Annual freshwater withdrawals, total (% of internal resources)",
+    "category": "Environment",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Water stress level; scarcity conflict risk"
+  },
+  {
+    "code": "ER.H2O.INTR.PC",
+    "name": "Renewable internal freshwater resources per capita (cubic meters)",
+    "category": "Environment",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Per-capita water availability; scarcity baseline"
+  },
+  {
+    "code": "ER.LND.PTLD.ZS",
+    "name": "Terrestrial and marine protected areas (% of total territorial area)",
+    "category": "Environment",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Conservation effort; resource governance signal"
+  },
+  {
+    "code": "FB.BNK.CAPA.ZS",
+    "name": "Bank capital to assets ratio (%)",
+    "category": "Finance",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Banking sector solvency; financial stability"
+  },
+  {
+    "code": "FB.BNK.NPLS.ZS",
+    "name": "Bank nonperforming loans to total gross loans (%)",
+    "category": "Finance",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Banking sector health; credit risk indicator"
+  },
+  {
+    "code": "FD.AST.PRVT.GD.ZS",
+    "name": "Domestic credit to private sector (% of GDP)",
+    "category": "Finance",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Credit depth; financial development and leverage"
+  },
+  {
+    "code": "FD.AST.PRVT.PP.GD.ZS",
+    "name": "Domestic credit to private sector by banks (% of GDP)",
+    "category": "Finance",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Bank credit to private sector; leverage buildup"
+  },
+  {
+    "code": "FD.AST.PRVT.CA.ZS",
+    "name": "Domestic credit provided by financial sector (% of GDP)",
+    "category": "Finance",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Total financial sector credit; systemic credit risk"
+  },
+  {
+    "code": "FI.RES.XGLD.CD",
+    "name": "Total reserves excluding gold (current US$)",
+    "category": "Finance",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Reserves ex-gold; liquid fx buffer"
+  },
+  {
+    "code": "FM.AST.DOMS.CN",
+    "name": "Domestic credit (current LCU)",
+    "category": "Finance",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Nominal domestic credit; monetary expansion"
+  },
+  {
+    "code": "FM.AST.NPER.CN",
+    "name": "Claims on central government, etc. (current LCU)",
+    "category": "Government",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Central govt credit exposure; fiscal monetisation"
+  },
+  {
+    "code": "FM.LBL.MONY.CN",
+    "name": "Money (current LCU)",
+    "category": "Finance",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Narrow money supply (M1); monetary liquidity"
+  },
+  {
+    "code": "FP.WPI.TOTL",
+    "name": "Wholesale price index (2010 = 100)",
+    "category": "Economic",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Producer-level inflation; upstream price pressure"
+  },
+  {
+    "code": "FR.INR.DPST",
+    "name": "Deposit interest rate (%)",
+    "category": "Finance",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Bank deposit rate; monetary conditions signal"
+  },
+  {
+    "code": "FR.INR.RINR",
+    "name": "Real interest rate (%)",
+    "category": "Finance",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Real lending cost; investment incentive measure"
+  },
+  {
+    "code": "FR.INR.RISK",
+    "name": "Risk premium on lending (lending rate minus treasury bill rate, %)",
+    "category": "Finance",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Banking risk spread; credit market tightness"
+  },
+  {
+    "code": "GC.BAL.CASH.GD.ZS",
+    "name": "Cash surplus/deficit (% of GDP)",
+    "category": "Government",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Fiscal cash balance; short-term fiscal health"
+  },
+  {
+    "code": "GC.DOD.TOTL.CD",
+    "name": "Central government debt, total (current LCU)",
+    "category": "Government",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Nominal domestic public debt stock"
+  },
+  {
+    "code": "GC.LBL.TOTL.GD.ZS",
+    "name": "Domestic lending to governments, total (% of GDP)",
+    "category": "Government",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Govt borrowing from domestic market; crowding-out risk"
+  },
+  {
+    "code": "GC.NFN.TOTL.GD.ZS",
+    "name": "Net lending (+) / net borrowing (-) (% of GDP)",
+    "category": "Government",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Fiscal balance (net); primary/deficit signal"
+  },
+  {
+    "code": "GC.OFG.TOTL.GD.ZS",
+    "name": "Grants and other revenue (% of GDP)",
+    "category": "Government",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Aid and grant dependency relative to GDP"
+  },
+  {
+    "code": "IC.BUS.DFRN.XQ",
+    "name": "Business extent of disclosure index (0=less disclosure to 10=more disclosure)",
+    "category": "Governance",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Corporate transparency; doing-business governance"
+  },
+  {
+    "code": "IC.BUS.EASE.XQ",
+    "name": "Ease of doing business score (0 = lowest to 100 = best)",
+    "category": "Governance",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Business environment quality; regulatory reform signal"
+  },
+  {
+    "code": "IC.CRD.INFO.XQ",
+    "name": "Depth of credit information index (0=low to 8=high)",
+    "category": "Finance",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Credit information quality; financial infrastructure"
+  },
+  {
+    "code": "IC.CRD.PUBL.ZS",
+    "name": "Public credit registry coverage (% of adults)",
+    "category": "Finance",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Formal credit system reach; financial inclusion"
+  },
+  {
+    "code": "IC.ISV.DURS",
+    "name": "Insolvency recovery rate (cents on the dollar)",
+    "category": "Governance",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Legal system efficiency for creditors"
+  },
+  {
+    "code": "IC.LGL.CRED.XQ",
+    "name": "Strength of legal rights index (0=weak to 12=strong)",
+    "category": "Governance",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Legal framework quality; property rights strength"
+  },
+  {
+    "code": "IC.PRP.DURS",
+    "name": "Time to register property (days)",
+    "category": "Governance",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Property rights administration efficiency"
+  },
+  {
+    "code": "IC.REG.DURS",
+    "name": "Time required to start a business (days)",
+    "category": "Governance",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Regulatory burden; business environment friction"
+  },
+  {
+    "code": "IC.TAX.DURS",
+    "name": "Time to prepare and pay taxes (hours per year)",
+    "category": "Governance",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Tax compliance burden; regulatory efficiency"
+  },
+  {
+    "code": "IC.TAX.TOTL.CP.ZS",
+    "name": "Total tax and contribution rate (% of profit)",
+    "category": "Government",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Business tax burden; investment climate signal"
+  },
+  {
+    "code": "IP.PAT.RESD",
+    "name": "Patent applications, residents",
+    "category": "Other",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Domestic innovation activity; knowledge economy"
+  },
+  {
+    "code": "IP.PAT.NRES",
+    "name": "Patent applications, nonresidents",
+    "category": "Other",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Foreign IP activity in country; tech transfer signal"
+  },
+  {
+    "code": "IP.TMK.RESD",
+    "name": "Trademark applications, direct resident",
+    "category": "Other",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Domestic commercial activity; brand economy size"
+  },
+  {
+    "code": "IS.AIR.DPRT",
+    "name": "Air transport, departures worldwide",
+    "category": "Infrastructure",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Aviation connectivity; mobility and openness"
+  },
+  {
+    "code": "IS.AIR.GOOD.MT.K1",
+    "name": "Air transport, freight (million ton-km)",
+    "category": "Infrastructure",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Air cargo volume; trade logistics capacity"
+  },
+  {
+    "code": "IS.AIR.PSGR",
+    "name": "Air transport, passengers carried",
+    "category": "Infrastructure",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Passenger aviation volume; tourism and mobility"
+  },
+  {
+    "code": "IS.RRS.GOOD.MT.K1",
+    "name": "Railways, goods transported (million ton-km)",
+    "category": "Infrastructure",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Rail freight; inland logistics capacity"
+  },
+  {
+    "code": "IS.SHP.GOOD.TU",
+    "name": "Container port traffic (TEU: 20 foot equivalent units)",
+    "category": "Infrastructure",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Port throughput; maritime trade integration"
+  },
+  {
+    "code": "IT.MLT.MAIN.P2",
+    "name": "Fixed telephone subscriptions (per 100 people)",
+    "category": "Infrastructure",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Fixed line penetration; legacy telecom baseline"
+  },
+  {
+    "code": "IT.NET.BBND.P2",
+    "name": "Fixed broadband subscriptions (per 100 people)",
+    "category": "Infrastructure",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Fixed internet penetration; digital infrastructure"
+  },
+  {
+    "code": "IT.NET.SECR.P6",
+    "name": "Secure Internet servers (per 1 million people)",
+    "category": "Infrastructure",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Cyber infrastructure depth; digital security capacity"
+  },
+  {
+    "code": "LP.LPI.OVRL.XQ",
+    "name": "Logistics performance index: Overall (1=low to 5=high)",
+    "category": "Infrastructure",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Supply chain quality; trade facilitation"
+  },
+  {
+    "code": "LP.LPI.CUST.XQ",
+    "name": "Logistics performance index: Customs (1=low to 5=high)",
+    "category": "Governance",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Customs efficiency; border trade facilitation"
+  },
+  {
+    "code": "LP.LPI.INFR.XQ",
+    "name": "Logistics performance index: Infrastructure (1=low to 5=high)",
+    "category": "Infrastructure",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Physical trade infrastructure quality"
+  },
+  {
+    "code": "MS.MIL.XPND.CN",
+    "name": "Military expenditure (current LCU)",
+    "category": "Military",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Nominal military spending; defence budget context"
+  },
+  {
+    "code": "MS.MIL.XPND.ZS",
+    "name": "Military expenditure (% of central government expenditure)",
+    "category": "Military",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Military share of govt spending; resource allocation"
+  },
+  {
+    "code": "NE.CON.GOVT.KD.ZG",
+    "name": "General government final consumption expenditure (annual % growth)",
+    "category": "Economic",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Govt spending growth rate; fiscal expansion signal"
+  },
+  {
+    "code": "NE.CON.PRVT.KD.ZG",
+    "name": "Household final consumption expenditure (annual % growth)",
+    "category": "Economic",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Consumer spending growth; demand-side signal"
+  },
+  {
+    "code": "NE.GDI.FPRV.ZS",
+    "name": "Gross fixed capital formation, private sector (% of GDP)",
+    "category": "Economic",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Private investment rate; business confidence signal"
+  },
+  {
+    "code": "NE.GDI.TOTL.KD.ZG",
+    "name": "Gross capital formation (annual % growth)",
+    "category": "Economic",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Investment growth momentum"
+  },
+  {
+    "code": "NE.RSB.GNFS.ZS",
+    "name": "External balance on goods and services (% of GDP)",
+    "category": "Trade",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Net trade balance; surplus/deficit signal"
+  },
+  {
+    "code": "NV.AGR.TOTL.KD.ZG",
+    "name": "Agriculture, forestry, and fishing, value added (annual % growth)",
+    "category": "Economic",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Agricultural sector growth; food economy trend"
+  },
+  {
+    "code": "NV.IND.MANF.KD.ZG",
+    "name": "Manufacturing, value added (annual % growth)",
+    "category": "Economic",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Manufacturing growth; industrialization pace"
+  },
+  {
+    "code": "NV.IND.TOTL.KD.ZG",
+    "name": "Industry (including construction), value added (annual % growth)",
+    "category": "Economic",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Industrial sector growth rate"
+  },
+  {
+    "code": "NV.SRV.TOTL.KD.ZG",
+    "name": "Services, value added (annual % growth)",
+    "category": "Economic",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Services sector growth; post-industrial transition"
+  },
+  {
+    "code": "NY.GDP.COAL.RT.ZS",
+    "name": "Coal rents (% of GDP)",
+    "category": "Economic",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Coal resource rent; extractive economy dependency"
+  },
+  {
+    "code": "NY.GDP.FRST.RT.ZS",
+    "name": "Forest rents (% of GDP)",
+    "category": "Economic",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Timber/forest resource rents; natural capital"
+  },
+  {
+    "code": "NY.GDP.MINR.RT.ZS",
+    "name": "Mineral rents (% of GDP)",
+    "category": "Economic",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Mineral resource rents; extractive dependency"
+  },
+  {
+    "code": "NY.GDP.NGAS.RT.ZS",
+    "name": "Natural gas rents (% of GDP)",
+    "category": "Economic",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Gas rent share; resource curse risk"
+  },
+  {
+    "code": "NY.GDP.OIL.RT.ZS",
+    "name": "Oil rents (% of GDP)",
+    "category": "Economic",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Oil rent share of GDP; petro-state exposure"
+  },
+  {
+    "code": "NY.GDP.PCAP.KD",
+    "name": "GDP per capita (constant 2015 US$)",
+    "category": "Economic",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Real per-capita income level; development baseline"
+  },
+  {
+    "code": "NY.GDP.PCAP.KD.ZG",
+    "name": "GDP per capita growth (annual %)",
+    "category": "Economic",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Real per-capita income growth; welfare signal"
+  },
+  {
+    "code": "NY.GDP.PCAP.PP.CD",
+    "name": "GDP per capita, PPP (current international $)",
+    "category": "Economic",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Purchasing power adjusted income; living standard"
+  },
+  {
+    "code": "NY.GDP.PCAP.PP.KD",
+    "name": "GDP per capita, PPP (constant 2017 international $)",
+    "category": "Economic",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Real PPP per-capita income; cross-country comparison"
+  },
+  {
+    "code": "NY.GDP.TOTL.RT.ZS",
+    "name": "Total natural resources rents (% of GDP)",
+    "category": "Economic",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Natural resource dependency; Dutch disease risk"
+  },
+  {
+    "code": "NY.GNP.MKTP.CD",
+    "name": "GNI (current US$)",
+    "category": "Economic",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Gross national income; income including remittances"
+  },
+  {
+    "code": "NY.GNP.MKTP.KD.ZG",
+    "name": "GNI growth (annual %)",
+    "category": "Economic",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "National income growth including factor flows"
+  },
+  {
+    "code": "NY.GNP.PCAP.KD.ZG",
+    "name": "GNI per capita growth (annual %)",
+    "category": "Economic",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Per-capita national income growth"
+  },
+  {
+    "code": "NY.GNP.PCAP.PP.CD",
+    "name": "GNI per capita, PPP (current international $)",
+    "category": "Economic",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "PPP-adjusted GNI per capita; welfare comparison"
+  },
+  {
+    "code": "NY.GNS.ICTR.ZS",
+    "name": "Gross savings (% of GDP)",
+    "category": "Economic",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "National savings rate; investment capacity signal"
+  },
+  {
+    "code": "PA.NUS.FCRF",
+    "name": "Official exchange rate (LCU per US$, period average)",
+    "category": "Finance",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Currency rate level; monetary stability reference"
+  },
+  {
+    "code": "PA.NUS.PPP",
+    "name": "PPP conversion factor (GDP) to market exchange rate ratio",
+    "category": "Finance",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Purchasing power gap; competitiveness signal"
+  },
+  {
+    "code": "SE.ADT.LITR.ZS",
+    "name": "Literacy rate, adult total (% of people ages 15 and above)",
+    "category": "Education",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Adult literacy; human capital foundation"
+  },
+  {
+    "code": "SE.ADT.1524.LT.ZS",
+    "name": "Literacy rate, youth total (% of people ages 15-24)",
+    "category": "Education",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Youth literacy; next-generation human capital"
+  },
+  {
+    "code": "SE.ENR.PRSC.FM.ZS",
+    "name": "School enrollment, primary and secondary (gross), gender parity index (GPI)",
+    "category": "Education",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Gender parity in schooling; equality signal"
+  },
+  {
+    "code": "SE.PRM.CMPT.ZS",
+    "name": "Primary completion rate, total (% of relevant age group)",
+    "category": "Education",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Primary education completion; human capital pipeline"
+  },
+  {
+    "code": "SE.PRM.ENRR.FE",
+    "name": "School enrollment, primary, female (% gross)",
+    "category": "Education",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Girls primary enrollment; gender-education equality"
+  },
+  {
+    "code": "SE.PRM.NENR",
+    "name": "School enrollment, primary (% net)",
+    "category": "Education",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Net primary enrollment; education access quality"
+  },
+  {
+    "code": "SE.SEC.CMPT.LO.ZS",
+    "name": "Lower secondary completion rate, total (% of relevant age group)",
+    "category": "Education",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Secondary completion; skill formation pipeline"
+  },
+  {
+    "code": "SE.SEC.ENRR",
+    "name": "School enrollment, secondary (% gross)",
+    "category": "Education",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Secondary enrollment; mid-level human capital"
+  },
+  {
+    "code": "SE.SEC.NENR",
+    "name": "School enrollment, secondary (% net)",
+    "category": "Education",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Net secondary enrollment; quality-adjusted access"
+  },
+  {
+    "code": "SE.TER.ENRR",
+    "name": "School enrollment, tertiary (% gross)",
+    "category": "Education",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Higher education enrollment; knowledge economy pool"
+  },
+  {
+    "code": "SE.XPD.TOTL.GB.ZS",
+    "name": "Government expenditure on education, total (% of government expenditure)",
+    "category": "Education",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Education spending priority; human capital investment"
+  },
+  {
+    "code": "SE.XPD.TOTL.GD.ZS",
+    "name": "Government expenditure on education, total (% of GDP)",
+    "category": "Education",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Education spending as GDP share; long-run investment"
+  },
+  {
+    "code": "SH.ANM.CHLD.ZS",
+    "name": "Prevalence of anemia among children (% of children under 5)",
+    "category": "Health",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Child nutrition indicator; health fragility signal"
+  },
+  {
+    "code": "SH.DYN.MORT.FE",
+    "name": "Mortality rate, under-5, female (per 1,000 live births)",
+    "category": "Health",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Female child mortality; health system quality"
+  },
+  {
+    "code": "SH.DYN.MORT.MA",
+    "name": "Mortality rate, under-5, male (per 1,000 live births)",
+    "category": "Health",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Male child mortality; health system quality"
+  },
+  {
+    "code": "SH.DYN.NMRT",
+    "name": "Neonatal mortality rate (per 1,000 live births)",
+    "category": "Health",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Neonatal death rate; healthcare access signal"
+  },
+  {
+    "code": "SH.H2O.BASW.ZS",
+    "name": "People using at least basic drinking water services (% of population)",
+    "category": "Health",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Safe water access; public health infrastructure"
+  },
+  {
+    "code": "SH.H2O.SMDW.ZS",
+    "name": "People using safely managed drinking water services (% of population)",
+    "category": "Health",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Quality water access; sanitation development"
+  },
+  {
+    "code": "SH.HIV.INCD.ZS",
+    "name": "Incidence of HIV, ages 15-49 (per 1,000 uninfected population ages 15-49)",
+    "category": "Health",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "HIV new infection rate; health system burden"
+  },
+  {
+    "code": "SH.MED.BEDS.ZS",
+    "name": "Hospital beds (per 1,000 people)",
+    "category": "Health",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Healthcare capacity; health system infrastructure"
+  },
+  {
+    "code": "SH.MED.NUMW.P3",
+    "name": "Nurses and midwives (per 1,000 people)",
+    "category": "Health",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Health workforce density; primary care access"
+  },
+  {
+    "code": "SH.MED.PHYS.ZS",
+    "name": "Physicians (per 1,000 people)",
+    "category": "Health",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Doctor density; healthcare system depth"
+  },
+  {
+    "code": "SH.MLR.INCD.P3",
+    "name": "Incidence of malaria (per 1,000 population at risk)",
+    "category": "Health",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Malaria burden; disease-related instability risk"
+  },
+  {
+    "code": "SH.MMR.RISK.ZS",
+    "name": "Lifetime risk of maternal death (%)",
+    "category": "Health",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Maternal mortality risk; health system fragility"
+  },
+  {
+    "code": "SH.PRV.SMOK",
+    "name": "Prevalence of current tobacco use (% of adults)",
+    "category": "Health",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Tobacco use rate; long-run health burden"
+  },
+  {
+    "code": "SH.STA.BASS.ZS",
+    "name": "People using at least basic sanitation services (% of population)",
+    "category": "Health",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Sanitation access; public health baseline"
+  },
+  {
+    "code": "SH.STA.DIAB.ZS",
+    "name": "Diabetes prevalence (% of population ages 20 to 79)",
+    "category": "Health",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Chronic disease burden; healthcare cost pressure"
+  },
+  {
+    "code": "SH.STA.MMRT",
+    "name": "Maternal mortality ratio (modeled estimate, per 100,000 live births)",
+    "category": "Health",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Maternal death rate; women's health system signal"
+  },
+  {
+    "code": "SH.STA.ODFC.ZS",
+    "name": "People practicing open defecation (% of population)",
+    "category": "Health",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Extreme sanitation deprivation; fragility indicator"
+  },
+  {
+    "code": "SH.STA.STNT.ZS",
+    "name": "Prevalence of stunting, height for age (% of children under 5)",
+    "category": "Health",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Chronic malnutrition; long-term human capital damage"
+  },
+  {
+    "code": "SH.STA.SUIC.P5",
+    "name": "Suicide mortality rate (per 100,000 population)",
+    "category": "Health",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Mental health burden; social stress indicator"
+  },
+  {
+    "code": "SH.STA.TRAF.P5",
+    "name": "Mortality caused by road traffic injury (per 100,000 population)",
+    "category": "Health",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Road safety; infrastructure and governance signal"
+  },
+  {
+    "code": "SH.STA.MALN.ZS",
+    "name": "Prevalence of underweight, weight for age (% of children under 5)",
+    "category": "Health",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Child malnutrition; food security outcome"
+  },
+  {
+    "code": "SH.TBS.INCD",
+    "name": "Incidence of tuberculosis (per 100,000 people)",
+    "category": "Health",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "TB burden; disease-related fragility signal"
+  },
+  {
+    "code": "SH.XPD.CHEX.GD.ZS",
+    "name": "Current health expenditure (% of GDP)",
+    "category": "Health",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Health spending share of GDP; system investment"
+  },
+  {
+    "code": "SH.XPD.CHEX.PC.CD",
+    "name": "Current health expenditure per capita (current US$)",
+    "category": "Health",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Per-capita health spending; healthcare access proxy"
+  },
+  {
+    "code": "SH.XPD.GHED.GD.ZS",
+    "name": "Domestic general government health expenditure (% of GDP)",
+    "category": "Health",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Public health investment; state capacity in health"
+  },
+  {
+    "code": "SH.XPD.OOPC.CH.ZS",
+    "name": "Out-of-pocket expenditure (% of current health expenditure)",
+    "category": "Health",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Healthcare cost burden on households; poverty link"
+  },
+  {
+    "code": "SI.DST.04TH.20",
+    "name": "Income share held by fourth 20%",
+    "category": "Social",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Income distribution; pre-gini distributional detail"
+  },
+  {
+    "code": "SI.DST.05TH.20",
+    "name": "Income share held by highest 20%",
+    "category": "Social",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Top quintile income share; inequality concentration"
+  },
+  {
+    "code": "SI.DST.10TH.10",
+    "name": "Income share held by highest 10%",
+    "category": "Social",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Top decile share; elite concentration signal"
+  },
+  {
+    "code": "SI.DST.FRST.20",
+    "name": "Income share held by lowest 20%",
+    "category": "Social",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Bottom quintile share; poverty depth indicator"
+  },
+  {
+    "code": "SI.POV.DDAY",
+    "name": "Poverty headcount ratio at $2.15 a day (2017 PPP) (% of population)",
+    "category": "Social",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Extreme poverty rate; social fragility core metric"
+  },
+  {
+    "code": "SI.POV.LMIC",
+    "name": "Poverty headcount ratio at $3.65 a day (2017 PPP) (% of population)",
+    "category": "Social",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Lower-middle income poverty line; broader poverty"
+  },
+  {
+    "code": "SI.POV.UMIC",
+    "name": "Poverty headcount ratio at $6.85 a day (2017 PPP) (% of population)",
+    "category": "Social",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Upper-middle income poverty threshold"
+  },
+  {
+    "code": "SI.POV.GAPS",
+    "name": "Poverty gap at $2.15 a day (2017 PPP) (%)",
+    "category": "Social",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Poverty depth; how far below poverty line"
+  },
+  {
+    "code": "SI.POV.NAHC",
+    "name": "Poverty headcount ratio at national poverty lines (% of population)",
+    "category": "Social",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "National poverty measure; context-specific threshold"
+  },
+  {
+    "code": "SL.EMP.MPYR.ZS",
+    "name": "Employers, total (% of total employment) (modeled ILO estimate)",
+    "category": "Social",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Entrepreneurial employment share; business creation"
+  },
+  {
+    "code": "SL.EMP.SELF.ZS",
+    "name": "Self-employed, total (% of total employment) (modeled ILO estimate)",
+    "category": "Social",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Informal/self-employment; labor market structure"
+  },
+  {
+    "code": "SL.EMP.VULN.ZS",
+    "name": "Vulnerable employment, total (% of total employment) (modeled ILO estimate)",
+    "category": "Social",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Precarious employment share; labor fragility"
+  },
+  {
+    "code": "SL.EMP.WAGE.ZS",
+    "name": "Wage and salaried workers, total (% of total employed) (modeled ILO estimate)",
+    "category": "Social",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Formal wage employment share; labor formality"
+  },
+  {
+    "code": "SL.GDP.PCAP.EM.KD",
+    "name": "GDP per person employed (constant 2017 PPP $)",
+    "category": "Economic",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Labour productivity level; efficiency signal"
+  },
+  {
+    "code": "SL.IND.EMPL.ZS",
+    "name": "Employment in industry (% of total employment) (modeled ILO estimate)",
+    "category": "Social",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Industrial employment share; structural transformation"
+  },
+  {
+    "code": "SL.AGR.EMPL.ZS",
+    "name": "Employment in agriculture (% of total employment) (modeled ILO estimate)",
+    "category": "Social",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Agricultural employment share; rural economy weight"
+  },
+  {
+    "code": "SL.SRV.EMPL.ZS",
+    "name": "Employment in services (% of total employment) (modeled ILO estimate)",
+    "category": "Social",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Services employment share; post-industrial transition"
+  },
+  {
+    "code": "SL.TLF.ACTI.ZS",
+    "name": "Labor force participation rate, total (% of total population ages 15+) (modeled ILO estimate)",
+    "category": "Social",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Overall labor force participation; economic activity"
+  },
+  {
+    "code": "SL.TLF.ACTI.MA.ZS",
+    "name": "Labor force participation rate, male (% of male population ages 15+) (modeled ILO estimate)",
+    "category": "Social",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Male labor participation; economic activity baseline"
+  },
+  {
+    "code": "SL.TLF.CACT.MA.ZS",
+    "name": "Labor force participation rate, male (% of male population ages 15+) (national estimate)",
+    "category": "Social",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Male LFPR national estimate; workforce context"
+  },
+  {
+    "code": "SL.TLF.TOTL.IN",
+    "name": "Labor force, total",
+    "category": "Demographic",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Absolute labor force size; workforce capacity"
+  },
+  {
+    "code": "SL.UEM.TOTL.FE.ZS",
+    "name": "Unemployment, female (% of female labor force) (modeled ILO estimate)",
+    "category": "Social",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Female unemployment; gender-differentiated labor signal"
+  },
+  {
+    "code": "SL.UEM.TOTL.MA.ZS",
+    "name": "Unemployment, male (% of male labor force) (modeled ILO estimate)",
+    "category": "Social",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Male unemployment; labor market health"
+  },
+  {
+    "code": "SL.UEM.NEET.ZS",
+    "name": "Share of youth not in education, employment or training, total (% of youth population)",
+    "category": "Social",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "NEET rate; youth disengagement; social tension signal"
+  },
+  {
+    "code": "SM.POP.TOTL",
+    "name": "International migrant stock, total",
+    "category": "Demographic",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Total migrant population; demographic heterogeneity"
+  },
+  {
+    "code": "SM.POP.TOTL.ZS",
+    "name": "International migrant stock (% of population)",
+    "category": "Demographic",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Migrant share; social cohesion and labour supply"
+  },
+  {
+    "code": "SM.POP.REFG",
+    "name": "Refugee population by country or territory of asylum",
+    "category": "Demographic",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Refugee inflows; humanitarian pressure signal"
+  },
+  {
+    "code": "SM.POP.REFG.OR",
+    "name": "Refugee population by country or territory of origin",
+    "category": "Demographic",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Refugees from country; displacement/conflict output"
+  },
+  {
+    "code": "SP.ADO.TFRT",
+    "name": "Adolescent fertility rate (births per 1,000 women ages 15-19)",
+    "category": "Demographic",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Teen birth rate; education/poverty interaction signal"
+  },
+  {
+    "code": "SP.DYN.CBRT.IN",
+    "name": "Birth rate, crude (per 1,000 people)",
+    "category": "Demographic",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Crude birth rate; population growth driver"
+  },
+  {
+    "code": "SP.DYN.CDRT.IN",
+    "name": "Death rate, crude (per 1,000 people)",
+    "category": "Demographic",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Crude death rate; mortality transition stage"
+  },
+  {
+    "code": "SP.DYN.IMRT.IN",
+    "name": "Mortality rate, infant (per 1,000 live births)",
+    "category": "Health",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Infant mortality; healthcare and poverty signal"
+  },
+  {
+    "code": "SP.POP.0014.TO.ZS",
+    "name": "Population ages 0-14 (% of total population)",
+    "category": "Demographic",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Youth bulge; demographic dividend/pressure signal"
+  },
+  {
+    "code": "SP.POP.1564.TO.ZS",
+    "name": "Population ages 15-64 (% of total population)",
+    "category": "Demographic",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Working-age population share; labor supply"
+  },
+  {
+    "code": "SP.POP.65UP.TO.ZS",
+    "name": "Population ages 65 and above (% of total population)",
+    "category": "Demographic",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Ageing population share; pension/social cost signal"
+  },
+  {
+    "code": "SP.POP.DPND",
+    "name": "Age dependency ratio (% of working-age population)",
+    "category": "Demographic",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Dependency burden; fiscal pressure from demographics"
+  },
+  {
+    "code": "SP.POP.DPND.OL",
+    "name": "Age dependency ratio, old (% of working-age population)",
+    "category": "Demographic",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Old-age dependency; pension system pressure"
+  },
+  {
+    "code": "SP.POP.DPND.YG",
+    "name": "Age dependency ratio, young (% of working-age population)",
+    "category": "Demographic",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Youth dependency; education/social spending demand"
+  },
+  {
+    "code": "SP.POP.GROW",
+    "name": "Population growth (annual %)",
+    "category": "Demographic",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Population growth rate; resource and governance pressure"
+  },
+  {
+    "code": "SP.RUR.TOTL.ZS",
+    "name": "Rural population (% of total population)",
+    "category": "Demographic",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Rural share; agrarian economy weighting"
+  },
+  {
+    "code": "SP.URB.GROW",
+    "name": "Urban population growth (annual %)",
+    "category": "Demographic",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Urban growth rate; urbanization pace and pressure"
+  },
+  {
+    "code": "SP.URB.TOTL.IN.ZS",
+    "name": "Urban population (% of total population)",
+    "category": "Demographic",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Urbanization rate; structural development indicator"
+  },
+  {
+    "code": "TM.TAX.MANF.SM.AR.ZS",
+    "name": "Tariff rate, applied, weighted mean, manufactured products (%)",
+    "category": "Trade",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Manufacturing tariff level; trade openness/protection"
+  },
+  {
+    "code": "TM.TAX.MRCH.SM.AR.ZS",
+    "name": "Tariff rate, applied, weighted mean, all products (%)",
+    "category": "Trade",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Overall applied tariff rate; trade liberalization signal"
+  },
+  {
+    "code": "TM.VAL.MRCH.CD.WT",
+    "name": "Merchandise imports (current US$)",
+    "category": "Trade",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Total merchandise imports; import demand"
+  },
+  {
+    "code": "TM.VAL.MRCH.GD.ZS",
+    "name": "Merchandise imports (% of GDP)",
+    "category": "Trade",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Import penetration; trade openness measure"
+  },
+  {
+    "code": "TM.VAL.MRCH.HI.ZS",
+    "name": "Manufactured goods (% of merchandise imports)",
+    "category": "Trade",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Manufactured import share; value chain participation"
+  },
+  {
+    "code": "TM.VAL.MRCH.OR.ZS",
+    "name": "Food (% of merchandise imports)",
+    "category": "Trade",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Food import dependency; food security vulnerability"
+  },
+  {
+    "code": "TX.VAL.AGRI.ZS.UN",
+    "name": "Agricultural raw materials exports (% of merchandise exports)",
+    "category": "Trade",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Commodity export concentration; diversification"
+  },
+  {
+    "code": "TX.VAL.FUEL.ZS.UN",
+    "name": "Fuel exports (% of merchandise exports)",
+    "category": "Trade",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Fuel export share; commodity dependence signal"
+  },
+  {
+    "code": "TX.VAL.MANF.ZS.UN",
+    "name": "Manufactured exports (% of merchandise exports)",
+    "category": "Trade",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Manufacturing export sophistication; value-add"
+  },
+  {
+    "code": "TX.VAL.MRCH.CD.WT",
+    "name": "Merchandise exports (current US$)",
+    "category": "Trade",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Absolute export receipts; trade volume"
+  },
+  {
+    "code": "TX.VAL.MRCH.GD.ZS",
+    "name": "Merchandise exports (% of GDP)",
+    "category": "Trade",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Export openness ratio; trade-to-GDP"
+  },
+  {
+    "code": "TX.VAL.MRCH.HI.ZS",
+    "name": "Manufactured goods (% of merchandise exports)",
+    "category": "Trade",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Manufactured export share; industrial sophistication"
+  },
+  {
+    "code": "TX.VAL.MRCH.OR.ZS",
+    "name": "Food exports (% of merchandise exports)",
+    "category": "Trade",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Agricultural export dependency"
+  },
+  {
+    "code": "TX.VAL.ORES.ZS.UN",
+    "name": "Ores and metals exports (% of merchandise exports)",
+    "category": "Trade",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Mining export concentration; commodity risk"
+  },
+  {
+    "code": "VC.IDP.TOTL.HE",
+    "name": "Internally displaced persons, new displacement associated with conflict and violence (number of cases)",
+    "category": "Social",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Conflict displacement; civil instability direct signal"
+  },
+  {
+    "code": "VC.IDP.NWCV",
+    "name": "Internally displaced persons, new displacement associated with disasters (number of cases)",
+    "category": "Social",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Disaster displacement; climate/hazard vulnerability"
+  },
+  {
+    "code": "VC.PKP.TOTL.UN",
+    "name": "Presence of United Nations peacekeepers (number of troops, police and military observers)",
+    "category": "Other",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "UN peacekeeping presence; active conflict signal"
+  },
+  {
+    "code": "SH.DYN.AIDS.ZS",
+    "name": "Adults (ages 15+) living with HIV (% of population ages 15-49)",
+    "category": "Health",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "HIV prevalence; health system burden and social cost"
+  },
+  {
+    "code": "SH.DYN.AIDS",
+    "name": "Adults (ages 15+) living with HIV",
+    "category": "Health",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "HIV absolute count; epidemic scale"
+  },
+  {
+    "code": "SH.IMM.MEAS",
+    "name": "Immunization, measles (% of children ages 12-23 months)",
+    "category": "Health",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Vaccination coverage; public health system function"
+  },
+  {
+    "code": "SH.IMM.IDPT",
+    "name": "Immunization, DPT (% of children ages 12-23 months)",
+    "category": "Health",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "DPT vaccination; health service delivery"
+  },
+  {
+    "code": "SH.STA.AIRP.P5",
+    "name": "Mortality rate attributed to household and ambient air pollution, age-standardized (per 100,000 population)",
+    "category": "Health",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Air pollution deaths; environmental health burden"
+  },
+  {
+    "code": "SH.STA.WASH.P5",
+    "name": "Mortality rate attributed to unsafe water, sanitation and hygiene (per 100,000 population)",
+    "category": "Health",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "WASH mortality; infrastructure-health link"
+  },
+  {
+    "code": "SP.DYN.LE00.FE.IN",
+    "name": "Life expectancy at birth, female (years)",
+    "category": "Health",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Female life expectancy; health and welfare signal"
+  },
+  {
+    "code": "SP.DYN.LE00.MA.IN",
+    "name": "Life expectancy at birth, male (years)",
+    "category": "Health",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Male life expectancy; health system and inequality"
+  },
+  {
+    "code": "NY.ADJ.NNTY.PC.KD.ZG",
+    "name": "Adjusted net national income per capita (annual % growth)",
+    "category": "Economic",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Net national income growth adjusted for resources"
+  },
+  {
+    "code": "NY.ADJ.DRES.GN.ZS",
+    "name": "Adjusted savings: education expenditure (% of GNI)",
+    "category": "Education",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Human capital investment in adjusted savings framework"
+  },
+  {
+    "code": "NY.ADJ.DNGY.GN.ZS",
+    "name": "Adjusted savings: energy depletion (% of GNI)",
+    "category": "Environment",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Energy resource drawdown; sustainability signal"
+  },
+  {
+    "code": "NY.ADJ.DMIN.GN.ZS",
+    "name": "Adjusted savings: mineral depletion (% of GNI)",
+    "category": "Environment",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Mineral resource depletion; natural capital erosion"
+  },
+  {
+    "code": "NY.ADJ.DFOR.GN.ZS",
+    "name": "Adjusted savings: net forest depletion (% of GNI)",
+    "category": "Environment",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Forest depletion rate; natural capital sustainability"
+  },
+  {
+    "code": "NY.ADJ.SVNG.GN.ZS",
+    "name": "Adjusted net savings, including particulate emission damage (% of GNI)",
+    "category": "Environment",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Genuine savings rate; long-run wealth sustainability"
+  },
+  {
+    "code": "NY.ADJ.AEDU.GN.ZS",
+    "name": "Adjusted savings: education expenditure (% of GNI)",
+    "category": "Education",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Human capital investment in genuine savings"
+  },
+  {
+    "code": "SE.PRM.REPT.ZS",
+    "name": "Repeaters, primary, total (% of total enrollment)",
+    "category": "Education",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Grade repetition rate; education quality signal"
+  },
+  {
+    "code": "SE.PRM.DURS",
+    "name": "Duration of primary education (years)",
+    "category": "Education",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Primary cycle length; system structure"
+  },
+  {
+    "code": "SE.PRM.TCHR.ZS",
+    "name": "Pupil-teacher ratio, primary",
+    "category": "Education",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Classroom crowding; education resource adequacy"
+  },
+  {
+    "code": "SE.SEC.TCHR.ZS",
+    "name": "Pupil-teacher ratio, secondary",
+    "category": "Education",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Secondary teacher load; education quality proxy"
+  },
+  {
+    "code": "TT.PRI.MRCH.XD.WD",
+    "name": "Net barter terms of trade index (2000 = 100)",
+    "category": "Trade",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Export vs import price ratio; commodity terms of trade"
+  },
+  {
+    "code": "GC.REV.GOTR.ZS",
+    "name": "Grants and other revenue (% of revenue)",
+    "category": "Government",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Aid/grant share of government revenue; fiscal dependency"
+  },
+  {
+    "code": "GC.XPN.INTP.RV.ZS",
+    "name": "Interest payments (% of revenue)",
+    "category": "Government",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Debt servicing share of revenue; fiscal stress"
+  },
+  {
+    "code": "GC.XPN.DSUB.ZS",
+    "name": "Subsidies and other transfers (% of expense)",
+    "category": "Government",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Subsidy burden; populist fiscal pressure"
+  },
+  {
+    "code": "GC.XPN.COMP.ZS",
+    "name": "Compensation of employees (% of expense)",
+    "category": "Government",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Wage bill as share of spending; public sector size"
+  },
+  {
+    "code": "GC.XPN.OTHY.ZS",
+    "name": "Other expense (% of expense)",
+    "category": "Government",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Residual government expenditure classification"
+  },
+  {
+    "code": "DT.ODA.ODAT.CD",
+    "name": "Net ODA received (current US$)",
+    "category": "Government",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Official development assistance received; aid dependency"
+  },
+  {
+    "code": "DT.ODA.ODAT.GN.ZS",
+    "name": "Net ODA received (% of GNI)",
+    "category": "Government",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "ODA as GNI share; development finance dependency"
+  },
+  {
+    "code": "DT.ODA.ODAT.PC.ZS",
+    "name": "Net ODA received per capita (current US$)",
+    "category": "Government",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Per-capita aid received; resource dependency context"
+  },
+  {
+    "code": "FR.INR.LNDP",
+    "name": "Interest rate spread (lending rate minus deposit rate, %)",
+    "category": "Finance",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Banking sector margin; financial intermediation efficiency"
+  },
+  {
+    "code": "FS.AST.CGOV.GD.ZS",
+    "name": "Claims on central government (annual growth as % of broad money)",
+    "category": "Finance",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Monetary financing of government; inflation risk"
+  },
+  {
+    "code": "FS.AST.PRVT.GD.ZS",
+    "name": "Claims on private sector (annual growth as % of broad money)",
+    "category": "Finance",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Private credit growth; credit boom signal"
+  },
+  {
+    "code": "FM.AST.DOMO.CN",
+    "name": "Domestic credit provided by banking sector (current LCU)",
+    "category": "Finance",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Total bank credit; credit expansion indicator"
+  },
+  {
+    "code": "MS.MIL.TOTL.P1",
+    "name": "Armed forces personnel, total",
+    "category": "Military",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Absolute military size; military power indicator"
+  },
+  {
+    "code": "VC.IHR.PSRC.P5",
+    "name": "Intentional homicides (per 100,000 people)",
+    "category": "Social",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Homicide rate; violence and security environment"
+  },
+  {
+    "code": "VC.IHR.PSRC.FE.P5",
+    "name": "Intentional homicides, female (per 100,000 female population)",
+    "category": "Social",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Female homicide rate; gender-based violence signal"
+  },
+  {
+    "code": "VC.IHR.PSRC.MA.P5",
+    "name": "Intentional homicides, male (per 100,000 male population)",
+    "category": "Social",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Male homicide rate; crime and instability"
+  },
+  {
+    "code": "SP.DYN.WFRT",
+    "name": "Wanted fertility rate (births per woman)",
+    "category": "Demographic",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Desired vs actual fertility gap; family planning access"
+  },
+  {
+    "code": "SP.MTR.1519.ZS",
+    "name": "Teenage mothers (% of women ages 15-19 who have had children or are currently pregnant)",
+    "category": "Demographic",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Teen motherhood; education and poverty interaction"
+  },
+  {
+    "code": "SP.HOU.FEMA.ZS",
+    "name": "Female headed households (% of households with a female head)",
+    "category": "Social",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Female household headship; family structure signal"
+  },
+  {
+    "code": "SG.DMK.ALLD.FN.ZS",
+    "name": "Women making their own informed decisions regarding sexual relations, contraceptive use and reproductive health care (% of women age 15-49)",
+    "category": "Social",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Reproductive autonomy; women empowerment indicator"
+  },
+  {
+    "code": "SG.GEN.PARL.ZS",
+    "name": "Proportion of seats held by women in national parliaments (%)",
+    "category": "Governance",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Political gender equality; representative inclusion"
+  },
+  {
+    "code": "SG.LAW.INDX",
+    "name": "Women, Business and the Law: Overall Score (scale 1-100)",
+    "category": "Governance",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Legal gender equality score; women's rights framework"
+  },
+  {
+    "code": "SH.CON.AIDS.ZS",
+    "name": "Condom use, population ages 15-24, female (% of females ages 15-24)",
+    "category": "Health",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Contraceptive use; health system reach and education"
+  },
+  {
+    "code": "IC.FRM.CORR.ZS",
+    "name": "Firms expected to give gifts in meetings with tax officials (% of firms)",
+    "category": "Governance",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Corruption in tax administration; business environment"
+  },
+  {
+    "code": "IC.FRM.BRIB.ZS",
+    "name": "Bribery incidence (% of firms experiencing at least one bribe payment request)",
+    "category": "Governance",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Business bribery rate; corruption direct measure"
+  },
+  {
+    "code": "IC.FRM.CRIM.ZS",
+    "name": "Firms identifying crime, theft and disorder as a major constraint (%)",
+    "category": "Governance",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Crime as business constraint; security environment"
+  },
+  {
+    "code": "IC.FRM.INFM.ZS",
+    "name": "Firms competing against unregistered firms (%)",
+    "category": "Governance",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Informal sector competition; regulatory enforcement"
+  },
+  {
+    "code": "IC.FRM.ISOC.ZS",
+    "name": "ISO certification ownership (% of firms)",
+    "category": "Governance",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Business quality standards adoption; formalization"
+  },
+  {
+    "code": "IC.FRM.TRNG.ZS",
+    "name": "Firms offering formal training (% of firms)",
+    "category": "Social",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Employer training investment; human capital focus"
+  },
+  {
+    "code": "EG.ELC.LOSS.ZS",
+    "name": "Electric power transmission and distribution losses (% of output)",
+    "category": "Infrastructure",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Grid efficiency; infrastructure quality signal"
+  },
+  {
+    "code": "IS.ROD.PAVE.ZS",
+    "name": "Roads, paved (% of total roads)",
+    "category": "Infrastructure",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Road infrastructure quality; connectivity signal"
+  },
+  {
+    "code": "IS.ROD.TOTL.KM",
+    "name": "Roads, total network (km)",
+    "category": "Infrastructure",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Total road network size; physical connectivity"
+  },
+  {
+    "code": "IS.RRS.TOTL.KM",
+    "name": "Rail lines (total route-km)",
+    "category": "Infrastructure",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Rail network extent; inland logistics backbone"
+  },
+  {
+    "code": "IT.NET.BBND",
+    "name": "Fixed broadband subscriptions",
+    "category": "Infrastructure",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Absolute broadband count; digital economy scale"
+  },
+  {
+    "code": "IC.BUS.NDNS.ZS",
+    "name": "New businesses registered (number)",
+    "category": "Economic",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Business formation rate; entrepreneurial dynamism"
+  },
+  {
+    "code": "IC.BUS.NREG",
+    "name": "New businesses registered (per 1,000 people ages 15-64)",
+    "category": "Economic",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Per-capita business creation; economic dynamism"
+  },
+  {
+    "code": "NY.GDP.MKTP.PP.CD",
+    "name": "GDP, PPP (current international $)",
+    "category": "Economic",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "PPP-adjusted GDP; size comparison across countries"
+  },
+  {
+    "code": "NY.GDP.MKTP.PP.KD",
+    "name": "GDP, PPP (constant 2017 international $)",
+    "category": "Economic",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Real PPP GDP; economic size over time"
+  },
+  {
+    "code": "NE.CON.TOTL.ZS",
+    "name": "Final consumption expenditure (% of GDP)",
+    "category": "Economic",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Consumption share of GDP; domestic demand structure"
+  },
+  {
+    "code": "NE.CON.TOTL.KD.ZG",
+    "name": "Final consumption expenditure (annual % growth)",
+    "category": "Economic",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Consumer demand growth; domestic spending momentum"
+  },
+  {
+    "code": "BN.TRF.CURR.CD",
+    "name": "Net secondary income (BoP, current US$)",
+    "category": "Trade",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Transfer income balance; aid and remittance net flows"
+  },
+  {
+    "code": "BX.TRF.PWKR.CD.DT",
+    "name": "Personal remittances, received (current US$)",
+    "category": "Economic",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Remittances received absolute; diaspora income"
+  },
+  {
+    "code": "TX.VAL.OTHR.ZS.WT",
+    "name": "Computer, communications and other services (% of commercial service exports)",
+    "category": "Trade",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "ICT/digital services export share; knowledge economy"
+  },
+  {
+    "code": "SE.ADT.LITR.FE.ZS",
+    "name": "Literacy rate, adult female (% of females ages 15 and above)",
+    "category": "Education",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Female adult literacy; gender education gap"
+  },
+  {
+    "code": "SE.ADT.LITR.MA.ZS",
+    "name": "Literacy rate, adult male (% of males ages 15 and above)",
+    "category": "Education",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Male adult literacy; gender education comparison"
+  },
+  {
+    "code": "SE.ENR.PRIM.FM.ZS",
+    "name": "School enrollment, primary, female (% net)",
+    "category": "Education",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Girls net primary enrollment; gender education parity"
+  },
+  {
+    "code": "SE.ENR.SECO.FM.ZS",
+    "name": "School enrollment, secondary, female (% net)",
+    "category": "Education",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Girls secondary enrollment; gender advancement"
+  },
+  {
+    "code": "SL.TLF.0714.ZS",
+    "name": "Children in employment, total (% of children ages 7-14)",
+    "category": "Social",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Child labor rate; poverty and education signal"
+  },
+  {
+    "code": "SL.TLF.0714.WK.ZS",
+    "name": "Children in employment, work only (% of children ages 7-14)",
+    "category": "Social",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Children working full-time; labour exploitation signal"
+  },
+  {
+    "code": "SH.XPD.EHEX.CH.ZS",
+    "name": "External health expenditure (% of current health expenditure)",
+    "category": "Health",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Aid-funded health spending share; aid dependency in health"
+  },
+  {
+    "code": "SH.XPD.PVTD.CH.ZS",
+    "name": "Domestic private health expenditure (% of current health expenditure)",
+    "category": "Health",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Private health spending share; public/private health mix"
+  },
+  {
+    "code": "SH.STA.SMSS.ZS",
+    "name": "People using safely managed sanitation services (% of population)",
+    "category": "Health",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Advanced sanitation coverage; infrastructure quality"
+  },
+  {
+    "code": "SH.HIV.ARTC.ZS",
+    "name": "Antiretroviral therapy coverage (% of people living with HIV)",
+    "category": "Health",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "HIV treatment access; health system functionality"
+  },
+  {
+    "code": "SH.TBS.CURE.ZS",
+    "name": "Tuberculosis treatment success rate (% of new cases)",
+    "category": "Health",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "TB cure rate; disease management capacity"
+  },
+  {
+    "code": "SH.TBS.DTEC.ZS",
+    "name": "Tuberculosis case detection rate (%, all forms)",
+    "category": "Health",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "TB detection capacity; surveillance system strength"
+  },
+  {
+    "code": "SH.PRG.ANEM",
+    "name": "Prevalence of anemia among pregnant women (%)",
+    "category": "Health",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Maternal nutrition; prenatal healthcare quality"
+  },
+  {
+    "code": "SH.STA.BRTC.ZS",
+    "name": "Births attended by skilled health staff (% of total)",
+    "category": "Health",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Skilled birth attendance; maternal care access"
+  },
+  {
+    "code": "SH.STA.WAST.ZS",
+    "name": "Prevalence of wasting, weight for height (% of children under 5)",
+    "category": "Health",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Acute malnutrition; food/health crisis signal"
+  },
+  {
+    "code": "ER.PTD.TOTL.ZS",
+    "name": "Terrestrial protected areas (% of total land area)",
+    "category": "Environment",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Land conservation; environmental governance"
+  },
+  {
+    "code": "ER.MRN.PTMR.ZS",
+    "name": "Marine protected areas (% of territorial waters)",
+    "category": "Environment",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Ocean conservation; maritime governance"
+  },
+  {
+    "code": "EN.CLC.MDAT.ZS",
+    "name": "Droughts, floods, extreme temperatures (% of population, average 1990-2009)",
+    "category": "Environment",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Climate disaster exposure; climate fragility baseline"
+  },
+  {
+    "code": "EN.URB.LCTY",
+    "name": "Population in the largest city (% of urban population)",
+    "category": "Demographic",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Urban primacy; capital city concentration risk"
+  },
+  {
+    "code": "EN.URB.MCTY.TL.ZS",
+    "name": "Population in urban agglomerations of more than 1 million (% of total population)",
+    "category": "Demographic",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Mega-city population share; urbanization concentration"
+  },
+  {
+    "code": "EN.URB.LCTY.UR.ZS",
+    "name": "Population in the largest city (% of urban population)",
+    "category": "Demographic",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Primate city dominance; urban governance stress"
+  },
+  {
+    "code": "SP.POP.SCIE.RD.P6",
+    "name": "Researchers in R&D (per million people)",
+    "category": "Other",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Research capacity; innovation system depth"
+  },
+  {
+    "code": "GB.XPD.RSDV.GD.ZS",
+    "name": "Research and development expenditure (% of GDP)",
+    "category": "Other",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "R&D investment; knowledge economy and innovation"
+  },
+  {
+    "code": "IE.PPI.ENGY.CD",
+    "name": "Investment in energy with private participation (current US$)",
+    "category": "Energy",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Private energy investment; sector attractiveness"
+  },
+  {
+    "code": "IE.PPI.TELE.CD",
+    "name": "Investment in telecoms with private participation (current US$)",
+    "category": "Infrastructure",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Telecom investment; digital infrastructure appetite"
+  },
+  {
+    "code": "IE.PPI.TRAN.CD",
+    "name": "Investment in transport with private participation (current US$)",
+    "category": "Infrastructure",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Transport private investment; logistics development"
+  },
+  {
+    "code": "IE.PPI.WATR.CD",
+    "name": "Investment in water and sanitation with private participation (current US$)",
+    "category": "Infrastructure",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Water infrastructure private investment"
+  },
+  {
+    "code": "IC.ELC.TIME",
+    "name": "Time required to get electricity (days)",
+    "category": "Infrastructure",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Regulatory burden for power connection; business environment"
+  },
+  {
+    "code": "IC.PRP.COST.ZS",
+    "name": "Cost to register property (% of property value)",
+    "category": "Governance",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Property registration cost; investment friction"
+  },
+  {
+    "code": "IC.TAX.PAYM",
+    "name": "Tax payments (number per year)",
+    "category": "Governance",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Tax compliance frequency; regulatory efficiency"
+  },
+  {
+    "code": "WP.INT.MDPC.08",
+    "name": "Account ownership at a financial institution or mobile-money-service provider (% of population ages 15+)",
+    "category": "Finance",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Financial inclusion rate; access to formal finance"
+  },
+  {
+    "code": "WP.INT.MDPC.01",
+    "name": "Made or received a digital payment in the past year (% age 15+)",
+    "category": "Finance",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Digital payment adoption; fintech penetration"
+  },
+  {
+    "code": "WP.INT.MDPC.06",
+    "name": "Saved any money in the past year (% age 15+)",
+    "category": "Finance",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Savings behaviour; household financial resilience"
+  },
+  {
+    "code": "WP.INT.MDPC.07",
+    "name": "Borrowed any money in the past year (% age 15+)",
+    "category": "Finance",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Credit access; household borrowing activity"
+  },
+  {
+    "code": "WP.INT.MDPC.02",
+    "name": "Used a mobile phone or the internet to access a financial account (% age 15+)",
+    "category": "Finance",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Mobile/digital banking; fintech adoption rate"
+  },
+  {
+    "code": "SH.STA.BFED.ZS",
+    "name": "Exclusive breastfeeding (% of children under 6 months)",
+    "category": "Health",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Infant nutrition; early childhood health"
+  },
+  {
+    "code": "SH.STA.BRTW.ZS",
+    "name": "Low-birthweight babies (% of births)",
+    "category": "Health",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Birth weight; maternal health and nutrition signal"
+  },
+  {
+    "code": "SH.STA.ANVC.ZS",
+    "name": "Pregnant women receiving prenatal care (%)",
+    "category": "Health",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Antenatal care coverage; health system reach"
+  },
+  {
+    "code": "SH.STA.MMRT.NE",
+    "name": "Maternal mortality ratio (national estimate, per 100,000 live births)",
+    "category": "Health",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "National maternal mortality; government data quality"
+  },
+  {
+    "code": "SH.MMR.DTHS",
+    "name": "Number of maternal deaths",
+    "category": "Health",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Absolute maternal deaths; scale of burden"
+  },
+  {
+    "code": "SH.STA.HYGN.ZS",
+    "name": "People with basic handwashing facilities including soap and water (% of population)",
+    "category": "Health",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Hygiene access; public health fragility"
+  },
+  {
+    "code": "TM.VAL.MRCH.RS.ZS",
+    "name": "Ores and metals imports (% of merchandise imports)",
+    "category": "Trade",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Industrial raw material import need; manufacturing base"
+  },
+  {
+    "code": "TM.VAL.FUEL.ZS.UN",
+    "name": "Fuel imports (% of merchandise imports)",
+    "category": "Trade",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Fuel import dependency; energy price vulnerability"
+  },
+  {
+    "code": "TX.MNF.TECH.ZS.UN",
+    "name": "Medium and high-technology exports (% manufactured exports)",
+    "category": "Trade",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Tech export share; industrial sophistication"
+  },
+  {
+    "code": "BM.GSR.FCTY.CD",
+    "name": "Primary income payments (BoP, current US$)",
+    "category": "Trade",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Factor income outflows; profit repatriation"
+  },
+  {
+    "code": "BX.GSR.FCTY.CD",
+    "name": "Primary income receipts (BoP, current US$)",
+    "category": "Trade",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Factor income inflows; foreign earnings of residents"
+  },
+  {
+    "code": "DT.DOD.ALLC.CD",
+    "name": "External debt stocks, public and publicly guaranteed (PPG) (DOD, current US$)",
+    "category": "Government",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Public/guaranteed external debt; sovereign exposure"
+  },
+  {
+    "code": "DT.DOD.DECT.EX.ZS",
+    "name": "External debt stocks (% of exports of goods, services and primary income)",
+    "category": "Government",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "External debt vs export capacity; debt sustainability"
+  },
+  {
+    "code": "DT.NFL.BOND.CD",
+    "name": "PPG, bonds (NFL, current US$)",
+    "category": "Finance",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Bond market net financing flows; market access"
+  },
+  {
+    "code": "DT.NFL.MLAT.CD",
+    "name": "Net flows on external debt, multilateral (NFL, current US$)",
+    "category": "Government",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Multilateral lending net flows; IFI engagement"
+  },
+  {
+    "code": "DT.NFL.BLAT.CD",
+    "name": "Net flows on external debt, bilateral (NFL, current US$)",
+    "category": "Government",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Bilateral lending net; geopolitical finance signal"
+  },
+  {
+    "code": "DT.NFL.PCBO.CD",
+    "name": "Net flows, private creditors (NFL, current US$)",
+    "category": "Finance",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Private creditor net flows; market financing dynamics"
+  },
+  {
+    "code": "SG.VAW.ARGU.ZS",
+    "name": "Women who believe a husband is justified in beating his wife when she argues with him (% of women age 15-49)",
+    "category": "Social",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Gender-based violence acceptance; social norms"
+  },
+  {
+    "code": "SG.VAW.BURN.ZS",
+    "name": "Women who believe a husband is justified in beating his wife (burning food) (% of women age 15-49)",
+    "category": "Social",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Domestic violence tolerance; gender norms signal"
+  },
+  {
+    "code": "SG.TIM.UWRK.FE",
+    "name": "Proportion of time spent on unpaid domestic and care work, female (% of 24 hour day)",
+    "category": "Social",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Female unpaid work burden; time-use inequality"
+  },
+  {
+    "code": "SG.TIM.UWRK.MA",
+    "name": "Proportion of time spent on unpaid domestic and care work, male (% of 24 hour day)",
+    "category": "Social",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Male unpaid work share; gender norms comparison"
+  },
+  {
+    "code": "SE.PRM.GINT.ZS",
+    "name": "Gross intake ratio in grade 1 of primary education, total (% of relevant age group)",
+    "category": "Education",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Primary school entry rate; education system access"
+  },
+  {
+    "code": "SE.SEC.PROG.ZS",
+    "name": "Progression to secondary school (%)",
+    "category": "Education",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Transition to secondary; retention signal"
+  },
+  {
+    "code": "SP.DYN.CONU.ZS",
+    "name": "Contraceptive prevalence, any method (% of married women ages 15-49)",
+    "category": "Demographic",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Family planning use; demographic transition signal"
+  },
+  {
+    "code": "SP.DYN.TO65.FE.ZS",
+    "name": "Survival to age 65, female (% of cohort)",
+    "category": "Health",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Female survival probability; mortality transition"
+  },
+  {
+    "code": "SP.DYN.TO65.MA.ZS",
+    "name": "Survival to age 65, male (% of cohort)",
+    "category": "Health",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Male survival to 65; health and longevity signal"
+  },
+  {
+    "code": "SM.POP.NETM",
+    "name": "Net migration",
+    "category": "Demographic",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Net population migration; political/economic pressure output"
+  },
+  {
+    "code": "NE.CON.GOVT.KD",
+    "name": "General government final consumption expenditure (constant 2015 US$)",
+    "category": "Economic",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Real government consumption level; public spending volume"
+  },
+  {
+    "code": "SL.UEM.LTRM.ZS",
+    "name": "Long-term unemployment (% of total unemployment)",
+    "category": "Social",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Structural unemployment share; labour market rigidity"
+  },
+  {
+    "code": "SL.UEM.LTRM.MA.ZS",
+    "name": "Long-term unemployment, male (% of male unemployment)",
+    "category": "Social",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Male long-term unemployment; structural labour signal"
+  },
+  {
+    "code": "SL.UEM.LTRM.FE.ZS",
+    "name": "Long-term unemployment, female (% of female unemployment)",
+    "category": "Social",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Female structural unemployment; gender labour gap"
+  },
+  {
+    "code": "SL.UEM.1524.FE.ZS",
+    "name": "Unemployment, youth female (% of female labor force ages 15-24) (modeled ILO estimate)",
+    "category": "Social",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Youth female unemployment; gender-youth double signal"
+  },
+  {
+    "code": "SL.UEM.1524.MA.ZS",
+    "name": "Unemployment, youth male (% of male labor force ages 15-24) (modeled ILO estimate)",
+    "category": "Social",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Youth male unemployment; instability leading indicator"
+  },
+  {
+    "code": "SL.UEM.ADVN.ZS",
+    "name": "Unemployment with advanced education (% of total labor force with advanced education)",
+    "category": "Social",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Educated unemployment; brain drain precursor"
+  },
+  {
+    "code": "SI.SPR.PC40",
+    "name": "Income share held by second 20%",
+    "category": "Social",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Lower-middle income quintile share; distribution detail"
+  },
+  {
+    "code": "SI.SPR.PC40.ZG",
+    "name": "Annualized average growth rate in per capita real survey mean consumption or income, bottom 40% of population (%)",
+    "category": "Social",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Shared prosperity; inclusive growth indicator"
+  },
+  {
+    "code": "SI.DST.02ND.20",
+    "name": "Income share held by second 20%",
+    "category": "Social",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Second quintile income share; lower-middle inequality"
+  },
+  {
+    "code": "SI.DST.03RD.20",
+    "name": "Income share held by third 20%",
+    "category": "Social",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Middle quintile share; median income distribution"
+  },
+  {
+    "code": "AG.LND.EL5M.ZS",
+    "name": "Land area where elevation is below 5 meters (% of total land area)",
+    "category": "Environment",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Sea-level rise vulnerability; climate risk exposure"
+  },
+  {
+    "code": "EN.MAM.THRD.NO",
+    "name": "Mammal species, threatened",
+    "category": "Environment",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Biodiversity loss signal; environmental degradation"
+  },
+  {
+    "code": "EN.BIR.THRD.NO",
+    "name": "Bird species, threatened",
+    "category": "Environment",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Avian biodiversity loss; ecosystem health proxy"
+  },
+  {
+    "code": "EN.FSH.THRD.NO",
+    "name": "Fish species, threatened",
+    "category": "Environment",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Aquatic biodiversity; fishery resource sustainability"
+  },
+  {
+    "code": "ER.H2O.FWST.ZS",
+    "name": "Annual freshwater withdrawals, total (billion cubic meters)",
+    "category": "Environment",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Total water extraction; resource pressure absolute"
+  },
+  {
+    "code": "ER.H2O.FWAG.ZS",
+    "name": "Annual freshwater withdrawals, agriculture (% of total freshwater withdrawal)",
+    "category": "Environment",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Agricultural water use share; irrigation dependency"
+  },
+  {
+    "code": "ER.H2O.FWIN.ZS",
+    "name": "Annual freshwater withdrawals, industry (% of total freshwater withdrawal)",
+    "category": "Environment",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Industrial water use; manufacturing water intensity"
+  },
+  {
+    "code": "ER.H2O.FWDM.ZS",
+    "name": "Annual freshwater withdrawals, domestic (% of total freshwater withdrawal)",
+    "category": "Environment",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Domestic water use share; urban water pressure"
+  },
+  {
+    "code": "EN.ATM.PM25.MC.M3",
+    "name": "PM2.5 air pollution, mean annual exposure (micrograms per cubic meter)",
+    "category": "Environment",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Particulate air pollution; urban health and productivity"
+  },
+  {
+    "code": "EN.ATM.PM25.MC.ZS",
+    "name": "PM2.5 air pollution, population exposed to levels exceeding WHO guideline value (% of total)",
+    "category": "Environment",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Population exposed to dangerous air quality; health burden"
+  },
+  {
+    "code": "EN.ATM.GHGT.KT.CE",
+    "name": "Total greenhouse gas emissions (kt of CO2 equivalent)",
+    "category": "Environment",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Total GHG; climate commitment and energy intensity"
+  },
+  {
+    "code": "NY.ADJ.SVNX.GN.ZS",
+    "name": "Adjusted net savings, excluding particulate emission damage (% of GNI)",
+    "category": "Environment",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Genuine savings ex-pollution; wealth management"
+  },
+  {
+    "code": "IC.WRH.PROC",
+    "name": "Procedures to build a warehouse (number)",
+    "category": "Governance",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Construction permitting; regulatory efficiency"
+  },
+  {
+    "code": "IC.WRH.DURS",
+    "name": "Time to build a warehouse (days)",
+    "category": "Governance",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Construction permit speed; regulatory burden"
+  },
+  {
+    "code": "IC.CRD.PRVT.ZS",
+    "name": "Private credit bureau coverage (% of adults)",
+    "category": "Finance",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Credit registry coverage; financial infrastructure"
+  },
+  {
+    "code": "GC.TAX.INTT.RV.ZS",
+    "name": "Taxes on income, profits and capital gains (% of revenue)",
+    "category": "Government",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Direct tax reliance; fiscal structure signal"
+  },
+  {
+    "code": "GC.TAX.GSRV.RV.ZS",
+    "name": "Taxes on goods and services (% of revenue)",
+    "category": "Government",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Indirect tax reliance; consumption tax structure"
+  },
+  {
+    "code": "GC.TAX.IMPT.ZS",
+    "name": "Customs and other import duties (% of tax revenue)",
+    "category": "Government",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Trade tax dependency; fiscal structure openness"
+  },
+  {
+    "code": "GC.TAX.YPKG.ZS",
+    "name": "Taxes on income, profits and capital gains (% of total taxes)",
+    "category": "Government",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Progressive taxation share; redistribution capacity"
+  },
+  {
+    "code": "GC.TAX.EXPT.ZS",
+    "name": "Taxes on exports (% of tax revenue)",
+    "category": "Government",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Export taxation; trade policy signal"
+  },
+  {
+    "code": "IQ.CPA.FINS.XQ",
+    "name": "CPIA financial sector rating (1=low to 6=high)",
+    "category": "Finance",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "IDA financial sector quality; fragile state assessment"
+  },
+  {
+    "code": "IQ.CPA.MACR.XQ",
+    "name": "CPIA macroeconomic management rating (1=low to 6=high)",
+    "category": "Economic",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "IDA macro management quality; governance for fragile"
+  },
+  {
+    "code": "IQ.CPA.PROP.XQ",
+    "name": "CPIA property rights and rule-based governance rating (1=low to 6=high)",
+    "category": "Governance",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Property rights governance; IDA country assessment"
+  },
+  {
+    "code": "IQ.CPA.TRAD.XQ",
+    "name": "CPIA trade rating (1=low to 6=high)",
+    "category": "Trade",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Trade policy quality; IDA assessment"
+  },
+  {
+    "code": "IQ.CPA.GNDR.XQ",
+    "name": "CPIA gender equality rating (1=low to 6=high)",
+    "category": "Governance",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Gender policy quality; IDA governance assessment"
+  },
+  {
+    "code": "IQ.CPA.SOCI.XQ",
+    "name": "CPIA social protection rating (1=low to 6=high)",
+    "category": "Social",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Social protection quality; safety net governance"
+  },
+  {
+    "code": "IQ.CPA.PROT.XQ",
+    "name": "CPIA policies for social inclusion/equity cluster average (1=low to 6=high)",
+    "category": "Social",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Inclusion policy rating; equity governance"
+  },
+  {
+    "code": "IQ.CPA.IRAI.XQ",
+    "name": "CPIA average (IDA resource allocation index)",
+    "category": "Governance",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Composite IDA country policy assessment; governance quality"
+  },
+  {
+    "code": "IQ.CPA.PUBS.XQ",
+    "name": "CPIA public sector management and institutions cluster average (1=low to 6=high)",
+    "category": "Governance",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Public institution quality; state capacity composite"
+  },
+  {
+    "code": "IQ.CPA.BRSP.XQ",
+    "name": "CPIA budget and financial management rating (1=low to 6=high)",
+    "category": "Government",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Fiscal management quality; IDA budget governance"
+  },
+  {
+    "code": "IQ.CPA.RPTE.XQ",
+    "name": "CPIA revenue mobilization rating (1=low to 6=high)",
+    "category": "Government",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Tax collection effectiveness; fiscal state capacity"
+  },
+  {
+    "code": "IQ.CPA.PADM.XQ",
+    "name": "CPIA quality of public administration rating (1=low to 6=high)",
+    "category": "Governance",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Bureaucratic quality; public sector effectiveness"
+  },
+  {
+    "code": "IQ.CPA.TRAN.XQ",
+    "name": "CPIA transparency, accountability, and corruption in the public sector rating (1=low to 6=high)",
+    "category": "Governance",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Public sector accountability; anti-corruption rating"
+  },
+  {
+    "code": "GC.REV.SOCL.ZS",
+    "name": "Social contributions (% of revenue)",
+    "category": "Government",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Social security contribution share; welfare system depth"
+  },
+  {
+    "code": "DC.ODA.TOTL.CD",
+    "name": "Net official development assistance and official aid received (current US$)",
+    "category": "Government",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Total ODA including concessional aid; external support"
+  },
+  {
+    "code": "DC.ODA.TOTL.GN.ZS",
+    "name": "Net official development assistance and official aid received (% of GNI)",
+    "category": "Government",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "ODA/GNI ratio; aid dependence measure"
+  },
+  {
+    "code": "SE.XPD.PRIM.PC.ZS",
+    "name": "Government expenditure per student, primary (% of GDP per capita)",
+    "category": "Education",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Per-student public spending (primary); education investment"
+  },
+  {
+    "code": "SE.XPD.SECO.PC.ZS",
+    "name": "Government expenditure per student, secondary (% of GDP per capita)",
+    "category": "Education",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Per-student public spending (secondary); education priority"
+  },
+  {
+    "code": "SE.XPD.TERT.PC.ZS",
+    "name": "Government expenditure per student, tertiary (% of GDP per capita)",
+    "category": "Education",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Per-student tertiary spending; higher education investment"
+  },
+  {
+    "code": "TM.TAX.TCOM.BC.ZS",
+    "name": "Binding coverage, all products (%)",
+    "category": "Trade",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "WTO binding rate; trade policy stability commitment"
+  },
+  {
+    "code": "AG.LND.AGRI.K2",
+    "name": "Agricultural land (sq. km)",
+    "category": "Environment",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Absolute agricultural land area; food production capacity"
+  },
+  {
+    "code": "AG.LND.ARBL.ZS",
+    "name": "Arable land (% of land area)",
+    "category": "Environment",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Cropland share; agricultural potential of territory"
+  },
+  {
+    "code": "AG.LND.CROP.ZS",
+    "name": "Permanent cropland (% of land area)",
+    "category": "Environment",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Permanent crop share; agricultural commitment"
+  },
+  {
+    "code": "AG.PRD.CREL.MT",
+    "name": "Cereal production (metric tons)",
+    "category": "Environment",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Absolute cereal output; food supply baseline"
+  },
+  {
+    "code": "AG.LND.CREL.HA",
+    "name": "Land under cereal production (hectares)",
+    "category": "Environment",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Cereal area harvested; agricultural scale"
+  },
+  {
+    "code": "SH.STA.POIS.P5",
+    "name": "Mortality rate attributed to unintentional poisoning (per 100,000 population)",
+    "category": "Health",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Poisoning deaths; industrial/chemical hazard proxy"
+  },
+  {
+    "code": "BM.GSR.INSF.ZS",
+    "name": "Insurance and financial services (% of service imports, BoP)",
+    "category": "Finance",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Financial services import dependency; sector development"
+  },
+  {
+    "code": "BX.GSR.INSF.ZS",
+    "name": "Insurance and financial services (% of service exports, BoP)",
+    "category": "Finance",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Financial services export capacity; sector sophistication"
+  },
+  {
+    "code": "BM.GSR.TRVL.ZS",
+    "name": "Travel services (% of service imports, BoP)",
+    "category": "Trade",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Tourism import spending; outbound tourism demand"
+  },
+  {
+    "code": "BX.GSR.TRVL.ZS",
+    "name": "Travel services (% of service exports, BoP)",
+    "category": "Trade",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Tourism export revenue share; inbound tourism"
+  },
+  {
+    "code": "BX.GSR.TRAN.ZS",
+    "name": "Transport services (% of service exports, BoP)",
+    "category": "Trade",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Transport service exports; logistics sector strength"
+  },
+  {
+    "code": "IC.BUS.DISC.XQ",
+    "name": "Extent of disclosure index (0-10)",
+    "category": "Governance",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Corporate disclosure requirement; governance transparency"
+  },
+  {
+    "code": "IC.BUS.DINS.XQ",
+    "name": "Extent of director liability index (0-10)",
+    "category": "Governance",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Director accountability; investor protection"
+  },
+  {
+    "code": "IC.BUS.DSHA.XQ",
+    "name": "Ease of shareholder suits index (0-10)",
+    "category": "Governance",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Shareholder protection; corporate governance quality"
+  },
+  {
+    "code": "IC.BUS.NRGE.XQ",
+    "name": "Extent of government ownership (0=low to 10=high)",
+    "category": "Governance",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "State ownership extent; market vs state economy"
+  },
+  {
+    "code": "IC.ISV.COST.ZS",
+    "name": "Cost of business start-up procedures (% of GNI per capita)",
+    "category": "Governance",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Business entry cost; regulatory burden on entrepreneurs"
+  },
+  {
+    "code": "NY.PPP.PCAP.CD",
+    "name": "PPP conversion factor, private consumption (LCU per international $)",
+    "category": "Economic",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Consumption PPP factor; cost of living comparison"
+  },
+  {
+    "code": "BN.GSR.MRCH.CD",
+    "name": "Net trade in goods (BoP, current US$)",
+    "category": "Trade",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Merchandise trade balance; goods surplus/deficit"
+  },
+  {
+    "code": "BN.CAB.XOKA.CD",
+    "name": "Current account balance (BoP, current US$)",
+    "category": "Trade",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Absolute current account balance; external position level"
+  },
+  {
+    "code": "FD.AST.GOVT.GD.ZS",
+    "name": "Claims on government and state-owned enterprises to total deposits of resident customers (%)",
+    "category": "Finance",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Government bank credit share; financial repression signal"
+  },
+  {
+    "code": "SL.TLF.PART.ZS",
+    "name": "Part time employment, total (% of total employment)",
+    "category": "Social",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Part-time work share; labour underutilization"
+  },
+  {
+    "code": "SP.POP.BRTH.MF",
+    "name": "Sex ratio at birth (male births per female births)",
+    "category": "Demographic",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Sex ratio at birth; gender selection and social norms"
+  },
+  {
+    "code": "SP.DYN.AMRT.FE",
+    "name": "Mortality rate, adult, female (per 1,000 female adults)",
+    "category": "Health",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Adult female mortality; gender health gap"
+  },
+  {
+    "code": "SP.DYN.AMRT.MA",
+    "name": "Mortality rate, adult, male (per 1,000 male adults)",
+    "category": "Health",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Adult male mortality; masculinity health crisis signal"
+  },
+  {
+    "code": "IT.NET.USER.P2",
+    "name": "Individuals using the Internet (% of population)",
+    "category": "Infrastructure",
+    "provider": "WB",
+    "license": "CC BY 4.0",
+    "note": "Internet penetration; digital inclusion and access"
+  }
+]

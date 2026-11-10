@@ -1,0 +1,67 @@
+__pycache__/
+*.pyc
+
+# Path B (T12 #676) venv — heavy deps (pymc + numpyro + arviz); not committed
+.venv-path-b/
+
+# Secrets hygiene (#444) — never commit credentials or local editor/IDE config
+.env
+.env.*
+!.env.example
+.claude/launch.json
+.claude/settings.local.json
+.vscode/launch.json
+.vscode/settings.json
+.idea/
+.devcontainer/devcontainer.json.local
+
+# Private keys
+*.pem
+*.key
+*.p12
+id_rsa*
+credentials
+
+# AWS session files
+aws-session.sh
+mgmt-session.sh
+.aws-session.*
+
+# ML-Opus model artifacts -- canonical version goes to S3 ml-artifacts/v0/...
+# per qgi-ml/CLAUDE.md ("Model artifacts: .gitignored, versioned in S3"). Local
+# results dirs are reproducible from the trainer + indicator panel.
+results/**/backbone/
+results/**/heads/
+results/**/calibrators/
+results/**/predictions.json
+results/**/training.log
+results/hp_sweep_*/
+results/stage_*_v0_*/
+
+# Local indicator panel caches synced from S3 (large parquets; not source of
+# truth -- the canonical store is s3://qgi-data-lake-222222222222/pipeline-A-
+# indicator-extractor/output/parquet/).
+data/s3_indicator_panel/
+data/all_104_panels.parquet
+data/panel_104_*.parquet
+data/all_104_panels_v2.parquet
+data/i1_panels.parquet
+
+# Stage 1 hyperparameter sweep — throwaway script per #373 convention
+scripts/_*_throwaway.py
+scripts/_hp_sweep_*.py
+
+# Per-indicator parquets synced from S3 (local mirror; not source of truth)
+data/parquet_panels/
+# Backup of subset panel pre-full-S3-sync
+data/all_104_panels.parquet.SUBSET_BACKUP
+
+
+# Cascade-era investigation outputs (#577/#582/#585 + Phase-1/v2-eval) — run-time
+# logs and intermediate eval JSONs; not source of truth.
+results/shape_fits/*/run.log
+results/shape_fits/*/run_c3*.log
+results/shape_fits/phase*_run.log
+results/detrending_experiment_*/
+results/stationarity_audit_*/
+results/v2_eval_*/

@@ -1,0 +1,400 @@
+[
+  {
+    "code": "IC.FRM.BRIB.ZS",
+    "why": "Direct firm-level measure of corruption friction — when bribe demands on businesses spike, it signals eroding state legitimacy and weakens the economic conditions that precede political crisis. Complements V-Dem corruption indices with a behavioural, survey-grounded signal rather than expert assessment.",
+    "country_coverage": 120,
+    "coverage_confidence": "medium",
+    "year_start": 2002,
+    "year_end": 2023,
+    "coverage_note": "Enterprise Survey coverage is irregular — roughly 3-5-year gaps per country; concentrated in lower-middle-income and IDA countries; many high-income and small-island states absent.",
+    "trends": [
+      {
+        "trend_id": "political_corruption",
+        "lift_bucket": "High",
+        "lift_pct": "+8-14%",
+        "reason": "Firm-level bribery is the most direct behavioural proxy for the corruption deterioration that precedes and accompanies this Trend's canonical shape."
+      },
+      {
+        "trend_id": "economic_recession",
+        "lift_bucket": "Medium",
+        "lift_pct": "+3-7%",
+        "reason": "Rising bribery burdens raise operating costs and deter investment, contributing to the economic slowdown pattern."
+      },
+      {
+        "trend_id": "political_repression",
+        "lift_bucket": "Medium",
+        "lift_pct": "+3-6%",
+        "reason": "High bribery rates co-occur with weak rule of law environments where repression is more likely."
+      },
+      {
+        "trend_id": "mass_protest",
+        "lift_bucket": "Low",
+        "lift_pct": "+1-4%",
+        "reason": "Corruption grievances are a noted protest mobilisation trigger but this indicator is survey-based with long lags, limiting temporal precision."
+      }
+    ]
+  },
+  {
+    "code": "v2x_liberal",
+    "why": "Aggregates constitutional constraints on executive power, rule of law, and individual liberties into a single latent score — captures the institutional erosion trajectory that precedes democratic backsliding, political repression, and mass mobilisation. Its continuous scale makes multi-year movement shapes learnable by XGBoost walks.",
+    "country_coverage": 180,
+    "coverage_confidence": "high",
+    "year_start": 1900,
+    "year_end": 2024,
+    "coverage_note": "V-Dem near-universal coverage; pre-1945 estimates rely on sparse historical coding and carry wider uncertainty intervals.",
+    "trends": [
+      {
+        "trend_id": "executive_power_consolidation",
+        "lift_bucket": "High",
+        "lift_pct": "+10-16%",
+        "reason": "Declining liberal index is the canonical leading signal of executive power consolidation — directly measures the erosion of checks this Trend captures."
+      },
+      {
+        "trend_id": "political_repression",
+        "lift_bucket": "High",
+        "lift_pct": "+8-13%",
+        "reason": "Liberal constraints breakdown directly precedes and enables systematic repression; strong theoretical and empirical alignment."
+      },
+      {
+        "trend_id": "democratic_transition",
+        "lift_bucket": "High",
+        "lift_pct": "+7-12%",
+        "reason": "Rising liberal scores are the definitional signal of democratisation — a top feature candidate for this Trend's run-up shape."
+      },
+      {
+        "trend_id": "constitutional_change",
+        "lift_bucket": "Medium",
+        "lift_pct": "+4-8%",
+        "reason": "Constitutional rewrites often coincide with liberal index inflections; contributes movement shape information."
+      },
+      {
+        "trend_id": "mass_protest",
+        "lift_bucket": "Medium",
+        "lift_pct": "+3-7%",
+        "reason": "Liberal erosion is a documented protest trigger; movement shape plausibly aligns with protest escalation window."
+      }
+    ]
+  },
+  {
+    "code": "BX.TRF.PWKR.DT.GD.ZS",
+    "why": "Remittance inflows as a share of GDP reveal diaspora-dependency — high ratios signal fragile domestic labour markets and exposure to external income shocks, while sudden remittance collapses historically precede currency and fiscal stress in remittance-dependent states.",
+    "country_coverage": 170,
+    "coverage_confidence": "high",
+    "year_start": 1990,
+    "year_end": 2023,
+    "coverage_note": "WB WDI series; good coverage from 1995 onward; early 1990s sparse for post-Soviet and small-island states; informal flows systematically undercounted in high-remittance countries.",
+    "trends": [
+      {
+        "trend_id": "currency_crisis",
+        "lift_bucket": "High",
+        "lift_pct": "+6-11%",
+        "reason": "Remittance collapse is a documented trigger of balance-of-payments stress; high dependency amplifies exchange-rate vulnerability preceding currency crises."
+      },
+      {
+        "trend_id": "economic_recession",
+        "lift_bucket": "Medium",
+        "lift_pct": "+4-8%",
+        "reason": "Remittance-dependent economies are especially exposed to global slowdowns; sudden drops translate directly into consumption and fiscal contractions."
+      },
+      {
+        "trend_id": "migration_and_refugees",
+        "lift_bucket": "Medium",
+        "lift_pct": "+3-7%",
+        "reason": "High remittance ratios proxy large diaspora stocks, themselves a signal of prior or ongoing displacement pressure from origin countries."
+      },
+      {
+        "trend_id": "poverty_and_inequality_crisis",
+        "lift_bucket": "Low",
+        "lift_pct": "+2-5%",
+        "reason": "Remittance dependency concentrates income gains in migrant households, structurally shaping inequality dynamics; marginal orthogonal signal."
+      }
+    ]
+  },
+  {
+    "code": "v2xcs_ccsi",
+    "why": "Core Civil Society Index measures the organisational health and autonomy of civil society — its decline is a leading indicator of political closure and repression, while high levels predict mobilisation capacity for democratic transitions and mass protests; captures a dimension not fully reflected in electoral or institutional indices.",
+    "country_coverage": 180,
+    "coverage_confidence": "high",
+    "year_start": 1900,
+    "year_end": 2024,
+    "coverage_note": "V-Dem near-universal coverage; pre-WWII estimates rely on thin expert codings; post-1990 series most reliable for ML training.",
+    "trends": [
+      {
+        "trend_id": "political_repression",
+        "lift_bucket": "High",
+        "lift_pct": "+7-13%",
+        "reason": "Civil society suppression is both a mechanism and signal of political repression — declining CCSI traces the canonical run-up shape for this Trend."
+      },
+      {
+        "trend_id": "democratic_transition",
+        "lift_bucket": "High",
+        "lift_pct": "+6-11%",
+        "reason": "Strong civil society is a robust predictor and enabler of successful democratic transitions; rising CCSI is a key leading signal."
+      },
+      {
+        "trend_id": "mass_protest",
+        "lift_bucket": "High",
+        "lift_pct": "+5-10%",
+        "reason": "Civil society organisational capacity determines protest mobilisation potential; CCSI captures the enabling environment for this Trend."
+      },
+      {
+        "trend_id": "executive_power_consolidation",
+        "lift_bucket": "Medium",
+        "lift_pct": "+4-8%",
+        "reason": "Executives consolidating power systematically curtail civil society; co-movement provides complementary signal to other V-Dem governance indicators."
+      },
+      {
+        "trend_id": "human_rights_violation",
+        "lift_bucket": "Medium",
+        "lift_pct": "+3-7%",
+        "reason": "Civil society suppression accompanies and enables human rights violations; moderate orthogonal contribution alongside CCSI sub-components."
+      }
+    ]
+  },
+  {
+    "code": "v2svstterr",
+    "why": "State territorial control is a foundational fragility signal — when governments lose effective control over parts of their territory to warlords or rebels, it directly precedes or accompanies civil conflict escalation, insurgency, and humanitarian crises; captures a state-failure dimension distinct from institutional quality indices.",
+    "country_coverage": 180,
+    "coverage_confidence": "high",
+    "year_start": 1900,
+    "year_end": 2024,
+    "coverage_note": "V-Dem near-universal; pre-1945 codings estimated from historical sources with wider uncertainty; post-1989 most reliable for conflict-focused Trends.",
+    "trends": [
+      {
+        "trend_id": "civil_war_and_insurgency",
+        "lift_bucket": "High",
+        "lift_pct": "+10-18%",
+        "reason": "Territorial control loss is both a cause and effect of insurgency — the sharpest available signal for this Trend's onset and escalation shape."
+      },
+      {
+        "trend_id": "humanitarian_crisis",
+        "lift_bucket": "High",
+        "lift_pct": "+7-13%",
+        "reason": "Territorial fragmentation triggers displacement and access denial; strong leading signal for humanitarian deterioration."
+      },
+      {
+        "trend_id": "military_coup",
+        "lift_bucket": "Medium",
+        "lift_pct": "+4-9%",
+        "reason": "Territorial control erosion often precedes military intervention as armies act to restore order; plausible top-40 feature."
+      },
+      {
+        "trend_id": "foreign_intervention",
+        "lift_bucket": "Medium",
+        "lift_pct": "+4-8%",
+        "reason": "External actors intervene when host governments lose territorial control; provides movement shape signal for this Trend."
+      },
+      {
+        "trend_id": "ethnic_and_communal_conflict",
+        "lift_bucket": "Medium",
+        "lift_pct": "+3-7%",
+        "reason": "Ungoverned spaces enable communal group clashes; territorial control is a plausible contributory feature."
+      }
+    ]
+  },
+  {
+    "code": "UNHCR_FORCDISP_TOTAL",
+    "why": "Aggregate forced displacement (refugees + asylum-seekers + IDPs) provides a composite headline measure of the cumulative human cost of instability — its multi-year trajectory captures both conflict intensity and state failure duration in a single ML-ready feature, with strong predictive signal for humanitarian and conflict Trends.",
+    "country_coverage": 185,
+    "coverage_confidence": "high",
+    "year_start": 1990,
+    "year_end": 2024,
+    "coverage_note": "UNHCR annual data; pre-2000 IDP estimates less systematic; derived composite requires consistent sub-series availability; small-island states may have near-zero values creating structural zeros.",
+    "trends": [
+      {
+        "trend_id": "humanitarian_crisis",
+        "lift_bucket": "High",
+        "lift_pct": "+10-16%",
+        "reason": "Total forced displacement is the aggregate outcome variable for humanitarian crises — cumulative stock captures crisis duration and intensity together."
+      },
+      {
+        "trend_id": "civil_war_and_insurgency",
+        "lift_bucket": "High",
+        "lift_pct": "+8-14%",
+        "reason": "Displacement magnitude tracks conflict intensity closely; the composite aggregates multiple UNHCR signals into a single high-signal feature."
+      },
+      {
+        "trend_id": "migration_and_refugees",
+        "lift_bucket": "High",
+        "lift_pct": "+9-15%",
+        "reason": "Directly measures the phenomenon this Trend captures; most likely to enter greedy top features for this recipe."
+      },
+      {
+        "trend_id": "political_repression",
+        "lift_bucket": "Medium",
+        "lift_pct": "+3-7%",
+        "reason": "State repression generates refugee and asylum flows; composite stock reflects cumulative persecution pressure."
+      },
+      {
+        "trend_id": "peacekeeping_and_peace_process",
+        "lift_bucket": "Medium",
+        "lift_pct": "+3-6%",
+        "reason": "High displacement levels trigger peacekeeping deployments; stock trajectory aligns with pre-agreement escalation shape."
+      }
+    ]
+  },
+  {
+    "code": "v2x_horacc",
+    "why": "Horizontal accountability — the capacity of legislatures, judiciaries, and oversight bodies to constrain the executive — is a leading indicator of institutional degradation and authoritarian drift; its decline traces the gradual erosion of checks that precedes coups, power consolidation, and political repression.",
+    "country_coverage": 180,
+    "coverage_confidence": "high",
+    "year_start": 1900,
+    "year_end": 2024,
+    "coverage_note": "V-Dem near-universal; pre-WWII estimates carry wider uncertainty; most reliable and most relevant for post-1945 democratic contexts.",
+    "trends": [
+      {
+        "trend_id": "executive_power_consolidation",
+        "lift_bucket": "High",
+        "lift_pct": "+9-15%",
+        "reason": "Declining horizontal accountability is the definitional precursor to executive consolidation — captures the institutional weakening trajectory that precedes this Trend's terminating event."
+      },
+      {
+        "trend_id": "military_coup",
+        "lift_bucket": "High",
+        "lift_pct": "+6-12%",
+        "reason": "Weak institutional checks remove constraints on military intervention; horacc decline is an established coup precursor in the literature."
+      },
+      {
+        "trend_id": "constitutional_change",
+        "lift_bucket": "Medium",
+        "lift_pct": "+4-9%",
+        "reason": "Constitutional rewrites that concentrate power typically track horacc inflections; movement shape alignment plausible."
+      },
+      {
+        "trend_id": "political_corruption",
+        "lift_bucket": "Medium",
+        "lift_pct": "+4-8%",
+        "reason": "Weak oversight enables corruption; co-movement provides signal complementary to direct corruption measures."
+      },
+      {
+        "trend_id": "democratic_transition",
+        "lift_bucket": "Medium",
+        "lift_pct": "+3-7%",
+        "reason": "Accountability institution strengthening is a key marker of genuine democratisation; rising horacc traces transition run-up."
+      }
+    ]
+  },
+  {
+    "code": "UCDP_GED_TOTAL_DEATHS",
+    "why": "Aggregate best-estimate deaths across all organised violence types (state-based, non-state, one-sided) provides the most comprehensive single lethality signal — capturing the full violence environment of a country-year rather than any one conflict type, making it a broad-spectrum conflict intensity feature for QGI recipes.",
+    "country_coverage": 150,
+    "coverage_confidence": "high",
+    "year_start": 1989,
+    "year_end": 2023,
+    "coverage_note": "UCDP GED covers conflict-affected countries only; zero-violence countries absent or coded zero from 1989; pre-1989 not available; data most complete for Africa, Middle East, Asia.",
+    "trends": [
+      {
+        "trend_id": "civil_war_and_insurgency",
+        "lift_bucket": "High",
+        "lift_pct": "+10-17%",
+        "reason": "Total deaths aggregate captures civil war intensity trajectory directly; highly likely to be a top greedy feature for this Trend."
+      },
+      {
+        "trend_id": "humanitarian_crisis",
+        "lift_bucket": "High",
+        "lift_pct": "+8-14%",
+        "reason": "Mass casualties are both a cause and core indicator of humanitarian crisis; aggregate deaths provide a strong leading and concurrent signal."
+      },
+      {
+        "trend_id": "terrorist_attack",
+        "lift_bucket": "High",
+        "lift_pct": "+7-12%",
+        "reason": "GED includes one-sided violence and non-state conflict deaths from terrorism-adjacent events; aggregate trajectory traces terrorist escalation patterns."
+      },
+      {
+        "trend_id": "political_violence",
+        "lift_bucket": "High",
+        "lift_pct": "+9-15%",
+        "reason": "Total organised violence deaths is the broadest direct measure of the phenomenon this Trend captures."
+      },
+      {
+        "trend_id": "foreign_intervention",
+        "lift_bucket": "Medium",
+        "lift_pct": "+4-8%",
+        "reason": "High total lethality thresholds historically trigger foreign intervention; aggregate deaths proxy the severity threshold that prompts external action."
+      }
+    ]
+  },
+  {
+    "code": "v2x_frassoc",
+    "why": "Freedom of association — covering rights to form parties, civil society organisations, and trade unions — captures the civic space contraction that precedes and accompanies political repression and executive consolidation; its decline is a more targeted signal than broad civil liberties indices for mobilisation-blocking dynamics.",
+    "country_coverage": 180,
+    "coverage_confidence": "high",
+    "year_start": 1900,
+    "year_end": 2024,
+    "coverage_note": "V-Dem near-universal; pre-1945 coding sparse and expert-estimated; contemporary series (post-1990) most informative for political Trends.",
+    "trends": [
+      {
+        "trend_id": "political_repression",
+        "lift_bucket": "High",
+        "lift_pct": "+7-13%",
+        "reason": "Association rights suppression is a primary mechanism of political repression; directly traces the civic-space closure trajectory that defines this Trend's shape."
+      },
+      {
+        "trend_id": "executive_power_consolidation",
+        "lift_bucket": "High",
+        "lift_pct": "+6-11%",
+        "reason": "Executives consolidating power systematically restrict party competition and civil organisation; declining frassoc co-moves with consolidation trajectory."
+      },
+      {
+        "trend_id": "democratic_transition",
+        "lift_bucket": "Medium",
+        "lift_pct": "+4-9%",
+        "reason": "Opening of association rights is a leading indicator and enabling condition for democratic transitions; rising scores trace the run-up shape."
+      },
+      {
+        "trend_id": "mass_protest",
+        "lift_bucket": "Medium",
+        "lift_pct": "+3-7%",
+        "reason": "Association freedom enables protest organising; restrictions on it shift mobilisation patterns in ways relevant to this Trend's occurrence timing."
+      },
+      {
+        "trend_id": "labor_action",
+        "lift_bucket": "Medium",
+        "lift_pct": "+3-6%",
+        "reason": "Trade union rights are a core sub-component of frassoc; association freedom directly governs labour organising capacity relevant to this Trend."
+      }
+    ]
+  },
+  {
+    "code": "GII",
+    "why": "Gender Inequality Index aggregates reproductive health gaps, empowerment deficits, and labour market exclusion into a single structural inequality score — high GII values signal marginalised female participation that correlates with broader governance deficits, social fragility, and susceptibility to poverty and mobilisation crises.",
+    "country_coverage": 165,
+    "coverage_confidence": "high",
+    "year_start": 1990,
+    "year_end": 2022,
+    "coverage_note": "UNDP HDR; coverage good for 160+ countries from 1995; small-island and micro-state gaps; GII computation requires multiple sub-indicators so countries missing any sub-component are excluded from that year.",
+    "trends": [
+      {
+        "trend_id": "poverty_and_inequality_crisis",
+        "lift_bucket": "High",
+        "lift_pct": "+6-12%",
+        "reason": "GII is a composite structural inequality measure; high and worsening GII traces the inequality trajectory that precedes and accompanies poverty crisis events."
+      },
+      {
+        "trend_id": "humanitarian_crisis",
+        "lift_bucket": "Medium",
+        "lift_pct": "+4-8%",
+        "reason": "High gender inequality predicts worse humanitarian outcomes — women and girls bear disproportionate crisis costs; contributes background fragility signal."
+      },
+      {
+        "trend_id": "social_policy_reform",
+        "lift_bucket": "Medium",
+        "lift_pct": "+3-7%",
+        "reason": "Gender inequality is a primary policy reform target; GII trajectories may align with reform onset and outcome measurement windows."
+      },
+      {
+        "trend_id": "mass_protest",
+        "lift_bucket": "Low",
+        "lift_pct": "+2-4%",
+        "reason": "Gender grievances have mobilised significant protests globally but GII is a slow-moving structural indicator with limited temporal precision for event-level prediction."
+      },
+      {
+        "trend_id": "democratic_transition",
+        "lift_bucket": "Low",
+        "lift_pct": "+1-4%",
+        "reason": "Gender empowerment tracks democratic development but GII is a lagging structural measure; marginal orthogonal contribution beyond governance indices."
+      }
+    ]
+  }
+]

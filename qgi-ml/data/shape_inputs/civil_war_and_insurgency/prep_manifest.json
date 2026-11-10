@@ -1,0 +1,110 @@
+{
+  "schema_version": 1,
+  "generated_at_utc": "2026-05-17T21:18:50.526672+00:00",
+  "recipe_id": "civil_war_and_insurgency",
+  "canonical_length_T": 5,
+  "key_indicators_requested": [
+    "VC.BTL.DETH",
+    "PV.EST",
+    "NE.CON.GOVT.ZS",
+    "EG.IMP.CONS.ZS",
+    "VA.EST",
+    "v2exremhog",
+    "SM.POP.NETM",
+    "MS.MIL.MPRT.KD",
+    "v2cacamps",
+    "SL.UEM.TOTL.ZS"
+  ],
+  "key_indicators_available_locally": [
+    "EG.IMP.CONS.ZS",
+    "SL.UEM.TOTL.ZS",
+    "v2cacamps"
+  ],
+  "key_indicators_missing_from_local_panel": [
+    "MS.MIL.MPRT.KD",
+    "NE.CON.GOVT.ZS",
+    "PV.EST",
+    "SM.POP.NETM",
+    "VA.EST",
+    "VC.BTL.DETH",
+    "v2exremhog"
+  ],
+  "indicator_coverage_fraction": 0.3,
+  "counts": {
+    "n_pos_input": 574,
+    "n_country_not_in_panel": 2,
+    "n_baseline_too_short": 532,
+    "n_pos_after_baseline_filter": 40,
+    "n_alignment_dropouts": 0,
+    "n_pos_final": 40,
+    "n_instances_in_parquet": 40
+  },
+  "dropout_sample": [
+    {
+      "country_id": "afghanistan",
+      "event_year": 1974,
+      "reason": "BASELINE_TOO_SHORT:EG.IMP.CONS.ZS (country not in panel)"
+    },
+    {
+      "country_id": "afghanistan",
+      "event_year": 1975,
+      "reason": "BASELINE_TOO_SHORT:EG.IMP.CONS.ZS (country not in panel)"
+    },
+    {
+      "country_id": "afghanistan",
+      "event_year": 1978,
+      "reason": "BASELINE_TOO_SHORT:EG.IMP.CONS.ZS (country not in panel)"
+    },
+    {
+      "country_id": "afghanistan",
+      "event_year": 1979,
+      "reason": "BASELINE_TOO_SHORT:EG.IMP.CONS.ZS (country not in panel)"
+    },
+    {
+      "country_id": "afghanistan",
+      "event_year": 1980,
+      "reason": "BASELINE_TOO_SHORT:EG.IMP.CONS.ZS (country not in panel)"
+    }
+  ],
+  "baseline_too_short_examples": [
+    {
+      "country_id": "afghanistan",
+      "event_year": 1974,
+      "reason": "BASELINE_TOO_SHORT:EG.IMP.CONS.ZS (country not in panel)"
+    },
+    {
+      "country_id": "afghanistan",
+      "event_year": 1975,
+      "reason": "BASELINE_TOO_SHORT:EG.IMP.CONS.ZS (country not in panel)"
+    },
+    {
+      "country_id": "afghanistan",
+      "event_year": 1978,
+      "reason": "BASELINE_TOO_SHORT:EG.IMP.CONS.ZS (country not in panel)"
+    },
+    {
+      "country_id": "afghanistan",
+      "event_year": 1979,
+      "reason": "BASELINE_TOO_SHORT:EG.IMP.CONS.ZS (country not in panel)"
+    },
+    {
+      "country_id": "afghanistan",
+      "event_year": 1980,
+      "reason": "BASELINE_TOO_SHORT:EG.IMP.CONS.ZS (country not in panel)"
+    }
+  ],
+  "source_shas": {
+    "qgi_ml_commit": "b36048291d7299bd585de5730ada34e921b0b178",
+    "qgi_data_commit": "45cf568bc8883c520d4ef1eb9cc2ad2f8d4669f8",
+    "aligned_parquet_sha256": "38b5cb0d6f15ff14ee033615e27696489291db21e49926b279976a0d52de4364",
+    "positives_csv_sha256": "f9744550ca40b7485831a7fdc8a236ff736dd1d2355182bd3037db54618a4543",
+    "indicator_panel_sha256": "5ac53046ed628b03f0a06c09fca5fb2678e57b8d0d857fe500b452f8f4ae7fa0"
+  },
+  "fitter_input_contract": {
+    "indicator_panel": "data\\shape_inputs\\civil_war_and_insurgency\\indicator_panel.parquet",
+    "positive_instances": "data\\shape_inputs\\civil_war_and_insurgency\\positives.csv",
+    "indicator_ids": "EG.IMP.CONS.ZS,SL.UEM.TOTL.ZS,v2cacamps",
+    "T_r": 5
+  },
+  "honesty_disclosure": "Local panel snapshot contains only 3/10 key indicators for civil_war_and_insurgency. Missing: ['MS.MIL.MPRT.KD', 'NE.CON.GOVT.ZS', 'PV.EST', 'SM.POP.NETM', 'VA.EST', 'VC.BTL.DETH', 'v2exremhog']. G3/G4 substrate verdicts are BLOCKED-on-substrate-availability per Tariq's audit. Re-run on full 104-indicator production panel required (see substrate-audit-phase-1.json P0 actions)."
+}

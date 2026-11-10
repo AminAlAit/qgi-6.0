@@ -1,0 +1,335 @@
+[
+  {
+    "code": "UCDP_SB_INTRA_INTERNATIONALISED",
+    "why": "Flags whether a country hosts an intrastate conflict with direct foreign-state military involvement (ACD type_of_conflict=4), capturing the qualitative escalation from domestic civil war to internationalised proxy war — a dynamic associated with conflict prolongation, greater lethality, and reduced prospects for negotiated settlement. Foreign participation fundamentally reshapes the conflict's strategic landscape and is a strong signal for continued armed hostilities and intervention Trends.",
+    "country_coverage": 48,
+    "coverage_confidence": "high",
+    "year_start": 1946,
+    "year_end": 2025,
+    "coverage_note": "Covers only countries with at least one active intrastate conflict involving a foreign state; sparse by design — most country-years are zero, valid null signal for non-conflict states.",
+    "trends": [
+      {
+        "trend_id": "foreign_intervention",
+        "lift_bucket": "High",
+        "lift_pct": "+10-18%",
+        "reason": "Direct measurement of foreign-state military presence in an internal conflict; the indicator is definitionally aligned with this Trend and should be a top-5 feature."
+      },
+      {
+        "trend_id": "civil_war_and_insurgency",
+        "lift_bucket": "High",
+        "lift_pct": "+7-13%",
+        "reason": "Internationalisation of intrastate conflicts is strongly associated with conflict duration and intensity; the flag captures the escalation phase that precedes major insurgency milestones."
+      },
+      {
+        "trend_id": "peacekeeping_and_peace_process",
+        "lift_bucket": "Medium",
+        "lift_pct": "+4-8%",
+        "reason": "Internationalised conflicts generate stronger multilateral peacekeeping responses and mediation efforts; the presence of foreign states creates both complication and diplomatic leverage."
+      },
+      {
+        "trend_id": "interstate_war",
+        "lift_bucket": "Medium",
+        "lift_pct": "+3-7%",
+        "reason": "Internationalised intrastate conflicts sit on the boundary with interstate war; the indicator captures escalation risk where foreign involvement could widen into direct inter-state confrontation."
+      }
+    ]
+  },
+  {
+    "code": "UCDP_CONFLICT_TERMINATED",
+    "why": "Encodes the year in which an active conflict episode ended (ACD ep_end=1), providing a discrete de-escalation milestone that marks the transition from active hostilities to post-conflict recovery — a temporal anchor for peacekeeping, transitional justice, and political reconstruction Trends. Conflict termination events are strongly associated with power-sharing arrangements, ceasefires, and subsequent elections, making this a leading indicator for a cluster of political transition Trends.",
+    "country_coverage": 104,
+    "coverage_confidence": "high",
+    "year_start": 1946,
+    "year_end": 2024,
+    "coverage_note": "Covers all countries with at least one concluded UCDP conflict episode; conflict-affected country universe only — zero for non-conflict states is a valid negative signal.",
+    "trends": [
+      {
+        "trend_id": "peacekeeping_and_peace_process",
+        "lift_bucket": "High",
+        "lift_pct": "+9-16%",
+        "reason": "Conflict termination is the defining event in the peace process lifecycle; termination year and its proximity are among the strongest features for subsequent peace-process activity."
+      },
+      {
+        "trend_id": "civil_war_and_insurgency",
+        "lift_bucket": "High",
+        "lift_pct": "+7-12%",
+        "reason": "Termination events directly bound civil conflict episodes; the indicator captures the transition out of the event category, providing a leading negative signal for ongoing conflict."
+      },
+      {
+        "trend_id": "democratic_transition",
+        "lift_bucket": "Medium",
+        "lift_pct": "+4-8%",
+        "reason": "Post-conflict terminations frequently precede democratisation windows; the timing of conflict end is a well-established structural predictor for transition onset."
+      },
+      {
+        "trend_id": "transitional_justice",
+        "lift_bucket": "Medium",
+        "lift_pct": "+4-7%",
+        "reason": "Transitional justice mechanisms are activated in the years following conflict termination; the termination flag is the temporal trigger for accountability-process events."
+      },
+      {
+        "trend_id": "elections_and_voting",
+        "lift_bucket": "Low",
+        "lift_pct": "+2-4%",
+        "reason": "Post-conflict elections commonly follow termination within 2-4 years; weak but real leading signal through the peace-settlement pathway."
+      }
+    ]
+  },
+  {
+    "code": "UCDP_SB_INCOMPAT_TERR",
+    "why": "Flags whether an active state-based conflict is fought over territorial control rather than governmental power (ACD incompatibility=2), identifying the subset of conflicts most associated with secessionism, border disputes, and minority-group territorial claims — dynamics linked to prolonged violence, partition risks, and regional spillovers. Territorial conflicts have distinct escalation and resolution pathways compared to governmental conflicts, and the distinction carries significant predictive value for diplomatic and peacekeeping Trends.",
+    "country_coverage": 89,
+    "coverage_confidence": "high",
+    "year_start": 1946,
+    "year_end": 2025,
+    "coverage_note": "Covers conflict-affected countries with territorial-incompatibility episodes only; sparse positive values by design — covers major secessionist and border-dispute theatres globally.",
+    "trends": [
+      {
+        "trend_id": "territorial_disputes",
+        "lift_bucket": "High",
+        "lift_pct": "+10-17%",
+        "reason": "Direct measurement of the conflict type this Trend captures; territorial incompatibility is the definitional input to disputed-territory event modelling."
+      },
+      {
+        "trend_id": "civil_war_and_insurgency",
+        "lift_bucket": "High",
+        "lift_pct": "+6-11%",
+        "reason": "Territorial conflicts disproportionately manifest as secessionist insurgencies; distinguishing incompatibility type adds precision beyond generic conflict-active flags."
+      },
+      {
+        "trend_id": "interstate_war",
+        "lift_bucket": "Medium",
+        "lift_pct": "+4-8%",
+        "reason": "Territorial conflicts are more likely to escalate into inter-state confrontations when neighbouring states back secessionist parties; the indicator captures this escalation pathway."
+      },
+      {
+        "trend_id": "foreign_intervention",
+        "lift_bucket": "Medium",
+        "lift_pct": "+3-6%",
+        "reason": "Territorial conflicts attract kin-state and great-power intervention more than governmental conflicts; the incompatibility type moderates intervention likelihood."
+      }
+    ]
+  },
+  {
+    "code": "v2elpeace",
+    "why": "Measures non-state actor violence specifically tied to electoral periods (V-Dem v2elpeace), capturing the intensity of election-linked intimidation, assassination, and mob violence that falls outside direct government perpetration — a distinct form of political violence that suppresses participation and signals democratic fragility without necessarily triggering a full UCDP conflict episode. Electoral violence is a strong contemporaneous and leading signal for both election-integrity failures and broader post-election instability.",
+    "country_coverage": 198,
+    "coverage_confidence": "high",
+    "year_start": 1789,
+    "year_end": 2025,
+    "coverage_note": "V-Dem near-universal coverage from 1900 onwards; pre-1900 data limited to countries with documented historical elections; expert-coded ordinal scale.",
+    "trends": [
+      {
+        "trend_id": "elections_and_voting",
+        "lift_bucket": "High",
+        "lift_pct": "+8-15%",
+        "reason": "Electoral violence directly indexes the quality and security of the electoral process; a contemporaneous signal for disputed or suppressed elections likely to crack the top-10 for this Trend."
+      },
+      {
+        "trend_id": "political_violence",
+        "lift_bucket": "High",
+        "lift_pct": "+6-12%",
+        "reason": "Electoral violence is a specific sub-type of political violence; the indicator captures organised intimidation and targeted killing that precedes broader political violence escalation."
+      },
+      {
+        "trend_id": "mass_protest",
+        "lift_bucket": "Medium",
+        "lift_pct": "+4-8%",
+        "reason": "Post-election violence and vote-rigging perceptions are primary triggers for mass protest; electoral violence score is a leading indicator for election-dispute protests."
+      },
+      {
+        "trend_id": "democratic_transition",
+        "lift_bucket": "Medium",
+        "lift_pct": "+3-7%",
+        "reason": "High electoral violence is strongly correlated with failed or reversed democratic transitions; the indicator captures the competitive-authoritarianism dynamic within transition trajectories."
+      },
+      {
+        "trend_id": "political_repression",
+        "lift_bucket": "Low",
+        "lift_pct": "+2-4%",
+        "reason": "Non-state electoral violence often operates with state tolerance or facilitation; marginal signal for state-directed repression through the complicity pathway."
+      }
+    ]
+  },
+  {
+    "code": "UCDP_GED_UNREST_EVENTS",
+    "why": "Counts georeferenced GED events of non-state and one-sided violence types (type_of_violence in {2,3}), capturing the frequency of communal clashes and civilian targeting incidents below the state-conflict threshold — a tempo measure of sub-state political violence that reflects the density of organised unrest rather than its lethality alone. High event tempo is a strong contemporaneous predictor of mass protest escalation, humanitarian deterioration, and state capacity stress.",
+    "country_coverage": 107,
+    "coverage_confidence": "high",
+    "year_start": 1989,
+    "year_end": 2024,
+    "coverage_note": "GED coverage starts 1989; restricted to countries with recorded GED events — zero is a valid negative signal but only meaningful where UCDP monitoring is active.",
+    "trends": [
+      {
+        "trend_id": "political_violence",
+        "lift_bucket": "High",
+        "lift_pct": "+9-16%",
+        "reason": "Event tempo is a direct frequency measure of sub-state political violence; dense event counts signal sustained organised violence even when individual incidents fall below conflict thresholds."
+      },
+      {
+        "trend_id": "ethnic_and_communal_conflict",
+        "lift_bucket": "High",
+        "lift_pct": "+7-13%",
+        "reason": "Non-state violence events predominantly capture communal and militia clashes; event count is the primary intensity measure for this conflict type."
+      },
+      {
+        "trend_id": "humanitarian_crisis",
+        "lift_bucket": "Medium",
+        "lift_pct": "+4-8%",
+        "reason": "One-sided civilian targeting events (type 3) directly generate displacement and humanitarian needs; rising event counts precede IDP spikes and crisis declarations."
+      },
+      {
+        "trend_id": "mass_protest",
+        "lift_bucket": "Medium",
+        "lift_pct": "+3-6%",
+        "reason": "High unrest event tempo co-occurs with protest mobilisation in fragile states; captures the volatile security environment that raises protest escalation risk."
+      }
+    ]
+  },
+  {
+    "code": "v2strenarm",
+    "why": "Measures the quality of remuneration in the armed forces as a proxy for military professionalism and coercive state capacity (V-Dem v2strenarm) — countries that pay soldiers adequately maintain more coherent, apolitical militaries less prone to defection, mutiny, or predatory behaviour toward civilians. Low remuneration signals state resource stress that degrades the military as an institution, which is associated with coup risk, warlordism, and the proliferation of armed non-state actors.",
+    "country_coverage": 197,
+    "coverage_confidence": "high",
+    "year_start": 1789,
+    "year_end": 2025,
+    "coverage_note": "V-Dem near-universal coverage from 1900; pre-1900 limited to states with documented military institutions; expert-coded ordinal scale with higher uncertainty in autocracies.",
+    "trends": [
+      {
+        "trend_id": "military_coup",
+        "lift_bucket": "High",
+        "lift_pct": "+6-12%",
+        "reason": "Under-paid soldiers with grievances over wages and conditions are a documented coup risk factor; remuneration captures the material basis of civil-military tension that precedes coups."
+      },
+      {
+        "trend_id": "military_policy_and_reform",
+        "lift_bucket": "High",
+        "lift_pct": "+5-10%",
+        "reason": "Military pay reform is itself a policy event; the indicator tracks both the baseline and changes that signal institutional restructuring events."
+      },
+      {
+        "trend_id": "civil_war_and_insurgency",
+        "lift_bucket": "Medium",
+        "lift_pct": "+4-8%",
+        "reason": "Poor military remuneration drives defections to armed groups and reduces counter-insurgency effectiveness; the state-capacity channel is well-established in fragile-state research."
+      },
+      {
+        "trend_id": "political_repression",
+        "lift_bucket": "Low",
+        "lift_pct": "+2-4%",
+        "reason": "Marginally: well-paid militaries are more effective instruments of repression when ordered to suppress dissent; the remuneration-capacity link adds a partial repression signal."
+      }
+    ]
+  },
+  {
+    "code": "GC.TAX.TOTL.GD.ZS",
+    "why": "Tax revenue as a share of GDP measures the extractive dimension of state capacity — the government's ability to mobilise domestic resources through the fiscal system — with low tax ratios signalling weak institutional reach, high informal-economy share, and dependence on aid or natural-resource rents that are inherently volatile. Fiscal capacity is a structural determinant of state resilience: governments unable to tax lack the revenue to fund security forces, social transfers, or post-crisis recovery.",
+    "country_coverage": 101,
+    "coverage_confidence": "medium",
+    "year_start": 2010,
+    "year_end": 2023,
+    "coverage_note": "WB WDI; coverage moderate and skewed toward middle-income countries — many fragile and low-income states have gaps or very short series; coverage confidence downgraded to medium given sparse data in the highest-risk countries.",
+    "trends": [
+      {
+        "trend_id": "fiscal_policy_change",
+        "lift_bucket": "High",
+        "lift_pct": "+6-11%",
+        "reason": "Tax revenue ratio is the central metric for evaluating fiscal reform events; both level and change signal austerity pressures, tax reform milestones, and debt sustainability shifts."
+      },
+      {
+        "trend_id": "economic_recession",
+        "lift_bucket": "Medium",
+        "lift_pct": "+4-8%",
+        "reason": "Tax ratio contraction during downturns signals revenue collapse that constrains fiscal stimulus; low baseline ratios amplify recession depth in fragile states."
+      },
+      {
+        "trend_id": "mass_protest",
+        "lift_bucket": "Medium",
+        "lift_pct": "+3-7%",
+        "reason": "Tax increases to close fiscal gaps are a common protest trigger; the level and direction of the ratio captures the distributional pressure that drives social mobilisation."
+      },
+      {
+        "trend_id": "political_repression",
+        "lift_bucket": "Low",
+        "lift_pct": "+2-4%",
+        "reason": "States with very low fiscal capacity often substitute repression for social spending; marginal signal through the state-fragility pathway."
+      }
+    ]
+  },
+  {
+    "code": "IQ.CPA.PADM.XQ",
+    "why": "The CPIA quality of public administration cluster measures the administrative dimension of state capacity — civil service professionalism, merit-based recruitment, and policy implementation effectiveness — capturing the bureaucratic infrastructure that determines whether government decisions translate into outcomes. Weak public administration is a structural brake on state resilience, correlating with service-delivery failures, corruption, and inability to manage crises that trigger social and political instability.",
+    "country_coverage": 127,
+    "coverage_confidence": "medium",
+    "year_start": 2005,
+    "year_end": 2024,
+    "coverage_note": "IDA-eligible countries only (low- and lower-middle-income); coverage is by definition restricted to the fragile-state universe most relevant to conflict Trends, but excludes upper-middle and high-income countries.",
+    "trends": [
+      {
+        "trend_id": "poverty_and_inequality_crisis",
+        "lift_bucket": "High",
+        "lift_pct": "+6-11%",
+        "reason": "Public administration quality directly determines effective delivery of anti-poverty programmes; weak administration is a structural predictor of chronic poverty crisis in IDA countries."
+      },
+      {
+        "trend_id": "political_corruption",
+        "lift_bucket": "High",
+        "lift_pct": "+5-10%",
+        "reason": "Merit-based civil service is the primary institutional barrier to corruption; CPIA public administration captures the organisational environment that enables or constrains corrupt behaviour."
+      },
+      {
+        "trend_id": "humanitarian_crisis",
+        "lift_bucket": "Medium",
+        "lift_pct": "+4-8%",
+        "reason": "Administrative capacity determines disaster-response effectiveness; low-scoring states convert natural or conflict shocks into humanitarian crises through implementation failure."
+      },
+      {
+        "trend_id": "economic_recession",
+        "lift_bucket": "Medium",
+        "lift_pct": "+3-6%",
+        "reason": "Weak public administration amplifies recession depth by impairing fiscal adjustment and public investment delivery; indirect but structurally important channel."
+      }
+    ]
+  },
+  {
+    "code": "FS-007",
+    "why": "The share of dietary energy derived from cereals, roots, and tubers (FAOSTAT item 21012) is an inverse proxy for diet quality and food system diversification — high values indicate populations dependent on cheap starchy staples due to poverty or food insecurity, making them highly exposed to cereal price shocks and harvest failures. As a structural food-vulnerability measure it complements acute food-insecurity indicators by capturing the chronic dietary baseline that determines how rapidly communities deteriorate when food supply shocks occur.",
+    "country_coverage": 236,
+    "coverage_confidence": "high",
+    "year_start": 2002,
+    "year_end": 2022,
+    "coverage_note": "FAOSTAT food balance sheet series; near-universal country coverage (~236c); series ends at 2022 pending latest FAO release cycle.",
+    "trends": [
+      {
+        "trend_id": "drought_and_famine",
+        "lift_bucket": "High",
+        "lift_pct": "+7-13%",
+        "reason": "Populations with high cereal-diet dependence face acute famine risk from any disruption to staple crop supply; the indicator captures the structural vulnerability that converts drought shocks into famines."
+      },
+      {
+        "trend_id": "humanitarian_crisis",
+        "lift_bucket": "High",
+        "lift_pct": "+5-10%",
+        "reason": "Starchy-diet dependence is a chronic food-fragility signal; high values predict rapid humanitarian deterioration when conflict or climate disrupts supply chains."
+      },
+      {
+        "trend_id": "poverty_and_inequality_crisis",
+        "lift_bucket": "Medium",
+        "lift_pct": "+4-8%",
+        "reason": "Dietary energy concentration in cheap starches is a strong marker of deep poverty; the indicator captures structural deprivation that intersects with inequality crisis dynamics."
+      },
+      {
+        "trend_id": "mass_protest",
+        "lift_bucket": "Medium",
+        "lift_pct": "+3-7%",
+        "reason": "Cereal-price spikes hit starchy-diet-dependent populations disproportionately hard; high baseline values amplify the protest-triggering potential of food price anomalies."
+      },
+      {
+        "trend_id": "migration_and_refugees",
+        "lift_bucket": "Low",
+        "lift_pct": "+2-4%",
+        "reason": "Structural food vulnerability drives climate-migration and conflict-related displacement in low-income countries; marginal signal through the food-insecurity-to-migration pathway."
+      }
+    ]
+  }
+]

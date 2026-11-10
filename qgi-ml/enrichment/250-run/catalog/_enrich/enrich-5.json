@@ -1,0 +1,358 @@
+[
+  {
+    "code": "v2xca_academ",
+    "why": "Academic freedom captures the early erosion of intellectual and scientific autonomy that typically precedes broader authoritarian consolidation; its suppression signals a government tightening ideological control over society. In QGI context, declining academic freedom co-moves with press censorship and civil society crackdowns, providing an upstream governance-quality signal before political violence or repression events manifest.",
+    "country_coverage": 180,
+    "coverage_confidence": "high",
+    "year_start": 1900,
+    "year_end": 2024,
+    "coverage_note": "V-Dem near-universal coverage from 1900; expert-coded estimates become thinner before ~1950 for smaller states but post-1970 data is robust for ~180 countries.",
+    "trends": [
+      {
+        "trend_id": "political_repression",
+        "lift_bucket": "High",
+        "lift_pct": "+8-14%",
+        "reason": "Academic freedom decline is a canonical early indicator of political repression; strong theoretical and empirical directional alignment."
+      },
+      {
+        "trend_id": "executive_power_consolidation",
+        "lift_bucket": "High",
+        "lift_pct": "+6-12%",
+        "reason": "Autocratizing executives systematically attack university autonomy as part of power consolidation; strong leading signal."
+      },
+      {
+        "trend_id": "democratic_transition",
+        "lift_bucket": "Medium",
+        "lift_pct": "+4-8%",
+        "reason": "Transitions (in both directions) co-move with academic freedom changes; useful but collinear with other V-Dem indices already in pool."
+      },
+      {
+        "trend_id": "human_rights_violation",
+        "lift_bucket": "Medium",
+        "lift_pct": "+4-7%",
+        "reason": "Academic persecution (arrests, dismissals) is a measurable form of rights violation; plausible but partial overlap with broader civil-liberties indices."
+      }
+    ]
+  },
+  {
+    "code": "v2lgoppart",
+    "why": "The ability of opposition parties to operate freely in the legislature is a direct measure of competitive political space; its contraction signals authoritarian drift and foreclosing of peaceful power-alternation channels. QGI uses this to detect pre-crisis governance deterioration before opposition suppression escalates into street politics or coup attempts.",
+    "country_coverage": 180,
+    "coverage_confidence": "high",
+    "year_start": 1900,
+    "year_end": 2024,
+    "coverage_note": "V-Dem expert-coded; reliable from ~1950+ for most countries; pre-1950 thinner but still broad; unicameral/no-legislature states coded accordingly.",
+    "trends": [
+      {
+        "trend_id": "executive_power_consolidation",
+        "lift_bucket": "High",
+        "lift_pct": "+8-15%",
+        "reason": "Legislature opposition suppression is a definitional component of power consolidation; among the strongest institutional leading signals."
+      },
+      {
+        "trend_id": "democratic_transition",
+        "lift_bucket": "High",
+        "lift_pct": "+7-12%",
+        "reason": "Opposition party freedom directly tracks democratic transitions and reversals; expected strong AUC contribution for this Trend."
+      },
+      {
+        "trend_id": "military_coup",
+        "lift_bucket": "Medium",
+        "lift_pct": "+4-8%",
+        "reason": "Coups are often preceded by legislative dysfunction and opposition suppression; directional but indirect signal."
+      },
+      {
+        "trend_id": "political_repression",
+        "lift_bucket": "Medium",
+        "lift_pct": "+4-8%",
+        "reason": "Constraining opposition in legislature often coincides with broader repression campaigns; plausible top-40 candidate."
+      }
+    ]
+  },
+  {
+    "code": "EAR_XTLP_SEX_RT",
+    "why": "A high share of workers earning below two-thirds of the median wage captures structural wage compression and labour-market precarity that fuels economic grievance and social unrest. In QGI models, low-pay prevalence is an orthogonal economic-stress signal distinct from unemployment rates, particularly useful for rich-country instability patterns where formal employment stays high but wage adequacy collapses.",
+    "country_coverage": 90,
+    "coverage_confidence": "medium",
+    "year_start": 2000,
+    "year_end": 2023,
+    "coverage_note": "ILOSTAT low-pay data requires labour force survey microdata; coverage skewed toward OECD/upper-middle income countries (~90); developing-country observations sparse and irregular, limiting ML utility for fragile-state Trends.",
+    "trends": [
+      {
+        "trend_id": "labor_action",
+        "lift_bucket": "High",
+        "lift_pct": "+7-13%",
+        "reason": "Low-pay prevalence is the primary economic grievance driver of strike waves and labour mobilisation; strong expected top-40 placement for this Trend."
+      },
+      {
+        "trend_id": "mass_protest",
+        "lift_bucket": "Medium",
+        "lift_pct": "+4-8%",
+        "reason": "Wage-adequacy grievances contribute to protest mobilisation especially where NEET and informal rates are also high; plausible but complementary to other social indicators."
+      },
+      {
+        "trend_id": "poverty_and_inequality_crisis",
+        "lift_bucket": "Medium",
+        "lift_pct": "+5-9%",
+        "reason": "Low-pay share directly measures the working-poor segment; relevant but coverage gaps in lower-income countries constrain this Trend's country pool."
+      }
+    ]
+  },
+  {
+    "code": "UNHCR_REF_COA",
+    "why": "The stock of refugees hosted in a country captures the humanitarian burden placed on receiving states, including resource strain, social tension, and spillover from neighbouring conflicts that can destabilise host-country politics. For QGI, this is a regional-contagion signal: large refugee stocks indicate proximity to active conflicts and stretch state capacity in ways that precede domestic instability events.",
+    "country_coverage": 190,
+    "coverage_confidence": "high",
+    "year_start": 1951,
+    "year_end": 2024,
+    "coverage_note": "UNHCR population statistics are near-universal; early decades (1951-1980) cover mainly Cold-War displacement cases; modern coverage from ~1990 is comprehensive with consistent methodology.",
+    "trends": [
+      {
+        "trend_id": "migration_and_refugees",
+        "lift_bucket": "High",
+        "lift_pct": "+10-18%",
+        "reason": "Country-of-asylum refugee stock is a direct input to the migration and refugees Trend; expected core feature."
+      },
+      {
+        "trend_id": "humanitarian_crisis",
+        "lift_bucket": "High",
+        "lift_pct": "+7-12%",
+        "reason": "Large refugee inflows stress host-country health, food, and shelter systems; strong empirical link to humanitarian crisis escalation."
+      },
+      {
+        "trend_id": "ethnic_and_communal_conflict",
+        "lift_bucket": "Medium",
+        "lift_pct": "+4-8%",
+        "reason": "Refugee presence can inflame inter-group tensions in host communities; plausible but context-dependent."
+      },
+      {
+        "trend_id": "foreign_intervention",
+        "lift_bucket": "Low",
+        "lift_pct": "+2-4%",
+        "reason": "Mass refugee flows sometimes precede or accompany international intervention; tangential signal with low directional specificity."
+      }
+    ]
+  },
+  {
+    "code": "IDMC_CONF_YEARS_CONSECUTIVE",
+    "why": "The count of consecutive years with active conflict IDP stock above zero measures displacement chronicity and protracted-conflict duration, which captures different information from annual flow data: long streaks signal entrenched conflict ecosystems with high recurrence risk. QGI benefits from this temporal-persistence dimension because it differentiates states in acute crisis (high flow, low streak) from those in chronic low-grade conflict (low annual flow, long streak) that are prone to sudden escalation.",
+    "country_coverage": 150,
+    "coverage_confidence": "medium",
+    "year_start": 2009,
+    "year_end": 2024,
+    "coverage_note": "IDMC conflict displacement tracking starts 2009; derived series requires non-zero stock in each consecutive year; countries with zero displacement throughout are coded zero, limiting pre-2009 analysis.",
+    "trends": [
+      {
+        "trend_id": "civil_war_and_insurgency",
+        "lift_bucket": "High",
+        "lift_pct": "+7-13%",
+        "reason": "Consecutive-years displacement is a direct marker of sustained armed conflict; expected strong AUC lift for this Trend."
+      },
+      {
+        "trend_id": "humanitarian_crisis",
+        "lift_bucket": "High",
+        "lift_pct": "+6-11%",
+        "reason": "Protracted displacement chronicity predicts humanitarian crises because cumulative needs compound over time."
+      },
+      {
+        "trend_id": "peacekeeping_and_peace_process",
+        "lift_bucket": "Medium",
+        "lift_pct": "+4-8%",
+        "reason": "Long-duration displacement contexts are prime candidates for peace process interventions; temporal signal complements peace-process Trend."
+      },
+      {
+        "trend_id": "migration_and_refugees",
+        "lift_bucket": "Medium",
+        "lift_pct": "+4-7%",
+        "reason": "Protracted internal displacement often precedes refugee outflows; plausible complementary feature."
+      }
+    ]
+  },
+  {
+    "code": "v2xnp_regcorr",
+    "why": "The Regime Corruption Index captures systemic corruption embedded in regime maintenance — through patronage, vote-buying, and state capture — rather than incidental misconduct, making it a structural measure of governance decay that destabilises regimes over the medium term. QGI uses this to distinguish corruptly entrenched regimes (high stability illusion, sudden collapse risk) from rule-of-law deterioration that manifests through institutional indicators.",
+    "country_coverage": 180,
+    "coverage_confidence": "high",
+    "year_start": 1900,
+    "year_end": 2024,
+    "coverage_note": "V-Dem expert-coded; very broad coverage; note this index captures regime-level corruption specifically, not general public sector corruption (covered separately by v2x_pubcorr).",
+    "trends": [
+      {
+        "trend_id": "political_corruption",
+        "lift_bucket": "High",
+        "lift_pct": "+9-16%",
+        "reason": "Regime Corruption Index is among the most directly matched indicators for the political corruption Trend; expected core feature."
+      },
+      {
+        "trend_id": "mass_protest",
+        "lift_bucket": "High",
+        "lift_pct": "+6-11%",
+        "reason": "Anti-corruption grievances are a primary mass-protest driver; regime corruption levels predict protest mobilisation well empirically."
+      },
+      {
+        "trend_id": "executive_power_consolidation",
+        "lift_bucket": "Medium",
+        "lift_pct": "+4-8%",
+        "reason": "Power consolidation and regime corruption co-evolve as executives use corrupt networks to entrench; plausible but partial overlap with other V-Dem measures."
+      },
+      {
+        "trend_id": "democratic_transition",
+        "lift_bucket": "Medium",
+        "lift_pct": "+4-7%",
+        "reason": "Corruption levels affect both the probability and direction of democratic transitions; useful contextual feature."
+      }
+    ]
+  },
+  {
+    "code": "IDMC_TOTAL_DISP_GDP_RATIO",
+    "why": "Normalising total IDP stock against GDP captures the economic displacement burden independently of population scale, revealing whether a country's productive capacity is being overwhelmed by forced immobility — a signal of cumulative conflict-economy degradation distinct from headcount measures. This ratio is particularly useful for QGI's Trends involving economic crisis in conflict-affected states where GDP is itself eroded.",
+    "country_coverage": 150,
+    "coverage_confidence": "medium",
+    "year_start": 2009,
+    "year_end": 2024,
+    "coverage_note": "Derived from IDMC stock (conflict 2009+, disaster 2008+) divided by WB GDP; limited to countries with IDMC reporting; missing observations for zero-displacement countries are coded zero not missing.",
+    "trends": [
+      {
+        "trend_id": "humanitarian_crisis",
+        "lift_bucket": "High",
+        "lift_pct": "+6-11%",
+        "reason": "Economic displacement burden ratio captures state capacity overload; strong signal for humanitarian crisis escalation."
+      },
+      {
+        "trend_id": "civil_war_and_insurgency",
+        "lift_bucket": "Medium",
+        "lift_pct": "+5-9%",
+        "reason": "High displacement-to-GDP ratio signals conflict-economy nexus; plausible top-40 candidate for civil war Trend."
+      },
+      {
+        "trend_id": "economic_recession",
+        "lift_bucket": "Medium",
+        "lift_pct": "+4-7%",
+        "reason": "Displacement burden strains public finances and labour supply, contributing to economic downturns in fragile states."
+      },
+      {
+        "trend_id": "migration_and_refugees",
+        "lift_bucket": "Low",
+        "lift_pct": "+2-4%",
+        "reason": "Economic displacement burden influences eventual refugee outflows but is an indirect and lagged signal for this Trend."
+      }
+    ]
+  },
+  {
+    "code": "v2csantimv",
+    "why": "Active anti-system movements measure organised societal challenges to regime legitimacy that stop short of armed conflict but signal deep structural rupture — they are a pre-cursor indicator for coups, democratic reversals, and mass violence. QGI values this because it captures the mobilisation phase before terminating events, distinguishing normal opposition from existential challenges to regime continuity.",
+    "country_coverage": 180,
+    "coverage_confidence": "high",
+    "year_start": 1900,
+    "year_end": 2024,
+    "coverage_note": "V-Dem expert-coded binary/ordinal; coverage near-universal; anti-system movement coding requires expert judgement so inter-coder reliability varies more than structural indicators.",
+    "trends": [
+      {
+        "trend_id": "mass_protest",
+        "lift_bucket": "High",
+        "lift_pct": "+9-15%",
+        "reason": "Anti-system movements are the organised backbone of large protest waves; expected strong top-feature for mass protest Trend."
+      },
+      {
+        "trend_id": "military_coup",
+        "lift_bucket": "High",
+        "lift_pct": "+6-12%",
+        "reason": "Anti-system mobilisation creates the political crisis conditions that trigger coup attempts; well-documented empirical link."
+      },
+      {
+        "trend_id": "democratic_transition",
+        "lift_bucket": "Medium",
+        "lift_pct": "+5-9%",
+        "reason": "Anti-system movements often precede or drive democratisation episodes; plausible but movement outcomes are varied."
+      },
+      {
+        "trend_id": "civil_war_and_insurgency",
+        "lift_bucket": "Medium",
+        "lift_pct": "+4-8%",
+        "reason": "Unresolved anti-system mobilisation can escalate to insurgency; useful upstream signal for conflict Trends."
+      }
+    ]
+  },
+  {
+    "code": "OWID_TERRORISM_ATTACKS",
+    "why": "The annual count of terrorist incidents directly measures sub-state political violence below the armed-conflict threshold, capturing both the operational capacity of non-state armed groups and government inability to contain them. For QGI Trends, terrorism frequency is an especially useful lagged feature — sustained attack cadence predicts escalation to civil war onset and government repression cycles.",
+    "country_coverage": 175,
+    "coverage_confidence": "high",
+    "year_start": 1970,
+    "year_end": 2022,
+    "coverage_note": "GTD via OWID; near-universal country coverage from 1970; note GTD 1993 data gap (methodological) should be treated as missing not zero; series ends ~2022 pending START/GTD updates.",
+    "trends": [
+      {
+        "trend_id": "terrorist_attack",
+        "lift_bucket": "High",
+        "lift_pct": "+12-20%",
+        "reason": "Attack count is the core event-frequency measure for the terrorist attack Trend; among the highest expected AUC contributions in the entire pool."
+      },
+      {
+        "trend_id": "civil_war_and_insurgency",
+        "lift_bucket": "High",
+        "lift_pct": "+7-13%",
+        "reason": "Persistent high terrorism frequency precedes and accompanies insurgency escalation; strong empirical leading indicator."
+      },
+      {
+        "trend_id": "political_violence",
+        "lift_bucket": "High",
+        "lift_pct": "+8-14%",
+        "reason": "Terrorist attack counts are a direct sub-component of broader political violence; strong signal with clear directional alignment."
+      },
+      {
+        "trend_id": "political_repression",
+        "lift_bucket": "Medium",
+        "lift_pct": "+4-7%",
+        "reason": "High terrorism rates often trigger government counter-terrorism repression; useful contextual signal."
+      },
+      {
+        "trend_id": "ethnic_and_communal_conflict",
+        "lift_bucket": "Medium",
+        "lift_pct": "+3-6%",
+        "reason": "Communal and sectarian conflicts generate terrorism activity; partial overlap but directional."
+      }
+    ]
+  },
+  {
+    "code": "UCDP_SB_DEATHS_BEST",
+    "why": "Best-estimate battle deaths from state-based conflicts is the gold-standard measure of conflict intensity, capturing the lethality of organised state-vs-armed-group or inter-state violence in a single comparable metric. QGI's conflict Trends benefit from this as a contemporaneous intensity anchor that also carries strong predictive power for sustained conflict duration, peace-process timing, and foreign intervention triggers.",
+    "country_coverage": 150,
+    "coverage_confidence": "high",
+    "year_start": 1989,
+    "year_end": 2023,
+    "coverage_note": "UCDP GED/PRIO-ACD covers all country-years with active state-based conflict from 1989; non-conflict countries are coded zero; coverage is comprehensive for conflict cases but the series is sparse before 1989.",
+    "trends": [
+      {
+        "trend_id": "civil_war_and_insurgency",
+        "lift_bucket": "High",
+        "lift_pct": "+12-20%",
+        "reason": "Battle death count is the definitional core metric for civil war intensity; expected top feature for this Trend."
+      },
+      {
+        "trend_id": "interstate_war",
+        "lift_bucket": "High",
+        "lift_pct": "+10-18%",
+        "reason": "State-based deaths include inter-state conflict fatalities; one of the most direct indicators for the interstate war Trend."
+      },
+      {
+        "trend_id": "foreign_intervention",
+        "lift_bucket": "High",
+        "lift_pct": "+7-13%",
+        "reason": "High battle death counts are the primary threshold trigger for international intervention decisions; strong leading signal."
+      },
+      {
+        "trend_id": "peacekeeping_and_peace_process",
+        "lift_bucket": "Medium",
+        "lift_pct": "+5-9%",
+        "reason": "Battle death magnitude shapes the timing and form of peace processes; useful contextual feature."
+      },
+      {
+        "trend_id": "humanitarian_crisis",
+        "lift_bucket": "Medium",
+        "lift_pct": "+5-8%",
+        "reason": "High battle deaths co-move with civilian displacement and humanitarian need; complementary to displacement-specific indicators."
+      }
+    ]
+  }
+]

@@ -1,0 +1,3522 @@
+﻿[
+    {
+        "code":  "v2caacadfree",
+        "name":  "State International Commitment to Academic Freedom (ICESCR)",
+        "category":  "Social",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v2caacadfree — country-year political indicator"
+    },
+    {
+        "code":  "v2caassemb",
+        "name":  "Freedom of Peaceful Assembly",
+        "category":  "Social",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "Citizens can freely assemble for protests and meetings"
+    },
+    {
+        "code":  "v2caautmob",
+        "name":  "Mobilization for Autocracy",
+        "category":  "Social",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v2caautmob — country-year political indicator"
+    },
+    {
+        "code":  "v2caconmob",
+        "name":  "Mass Mobilization Concentration",
+        "category":  "Social",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v2caconmob — country-year political indicator"
+    },
+    {
+        "code":  "v2cacritic",
+        "name":  "Academics as Public Critics of Government",
+        "category":  "Social",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v2cacritic — country-year political indicator"
+    },
+    {
+        "code":  "v2cademmob",
+        "name":  "Mobilization for Democracy",
+        "category":  "Social",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v2cademmob — country-year political indicator"
+    },
+    {
+        "code":  "v2cafexch",
+        "name":  "Freedom of Academic Exchange and Dissemination",
+        "category":  "Social",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v2cafexch — country-year political indicator"
+    },
+    {
+        "code":  "v2cafres",
+        "name":  "Freedom to Research and Teach",
+        "category":  "Social",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "Scholars can research and teach without political interference"
+    },
+    {
+        "code":  "v2cagenmob",
+        "name":  "General Mass Mobilization Intensity",
+        "category":  "Social",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v2cagenmob — country-year political indicator"
+    },
+    {
+        "code":  "v2cainsaut",
+        "name":  "Institutional Autonomy of Universities",
+        "category":  "Social",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v2cainsaut — country-year political indicator"
+    },
+    {
+        "code":  "v2canonpol",
+        "name":  "Engagement in Non-Political Independent Associations",
+        "category":  "Social",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v2canonpol — country-year political indicator"
+    },
+    {
+        "code":  "v2canuni",
+        "name":  "Total Number of Universities",
+        "category":  "Social",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v2canuni — country-year political indicator"
+    },
+    {
+        "code":  "v2capolit",
+        "name":  "Engagement in Independent Political Associations",
+        "category":  "Social",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v2capolit — country-year political indicator"
+    },
+    {
+        "code":  "v2caprotac",
+        "name":  "Constitutional Protection for Academic Freedom",
+        "category":  "Social",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v2caprotac — country-year political indicator"
+    },
+    {
+        "code":  "v2casoe",
+        "name":  "State of Emergency Declared",
+        "category":  "Social",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "State of emergency declared restricting civil liberties"
+    },
+    {
+        "code":  "v2castate",
+        "name":  "Engagement in State-Administered Mass Organizations",
+        "category":  "Social",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v2castate — country-year political indicator"
+    },
+    {
+        "code":  "v2casurv",
+        "name":  "Campus Integrity (Free from Political Surveillance)",
+        "category":  "Social",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v2casurv — country-year political indicator"
+    },
+    {
+        "code":  "v2catrauni",
+        "name":  "Engagement in Independent Trade Unions",
+        "category":  "Social",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v2catrauni — country-year political indicator"
+    },
+    {
+        "code":  "v2cauni",
+        "name":  "Universities Exist",
+        "category":  "Social",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v2cauni — country-year political indicator"
+    },
+    {
+        "code":  "v2caviol",
+        "name":  "Political Violence on Campuses",
+        "category":  "Social",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v2caviol — country-year political indicator"
+    },
+    {
+        "code":  "v2clacfree",
+        "name":  "Freedom of Academic and Cultural Expression",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v2clacfree — country-year political indicator"
+    },
+    {
+        "code":  "v2clacjstm",
+        "name":  "Access to Justice for Men",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v2clacjstm — country-year political indicator"
+    },
+    {
+        "code":  "v2clacjstw",
+        "name":  "Access to Justice for Women",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v2clacjstw — country-year political indicator"
+    },
+    {
+        "code":  "v2clacjust",
+        "name":  "Social Class Equality in Civil Liberties",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v2clacjust — country-year political indicator"
+    },
+    {
+        "code":  "v2cldiscm",
+        "name":  "Freedom of Discussion for Men",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v2cldiscm — country-year political indicator"
+    },
+    {
+        "code":  "v2cldiscw",
+        "name":  "Freedom of Discussion for Women",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v2cldiscw — country-year political indicator"
+    },
+    {
+        "code":  "v2cldmovem",
+        "name":  "Freedom of Domestic Movement for Men",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v2cldmovem — country-year political indicator"
+    },
+    {
+        "code":  "v2cldmovew",
+        "name":  "Freedom of Domestic Movement for Women",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v2cldmovew — country-year political indicator"
+    },
+    {
+        "code":  "v2clfmove",
+        "name":  "Freedom of Foreign Movement",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v2clfmove — country-year political indicator"
+    },
+    {
+        "code":  "v2clgencl",
+        "name":  "Gender Gap in Civil Liberties",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v2clgencl — country-year political indicator"
+    },
+    {
+        "code":  "v2clgeocl",
+        "name":  "Geographic Variation in Civil Liberties",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v2clgeocl — country-year political indicator"
+    },
+    {
+        "code":  "v2clpolcl",
+        "name":  "Political Group Equality in Civil Liberties",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v2clpolcl — country-year political indicator"
+    },
+    {
+        "code":  "v2clprptym",
+        "name":  "Property Rights for Men",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v2clprptym — country-year political indicator"
+    },
+    {
+        "code":  "v2clprptyw",
+        "name":  "Property Rights for Women",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v2clprptyw — country-year political indicator"
+    },
+    {
+        "code":  "v2clrelig",
+        "name":  "Freedom of Religion",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v2clrelig — country-year political indicator"
+    },
+    {
+        "code":  "v2clrgstch",
+        "name":  "Stronger Civil Liberties Region Characteristics",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v2clrgstch — country-year political indicator"
+    },
+    {
+        "code":  "v2clrgunev",
+        "name":  "Subnational Civil Liberties Unevenness",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v2clrgunev — country-year political indicator"
+    },
+    {
+        "code":  "v2clrgwkch",
+        "name":  "Weaker Civil Liberties Region Characteristics",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v2clrgwkch — country-year political indicator"
+    },
+    {
+        "code":  "v2clrspct",
+        "name":  "Rigorous and Impartial Public Administration",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "Impartial professional public administration"
+    },
+    {
+        "code":  "v2clslavef",
+        "name":  "Freedom from Forced Labor for Women",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v2clslavef — country-year political indicator"
+    },
+    {
+        "code":  "v2clslavem",
+        "name":  "Freedom from Forced Labor for Men",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v2clslavem — country-year political indicator"
+    },
+    {
+        "code":  "v2clsnlpct",
+        "name":  "Share of Population with Weaker Civil Liberties",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v2clsnlpct — country-year political indicator"
+    },
+    {
+        "code":  "v2clsocgrp",
+        "name":  "Social Group Equality in Civil Liberties",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v2clsocgrp — country-year political indicator"
+    },
+    {
+        "code":  "v2clstown",
+        "name":  "State Ownership of Economy",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "Government ownership of major economic sectors"
+    },
+    {
+        "code":  "v2cltrnslw",
+        "name":  "Transparent Laws with Predictable Enforcement",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "Laws publicly known and consistently applied"
+    },
+    {
+        "code":  "v2csanmvch",
+        "name":  "Anti-System Movement Character (Violent vs. Peaceful)",
+        "category":  "Social",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v2csanmvch — country-year political indicator"
+    },
+    {
+        "code":  "v2csantimv",
+        "name":  "Anti-System Movements Active",
+        "category":  "Social",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "Anti-system movements challenging regime"
+    },
+    {
+        "code":  "v2cscnsult",
+        "name":  "Civil Society Organization Consultation by Government",
+        "category":  "Social",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "Government actively consults civil society organizations"
+    },
+    {
+        "code":  "v2csgender",
+        "name":  "CSO Womens Participation",
+        "category":  "Social",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v2csgender — country-year political indicator"
+    },
+    {
+        "code":  "v2csrlgcon",
+        "name":  "Religious Organization Consultation",
+        "category":  "Social",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "Government consults religious organizations in policy-making"
+    },
+    {
+        "code":  "v2csrlgrep",
+        "name":  "Religious Organization Repression",
+        "category":  "Social",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "Government represses or restricts religious organizations"
+    },
+    {
+        "code":  "v2csstruc",
+        "name":  "Civil Society Organization Structure",
+        "category":  "Social",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v2csstruc — country-year political indicator"
+    },
+    {
+        "code":  "v2ddadmci",
+        "name":  "Citizen Initiative Administrative Threshold",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v2ddadmci — country-year political indicator"
+    },
+    {
+        "code":  "v2ddadmor",
+        "name":  "Obligatory Referendum Administrative Threshold",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v2ddadmor — country-year political indicator"
+    },
+    {
+        "code":  "v2ddadmpl",
+        "name":  "Plebiscite Administrative Threshold",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v2ddadmpl — country-year political indicator"
+    },
+    {
+        "code":  "v2ddadmrf",
+        "name":  "Referendum Administrative Threshold",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v2ddadmrf — country-year political indicator"
+    },
+    {
+        "code":  "v2ddappor",
+        "name":  "Obligatory Referendum Approval Threshold",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v2ddappor — country-year political indicator"
+    },
+    {
+        "code":  "v2ddapprci",
+        "name":  "Citizen Initiative Approval Threshold",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v2ddapprci — country-year political indicator"
+    },
+    {
+        "code":  "v2ddapprpl",
+        "name":  "Plebiscite Approval Threshold",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v2ddapprpl — country-year political indicator"
+    },
+    {
+        "code":  "v2ddapprrf",
+        "name":  "Referendum Approval Threshold",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v2ddapprrf — country-year political indicator"
+    },
+    {
+        "code":  "v2ddlegci",
+        "name":  "Initiatives permitted",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v2ddlegci — country-year political indicator"
+    },
+    {
+        "code":  "v2ddlegpl",
+        "name":  "Plebiscite permitted",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v2ddlegpl — country-year political indicator"
+    },
+    {
+        "code":  "v2ddlegrf",
+        "name":  "Referendums permitted",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v2ddlegrf — country-year political indicator"
+    },
+    {
+        "code":  "v2ddlexci",
+        "name":  "Citizen Initiatives Permitted by Law",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v2ddlexci — country-year political indicator"
+    },
+    {
+        "code":  "v2ddlexor",
+        "name":  "Constitutional Changes via Popular Vote",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v2ddlexor — country-year political indicator"
+    },
+    {
+        "code":  "v2ddlexpl",
+        "name":  "Plebiscites Permitted by Law",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v2ddlexpl — country-year political indicator"
+    },
+    {
+        "code":  "v2ddlexrf",
+        "name":  "Referendums Permitted by Law",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v2ddlexrf — country-year political indicator"
+    },
+    {
+        "code":  "v2ddpartci",
+        "name":  "Citizen Initiative Participation Threshold",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v2ddpartci — country-year political indicator"
+    },
+    {
+        "code":  "v2ddpartor",
+        "name":  "Obligatory Referendum Participation Threshold",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v2ddpartor — country-year political indicator"
+    },
+    {
+        "code":  "v2ddpartpl",
+        "name":  "Plebiscite Participation Threshold",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v2ddpartpl — country-year political indicator"
+    },
+    {
+        "code":  "v2ddpartrf",
+        "name":  "Referendum Participation Threshold",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v2ddpartrf — country-year political indicator"
+    },
+    {
+        "code":  "v2ddsigpci",
+        "name":  "Initiatives signatures %",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v2ddsigpci — country-year political indicator"
+    },
+    {
+        "code":  "v2ddsigprf",
+        "name":  "Referendum Signature Requirement (%)",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v2ddsigprf — country-year political indicator"
+    },
+    {
+        "code":  "v2ddspmci",
+        "name":  "Supermajority",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v2ddspmci — country-year political indicator"
+    },
+    {
+        "code":  "v2ddspmor",
+        "name":  "Obligatory referendum super majority",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v2ddspmor — country-year political indicator"
+    },
+    {
+        "code":  "v2ddspmpl",
+        "name":  "Plebiscites super majority",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v2ddspmpl — country-year political indicator"
+    },
+    {
+        "code":  "v2ddspmrf",
+        "name":  "Referendums super majority",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v2ddspmrf — country-year political indicator"
+    },
+    {
+        "code":  "v2ddthrcon",
+        "name":  "Plebiscite approval threshold",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v2ddthrcon — country-year political indicator"
+    },
+    {
+        "code":  "v2ddthreci",
+        "name":  "Citizen Initiative Credible Threat",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v2ddthreci — country-year political indicator"
+    },
+    {
+        "code":  "v2ddthreor",
+        "name":  "Obligatory Referendum Credible Threat",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v2ddthreor — country-year political indicator"
+    },
+    {
+        "code":  "v2ddthrepl",
+        "name":  "Plebiscite Credible Threat",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v2ddthrepl — country-year political indicator"
+    },
+    {
+        "code":  "v2ddthrerci",
+        "name":  "Citizen Initiative Credible Threat (Alt Specification)",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v2ddthrerci — country-year political indicator, alt specification"
+    },
+    {
+        "code":  "v2ddthrerf",
+        "name":  "Referendum Credible Threat",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v2ddthrerf — country-year political indicator"
+    },
+    {
+        "code":  "v2ddyrci",
+        "name":  "Citizen Initiative Occurred This Year",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v2ddyrci — country-year political indicator"
+    },
+    {
+        "code":  "v2ddyror",
+        "name":  "Obligatory Referendum Occurred This Year",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v2ddyror — country-year political indicator"
+    },
+    {
+        "code":  "v2ddyrpl",
+        "name":  "Plebiscite Occurred This Year",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v2ddyrpl — country-year political indicator"
+    },
+    {
+        "code":  "v2ddyrrf",
+        "name":  "Referendum Occurred This Year",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v2ddyrrf — country-year political indicator"
+    },
+    {
+        "code":  "v2dlcommon",
+        "name":  "Common Good Orientation in Elite Deliberation",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "Political discourse oriented to public interest not parochial interests"
+    },
+    {
+        "code":  "v2dlconslt",
+        "name":  "Range of Consultation in Policy-Making",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v2dlconslt — country-year political indicator"
+    },
+    {
+        "code":  "v2dlcountr",
+        "name":  "Respect for Counterarguments in Political Deliberation",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v2dlcountr — country-year political indicator"
+    },
+    {
+        "code":  "v2dlencmps",
+        "name":  "Particularistic vs. Public Goods Policy Orientation",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v2dlencmps — country-year political indicator"
+    },
+    {
+        "code":  "v2dlengage",
+        "name":  "Engaged Society (Free Public Deliberation)",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "Society engages in active unconstrained public deliberation"
+    },
+    {
+        "code":  "v2dlreason",
+        "name":  "Reasoned Policy Justification by Elites",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "Elites provide evidence-based public justification for policies"
+    },
+    {
+        "code":  "v2dlunivl",
+        "name":  "Universalistic vs. Means-Tested Welfare Policy",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "Social policy is universal vs. targeted/clientelistic"
+    },
+    {
+        "code":  "v2edcentcurrlm",
+        "name":  "Centralized National Curriculum Control",
+        "category":  "Education",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v2edcentcurrlm — country-year political indicator"
+    },
+    {
+        "code":  "v2edcenttxbooks",
+        "name":  "Centralized National Textbook Approval",
+        "category":  "Education",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v2edcenttxbooks — country-year political indicator"
+    },
+    {
+        "code":  "v2edcritical",
+        "name":  "Critical Thinking Encouraged in Education",
+        "category":  "Education",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v2edcritical — country-year political indicator"
+    },
+    {
+        "code":  "v2edideol",
+        "name":  "State Ideology Embedded in Curriculum",
+        "category":  "Education",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "State ideology embedded in school curriculum"
+    },
+    {
+        "code":  "v2edideolch",
+        "name":  "Character of Ideology in Curriculum",
+        "category":  "Education",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v2edideolch — country-year political indicator"
+    },
+    {
+        "code":  "v2edmath",
+        "name":  "Emphasis on Mathematics and Science Education",
+        "category":  "Education",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v2edmath — country-year political indicator"
+    },
+    {
+        "code":  "v2edpatriot",
+        "name":  "Patriotic Education in Curriculum",
+        "category":  "Education",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "Nationalist/patriotic content in school curriculum"
+    },
+    {
+        "code":  "v2edplural",
+        "name":  "Pluralism in Curriculum",
+        "category":  "Education",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v2edplural — country-year political indicator"
+    },
+    {
+        "code":  "v2edpoledprim",
+        "name":  "Civic and Political Education at Primary Level",
+        "category":  "Education",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v2edpoledprim — country-year political indicator"
+    },
+    {
+        "code":  "v2edpoledrights",
+        "name":  "Rights and Duties Education in Curriculum",
+        "category":  "Education",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v2edpoledrights — country-year political indicator"
+    },
+    {
+        "code":  "v2edpoledsec",
+        "name":  "Civic and Political Education at Secondary Level",
+        "category":  "Education",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v2edpoledsec — country-year political indicator"
+    },
+    {
+        "code":  "v2edscextracurr",
+        "name":  "Schools Offer Extracurricular Activities",
+        "category":  "Education",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v2edscextracurr — country-year political indicator"
+    },
+    {
+        "code":  "v2edscpatriot",
+        "name":  "Patriotic Symbols Present in Schools",
+        "category":  "Education",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v2edscpatriot — country-year political indicator"
+    },
+    {
+        "code":  "v2edscpatriotcb",
+        "name":  "Patriotic Ceremonies Celebrated in Schools",
+        "category":  "Education",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v2edscpatriotcb — country-year political indicator"
+    },
+    {
+        "code":  "v2edteautonomy",
+        "name":  "Teacher Pedagogical Autonomy",
+        "category":  "Education",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v2edteautonomy — country-year political indicator"
+    },
+    {
+        "code":  "v2edtefire",
+        "name":  "Political Firing of Teachers",
+        "category":  "Education",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "Teachers fired for political views"
+    },
+    {
+        "code":  "v2edtehire",
+        "name":  "Political Hiring of Teachers",
+        "category":  "Education",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "Teachers hired based on political loyalty to regime"
+    },
+    {
+        "code":  "v2edtequal",
+        "name":  "Teacher Qualification Requirements",
+        "category":  "Education",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v2edtequal — country-year political indicator"
+    },
+    {
+        "code":  "v2edteunion",
+        "name":  "Teacher Unions Exist",
+        "category":  "Education",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v2edteunion — country-year political indicator"
+    },
+    {
+        "code":  "v2edteunionindp",
+        "name":  "Teacher Unions Independent of Government",
+        "category":  "Education",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v2edteunionindp — country-year political indicator"
+    },
+    {
+        "code":  "v2el_frefair",
+        "name":  "Election Free and Fair (OSP Estimate)",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v2el_frefair — country-year political indicator"
+    },
+    {
+        "code":  "v2elaccept",
+        "name":  "Election Losers Accept Results",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "Losing parties accept and recognize election results"
+    },
+    {
+        "code":  "v2elcomvot",
+        "name":  "Compulsory Voting",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v2elcomvot — country-year political indicator"
+    },
+    {
+        "code":  "v2eldonate",
+        "name":  "Disclosure of Campaign Donations Required",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v2eldonate — country-year political indicator"
+    },
+    {
+        "code":  "v2elembaut",
+        "name":  "Electoral Management Body Autonomy",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "Electoral management body independence from government"
+    },
+    {
+        "code":  "v2elembcap",
+        "name":  "Electoral Management Body Capacity",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v2elembcap — country-year political indicator"
+    },
+    {
+        "code":  "v2elffelr",
+        "name":  "Subnational Elections Free and Fair",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v2elffelr — country-year political indicator"
+    },
+    {
+        "code":  "v2elfrcamp",
+        "name":  "Election Free Campaign Media Access",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v2elfrcamp — country-year political indicator"
+    },
+    {
+        "code":  "v2elfrfair",
+        "name":  "Election Free and Fair (Expert Assessment)",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v2elfrfair — country-year political indicator"
+    },
+    {
+        "code":  "v2elintim",
+        "name":  "Election Government Intimidation",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "Government intimidation of voters, candidates, or observers"
+    },
+    {
+        "code":  "v2elirreg",
+        "name":  "Election Other Voting Irregularities",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "Irregularities in voting, counting, or results reporting"
+    },
+    {
+        "code":  "v2ellocgov",
+        "name":  "Existence of local government",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v2ellocgov — country-year political indicator"
+    },
+    {
+        "code":  "v2elloelsy",
+        "name":  "Lower Chamber Electoral System Type",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v2elloelsy — country-year political indicator"
+    },
+    {
+        "code":  "v2elloseat",
+        "name":  "Lower Chamber Election Seats (Number)",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v2elloseat — country-year political indicator"
+    },
+    {
+        "code":  "v2ellostts",
+        "name":  "Lower Chamber Seat Share Won by Third-Largest Party",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v2ellostts — country-year political indicator"
+    },
+    {
+        "code":  "v2ellouptield",
+        "name":  "Lower Chamber Upper-Tier Electoral District Structure",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v2ellouptield — country-year political indicator, alt specification"
+    },
+    {
+        "code":  "v2ellovtlg",
+        "name":  "Lowerchamberelectionvoteshareoflargestvote-getter",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v2ellovtlg — country-year political indicator"
+    },
+    {
+        "code":  "v2ellovtsm",
+        "name":  "Lower chamber election vote share of second-largest vote-getter",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v2ellovtsm — country-year political indicator"
+    },
+    {
+        "code":  "v2elmulpar",
+        "name":  "Elections Multiparty",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v2elmulpar — country-year political indicator"
+    },
+    {
+        "code":  "v2elpaidig",
+        "name":  "Election Paid Interest Group Media",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v2elpaidig — country-year political indicator"
+    },
+    {
+        "code":  "v2elparlel",
+        "name":  "Lower Chamber Electoral System (OSP)",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v2elparlel — country-year political indicator"
+    },
+    {
+        "code":  "v2elpdcamp",
+        "name":  "Election Paid Campaign Advertisements",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v2elpdcamp — country-year political indicator"
+    },
+    {
+        "code":  "v2elpeace",
+        "name":  "Election Electoral Violence",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v2elpeace — country-year political indicator"
+    },
+    {
+        "code":  "v2elpubfin",
+        "name":  "Public Campaign Finance Exists",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "Government provides public financing for election campaigns"
+    },
+    {
+        "code":  "v2elrgstry",
+        "name":  "Election Voter Registry Quality",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v2elrgstry — country-year political indicator"
+    },
+    {
+        "code":  "v2elsnlsff",
+        "name":  "Subnational Election Free and Fair Unevenness",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v2elsnlsff — country-year political indicator"
+    },
+    {
+        "code":  "v2elsuffrage",
+        "name":  "Percentage of Population with Suffrage",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "Percentage of adult population legally entitled to vote"
+    },
+    {
+        "code":  "v2elthresh",
+        "name":  "Lower Chamber Statutory Electoral Threshold",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v2elthresh — country-year political indicator"
+    },
+    {
+        "code":  "v2eltrnout",
+        "name":  "Election Voter Turnout",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "Voter turnout as percentage of registered voters"
+    },
+    {
+        "code":  "v2eltype",
+        "name":  "Election type",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v2eltype — country-year political indicator"
+    },
+    {
+        "code":  "v2elvotbuy",
+        "name":  "Election Vote Buying",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "Vote buying: exchange of goods or money for votes"
+    },
+    {
+        "code":  "v2elvotlrg",
+        "name":  "Presidential Election Vote Share (Largest Party)",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v2elvotlrg — country-year political indicator"
+    },
+    {
+        "code":  "v2elvotsml",
+        "name":  "Presidential Election Vote Share (Second Largest)",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v2elvotsml — country-year political indicator"
+    },
+    {
+        "code":  "v2ex_elecleg",
+        "name":  "Legislature Directly Elected Index",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v2ex_elecleg — country-year political indicator"
+    },
+    {
+        "code":  "v2ex_hogw",
+        "name":  "Relative Power of the Head of Government",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v2ex_hogw — country-year political indicator"
+    },
+    {
+        "code":  "v2exaphog",
+        "name":  "HOG Appointment in Practice",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v2exaphog — country-year political indicator"
+    },
+    {
+        "code":  "v2exaphos",
+        "name":  "HOS Selection by Legislature in Practice",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v2exaphos — country-year political indicator"
+    },
+    {
+        "code":  "v2exapup",
+        "name":  "Chief Executive Appointment by Upper Chamber",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v2exapup — country-year political indicator"
+    },
+    {
+        "code":  "v2exapupap",
+        "name":  "Chief Executive Appointment by Upper Chamber (Implicit)",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v2exapupap — country-year political indicator"
+    },
+    {
+        "code":  "v2exbribe",
+        "name":  "Executive Corrupt Exchanges (Bribery)",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "Executive officials accept bribes in exchange for policy decisions"
+    },
+    {
+        "code":  "v2exdfcbhs",
+        "name":  "HOS Appoints Cabinet in Practice",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v2exdfcbhs — country-year political indicator"
+    },
+    {
+        "code":  "v2exdfdmhs",
+        "name":  "HOS Dismisses Ministers in Practice",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v2exdfdmhs — country-year political indicator"
+    },
+    {
+        "code":  "v2exdfdshg",
+        "name":  "HOG Dismisses Ministers in Practice",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v2exdfdshg — country-year political indicator"
+    },
+    {
+        "code":  "v2exdfdshs",
+        "name":  "HOS Dissolves Legislature in Practice",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v2exdfdshs — country-year political indicator"
+    },
+    {
+        "code":  "v2exdfpphg",
+        "name":  "HOG Proposes Legislation in Practice",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v2exdfpphg — country-year political indicator"
+    },
+    {
+        "code":  "v2exdfpphs",
+        "name":  "HOS Proposes Legislation in Practice",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v2exdfpphs — country-year political indicator"
+    },
+    {
+        "code":  "v2exdfvthg",
+        "name":  "HOG Veto Power in Practice",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v2exdfvthg — country-year political indicator"
+    },
+    {
+        "code":  "v2exdfvths",
+        "name":  "HOS Veto Power in Practice",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v2exdfvths — country-year political indicator"
+    },
+    {
+        "code":  "v2exdjcbhg",
+        "name":  "HOG Appoints Cabinet in Practice",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v2exdjcbhg — country-year political indicator"
+    },
+    {
+        "code":  "v2exdjdshg",
+        "name":  "HOG Dissolves Legislature in Practice",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v2exdjdshg — country-year political indicator"
+    },
+    {
+        "code":  "v2exembez",
+        "name":  "Executive Embezzlement and Theft",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "Executive embezzles public funds for private use"
+    },
+    {
+        "code":  "v2exl_legitideol",
+        "name":  "Ideology-Based Legitimation",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "Legitimacy based on official state ideology"
+    },
+    {
+        "code":  "v2exl_legitideolcr",
+        "name":  "Character of Official Ideology (Legitimation)",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v2exl_legitideolcr — country-year political indicator"
+    },
+    {
+        "code":  "v2exl_legitperf",
+        "name":  "Performance-Based Legitimation",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "Legitimacy based on policy performance and economic delivery"
+    },
+    {
+        "code":  "v2exl_legitratio",
+        "name":  "Rational-Legal Legitimation",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "Legitimacy based on rule of law and rational-legal norms"
+    },
+    {
+        "code":  "v2expathhg",
+        "name":  "HOG Appointment in Practice (Factual)",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v2expathhg — country-year political indicator"
+    },
+    {
+        "code":  "v2expathhs",
+        "name":  "HOS Appointment in Practice (Factual)",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v2expathhs — country-year political indicator"
+    },
+    {
+        "code":  "v2exremhsp",
+        "name":  "HOS Removal by Legislature in Practice",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v2exremhsp — country-year political indicator"
+    },
+    {
+        "code":  "v2exrescon",
+        "name":  "Executive Respects Constitution",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "Executive respects constitutional and judicial constraints"
+    },
+    {
+        "code":  "v2exthftps",
+        "name":  "Public Sector Theft",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v2exthftps — country-year political indicator"
+    },
+    {
+        "code":  "v2juaccnt",
+        "name":  "Judicial Accountability Mechanisms",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "Mechanisms for holding judiciary accountable"
+    },
+    {
+        "code":  "v2jucnind",
+        "name":  "Lower Court Independence",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v2jucnind — country-year political indicator"
+    },
+    {
+        "code":  "v2jucomp",
+        "name":  "Compliance with Judiciary",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v2jucomp — country-year political indicator"
+    },
+    {
+        "code":  "v2jucorrdc",
+        "name":  "Judicial Corruption in Decision-Making",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v2jucorrdc — country-year political indicator"
+    },
+    {
+        "code":  "v2jufemjdg",
+        "name":  "Female Judges Share",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "Share of female judges in judiciary"
+    },
+    {
+        "code":  "v2jufrstfm",
+        "name":  "Year First Female Judge Appointed to High Court",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "Year first woman appointed to high court (institutionalization)"
+    },
+    {
+        "code":  "v2juhccomp",
+        "name":  "Compliance with High Court",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v2juhccomp — country-year political indicator"
+    },
+    {
+        "code":  "v2juhcind",
+        "name":  "High Court Independence",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "High court independent from executive interference"
+    },
+    {
+        "code":  "v2juhcsizl",
+        "name":  "High Court Size by Law",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v2juhcsizl — country-year political indicator"
+    },
+    {
+        "code":  "v2juhcsizp",
+        "name":  "High Court Size in Practice",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v2juhcsizp — country-year political indicator"
+    },
+    {
+        "code":  "v2juncind",
+        "name":  "Lower Court Independence",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "Lower courts independent from executive interference"
+    },
+    {
+        "code":  "v2jupack",
+        "name":  "Court Packing",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "Government stacks court with loyal judges"
+    },
+    {
+        "code":  "v2jupoatck",
+        "name":  "Government Attacks on Judiciary",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v2jupoatck — country-year political indicator"
+    },
+    {
+        "code":  "v2jupurge",
+        "name":  "Judicial Purges",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "Politically-motivated removal of judges"
+    },
+    {
+        "code":  "v2jureview",
+        "name":  "Judicial Review of Legislation",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "Courts can review constitutionality of legislation"
+    },
+    {
+        "code":  "v2lgamend",
+        "name":  "Legislature Amends Constitution",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v2lgamend — country-year political indicator"
+    },
+    {
+        "code":  "v2lgamnsty",
+        "name":  "Legislature Amnesties",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v2lgamnsty — country-year political indicator"
+    },
+    {
+        "code":  "v2lgcomslo",
+        "name":  "Lower Chamber Permanent Committees",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v2lgcomslo — country-year political indicator"
+    },
+    {
+        "code":  "v2lgcrrpt",
+        "name":  "Legislature Corrupt Activities",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "Legislators engage in corrupt activities (bribes, kickbacks)"
+    },
+    {
+        "code":  "v2lgdomchm",
+        "name":  "Legislature Dominant Chamber",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "Which chamber dominates in bicameral legislatures"
+    },
+    {
+        "code":  "v2lgdsadlo",
+        "name":  "Representation of Disadvantaged Social Groups in Legislature",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "Disadvantaged social groups have real legislative representation"
+    },
+    {
+        "code":  "v2lgfemleg",
+        "name":  "Lower Chamber Female Legislators Share",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "Female share of legislators in lower chamber"
+    },
+    {
+        "code":  "v2lgfunds",
+        "name":  "Legislature Controls Own Resources",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v2lgfunds — country-year political indicator"
+    },
+    {
+        "code":  "v2lginvstp",
+        "name":  "Legislature Investigates Executive in Practice",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "Legislature investigates executive in practice"
+    },
+    {
+        "code":  "v2lgoppart",
+        "name":  "Legislature Opposition Parties Operate Freely",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "Opposition parties operate freely in legislature"
+    },
+    {
+        "code":  "v2lgotovst",
+        "name":  "Executive Oversight by Legislature",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v2lgotovst — country-year political indicator"
+    },
+    {
+        "code":  "v2lgqugen",
+        "name":  "Lower Chamber Gender Quota",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "Gender quota mandating female representation in parliament"
+    },
+    {
+        "code":  "v2lgqugens",
+        "name":  "Lower Chamber Gender Quota Placement Mandate",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v2lgqugens — country-year political indicator"
+    },
+    {
+        "code":  "v2lgqugent",
+        "name":  "Lower Chamber Gender Quota Threshold",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v2lgqugent — country-year political indicator"
+    },
+    {
+        "code":  "v2lgqumin",
+        "name":  "Lower Chamber Quota for Social/Ethnic Groups",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "Quota mandating minority/social group representation in parliament"
+    },
+    {
+        "code":  "v2lgsrvlo",
+        "name":  "Lower Chamber Members Serve in Government",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v2lgsrvlo — country-year political indicator"
+    },
+    {
+        "code":  "v2lgstafflo",
+        "name":  "Lower Chamber Professional Staff",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v2lgstafflo — country-year political indicator"
+    },
+    {
+        "code":  "v2lgtreaty",
+        "name":  "Legislature Approves International Treaties by Law",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v2lgtreaty — country-year political indicator"
+    },
+    {
+        "code":  "v2lgtrmlup",
+        "name":  "Lower Chamber Term Limits",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v2lgtrmlup — country-year political indicator"
+    },
+    {
+        "code":  "v2lguchatrmlim",
+        "name":  "Upper Chamber Term Limits",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v2lguchatrmlim — country-year political indicator"
+    },
+    {
+        "code":  "v2lgwarlaw",
+        "name":  "Legislature Declares War by Law",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v2lgwarlaw — country-year political indicator"
+    },
+    {
+        "code":  "v2mebias",
+        "name":  "Media Bias (Pro-Government)",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "Systematic pro-government bias in mainstream media"
+    },
+    {
+        "code":  "v2mecenefi",
+        "name":  "Internet Censorship Effort",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "Government internet censorship effort"
+    },
+    {
+        "code":  "v2mecorrpt",
+        "name":  "Corrupt Media (Accepting Bribes)",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v2mecorrpt — country-year political indicator"
+    },
+    {
+        "code":  "v2mecrit",
+        "name":  "Print and Broadcast Media Critical of Government",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "Media criticizes government and reports opposition views"
+    },
+    {
+        "code":  "v2medentrain",
+        "name":  "Government Control of Entertainment Content",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v2medentrain — country-year political indicator"
+    },
+    {
+        "code":  "v2medpatriot",
+        "name":  "Patriotic Content Domination in Media",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v2medpatriot — country-year political indicator"
+    },
+    {
+        "code":  "v2medpolnonstate",
+        "name":  "Political Influence over Non-State Media",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v2medpolnonstate — country-year political indicator"
+    },
+    {
+        "code":  "v2medpolstate",
+        "name":  "Political Influence over State Media",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v2medpolstate — country-year political indicator"
+    },
+    {
+        "code":  "v2medstatebroad",
+        "name":  "State-Owned Broadcast Media Dominance",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v2medstatebroad — country-year political indicator"
+    },
+    {
+        "code":  "v2medstateprint",
+        "name":  "State-Owned Print Media Dominance",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v2medstateprint — country-year political indicator"
+    },
+    {
+        "code":  "v2mefemjrn",
+        "name":  "Female Journalists Share",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v2mefemjrn — country-year political indicator"
+    },
+    {
+        "code":  "v2meharjrn",
+        "name":  "Harassment of Journalists",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "Physical harassment/imprisonment of journalists"
+    },
+    {
+        "code":  "v2merange",
+        "name":  "Print and Broadcast Media Perspectives Diversity",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "Diversity of political perspectives in media"
+    },
+    {
+        "code":  "v2meslfcen",
+        "name":  "Media Self-Censorship",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "Journalist self-censorship due to political pressure"
+    },
+    {
+        "code":  "v2peapsecon",
+        "name":  "Access to Public Services by Socio-Economic Position",
+        "category":  "Social",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v2peapsecon — country-year political indicator"
+    },
+    {
+        "code":  "v2peapsgen",
+        "name":  "Access to Public Services by Gender",
+        "category":  "Social",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v2peapsgen — country-year political indicator"
+    },
+    {
+        "code":  "v2peapsgeo",
+        "name":  "Access to Public Services by Urban-Rural Location",
+        "category":  "Social",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v2peapsgeo — country-year political indicator"
+    },
+    {
+        "code":  "v2peapspol",
+        "name":  "Access to Public Services by Political Group",
+        "category":  "Social",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v2peapspol — country-year political indicator"
+    },
+    {
+        "code":  "v2peapssoc",
+        "name":  "Access to Public Services by Social Group",
+        "category":  "Social",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v2peapssoc — country-year political indicator"
+    },
+    {
+        "code":  "v2peasbecon",
+        "name":  "Access to State Business by Socio-Economic Position",
+        "category":  "Social",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v2peasbecon — country-year political indicator"
+    },
+    {
+        "code":  "v2peasbegeo",
+        "name":  "Access to State Business by Urban-Rural Location",
+        "category":  "Social",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v2peasbegeo — country-year political indicator"
+    },
+    {
+        "code":  "v2peasbepol",
+        "name":  "Access to State Business by Political Group",
+        "category":  "Social",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v2peasbepol — country-year political indicator"
+    },
+    {
+        "code":  "v2peasbgen",
+        "name":  "Access to State Business by Gender",
+        "category":  "Social",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v2peasbgen — country-year political indicator"
+    },
+    {
+        "code":  "v2peasbgeo",
+        "name":  "Access to State Business by Urban-Rural Location (Alt)",
+        "category":  "Social",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v2peasbgeo — country-year political indicator"
+    },
+    {
+        "code":  "v2peasbpol",
+        "name":  "Access to State Business by Political Group (Alt)",
+        "category":  "Social",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v2peasbpol — country-year political indicator"
+    },
+    {
+        "code":  "v2peasbsoc",
+        "name":  "Access to State Business by Social Group",
+        "category":  "Social",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v2peasbsoc — country-year political indicator"
+    },
+    {
+        "code":  "v2peasjgen",
+        "name":  "Access to State Jobs by Gender",
+        "category":  "Social",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v2peasjgen — country-year political indicator"
+    },
+    {
+        "code":  "v2peasjgeo",
+        "name":  "Access to State Jobs by Urban-Rural Location",
+        "category":  "Social",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v2peasjgeo — country-year political indicator"
+    },
+    {
+        "code":  "v2peasjpol",
+        "name":  "Access to State Jobs by Political Group",
+        "category":  "Social",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v2peasjpol — country-year political indicator"
+    },
+    {
+        "code":  "v2peasjsoc",
+        "name":  "Access to State Jobs by Social Group",
+        "category":  "Social",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v2peasjsoc — country-year political indicator"
+    },
+    {
+        "code":  "v2peasjsoecon",
+        "name":  "Access to State Jobs by Socio-Economic Group",
+        "category":  "Social",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v2peasjsoecon — country-year political indicator"
+    },
+    {
+        "code":  "v2peedueq",
+        "name":  "Educational Equality Across Social Groups",
+        "category":  "Education",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v2peedueq — country-year political indicator"
+    },
+    {
+        "code":  "v2pehealth",
+        "name":  "Health Care Equality Across Social Groups",
+        "category":  "Education",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v2pehealth — country-year political indicator"
+    },
+    {
+        "code":  "v2peprisch",
+        "name":  "Primary School Enrolment Rate",
+        "category":  "Education",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v2peprisch — country-year political indicator"
+    },
+    {
+        "code":  "v2pepwgen",
+        "name":  "Power by Gender (Model Indicator)",
+        "category":  "Social",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v2pepwgen — country-year political indicator"
+    },
+    {
+        "code":  "v2pepwrgeo",
+        "name":  "Power Distributed by Urban-Rural Location",
+        "category":  "Social",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v2pepwrgeo — country-year political indicator"
+    },
+    {
+        "code":  "v2pesecsch",
+        "name":  "Secondary School Enrolment Rate",
+        "category":  "Education",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v2pesecsch — country-year political indicator"
+    },
+    {
+        "code":  "v2petersch",
+        "name":  "Tertiary School Enrolment Rate",
+        "category":  "Education",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v2petersch — country-year political indicator"
+    },
+    {
+        "code":  "v2psbantar",
+        "name":  "Party Ban Target Type",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v2psbantar — country-year political indicator"
+    },
+    {
+        "code":  "v2psbars",
+        "name":  "Barriers to Party Formation and Registration",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v2psbars — country-year political indicator"
+    },
+    {
+        "code":  "v2pscnslnl",
+        "name":  "Candidate Selection National vs. Local",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v2pscnslnl — country-year political indicator"
+    },
+    {
+        "code":  "v2pscohesv",
+        "name":  "Legislative Party Cohesion",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "Legislators vote in line with party position"
+    },
+    {
+        "code":  "v2pscomprg",
+        "name":  "Party Competition Across Regions",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v2pscomprg — country-year political indicator"
+    },
+    {
+        "code":  "v2psnatpar",
+        "name":  "National Party Control over Candidates",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "National party leadership controls candidate selection"
+    },
+    {
+        "code":  "v2psoppaut",
+        "name":  "Opposition Party Autonomy",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v2psoppaut — country-year political indicator"
+    },
+    {
+        "code":  "v2psorgs",
+        "name":  "Quality of Party Organization",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v2psorgs — country-year political indicator"
+    },
+    {
+        "code":  "v2psparban",
+        "name":  "Party Ban Exists",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "Political parties banned from operating"
+    },
+    {
+        "code":  "v2psplats",
+        "name":  "Parties Have Distinct Policy Platforms",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v2psplats — country-year political indicator"
+    },
+    {
+        "code":  "v2psprbrch",
+        "name":  "Parties Have Local Branches",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v2psprbrch — country-year political indicator"
+    },
+    {
+        "code":  "v2pssunpar",
+        "name":  "Subnational Party Control",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v2pssunpar — country-year political indicator"
+    },
+    {
+        "code":  "v2regantireg",
+        "name":  "Strength of Anti-Regime Sentiment",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "Strength of anti-regime sentiment in population and elites"
+    },
+    {
+        "code":  "v2regdur",
+        "name":  "Regime Duration (Years in Power)",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "Years of current regime; longer = more entrenched/stable"
+    },
+    {
+        "code":  "v2regendtype",
+        "name":  "Regime End Type",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "How current regime ended: coup/election/negotiation/collapse"
+    },
+    {
+        "code":  "v2regendtypems",
+        "name":  "Regime End Type (Multiple Selection)",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v2regendtypems — country-year political indicator"
+    },
+    {
+        "code":  "v2regimpgroup",
+        "name":  "Regime Most Important Support Group",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v2regimpgroup — country-year political indicator"
+    },
+    {
+        "code":  "v2regimpoppgroup",
+        "name":  "Regime Most Important Opposition Group",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v2regimpoppgroup — country-year political indicator"
+    },
+    {
+        "code":  "v2regoppgroups",
+        "name":  "Regime Opposition Groups",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "Groups actively opposing the regime (military/parties/civil society)"
+    },
+    {
+        "code":  "v2regoppgroupsact",
+        "name":  "Active Regime Opposition Groups",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v2regoppgroupsact — country-year political indicator"
+    },
+    {
+        "code":  "v2regoppgroupssize",
+        "name":  "Regime Opposition Groups Size",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v2regoppgroupssize — country-year political indicator"
+    },
+    {
+        "code":  "v2regopploc",
+        "name":  "Regime Opposition Location (Domestic vs. Exile)",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v2regopploc — country-year political indicator"
+    },
+    {
+        "code":  "v2regpower",
+        "name":  "Most Powerful Group Affecting Regime Duration",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "Most powerful group determining regime survival"
+    },
+    {
+        "code":  "v2regproreg",
+        "name":  "Strength of Pro-Regime Sentiment",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "Strength of pro-regime support in population and elites"
+    },
+    {
+        "code":  "v2regsupgroups",
+        "name":  "Regime Support Groups",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v2regsupgroups — country-year political indicator"
+    },
+    {
+        "code":  "v2regsupgroupssize",
+        "name":  "Regime Support Groups Size",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v2regsupgroupssize — country-year political indicator"
+    },
+    {
+        "code":  "v2regsuploc",
+        "name":  "Regime Support Location",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v2regsuploc — country-year political indicator"
+    },
+    {
+        "code":  "v2smarrest",
+        "name":  "Arrests for Online Political Content",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "Arrests of individuals for online political speech"
+    },
+    {
+        "code":  "v2smcamp",
+        "name":  "Party and Candidate Use of Social Media in Campaigns",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v2smcamp — country-year political indicator"
+    },
+    {
+        "code":  "v2smdefabu",
+        "name":  "Online Defamation and Abuse Campaigns",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v2smdefabu — country-year political indicator"
+    },
+    {
+        "code":  "v2smforads",
+        "name":  "Foreign Government Online Political Advertising",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v2smforads — country-year political indicator"
+    },
+    {
+        "code":  "v2smfordom",
+        "name":  "Foreign Government Domestic Disinformation",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "Foreign governments run domestic disinformation campaigns"
+    },
+    {
+        "code":  "v2smgovab",
+        "name":  "Government Disinformation Abroad",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v2smgovab — country-year political indicator"
+    },
+    {
+        "code":  "v2smgovcapsec",
+        "name":  "Government Cyber Security Capacity",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "Government technical capacity for offensive cyber operations"
+    },
+    {
+        "code":  "v2smgovdom",
+        "name":  "Government Domestic Disinformation",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v2smgovdom — country-year political indicator"
+    },
+    {
+        "code":  "v2smgovfilcap",
+        "name":  "Government Internet Filtering Capacity",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v2smgovfilcap — country-year political indicator"
+    },
+    {
+        "code":  "v2smgovfilprc",
+        "name":  "Government Internet Filtering in Practice",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "Active government filtering of internet content"
+    },
+    {
+        "code":  "v2smgovshut",
+        "name":  "Government Internet Shutdown in Practice",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "Government-ordered internet shutdowns"
+    },
+    {
+        "code":  "v2smgovshutcap",
+        "name":  "Government Internet Shutdown Capacity",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v2smgovshutcap — country-year political indicator"
+    },
+    {
+        "code":  "v2smgovsm",
+        "name":  "Government Social Media Shutdown in Practice",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "Government shutdown of social media platforms"
+    },
+    {
+        "code":  "v2smgovsmalt",
+        "name":  "Government-Promoted Social Media Alternatives",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v2smgovsmalt — country-year political indicator"
+    },
+    {
+        "code":  "v2smgovsmcenprc",
+        "name":  "Government Social Media Censorship in Practice",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v2smgovsmcenprc — country-year political indicator"
+    },
+    {
+        "code":  "v2smgovsmmon",
+        "name":  "Government Social Media Monitoring",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v2smgovsmmon — country-year political indicator"
+    },
+    {
+        "code":  "v2smhargr",
+        "name":  "Online Harassment by Organized Groups",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "Organized groups conduct online harassment of opponents"
+    },
+    {
+        "code":  "v2smlawpr",
+        "name":  "Online Defamation Legal Protections",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v2smlawpr — country-year political indicator"
+    },
+    {
+        "code":  "v2smmefra",
+        "name":  "Online Media Fractionalization",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v2smmefra — country-year political indicator"
+    },
+    {
+        "code":  "v2smonex",
+        "name":  "Online Media Outlets Exist and Are Accessible",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v2smonex — country-year political indicator"
+    },
+    {
+        "code":  "v2smonper",
+        "name":  "Online Media Perspectives Diversity",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v2smonper — country-year political indicator"
+    },
+    {
+        "code":  "v2smorgavgact",
+        "name":  "Citizens Use Social Media to Organize Offline Action",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v2smorgavgact — country-year political indicator"
+    },
+    {
+        "code":  "v2smorgelitact",
+        "name":  "Elites Use Social Media to Organize Offline Action",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v2smorgelitact — country-year political indicator"
+    },
+    {
+        "code":  "v2smorgtypes",
+        "name":  "Types of Social Media Organization",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v2smorgtypes — country-year political indicator"
+    },
+    {
+        "code":  "v2smorgviol",
+        "name":  "Social Media Used to Organize Offline Violence",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "Social media used to coordinate real-world political violence"
+    },
+    {
+        "code":  "v2smparab",
+        "name":  "Party Disinformation Abroad",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v2smparab — country-year political indicator"
+    },
+    {
+        "code":  "v2smpardom",
+        "name":  "Party Domestic Disinformation",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v2smpardom — country-year political indicator"
+    },
+    {
+        "code":  "v2smpolcap",
+        "name":  "Political Party Cyber Security Capacity",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v2smpolcap — country-year political indicator"
+    },
+    {
+        "code":  "v2smpolhate",
+        "name":  "Political Party Online Hate Speech",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "Political parties spread hate speech on social media"
+    },
+    {
+        "code":  "v2smpolsoc",
+        "name":  "Online Political Polarization of Society",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "Online political polarization causing social fragmentation"
+    },
+    {
+        "code":  "v2smprivcon",
+        "name":  "Online Privacy Protection Law Content",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v2smprivcon — country-year political indicator"
+    },
+    {
+        "code":  "v2smprivex",
+        "name":  "Online Privacy Protection Law Exists",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "Legal framework protects individual online privacy"
+    },
+    {
+        "code":  "v2smregapp",
+        "name":  "Government Internet Content Regulation Approach",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v2smregapp — country-year political indicator"
+    },
+    {
+        "code":  "v2smregcap",
+        "name":  "Government Internet Regulation Capacity",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v2smregcap — country-year political indicator"
+    },
+    {
+        "code":  "v2smregcon",
+        "name":  "Internet Legal Regulation Content",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v2smregcon — country-year political indicator"
+    },
+    {
+        "code":  "v2stcritapparm",
+        "name":  "Military Appointment Criteria (Merit vs. Loyalty)",
+        "category":  "Government",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "Military officers appointed by merit, not political loyalty"
+    },
+    {
+        "code":  "v2stcritrecadm",
+        "name":  "Bureaucratic Recruitment Criteria (Merit vs. Loyalty)",
+        "category":  "Government",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "Civil service hired by merit, not political connections"
+    },
+    {
+        "code":  "v2strenadm",
+        "name":  "Bureaucratic Remuneration Quality",
+        "category":  "Government",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v2strenadm — country-year political indicator"
+    },
+    {
+        "code":  "v2strenarm",
+        "name":  "Military Remuneration Quality",
+        "category":  "Government",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v2strenarm — country-year political indicator"
+    },
+    {
+        "code":  "v2svindep",
+        "name":  "Independent State (Binary)",
+        "category":  "Government",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v2svindep — country-year political indicator"
+    },
+    {
+        "code":  "v2svinlaut",
+        "name":  "International Autonomy (Degree of External Constraint)",
+        "category":  "Government",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "International constraints on government autonomy"
+    },
+    {
+        "code":  "v2svstterr",
+        "name":  "State Territorial Control",
+        "category":  "Government",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "Full territorial control; no warlords or rebel-held areas"
+    },
+    {
+        "code":  "v2temonitor",
+        "name":  "Government Inspection and Monitoring of Teachers",
+        "category":  "Education",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v2temonitor — country-year political indicator"
+    },
+    {
+        "code":  "v2x_accex",
+        "name":  "Elected Executive Index",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v2x_accex — country-year political indicator"
+    },
+    {
+        "code":  "v2x_accountability",
+        "name":  "Accountability Index",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "Overall accountability: vertical + horizontal + diagonal"
+    },
+    {
+        "code":  "v2x_api",
+        "name":  "Additive Polyarchy Index",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v2x_api — country-year political indicator"
+    },
+    {
+        "code":  "v2x_civlib",
+        "name":  "Civil Liberties Index",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v2x_civlib — country-year political indicator"
+    },
+    {
+        "code":  "v2x_cspart",
+        "name":  "Civil Society Participation Index",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v2x_cspart — country-year political indicator"
+    },
+    {
+        "code":  "v2x_delibdem",
+        "name":  "Deliberative Democracy Index",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "Deliberative quality: justification, consultation, public reason"
+    },
+    {
+        "code":  "v2x_diagacc",
+        "name":  "Diagonal Accountability Index",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "Civil society and media as accountability mechanism"
+    },
+    {
+        "code":  "v2x_divparctrl",
+        "name":  "Divided Party Control Index",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v2x_divparctrl — country-year political indicator"
+    },
+    {
+        "code":  "v2x_egal",
+        "name":  "Egalitarian Component Index",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v2x_egal — country-year political indicator"
+    },
+    {
+        "code":  "v2x_egaldem",
+        "name":  "Egalitarian Democracy Index",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "Egalitarian democracy: equal protection, access, resources"
+    },
+    {
+        "code":  "v2x_elecoff",
+        "name":  "Elected Officials Index",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v2x_elecoff — country-year political indicator"
+    },
+    {
+        "code":  "v2x_elecreg",
+        "name":  "Electoral Regime Index",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v2x_elecreg — country-year political indicator"
+    },
+    {
+        "code":  "v2x_ex_confidence",
+        "name":  "Executive Confidence Dimension Index",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "Executive legitimized through parliamentary confidence vote"
+    },
+    {
+        "code":  "v2x_ex_direlect",
+        "name":  "Executive Direct Election Dimension Index",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v2x_ex_direlect — country-year political indicator"
+    },
+    {
+        "code":  "v2x_ex_hereditary",
+        "name":  "Executive Hereditary Dimension Index",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v2x_ex_hereditary — country-year political indicator"
+    },
+    {
+        "code":  "v2x_ex_military",
+        "name":  "Executive Military Dimension Index",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "Executive legitimacy derived from military power"
+    },
+    {
+        "code":  "v2x_ex_party",
+        "name":  "Executive Ruling-Party Dimension Index",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "Executive legitimacy from single/dominant party rule"
+    },
+    {
+        "code":  "v2x_execorr",
+        "name":  "Executive Corruption Index",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "Executive corruption: bribery, embezzlement, cronyism"
+    },
+    {
+        "code":  "v2x_feduni",
+        "name":  "Division of Power Index (Federal vs. Unitary)",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "Power division between central and subnational governments"
+    },
+    {
+        "code":  "v2x_frassoc",
+        "name":  "Freedom of Association Index",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v2x_frassoc — country-year political indicator"
+    },
+    {
+        "code":  "v2x_frassoc_thick",
+        "name":  "Freedom of Association Thick Index",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v2x_frassoc_thick — country-year political indicator"
+    },
+    {
+        "code":  "v2x_freexp",
+        "name":  "Freedom of Expression Index",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v2x_freexp — country-year political indicator"
+    },
+    {
+        "code":  "v2x_freexp_thick",
+        "name":  "Freedom of Expression Thick Index",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v2x_freexp_thick — country-year political indicator"
+    },
+    {
+        "code":  "v2x_gencl",
+        "name":  "Women Civil Liberties Index",
+        "category":  "Social",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v2x_gencl — country-year political indicator"
+    },
+    {
+        "code":  "v2x_gencs",
+        "name":  "Women Civil Society Participation Index",
+        "category":  "Social",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v2x_gencs — country-year political indicator"
+    },
+    {
+        "code":  "v2x_genpp",
+        "name":  "Women Political Participation Index",
+        "category":  "Social",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v2x_genpp — country-year political indicator"
+    },
+    {
+        "code":  "v2x_horacc",
+        "name":  "Horizontal Accountability Index",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v2x_horacc — country-year political indicator"
+    },
+    {
+        "code":  "v2x_hosabort",
+        "name":  "Presidential Election Aborted (Binary)",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "Presidential election was aborted or annulled"
+    },
+    {
+        "code":  "v2x_hosinter",
+        "name":  "Chief Executive No Longer Elected (Binary)",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "Chief executive access was interrupted (coup/forced resignation)"
+    },
+    {
+        "code":  "v2x_legabort",
+        "name":  "Legislative Election Aborted (Binary)",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v2x_legabort — country-year political indicator"
+    },
+    {
+        "code":  "v2x_leginter",
+        "name":  "Legislature Closed Down (Binary)",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v2x_leginter — country-year political indicator"
+    },
+    {
+        "code":  "v2x_lgdivparctrl",
+        "name":  "Divided Party Control (Legislature)",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v2x_lgdivparctrl — country-year political indicator"
+    },
+    {
+        "code":  "v2x_liberal",
+        "name":  "Liberal Component Index",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v2x_liberal — country-year political indicator"
+    },
+    {
+        "code":  "v2x_mpi",
+        "name":  "Multiplicative Polyarchy Index",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v2x_mpi — country-year political indicator"
+    },
+    {
+        "code":  "v2x_partidem",
+        "name":  "Participatory Democracy Index (Alt Specification)",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v2x_partidem — country-year political indicator, alt specification"
+    },
+    {
+        "code":  "v2x_partipdem",
+        "name":  "Participatory Democracy Index",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "Participatory democracy — civil society, local govt, direct democracy"
+    },
+    {
+        "code":  "v2x_polyarchy1",
+        "name":  "Electoral Democracy Index (Alternative Specification)",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v2x_polyarchy1 — country-year political indicator, alt specification"
+    },
+    {
+        "code":  "v2x_pubcorr",
+        "name":  "Public Sector Corruption Index",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "Public sector corruption in service delivery"
+    },
+    {
+        "code":  "v2x_regime_amb",
+        "name":  "Regimes of the World — Ambiguous Cases",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v2x_regime_amb — country-year political indicator"
+    },
+    {
+        "code":  "v2x_suffr",
+        "name":  "Share of Population with Suffrage",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v2x_suffr — country-year political indicator"
+    },
+    {
+        "code":  "v2x_suffrage",
+        "name":  "Suffrage Share Index (Alternative to v2x_suffr)",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v2x_suffrage — country-year political indicator, alt specification"
+    },
+    {
+        "code":  "v2x_veracc",
+        "name":  "Vertical Accountability Index",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "Vertical accountability through elections and parties"
+    },
+    {
+        "code":  "v2xca_academ",
+        "name":  "Academic Freedom Index",
+        "category":  "Social",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "Academic freedom: research, teaching, autonomy, campus safety"
+    },
+    {
+        "code":  "v2xcl_acjst",
+        "name":  "Access to Justice Index",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v2xcl_acjst — country-year political indicator"
+    },
+    {
+        "code":  "v2xcl_disc",
+        "name":  "Freedom of Discussion Index",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v2xcl_disc — country-year political indicator"
+    },
+    {
+        "code":  "v2xcl_dmove",
+        "name":  "Freedom of Domestic Movement Index",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v2xcl_dmove — country-year political indicator"
+    },
+    {
+        "code":  "v2xcl_prpty",
+        "name":  "Property Rights Index",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v2xcl_prpty — country-year political indicator"
+    },
+    {
+        "code":  "v2xcl_rol",
+        "name":  "Equality Before Law and Individual Liberty Index",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v2xcl_rol — country-year political indicator"
+    },
+    {
+        "code":  "v2xcl_slave",
+        "name":  "Freedom from Forced Labor Index",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v2xcl_slave — country-year political indicator"
+    },
+    {
+        "code":  "v2xcs_ccsi",
+        "name":  "Core Civil Society Index",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "Core civil society: organizational freedom, participation, consultation"
+    },
+    {
+        "code":  "v2xdd_cic",
+        "name":  "Citizen-Initiated Direct Democracy Component Index",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v2xdd_cic — country-year political indicator"
+    },
+    {
+        "code":  "v2xdd_dd",
+        "name":  "Direct Popular Vote Index",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "Prevalence and use of direct democracy mechanisms"
+    },
+    {
+        "code":  "v2xdd_i_ci",
+        "name":  "Popular Initiative Index",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v2xdd_i_ci — country-year political indicator"
+    },
+    {
+        "code":  "v2xdd_i_or",
+        "name":  "Obligatory Referendum Index",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v2xdd_i_or — country-year political indicator"
+    },
+    {
+        "code":  "v2xdd_i_pi",
+        "name":  "Popular initiative index",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v2xdd_i_pi — country-year political indicator"
+    },
+    {
+        "code":  "v2xdd_i_pl",
+        "name":  "Plebiscite Index",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v2xdd_i_pl — country-year political indicator"
+    },
+    {
+        "code":  "v2xdd_i_rf",
+        "name":  "Popular Referendum Index",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v2xdd_i_rf — country-year political indicator"
+    },
+    {
+        "code":  "v2xdd_toc",
+        "name":  "Top-Down Direct Democracy Component Index",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v2xdd_toc — country-year political indicator"
+    },
+    {
+        "code":  "v2xdl_delib",
+        "name":  "Deliberative Component Index",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v2xdl_delib — country-year political indicator"
+    },
+    {
+        "code":  "v2xed_ed_cent",
+        "name":  "Education Centralization Index",
+        "category":  "Education",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v2xed_ed_cent — country-year political indicator"
+    },
+    {
+        "code":  "v2xed_ed_con",
+        "name":  "Indoctrination Content in Education Index",
+        "category":  "Education",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v2xed_ed_con — country-year political indicator"
+    },
+    {
+        "code":  "v2xed_ed_ctag",
+        "name":  "Control over Educational Agents Index",
+        "category":  "Education",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v2xed_ed_ctag — country-year political indicator"
+    },
+    {
+        "code":  "v2xed_ed_dmcon",
+        "name":  "Democratic Indoctrination Content in Education",
+        "category":  "Education",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v2xed_ed_dmcon — country-year political indicator"
+    },
+    {
+        "code":  "v2xed_ed_inco",
+        "name":  "Indoctrination Coherence in Education Index",
+        "category":  "Education",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v2xed_ed_inco — country-year political indicator"
+    },
+    {
+        "code":  "v2xed_ed_inpt",
+        "name":  "Indoctrination Potential in Education Index",
+        "category":  "Education",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "Combined indoctrination potential of education system"
+    },
+    {
+        "code":  "v2xed_ed_poed",
+        "name":  "Political Education Effort Index",
+        "category":  "Education",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v2xed_ed_poed — country-year political indicator"
+    },
+    {
+        "code":  "v2xed_ed_ptcon",
+        "name":  "Patriotic Indoctrination Content in Education",
+        "category":  "Education",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v2xed_ed_ptcon — country-year political indicator"
+    },
+    {
+        "code":  "v2xed_me_inco",
+        "name":  "Indoctrination Content in Media",
+        "category":  "Education",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v2xed_me_inco — country-year political indicator"
+    },
+    {
+        "code":  "v2xed_ptcon",
+        "name":  "Patriotic Indoctrination (Education and Media)",
+        "category":  "Education",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v2xed_ptcon — country-year political indicator"
+    },
+    {
+        "code":  "v2xedvd_inpt",
+        "name":  "Indoctrination Potential (Education and Media Combined)",
+        "category":  "Education",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "Indoctrination potential across both education and media"
+    },
+    {
+        "code":  "v2xedvd_me_cent",
+        "name":  "Media Centralization Index",
+        "category":  "Education",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v2xedvd_me_cent — country-year political indicator"
+    },
+    {
+        "code":  "v2xedvd_me_ctag",
+        "name":  "Control over Media Agents Index",
+        "category":  "Education",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v2xedvd_me_ctag — country-year political indicator"
+    },
+    {
+        "code":  "v2xedvd_me_inco",
+        "name":  "Indoctrination Coherence in Media Index",
+        "category":  "Education",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v2xedvd_me_inco — country-year political indicator"
+    },
+    {
+        "code":  "v2xeg_eqaccess",
+        "name":  "Equal Access Index",
+        "category":  "Social",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "Equal access to public services across gender/geography/groups"
+    },
+    {
+        "code":  "v2xeg_eqdr",
+        "name":  "Equal Distribution of Resources Index",
+        "category":  "Social",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "Equal distribution of welfare/education/health resources"
+    },
+    {
+        "code":  "v2xel_elecparl",
+        "name":  "Parliamentary Election Occurred This Year (Binary)",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v2xel_elecparl — country-year political indicator"
+    },
+    {
+        "code":  "v2xel_elecpres",
+        "name":  "Presidential Election Occurred This Year (Binary)",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v2xel_elecpres — country-year political indicator"
+    },
+    {
+        "code":  "v2xel_locelec",
+        "name":  "Local Government Index",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "Elected local government with real decision-making power"
+    },
+    {
+        "code":  "v2xel_regelec",
+        "name":  "Regional Government Index",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "Elected regional government with real decision-making power"
+    },
+    {
+        "code":  "v2xex_elecleg",
+        "name":  "Legislature directly elected",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v2xex_elecleg — country-year political indicator"
+    },
+    {
+        "code":  "v2xex_elecreg",
+        "name":  "Executive Electoral Regime Index",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v2xex_elecreg — country-year political indicator"
+    },
+    {
+        "code":  "v2xlg_elecreg",
+        "name":  "Legislative Electoral Regime Index",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v2xlg_elecreg — country-year political indicator"
+    },
+    {
+        "code":  "v2xlg_leginter",
+        "name":  "Legislature Closed Down or Aborted (Binary)",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "Legislature has been closed down or elections aborted"
+    },
+    {
+        "code":  "v2xlgcrrpt",
+        "name":  "Legislative Corruption Index",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "Legislative corruption: bribes, kickbacks in parliament"
+    },
+    {
+        "code":  "v2xme_altinf",
+        "name":  "Alternative Information Sources Index",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "Access to alternative information beyond state-controlled media"
+    },
+    {
+        "code":  "v2xnp_client",
+        "name":  "Clientelism Index",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "Clientelism: vote buying, patron-client linkages, particularism"
+    },
+    {
+        "code":  "v2xnp_pres",
+        "name":  "Presidentialism Index",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "Presidentialism: executive dominance over other branches"
+    },
+    {
+        "code":  "v2xnp_regcorr",
+        "name":  "Regime Corruption Index",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v2xnp_regcorr — country-year political indicator"
+    },
+    {
+        "code":  "v2xpas_democracy",
+        "name":  "Party-System Democracy Index",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "Average democratic commitment of parties in parliament"
+    },
+    {
+        "code":  "v2xpas_democracy_government",
+        "name":  "Government Coalition Democracy Index",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v2xpas_democracy_government — country-year political indicator"
+    },
+    {
+        "code":  "v2xpas_democracy_opposition",
+        "name":  "Opposition Parties Democracy Index",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v2xpas_democracy_opposition — country-year political indicator"
+    },
+    {
+        "code":  "v2xpas_economic",
+        "name":  "Party-System Left-Right Economic Index",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "Party-system left-right economic policy positioning"
+    },
+    {
+        "code":  "v2xpas_economic_government",
+        "name":  "Government Coalition Left-Right Index",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v2xpas_economic_government — country-year political indicator"
+    },
+    {
+        "code":  "v2xpas_economic_opposition",
+        "name":  "Opposition Parties Left-Right Index",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v2xpas_economic_opposition — country-year political indicator"
+    },
+    {
+        "code":  "v2xpas_exclusion",
+        "name":  "Party-System Exclusion Index",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "Party-system advocacy of ethnic/religious exclusion"
+    },
+    {
+        "code":  "v2xpas_exclusion_government",
+        "name":  "Government Coalition Exclusion Index",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v2xpas_exclusion_government — country-year political indicator"
+    },
+    {
+        "code":  "v2xpas_exclusion_opposition",
+        "name":  "Opposition Parties Exclusion Index",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v2xpas_exclusion_opposition — country-year political indicator"
+    },
+    {
+        "code":  "v2xpas_religion",
+        "name":  "Party-System Religion Index",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "Party-system advocacy of state religion or religious law"
+    },
+    {
+        "code":  "v2xpas_religion_government",
+        "name":  "Government Coalition Religion Index",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v2xpas_religion_government — country-year political indicator"
+    },
+    {
+        "code":  "v2xpas_religion_opposition",
+        "name":  "Opposition Parties Religion Index",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v2xpas_religion_opposition — country-year political indicator"
+    },
+    {
+        "code":  "v2xpe_exlecon",
+        "name":  "Exclusion by Socio-Economic Group Index",
+        "category":  "Social",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "Socioeconomic exclusion from political opportunity and state resources"
+    },
+    {
+        "code":  "v2xpe_exlgender",
+        "name":  "Exclusion by Gender Index",
+        "category":  "Social",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "Gender-based exclusion from political and economic opportunity"
+    },
+    {
+        "code":  "v2xpe_exlgeo",
+        "name":  "Exclusion by Urban-Rural Location Index",
+        "category":  "Social",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v2xpe_exlgeo — country-year political indicator"
+    },
+    {
+        "code":  "v2xpe_exlpol",
+        "name":  "Exclusion by Political Group Index",
+        "category":  "Social",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "Exclusion of political opponents from power and resources"
+    },
+    {
+        "code":  "v2xpe_exlsocgr",
+        "name":  "Exclusion by Social Group Index",
+        "category":  "Social",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v2xpe_exlsocgr — country-year political indicator"
+    },
+    {
+        "code":  "v2xps_party",
+        "name":  "Party Institutionalization Index",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "Party system institutionalization: stability, organization, competition"
+    },
+    {
+        "code":  "v3cllabrig",
+        "name":  "Labor Rights Legally Protected (Historical)",
+        "category":  "Social",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "Labor rights legally protected"
+    },
+    {
+        "code":  "v3clslavery",
+        "name":  "Slavery Legally Abolished (Historical)",
+        "category":  "Social",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "Slavery legally abolished"
+    },
+    {
+        "code":  "v3elmalalc",
+        "name":  "Lower Chamber Malapportionment",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v3elmalalc — country-year political indicator"
+    },
+    {
+        "code":  "v3elmalauc",
+        "name":  "Upper Chamber Malapportionment",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v3elmalauc — country-year political indicator"
+    },
+    {
+        "code":  "v3elncbpr",
+        "name":  "Effective Number of Cabinet Parties",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "Effective number of parties in governing coalition"
+    },
+    {
+        "code":  "v3elparlel",
+        "name":  "Lower chamber electoral system",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v3elparlel — country-year political indicator"
+    },
+    {
+        "code":  "v3elsec",
+        "name":  "De Jure Ballot Secrecy",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v3elsec — country-year political indicator"
+    },
+    {
+        "code":  "v3mecenefm",
+        "name":  "Government Censorship Effort — Media (Historical)",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v3mecenefm — country-year political indicator"
+    },
+    {
+        "code":  "v3pechilabl",
+        "name":  "Child Labor Laws Exist",
+        "category":  "Education",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "Child labor protection laws in place"
+    },
+    {
+        "code":  "v3peminwage",
+        "name":  "Minimum Wage Law Exists",
+        "category":  "Education",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "Minimum wage legally mandated"
+    },
+    {
+        "code":  "v3peminwagerestr",
+        "name":  "Minimum Wage Restrictions",
+        "category":  "Education",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v3peminwagerestr — country-year political indicator"
+    },
+    {
+        "code":  "v3psagefirst",
+        "name":  "Age of Largest Political Party (Party Institutionalization)",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "Age of largest party — proxy for party system institutionalization"
+    },
+    {
+        "code":  "v3psagepm",
+        "name":  "Age of Executive Party (Party Institutionalization)",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "Age of executive party — party system institutionalization signal"
+    },
+    {
+        "code":  "v3psagesecond",
+        "name":  "Age of Second Largest Party",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v3psagesecond — country-year political indicator"
+    },
+    {
+        "code":  "v3psagethird",
+        "name":  "Age of Third Largest Party",
+        "category":  "Governance",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "V-Dem v3psagethird — country-year political indicator"
+    },
+    {
+        "code":  "v3ststeecap",
+        "name":  "State Steering Capacity (Policy Implementation)",
+        "category":  "Government",
+        "provider":  "V-Dem",
+        "license":  "CC BY 4.0",
+        "note":  "Government capacity to implement and steer economic policy"
+    }
+]
