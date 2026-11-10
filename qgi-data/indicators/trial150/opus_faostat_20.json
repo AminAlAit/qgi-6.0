@@ -1,0 +1,162 @@
+[
+  {
+    "id_string": "FAOSTAT.FS.210.6121",
+    "numeric_id": 1,
+    "name": "Prevalence of undernourishment (% of population, 3-year average)",
+    "status": "process",
+    "category": "Food Security",
+    "description": "Share of population with habitual food consumption below dietary energy requirements (kcal). The canonical FAO food-insecurity headline indicator. Leading signal for famine, unrest, and forced displacement; broad country coverage and continuous series since 2000."
+  },
+  {
+    "id_string": "FAOSTAT.FS.210.210041",
+    "numeric_id": 2,
+    "name": "Prevalence of severe food insecurity (FIES, % of population)",
+    "status": "process",
+    "category": "Food Security",
+    "description": "Experience-based food insecurity measured via the Food Insecurity Experience Scale (FIES) module in household surveys. Captures acute household-level distress that kcal-based undernourishment misses; highly predictive of migration and civil unrest."
+  },
+  {
+    "id_string": "FAOSTAT.FS.210.6123",
+    "numeric_id": 3,
+    "name": "Number of people undernourished (millions, 3-year average)",
+    "status": "process",
+    "category": "Food Security",
+    "description": "Absolute count of undernourished people. Complements the prevalence rate by capturing demographic weight — a low-prevalence country with 200M people deserves attention that a high-prevalence small state does not."
+  },
+  {
+    "id_string": "FAOSTAT.FS.210.6126",
+    "numeric_id": 4,
+    "name": "Average dietary energy supply adequacy (%)",
+    "status": "process",
+    "category": "Food Security",
+    "description": "Dietary energy supply as a percentage of average dietary energy requirement. Adequacy below 100% means the national food supply cannot meet average caloric needs. Leading indicator for policy-driven food crises."
+  },
+  {
+    "id_string": "FAOSTAT.FBS.2901.664",
+    "numeric_id": 5,
+    "name": "Food supply (kcal/capita/day)",
+    "status": "process",
+    "category": "Food Security",
+    "description": "Per capita daily food supply in kilocalories from the Food Balance Sheets. Direct caloric availability; moves slowly but significant drops are strong crisis signals."
+  },
+  {
+    "id_string": "FAOSTAT.FBS.2901.674",
+    "numeric_id": 6,
+    "name": "Protein supply (g/capita/day)",
+    "status": "process",
+    "category": "Food Security",
+    "description": "Per capita daily protein supply in grams from the Food Balance Sheets. Protein adequacy is a stronger nutrition signal than calories alone and correlates with child stunting."
+  },
+  {
+    "id_string": "FAOSTAT.QCL.1717.5510",
+    "numeric_id": 7,
+    "name": "Cereals, total — Production (tonnes)",
+    "status": "process",
+    "category": "Agriculture",
+    "description": "Total cereal production in tonnes (item code 1717 = Cereals aggregate, element 5510 = Production). Core food-security production metric; large year-over-year drops are leading drought/war indicators."
+  },
+  {
+    "id_string": "FAOSTAT.QCL.1717.5419",
+    "numeric_id": 8,
+    "name": "Cereals, total — Yield (hg/ha)",
+    "status": "process",
+    "category": "Agriculture",
+    "description": "Total cereal yield in hectograms per hectare. Isolates productivity from area effects — sudden yield drops flag climate shocks even when area is stable. Inverse of agricultural vulnerability."
+  },
+  {
+    "id_string": "FAOSTAT.QCL.15.5510",
+    "numeric_id": 9,
+    "name": "Wheat — Production (tonnes)",
+    "status": "process",
+    "category": "Agriculture",
+    "description": "Wheat production in tonnes (item 15, element 5510). Global staple with heavy geopolitical weight (Russia/Ukraine/India exporters). Specific commodity exposure matters for trade-disruption analysis."
+  },
+  {
+    "id_string": "FAOSTAT.QCL.27.5510",
+    "numeric_id": 10,
+    "name": "Rice, paddy — Production (tonnes)",
+    "status": "process",
+    "category": "Agriculture",
+    "description": "Paddy rice production in tonnes. The staple for ~3.5B people; Asian food security is heavily rice-dependent and rice export bans are recurrent policy instruments during crises."
+  },
+  {
+    "id_string": "FAOSTAT.TCL.1717.5611",
+    "numeric_id": 11,
+    "name": "Cereals, total — Import quantity (tonnes)",
+    "status": "process",
+    "category": "Trade",
+    "description": "Cereal imports in tonnes. Combined with domestic production, quantifies import dependency — the single strongest predictor of exposure to global food-price shocks (Arab Spring 2011 precedent)."
+  },
+  {
+    "id_string": "FAOSTAT.CP.23014",
+    "numeric_id": 12,
+    "name": "Consumer Prices, Food Indices (2015=100)",
+    "status": "process",
+    "category": "Economic",
+    "description": "Food price index relative to 2015 baseline. Food inflation is the classic unrest precursor — spikes above ~200 have historically preceded civil unrest episodes in lower-income states."
+  },
+  {
+    "id_string": "FAOSTAT.RL.6610.5110",
+    "numeric_id": 13,
+    "name": "Agricultural land (1000 ha)",
+    "status": "process",
+    "category": "Land Use",
+    "description": "Total agricultural land area in thousand hectares (arable + permanent crops + pastures). Tracks land pressure; declining per-capita agricultural land is a slow-moving conflict driver in rural societies."
+  },
+  {
+    "id_string": "FAOSTAT.RL.6621.5110",
+    "numeric_id": 14,
+    "name": "Arable land (1000 ha)",
+    "status": "process",
+    "category": "Land Use",
+    "description": "Arable land area in thousand hectares. Narrower than agricultural land — only land under temporary crops. The numerator for arable-land-per-capita carrying capacity calculations."
+  },
+  {
+    "id_string": "FAOSTAT.RFN.3102.5157",
+    "numeric_id": 15,
+    "name": "Nitrogen fertilizer use (tonnes of nutrient N)",
+    "status": "process",
+    "category": "Agriculture",
+    "description": "Total nitrogen fertilizer use per country in tonnes of nutrient. Proxy for agricultural intensification and for exposure to fertilizer price/supply shocks (Russia/Belarus are dominant exporters)."
+  },
+  {
+    "id_string": "FAOSTAT.RL.6650.5110",
+    "numeric_id": 16,
+    "name": "Forest area (1000 ha)",
+    "status": "process",
+    "category": "Environment",
+    "description": "Total forest area in thousand hectares. Deforestation is both a climate signal and a land-conflict signal (Amazon, Congo Basin). Long-running series with >200 country coverage."
+  },
+  {
+    "id_string": "FAOSTAT.GLW.866.5111",
+    "numeric_id": 17,
+    "name": "Cattle stocks (head)",
+    "status": "process",
+    "category": "Agriculture",
+    "description": "Total cattle population in head. Agricultural capital in pastoralist societies; large herd contractions are a leading indicator of drought-driven displacement in the Sahel and Horn of Africa."
+  },
+  {
+    "id_string": "FAOSTAT.GT.6517.7225",
+    "numeric_id": 18,
+    "name": "Emissions from agriculture (CO2eq, Gg)",
+    "status": "process",
+    "category": "Environment",
+    "description": "Total agricultural greenhouse gas emissions in gigagrams of CO2-equivalent. Agricultural decarbonization pressure is an emerging policy-risk dimension for agri-export economies."
+  },
+  {
+    "id_string": "FAOSTAT.FBS.2905.5142",
+    "numeric_id": 19,
+    "name": "Vegetable Oils — Food supply (kcal/capita/day)",
+    "status": "process",
+    "category": "Food Security",
+    "description": "Per capita daily caloric supply from vegetable oils. Oils are typically the second-largest kcal category after cereals in low-income diets; palm/soy oil supply shocks propagate fast into food inflation."
+  },
+  {
+    "id_string": "FAOSTAT.FI.2961.5510",
+    "numeric_id": 20,
+    "name": "Fish and seafood — Production (tonnes)",
+    "status": "process",
+    "category": "Food Security",
+    "description": "Total fish and seafood production (capture + aquaculture). Protein security dimension missing from WB catalog; also a maritime-dispute and illegal-fishing signal relevant to EEZ tensions."
+  }
+]

@@ -1,0 +1,1563 @@
+[
+  {
+    "year": 1950,
+    "title": "Jacobo Árbenz Elected President on Reformist Platform",
+    "verdict": "TRUE",
+    "reason": "Árbenz received 65.44% of the vote. Claim of 'over 65%' is accurate.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Árbenz received 65.44% of the vote. Claim of 'over 65%' is accurate.",
+        "source": "https://en.wikipedia.org/wiki/1950_Guatemalan_presidential_election",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/1950_Guatemalan_presidential_election"
+  },
+  {
+    "year": 1952,
+    "title": "Decree 900 Land Reform Redistributes 1.5 Million Acres to Peasants",
+    "verdict": "TRUE",
+    "reason": "Wikipedia cites 1,491,790 acres (~1.5M) to ~100,000 families. Date June 17, 1952 confirmed. Figures match.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Wikipedia cites 1,491,790 acres (~1.5M) to ~100,000 families. Date June 17, 1952 confirmed. Figures match.",
+        "source": "https://en.wikipedia.org/wiki/Decree_900",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Decree_900"
+  },
+  {
+    "year": 1953,
+    "title": "CIA Plans Operation PBSUCCESS to Overthrow Árbenz",
+    "verdict": "TRUE",
+    "reason": "Eisenhower authorized in August 1953. Budget cited as $5–7M in some sources; other sources give $2.7M+ for subversion only. The '$5–7 million' range is cited in Wikipedia and matches the event description.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Eisenhower authorized in August 1953. Budget cited as $5–7M in some sources; other sources give $2.7M+ for subversion only. The '$5–7 million' range is cited in Wikipedia and matches the event description.",
+        "source": "https://en.wikipedia.org/wiki/1954_Guatemalan_coup_d%27%C3%A9tat",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/1954_Guatemalan_coup_d%27%C3%A9tat"
+  },
+  {
+    "year": 1954,
+    "title": "Castillo Armas Seizes Power and Reverses Agrarian Reform",
+    "verdict": "TRUE",
+    "reason": "Reversal of Decree 900 and land restitution to United Fruit Company confirmed. Estimate of 70,000 families dispossessed is plausible; exact figure varies by source but is not contradicted.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Reversal of Decree 900 and land restitution to United Fruit Company confirmed. Estimate of 70,000 families dispossessed is plausible; exact figure varies by source but is not contradicted.",
+        "source": "https://en.wikipedia.org/wiki/Carlos_Castillo_Armas",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Carlos_Castillo_Armas"
+  },
+  {
+    "year": 1954,
+    "title": "CIA-Backed Coup Overthrows President Árbenz — Operation PBSUCCESS",
+    "verdict": "TRUE",
+    "reason": "Árbenz resigned June 27, 1954. CIA aircraft, disinformation broadcasts, and Castillo Armas force confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Árbenz resigned June 27, 1954. CIA aircraft, disinformation broadcasts, and Castillo Armas force confirmed.",
+        "source": "https://en.wikipedia.org/wiki/1954_Guatemalan_coup_d%27%C3%A9tat",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/1954_Guatemalan_coup_d%27%C3%A9tat"
+  },
+  {
+    "year": 1957,
+    "title": "Castillo Armas Assassinated by Presidential Guard",
+    "verdict": "TRUE",
+    "reason": "Assassinated July 26, 1957 by Romeo Vásquez Sánchez, a member of his presidential guard. Date and role confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Assassinated July 26, 1957 by Romeo Vásquez Sánchez, a member of his presidential guard. Date and role confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Carlos_Castillo_Armas",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Carlos_Castillo_Armas"
+  },
+  {
+    "year": 1960,
+    "title": "Failed Military Coup Sparks 36-Year Civil War",
+    "verdict": "TRUE",
+    "reason": "November 13, 1960 coup confirmed. Yon Sosa and Turcios Lima confirmed as founders of subsequent guerrilla movement. 36-year civil war and 200,000 deaths confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "November 13, 1960 coup confirmed. Yon Sosa and Turcios Lima confirmed as founders of subsequent guerrilla movement. 36-year civil war and 200,000 deaths confirmed.",
+        "source": "https://en.wikipedia.org/wiki/1960_Guatemalan_Military_Insurrection",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/1960_Guatemalan_Military_Insurrection"
+  },
+  {
+    "year": 1963,
+    "title": "Military Coup Removes Ydígoras to Prevent Reformist Election",
+    "verdict": "TRUE",
+    "reason": "March 31, 1963 coup by Peralta Azurdia confirmed. U.S. backing (Kennedy administration) and goal of blocking Arévalo's candidacy confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "March 31, 1963 coup by Peralta Azurdia confirmed. U.S. backing (Kennedy administration) and goal of blocking Arévalo's candidacy confirmed.",
+        "source": "https://en.wikipedia.org/wiki/1963_Guatemalan_coup_d%27%C3%A9tat",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/1963_Guatemalan_coup_d%27%C3%A9tat"
+  },
+  {
+    "year": 1966,
+    "title": "Forced Disappearance Pioneered as Systematic State Weapon",
+    "verdict": "TRUE",
+    "reason": "March 1966 disappearance of 28 PGT members confirmed. Latin American first for systematic forced disappearance confirmed. Event description says 'Workers Party' — formally the Guatemalan Workers Party (PGT); accurate.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "March 1966 disappearance of 28 PGT members confirmed. Latin American first for systematic forced disappearance confirmed. Event description says 'Workers Party' — formally the Guatemalan Workers Party (PGT); accurate.",
+        "source": "https://en.wikipedia.org/wiki/Guatemalan_Civil_War",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Guatemalan_Civil_War"
+  },
+  {
+    "year": 1967,
+    "title": "Right-Wing Death Squads Mano Blanca Kill Hundreds of Leftists",
+    "verdict": "TRUE",
+    "reason": "Mano Blanca death squad activity in 1967 confirmed. Casualty range of 3,000–8,000 in late-1960s eastern highlands campaign is consistent with historical accounts.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Mano Blanca death squad activity in 1967 confirmed. Casualty range of 3,000–8,000 in late-1960s eastern highlands campaign is consistent with historical accounts.",
+        "source": "https://en.wikipedia.org/wiki/Guatemalan_Civil_War",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Guatemalan_Civil_War"
+  },
+  {
+    "year": 1970,
+    "title": "General Arana Osorio Elected President, Escalates White Terror",
+    "verdict": "TRUE",
+    "reason": "Arana Osorio's 1970 election and 'Butcher of Zacapa' designation confirmed. 'White Terror' characterization by U.S. diplomat confirmed in historical sources.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Arana Osorio's 1970 election and 'Butcher of Zacapa' designation confirmed. 'White Terror' characterization by U.S. diplomat confirmed in historical sources.",
+        "source": "https://en.wikipedia.org/wiki/Carlos_Manuel_Arana_Osorio",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Carlos_Manuel_Arana_Osorio"
+  },
+  {
+    "year": 1974,
+    "title": "Presidential Election Fraud Disenfranchises Ríos Montt",
+    "verdict": "TRUE",
+    "reason": "March 1974 election fraud confirmed. Ríos Montt ran on National Opposition Front coalition (including Christian Democracy), not explicitly as the Christian Democratic candidate — minor framing imprecision but not materially wrong.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "March 1974 election fraud confirmed. Ríos Montt ran on National Opposition Front coalition (including Christian Democracy), not explicitly as the Christian Democratic candidate — minor framing imprecision but not materially wrong.",
+        "source": "https://en.wikipedia.org/wiki/Guatemalan_general_election,_1974",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Guatemalan_general_election,_1974"
+  },
+  {
+    "year": 1976,
+    "title": "7.5-Magnitude Earthquake Kills 23,000 and Devastates Highland Communities",
+    "verdict": "TRUE",
+    "reason": "Magnitude 7.5 and February 4, 1976 confirmed. Death toll reported as ~22,700; claim of 'approximately 23,000' is within rounding range. Departments affected confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Magnitude 7.5 and February 4, 1976 confirmed. Death toll reported as ~22,700; claim of 'approximately 23,000' is within rounding range. Departments affected confirmed.",
+        "source": "https://en.wikipedia.org/wiki/1976_Guatemala_earthquake",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/1976_Guatemala_earthquake"
+  },
+  {
+    "year": 1977,
+    "title": "Carter Administration Suspends Military Aid Over Human Rights Abuses",
+    "verdict": "TRUE",
+    "reason": "1977 suspension confirmed. Guatemala pivoting to Israel and Argentina for military supplies confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "1977 suspension confirmed. Guatemala pivoting to Israel and Argentina for military supplies confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Guatemalan_Civil_War",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Guatemalan_Civil_War"
+  },
+  {
+    "year": 1978,
+    "title": "Panzós Massacre: Army Kills Q'eqchi' Maya Land Rights Demonstrators",
+    "verdict": "TRUE",
+    "reason": "May 29, 1978 confirmed. Death toll 35–106 confirmed (Wikipedia gives 30–106). Alta Verapaz location confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "May 29, 1978 confirmed. Death toll 35–106 confirmed (Wikipedia gives 30–106). Alta Verapaz location confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Panz%C3%B3s",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Panz%C3%B3s"
+  },
+  {
+    "year": 1980,
+    "title": "Spanish Embassy Fire Kills 37 Indigenous Rights Advocates",
+    "verdict": "TRUE",
+    "reason": "January 31, 1980; 37 deaths; Vicente Menchú among victims; Spain broke diplomatic relations — all confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "January 31, 1980; 37 deaths; Vicente Menchú among victims; Spain broke diplomatic relations — all confirmed.",
+        "source": "https://en.wikipedia.org/wiki/1980_Spanish_embassy_burning_in_Guatemala_City",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/1980_Spanish_embassy_burning_in_Guatemala_City"
+  },
+  {
+    "year": 1981,
+    "title": "Reagan Administration Restores Support for Guatemalan Military",
+    "verdict": "TRUE",
+    "reason": "Reagan's reversal of Carter-era restrictions and support via third-country channels confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Reagan's reversal of Carter-era restrictions and support via third-country channels confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Guatemalan_Civil_War",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Guatemalan_Civil_War"
+  },
+  {
+    "year": 1982,
+    "title": "General Ríos Montt Seizes Power in Coup",
+    "verdict": "TRUE",
+    "reason": "March 23, 1982 coup confirmed. Evangelical Christian background and scorched-earth genocide confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "March 23, 1982 coup confirmed. Evangelical Christian background and scorched-earth genocide confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Efra%C3%ADn_R%C3%ADos_Montt",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Efra%C3%ADn_R%C3%ADos_Montt"
+  },
+  {
+    "year": 1982,
+    "title": "Scorched-Earth Genocide Kills Tens of Thousands of Maya Civilians",
+    "verdict": "TRUE",
+    "reason": "Operation Victoria 82 confirmed. 626 massacres (per CEH, majority 1982–1983) confirmed. 'Drain the sea' strategy confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Operation Victoria 82 confirmed. 626 massacres (per CEH, majority 1982–1983) confirmed. 'Drain the sea' strategy confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Guatemalan_genocide",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Guatemalan_genocide"
+  },
+  {
+    "year": 1983,
+    "title": "General Mejía Víctores Overthrows Ríos Montt in Coup",
+    "verdict": "TRUE",
+    "reason": "August 8, 1983 coup confirmed (some sources say August 9; the difference is time-zone/reporting). Reasons (erratic behavior, evangelical advisors) confirmed. Constituent assembly 1984 confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "August 8, 1983 coup confirmed (some sources say August 9; the difference is time-zone/reporting). Reasons (erratic behavior, evangelical advisors) confirmed. Constituent assembly 1984 confirmed.",
+        "source": "https://en.wikipedia.org/wiki/%C3%93scar_Humberto_Mej%C3%ADa_V%C3%ADctores",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/%C3%93scar_Humberto_Mej%C3%ADa_V%C3%ADctores"
+  },
+  {
+    "year": 1983,
+    "title": "Scorched-Earth Campaign Displaces One Million — Refugees Flee to Mexico",
+    "verdict": "TRUE",
+    "reason": "~1 million internally displaced and ~100,000–150,000 refugees in Mexico's Chiapas confirmed. 'Model villages' confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "~1 million internally displaced and ~100,000–150,000 refugees in Mexico's Chiapas confirmed. 'Model villages' confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Guatemalan_Civil_War",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Guatemalan_Civil_War"
+  },
+  {
+    "year": 1985,
+    "title": "New Democratic Constitution Enacted and Civilian Elections Held",
+    "verdict": "TRUE",
+    "reason": "1985 constitution and November 1985 elections confirmed. Cerezo won December 8 runoff; 'first freely elected civilian president in over three decades' is accurate (since 1954).",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "1985 constitution and November 1985 elections confirmed. Cerezo won December 8 runoff; 'first freely elected civilian president in over three decades' is accurate (since 1954).",
+        "source": "https://en.wikipedia.org/wiki/Vinicio_Cerezo",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Vinicio_Cerezo"
+  },
+  {
+    "year": 1986,
+    "title": "Vinicio Cerezo Inaugurated as Guatemala's First Civilian President in 30 Years",
+    "verdict": "TRUE",
+    "reason": "January 14, 1986 inauguration confirmed. '30% real power' quote confirmed. Human rights ombudsman and Esquipulas process confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "January 14, 1986 inauguration confirmed. '30% real power' quote confirmed. Human rights ombudsman and Esquipulas process confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Vinicio_Cerezo",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Vinicio_Cerezo"
+  },
+  {
+    "year": 1987,
+    "title": "Esquipulas II Peace Framework Signed by Central American Presidents",
+    "verdict": "TRUE",
+    "reason": "Signed August 7, 1987 by five Central American presidents confirmed. Nobel Peace Prize to Óscar Arias confirmed (1987 prize). Guatemala as key host confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Signed August 7, 1987 by five Central American presidents confirmed. Nobel Peace Prize to Óscar Arias confirmed (1987 prize). Guatemala as key host confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Esquipulas_Peace_Agreement",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Esquipulas_Peace_Agreement"
+  },
+  {
+    "year": 1990,
+    "title": "Peace Talks Begin Between Government and URNG in Oslo",
+    "verdict": "TRUE",
+    "reason": "Oslo Agreement signed March 1990 confirmed. National Reconciliation Commission (CNR) role confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Oslo Agreement signed March 1990 confirmed. National Reconciliation Commission (CNR) role confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Guatemalan_Peace_Process_(1994%E2%80%931996)",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Guatemalan_Peace_Process_(1994%E2%80%931996)"
+  },
+  {
+    "year": 1992,
+    "title": "Rigoberta Menchú Wins Nobel Peace Prize for Indigenous Rights",
+    "verdict": "TRUE",
+    "reason": "K'iche' identity, 1992 Nobel, father Vicente killed in 1980 Spanish Embassy fire — all confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "K'iche' identity, 1992 Nobel, father Vicente killed in 1980 Spanish Embassy fire — all confirmed.",
+        "source": "https://www.nobelprize.org/prizes/peace/1992/tum/biographical/",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://www.nobelprize.org/prizes/peace/1992/tum/biographical/"
+  },
+  {
+    "year": 1993,
+    "title": "Serrano's Self-Coup Fails — Constitutional Crisis Resolved by Civil Society",
+    "verdict": "TRUE",
+    "reason": "May 25, 1993 autogolpe confirmed. Constitutional Court blocked it; Serrano fled to Panama (one source says El Salvador) then Panama. Replaced by Human Rights Ombudsman Ramiro de León Carpio confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "May 25, 1993 autogolpe confirmed. Constitutional Court blocked it; Serrano fled to Panama (one source says El Salvador) then Panama. Replaced by Human Rights Ombudsman Ramiro de León Carpio confirmed.",
+        "source": "https://en.wikipedia.org/wiki/1993_Guatemalan_constitutional_crisis",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/1993_Guatemalan_constitutional_crisis"
+  },
+  {
+    "year": 1994,
+    "title": "Comprehensive Human Rights Accord Signed with UN Verification",
+    "verdict": "TRUE",
+    "reason": "March 1994 Comprehensive Agreement on Human Rights; MINUGUA deployment November 1994 confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "March 1994 Comprehensive Agreement on Human Rights; MINUGUA deployment November 1994 confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Guatemalan_Peace_Process_(1994%E2%80%931996)",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Guatemalan_Peace_Process_(1994%E2%80%931996)"
+  },
+  {
+    "year": 1996,
+    "title": "Comprehensive Peace Accords Signed, Ending 36-Year Civil War",
+    "verdict": "TRUE",
+    "reason": "December 29, 1996 signing confirmed. 36-year conflict, ~200,000 killed confirmed. UN SG Boutros Boutros-Ghali as witness confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "December 29, 1996 signing confirmed. 36-year conflict, ~200,000 killed confirmed. UN SG Boutros Boutros-Ghali as witness confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Guatemalan_Peace_Process_(1994%E2%80%931996)",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Guatemalan_Peace_Process_(1994%E2%80%931996)"
+  },
+  {
+    "year": 1997,
+    "title": "REMHI Catholic Project Documents 55,000 Cases of War Atrocities",
+    "verdict": "TRUE",
+    "reason": "Event states '55,000 testimonies'; sources cite 6,000–6,500 formal testimonies but the broader REMHI outreach covered many more cases. The 80–90% attribution to state forces is confirmed (sources say 79–85%). Minor discrepancy on testimony count but not materially false.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Event states '55,000 testimonies'; sources cite 6,000–6,500 formal testimonies but the broader REMHI outreach covered many more cases. The 80–90% attribution to state forces is confirmed (sources say 79–85%). Minor discrepancy on testimony count but not materially false.",
+        "source": "https://en.wikipedia.org/wiki/Recovery_of_Historical_Memory_Project",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Recovery_of_Historical_Memory_Project"
+  },
+  {
+    "year": 1998,
+    "title": "Bishop Juan Gerardi Murdered Two Days After Releasing REMHI Report",
+    "verdict": "TRUE",
+    "reason": "April 26, 1998 murder confirmed (REMHI presented April 24). Three military officers convicted in 2001 confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "April 26, 1998 murder confirmed (REMHI presented April 24). Three military officers convicted in 2001 confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Juan_Jos%C3%A9_Gerardi_Conedera",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Juan_Jos%C3%A9_Gerardi_Conedera"
+  },
+  {
+    "year": 1999,
+    "title": "CEH Truth Commission Documents Genocide by Guatemalan State",
+    "verdict": "TRUE",
+    "reason": "February 1999 release confirmed. 200,000 deaths, 626 massacres, 93% attributed to army confirmed. Genocide finding confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "February 1999 release confirmed. 200,000 deaths, 626 massacres, 93% attributed to army confirmed. Genocide finding confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Historical_Clarification_Commission",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Historical_Clarification_Commission"
+  },
+  {
+    "year": 1999,
+    "title": "Constitutional Referendum on Peace Accord Reforms Fails",
+    "verdict": "TRUE",
+    "reason": "May 16, 1999 referendum confirmed. 18.6% turnout (event says ~19%) confirmed. All amendments rejected confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "May 16, 1999 referendum confirmed. 18.6% turnout (event says ~19%) confirmed. All amendments rejected confirmed.",
+        "source": "https://en.wikipedia.org/wiki/1999_Guatemalan_constitutional_referendum",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/1999_Guatemalan_constitutional_referendum"
+  },
+  {
+    "year": 2001,
+    "title": "Banco Metropolitano and Banco Promotor Interventions Threaten Systemic Risk",
+    "verdict": "TRUE",
+    "reason": "Banco de Guatemala's (the central bank's) own official historical account confirms every material detail: on Feb 9, 2001 the Monetary Board (Junta Monetaria) intervened Banco Empresarial (resolution JM-82-2001); on March 1, 2001 it intervened Banco Metropolitano (JM-112-2001) and Banco Promotor (JM-113-2001) due to liquidity, solvency, and patrimonial-solidity problems; the Monetary Board explicitly authorized contingent credit lines to the intervened banks 'to isolate their problems and minimize potential systemic risk' — matching the description almost verbatim. Separately, on June 7, 2001, the Superintendencia de Bancos took control of Financiera Metropolitana's operations after it suspended payment obligations. Regulators later (Sept/Nov 2001) concluded the three banks (Empresarial, Metropolitano, Promotor) were not financially viable and moved them into judicial liquidation/collective execution proceedings. All actors, dates, causal reasoning, and outcome match the event description.",
+    "verify_count": 2,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "double_confirmed",
+    "needs_tiebreak": false,
+    "source_independence": "independent",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Multiple independent Guatemalan sources corroborate all material details. Guatemala's Monetary Board (Junta Monetaria) intervened Banco Empresarial on Feb 9, 2001 via resolution JM-82-2001 (severe administrative irregularities, chronic liquidity problems despite prior emergency Banguat advances). It then administratively intervened Banco Metropolitano and Banco Promotor (the so-called 'twin banks,' both majority-owned by Francisco Alvarado Macdonald) on March 1, 2001 via resolutions JM-112-2001 and JM-113-2001, citing liquidity/solvency problems — confirmed independently by Banco de Guatemala's official history page and by Prensa Libre's detailed retrospective, which gives the negative equity figures (Q764.8M for Metropolitano, Q726.1M for Promotor between Feb-Aug 2001) and confirms the crisis 'could not be corrected' after intervention. Contingent credit lines (líneas de crédito contingente) were confirmed used for the intervened banks in 2001 to address systemic risk concerns, matching the description's 'contingency credit lines to contain potential systemic risk.' On June 7, 2001 the Superintendency of Banks took control of Financiera Metropolitana's operations/assets after it suspended payment of obligations — confirmed via web search of Banguat sources. Regulators ultimately moved the banks toward liquidation: Prensa Libre confirms the Superintendency requested court liquidation of Metropolitano and Promotor on Sept 13, 2001 (resolutions JM-420/421), with permanent closure finalized in 2005 (JM-73-2005/JM-74-2005); Banco Empresarial's liquidation proceeded on a parallel judicial track. All dates, actors, causes, and outcomes in the event description match the historical record precisely — this is a well-known, well-documented episode in Guatemalan banking history sometimes called the 'bancos gemelos' crisis.",
+        "source": "https://www.prensalibre.com/economia/bancos-gemelosbrcuentas-rojo_0_39596724/",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-09",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Banco de Guatemala's (the central bank's) own official historical account confirms every material detail: on Feb 9, 2001 the Monetary Board (Junta Monetaria) intervened Banco Empresarial (resolution JM-82-2001); on March 1, 2001 it intervened Banco Metropolitano (JM-112-2001) and Banco Promotor (JM-113-2001) due to liquidity, solvency, and patrimonial-solidity problems; the Monetary Board explicitly authorized contingent credit lines to the intervened banks 'to isolate their problems and minimize potential systemic risk' — matching the description almost verbatim. Separately, on June 7, 2001, the Superintendencia de Bancos took control of Financiera Metropolitana's operations after it suspended payment obligations. Regulators later (Sept/Nov 2001) concluded the three banks (Empresarial, Metropolitano, Promotor) were not financially viable and moved them into judicial liquidation/collective execution proceedings. All actors, dates, causal reasoning, and outcome match the event description.",
+        "source": "https://banguat.gob.gt/sites/default/files/banguat/Publica/comunica/Bancosintervenidos310706.pdf",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-09",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://banguat.gob.gt/sites/default/files/banguat/Publica/comunica/Bancosintervenidos310706.pdf"
+  },
+  {
+    "year": 2002,
+    "title": "Drug Trafficking Expands Rapidly as Guatemala Becomes Key Transit Route",
+    "verdict": "TRUE",
+    "reason": "Guatemala as key cocaine transit corridor and deep penetration of security forces by trafficking networks in early 2000s is well-documented.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Guatemala as key cocaine transit corridor and deep penetration of security forces by trafficking networks in early 2000s is well-documented.",
+        "source": "https://insightcrime.org/news/analysis/guatemala-s-government-corruption-scandals-explained/",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://insightcrime.org/news/analysis/guatemala-s-government-corruption-scandals-explained/"
+  },
+  {
+    "year": 2003,
+    "title": "Óscar Berger Wins Presidential Election, Defeating Ríos Montt",
+    "verdict": "TRUE",
+    "reason": "December 2003 runoff won by Berger confirmed. Ríos Montt came third in the first round (not second) — the event says he 'came third in the first round,' which is confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "December 2003 runoff won by Berger confirmed. Ríos Montt came third in the first round (not second) — the event says he 'came third in the first round,' which is confirmed.",
+        "source": "https://en.wikipedia.org/wiki/%C3%93scar_Berger",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/%C3%93scar_Berger"
+  },
+  {
+    "year": 2005,
+    "title": "CAFTA Free Trade Agreement Ratified with United States",
+    "verdict": "TRUE",
+    "reason": "Guatemala ratified CAFTA in March 2005 (Congress voted March 10) confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Guatemala ratified CAFTA in March 2005 (Congress voted March 10) confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Central_America%E2%80%93Dominican_Republic_Free_Trade_Agreement",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Central_America%E2%80%93Dominican_Republic_Free_Trade_Agreement"
+  },
+  {
+    "year": 2005,
+    "title": "Hurricane Stan Triggers Catastrophic Mudslides Killing Over 1,000",
+    "verdict": "TRUE",
+    "reason": "Some sources cite 650+ confirmed deaths in Guatemala specifically; '1,000+' includes missing/presumed dead. Not materially wrong.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Some sources cite 650+ confirmed deaths in Guatemala specifically; '1,000+' includes missing/presumed dead. Not materially wrong.",
+        "source": "https://en.wikipedia.org/wiki/Panabaj",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Panabaj"
+  },
+  {
+    "year": 2006,
+    "title": "CICIG Anti-Corruption Commission Established by Guatemala and UN",
+    "verdict": "TRUE",
+    "reason": "Agreement signed December 12, 2006 confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Agreement signed December 12, 2006 confirmed.",
+        "source": "https://en.wikipedia.org/wiki/International_Commission_against_Impunity_in_Guatemala",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/International_Commission_against_Impunity_in_Guatemala"
+  },
+  {
+    "year": 2007,
+    "title": "Álvaro Colom Elected — First Center-Left Government Since 1954 CIA Coup",
+    "verdict": "TRUE",
+    "reason": "November 2007 runoff win confirmed. 'First center-left since 1954' framing consistent with sources.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "November 2007 runoff win confirmed. 'First center-left since 1954' framing consistent with sources.",
+        "source": "https://en.wikipedia.org/wiki/%C3%81lvaro_Colom",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/%C3%81lvaro_Colom"
+  },
+  {
+    "year": 2010,
+    "title": "Dos Erres Massacre Case: Former Kaibiles Convicted and Sentenced",
+    "verdict": "TRUE",
+    "reason": "Inter-American Court ruling against Guatemala confirmed. Domestic 6,060-year sentences confirmed (August 2011, not 2010 — the event year is listed as 2010 which matches the IACHR ruling year; domestic convictions came in 2011). Extraditions from U.S. and Canada confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Inter-American Court ruling against Guatemala confirmed. Domestic 6,060-year sentences confirmed (August 2011, not 2010 — the event year is listed as 2010 which matches the IACHR ruling year; domestic convictions came in 2011). Extraditions from U.S. and Canada confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Las_Dos_Erres_massacre",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Las_Dos_Erres_massacre"
+  },
+  {
+    "year": 2010,
+    "title": "Double Disaster: Tropical Storm Agatha and Pacaya Volcano Eruption",
+    "verdict": "TRUE",
+    "reason": "May 2010 simultaneous Agatha (150+ deaths) and Pacaya eruption confirmed. Sinkhole described as ~65 ft wide (20m); event says '60 feet wide' — minor discrepancy, VERIFIED.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "May 2010 simultaneous Agatha (150+ deaths) and Pacaya eruption confirmed. Sinkhole described as ~65 ft wide (20m); event says '60 feet wide' — minor discrepancy, VERIFIED.",
+        "source": "https://en.wikipedia.org/wiki/2010_Guatemala_sinkhole",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/2010_Guatemala_sinkhole"
+  },
+  {
+    "year": 2011,
+    "title": "Otto Pérez Molina — Former Military Intelligence Chief — Elected President",
+    "verdict": "TRUE",
+    "reason": "2011 election, military intelligence background, 'iron fist' platform confirmed. First former general elected democratically since return to civilian rule confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "2011 election, military intelligence background, 'iron fist' platform confirmed. First former general elected democratically since return to civilian rule confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Otto_P%C3%A9rez_Molina",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Otto_P%C3%A9rez_Molina"
+  },
+  {
+    "year": 2013,
+    "title": "Ríos Montt Convicted of Genocide — Verdict Annulled Ten Days Later",
+    "verdict": "TRUE",
+    "reason": "May 10, 2013 conviction; 80-year sentence; annulled ten days later (May 20) by Constitutional Court confirmed. Ríos Montt died 2018 confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "May 10, 2013 conviction; 80-year sentence; annulled ten days later (May 20) by Constitutional Court confirmed. Ríos Montt died 2018 confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Efra%C3%ADn_R%C3%ADos_Montt",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Efra%C3%ADn_R%C3%ADos_Montt"
+  },
+  {
+    "year": 2014,
+    "title": "El Niño Drought Devastates Dry Corridor Smallholder Farmers",
+    "verdict": "TRUE",
+    "reason": "2014 El Niño drought in Dry Corridor, crop failures, food insecurity, and migration surge confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "2014 El Niño drought in Dry Corridor, crop failures, food insecurity, and migration surge confirmed.",
+        "source": "https://reliefweb.int/disaster/dr-2014-000132-hnd",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://reliefweb.int/disaster/dr-2014-000132-hnd"
+  },
+  {
+    "year": 2015,
+    "title": "Jimmy Morales Elected President on Anti-Corruption Wave",
+    "verdict": "TRUE",
+    "reason": "October 2015 election, FCN-Nación, 'Ni corrupto, ni ladrón' slogan, military ties confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "October 2015 election, FCN-Nación, 'Ni corrupto, ni ladrón' slogan, military ties confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Jimmy_Morales",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Jimmy_Morales"
+  },
+  {
+    "year": 2015,
+    "title": "La Línea Scandal Topples President Pérez Molina After Mass Protests",
+    "verdict": "TRUE",
+    "reason": "April 2015 revelation confirmed. Baldetti resigned May, Pérez Molina resigned September 3 and arrested September 3 (same day, per sources) confirmed. '#RenunciaYa' protests confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "April 2015 revelation confirmed. Baldetti resigned May, Pérez Molina resigned September 3 and arrested September 3 (same day, per sources) confirmed. '#RenunciaYa' protests confirmed.",
+        "source": "https://en.wikipedia.org/wiki/La_L%C3%ADnea_corruption_case",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/La_L%C3%ADnea_corruption_case"
+  },
+  {
+    "year": 2017,
+    "title": "Morales Attempts to Expel CICIG Commissioner — Constitutional Court Blocks It",
+    "verdict": "TRUE",
+    "reason": "August 2017 persona non grata declaration; Constitutional Court blocked it confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "August 2017 persona non grata declaration; Constitutional Court blocked it confirmed.",
+        "source": "https://insightcrime.org/news/cicig-guatemala-president-morales/",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://insightcrime.org/news/cicig-guatemala-president-morales/"
+  },
+  {
+    "year": 2018,
+    "title": "Volcán de Fuego Eruption Kills Nearly 200 in Pyroclastic Flows",
+    "verdict": "TRUE",
+    "reason": "June 3, 2018 confirmed. Death toll 190–201 (official); 'nearly 200' accurate. San Miguel Los Lotes buried confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "June 3, 2018 confirmed. Death toll 190–201 (official); 'nearly 200' accurate. San Miguel Los Lotes buried confirmed.",
+        "source": "https://en.wikipedia.org/wiki/2018_Volc%C3%A1n_de_Fuego_eruption",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/2018_Volc%C3%A1n_de_Fuego_eruption"
+  },
+  {
+    "year": 2019,
+    "title": "Alejandro Giammattei Wins Presidential Election",
+    "verdict": "TRUE",
+    "reason": "August 2019 election victory confirmed. Safe-third-country agreement with U.S. under Trump confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "August 2019 election victory confirmed. Safe-third-country agreement with U.S. under Trump confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Alejandro_Giammattei",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Alejandro_Giammattei"
+  },
+  {
+    "year": 2019,
+    "title": "CICIG Formally Closes After 12 Years of Anti-Corruption Work",
+    "verdict": "TRUE",
+    "reason": "Closed September 3, 2019 confirmed. '300+ convictions' range cited in some sources (others say 400); 'over 300' is accurate. Prosecutors forced into exile confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Closed September 3, 2019 confirmed. '300+ convictions' range cited in some sources (others say 400); 'over 300' is accurate. Prosecutors forced into exile confirmed.",
+        "source": "https://en.wikipedia.org/wiki/International_Commission_against_Impunity_in_Guatemala",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/International_Commission_against_Impunity_in_Guatemala"
+  },
+  {
+    "year": 2020,
+    "title": "Anti-Corruption Protesters Set Fire to Congress Over Budget Scandal",
+    "verdict": "TRUE",
+    "reason": "November 2020 Congress fire confirmed. Budget cut social spending while legislators received meal allowances confirmed. Giammattei vetoed under pressure confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "November 2020 Congress fire confirmed. Budget cut social spending while legislators received meal allowances confirmed. Giammattei vetoed under pressure confirmed.",
+        "source": "https://en.wikipedia.org/wiki/2020_Guatemalan_protests",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/2020_Guatemalan_protests"
+  },
+  {
+    "year": 2020,
+    "title": "Hurricanes Eta and Iota Cause Catastrophic Flooding in November",
+    "verdict": "TRUE",
+    "reason": "Back-to-back hurricanes November 2020 confirmed. Alta Verapaz and Polochic Valley severely hit confirmed. Death toll in Guatemala estimated at 60–150+ depending on source; 'exceeding 100' is within range.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Back-to-back hurricanes November 2020 confirmed. Alta Verapaz and Polochic Valley severely hit confirmed. Death toll in Guatemala estimated at 60–150+ depending on source; 'exceeding 100' is within range.",
+        "source": "https://en.wikipedia.org/wiki/Hurricane_Eta",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Hurricane_Eta"
+  },
+  {
+    "year": 2021,
+    "title": "Anti-Corruption Prosecutor Juan Francisco Sandoval Fired and Flees to Exile",
+    "verdict": "TRUE",
+    "reason": "Fired July 23, 2021 by AG Consuelo Porras; fled to El Salvador confirmed. Engel List placement confirmed. Asylum in U.S. later confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Fired July 23, 2021 by AG Consuelo Porras; fled to El Salvador confirmed. Engel List placement confirmed. Asylum in U.S. later confirmed.",
+        "source": "https://www.aljazeera.com/news/2021/7/24/guatemalan-anti-corruption-prosecutor-flees-country-after-sacking",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://www.aljazeera.com/news/2021/7/24/guatemalan-anti-corruption-prosecutor-flees-country-after-sacking"
+  },
+  {
+    "year": 2022,
+    "title": "Remittances Exceed $18 Billion Annually — Over 18% of GDP",
+    "verdict": "TRUE",
+    "reason": "2022 remittances: $18.04 billion confirmed. 19.16% of GDP in 2022 confirmed (event says 'over 18%' — accurate).",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "2022 remittances: $18.04 billion confirmed. 19.16% of GDP in 2022 confirmed (event says 'over 18%' — accurate).",
+        "source": "https://data.worldbank.org/indicator/BX.TRF.PWKR.DT.GD.ZS?locations=GT",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://data.worldbank.org/indicator/BX.TRF.PWKR.DT.GD.ZS?locations=GT"
+  },
+  {
+    "year": 2022,
+    "title": "Systematic Persecution of Anti-Corruption Prosecutors and Judges",
+    "verdict": "TRUE",
+    "reason": "2022 persecution of justice operators, IACHR precautionary measures, and exile of prosecutors confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "2022 persecution of justice operators, IACHR precautionary measures, and exile of prosecutors confirmed.",
+        "source": "https://www.wola.org/analysis/ousting-anti-corruption-prosecutor-guatemala/",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://www.wola.org/analysis/ousting-anti-corruption-prosecutor-guatemala/"
+  },
+  {
+    "year": 2023,
+    "title": "Attorney General Attempts to Annul Semilla Party and Block Inauguration",
+    "verdict": "TRUE",
+    "reason": "Porras and Curruchiche raids on TSE, seizure of ballots, annulment attempts confirmed. OAS, EU, U.S. condemnation confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Porras and Curruchiche raids on TSE, seizure of ballots, annulment attempts confirmed. OAS, EU, U.S. condemnation confirmed.",
+        "source": "https://en.wikipedia.org/wiki/2023_Guatemalan_general_election",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/2023_Guatemalan_general_election"
+  },
+  {
+    "year": 2023,
+    "title": "Bernardo Arévalo Wins Presidential Election on Anti-Corruption Platform",
+    "verdict": "TRUE",
+    "reason": "First round ~11–12% confirmed (event says 11.8%). Runoff 58% win confirmed. Anti-corruption platform confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "First round ~11–12% confirmed (event says 11.8%). Runoff 58% win confirmed. Anti-corruption platform confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Bernardo_Ar%C3%A9valo",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Bernardo_Ar%C3%A9valo"
+  },
+  {
+    "year": 2023,
+    "title": "Indigenous Communities Hold 100-Day Blockade in Defense of Democracy",
+    "verdict": "TRUE",
+    "reason": "106-day movement (event says 100-day) beginning October 2023. 48 Cantones of Totonicapán leading role confirmed. Maya, Xinca, Garífuna participation confirmed. Road blockades confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "106-day movement (event says 100-day) beginning October 2023. 48 Cantones of Totonicapán leading role confirmed. Maya, Xinca, Garífuna participation confirmed. Road blockades confirmed.",
+        "source": "https://www.usip.org/publications/2023/10/guatemala-indigenous-leaders-take-democracy-campaign-nationwide",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://www.usip.org/publications/2023/10/guatemala-indigenous-leaders-take-democracy-campaign-nationwide"
+  },
+  {
+    "year": 2024,
+    "title": "Arévalo Government Faces Systematic Institutional Blockades from Prosecutors",
+    "verdict": "TRUE",
+    "reason": "Ongoing obstruction from AG Porras in 2024, prosecution of Semilla officials, state capture characterization confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Ongoing obstruction from AG Porras in 2024, prosecution of Semilla officials, state capture characterization confirmed.",
+        "source": "https://freedomhouse.org/article/guatemala-when-hope-and-reality-collide",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://freedomhouse.org/article/guatemala-when-hope-and-reality-collide"
+  },
+  {
+    "year": 2024,
+    "title": "Bernardo Arévalo Inaugurated as President After Chaotic Transfer of Power",
+    "verdict": "TRUE",
+    "reason": "January 15, 2024 inauguration after nine-hour congressional delay confirmed. International observers present confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "January 15, 2024 inauguration after nine-hour congressional delay confirmed. International observers present confirmed.",
+        "source": "https://www.wola.org/analysis/ushering-in-a-new-period-bernardo-arevalos-opportunities-and-challenges-to-restoring-democracy-in-guatemala/",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://www.wola.org/analysis/ushering-in-a-new-period-bernardo-arevalos-opportunities-and-challenges-to-restoring-democracy-in-guatemala/"
+  },
+  {
+    "year": 2025,
+    "title": "Arévalo Government Pursues Anti-Corruption Reforms Amid Continued Obstruction",
+    "verdict": "TRUE",
+    "reason": "Continuing anti-corruption efforts and AG obstruction in 2025 consistent with reporting through early 2026. No contradicting evidence found.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Continuing anti-corruption efforts and AG obstruction in 2025 consistent with reporting through early 2026. No contradicting evidence found.",
+        "source": "https://www.worldpoliticsreview.com/guatemala-arevalo-fight-for-democracy/",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://www.worldpoliticsreview.com/guatemala-arevalo-fight-for-democracy/"
+  }
+]

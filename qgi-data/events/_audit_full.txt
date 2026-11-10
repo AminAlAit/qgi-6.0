@@ -1,0 +1,370 @@
+Canonical L3 categories: 71
+Sample canonical: ['agricultural_policy', 'banking_and_financial_crisis', 'bilateral_treaty', 'civil_war_and_insurgency', 'climate_agreement']
+
+Scanning 158 curated files...
+
+Total events scanned: 11959
+Total invalid-category events: 3001 (25.1%)
+Distinct invalid categories: 327
+Files with at least one invalid event: 71
+
+=== ALL INVALID categories (by event count) ===
+    163  terrorism_and_extremism
+    154  social_movements_and_protest
+    135  insurgency_and_guerrilla
+    121  energy_policy_and_resources
+     99  diplomatic_relations
+     94  human_rights
+     72  cold_war_geopolitics
+     70  trade_and_commerce
+     67  public_health_and_epidemics
+     65  infrastructure_and_urban_development
+     65  technology_and_digital
+     64  coup_and_political_takeover
+     64  decolonization_and_independence
+     52  international_sanctions
+     51  executive_transition
+     51  privatization_and_nationalization
+     50  communist_regime_and_transition
+     48  international_alliances
+     47  labor_and_industrial_relations
+     44  land_reform_and_agrarian
+     41  foreign_investment_and_aid
+     41  religion_and_society
+     41  protest_and_civil_unrest
+     38  gender_and_womens_rights
+     38  Politics
+     36  genocide_and_mass_atrocity
+     34  sport_and_international_events
+     31  Political Transition
+     29  education_and_intellectual_life
+     29  military_conflict
+     28  media_and_press_freedom
+     27  GOVERNANCE
+     23  social_welfare_and_poverty
+     23  economic_crisis
+     21  civil_liberties
+     18  political_transition
+     17  Diplomacy
+     16  trade_policy
+     15  national_identity_and_culture
+     15  gang_violence_and_crime
+     14  mining_and_extractive_industry
+     14  economic_growth
+     14  judicial_reform
+     14  Natural Disaster
+     14  Political Stability & Governance
+     14  Elections
+     13  demographics_and_population
+     13  political_repression_and_persecution
+     13  Economy
+     12  race_and_ethnic_relations
+     11  postwar_reconstruction
+     11  monetary_policy
+     11  security_sector_reform
+     11  ENERGY_ENVIRONMENT
+     11  Economic Crisis
+     11  Military & Defense
+     10  indigenous_rights
+      9  Economic Reform
+      9  elections_and_political_competition
+      9  ECONOMY
+      9  Economic Policy
+      9  elections
+      9  elections_and_political_transitions
+      8  climate_change_and_adaptation
+      8  Foreign Intervention
+      8  International Relations
+      8  Conflict
+      7  international_law
+      7  Social Movement
+      7  SOCIAL
+      7  Foreign Policy
+      7  Human Rights & Atrocities
+      7  military_alliances_and_coalitions
+      6  deforestation_and_land_use
+      6  Territorial Dispute
+      6  government_crisis
+      6  labor_movements_and_trade_unions
+      6  Political Repression
+      6  International
+      6  Social
+      6  Authoritarianism & Repression
+      6  armed_conflict_and_civil_war
+      5  territorial_dispute
+      5  peace_negotiation
+      5  social_unrest
+      5  arts_culture_and_heritage
+      5  leadership_transition
+      5  DIPLOMACY
+      5  Military Alliance
+      5  Political Violence
+      5  Electoral Politics
+      5  Constitutional Crisis
+      5  Military Coup
+      5  State Repression
+      5  Public Health Crisis
+      5  Elections and Democracy
+      5  Natural Resources
+      5  Geopolitics & Foreign Policy
+      5  Natural Disasters & Crisis Response
+      5  ethnic_religious_violence
+      4  Military Conflict
+      4  Regional Integration
+      4  Financial Crisis
+      4  Monetary Policy
+      4  Social Policy & Welfare
+      4  elections_and_referendums
+      4  regime_change
+      4  Elections & Political Transitions
+      4  Corruption Scandal
+      4  religion_and_state
+      4  governance_and_political_transitions
+      4  foreign_policy_and_diplomacy
+      4  Political Unrest
+      4  political_assassinations
+      4  economic_policy_change
+      3  infrastructure_development
+      3  HEALTH_DISASTER
+      3  CONFLICT
+      3  Armed Conflict
+      3  Economic Growth
+      3  Constitutional Change
+      3  Transitional Justice
+      3  Terrorism
+      3  Forced Migration
+      3  Science & Technology
+      3  international_relations
+      3  foreign_policy
+      3  coup
+      3  constitution
+      3  political_crisis
+      3  Political Stability & Succession
+      3  Political Violence & Terrorism
+      3  Economic Development
+      3  Resource Conflict
+      3  human_rights_and_civil_liberties
+      3  Government Change
+      3  Rule of Law
+      3  state_consolidation
+      3  resource_nationalization
+      3  terrorism_and_political_violence
+      3  coup_or_takeover
+      2  Public Health
+      2  public_health_crisis
+      2  arms_control
+      2  TRADE
+      2  Civil Rights
+      2  Peace Agreement
+      2  Authoritarian Governance
+      2  Political Instability
+      2  Economic Recovery
+      2  Authoritarian Consolidation
+      2  Mass Protests
+      2  Environmental Crisis
+      2  Infrastructure & Development
+      2  Political Scandal
+      2  Human Rights & Civil Liberties
+      2  Demographic Change
+      2  Environmental Policy
+      2  Civil Society & Human Rights
+      2  Energy
+      2  labor_and_employment
+      2  economic_reform
+      2  foreign_investment
+      2  debt_and_financial_crisis
+      2  interstate_relations
+      2  economic_sanctions
+      2  political_party
+      2  armed_conflict
+      2  peace_process
+      2  Agriculture & Food Security
+      2  Political Movements & Opposition
+      2  Religion & Sectarianism
+      2  Corruption & Scandal
+      2  Peace Processes & Diplomacy
+      2  Economic Policy & Reform
+      2  Rule of Law & Judiciary
+      2  Civil Liberties & Freedoms
+      2  Political Reform
+      2  Mass Protest
+      2  Land Reform
+      2  Resource Nationalization
+      2  Armed Group Formation
+      2  Democratic Backsliding
+      2  Counter-terrorism
+      2  land_reform_and_rural_policy
+      2  media_freedom_and_censorship
+      2  gender_equality_and_womens_rights
+      2  migration_and_refugee_crises
+      2  Human Rights
+      2  Sport
+      2  European Integration
+      2  labor_strikes_and_protests
+      2  peace_negotiations_and_agreements
+      2  forced_displacement_and_refugee_crises
+      2  democratic_backsliding
+      2  foreign_debt_and_financial_crises
+      2  environmental_disaster
+      2  sanctions_and_international_pressure
+      1  Civil Conflict
+      1  Sovereignty Dispute
+      1  Ethnic Violence
+      1  Political Exile
+      1  Military Intervention
+      1  Democratization
+      1  Political Party Formation
+      1  Healthcare Reform
+      1  Development Aid
+      1  Political Corruption
+      1  Regional Instability
+      1  Economic Sanctions
+      1  International Recognition
+      1  Diplomatic Relations
+      1  Monetary Union
+      1  Counter-Terrorism
+      1  International Prestige
+      1  Sports Achievement
+      1  Social Unrest
+      1  Fiscal Crisis
+      1  Sovereign Debt Crisis
+      1  Debt Restructuring
+      1  Far-Right Politics
+      1  Refugee Crisis
+      1  Climate Disaster
+      1  Infrastructure Failure
+      1  State-Sponsored Violence
+      1  Church-State Conflict
+      1  Emigration and Diaspora
+      1  Church-State Relations
+      1  Leadership Transition
+      1  Media Freedom
+      1  Corruption and Repression
+      1  Agricultural Crisis
+      1  Religious and Social Mobilization
+      1  Public Health and Stigma
+      1  End of Dictatorship
+      1  Constitutional Politics
+      1  International Diplomacy
+      1  Foreign Military Intervention
+      1  Electoral Dispute
+      1  Targeted Killing
+      1  Authoritarian Backsliding
+      1  Forced Exile and Political Collapse
+      1  UN Peacekeeping
+      1  Food Security Crisis
+      1  Public Health Emergency
+      1  International Aid Failure
+      1  Electoral Crisis
+      1  UN Mission Closure
+      1  Anti-Corruption Protests
+      1  State Failure and Gang Violence
+      1  Political Assassination
+      1  Gang Control and Economic Paralysis
+      1  International Security Response
+      1  State Collapse and Political Transition
+      1  International Security Mission
+      1  Governance & Institutions
+      1  Civil Unrest
+      1  Economic Boom
+      1  Geopolitics
+      1  Energy Policy
+      1  Territorial Disputes
+      1  Immigration & Refugee Policy
+      1  Agricultural Policy
+      1  Foreign Direct Investment
+      1  Financial Sector
+      1  Labor & Employment
+      1  human_rights_and_governance
+      1  famine_and_food_crisis
+      1  media_freedom
+      1  corruption_and_scandal
+      1  military_intervention
+      1  science_technology
+      1  multilateral_diplomacy
+      1  economic_planning
+      1  land_reform
+      1  environment_conservation
+      1  political_opposition
+      1  state_repression
+      1  peace_agreement
+      1  ethnic_conflict
+      1  disarmament
+      1  epidemic
+      1  energy
+      1  Revolutions & Regime Change
+      1  Education & Human Capital
+      1  Civil War & Insurgency
+      1  International Law & Justice
+      1  Disarmament & Post-Conflict
+      1  Civil Unrest & Protests
+      1  Sanctions & International Pressure
+      1  Public Health & Epidemics
+      1  Migration & Displacement
+      1  Interstate Conflict
+      1  Impunity
+      1  Organized Crime
+      1  civil_society_and_ngos
+      1  ethnic_and_communal_violence
+      1  transitional_justice_and_reconciliation
+      1  regional_integration_and_trade_blocs
+      1  economic_crises_and_recovery
+      1  political_crises_and_instability
+      1  rule_of_law_and_judicial_independence
+      1  energy_security_and_policy
+      1  Social Policy
+      1  Authoritarianism
+      1  Labor
+      1  Intelligence
+      1  Revolution
+      1  Environmental Disaster
+      1  Security
+      1  trade_and_economic_agreements
+      1  social_inequality_and_discrimination
+      1  security_and_counterterrorism
+      1  foreign_military_intervention
+      1  natural_disasters
+      1  rule_of_law_and_judicial
+      1  agricultural_and_food_security
+      1  popular_uprisings_and_revolutions
+      1  imf_world_bank_interventions
+      1  cultural_promotion
+      1  labor_and_social_policy
+      1  health_sector_initiative
+      1  financial_crisis
+      1  labor_and_strikes
+      1  media_and_censorship
+      1  infrastructure_failure
+      1  social_policy
+
+=== Files with >50 invalid events ===
+   113  ethiopia.json
+   112  russia.json
+   106  brazil.json
+    97  afghanistan.json
+    82  india.json
+    77  eritrea.json
+    73  china.json
+    72  egypt.json
+    71  malaysia.json
+    67  ecuador.json
+    65  greece.json
+    63  peru.json
+    63  yemen.json
+    62  cambodia.json
+    61  morocco.json
+    60  iran.json
+    59  nicaragua.json
+    58  japan.json
+    56  mexico.json
+    56  poland.json
+    55  pakistan.json
+    55  philippines.json
+    55  united_arab_emirates.json
+    54  romania.json
+    53  kazakhstan.json
+    52  haiti.json
+    52  south_africa.json
+    51  nepal.json
+    51  nigeria.json
+    51  saudi_arabia.json

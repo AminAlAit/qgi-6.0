@@ -1,0 +1,406 @@
+[
+  {
+    "year": 2023,
+    "title": "Xeedho Wedding Tradition Inscribed on UNESCO Intangible Heritage List",
+    "verdict": "PARTIAL",
+    "reason": "Confirmed via UNESCO's own ICH site and UNESCO.org: on 5 December 2023, at the 18th session of the Intergovernmental Committee for the Safeguarding of Intangible Cultural Heritage in Kasane, Botswana, Xeedho (the Somali-Djiboutian wedding ritual of a mother-in-law preparing dried/butter-preserved meat in a carved wooden container for her new son-in-law) became the first element from Djibouti inscribed by UNESCO, scoring a perfect 5/5 on evaluation criteria, with an associated safeguarding project that trained 30 young girls (and 30 teachers) amid concern over declining transmission. All of that matches the description precisely. However, one material detail is wrong: Xeedho was inscribed on the **List of Intangible Cultural Heritage in Need of Urgent Safeguarding (USL)**, NOT the **Representative List of the Intangible Cultural Heritage of Humanity** as the event description explicitly states. These are two distinct UNESCO lists under the 2003 Convention with different meanings (urgent safeguarding = at risk of disappearing vs. representative = broadly recognized heritage), and ich.unesco.org's own Djibouti country page and the dedicated Xeedho USL page both confirm it as '(USL)'. Year and country hold; the specific list named is incorrect, so this is a scope/detail error rather than a fabrication.",
+    "verify_count": 2,
+    "consensus_verdict": "PARTIAL",
+    "consensus_status": "downgraded",
+    "needs_tiebreak": false,
+    "source_independence": "weak",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed by UNESCO's own article and the official ICH (Intangible Cultural Heritage) database entry. Xeedho was inscribed on UNESCO's Representative List of the Intangible Cultural Heritage of Humanity on 5 December 2023, during the 18th session of the Intergovernmental Committee for the Safeguarding of Intangible Cultural Heritage held in Kasane, Botswana. It is confirmed as the first element from Djibouti ever inscribed, scoring a perfect 5/5 on evaluation criteria. Xeedho is described consistently across sources as a Somali-Djiboutian tradition of dromedary/camel meat coated in butter/ghee and preserved in a carved wooden container, presented by a bride's mother to her new son-in-law. UNESCO funding is confirmed to have supported an association training 30 young girls in the practice amid concerns over declining transmission to younger generations. All material details in the event description (date, location, scoring, first-for-Djibouti status, ritual description, training of 30 girls) match the sourced record exactly.",
+        "source": "https://www.unesco.org/en/articles/xeedho-first-intangible-cultural-heritage-treasure-djibouti-be-inscribed-unescos-world-heritage-list",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-05",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "PARTIAL",
+        "reason": "Confirmed via UNESCO's own ICH site and UNESCO.org: on 5 December 2023, at the 18th session of the Intergovernmental Committee for the Safeguarding of Intangible Cultural Heritage in Kasane, Botswana, Xeedho (the Somali-Djiboutian wedding ritual of a mother-in-law preparing dried/butter-preserved meat in a carved wooden container for her new son-in-law) became the first element from Djibouti inscribed by UNESCO, scoring a perfect 5/5 on evaluation criteria, with an associated safeguarding project that trained 30 young girls (and 30 teachers) amid concern over declining transmission. All of that matches the description precisely. However, one material detail is wrong: Xeedho was inscribed on the **List of Intangible Cultural Heritage in Need of Urgent Safeguarding (USL)**, NOT the **Representative List of the Intangible Cultural Heritage of Humanity** as the event description explicitly states. These are two distinct UNESCO lists under the 2003 Convention with different meanings (urgent safeguarding = at risk of disappearing vs. representative = broadly recognized heritage), and ich.unesco.org's own Djibouti country page and the dedicated Xeedho USL page both confirm it as '(USL)'. Year and country hold; the specific list named is incorrect, so this is a scope/detail error rather than a fabrication.",
+        "source": "https://ich.unesco.org/en/USL/xeedho-02001",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-05",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://ich.unesco.org/en/USL/xeedho-02001"
+  },
+  {
+    "year": 2008,
+    "title": "UN Security Council Demands Eritrean Withdrawal from Djibouti",
+    "verdict": "FALSE",
+    "reason": "The event is real and substantively accurate — UNSC Resolution 1862 unanimously demanded Eritrea withdraw from Djiboutian territory (Ras Doumeira/Doumeira Island), acknowledge the border dispute, and engage in dialogue; Eritrea denied occupying the territory and later faced sanctions (Res. 1907, Dec 2009) partly over its refusal to comply. However, Resolution 1862 was adopted on 14 January 2009, not in 2008. The underlying military clash between Djibouti and Eritrea occurred in June 2008, but the actual event described in the title/description — the UNSC resolution demanding Eritrean withdrawal — is a 2009 event. The description itself even states 'passed Resolution 1862 in January 2009,' contradicting the record's year field of 2008. Since the year is wrong for the specific event described (the UNSC demand), this is a FALSE/year-mismatch rather than TRUE, with the correct year being 2009.",
+    "verify_count": 2,
+    "consensus_verdict": "FALSE",
+    "consensus_status": "double_negative",
+    "needs_tiebreak": false,
+    "source_independence": "weak",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "FALSE",
+        "reason": "The event described — UN Security Council Resolution 1862 demanding Eritrean withdrawal from Djiboutian territory, release of prisoners, and dialogue — is real and materially accurate in substance (Eritrea denied occupying the land despite evidence, the standoff led to the later UN sanctions process via Resolution 1907). However, Resolution 1862 was unanimously adopted on 14 January 2009, not 2008. The underlying border clashes at Ras Doumeira/Doumeira Island occurred in June 2008, but the specific event titled here — the Security Council's resolution demanding withdrawal — is a January 2009 event. Since the title/description is specifically about the Security Council resolution (which the description itself dates to \"January 2009\"), and the top-level year field says 2008, the year is wrong for this specific event.",
+        "source": "https://press.un.org/en/2009/sc9570.doc.htm",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-07",
+          "method": "web_search"
+        },
+        "corrected_year": 2009
+      },
+      {
+        "pass_n": 2,
+        "verdict": "FALSE",
+        "reason": "The event is real and substantively accurate — UNSC Resolution 1862 unanimously demanded Eritrea withdraw from Djiboutian territory (Ras Doumeira/Doumeira Island), acknowledge the border dispute, and engage in dialogue; Eritrea denied occupying the territory and later faced sanctions (Res. 1907, Dec 2009) partly over its refusal to comply. However, Resolution 1862 was adopted on 14 January 2009, not in 2008. The underlying military clash between Djibouti and Eritrea occurred in June 2008, but the actual event described in the title/description — the UNSC resolution demanding Eritrean withdrawal — is a 2009 event. The description itself even states 'passed Resolution 1862 in January 2009,' contradicting the record's year field of 2008. Since the year is wrong for the specific event described (the UNSC demand), this is a FALSE/year-mismatch rather than TRUE, with the correct year being 2009.",
+        "source": "https://press.un.org/en/2009/sc9570.doc.htm",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-07",
+          "method": "web_search"
+        },
+        "corrected_year": 2009
+      }
+    ],
+    "source": "https://press.un.org/en/2009/sc9570.doc.htm"
+  },
+  {
+    "year": 1991,
+    "title": "FRUD Insurgency Begins",
+    "verdict": "TRUE",
+    "reason": "Independent sources (Wikipedia's Djiboutian Civil War article, corroborated by Britannica and other secondary sources) confirm that the Front for the Restoration of Unity and Democracy (FRUD), an Afar-led armed movement, launched an insurgency against the Djiboutian government beginning in October/November 1991 (guerrilla campaign starting early October, with the major assault on Obock on November 21, 1991). FRUD seized military posts across northern Djibouti and laid siege to Tadjoura and Obock, while fighting also broke out in the Dikhil region to the southwest/west; by mid-1992 FRUD held roughly two-thirds of the country's (sparsely populated) territory. The rapid rebel advance against a much smaller, under-resourced Djiboutian army (~5,000 troops vs ~3,000 FRUD fighters at the outset) exposed the weakness of the national armed forces, consistent with the event description. Country, year, and substance (Afar insurgency, northern/western regions, rapid territorial gains, exposed military weakness) all check out.",
+    "verify_count": 2,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "double_confirmed",
+    "needs_tiebreak": false,
+    "source_independence": "weak",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Independent sources confirm FRUD (Front for the Restoration of Unity and Democracy), an Afar-dominated armed movement, launched a guerrilla insurgency against the Issa-dominated Djiboutian government in late 1991 (Wikipedia dates the formal launch to \"the beginning of October 1991,\" with major clashes/troop captures documented on the night of 15-16 November 1991 in the Obock region — both October and November 1991 are cited across sources as part of the same outbreak, and the FRUD Wikipedia article itself summarizes the launch as occurring \"in late 1991\"). The insurgency was centered in the northern and western regions of Djibouti (Dikhil, Tadjoura, Obock), and FRUD did rapidly seize significant territory — Wikipedia states FRUD \"seized all military posts in the north of the country and laid siege to the city of Tadjoura and Obock\" — consistent with the description of exposing the weakness of Djiboutian armed forces. This is corroborated by multiple independent tertiary sources (Wikipedia's Djiboutian Civil War and FRUD pages, plus search snippets referencing Britannica and peaceagreements.org describing the same 1991-1994 civil war). Country, year, actor, region, and territorial-gain claims all hold; the only minor ambiguity is whether the precise \"launch\" is dated to early October or mid/late November 1991, which does not change the substance.",
+        "source": "https://en.wikipedia.org/wiki/Djiboutian_Civil_War",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-07",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Independent sources (Wikipedia's Djiboutian Civil War article, corroborated by Britannica and other secondary sources) confirm that the Front for the Restoration of Unity and Democracy (FRUD), an Afar-led armed movement, launched an insurgency against the Djiboutian government beginning in October/November 1991 (guerrilla campaign starting early October, with the major assault on Obock on November 21, 1991). FRUD seized military posts across northern Djibouti and laid siege to Tadjoura and Obock, while fighting also broke out in the Dikhil region to the southwest/west; by mid-1992 FRUD held roughly two-thirds of the country's (sparsely populated) territory. The rapid rebel advance against a much smaller, under-resourced Djiboutian army (~5,000 troops vs ~3,000 FRUD fighters at the outset) exposed the weakness of the national armed forces, consistent with the event description. Country, year, and substance (Afar insurgency, northern/western regions, rapid territorial gains, exposed military weakness) all check out.",
+        "source": "https://en.wikipedia.org/wiki/Djiboutian_Civil_War",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-07",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Djiboutian_Civil_War"
+  },
+  {
+    "year": 1977,
+    "title": "Ogaden War Strains New State",
+    "verdict": "TRUE",
+    "reason": "Multiple independent sources confirm the core facts: Djibouti became independent from France on 27 June 1977, with a population split between the Issa (ethnically/culturally Somali, favored independence) and the Afar (historically French-favored, more cautious/opposed). The Ogaden War between Somalia and Ethiopia broke out in 1977 (WSLF severed the Addis Ababa-Djibouti rail line on 1 June 1977; full-scale Somali invasion followed in July 1977). The Ethio-Djibouti railway was a critical economic/strategic asset (carrying ~40% of Ethiopia's exports and half its imports) that became a flashpoint, and Djibouti's new government pursued a declared neutrality policy while both Ethiopia and Somalia sought to pull it into their camp — sources differ on exactly which side Djibouti leaned toward in practice (one account says it aligned with Ethiopia, another that its Issa-led government passed intelligence to Somalia), which itself corroborates the description's framing of a government \"struggling to maintain neutrality\" amid competing pressures rather than cleanly picking a side. Year, country, and substance all hold.",
+    "verify_count": 2,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "double_confirmed",
+    "needs_tiebreak": false,
+    "source_independence": "independent",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Independent sources confirm all material elements: Djibouti became independent on 27 June 1977 (from the French Territory of the Afars and the Issas) with Hassan Gouled Aptidon as president; the Ogaden War between Ethiopia and Somalia broke out in 1977 almost simultaneously; Djibouti's population was split between the Issa (ethnic Somali) and Afar communities with historically opposing regional sympathies (Issa pro-Somalia, Afar favored by Ethiopia/Haile Selassie); the Addis Ababa-Djibouti railway (carrying ~40% of Ethiopia's exports and half its imports) was a critical strategic asset that came under direct threat -- WSLF insurgents severed the rail link on 1 June 1977 and the war forced its closure for about two years, nearly bankrupting Djibouti; and Britannica confirms Djibouti pursued 'a policy of strict neutrality in regional affairs' per friendship treaties with both Somalia and Ethiopia, refusing to support armed groups against either neighbor. All core facts (country, year, ethnic split, railway strategic stakes, neutrality struggle) are corroborated by independent sources (Britannica, Wikipedia, academic Ogaden War histories).",
+        "source": "https://www.britannica.com/topic/history-of-Djibouti",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-07",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Multiple independent sources confirm the core facts: Djibouti became independent from France on 27 June 1977, with a population split between the Issa (ethnically/culturally Somali, favored independence) and the Afar (historically French-favored, more cautious/opposed). The Ogaden War between Somalia and Ethiopia broke out in 1977 (WSLF severed the Addis Ababa-Djibouti rail line on 1 June 1977; full-scale Somali invasion followed in July 1977). The Ethio-Djibouti railway was a critical economic/strategic asset (carrying ~40% of Ethiopia's exports and half its imports) that became a flashpoint, and Djibouti's new government pursued a declared neutrality policy while both Ethiopia and Somalia sought to pull it into their camp — sources differ on exactly which side Djibouti leaned toward in practice (one account says it aligned with Ethiopia, another that its Issa-led government passed intelligence to Somalia), which itself corroborates the description's framing of a government \"struggling to maintain neutrality\" amid competing pressures rather than cleanly picking a side. Year, country, and substance all hold.",
+        "source": "https://hornreview.org/2025/04/07/a-gift-unreturned-siad-barres-legacy-and-the-fractured-narrative-of-djiboutis-birth/",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-07",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://hornreview.org/2025/04/07/a-gift-unreturned-siad-barres-legacy-and-the-fractured-narrative-of-djiboutis-birth/"
+  },
+  {
+    "year": 1993,
+    "title": "Presidential Election Amid Civil Conflict",
+    "verdict": "TRUE",
+    "reason": "Independent sources confirm the presidential election was held in Djibouti on 7 May 1993, won by incumbent Hassan Gouled Aptidon with an officially reported ~60% of the vote (60.7%/60% depending on source), amid the ongoing Djiboutian Civil War (FRUD/Afar insurgency, active since 1991, with a major government offensive in July 1993). Encyclopedia.com specifically corroborates that the four losing parties and FRUD accused the government of election fraud, a charge supported by international observers, and that most Afars boycotted/did not vote due to the conflict and dissatisfaction with the process. The civil war continued afterward until a 1994 (and later 2000/2001) peace accord, consistent with the description that the election did not resolve the underlying ethnic/political grievances. All material details (country, year, winner, vote share, insurgency backdrop, contested conduct, opposition/observer concerns) check out.",
+    "verify_count": 2,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "double_confirmed",
+    "needs_tiebreak": false,
+    "source_independence": "independent",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Independently confirmed: Djibouti held a presidential election on 7 May 1993, in which incumbent Hassan Gouled Aptidon won with 60.7-60.75% of the vote (turnout ~51%), matching the \"officially reported 60%\" figure. Multiple sources confirm the four losing opposition parties and the FRUD insurgent group accused the government of election fraud, a charge supported by international observers -- matching the description's \"opposition parties and international observers raised concerns about the conduct of the vote.\" The election occurred during the active FRUD-led Afar insurgency (Djiboutian Civil War, 1991-1994); fighting continued after the vote (a major government counter-offensive followed in July 1993) and the underlying ethnic/political grievances were not resolved until the 1994 peace accord -- matching \"amid an active insurgency\" and \"did not resolve the underlying...grievances.\" All material details (country, year, winner, vote share, contested conduct, ongoing civil conflict) check out across independent sources.",
+        "source": "https://en.wikipedia.org/wiki/1993_Djiboutian_presidential_election",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-07",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Independent sources confirm the presidential election was held in Djibouti on 7 May 1993, won by incumbent Hassan Gouled Aptidon with an officially reported ~60% of the vote (60.7%/60% depending on source), amid the ongoing Djiboutian Civil War (FRUD/Afar insurgency, active since 1991, with a major government offensive in July 1993). Encyclopedia.com specifically corroborates that the four losing parties and FRUD accused the government of election fraud, a charge supported by international observers, and that most Afars boycotted/did not vote due to the conflict and dissatisfaction with the process. The civil war continued afterward until a 1994 (and later 2000/2001) peace accord, consistent with the description that the election did not resolve the underlying ethnic/political grievances. All material details (country, year, winner, vote share, insurgency backdrop, contested conduct, opposition/observer concerns) check out.",
+        "source": "https://www.encyclopedia.com/places/africa/djibouti-political-geography/djibouti",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-07",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://www.encyclopedia.com/places/africa/djibouti-political-geography/djibouti"
+  },
+  {
+    "year": 2018,
+    "title": "Government Seizes Doraleh Container Terminal from DP World",
+    "verdict": "TRUE",
+    "reason": "Multiple independent sources confirm: on 22 February 2018, Djibouti's government unilaterally terminated DP World's 30-year concession over the Doraleh Container Terminal (granted 2006), seized operational control, and expelled DP World, citing a November 2017 law on renegotiating strategic infrastructure contracts and invoking sovereignty/economic independence. DP World launched international arbitration (LCIA, London), securing multiple rulings against Djibouti (including a 2018 ruling that termination was unlawful, and later awards of $385M + $148M in damages). Control passed to state entity SGTD, and other reporting (Maritime Executive, arbitrationmonitor.com) documents China Merchants Port Holdings (a Chinese state-owned enterprise, part of Belt and Road network) as the operational beneficiary — matching the description's note on Chinese interest groups. Country, year, and substance all confirmed.",
+    "verify_count": 2,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "double_confirmed",
+    "needs_tiebreak": false,
+    "source_independence": "weak",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Multiple independent sources confirm: on 22 February 2018, the Djibouti government (by presidential decree under Ismail Omar Guelleh) unilaterally terminated DP World's 30-year concession to operate the Doraleh Container Terminal and seized/expropriated the terminal, transferring control to a state-owned entity (with China Merchants Port Holding named as the Chinese commercial partner/beneficiary). DP World subsequently pursued international arbitration at the London Court of International Arbitration (LCIA) and secured multiple rulings in its favor, including a 2020s tribunal award of ~$385M plus ~$148M for historic nonpayment, and a later ruling (reported Oct 2025) reaffirming the seizure was unlawful. This matches the event description on country, year, and substance (unilateral termination, transfer to state/Chinese-linked entities, international arbitration wins for DP World, landmark port-sovereignty/concession-law case).",
+        "source": "https://www.aljazeera.com/news/2018/2/24/djibouti-seizes-control-of-dubai-run-doraleh-port",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-07",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Multiple independent sources confirm: on 22 February 2018, Djibouti's government unilaterally terminated DP World's 30-year concession over the Doraleh Container Terminal (granted 2006), seized operational control, and expelled DP World, citing a November 2017 law on renegotiating strategic infrastructure contracts and invoking sovereignty/economic independence. DP World launched international arbitration (LCIA, London), securing multiple rulings against Djibouti (including a 2018 ruling that termination was unlawful, and later awards of $385M + $148M in damages). Control passed to state entity SGTD, and other reporting (Maritime Executive, arbitrationmonitor.com) documents China Merchants Port Holdings (a Chinese state-owned enterprise, part of Belt and Road network) as the operational beneficiary — matching the description's note on Chinese interest groups. Country, year, and substance all confirmed.",
+        "source": "https://www.aljazeera.com/news/2018/2/24/djibouti-seizes-control-of-dubai-run-doraleh-port",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-07",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://www.aljazeera.com/news/2018/2/24/djibouti-seizes-control-of-dubai-run-doraleh-port"
+  },
+  {
+    "year": 2017,
+    "title": "Qatar Withdraws Peacekeepers from Djibouti-Eritrea Border",
+    "verdict": "TRUE",
+    "reason": "Multiple independent sources confirm: Qatar withdrew its ~450-500 peacekeeping troops from the disputed Djibouti-Eritrea border (Ras Doumeira/Doumeira area) around June 12-14, 2017, one day after Djibouti and Eritrea both downgraded/cut diplomatic ties with Qatar in solidarity with Saudi Arabia and the UAE during the 2017 Gulf diplomatic crisis. Qatar had mediated the border dispute since a 2010 Doha peace deal. The withdrawal left the frontier unmonitored, and Eritrean forces moved into the vacated area almost immediately, raising tensions with Djibouti. This matches the event description in country (Djibouti), year (2017), and substance (Qatar's peacekeeper withdrawal tied to Djibouti's Gulf-crisis alignment with Saudi/UAE against Qatar, and the resulting unmonitored/tense border).",
+    "verify_count": 2,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "double_confirmed",
+    "needs_tiebreak": false,
+    "source_independence": "weak",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Multiple independent sources (Al Jazeera, Middle East Monitor, Sudan Tribune, RealClearDefense) confirm Qatar withdrew its ~450 peacekeeping troops from the disputed Djibouti-Eritrea border on/around June 14, 2017, seven years after deploying them under a 2010 Doha-brokered ceasefire. The withdrawal came within days of Djibouti (and Eritrea) siding with Saudi Arabia/UAE and downgrading relations with Qatar amid the 2017 Gulf diplomatic crisis. Eritrean forces moved back into the contested Dumeira Mountain/Islands area almost immediately, reviving tensions, matching the description's claim of an unmonitored frontier and heightened tensions with Eritrea. All material details (country, year, month, actor, causal link to the Gulf rift, consequence) check out.",
+        "source": "https://www.aljazeera.com/opinions/2017/6/18/why-did-qatar-leave-the-djibouti-eritrea-border",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-07",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Multiple independent sources confirm: Qatar withdrew its ~450-500 peacekeeping troops from the disputed Djibouti-Eritrea border (Ras Doumeira/Doumeira area) around June 12-14, 2017, one day after Djibouti and Eritrea both downgraded/cut diplomatic ties with Qatar in solidarity with Saudi Arabia and the UAE during the 2017 Gulf diplomatic crisis. Qatar had mediated the border dispute since a 2010 Doha peace deal. The withdrawal left the frontier unmonitored, and Eritrean forces moved into the vacated area almost immediately, raising tensions with Djibouti. This matches the event description in country (Djibouti), year (2017), and substance (Qatar's peacekeeper withdrawal tied to Djibouti's Gulf-crisis alignment with Saudi/UAE against Qatar, and the resulting unmonitored/tense border).",
+        "source": "https://www.aljazeera.com/opinions/2017/6/18/why-did-qatar-leave-the-djibouti-eritrea-border",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-07",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://www.aljazeera.com/opinions/2017/6/18/why-did-qatar-leave-the-djibouti-eritrea-border"
+  },
+  {
+    "year": 1984,
+    "title": "Djibouti-Ethiopia Railway Remains Lifeline",
+    "verdict": "FALSE",
+    "reason": "The event's core causal premise is anachronistic for 1984. In 1984, Ethiopia was NOT landlocked — Eritrea (with the ports of Massawa and Assab) had been federated/annexed into Ethiopia since 1952/1962 and remained Ethiopian territory until Eritrea's formal independence in 1993 (following the EPLF's 1991 military victory and a 1993 UN-backed referendum). Multiple sources confirm Ethiopia \"became landlocked\" only after 1993, and even then continued to route ~80% of its trade through Eritrea's Assab port until the 1998-2000 Ethiopia-Eritrea war — only after that war did Djibouti's port become dominant (>90% of Ethiopia's trade, \"early 2000s\" per sources). So the description's framing — \"Ethiopia landlocked after Eritrean secession was becoming increasingly likely,\" driving Djibouti's port/rail into critical strategic importance — describes a dynamic that emerged in 1991-1993 at the earliest and solidified only around 2000-2001, not 1984. Additionally, sources on the railway's own history state it was actively deteriorating in the 1980s \"due to a lack of spare parts and maintenance,\" with the Addis Ababa-Assab road (not the railway) becoming the primary trade route in that period — the opposite of \"remained Ethiopia's primary access to the sea.\" (Separately, 1984 in Ethiopia is instead notable for the great famine and the Derg's earlier failed 1982 Red Star anti-EPLF campaign, unrelated to this railway/port narrative.) Because the year is materially wrong for the substance described (country label \"djibouti\" and the France-built-early-20th-century railway fact are correct background, but the pivotal \"landlocked/secession-imminent/lifeline\" claim does not hold for 1984), this is FALSE by year mismatch. Best-fit corrected year is 1993 (formal Eritrean independence / Ethiopia's landlocked status begins), though the described strategic Djibouti dependency more fully applies after 1998-2000.",
+    "verify_count": 2,
+    "consensus_verdict": "FALSE",
+    "consensus_status": "double_negative",
+    "needs_tiebreak": false,
+    "source_independence": "independent",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "FALSE",
+        "reason": "The railway itself is real (French-built, Addis Ababa-Djibouti, completed 1917) and it did carry Ethiopian trade, but the description's core substantive claims are anachronistic for 1984. Independent sourcing (Wikipedia's Assab article) shows Ethiopia's primary sea access in the 1980s was the Eritrean port of Assab, not Djibouti: \"Ethiopia used Assab as the port for two-thirds of its trade with the world until the Eritrean-Ethiopian War broke out in 1998,\" and \"by the late 1980s, Ethiopian trade in Assab increased to over 60%.\" So in 1984 the Djibouti railway did NOT 'remain Ethiopia's primary access to the sea' — Assab did, at roughly 60-70% of trade. Additionally, Ethiopia was not 'landlocked' in 1984 and Eritrean secession was not 'increasingly likely' at that point — the EPLF/Ethiopian civil war was inconclusive in 1984 (the decisive turn came only from 1988's Battle of Afabet onward), formal Eritrean independence came in 1993, and Ethiopia continued relying primarily on Assab even after that, only losing it outright when the 1998 Eritrean-Ethiopian war closed the border. The Wikipedia Addis Ababa-Djibouti Railway article separately corroborates that the railway itself was deteriorating through the 1980s from lack of maintenance/spare parts, further undercutting the 'lifeline'/'primary access' framing for 1984 specifically. The description reads as a conflation of the railway's general historical importance with the post-1998 (or post-1991) reality, misdated to 1984. Country holds (Djibouti/Ethiopia), but the year and the substantive 'primary access / growing strategic importance due to looming Eritrean secession' claims do not hold for 1984 — best-fit real year for Djibouti becoming Ethiopia's primary/critical sea route is 1998, when the Eritrean-Ethiopian war cut off Assab.",
+        "source": "https://en.wikipedia.org/wiki/Assab",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-07",
+          "method": "web_search"
+        },
+        "corrected_year": 1998
+      },
+      {
+        "pass_n": 2,
+        "verdict": "FALSE",
+        "reason": "The event's core causal premise is anachronistic for 1984. In 1984, Ethiopia was NOT landlocked — Eritrea (with the ports of Massawa and Assab) had been federated/annexed into Ethiopia since 1952/1962 and remained Ethiopian territory until Eritrea's formal independence in 1993 (following the EPLF's 1991 military victory and a 1993 UN-backed referendum). Multiple sources confirm Ethiopia \"became landlocked\" only after 1993, and even then continued to route ~80% of its trade through Eritrea's Assab port until the 1998-2000 Ethiopia-Eritrea war — only after that war did Djibouti's port become dominant (>90% of Ethiopia's trade, \"early 2000s\" per sources). So the description's framing — \"Ethiopia landlocked after Eritrean secession was becoming increasingly likely,\" driving Djibouti's port/rail into critical strategic importance — describes a dynamic that emerged in 1991-1993 at the earliest and solidified only around 2000-2001, not 1984. Additionally, sources on the railway's own history state it was actively deteriorating in the 1980s \"due to a lack of spare parts and maintenance,\" with the Addis Ababa-Assab road (not the railway) becoming the primary trade route in that period — the opposite of \"remained Ethiopia's primary access to the sea.\" (Separately, 1984 in Ethiopia is instead notable for the great famine and the Derg's earlier failed 1982 Red Star anti-EPLF campaign, unrelated to this railway/port narrative.) Because the year is materially wrong for the substance described (country label \"djibouti\" and the France-built-early-20th-century railway fact are correct background, but the pivotal \"landlocked/secession-imminent/lifeline\" claim does not hold for 1984), this is FALSE by year mismatch. Best-fit corrected year is 1993 (formal Eritrean independence / Ethiopia's landlocked status begins), though the described strategic Djibouti dependency more fully applies after 1998-2000.",
+        "source": "https://ir.lawnet.fordham.edu/cgi/viewcontent.cgi?article=2875&context=ilj",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-07",
+          "method": "web_search"
+        },
+        "corrected_year": 1993
+      }
+    ],
+    "source": "https://ir.lawnet.fordham.edu/cgi/viewcontent.cgi?article=2875&context=ilj"
+  },
+  {
+    "year": 1996,
+    "title": "Eritrea-Djibouti Tensions over Ras Doumeira",
+    "verdict": "TRUE",
+    "reason": "Independent sources confirm: in April 1996, Eritrea's foreign minister presented Djibouti's president with a map incorporating Ras Doumeira (a Djiboutian peninsula on the Red Sea) into Eritrean territory, accompanied by a threatening message from President Isaias Afwerki. Later that month (27 April 1996), Djibouti accused Eritrean forces of an incursion/shelling incident at the Ras Doumeira border post. This alarmed Djibouti's government, prompting diplomatic engagement, and the crisis was defused when Eritrea withdrew forces, restoring the status quo. Multiple sources (Wikipedia's Djiboutian-Eritrean border conflict article, UCDP, ICE/Mandala Projects conflict inventory, worldpolicyhub.com) independently corroborate this as the first serious post-independence territorial dispute over this border area, which then lay dormant until it escalated into armed conflict in 2008 — matching the event description almost exactly (country, year, actors, substance, and the 'dormant then erupts a decade later' arc all confirmed).",
+    "verify_count": 2,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "double_confirmed",
+    "needs_tiebreak": false,
+    "source_independence": "weak",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Independent sources confirm that in April 1996, Djibouti accused Eritrean forces of an incursion near the Ras Doumeira border post, followed within days by Djiboutian officials alleging Eritrea held territorial claims to part of Djibouti's northern coastline near the peninsula. Djibouti's government responded with diplomatic engagement (raising the issue directly with Eritrea's foreign minister) and reportedly deployed troops to the area; Eritrea denied any clash occurred. The crisis de-escalated without armed conflict and is documented as the first serious Djibouti-Eritrea territorial confrontation, one that remained latent until the 2008 Djibouti-Eritrea border war at the same location. This matches the event description (Eritrean claim to Ras Doumeira, first serious interstate territorial dispute for Djibouti, diplomatic engagement, dormancy until later armed conflict in 2008) in country, year, and substance.",
+        "source": "https://en.wikipedia.org/wiki/Djiboutian%E2%80%93Eritrean_border_conflict",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-07",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Independent sources confirm: in April 1996, Eritrea's foreign minister presented Djibouti's president with a map incorporating Ras Doumeira (a Djiboutian peninsula on the Red Sea) into Eritrean territory, accompanied by a threatening message from President Isaias Afwerki. Later that month (27 April 1996), Djibouti accused Eritrean forces of an incursion/shelling incident at the Ras Doumeira border post. This alarmed Djibouti's government, prompting diplomatic engagement, and the crisis was defused when Eritrea withdrew forces, restoring the status quo. Multiple sources (Wikipedia's Djiboutian-Eritrean border conflict article, UCDP, ICE/Mandala Projects conflict inventory, worldpolicyhub.com) independently corroborate this as the first serious post-independence territorial dispute over this border area, which then lay dormant until it escalated into armed conflict in 2008 — matching the event description almost exactly (country, year, actors, substance, and the 'dormant then erupts a decade later' arc all confirmed).",
+        "source": "https://en.wikipedia.org/wiki/Djiboutian%E2%80%93Eritrean_border_conflict",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-07",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Djiboutian%E2%80%93Eritrean_border_conflict"
+  },
+  {
+    "year": 2007,
+    "title": "Eritrean Military Attack on Djiboutian Forces",
+    "verdict": "FALSE",
+    "reason": "The event is real and materially matches the description (Eritrean forces occupied the disputed Ras Doumeira border area and clashed with Djiboutian troops, dozens killed/wounded on both sides, UN Security Council/African Union/Arab League/Western condemnation) — but it occurred in June 2008, not 2007. The event's own description even states 'June 2008.' Multiple independent sources (Wikipedia, UN Security Council press releases, U.S. State Department 2008 statement, academic ICB summary from Duke University) confirm the clash occurred June 10-13, 2008. No such Eritrea-Djibouti border attack occurred in 2007. Since the input year (2007) does not match the year the event actually happened, this is a year mismatch requiring a FALSE verdict with corrected_year=2008.",
+    "verify_count": 2,
+    "consensus_verdict": "FALSE",
+    "consensus_status": "double_negative",
+    "needs_tiebreak": false,
+    "source_independence": "weak",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "FALSE",
+        "reason": "The event is real and substantively accurate (Eritrean forces occupied disputed Ras Doumeira, clashed with Djiboutian troops, 35+ killed and dozens wounded, AU/Arab League/Western condemnation, UN Security Council involvement including a presidential statement and later Resolution 1862), but it happened in June 2008, not 2007. Multiple independent sources (Wikipedia, UN press releases press.un.org, US State Department archive, UCDP conflict database) consistently date the clash to June 10-13, 2008, triggered by tensions beginning April 16, 2008. The input event's own description text even says 'June 2008' while the top-level year field says 2007 — an internal inconsistency confirming the year field is wrong. Country and substance both check out; only the year is off, so per the hard rules I echo year=2007 verbatim (join key) but the verdict is FALSE with corrected_year=2008.",
+        "source": "https://en.wikipedia.org/wiki/Djiboutian%E2%80%93Eritrean_border_conflict",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-07",
+          "method": "web_search"
+        },
+        "corrected_year": 2008
+      },
+      {
+        "pass_n": 2,
+        "verdict": "FALSE",
+        "reason": "The event is real and materially matches the description (Eritrean forces occupied the disputed Ras Doumeira border area and clashed with Djiboutian troops, dozens killed/wounded on both sides, UN Security Council/African Union/Arab League/Western condemnation) — but it occurred in June 2008, not 2007. The event's own description even states 'June 2008.' Multiple independent sources (Wikipedia, UN Security Council press releases, U.S. State Department 2008 statement, academic ICB summary from Duke University) confirm the clash occurred June 10-13, 2008. No such Eritrea-Djibouti border attack occurred in 2007. Since the input year (2007) does not match the year the event actually happened, this is a year mismatch requiring a FALSE verdict with corrected_year=2008.",
+        "source": "https://en.wikipedia.org/wiki/Djiboutian%E2%80%93Eritrean_border_conflict",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-07",
+          "method": "web_search"
+        },
+        "corrected_year": 2008
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Djiboutian%E2%80%93Eritrean_border_conflict"
+  },
+  {
+    "year": 2010,
+    "title": "Anti-Government Protests Erupt",
+    "verdict": "FALSE",
+    "reason": "The event is real and substantively matches the description (Arab-Spring-inspired mass protests demanding President Guelleh's resignation/reform, security forces using tear gas and batons, mass arrests of opposition leaders, largest protests since independence) — but it occurred in early 2011 (28 Jan 2011 first demo of ~300; 18 Feb 2011 major rally of ~30,000 escalating into violent clashes with deaths; crackdown/mass arrests continuing into March 2011), not 2010. The record's own description text even says \"in early 2011,\" directly contradicting the year field of 2010. Per the hard rule, a wrong year means FALSE with the real year reported separately.",
+    "verify_count": 2,
+    "consensus_verdict": "FALSE",
+    "consensus_status": "double_negative",
+    "needs_tiebreak": false,
+    "source_independence": "independent",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "FALSE",
+        "reason": "The event is real and materially matches the description (thousands protesting Guelleh's rule, inspired by the Arab Spring, tear gas/batons used by security forces, opposition leaders arrested, largest protests since independence), but it occurred in 2011, not 2010. Multiple independent sources confirm the wave of protests ran January-March 2011, with the major flashpoint on 18 February 2011 when an estimated 30,000 protested and police used tear gas/live ammunition; three opposition leaders (Aden Robleh Awaleh, Mohamed Daoud Chehem, Ismail Guedi Hared) were arrested days later, with ~300 organizers detained overall. The event description itself even says 'early 2011,' contradicting the top-level year field of 2010. Since the year is the wrong join key, this is FALSE with corrected_year=2011.",
+        "source": "https://www.france24.com/en/20110219-authorities-djibouti-arrest-opposition-leaders-protests-guelleh-awaleh-chehem-hared",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-07",
+          "method": "web_search"
+        },
+        "corrected_year": 2011
+      },
+      {
+        "pass_n": 2,
+        "verdict": "FALSE",
+        "reason": "The event is real and substantively matches the description (Arab-Spring-inspired mass protests demanding President Guelleh's resignation/reform, security forces using tear gas and batons, mass arrests of opposition leaders, largest protests since independence) — but it occurred in early 2011 (28 Jan 2011 first demo of ~300; 18 Feb 2011 major rally of ~30,000 escalating into violent clashes with deaths; crackdown/mass arrests continuing into March 2011), not 2010. The record's own description text even says \"in early 2011,\" directly contradicting the year field of 2010. Per the hard rule, a wrong year means FALSE with the real year reported separately.",
+        "source": "https://www.aljazeera.com/news/2011/2/18/djiboutians-rally-to-oust-president",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-07",
+          "method": "web_search"
+        },
+        "corrected_year": 2011
+      }
+    ],
+    "source": "https://www.aljazeera.com/news/2011/2/18/djiboutians-rally-to-oust-president"
+  }
+]

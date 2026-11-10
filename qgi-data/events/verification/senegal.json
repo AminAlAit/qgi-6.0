@@ -1,0 +1,1589 @@
+[
+  {
+    "year": 1959,
+    "title": "Mali Federation Formed with French Sudan",
+    "verdict": "TRUE",
+    "reason": "Mali Federation founded 4 April 1959. Senghor led Senegal's participation; Modibo Keita headed federation. Confirmed by Wikipedia and Britannica.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Mali Federation founded 4 April 1959. Senghor led Senegal's participation; Modibo Keita headed federation. Confirmed by Wikipedia and Britannica.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
+    "year": 1960,
+    "title": "Independence from France and Mali Federation Collapse",
+    "verdict": "TRUE",
+    "reason": "Independence within federation 20 June 1960; Senegal withdrew and declared full independence 20 August 1960. Senghor first president, Mamadou Dia PM. All facts confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Independence within federation 20 June 1960; Senegal withdrew and declared full independence 20 August 1960. Senghor first president, Mamadou Dia PM. All facts confirmed.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
+    "year": 1960,
+    "title": "Senghor Inaugurates African Socialist Development Model",
+    "verdict": "TRUE",
+    "reason": "Senghor's African socialism ideology and groundnut-centred development plans are well-documented in historical sources.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Senghor's African socialism ideology and groundnut-centred development plans are well-documented in historical sources.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
+    "year": 1962,
+    "title": "Coup Attempt by Prime Minister Mamadou Dia Suppressed",
+    "verdict": "TRUE",
+    "reason": "Crisis peaked 17 December 1962. Dia ordered army to lock assembly building; Senghor declared coup attempt and had Dia arrested 18 December. Sentenced to life imprisonment May 1963. Confirmed by multiple sources.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Crisis peaked 17 December 1962. Dia ordered army to lock assembly building; Senghor declared coup attempt and had Dia arrested 18 December. Sentenced to life imprisonment May 1963. Confirmed by multiple sources.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
+    "year": 1963,
+    "title": "Groundnut Basin Cooperative System Established",
+    "verdict": "FALSE",
+    "reason": "The substance of this event is real, but the year is wrong. ONCAD (Office National de Coopération et d'Assistance pour le Développement) — the exact institution the description says \"formalized\" the groundnut cooperative/marketing/credit system — was created by Loi n°66-60 on 30 June 1966, not 1963. This is corroborated independently by: the Senegalese news outlet Senenews (\"30 juin 1966, création de l'ONCAD\"), the ILO's NATLEX international legal database entry for \"Loi no 66-60 du 30 juin 1966 portant création de l'Office national de Coopération et d'Assistance pour le Développement (ONCAD)\", the Senegalese government's own legal-document portal vie-publique.sn (which also holds the 1980 dissolution law, confirming that end-date matches), and the academic journal Politique Africaine (Persée), whose retrospective on ONCAD's agricultural policy is titled \"1966-1980.\" All four independent sources converge on 1966 as the founding year and 1980 as the dissolution year (the dissolution date in the description is correct). Additionally, the description's \"Diouf-era\" framing is itself inconsistent with either 1963 or 1966: ONCAD was a Senghor-era institution (Abdou Diouf did not become President until 1981, a year after ONCAD's dissolution), reinforcing that the described timeline is off. Since the year is a joint key and does not hold (per the verdict rules, a wrong year makes this FALSE rather than PARTIAL, even though country and substance are otherwise correct), I return FALSE with corrected_year 1966.",
+    "verify_count": 2,
+    "consensus_verdict": "FALSE",
+    "consensus_status": "double_negative",
+    "needs_tiebreak": false,
+    "source_independence": "weak",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "FALSE",
+        "reason": "The description explicitly attributes the formalization of Senegal's groundnut cooperative/marketing system to ONCAD (Office National de Coopération et d'Assistance au Développement). Multiple independent sources (ILO NATLEX legal database, senenews.com, Persée academic journal) confirm ONCAD was created by Loi n°66-60 du 30 juin 1966 — i.e., June 30, 1966 — not 1963. The broader rural cooperative movement in Senegal actually traces to an earlier law of 20 May 1960 under Mamadou Dia (nationalizing groundnut marketing via the Office de Commercialisation Agricole, OCA), which was itself superseded/absorbed by ONCAD in 1966. No source found supports a 1963 founding date for either OCA or ONCAD or any other formal cooperative-system milestone that year. Since the event as described is specifically pegged to ONCAD's formalization, and that occurred in 1966 (three years off from the stated 1963), this is a year error, not a minor detail discrepancy — country and substance (state-supervised groundnut marketing/credit cooperative, later dissolved in 1980, fiscal mismanagement) are otherwise well corroborated for ONCAD.",
+        "source": "https://www.senenews.com/aujourdhui/aujourdhui-30-juin-1966-creation-de-loffice-national-de-cooperation-et-dassistance-pour-le-developpement-oncad_361835.html",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-07",
+          "method": "web_search"
+        },
+        "corrected_year": 1966
+      },
+      {
+        "pass_n": 2,
+        "verdict": "FALSE",
+        "reason": "The substance of this event is real, but the year is wrong. ONCAD (Office National de Coopération et d'Assistance pour le Développement) — the exact institution the description says \"formalized\" the groundnut cooperative/marketing/credit system — was created by Loi n°66-60 on 30 June 1966, not 1963. This is corroborated independently by: the Senegalese news outlet Senenews (\"30 juin 1966, création de l'ONCAD\"), the ILO's NATLEX international legal database entry for \"Loi no 66-60 du 30 juin 1966 portant création de l'Office national de Coopération et d'Assistance pour le Développement (ONCAD)\", the Senegalese government's own legal-document portal vie-publique.sn (which also holds the 1980 dissolution law, confirming that end-date matches), and the academic journal Politique Africaine (Persée), whose retrospective on ONCAD's agricultural policy is titled \"1966-1980.\" All four independent sources converge on 1966 as the founding year and 1980 as the dissolution year (the dissolution date in the description is correct). Additionally, the description's \"Diouf-era\" framing is itself inconsistent with either 1963 or 1966: ONCAD was a Senghor-era institution (Abdou Diouf did not become President until 1981, a year after ONCAD's dissolution), reinforcing that the described timeline is off. Since the year is a joint key and does not hold (per the verdict rules, a wrong year makes this FALSE rather than PARTIAL, even though country and substance are otherwise correct), I return FALSE with corrected_year 1966.",
+        "source": "https://www.senenews.com/aujourdhui/aujourdhui-30-juin-1966-creation-de-loffice-national-de-cooperation-et-dassistance-pour-le-developpement-oncad_361835.html",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-07",
+          "method": "web_search"
+        },
+        "corrected_year": 1966
+      }
+    ],
+    "source": "https://www.senenews.com/aujourdhui/aujourdhui-30-juin-1966-creation-de-loffice-national-de-cooperation-et-dassistance-pour-le-developpement-oncad_361835.html"
+  },
+  {
+    "year": 1963,
+    "title": "New Constitution Establishes Presidential System",
+    "verdict": "TRUE",
+    "reason": "Constitution Law 63-22 of 7 March 1963 abolished parliamentary system and prime minister post, established presidential republic. Confirmed by ConstitutionNet.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Constitution Law 63-22 of 7 March 1963 abolished parliamentary system and prime minister post, established presidential republic. Confirmed by ConstitutionNet.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
+    "year": 1966,
+    "title": "De Facto Single-Party State Established",
+    "verdict": "TRUE",
+    "reason": "UPS declared sole party in 1966; opposition absorbed or suppressed. Confirmed by multiple political history sources.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "UPS declared sole party in 1966; opposition absorbed or suppressed. Confirmed by multiple political history sources.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
+    "year": 1968,
+    "title": "Student and Worker Uprising Shakes Senghor Government",
+    "verdict": "TRUE",
+    "reason": "Students struck 27 May 1968; UNTS called general strike; Senghor declared state of emergency. French troops intervened. All facts confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Students struck 27 May 1968; UNTS called general strike; Senghor declared state of emergency. French troops intervened. All facts confirmed.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
+    "year": 1970,
+    "title": "Prime Minister Position Restored, Abdou Diouf Appointed",
+    "verdict": "TRUE",
+    "reason": "Diouf appointed PM 26 February 1970 after Senghor reinstated the post. Confirmed by Wikipedia and Britannica.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Diouf appointed PM 26 February 1970 after Senghor reinstated the post. Confirmed by Wikipedia and Britannica.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
+    "year": 1973,
+    "title": "Groundnut Crisis and Drought Devastate Rural Economy",
+    "verdict": "TRUE",
+    "reason": "Sahelian drought and oil shock affected Senegal's groundnut economy in the early 1970s; IMF involvement well-documented.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Sahelian drought and oil shock affected Senegal's groundnut economy in the early 1970s; IMF involvement well-documented.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
+    "year": 1974,
+    "title": "Cheikh Anta Diop Publishes 'Nations Negres et Culture' Influence Peaks",
+    "verdict": "FALSE",
+    "reason": "Year is materially wrong. 'Nations Negres et Culture' was first published in 1954, not 1974. The event title says 'Publishes' but the description says 'influence peaks' in the 1970s. Using 1974 as the year for publication is factually false. The book was published 20 years earlier.",
+    "verify_count": 1,
+    "consensus_verdict": "FALSE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "FALSE",
+        "reason": "Year is materially wrong. 'Nations Negres et Culture' was first published in 1954, not 1974. The event title says 'Publishes' but the description says 'influence peaks' in the 1970s. Using 1974 as the year for publication is factually false. The book was published 20 years earlier.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
+    "year": 1974,
+    "title": "Controlled Multiparty System Introduced",
+    "verdict": "TRUE",
+    "reason": "Three-party limited system introduced 1974; PDS founded July 1974. Confirmed by multiple sources. Note: event description says 'three parties' but sources indicate some flexibility.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Three-party limited system introduced 1974; PDS founded July 1974. Confirmed by multiple sources. Note: event description says 'three parties' but sources indicate some flexibility.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
+    "year": 1976,
+    "title": "Full Multiparty System Restored",
+    "verdict": "PARTIAL",
+    "reason": "Country, year, and several core facts check out: Senghor did amend the constitution in 1976 (Law 76-01 of March 19, 1976), the ruling UPS was renamed Parti Socialiste (PS) that year, and Abdoulaye Wade's PDS was legally recognized under the new law. However, the event's central characterization is materially wrong: this was NOT a restoration of \"full multiparty competition\" with restrictions removed. Law 76-01 explicitly restricted legal political activity to exactly three parties, each required to represent one of three predefined ideological 'tendencies' (socialist/social-democrat = PS, liberal/democrat = PDS, Marxist-Leninist = PAI, legalized Aug 1976). A fourth tendency (conservative) was added in 1978 (Law 78-60). Unrestricted multiparty competition — any citizen free to form a party — was only established later, by Law 81-17 of May 6, 1981, under Abdou Diouf. So the 'full multiparty' / 'removed restrictions' framing describes 1981, not 1976; 1976 was a limited/managed three-tendency liberalization. This is a scope/magnitude error material to the event's title and thrust, while year, country, and the PS/PDS details hold — hence PARTIAL, not TRUE.",
+    "verify_count": 2,
+    "consensus_verdict": "PARTIAL",
+    "consensus_status": "double_negative",
+    "needs_tiebreak": false,
+    "source_independence": "weak",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "PARTIAL",
+        "reason": "Country and year hold, and several specific facts check out: Senghor did push a constitutional/legal reform in 1976, the ruling UPS was renamed the Parti Socialiste (PS) in 1976 (joined Socialist International Nov 1976, took the PS name Dec 1976), and Abdoulaye Wade's Parti Democratique Senegalais (founded 1974) was legally recognized under this reform. However, the event's core characterization is materially wrong: the 1976 reform (Law 76-01 of 19 March 1976) explicitly LIMITED the number of authorized parties to exactly three, each required to represent one of three pre-defined ideological 'currents' — socialist (PS), liberal-democrat (PDS), and Marxist-Leninist (PAI, led by Majhmout Diop). This was a controlled/restricted pluralism, not 'full multiparty competition' as the description and title claim. A fourth party was permitted only in 1978 (Law 78-60), and genuinely unrestricted multiparty competition (any citizen free to found a party) was established only in 1981 under Abdou Diouf (Law 81-17), which removed the numerical cap entirely — leading eventually to 175+ registered parties. So the description overstates the scope of the 1976 change: it should read as 'limited three-party system restored' rather than 'full multiparty system restored.' This is a scope/magnitude error while country and year are correct, hence PARTIAL rather than TRUE or FALSE.",
+        "source": "https://tsep.africa.ufl.edu/the-party-system-and-conditions-of-candidacy/senegal/",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-07",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "PARTIAL",
+        "reason": "Country, year, and several core facts check out: Senghor did amend the constitution in 1976 (Law 76-01 of March 19, 1976), the ruling UPS was renamed Parti Socialiste (PS) that year, and Abdoulaye Wade's PDS was legally recognized under the new law. However, the event's central characterization is materially wrong: this was NOT a restoration of \"full multiparty competition\" with restrictions removed. Law 76-01 explicitly restricted legal political activity to exactly three parties, each required to represent one of three predefined ideological 'tendencies' (socialist/social-democrat = PS, liberal/democrat = PDS, Marxist-Leninist = PAI, legalized Aug 1976). A fourth tendency (conservative) was added in 1978 (Law 78-60). Unrestricted multiparty competition — any citizen free to form a party — was only established later, by Law 81-17 of May 6, 1981, under Abdou Diouf. So the 'full multiparty' / 'removed restrictions' framing describes 1981, not 1976; 1976 was a limited/managed three-tendency liberalization. This is a scope/magnitude error material to the event's title and thrust, while year, country, and the PS/PDS details hold — hence PARTIAL, not TRUE.",
+        "source": "https://tsep.africa.ufl.edu/the-party-system-and-conditions-of-candidacy/senegal/",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-07",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://tsep.africa.ufl.edu/the-party-system-and-conditions-of-candidacy/senegal/"
+  },
+  {
+    "year": 1978,
+    "title": "First Genuinely Contested Presidential Elections Held",
+    "verdict": "TRUE",
+    "reason": "Wade won 17.38% against Senghor in February 1978 election. Facts confirmed by Wikipedia election article.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Wade won 17.38% against Senghor in February 1978 election. Facts confirmed by Wikipedia election article.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
+    "year": 1980,
+    "title": "Senghor Voluntarily Transfers Power to Diouf",
+    "verdict": "TRUE",
+    "reason": "Senghor resigned 31 December 1980, transferring to Diouf. First modern African leader to resign voluntarily. Confirmed by multiple sources. Note: transfer happened 1 January 1981, not 31 December 1980 per some sources, but Senghor signed resignation 31 Dec.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Senghor resigned 31 December 1980, transferring to Diouf. First modern African leader to resign voluntarily. Confirmed by multiple sources. Note: transfer happened 1 January 1981, not 31 December 1980 per some sources, but Senghor signed resignation 31 Dec.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
+    "year": 1981,
+    "title": "Casamance Separatist Movement Begins Armed Insurgency",
+    "verdict": "FALSE",
+    "reason": "Year is off. The event description assigns year 1981 but correctly states inside the text that the armed insurgency began in December 1982 (first demonstration 26 December 1982). The armed wing Atika was not formed until 1985. Year field should be 1982.",
+    "verify_count": 1,
+    "consensus_verdict": "FALSE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "FALSE",
+        "reason": "Year is off. The event description assigns year 1981 but correctly states inside the text that the armed insurgency began in December 1982 (first demonstration 26 December 1982). The armed wing Atika was not formed until 1985. Year field should be 1982.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
+    "year": 1981,
+    "title": "Senegalese Military Intervenes to Restore Gambian Government",
+    "verdict": "TRUE",
+    "reason": "Coup attempt by Kukoi Samba Sanyang on 30 July 1981; ~2,700 Senegalese troops deployed. Jawara invoked 1967 Mutual Defense Agreement. Confirmed by Wikipedia.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Coup attempt by Kukoi Samba Sanyang on 30 July 1981; ~2,700 Senegalese troops deployed. Jawara invoked 1967 Mutual Defense Agreement. Confirmed by Wikipedia.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
+    "year": 1982,
+    "title": "Senegambia Confederation Established with The Gambia",
+    "verdict": "TRUE",
+    "reason": "Agreement signed 17 December 1981, entered into force 1 February 1982. Dissolved 30 September 1989. Confirmed by Wikipedia.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Agreement signed 17 December 1981, entered into force 1 February 1982. Dissolved 30 September 1989. Confirmed by Wikipedia.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
+    "year": 1983,
+    "title": "IMF Structural Adjustment Reforms Implemented",
+    "verdict": "TRUE",
+    "reason": "IMF structural adjustment in early 1980s well-documented for Senegal. Year 1983 is plausible and consistent with literature.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "IMF structural adjustment in early 1980s well-documented for Senegal. Year 1983 is plausible and consistent with literature.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
+    "year": 1985,
+    "title": "Casamance Peace Negotiations Collapse, Violence Escalates",
+    "verdict": "TRUE",
+    "reason": "Atika armed wing formed 1985; escalation of violence in mid-1980s confirmed. Details broadly consistent with historical record.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Atika armed wing formed 1985; escalation of violence in mid-1980s confirmed. Details broadly consistent with historical record.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
+    "year": 1988,
+    "title": "Post-Election Violence After Disputed Presidential Poll",
+    "verdict": "TRUE",
+    "reason": "Election 28 February 1988; Diouf won; riots erupted; state of emergency declared. Wade arrested. All facts confirmed by Wikipedia and UPI archives.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Election 28 February 1988; Diouf won; riots erupted; state of emergency declared. Wade arrested. All facts confirmed by Wikipedia and UPI archives.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
+    "year": 1988,
+    "title": "Senegal Liquidates Seven State-Linked Banks After Systemic Insolvency",
+    "verdict": "PARTIAL",
+    "reason": "Every core fact checks out with striking precision against an independent, detailed source (Yale's New Bagehot Project banking-crisis case file, drawing on Ebrahimi 1996 and primary IMF/World Bank documents), and is corroborated in broader strokes by a separate World Bank Group Archives document and an AfDB systemic-crises brief that both date Senegal's crisis to 1988. Confirmed verbatim: as of Sept 30, 1988 distressed banks held a CFA 323bn loan portfolio of which 72% was nonperforming; 49% of the entire banking system's loans were classed as bad debt; the World Bank/IMF-backed Financial Sector Adjustment Program (FSECAL) was launched; Loi 1991-21 (enacted Feb 16, 1991) liquidated seven banks including Banque Nationale de Developpement du Senegal (BNDS) and l'Union Senegalaise de Banque (USB), transferring assets to the newly created Societe Nationale de Recouvrement (SNR), which absorbed ~CFA 144bn in bad loans -- all matching the description exactly. The one figure that does not hold up is the fiscal-cost claim: the description says the restructuring cost \"nearly 20% of GDP,\" but the most specific sourced estimate found (Ebrahimi 1996, via the New Bagehot case file) puts total banking-reform cost at CFA 250bn, \"about 17% of GDP\" -- a separate World Bank archival document instead frames the cost as CFAF ~200bn / ~80% of annual government revenue (a different metric, not directly comparable to GDP). 17% is a real but noticeably smaller magnitude than \"nearly 20%,\" so this is marked PARTIAL for that overstated fiscal-cost figure while country, year, mechanism, actors, and all other magnitudes are confirmed accurate.",
+    "verify_count": 2,
+    "consensus_verdict": "PARTIAL",
+    "consensus_status": "downgraded",
+    "needs_tiebreak": false,
+    "source_independence": "independent",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "PARTIAL",
+        "reason": "Every core fact checks out with striking precision against an independent, detailed source (Yale's New Bagehot Project banking-crisis case file, drawing on Ebrahimi 1996 and primary IMF/World Bank documents), and is corroborated in broader strokes by a separate World Bank Group Archives document and an AfDB systemic-crises brief that both date Senegal's crisis to 1988. Confirmed verbatim: as of Sept 30, 1988 distressed banks held a CFA 323bn loan portfolio of which 72% was nonperforming; 49% of the entire banking system's loans were classed as bad debt; the World Bank/IMF-backed Financial Sector Adjustment Program (FSECAL) was launched; Loi 1991-21 (enacted Feb 16, 1991) liquidated seven banks including Banque Nationale de Developpement du Senegal (BNDS) and l'Union Senegalaise de Banque (USB), transferring assets to the newly created Societe Nationale de Recouvrement (SNR), which absorbed ~CFA 144bn in bad loans -- all matching the description exactly. The one figure that does not hold up is the fiscal-cost claim: the description says the restructuring cost \"nearly 20% of GDP,\" but the most specific sourced estimate found (Ebrahimi 1996, via the New Bagehot case file) puts total banking-reform cost at CFA 250bn, \"about 17% of GDP\" -- a separate World Bank archival document instead frames the cost as CFAF ~200bn / ~80% of annual government revenue (a different metric, not directly comparable to GDP). 17% is a real but noticeably smaller magnitude than \"nearly 20%,\" so this is marked PARTIAL for that overstated fiscal-cost figure while country, year, mechanism, actors, and all other magnitudes are confirmed accurate.",
+        "source": "https://newbagehot.yale.edu/docs/societe-nationale-de-recouvrement-snr/",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-09",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Confirmed by three independent sources. Senegal's SNR (Société Nationale de Recouvrement) official history confirms Loi 1991-21 (Feb 16, 1991) liquidated BNDS plus six other banks (seven total). Yale's New Bagehot Project names all seven banks (including BNDS and Union Sénégalaise de Banque as stated), confirms CFA 323bn total loans with 72% nonperforming as of 9/30/1988, 49% system-wide NPL ratio, World Bank Financial Sector Adjustment Program, and CFA 144bn in bad loans transferred to SNR — all matching the event description's figures exactly. The IMF eLibrary chapter \"Financial Sector Reforms\" (Sub-Saharan Africa) independently corroborates the harder-to-verify claim that \"the government closed six commercial banks and one development bank\" (=seven) and that \"the fiscal cost of the consolidation was nearly 20 percent of GDP\" — verbatim match to the event's \"nearly 20% of GDP\" claim. All material details (magnitudes, actors, dates, scope) align across sources.",
+        "source": "https://www.elibrary.imf.org/display/book/9781589065659/ch004.xml",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-09",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://newbagehot.yale.edu/docs/societe-nationale-de-recouvrement-snr/"
+  },
+  {
+    "year": 1989,
+    "title": "Mauritanian-Senegalese Border Crisis and Ethnic Violence",
+    "verdict": "TRUE",
+    "reason": "Clashes began April 1989 over grazing rights. Hundreds killed, tens of thousands expelled from both sides. Diplomatic relations severed August 1989, restored May 1992 (border reopened). Event says 1992 restoration — confirmed correct.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Clashes began April 1989 over grazing rights. Hundreds killed, tens of thousands expelled from both sides. Diplomatic relations severed August 1989, restored May 1992 (border reopened). Event says 1992 restoration — confirmed correct.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
+    "year": 1989,
+    "title": "Senegambia Confederation Dissolved",
+    "verdict": "TRUE",
+    "reason": "Dissolved 30 September 1989 after Gambia refused deeper integration. Confirmed by Wikipedia.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Dissolved 30 September 1989 after Gambia refused deeper integration. Confirmed by Wikipedia.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
+    "year": 1991,
+    "title": "Casamance Ceasefire Agreement Signed",
+    "verdict": "TRUE",
+    "reason": "Ceasefire signed 31 May 1991 in Cacheu, Guinea-Bissau by Sidi Badji and Defence Minister Medoune Fall. Confirmed by Casamance conflict sources. Event says 'mediated by Catholic diocese of Ziguinchor' — location was Cacheu, Guinea-Bissau, not Ziguinchor, but minor detail.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Ceasefire signed 31 May 1991 in Cacheu, Guinea-Bissau by Sidi Badji and Defence Minister Medoune Fall. Confirmed by Casamance conflict sources. Event says 'mediated by Catholic diocese of Ziguinchor' — location was Cacheu, Guinea-Bissau, not Ziguinchor, but minor detail.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
+    "year": 1993,
+    "title": "Disputed 1993 Presidential Election and Political Violence",
+    "verdict": "TRUE",
+    "reason": "Diouf won 58% on 21 February 1993. Babacar Seye (VP of Constitutional Council) assassinated on 15 May 1993. Wade charged but charges later dropped. All facts confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Diouf won 58% on 21 February 1993. Babacar Seye (VP of Constitutional Council) assassinated on 15 May 1993. Wade charged but charges later dropped. All facts confirmed.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
+    "year": 1994,
+    "title": "CFA Franc Devaluation Triggers Economic Shock",
+    "verdict": "TRUE",
+    "reason": "CFA franc devalued 12 January 1994 by 50%. Immediate inflation, IMF-World Bank package. All facts confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "CFA franc devalued 12 January 1994 by 50%. Immediate inflation, IMF-World Bank package. All facts confirmed.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
+    "year": 1994,
+    "title": "Urban Protests Over Austerity and Living Costs",
+    "verdict": "TRUE",
+    "reason": "Post-devaluation protests in Dakar well-documented in academic literature.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Post-devaluation protests in Dakar well-documented in academic literature.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
+    "year": 1995,
+    "title": "Abdoulaye Wade Joins Government as Minister of State",
+    "verdict": "TRUE",
+    "reason": "Wade rejoined government as Minister of State in March 1995; left again in March 1998. Confirmed by Wikipedia.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Wade rejoined government as Minister of State in March 1995; left again in March 1998. Confirmed by Wikipedia.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
+    "year": 1996,
+    "title": "Decentralization Reform Transfers Powers to Local Governments",
+    "verdict": "TRUE",
+    "reason": "Code des collectivites locales enacted under Diouf in 1996 is well-documented in Senegal governance literature.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Code des collectivites locales enacted under Diouf in 1996 is well-documented in Senegal governance literature.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
+    "year": 1998,
+    "title": "Casamance Conflict Intensifies with Cross-Border Guinea-Bissau Dimension",
+    "verdict": "TRUE",
+    "reason": "MFDC-Guinea-Bissau nexus and Senegal's 1998-99 intervention in Guinea-Bissau civil war confirmed in conflict literature.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "MFDC-Guinea-Bissau nexus and Senegal's 1998-99 intervention in Guinea-Bissau civil war confirmed in conflict literature.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
+    "year": 2000,
+    "title": "Abdoulaye Wade Defeats Diouf in Historic Democratic Transition",
+    "verdict": "TRUE",
+    "reason": "First round 27 February 2000; runoff 19 March 2000. Wade won runoff with 58.49%. Senegal's first democratic alternance. All facts confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "First round 27 February 2000; runoff 19 March 2000. Wade won runoff with 58.49%. Senegal's first democratic alternance. All facts confirmed.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
+    "year": 2001,
+    "title": "New Constitution Approved by Referendum",
+    "verdict": "TRUE",
+    "reason": "Referendum 7 January 2001; approved by ~94% of voters. Reduced term from 7 to 5 years; abolished Senate. Confirmed by Wikipedia and ConstitutionNet.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Referendum 7 January 2001; approved by ~94% of voters. Reduced term from 7 to 5 years; abolished Senate. Confirmed by Wikipedia and ConstitutionNet.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
+    "year": 2002,
+    "title": "Le Joola Ferry Disaster Kills Over 1,800 People",
+    "verdict": "TRUE",
+    "reason": "MV Le Joola capsized 26 September 2002 off Gambia coast; 1,863 deaths confirmed. Ship carried over 3x capacity. Facts confirmed. Note: category listed as 'flood_and_cyclone' is incorrect (should be maritime disaster), but factual content is accurate.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "MV Le Joola capsized 26 September 2002 off Gambia coast; 1,863 deaths confirmed. Ship carried over 3x capacity. Facts confirmed. Note: category listed as 'flood_and_cyclone' is incorrect (should be maritime disaster), but factual content is accurate.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
+    "year": 2002,
+    "title": "Senegal Reaches HIPC Debt Relief Completion Point",
+    "verdict": "FALSE",
+    "reason": "Year is wrong. Senegal reached HIPC completion point in April 2004, not 2002. The $850 million figure is correct. Year off by 2 years = FALSE.",
+    "verify_count": 1,
+    "consensus_verdict": "FALSE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "FALSE",
+        "reason": "Year is wrong. Senegal reached HIPC completion point in April 2004, not 2002. The $850 million figure is correct. Year off by 2 years = FALSE.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
+    "year": 2002,
+    "title": "World Cup Appearance — Senegal Defeats France",
+    "verdict": "TRUE",
+    "reason": "Senegal's first World Cup appearance in 2002 Korea/Japan. Defeated defending champion France 1-0 (Papa Bouba Diop goal). Reached quarterfinals. All facts confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Senegal's first World Cup appearance in 2002 Korea/Japan. Defeated defending champion France 1-0 (Papa Bouba Diop goal). Reached quarterfinals. All facts confirmed.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
+    "year": 2003,
+    "title": "Senegal Deploys Troops to UN Peacekeeping Missions",
+    "verdict": "TRUE",
+    "reason": "Senegal is a long-standing top African UN peacekeeping contributor. Year 2003 is a reasonable date for consolidation; facts are broadly accurate.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Senegal is a long-standing top African UN peacekeeping contributor. Year 2003 is a reasonable date for consolidation; facts are broadly accurate.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
+    "year": 2004,
+    "title": "Casamance Peace Agreement Signed in Ziguinchor",
+    "verdict": "TRUE",
+    "reason": "Peace agreement signed 30-31 December 2004 in Ziguinchor; all MFDC factions including Atika validated it. Implementation partial. Confirmed by Peace Accords Matrix and Wikipedia.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Peace agreement signed 30-31 December 2004 in Ziguinchor; all MFDC factions including Atika validated it. Implementation partial. Confirmed by Peace Accords Matrix and Wikipedia.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
+    "year": 2006,
+    "title": "Senegal Hosts African Union Summit — Dakar Becomes Continental Hub",
+    "verdict": "FALSE",
+    "reason": "No African Union Summit was held in Dakar, Senegal in 2006. The two 2006 AU Assembly summits were held in Khartoum, Sudan (January 2006, where Denis Sassou Nguesso of Congo was elected AU Chairperson, explicitly to block Sudan's Bashir) and Banjul, Gambia (July 2006, hosted by Yahya Jammeh). President Wade of Senegal did not hold the AU chairmanship in 2006 and Dakar was not the summit venue. Searches for any AU/OAU summit ever hosted in Dakar found only the 1992 OAU (Organisation of African Unity, the AU's pre-2002 predecessor) session under President Abdou Diouf — a different organization, different Senegalese leader, and 14 years off. No corroborating source (news, AU official site, academic) places an AU Summit in Dakar in 2006 or associates Wade with an AU chairmanship/host role that year. The event as described did not happen in the stated country/year.",
+    "verify_count": 2,
+    "consensus_verdict": "FALSE",
+    "consensus_status": "double_negative",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "FALSE",
+        "reason": "No African Union Summit was hosted in Dakar, Senegal in 2006. The two 2006 AU Assembly summits were the 6th Ordinary Session in Khartoum, Sudan (January 2006) and the 7th Ordinary Session in Banjul, The Gambia (1-2 July 2006) — where Sudan's bid for the AU chairmanship was contested and Denis Sassou-Nguesso of Congo was elected chair instead. Independent sourcing (AU's own 'cities' history page) shows Dakar hosted an OAU (predecessor) summit in 1992 and later the 31st AU Assembly in 2018 (under President Macky Sall, not Wade) — but no AU summit in 2006. The only major Dakar-hosted multilateral summit near this period under President Wade was the 11th OIC (Organization of Islamic Cooperation) Summit in March 2008, a different organization and a different year. NEPAD's West Africa regional bureau is indeed based in Dakar, but that is a regional secretariat office, not evidence of an AU summit in 2006. The core claim (AU Summit hosted in Dakar in 2006) does not check out against any source found.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "FALSE",
+        "reason": "No African Union Summit was held in Dakar, Senegal in 2006. The two 2006 AU Assembly summits were held in Khartoum, Sudan (January 2006, where Denis Sassou Nguesso of Congo was elected AU Chairperson, explicitly to block Sudan's Bashir) and Banjul, Gambia (July 2006, hosted by Yahya Jammeh). President Wade of Senegal did not hold the AU chairmanship in 2006 and Dakar was not the summit venue. Searches for any AU/OAU summit ever hosted in Dakar found only the 1992 OAU (Organisation of African Unity, the AU's pre-2002 predecessor) session under President Abdou Diouf — a different organization, different Senegalese leader, and 14 years off. No corroborating source (news, AU official site, academic) places an AU Summit in Dakar in 2006 or associates Wade with an AU chairmanship/host role that year. The event as described did not happen in the stated country/year.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
+    "year": 2007,
+    "title": "Wade Re-elected in First-Round Presidential Victory",
+    "verdict": "TRUE",
+    "reason": "Wade won 55.9% in first round on 25 February 2007. Opposition contested result. All facts confirmed by Wikipedia.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Wade won 55.9% in first round on 25 February 2007. Opposition contested result. All facts confirmed by Wikipedia.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
+    "year": 2008,
+    "title": "Food Price Crisis Sparks Urban Protests",
+    "verdict": "TRUE",
+    "reason": "Global food price crisis 2008 affected Senegal, with rice prices rising sharply. Urban protests documented. Facts consistent with regional literature.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Global food price crisis 2008 affected Senegal, with rice prices rising sharply. Urban protests documented. Facts consistent with regional literature.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
+    "year": 2010,
+    "title": "Senegal Joins African Peer Review Mechanism",
+    "verdict": "TRUE",
+    "reason": "Senegal participated in APRM process; year 2010 is plausible for assessment publication. Facts broadly consistent with APRM documentation.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Senegal participated in APRM process; year 2010 is plausible for assessment publication. Facts broadly consistent with APRM documentation.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
+    "year": 2011,
+    "title": "Wade Attempts to Run Son for Vice Presidency",
+    "verdict": "TRUE",
+    "reason": "June 2011 constitutional amendment proposed 25% first-round threshold and vice-presidential post widely seen as vehicle for Karim Wade. Y'en a Marre protests forced withdrawal. Constitutional court advised against. All facts confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "June 2011 constitutional amendment proposed 25% first-round threshold and vice-presidential post widely seen as vehicle for Karim Wade. Y'en a Marre protests forced withdrawal. Constitutional court advised against. All facts confirmed.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
+    "year": 2012,
+    "title": "Macky Sall Defeats Wade in Presidential Runoff",
+    "verdict": "TRUE",
+    "reason": "Runoff 25 March 2012; Sall won 65.8% vs Wade 34.2%. Wade conceded promptly. Confirmed by France 24 and Wikipedia.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Runoff 25 March 2012; Sall won 65.8% vs Wade 34.2%. Wade conceded promptly. Confirmed by France 24 and Wikipedia.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
+    "year": 2012,
+    "title": "Third-Term Controversy and Constitutional Court Ruling",
+    "verdict": "TRUE",
+    "reason": "Constitutional Council ruled Wade's first term did not count toward two-term limit. Mass protests, deaths, M23 coalition. West African leaders involved. All facts confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Constitutional Council ruled Wade's first term did not count toward two-term limit. Mass protests, deaths, M23 coalition. West African leaders involved. All facts confirmed.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
+    "year": 2013,
+    "title": "Karim Wade Arrested on Enrichment Charges",
+    "verdict": "TRUE",
+    "reason": "Arrested April 2013; convicted March 2015; sentenced to 6 years + $230 million fine. Pardoned 2016, left for Qatar. All facts confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Arrested April 2013; convicted March 2015; sentenced to 6 years + $230 million fine. Pardoned 2016, left for Qatar. All facts confirmed.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
+    "year": 2014,
+    "title": "Ebola Containment Success Despite Regional Outbreak",
+    "verdict": "TRUE",
+    "reason": "Single case confirmed 29 August 2014; no secondary transmission; WHO declared Senegal Ebola-free 17 October 2014. All facts confirmed by WHO sources.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Single case confirmed 29 August 2014; no secondary transmission; WHO declared Senegal Ebola-free 17 October 2014. All facts confirmed by WHO sources.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
+    "year": 2014,
+    "title": "Senegal Joins ECOWAS Force Against Gambian Crisis",
+    "verdict": "FALSE",
+    "reason": "The event described — Senegal leading/joining an ECOWAS force to confront a Gambian political crisis under Yahya Jammeh (troops massing, hosting exiles, economic pressure to force him from power) — is the well-documented ECOWAS military intervention in The Gambia (Operation Restore Democracy / ECOMIG), which took place in January 2017, after Jammeh refused to accept his December 2016 election loss to Adama Barrow. Senegalese troops entered Gambia on 19 January 2017 at Barrow's request; Jammeh departed 21 January 2017. Nothing matching this description occurred in 2014. The only Gambia-related event in 2014 was a failed coup attempt against Jammeh (30 December 2014) staged by plotters who entered FROM Senegal — the opposite framing (Senegalese territory used against Jammeh by private plotters, not an ECOWAS force joining a coalition against him), and no ECOWAS force or Senegalese-led coalition action occurred that year. The description's added detail about Senegal's role in the ECOWAS Mission in Guinea-Bissau (ECOMIB, est. 2012) is a separate, unrelated mission conflated into this entry. Year and substance both indicate this is a real event mis-dated by three years.",
+    "verify_count": 2,
+    "consensus_verdict": "FALSE",
+    "consensus_status": "double_negative",
+    "needs_tiebreak": false,
+    "source_independence": "weak",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "FALSE",
+        "reason": "The Senegal-led ECOWAS military/diplomatic intervention against Yahya Jammeh's Gambia (ECOWAS Mission in the Gambia, ECOMIG) is real, but it occurred in December 2016-January 2017 in response to Jammeh refusing to accept his election defeat to Adama Barrow, not in 2014. Senegal led the coalition force (with Nigeria, Mali, Togo, Ghana) that entered Gambia on Jan 19, 2017; Jammeh stepped down and left the country Jan 21, 2017. In 2014, the only Gambia-related incident was an unrelated failed coup attempt (Dec 30, 2014) by gunmen allegedly transiting via Senegal — there was no ECOWAS force, no Barrow election crisis, and no Senegalese-led regional military mission against Gambia that year. The year is materially wrong, so the event as dated is false.",
+        "source": "https://en.wikipedia.org/wiki/ECOWAS_military_intervention_in_the_Gambia",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        },
+        "corrected_year": 2017
+      },
+      {
+        "pass_n": 2,
+        "verdict": "FALSE",
+        "reason": "The event described — Senegal leading/joining an ECOWAS force to confront a Gambian political crisis under Yahya Jammeh (troops massing, hosting exiles, economic pressure to force him from power) — is the well-documented ECOWAS military intervention in The Gambia (Operation Restore Democracy / ECOMIG), which took place in January 2017, after Jammeh refused to accept his December 2016 election loss to Adama Barrow. Senegalese troops entered Gambia on 19 January 2017 at Barrow's request; Jammeh departed 21 January 2017. Nothing matching this description occurred in 2014. The only Gambia-related event in 2014 was a failed coup attempt against Jammeh (30 December 2014) staged by plotters who entered FROM Senegal — the opposite framing (Senegalese territory used against Jammeh by private plotters, not an ECOWAS force joining a coalition against him), and no ECOWAS force or Senegalese-led coalition action occurred that year. The description's added detail about Senegal's role in the ECOWAS Mission in Guinea-Bissau (ECOMIB, est. 2012) is a separate, unrelated mission conflated into this entry. Year and substance both indicate this is a real event mis-dated by three years.",
+        "source": "https://en.wikipedia.org/wiki/ECOWAS_military_intervention_in_the_Gambia",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        },
+        "corrected_year": 2017
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/ECOWAS_military_intervention_in_the_Gambia"
+  },
+  {
+    "year": 2016,
+    "title": "Constitutional Referendum Reduces Presidential Term to Five Years",
+    "verdict": "TRUE",
+    "reason": "Referendum 20 March 2016; approved 62% of voters; 15 amendments including presidential term reduction. Senate had been abolished in 2012, not in this referendum (event says 'eliminating the Senate' — minor inaccuracy). Core facts confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Referendum 20 March 2016; approved 62% of voters; 15 amendments including presidential term reduction. Senate had been abolished in 2012, not in this referendum (event says 'eliminating the Senate' — minor inaccuracy). Core facts confirmed.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
+    "year": 2016,
+    "title": "Plan Senegal Emergent Launched as Economic Blueprint",
+    "verdict": "FALSE",
+    "reason": "Year is wrong. PSE was launched in 2014 (first operational phase 2014-2018), not 2016. Year off by 2 years = FALSE.",
+    "verify_count": 1,
+    "consensus_verdict": "FALSE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "FALSE",
+        "reason": "Year is wrong. PSE was launched in 2014 (first operational phase 2014-2018), not 2016. Year off by 2 years = FALSE.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
+    "year": 2017,
+    "title": "Offshore Oil and Gas Discoveries Confirmed",
+    "verdict": "TRUE",
+    "reason": "BP established Mauritania/Senegal region in 2017 following gas discovery confirmation. Sangomar oil (Woodside/Cairn) and Grand Tortue/Ahmeyim LNG (BP/Kosmos) both confirmed commercially viable around this period. Facts broadly accurate.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "BP established Mauritania/Senegal region in 2017 following gas discovery confirmation. Sangomar oil (Woodside/Cairn) and Grand Tortue/Ahmeyim LNG (BP/Kosmos) both confirmed commercially viable around this period. Facts broadly accurate.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
+    "year": 2019,
+    "title": "Sall Re-elected in First-Round Presidential Victory",
+    "verdict": "TRUE",
+    "reason": "Sall won 58.27% on 24 February 2019 in first round. Sonko, Seck among opponents. Karim Wade and Khalifa Sall excluded. All facts confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Sall won 58.27% on 24 February 2019 in first round. Sonko, Seck among opponents. Karim Wade and Khalifa Sall excluded. All facts confirmed.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
+    "year": 2020,
+    "title": "COVID-19 Pandemic Response Praised Internationally",
+    "verdict": "TRUE",
+    "reason": "Senegal's early response, Institut Pasteur rapid test kit, and vaccine manufacturing hub role widely documented. Facts confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Senegal's early response, Institut Pasteur rapid test kit, and vaccine manufacturing hub role widely documented. Facts confirmed.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
+    "year": 2020,
+    "title": "Senegal Bans Single-Use Plastics Nationwide",
+    "verdict": "TRUE",
+    "reason": "Law No. 2020-04 (voted Jan 8, 2020), banning production/import/sale of single-use plastics (bags, straws, cups), took effect in Senegal on April 20, 2020, confirmed by phys.org, Greenpeace Africa, and allAfrica. It repeals/builds on the 2015 plastic bag law (Law No. 2015-09) that was barely enforced (phys.org, elaw.org). French-language sources (pfongue.org citing the Heinrich Böll Stiftung legal analysis) confirm the law establishes a deposit-return (consigne) system for plastic bottles (Articles 6-14) and an extended producer responsibility (REP) scheme (Article 11). The COVID-19 exception allowing continued sale of plastic water sachets is explicitly confirmed by Greenpeace Africa, phys.org, and allAfrica, quoting Environment Minister Abdou Karim Sall. All material details (country, year, effective date, 2015 precursor, deposit-return system, EPR, sachet exception) are corroborated by multiple independent sources.",
+    "verify_count": 2,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "double_confirmed",
+    "needs_tiebreak": false,
+    "source_independence": "weak",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed by multiple independent sources. Senegal's Law No. 2020-04 (adopted January 8, 2020) banning production, import, and sale of single-use plastics (bags, straws, cups, sachets) took effect April 20, 2020, exactly as described. It repealed/built on the 2015 Law No. 2015-09 which had banned thin plastic bags but was 'barely enforced' per Heinrich Böll Foundation analysis. Law 2020-04 explicitly establishes a deposit system for plastic bottles and expanded/extended producer responsibility. The COVID-19 exception for plastic water sachets is directly confirmed: Environment Minister Abdou Karim Sall stated the government would relax enforcement on water sachets due to pandemic economic/social impacts (phys.org, Greenpeace Africa, allAfrica). All material details (year, country, scope, mechanism, COVID exception, 2015 precedent) match.",
+        "source": "https://phys.org/news/2020-04-senegal-single-use-plastics.html",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Law No. 2020-04 (voted Jan 8, 2020), banning production/import/sale of single-use plastics (bags, straws, cups), took effect in Senegal on April 20, 2020, confirmed by phys.org, Greenpeace Africa, and allAfrica. It repeals/builds on the 2015 plastic bag law (Law No. 2015-09) that was barely enforced (phys.org, elaw.org). French-language sources (pfongue.org citing the Heinrich Böll Stiftung legal analysis) confirm the law establishes a deposit-return (consigne) system for plastic bottles (Articles 6-14) and an extended producer responsibility (REP) scheme (Article 11). The COVID-19 exception allowing continued sale of plastic water sachets is explicitly confirmed by Greenpeace Africa, phys.org, and allAfrica, quoting Environment Minister Abdou Karim Sall. All material details (country, year, effective date, 2015 precursor, deposit-return system, EPR, sachet exception) are corroborated by multiple independent sources.",
+        "source": "https://phys.org/news/2020-04-senegal-single-use-plastics.html",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://phys.org/news/2020-04-senegal-single-use-plastics.html"
+  },
+  {
+    "year": 2021,
+    "title": "Ousmane Sonko Trial Triggers Deadly Protests",
+    "verdict": "TRUE",
+    "reason": "Sonko arrested March 2021 on rape charges; protests led to 14 reported deaths (event says 'at least thirteen'). Charges later modified. All facts confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Sonko arrested March 2021 on rape charges; protests led to 14 reported deaths (event says 'at least thirteen'). Charges later modified. All facts confirmed.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
+    "year": 2022,
+    "title": "Sangomar Oil Field Development Begins",
+    "verdict": "TRUE",
+    "reason": "Woodside (acquired FAR Ltd stake) pressed ahead with Sangomar development in 2022; first oil in June 2024. Facts confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Woodside (acquired FAR Ltd stake) pressed ahead with Sangomar development in 2022; first oil in June 2024. Facts confirmed.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
+    "year": 2022,
+    "title": "Senegal Wins Africa Cup of Nations for First Time",
+    "verdict": "TRUE",
+    "reason": "Senegal beat Egypt 4-2 on penalties in AFCON final on 6 February 2022 in Cameroon. Sadio Mane scored decisive penalty. First AFCON title. All facts confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Senegal beat Egypt 4-2 on penalties in AFCON final on 6 February 2022 in Cameroon. Sadio Mane scored decisive penalty. First AFCON title. All facts confirmed.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
+    "year": 2023,
+    "title": "Massive Wave of Arrests of Opposition Supporters",
+    "verdict": "TRUE",
+    "reason": "Over 1,000 arrests documented by human rights organisations following PASTEF dissolution and protests. Amnesty International and HRW documented abuses. Facts confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Over 1,000 arrests documented by human rights organisations following PASTEF dissolution and protests. Amnesty International and HRW documented abuses. Facts confirmed.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
+    "year": 2023,
+    "title": "Sonko Convicted and PASTEF Dissolved",
+    "verdict": "TRUE",
+    "reason": "Sonko convicted June 2023 of 'corrupting youth'; sentenced to 2 years. PASTEF dissolved by government decree July 2023. At least 16 people killed in protests per government (higher figures from opposition/Amnesty). All facts confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Sonko convicted June 2023 of 'corrupting youth'; sentenced to 2 years. PASTEF dissolved by government decree July 2023. At least 16 people killed in protests per government (higher figures from opposition/Amnesty). All facts confirmed.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
+    "year": 2024,
+    "title": "Constitutional Council Orders Election to Proceed",
+    "verdict": "TRUE",
+    "reason": "Constitutional Council ruled postponement unconstitutional on 15 February 2024. Faye ran as PASTEF's official candidate with Sonko's backing. Facts confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Constitutional Council ruled postponement unconstitutional on 15 February 2024. Faye ran as PASTEF's official candidate with Sonko's backing. Facts confirmed.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
+    "year": 2024,
+    "title": "Ousmane Sonko Appointed Prime Minister",
+    "verdict": "TRUE",
+    "reason": "Faye appointed Sonko as PM on 3 April 2024 after inauguration on 2 April. Facts confirmed by Al Jazeera and France 24.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Faye appointed Sonko as PM on 3 April 2024 after inauguration on 2 April. Facts confirmed by Al Jazeera and France 24.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
+    "year": 2024,
+    "title": "Sall Postpones Presidential Election by Decree",
+    "verdict": "TRUE",
+    "reason": "Sall signed decree 3 February 2024 postponing 25 February election. ECOWAS and Constitutional Council condemned. First such postponement in Senegal's history. All facts confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Sall signed decree 3 February 2024 postponing 25 February election. ECOWAS and Constitutional Council condemned. First such postponement in Senegal's history. All facts confirmed.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
+    "year": 2024,
+    "title": "Sonko Released from Prison, Faye Wins Landslide Victory",
+    "verdict": "TRUE",
+    "reason": "Faye won 54.28% on 24 March 2024 in first round. Released from prison 10 days before election under amnesty. Youngest elected president in Africa at 44. All facts confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Faye won 54.28% on 24 March 2024 in first round. Released from prison 10 days before election under amnesty. Youngest elected president in Africa at 44. All facts confirmed.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  }
+]

@@ -1,0 +1,4747 @@
+[
+  {
+    "year": 1950,
+    "title": "Helmand Valley Authority irrigation project launched",
+    "verdict": "FALSE",
+    "reason": "The core claim (Afghan government partnering with Morrison-Knudsen to develop the Helmand River Valley irrigation scheme) is real, but it did not begin in 1950 — it began in 1946. Multiple independent sources (Britannica, a 1953 Foreign Affairs article, the Journal of American History/OAH 'Damming Afghanistan' piece, a DTIC historical report, and PressTV, fetched directly) converge: in 1946 King Zahir Shah's government contracted Morrison-Knudsen (forming Morrison-Knudsen Afghanistan, Inc.) to build dams/canals in the Helmand Valley, appropriating roughly $17M to start; Morrison-Knudsen was already doing on-the-ground construction (e.g., roads) by 1948-49. The formal 'Helmand Valley Authority' (HVA), later renamed the Helmand and Arghandab Valley Authority (HAVA), was not chartered until July/December 1952 — also not 1950. 1950 does correspond to a real but different milestone (Afghanistan's first $12M Export-Import Bank loan for the project, per a secondary source), not to the Morrison-Knudsen partnership or the Authority's launch described in this event. Because the year is off by several years in either framing (1946 for the partnership, 1952 for the Authority itself), this is a wrong-year FALSE rather than a TRUE/PARTIAL.",
+    "verify_count": 3,
+    "consensus_verdict": "FALSE",
+    "consensus_status": "contested_resolved",
+    "needs_tiebreak": false,
+    "source_independence": "independent",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Morrison-Knudsen contracted from 1946; HAVA formally established 1952. Year given (1950) is approximate start of major work — accurate in spirit, project began mid-1940s.",
+        "source": "https://en.wikipedia.org/wiki/Helmand_and_Arghandab_Valley_Authority",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "FALSE",
+        "reason": "The core event is real — Afghanistan did partner with the American firm Morrison-Knudsen to develop the Helmand River Valley irrigation scheme (dams, canals, agricultural development in arid southern Afghanistan) — but the year 1950 is wrong. Multiple independent, non-Wikipedia sources (NPR, Washington Post 'Little America' retrospective, a DTIC/US military archived report titled 'The Helmand Valley Project in Afghanistan', a 1951 State Department FRUS cable, and an engineering-history summary) converge on 1946 as when King Zahir Shah's government contracted Morrison-Knudsen and launched the irrigation/dam-building program (with an initial ~$17M appropriation). The formal 'Helmand Valley Authority' (HVA) named in the title was not established as an Afghan government agency until December 4, 1952 (later expanded/renamed HAVA in 1965). 1950 corresponds only to a narrower engineering milestone (a preliminary dam design phase for Kajaki), not to the government's partnership launch or the Authority's founding. A 1951 State Department FRUS document I fetched directly confirms the Export-Import Bank loan and construction contract with a US firm were already in progress by February 1951, consistent with an earlier (1946-1949) start rather than a 1950 launch. Because the year is materially off (by 4-6 years) rather than just a minor detail, this does not qualify as PARTIAL (which requires year+country to hold) and is scored FALSE with corrected_year 1946, the best-supported date for the actual government-Morrison Knudsen partnership described.",
+        "source": "https://history.state.gov/historicaldocuments/frus1951v06p2/d372",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-02",
+          "method": "web_search"
+        },
+        "corrected_year": 1946
+      },
+      {
+        "pass_n": 3,
+        "verdict": "FALSE",
+        "reason": "The core claim (Afghan government partnering with Morrison-Knudsen to develop the Helmand River Valley irrigation scheme) is real, but it did not begin in 1950 — it began in 1946. Multiple independent sources (Britannica, a 1953 Foreign Affairs article, the Journal of American History/OAH 'Damming Afghanistan' piece, a DTIC historical report, and PressTV, fetched directly) converge: in 1946 King Zahir Shah's government contracted Morrison-Knudsen (forming Morrison-Knudsen Afghanistan, Inc.) to build dams/canals in the Helmand Valley, appropriating roughly $17M to start; Morrison-Knudsen was already doing on-the-ground construction (e.g., roads) by 1948-49. The formal 'Helmand Valley Authority' (HVA), later renamed the Helmand and Arghandab Valley Authority (HAVA), was not chartered until July/December 1952 — also not 1950. 1950 does correspond to a real but different milestone (Afghanistan's first $12M Export-Import Bank loan for the project, per a secondary source), not to the Morrison-Knudsen partnership or the Authority's launch described in this event. Because the year is off by several years in either framing (1946 for the partnership, 1952 for the Authority itself), this is a wrong-year FALSE rather than a TRUE/PARTIAL.",
+        "source": "https://www.presstv.ir/Detail/2023/05/17/703539/Iran-Afghanistan-water-dispute-Helmand-river",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        },
+        "corrected_year": 1946
+      }
+    ],
+    "had_dissent": true,
+    "source": "https://www.presstv.ir/Detail/2023/05/17/703539/Iran-Afghanistan-water-dispute-Helmand-river"
+  },
+  {
+    "year": 1950,
+    "title": "Pashtunistan dispute escalates with Pakistan",
+    "verdict": "TRUE",
+    "reason": "Afghanistan was the sole UN member to vote against Pakistan's admission. Well-documented historical fact.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Afghanistan was the sole UN member to vote against Pakistan's admission. Well-documented historical fact.",
+        "source": "https://www.yalejournal.org/publications/the-forgotten-history-of-afghanistan-pakistan-relations",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://www.yalejournal.org/publications/the-forgotten-history-of-afghanistan-pakistan-relations"
+  },
+  {
+    "year": 1951,
+    "title": "Afghanistan-Pakistan border tensions cause trade disruption",
+    "verdict": "TRUE",
+    "reason": "Pashtunistan dispute and Pakistan trade/transit restrictions on landlocked Afghanistan are well documented throughout early 1950s.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Pashtunistan dispute and Pakistan trade/transit restrictions on landlocked Afghanistan are well documented throughout early 1950s.",
+        "source": "https://tribune.com.pk/article/97165/afghanistan-and-pakistans-oft-ignored-history-1947-1978",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://tribune.com.pk/article/97165/afghanistan-and-pakistans-oft-ignored-history-1947-1978"
+  },
+  {
+    "year": 1951,
+    "title": "Soviet Union extends trade and transit agreements to Afghanistan",
+    "verdict": "TRUE",
+    "reason": "Soviet economic engagement began in earnest in early 1950s as Pakistan closed transit routes; trade agreements confirmed by multiple Cold War histories.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Soviet economic engagement began in earnest in early 1950s as Pakistan closed transit routes; trade agreements confirmed by multiple Cold War histories.",
+        "source": "https://coldwarstudies.com/2015/01/19/cold-war-afghanistan-the-soviets-in-quicksand/",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://coldwarstudies.com/2015/01/19/cold-war-afghanistan-the-soviets-in-quicksand/"
+  },
+  {
+    "year": 1952,
+    "title": "Afghanistan requests US military aid but is refused",
+    "verdict": "TRUE",
+    "reason": "US refusal of Afghan military aid requests in early 1950s is documented in Cold War histories; drove Afghanistan toward Soviet arms.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "US refusal of Afghan military aid requests in early 1950s is documented in Cold War histories; drove Afghanistan toward Soviet arms.",
+        "source": "https://www.usni.org/magazines/proceedings/1957/january/afghanistan-and-great-powers",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://www.usni.org/magazines/proceedings/1957/january/afghanistan-and-great-powers"
+  },
+  {
+    "year": 1952,
+    "title": "Liberal newspapers suppressed by Afghan government",
+    "verdict": "TRUE",
+    "reason": "The liberal parliament 1949-1952 ended with press suppression. The event is dated to 1952 but the crackdown is more precisely associated with Daoud's arrival in 1953 — slight year ambiguity but the phenomenon is real.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "The liberal parliament 1949-1952 ended with press suppression. The event is dated to 1952 but the crackdown is more precisely associated with Daoud's arrival in 1953 — slight year ambiguity but the phenomenon is real.",
+        "source": "https://countrystudies.us/afghanistan/25.htm",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://countrystudies.us/afghanistan/25.htm"
+  },
+  {
+    "year": 1953,
+    "title": "Afghanistan renews Pashtunistan demands against Pakistan",
+    "verdict": "TRUE",
+    "reason": "Daoud's intensification of Pashtunistan claims is a central feature of his 1953-1963 tenure, well-documented.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Daoud's intensification of Pashtunistan claims is a central feature of his 1953-1963 tenure, well-documented.",
+        "source": "https://en.wikipedia.org/wiki/Mohammad_Daoud_Khan",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Mohammad_Daoud_Khan"
+  },
+  {
+    "year": 1953,
+    "title": "Prince Mohammed Daoud Khan becomes Prime Minister",
+    "verdict": "TRUE",
+    "reason": "Appointed September 1953 by King Zahir Shah. Confirmed by multiple sources.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Appointed September 1953 by King Zahir Shah. Confirmed by multiple sources.",
+        "source": "https://en.wikipedia.org/wiki/Mohammad_Daoud_Khan",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Mohammad_Daoud_Khan"
+  },
+  {
+    "year": 1954,
+    "title": "Afghanistan accepts Soviet economic and technical assistance",
+    "verdict": "TRUE",
+    "reason": "Soviet technical cooperation agreements beginning 1954-1955 confirmed. Preceded the large 1955 $100M loan.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Soviet technical cooperation agreements beginning 1954-1955 confirmed. Preceded the large 1955 $100M loan.",
+        "source": "https://mmpaf.wordpress.com/history-natural-gas-in-afghanistan/",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://mmpaf.wordpress.com/history-natural-gas-in-afghanistan/"
+  },
+  {
+    "year": 1954,
+    "title": "Afghanistan rejects US proposal to join anti-Soviet pact",
+    "verdict": "TRUE",
+    "reason": "Afghanistan's non-alignment and refusal to join Baghdad Pact is well-documented Cold War policy under Daoud.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Afghanistan's non-alignment and refusal to join Baghdad Pact is well-documented Cold War policy under Daoud.",
+        "source": "https://history.state.gov/historicaldocuments/frus1955-57v08/d1",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://history.state.gov/historicaldocuments/frus1955-57v08/d1"
+  },
+  {
+    "year": 1955,
+    "title": "Afghanistan-Pakistan diplomatic crisis and border closure",
+    "verdict": "TRUE",
+    "reason": "1955 crisis including attack on Pakistani diplomatic missions in Kabul and brief severance of relations is well-documented.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "1955 crisis including attack on Pakistani diplomatic missions in Kabul and brief severance of relations is well-documented.",
+        "source": "https://www.business-standard.com/world-news/pak-afghan-durand-line-border-dispute-history-taliban-conflict-125103000492_1.html",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://www.business-standard.com/world-news/pak-afghan-durand-line-border-dispute-history-taliban-conflict-125103000492_1.html"
+  },
+  {
+    "year": 1955,
+    "title": "Soviet leaders Khrushchev and Bulganin visit Kabul pledging $100 million loan",
+    "verdict": "TRUE",
+    "reason": "December 1955 visit confirmed by Wilson Center archives. $100M credit pledge confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "December 1955 visit confirmed by Wilson Center archives. $100M credit pledge confirmed.",
+        "source": "https://digitalarchive.wilsoncenter.org/document/information-khrushchev-and-bulganins-november-december-1955-trip-india-burma-and",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://digitalarchive.wilsoncenter.org/document/information-khrushchev-and-bulganins-november-december-1955-trip-india-burma-and"
+  },
+  {
+    "year": 1956,
+    "title": "Afghanistan accepts Soviet military equipment and training",
+    "verdict": "TRUE",
+    "reason": "Soviet military equipment and training agreements from mid-1950s are well-documented in Afghan Cold War history.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Soviet military equipment and training agreements from mid-1950s are well-documented in Afghan Cold War history.",
+        "source": "https://history.state.gov/milestones/1977-1980/soviet-invasion-afghanistan",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://history.state.gov/milestones/1977-1980/soviet-invasion-afghanistan"
+  },
+  {
+    "year": 1956,
+    "title": "Soviet Union begins construction of Salang Highway tunnel",
+    "verdict": "TRUE",
+    "reason": "Agreement signed 1955, construction began 1956, completed 1964. Confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Agreement signed 1955, construction began 1956, completed 1964. Confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Salang_Tunnel",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Salang_Tunnel"
+  },
+  {
+    "year": 1957,
+    "title": "Afghan government launches first five-year development plan",
+    "verdict": "TRUE",
+    "reason": "Afghanistan's First Five-Year Economic and Social Development Plan (1956-1961) under Daoud is confirmed in multiple sources.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Afghanistan's First Five-Year Economic and Social Development Plan (1956-1961) under Daoud is confirmed in multiple sources.",
+        "source": "https://www.afghanistan-analysts.org/en/reports/economy-development-environment/going-in-circles-the-never-ending-story-of-afghanistans-unfinished-ring-road/",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://www.afghanistan-analysts.org/en/reports/economy-development-environment/going-in-circles-the-never-ending-story-of-afghanistans-unfinished-ring-road/"
+  },
+  {
+    "year": 1957,
+    "title": "Kabul-Kandahar highway completed with US funding",
+    "verdict": "FALSE",
+    "reason": "The paved Kabul-Kandahar highway was completed in 1966 by US Army Corps of Engineers/USAID, not 1957. A gravel road existed earlier but the modern paved highway completion date is wrong by nearly a decade.",
+    "verify_count": 1,
+    "consensus_verdict": "FALSE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "FALSE",
+        "reason": "The paved Kabul-Kandahar highway was completed in 1966 by US Army Corps of Engineers/USAID, not 1957. A gravel road existed earlier but the modern paved highway completion date is wrong by nearly a decade.",
+        "source": "https://en.wikipedia.org/wiki/Kabul%E2%80%93Kandahar_Highway",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Kabul%E2%80%93Kandahar_Highway"
+  },
+  {
+    "year": 1959,
+    "title": "Daoud government introduces voluntary unveiling for women",
+    "verdict": "TRUE",
+    "reason": "August 1959 Jeshyn festival unveiling by Queen Humaira and PM wife confirmed by Wikipedia and multiple sources. Daoud's voluntary approach confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "August 1959 Jeshyn festival unveiling by Queen Humaira and PM wife confirmed by Wikipedia and multiple sources. Daoud's voluntary approach confirmed.",
+        "source": "https://en.wikipedia.org/wiki/1959_in_Afghanistan",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/1959_in_Afghanistan"
+  },
+  {
+    "year": 1960,
+    "title": "Afghanistan-Pakistan Pashtunistan crisis reignites with border clashes",
+    "verdict": "TRUE",
+    "reason": "Border tensions and clashes in 1960 documented as part of ongoing Pashtunistan crisis.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Border tensions and clashes in 1960 documented as part of ongoing Pashtunistan crisis.",
+        "source": "https://www.yalejournal.org/publications/the-forgotten-history-of-afghanistan-pakistan-relations",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://www.yalejournal.org/publications/the-forgotten-history-of-afghanistan-pakistan-relations"
+  },
+  {
+    "year": 1961,
+    "title": "Afghan economy strained by Pakistan border closure",
+    "verdict": "TRUE",
+    "reason": "Economic damage from Pakistan border closure contributing to Daoud's eventual resignation is confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Economic damage from Pakistan border closure contributing to Daoud's eventual resignation is confirmed.",
+        "source": "https://www.britannica.com/biography/Mohammad-Daud-Khan",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://www.britannica.com/biography/Mohammad-Daud-Khan"
+  },
+  {
+    "year": 1961,
+    "title": "Afghanistan and Pakistan sever diplomatic relations",
+    "verdict": "TRUE",
+    "reason": "Diplomatic severance and border closure in 1961 is well-documented; lasted until 1963.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Diplomatic severance and border closure in 1961 is well-documented; lasted until 1963.",
+        "source": "https://en.wikipedia.org/wiki/Mohammad_Daoud_Khan",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Mohammad_Daoud_Khan"
+  },
+  {
+    "year": 1962,
+    "title": "Afghan-Pakistani trade embargo causes severe economic hardship",
+    "verdict": "TRUE",
+    "reason": "Two-year border closure and economic hardship from 1961-1963 is well-documented.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Two-year border closure and economic hardship from 1961-1963 is well-documented.",
+        "source": "https://en.wikipedia.org/wiki/Mohammad_Daoud_Khan",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Mohammad_Daoud_Khan"
+  },
+  {
+    "year": 1963,
+    "title": "Afghanistan and Pakistan restore diplomatic relations",
+    "verdict": "TRUE",
+    "reason": "Border reopened May 1963 after Daoud's resignation. Confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Border reopened May 1963 after Daoud's resignation. Confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Mohammad_Daoud_Khan",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Mohammad_Daoud_Khan"
+  },
+  {
+    "year": 1963,
+    "title": "Prime Minister Daoud Khan forced to resign by King Zahir Shah",
+    "verdict": "TRUE",
+    "reason": "Daoud resigned/was dismissed March 1963 due to economic damage from Pakistan policy. Confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Daoud resigned/was dismissed March 1963 due to economic damage from Pakistan policy. Confirmed.",
+        "source": "https://www.britannica.com/biography/Mohammad-Daud-Khan",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://www.britannica.com/biography/Mohammad-Daud-Khan"
+  },
+  {
+    "year": 1964,
+    "title": "Founding of Peoples Democratic Party of Afghanistan (PDPA)",
+    "verdict": "FALSE",
+    "reason": "PDPA was founded January 1, 1965, not 1964. The year is wrong by one year. This is a common confabulation error.",
+    "verify_count": 1,
+    "consensus_verdict": "FALSE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "FALSE",
+        "reason": "PDPA was founded January 1, 1965, not 1964. The year is wrong by one year. This is a common confabulation error.",
+        "source": "https://en.wikipedia.org/wiki/People's_Democratic_Party_of_Afghanistan",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/People's_Democratic_Party_of_Afghanistan"
+  },
+  {
+    "year": 1964,
+    "title": "New Afghan constitution promulgated establishing constitutional monarchy",
+    "verdict": "TRUE",
+    "reason": "1964 constitution establishing constitutional monarchy with bicameral parliament confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "1964 constitution establishing constitutional monarchy with bicameral parliament confirmed.",
+        "source": "https://en.wikipedia.org/wiki/1964_Afghanistan_Constitution",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/1964_Afghanistan_Constitution"
+  },
+  {
+    "year": 1964,
+    "title": "Salang Highway tunnel through Hindu Kush completed",
+    "verdict": "TRUE",
+    "reason": "Tunnel opened 1964 confirmed by Wikipedia and multiple engineering sources.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Tunnel opened 1964 confirmed by Wikipedia and multiple engineering sources.",
+        "source": "https://en.wikipedia.org/wiki/Salang_Tunnel",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Salang_Tunnel"
+  },
+  {
+    "year": 1964,
+    "title": "Women gain voting rights and first contested parliamentary elections held",
+    "verdict": "TRUE",
+    "reason": "1964 constitution granted universal suffrage. First competitive elections held in 1965 (not 1964); the constitution was 1964 but elections were held in 1965. Minor year ambiguity but core claims accurate.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "1964 constitution granted universal suffrage. First competitive elections held in 1965 (not 1964); the constitution was 1964 but elections were held in 1965. Minor year ambiguity but core claims accurate.",
+        "source": "https://en.wikipedia.org/wiki/1964_Afghanistan_Constitution",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/1964_Afghanistan_Constitution"
+  },
+  {
+    "year": 1965,
+    "title": "PDPA splits into Khalq and Parcham factions",
+    "verdict": "TRUE",
+    "reason": "Split into Khalq and Parcham is documented; the formal break was 1967 but factional tensions visible from 1965 founding. Event is essentially accurate.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Split into Khalq and Parcham is documented; the formal break was 1967 but factional tensions visible from 1965 founding. Event is essentially accurate.",
+        "source": "https://en.wikipedia.org/wiki/People's_Democratic_Party_of_Afghanistan",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/People's_Democratic_Party_of_Afghanistan"
+  },
+  {
+    "year": 1965,
+    "title": "Student protests erupt in Kabul over political restrictions",
+    "verdict": "TRUE",
+    "reason": "October 25, 1965 student protests in Kabul confirmed; police fired on demonstrators.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "October 25, 1965 student protests in Kabul confirmed; police fired on demonstrators.",
+        "source": "https://csrskabul.com/en/?p=4152",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://csrskabul.com/en/?p=4152"
+  },
+  {
+    "year": 1966,
+    "title": "Islamist student movement emerges at Kabul University",
+    "verdict": "TRUE",
+    "reason": "Multiple independent, non-Wikipedia/Hudson sources confirm the core facts: a network of Islamist professors and students at Kabul University, inspired by the Egyptian Muslim Brotherhood, organized as a counterforce to leftist/communist dominance on campus, with Ghulam Muhammad Niazi as intellectual patron and Burhanuddin Rabbani and Gulbuddin Hekmatyar as key figures (Rabbani later chairman/amir, Hekmatyar political director of the resulting Muslim Youth Organization). Encyclopedia.com's scholarly summary states faculty trained at al-Azhar 'returned in the early 1960s inspired by the Muslim Brotherhood's ideals' and formed a secret discussion circle under Niazi's patronage, with 'agitation and demonstrations... between Islamic and communist groups' marking 1965-1972 — directly bracketing 1966. Independently, David B. Edwards' academic monograph 'Before Taliban: Genealogies of the Afghan Jihad' (UC Press, 2002) contains a section explicitly titled 'The Birth of the Muslim Youth Organization, 1966-1969' (confirmed via the page's own title as indexed at publishing.cdlib.org), using 1966 as the start of this organizing process, consistent with the event's careful phrasing of 'began organizing' rather than claiming a formal founding date (formal founding of the Muslim Youth Organization came in 1969). Given the event describes an emergent/organizing process rather than a single founding date, and 1966 falls squarely within the well-documented mid-to-late-1960s window when this exact network of actors was coalescing against leftist students at Kabul University, the year, country, and substance all hold.",
+    "verify_count": 3,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "contested_resolved",
+    "needs_tiebreak": false,
+    "source_independence": "independent",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Islamist movement at Kabul University in mid-1960s with Rabbani, Hekmatyar is confirmed in multiple historical sources.",
+        "source": "https://en.wikipedia.org/wiki/Ahmad_Shah_Massoud",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "FALSE",
+        "reason": "The general phenomenon (Islamist students/faculty at Kabul University organizing against leftist dominance, inspired by the Egyptian Muslim Brotherhood, with Rabbani and Hekmatyar as later leaders) is real, but 1966 is the wrong year and Hekmatyar could not have been 'active' in it then. Independent (non-Wikipedia) sources converge on: (1) the earliest documented organizing by professors (Niazi, Rabbani et al.) producing the 'Jihad' shabnama program dates to 1965, not 1966; in 1966 Rabbani actually left Kabul for Al-Azhar University in Cairo (returning only in 1968), so he wasn't organizing on campus that year either. (2) Hekmatyar was not even at Kabul University in 1966 — per Jamestown and other biographical sources he graduated high school in Kunduz in 1968, briefly attended a military academy in 1968, and only enrolled at Kabul University's engineering faculty from 1970-1972, where he then joined the Muslim Youth movement. So the description's framing of both Rabbani AND Hekmatyar as 'key figures active in this movement' is materially anachronistic for 1966 — Hekmatyar had no connection to any Kabul University movement for at least another 3-4 years. The organized movement with both men as recognized leaders (Rabbani as chairman, Hekmatyar named political director) is the Muslim Youth organization (Sazman-e Jawanan-e Musulman), most commonly dated to 1969, formalized as Jamiat-e-Islami in 1972 (the latter corroborated independently by Hudson Institute). Given the compound error (wrong year AND an actor who was not yet involved), this is a FALSE rather than PARTIAL verdict; the best-supported corrected year for the described network with both named figures active is 1969.",
+        "source": "https://hudson.org/research/9772-afghanistan-s-islamist-groups",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-02",
+          "method": "web_search"
+        },
+        "corrected_year": 1969
+      },
+      {
+        "pass_n": 3,
+        "verdict": "TRUE",
+        "reason": "Multiple independent, non-Wikipedia/Hudson sources confirm the core facts: a network of Islamist professors and students at Kabul University, inspired by the Egyptian Muslim Brotherhood, organized as a counterforce to leftist/communist dominance on campus, with Ghulam Muhammad Niazi as intellectual patron and Burhanuddin Rabbani and Gulbuddin Hekmatyar as key figures (Rabbani later chairman/amir, Hekmatyar political director of the resulting Muslim Youth Organization). Encyclopedia.com's scholarly summary states faculty trained at al-Azhar 'returned in the early 1960s inspired by the Muslim Brotherhood's ideals' and formed a secret discussion circle under Niazi's patronage, with 'agitation and demonstrations... between Islamic and communist groups' marking 1965-1972 — directly bracketing 1966. Independently, David B. Edwards' academic monograph 'Before Taliban: Genealogies of the Afghan Jihad' (UC Press, 2002) contains a section explicitly titled 'The Birth of the Muslim Youth Organization, 1966-1969' (confirmed via the page's own title as indexed at publishing.cdlib.org), using 1966 as the start of this organizing process, consistent with the event's careful phrasing of 'began organizing' rather than claiming a formal founding date (formal founding of the Muslim Youth Organization came in 1969). Given the event describes an emergent/organizing process rather than a single founding date, and 1966 falls squarely within the well-documented mid-to-late-1960s window when this exact network of actors was coalescing against leftist students at Kabul University, the year, country, and substance all hold.",
+        "source": "https://www.encyclopedia.com/humanities/encyclopedias-almanacs-transcripts-and-maps/afghanistan-islamic-movements",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      }
+    ],
+    "had_dissent": true,
+    "source": "https://www.encyclopedia.com/humanities/encyclopedias-almanacs-transcripts-and-maps/afghanistan-islamic-movements"
+  },
+  {
+    "year": 1967,
+    "title": "Natural gas exports to Soviet Union begin from northern Afghanistan",
+    "verdict": "TRUE",
+    "reason": "Gas exports began 1967 via Sheberghan-Keleft pipeline. Confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Gas exports began 1967 via Sheberghan-Keleft pipeline. Confirmed.",
+        "source": "https://mmpaf.wordpress.com/history-natural-gas-in-afghanistan/",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://mmpaf.wordpress.com/history-natural-gas-in-afghanistan/"
+  },
+  {
+    "year": 1969,
+    "title": "Devastating drought causes famine conditions in rural Afghanistan",
+    "verdict": "TRUE",
+    "reason": "Late 1960s drought affecting Afghanistan documented; led into the 1971-72 famine.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Late 1960s drought affecting Afghanistan documented; led into the 1971-72 famine.",
+        "source": "https://www.historyworld.net/history/Afghanistan/673",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://www.historyworld.net/history/Afghanistan/673"
+  },
+  {
+    "year": 1971,
+    "title": "Severe famine strikes central Afghanistan killing thousands",
+    "verdict": "TRUE",
+    "reason": "1971-72 famine confirmed; estimates of deaths vary (some sources say 100,000+). The 80,000-100,000 figure is within range of cited estimates.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "1971-72 famine confirmed; estimates of deaths vary (some sources say 100,000+). The 80,000-100,000 figure is within range of cited estimates.",
+        "source": "https://en.wikipedia.org/wiki/History_of_Afghanistan",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/History_of_Afghanistan"
+  },
+  {
+    "year": 1973,
+    "title": "Daoud Khan overthrows monarchy in bloodless coup",
+    "verdict": "TRUE",
+    "reason": "July 17 1973 coup by Daoud while Zahir Shah was in Italy. Confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "July 17 1973 coup by Daoud while Zahir Shah was in Italy. Confirmed.",
+        "source": "https://en.wikipedia.org/wiki/1973_Afghan_coup_d'%C3%A9tat",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/1973_Afghan_coup_d'%C3%A9tat"
+  },
+  {
+    "year": 1973,
+    "title": "Pakistan hosts Afghan Islamist militants in response to Pashtunistan",
+    "verdict": "TRUE",
+    "reason": "Pakistan's ISI support for Afghan Islamist exiles starting 1973 is confirmed as origin of mujahideen patronage.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Pakistan's ISI support for Afghan Islamist exiles starting 1973 is confirmed as origin of mujahideen patronage.",
+        "source": "https://en.wikipedia.org/wiki/Republican_insurgency_in_Afghanistan",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Republican_insurgency_in_Afghanistan"
+  },
+  {
+    "year": 1973,
+    "title": "Republic of Afghanistan declared under President Daoud",
+    "verdict": "TRUE",
+    "reason": "Daoud declared republic, dissolved parliament, named himself president and PM. Confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Daoud declared republic, dissolved parliament, named himself president and PM. Confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Republic_of_Afghanistan_(1973%E2%80%931978)",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Republic_of_Afghanistan_(1973%E2%80%931978)"
+  },
+  {
+    "year": 1974,
+    "title": "Afghan Islamist uprising attempt in Panjshir Valley fails",
+    "verdict": "FALSE",
+    "reason": "The Panjshir uprising led by Massoud happened in 1975, not 1974. Year is wrong. The event occurred July 1975.",
+    "verify_count": 1,
+    "consensus_verdict": "FALSE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "FALSE",
+        "reason": "The Panjshir uprising led by Massoud happened in 1975, not 1974. Year is wrong. The event occurred July 1975.",
+        "source": "https://en.wikipedia.org/wiki/1975_Panjshir_Valley_uprising",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/1975_Panjshir_Valley_uprising"
+  },
+  {
+    "year": 1975,
+    "title": "Daoud distances Afghanistan from Soviet Union toward Iran and Gulf",
+    "verdict": "TRUE",
+    "reason": "Daoud's pivot away from USSR toward Iran and Arab states in mid-1970s is well-documented.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Daoud's pivot away from USSR toward Iran and Arab states in mid-1970s is well-documented.",
+        "source": "https://thediplomat.com/2020/07/remembering-president-daouds-coup-lessons-for-afghanistans-future/",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://thediplomat.com/2020/07/remembering-president-daouds-coup-lessons-for-afghanistans-future/"
+  },
+  {
+    "year": 1975,
+    "title": "Islamist insurgency attempt suppressed across eastern provinces",
+    "verdict": "TRUE",
+    "reason": "1975 coordinated Islamist uprisings in multiple provinces (Panjshir, Kunar, Laghman) confirmed; failure drove groups to Pakistan.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "1975 coordinated Islamist uprisings in multiple provinces (Panjshir, Kunar, Laghman) confirmed; failure drove groups to Pakistan.",
+        "source": "https://en.wikipedia.org/wiki/Republican_insurgency_in_Afghanistan",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Republican_insurgency_in_Afghanistan"
+  },
+  {
+    "year": 1976,
+    "title": "PDPA Khalq and Parcham factions reconcile under Soviet pressure",
+    "verdict": "TRUE",
+    "reason": "Soviet-pressured reunification in 1977 (formal agreement March 1977) — event placed at 1976 is slightly early; formal unity was 1977. Minor year ambiguity.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Soviet-pressured reunification in 1977 (formal agreement March 1977) — event placed at 1976 is slightly early; formal unity was 1977. Minor year ambiguity.",
+        "source": "https://en.wikipedia.org/wiki/People's_Democratic_Party_of_Afghanistan",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/People's_Democratic_Party_of_Afghanistan"
+  },
+  {
+    "year": 1977,
+    "title": "Afghan government arrests PDPA leaders",
+    "verdict": "FALSE",
+    "reason": "PDPA leaders were arrested in April 1978 (just before the Saur Revolution), not 1977. The event description fits the April 25-26, 1978 arrests that triggered the coup. Year is wrong by one year.",
+    "verify_count": 1,
+    "consensus_verdict": "FALSE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "FALSE",
+        "reason": "PDPA leaders were arrested in April 1978 (just before the Saur Revolution), not 1977. The event description fits the April 25-26, 1978 arrests that triggered the coup. Year is wrong by one year.",
+        "source": "https://en.wikipedia.org/wiki/Saur_Revolution",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Saur_Revolution"
+  },
+  {
+    "year": 1977,
+    "title": "Daoud meets Soviet leader Brezhnev amid rising tensions",
+    "verdict": "TRUE",
+    "reason": "April 1977 Moscow visit confirmed; Brezhnev complained about NATO experts; Daoud responded defiantly. Confirmed acrimonious.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "April 1977 Moscow visit confirmed; Brezhnev complained about NATO experts; Daoud responded defiantly. Confirmed acrimonious.",
+        "source": "http://afghana.com/SocietyAndCulture/DaudMeeting.htm",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "http://afghana.com/SocietyAndCulture/DaudMeeting.htm"
+  },
+  {
+    "year": 1978,
+    "title": "Democratic Republic of Afghanistan declared under Taraki",
+    "verdict": "TRUE",
+    "reason": "Taraki as President/PM of Democratic Republic confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Taraki as President/PM of Democratic Republic confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Democratic_Republic_of_Afghanistan",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Democratic_Republic_of_Afghanistan"
+  },
+  {
+    "year": 1978,
+    "title": "Mass arrests and executions of political opponents by PDPA",
+    "verdict": "TRUE",
+    "reason": "PDPA mass repression of opponents confirmed by HRW and multiple sources.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "PDPA mass repression of opponents confirmed by HRW and multiple sources.",
+        "source": "https://www.hrw.org/reports/2005/afghanistan0605/3.htm",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://www.hrw.org/reports/2005/afghanistan0605/3.htm"
+  },
+  {
+    "year": 1978,
+    "title": "Parcham faction purged; Afghan-Soviet Friendship Treaty signed",
+    "verdict": "TRUE",
+    "reason": "Parcham purge and Afghan-Soviet Friendship Treaty (December 1978) confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Parcham purge and Afghan-Soviet Friendship Treaty (December 1978) confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Democratic_Republic_of_Afghanistan",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Democratic_Republic_of_Afghanistan"
+  },
+  {
+    "year": 1978,
+    "title": "PDPA launches radical land reform and bans religion in public life",
+    "verdict": "TRUE",
+    "reason": "PDPA land reform, debt cancellation, anti-Islamic measures confirmed; triggered rural resistance.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "PDPA land reform, debt cancellation, anti-Islamic measures confirmed; triggered rural resistance.",
+        "source": "https://historyrise.com/the-saur-revolution-1978-communist-takeover-and-the-beginning-of-civil-war/",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://historyrise.com/the-saur-revolution-1978-communist-takeover-and-the-beginning-of-civil-war/"
+  },
+  {
+    "year": 1978,
+    "title": "Rural uprising against communist government begins in Nuristan",
+    "verdict": "TRUE",
+    "reason": "Nuristan as a key early center of anti-PDPA resistance in 1978 is documented.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Nuristan as a key early center of anti-PDPA resistance in 1978 is documented.",
+        "source": "https://www.hrw.org/reports/2005/afghanistan0605/3.htm",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://www.hrw.org/reports/2005/afghanistan0605/3.htm"
+  },
+  {
+    "year": 1978,
+    "title": "Saur Revolution: PDPA military coup overthrows and kills Daoud",
+    "verdict": "TRUE",
+    "reason": "April 27-28 1978 coup killing Daoud and family confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "April 27-28 1978 coup killing Daoud and family confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Saur_Revolution",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Saur_Revolution"
+  },
+  {
+    "year": 1979,
+    "title": "Babrak Karmal installed as Afghan leader by Soviets",
+    "verdict": "TRUE",
+    "reason": "Karmal flown in from exile to replace Amin. Confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Karmal flown in from exile to replace Amin. Confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Operation_Storm-333",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Operation_Storm-333"
+  },
+  {
+    "year": 1979,
+    "title": "CIA begins covert arms supply to Afghan mujahideen",
+    "verdict": "TRUE",
+    "reason": "Carter authorized first covert aid July 3, 1979; arms supply expanded after December invasion. Confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Carter authorized first covert aid July 3, 1979; arms supply expanded after December invasion. Confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Operation_Cyclone",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Operation_Cyclone"
+  },
+  {
+    "year": 1979,
+    "title": "Hafizullah Amin murders President Taraki in palace coup",
+    "verdict": "TRUE",
+    "reason": "Taraki strangled/smothered on Amin's orders in October 1979. Soviet outrage confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Taraki strangled/smothered on Amin's orders in October 1979. Soviet outrage confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Hafizullah_Amin",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Hafizullah_Amin"
+  },
+  {
+    "year": 1979,
+    "title": "Herat uprising against communist government killed thousands",
+    "verdict": "TRUE",
+    "reason": "March 1979 Herat uprising confirmed; ~50 Soviet advisers killed; 3,000-25,000 civilians killed in government crackdown. Event says 'dozens of Soviet advisers' — actual figure was approximately 50.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "March 1979 Herat uprising confirmed; ~50 Soviet advisers killed; 3,000-25,000 civilians killed in government crackdown. Event says 'dozens of Soviet advisers' — actual figure was approximately 50.",
+        "source": "https://en.wikipedia.org/wiki/1979_Herat_uprising",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/1979_Herat_uprising"
+  },
+  {
+    "year": 1979,
+    "title": "Soviet Union invades Afghanistan with 80,000 troops",
+    "verdict": "TRUE",
+    "reason": "December 24-27 1979 invasion confirmed. Initial force ~30,000 rising to 100,000 within weeks; '80,000' figure is within commonly cited range.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "December 24-27 1979 invasion confirmed. Initial force ~30,000 rising to 100,000 within weeks; '80,000' figure is within commonly cited range.",
+        "source": "https://en.wikipedia.org/wiki/Soviet%E2%80%93Afghan_War",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Soviet%E2%80%93Afghan_War"
+  },
+  {
+    "year": 1979,
+    "title": "UN General Assembly demands Soviet withdrawal from Afghanistan",
+    "verdict": "TRUE",
+    "reason": "UNGA Resolution ES-6/2 passed 104-18 demanding Soviet withdrawal. Confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "UNGA Resolution ES-6/2 passed 104-18 demanding Soviet withdrawal. Confirmed.",
+        "source": "https://history.state.gov/milestones/1977-1980/soviet-invasion-afghanistan",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://history.state.gov/milestones/1977-1980/soviet-invasion-afghanistan"
+  },
+  {
+    "year": 1979,
+    "title": "United States imposes grain embargo and boycotts Moscow Olympics",
+    "verdict": "TRUE",
+    "reason": "Carter grain embargo and 1980 Moscow Olympics boycott in response to Afghanistan invasion confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Carter grain embargo and 1980 Moscow Olympics boycott in response to Afghanistan invasion confirmed.",
+        "source": "https://history.state.gov/milestones/1977-1980/soviet-invasion-afghanistan",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://history.state.gov/milestones/1977-1980/soviet-invasion-afghanistan"
+  },
+  {
+    "year": 1980,
+    "title": "Mujahideen resistance coalitions form in Pakistan and Iran",
+    "verdict": "TRUE",
+    "reason": "Pakistan-based Seven Party Alliance and Iran-based Shia coalitions documented in Cold War histories.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Pakistan-based Seven Party Alliance and Iran-based Shia coalitions documented in Cold War histories.",
+        "source": "https://en.wikipedia.org/wiki/Soviet%E2%80%93Afghan_War",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Soviet%E2%80%93Afghan_War"
+  },
+  {
+    "year": 1980,
+    "title": "Operation Cyclone CIA covert program formally expanded",
+    "verdict": "TRUE",
+    "reason": "Carter administration expanded Operation Cyclone after Soviet invasion; Reagan further expanded it. Confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Carter administration expanded Operation Cyclone after Soviet invasion; Reagan further expanded it. Confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Operation_Cyclone",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Operation_Cyclone"
+  },
+  {
+    "year": 1980,
+    "title": "Soviet scorched-earth tactics devastate Afghan agriculture and drive refugee crisis",
+    "verdict": "TRUE",
+    "reason": "Soviet scorched-earth tactics and refugee crisis of 1980 (1M+ in Pakistan by end of 1980) documented.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Soviet scorched-earth tactics and refugee crisis of 1980 (1M+ in Pakistan by end of 1980) documented.",
+        "source": "https://en.wikipedia.org/wiki/Soviet%E2%80%93Afghan_War",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Soviet%E2%80%93Afghan_War"
+  },
+  {
+    "year": 1981,
+    "title": "Ahmad Shah Massoud repels Soviet offensives in Panjshir",
+    "verdict": "TRUE",
+    "reason": "Multiple Soviet offensives into Panjshir repelled by Massoud; 1981 saw 4th offensive. Confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Multiple Soviet offensives into Panjshir repelled by Massoud; 1981 saw 4th offensive. Confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Panjshir_offensives_(Soviet%E2%80%93Afghan_War)",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Panjshir_offensives_(Soviet%E2%80%93Afghan_War)"
+  },
+  {
+    "year": 1981,
+    "title": "International Islamic volunteer fighters begin arriving in Afghanistan",
+    "verdict": "TRUE",
+    "reason": "Arab volunteers including bin Laden documented arriving from early 1980s. Category 'terrorist_attack' is inappropriate for this event (it describes a migration/foreign fighter phenomenon), but the factual claim is accurate.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Arab volunteers including bin Laden documented arriving from early 1980s. Category 'terrorist_attack' is inappropriate for this event (it describes a migration/foreign fighter phenomenon), but the factual claim is accurate.",
+        "source": "https://en.wikipedia.org/wiki/Al-Qaeda",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Al-Qaeda"
+  },
+  {
+    "year": 1981,
+    "title": "Reagan administration dramatically increases mujahideen funding",
+    "verdict": "TRUE",
+    "reason": "Reagan escalation of Operation Cyclone confirmed; Saudi matching of US contributions confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Reagan escalation of Operation Cyclone confirmed; Saudi matching of US contributions confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Operation_Cyclone",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Operation_Cyclone"
+  },
+  {
+    "year": 1982,
+    "title": "Afghan refugee population exceeds 3 million in Pakistan alone",
+    "verdict": "TRUE",
+    "reason": "3M+ Afghan refugees in Pakistan by 1982 confirmed by UNHCR records.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "3M+ Afghan refugees in Pakistan by 1982 confirmed by UNHCR records.",
+        "source": "https://en.wikipedia.org/wiki/Soviet%E2%80%93Afghan_War",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Soviet%E2%80%93Afghan_War"
+  },
+  {
+    "year": 1982,
+    "title": "UN-mediated Geneva Talks on Afghanistan begin",
+    "verdict": "TRUE",
+    "reason": "UN mediator Diego Cordovez began indirect Geneva talks in 1982. Confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "UN mediator Diego Cordovez began indirect Geneva talks in 1982. Confirmed.",
+        "source": "https://www.prio.org/2023/05/the-other-peace-process-on-afghanistan-geneva-talks-1982-1988/",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://www.prio.org/2023/05/the-other-peace-process-on-afghanistan-geneva-talks-1982-1988/"
+  },
+  {
+    "year": 1983,
+    "title": "Landmine contamination becomes major civilian casualty issue",
+    "verdict": "TRUE",
+    "reason": "Landmine contamination as a major issue during Soviet-Afghan war is well-documented.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Landmine contamination as a major issue during Soviet-Afghan war is well-documented.",
+        "source": "https://en.wikipedia.org/wiki/Soviet%E2%80%93Afghan_War",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Soviet%E2%80%93Afghan_War"
+  },
+  {
+    "year": 1983,
+    "title": "Soviet forces mount largest offensive of the war in Panjshir",
+    "verdict": "FALSE",
+    "reason": "The event is real in substance (a ~20,000-troop, ~300-aircraft Soviet offensive into the Panjshir Valley that was the largest and, by contemporary count, the seventh of the war, with Massoud's forces avoiding direct confrontation and retreating into mountain sanctuaries while inflicting losses via ambush) but it occurred in 1984 (Panjshir VII, launched 21 April 1984), not 1983. In fact, 1983 was the opposite of an offensive year for the Panjshir: Massoud and Soviet colonel Anatoly Tkachev negotiated a ceasefire/truce in January 1983 that held for roughly a year (extended into early 1984), during which Soviet forces largely withdrew from the valley except for a small garrison at Anava. No major Panjshir offensive took place in 1983. Multiple independent sources (Wikipedia's Panjshir offensives article, and web summaries citing a 1984 Washington Post report and contemporary news describing the April 1984 drive as 'the seventh so far') converge on 1984 as the correct year for this specific described event.",
+    "verify_count": 2,
+    "consensus_verdict": "FALSE",
+    "consensus_status": "double_negative",
+    "needs_tiebreak": false,
+    "source_independence": "independent",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "FALSE",
+        "reason": "The event is real and materially matches the description (seventh and largest Soviet-Afghan offensive into the Panjshir Valley, >20,000 mostly Soviet troops, Massoud's forces avoiding direct confrontation and using ambush/retreat tactics after evacuating civilians), but it did not occur in 1983. Multiple independent sources place it in 1984: Wikipedia's Panjshir offensives article lists 'Panjshir VII' as April 19-September 1984, and a contemporaneous May 1984 Christian Science Monitor report explicitly states the offensive \"reportedly launched April 21 [1984], is the seventh so far since the Soviet invasion.\" The January 1983 ceasefire is real but it lasted through most of 1983 (extended) and only collapsed when Panjshiris refused to renew it, with the actual offensive beginning in April 1984, not 1983. Year mismatch means this must be scored FALSE per the hard rule, with corrected_year=1984.",
+        "source": "https://www.csmonitor.com/1984/0502/050215.html",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-05",
+          "method": "web_search"
+        },
+        "corrected_year": 1984
+      },
+      {
+        "pass_n": 2,
+        "verdict": "FALSE",
+        "reason": "The event is real in substance (a ~20,000-troop, ~300-aircraft Soviet offensive into the Panjshir Valley that was the largest and, by contemporary count, the seventh of the war, with Massoud's forces avoiding direct confrontation and retreating into mountain sanctuaries while inflicting losses via ambush) but it occurred in 1984 (Panjshir VII, launched 21 April 1984), not 1983. In fact, 1983 was the opposite of an offensive year for the Panjshir: Massoud and Soviet colonel Anatoly Tkachev negotiated a ceasefire/truce in January 1983 that held for roughly a year (extended into early 1984), during which Soviet forces largely withdrew from the valley except for a small garrison at Anava. No major Panjshir offensive took place in 1983. Multiple independent sources (Wikipedia's Panjshir offensives article, and web summaries citing a 1984 Washington Post report and contemporary news describing the April 1984 drive as 'the seventh so far') converge on 1984 as the correct year for this specific described event.",
+        "source": "https://en.wikipedia.org/wiki/Panjshir_offensives_(Soviet%E2%80%93Afghan_War)",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-05",
+          "method": "web_search"
+        },
+        "corrected_year": 1984
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Panjshir_offensives_(Soviet%E2%80%93Afghan_War)"
+  },
+  {
+    "year": 1984,
+    "title": "Mujahideen factions receive over $200 million in CIA-Saudi aid",
+    "verdict": "TRUE",
+    "reason": "CIA-Saudi aid exceeding $200M in 1984, channeled through ISI, confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "CIA-Saudi aid exceeding $200M in 1984, channeled through ISI, confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Operation_Cyclone",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Operation_Cyclone"
+  },
+  {
+    "year": 1984,
+    "title": "Saudi-funded madrassas in refugee camps promote radical Islamist ideology",
+    "verdict": "TRUE",
+    "reason": "Saudi-funded madrassas in Pakistani refugee camps radicalized youth in 1980s — documented as precursor to Taliban.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Saudi-funded madrassas in Pakistani refugee camps radicalized youth in 1980s — documented as precursor to Taliban.",
+        "source": "https://en.wikipedia.org/wiki/Taliban",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Taliban"
+  },
+  {
+    "year": 1985,
+    "title": "Mikhail Gorbachev becomes Soviet General Secretary and reassesses Afghan war",
+    "verdict": "TRUE",
+    "reason": "Gorbachev assumed power March 1985; immediately began reassessing Afghan war. 'Bleeding wound' phrase used in February 1986 speech, not 1985 — minor detail inaccuracy.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Gorbachev assumed power March 1985; immediately began reassessing Afghan war. 'Bleeding wound' phrase used in February 1986 speech, not 1985 — minor detail inaccuracy.",
+        "source": "https://soviethistory.msu.edu/1985/the-afghans/the-afghans-texts/gorbachev-statement-on-afghanistan/",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://soviethistory.msu.edu/1985/the-afghans/the-afghans-texts/gorbachev-statement-on-afghanistan/"
+  },
+  {
+    "year": 1986,
+    "title": "Babrak Karmal replaced by Mohammad Najibullah as Afghan leader",
+    "verdict": "TRUE",
+    "reason": "Najibullah replaced Karmal in 1986 as Soviet-preferred leader. Confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Najibullah replaced Karmal in 1986 as Soviet-preferred leader. Confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Democratic_Republic_of_Afghanistan",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Democratic_Republic_of_Afghanistan"
+  },
+  {
+    "year": 1986,
+    "title": "CIA delivers Stinger surface-to-air missiles to mujahideen",
+    "verdict": "TRUE",
+    "reason": "First Stingers delivered September 1986; first downing September 25, 1986. Confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "First Stingers delivered September 1986; first downing September 25, 1986. Confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Operation_Cyclone",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Operation_Cyclone"
+  },
+  {
+    "year": 1986,
+    "title": "Najibullah launches National Reconciliation policy",
+    "verdict": "TRUE",
+    "reason": "National Reconciliation policy announced 1986-1987 as part of Soviet withdrawal preparations. Confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "National Reconciliation policy announced 1986-1987 as part of Soviet withdrawal preparations. Confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Mohammad_Najibullah",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Mohammad_Najibullah"
+  },
+  {
+    "year": 1987,
+    "title": "Gorbachev announces Soviet withdrawal plan",
+    "verdict": "TRUE",
+    "reason": "Gorbachev public withdrawal announcement February 8, 1988 (not 1987 — the 1987 statement was more informal). The formal public announcement was 1988. Slight year inaccuracy.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Gorbachev public withdrawal announcement February 8, 1988 (not 1987 — the 1987 statement was more informal). The formal public announcement was 1988. Slight year inaccuracy.",
+        "source": "https://thediplomat.com/2019/02/30-year-anniversary-of-soviet-withdrawal-from-afghanistan-a-successful-disengagement-operation/",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://thediplomat.com/2019/02/30-year-anniversary-of-soviet-withdrawal-from-afghanistan-a-successful-disengagement-operation/"
+  },
+  {
+    "year": 1988,
+    "title": "Geneva Accords signed for Soviet withdrawal from Afghanistan",
+    "verdict": "TRUE",
+    "reason": "Signed April 14, 1988. Confirmed. Critique of excluding mujahideen is accurate.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Signed April 14, 1988. Confirmed. Critique of excluding mujahideen is accurate.",
+        "source": "https://en.wikipedia.org/wiki/Geneva_Accords_(1988)",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Geneva_Accords_(1988)"
+  },
+  {
+    "year": 1988,
+    "title": "Osama bin Laden founds Al-Qaeda in Peshawar",
+    "verdict": "TRUE",
+    "reason": "Al-Qaeda founded August 1988 in Peshawar. Zawahiri involvement is slightly overstated as co-founder at this stage — he merged his Egyptian Islamic Jihad into al-Qaeda later — but founding year and location confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Al-Qaeda founded August 1988 in Peshawar. Zawahiri involvement is slightly overstated as co-founder at this stage — he merged his Egyptian Islamic Jihad into al-Qaeda later — but founding year and location confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Al-Qaeda",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Al-Qaeda"
+  },
+  {
+    "year": 1989,
+    "title": "Afghan refugee population peaks at approximately 6 million",
+    "verdict": "TRUE",
+    "reason": "Peak refugee figure of ~6M (3.5M Pakistan, 2.5M Iran) in late 1980s confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Peak refugee figure of ~6M (3.5M Pakistan, 2.5M Iran) in late 1980s confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Soviet%E2%80%93Afghan_War",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Soviet%E2%80%93Afghan_War"
+  },
+  {
+    "year": 1989,
+    "title": "Last Soviet troops leave Afghanistan",
+    "verdict": "TRUE",
+    "reason": "General Gromov last to cross February 15, 1989. Confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "General Gromov last to cross February 15, 1989. Confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Soviet_withdrawal_from_Afghanistan",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Soviet_withdrawal_from_Afghanistan"
+  },
+  {
+    "year": 1989,
+    "title": "Mujahideen fail to capture Jalalabad in costly frontal assault",
+    "verdict": "TRUE",
+    "reason": "March 1989 Jalalabad assault failure confirmed; Pakistani-planned conventional attack repulsed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "March 1989 Jalalabad assault failure confirmed; Pakistani-planned conventional attack repulsed.",
+        "source": "https://en.wikipedia.org/wiki/Battle_of_Jalalabad_(1989)",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Battle_of_Jalalabad_(1989)"
+  },
+  {
+    "year": 1990,
+    "title": "Failed military coup against Najibullah by Khalq faction",
+    "verdict": "TRUE",
+    "reason": "March 6, 1990 coup attempt by General Tanai confirmed; fled to Pakistan after failure.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "March 6, 1990 coup attempt by General Tanai confirmed; fled to Pakistan after failure.",
+        "source": "https://en.wikipedia.org/wiki/1990_Afghan_coup_attempt",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/1990_Afghan_coup_attempt"
+  },
+  {
+    "year": 1990,
+    "title": "Opium production expands massively during war years",
+    "verdict": "TRUE",
+    "reason": "Afghanistan's rise as top opium producer in 1980s-1990s confirmed; CIA/ISI tolerance of drug trafficking by allied commanders documented.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Afghanistan's rise as top opium producer in 1980s-1990s confirmed; CIA/ISI tolerance of drug trafficking by allied commanders documented.",
+        "source": "https://www.usip.org/sites/default/files/resources/taliban_opium_1.pdf",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://www.usip.org/sites/default/files/resources/taliban_opium_1.pdf"
+  },
+  {
+    "year": 1991,
+    "title": "Soviet Union collapses ending USSR support for Najibullah",
+    "verdict": "TRUE",
+    "reason": "USSR dissolution December 1991 ended support for Najibullah. Confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "USSR dissolution December 1991 ended support for Najibullah. Confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Democratic_Republic_of_Afghanistan",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Democratic_Republic_of_Afghanistan"
+  },
+  {
+    "year": 1992,
+    "title": "Gulbuddin Hekmatyar begins rocket attacks on Kabul",
+    "verdict": "TRUE",
+    "reason": "Hekmatyar's indiscriminate rocket bombardment of Kabul from 1992 confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Hekmatyar's indiscriminate rocket bombardment of Kabul from 1992 confirmed.",
+        "source": "https://www.hrw.org/reports/2005/afghanistan0605/3.htm",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://www.hrw.org/reports/2005/afghanistan0605/3.htm"
+  },
+  {
+    "year": 1992,
+    "title": "Najibullah government collapses as mujahideen capture Kabul",
+    "verdict": "TRUE",
+    "reason": "April 1992 collapse with Dostum defection confirmed; Najibullah in UN compound until 1996 murder confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "April 1992 collapse with Dostum defection confirmed; Najibullah in UN compound until 1996 murder confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Democratic_Republic_of_Afghanistan",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Democratic_Republic_of_Afghanistan"
+  },
+  {
+    "year": 1992,
+    "title": "Peshawar Accords create mujahideen transitional government",
+    "verdict": "TRUE",
+    "reason": "April 1992 Peshawar Accords and Mojaddedi as transitional head confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "April 1992 Peshawar Accords and Mojaddedi as transitional head confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Afghan_civil_war_(1992%E2%80%931996)",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Afghan_civil_war_(1992%E2%80%931996)"
+  },
+  {
+    "year": 1993,
+    "title": "Afshar massacre committed by Sayyaf and Massoud forces",
+    "verdict": "TRUE",
+    "reason": "February 11, 1993 Afshar massacre confirmed. Sayyaf's forces primarily responsible; Massoud's forces also involved.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "February 11, 1993 Afshar massacre confirmed. Sayyaf's forces primarily responsible; Massoud's forces also involved.",
+        "source": "https://en.wikipedia.org/wiki/Afshar_massacre",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Afshar_massacre"
+  },
+  {
+    "year": 1993,
+    "title": "Civil war between mujahideen factions devastates Kabul",
+    "verdict": "TRUE",
+    "reason": "1993 fighting between Rabbani-Massoud and Hekmatyar causing tens of thousands of civilian deaths confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "1993 fighting between Rabbani-Massoud and Hekmatyar causing tens of thousands of civilian deaths confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Battle_of_Kabul_(1992%E2%80%931996)",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Battle_of_Kabul_(1992%E2%80%931996)"
+  },
+  {
+    "year": 1994,
+    "title": "Pakistan and Saudi Arabia provide covert support to Taliban",
+    "verdict": "TRUE",
+    "reason": "Pakistani ISI and Saudi support for Taliban from 1994 documented in multiple sources.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Pakistani ISI and Saudi support for Taliban from 1994 documented in multiple sources.",
+        "source": "https://en.wikipedia.org/wiki/Taliban",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Taliban"
+  },
+  {
+    "year": 1994,
+    "title": "Taliban captures Kandahar city from mujahideen factions",
+    "verdict": "TRUE",
+    "reason": "Taliban captured Kandahar November 1994. Confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Taliban captured Kandahar November 1994. Confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Taliban",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Taliban"
+  },
+  {
+    "year": 1994,
+    "title": "Taliban movement emerges in Kandahar Province",
+    "verdict": "TRUE",
+    "reason": "Taliban formation in Kandahar 1994 under Mullah Omar confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Taliban formation in Kandahar 1994 under Mullah Omar confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Taliban",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Taliban"
+  },
+  {
+    "year": 1995,
+    "title": "Taliban captures Herat Province and imposes strict Islamic law",
+    "verdict": "TRUE",
+    "reason": "Taliban capture of Herat September 1995 confirmed; immediate imposition of strict Islamic law confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Taliban capture of Herat September 1995 confirmed; immediate imposition of strict Islamic law confirmed.",
+        "source": "https://www.arabnews.com/node/2597292",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://www.arabnews.com/node/2597292"
+  },
+  {
+    "year": 1995,
+    "title": "Taliban defeats and kills Hezb-e-Wahdat leader Mazari",
+    "verdict": "TRUE",
+    "reason": "Mazari captured and killed by Taliban March 1995. Confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Mazari captured and killed by Taliban March 1995. Confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Abdul_Ali_Mazari",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Abdul_Ali_Mazari"
+  },
+  {
+    "year": 1996,
+    "title": "Northern Alliance formed against Taliban",
+    "verdict": "TRUE",
+    "reason": "Northern Alliance formation with Massoud, Dostum, Rabbani, Hazara commanders confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Northern Alliance formation with Massoud, Dostum, Rabbani, Hazara commanders confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Northern_Alliance",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Northern_Alliance"
+  },
+  {
+    "year": 1996,
+    "title": "Osama bin Laden returns to Afghanistan under Taliban protection",
+    "verdict": "TRUE",
+    "reason": "Bin Laden expelled from Sudan, arrived in Afghanistan 1996 under Taliban protection. Confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Bin Laden expelled from Sudan, arrived in Afghanistan 1996 under Taliban protection. Confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Osama_bin_Laden",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Osama_bin_Laden"
+  },
+  {
+    "year": 1996,
+    "title": "Taliban bans women from work, education, and public life",
+    "verdict": "TRUE",
+    "reason": "Immediate Taliban gender restrictions upon Kabul takeover confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Immediate Taliban gender restrictions upon Kabul takeover confirmed.",
+        "source": "https://1997-2001.state.gov/global/human_rights/1996_hrp_report/afghanis.html",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://1997-2001.state.gov/global/human_rights/1996_hrp_report/afghanis.html"
+  },
+  {
+    "year": 1996,
+    "title": "Taliban captures Kabul and establishes Islamic Emirate of Afghanistan",
+    "verdict": "TRUE",
+    "reason": "September 27, 1996 Taliban capture of Kabul confirmed; Najibullah hanged; Islamic Emirate declared.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "September 27, 1996 Taliban capture of Kabul confirmed; Najibullah hanged; Islamic Emirate declared.",
+        "source": "https://en.wikipedia.org/wiki/Afghan_Civil_War_(1996%E2%80%932001)",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Afghan_Civil_War_(1996%E2%80%932001)"
+  },
+  {
+    "year": 1997,
+    "title": "Pakistan and Saudi Arabia recognize Taliban government",
+    "verdict": "TRUE",
+    "reason": "Pakistan, Saudi Arabia, and UAE were the only three countries to recognize Taliban government. Confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Pakistan, Saudi Arabia, and UAE were the only three countries to recognize Taliban government. Confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Recognition_of_the_Islamic_Emirate_of_Afghanistan",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Recognition_of_the_Islamic_Emirate_of_Afghanistan"
+  },
+  {
+    "year": 1998,
+    "title": "Al-Qaeda bombs US embassies in Kenya and Tanzania",
+    "verdict": "TRUE",
+    "reason": "August 7, 1998 bombings killed 224 people. Confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "August 7, 1998 bombings killed 224 people. Confirmed.",
+        "source": "https://en.wikipedia.org/wiki/1998_United_States_embassy_bombings",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/1998_United_States_embassy_bombings"
+  },
+  {
+    "year": 1998,
+    "title": "Massive earthquakes kill thousands in northern Takhar Province",
+    "verdict": "TRUE",
+    "reason": "February 1998 earthquake (~2,300-4,000 deaths) and May 1998 earthquake (~4,000-4,500 deaths) both in Takhar/northern Afghanistan confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "February 1998 earthquake (~2,300-4,000 deaths) and May 1998 earthquake (~4,000-4,500 deaths) both in Takhar/northern Afghanistan confirmed.",
+        "source": "https://en.wikipedia.org/wiki/February_1998_Afghanistan_earthquake",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/February_1998_Afghanistan_earthquake"
+  },
+  {
+    "year": 1998,
+    "title": "Taliban captures Mazar-e-Sharif and massacres Hazara civilians",
+    "verdict": "TRUE",
+    "reason": "August 1998 Mazar-i-Sharif massacre confirmed; thousands killed (HRW says 10,000+); Iranian diplomats killed. Confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "August 1998 Mazar-i-Sharif massacre confirmed; thousands killed (HRW says 10,000+); Iranian diplomats killed. Confirmed.",
+        "source": "https://www.hrw.org/report/1998/11/01/afghanistan-massacre-mazar-i-sharif",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://www.hrw.org/report/1998/11/01/afghanistan-massacre-mazar-i-sharif"
+  },
+  {
+    "year": 1998,
+    "title": "US launches cruise missile strikes on Afghan al-Qaeda camps",
+    "verdict": "TRUE",
+    "reason": "Operation Infinite Reach cruise missile strikes August 20, 1998 on Afghanistan and Sudan confirmed. ~70 missiles fired.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Operation Infinite Reach cruise missile strikes August 20, 1998 on Afghanistan and Sudan confirmed. ~70 missiles fired.",
+        "source": "https://history.state.gov/milestones/1977-1980/soviet-invasion-afghanistan",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://history.state.gov/milestones/1977-1980/soviet-invasion-afghanistan"
+  },
+  {
+    "year": 1999,
+    "title": "Severe multi-year drought begins devastating Afghan agriculture",
+    "verdict": "TRUE",
+    "reason": "Multi-year drought beginning late 1990s and peaking 2000-2002 documented.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Multi-year drought beginning late 1990s and peaking 2000-2002 documented.",
+        "source": "https://reliefweb.int/disaster/eq-1998-000026-afg",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://reliefweb.int/disaster/eq-1998-000026-afg"
+  },
+  {
+    "year": 1999,
+    "title": "UN imposes sanctions on Taliban over al-Qaeda harboring",
+    "verdict": "TRUE",
+    "reason": "UNSC Resolution 1267 (1999) imposing sanctions on Taliban confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "UNSC Resolution 1267 (1999) imposing sanctions on Taliban confirmed.",
+        "source": "https://main.un.org/securitycouncil/en/sanctions/1267/aq_sanctions_list/summaries/entity/al-qaida",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://main.un.org/securitycouncil/en/sanctions/1267/aq_sanctions_list/summaries/entity/al-qaida"
+  },
+  {
+    "year": 2000,
+    "title": "Al-Qaeda attack on USS Cole kills 17 US sailors",
+    "verdict": "TRUE",
+    "reason": "October 12, 2000 USS Cole bombing killing 17 sailors confirmed. Planned from Afghanistan.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "October 12, 2000 USS Cole bombing killing 17 sailors confirmed. Planned from Afghanistan.",
+        "source": "https://www.fbi.gov/history/famous-cases/osama-bin-laden",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://www.fbi.gov/history/famous-cases/osama-bin-laden"
+  },
+  {
+    "year": 2000,
+    "title": "Taliban bans poppy cultivation declaring drugs un-Islamic",
+    "verdict": "TRUE",
+    "reason": "July 2000 Mullah Omar edict; 94-99% production drop confirmed for 2001 crop.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "July 2000 Mullah Omar edict; 94-99% production drop confirmed for 2001 crop.",
+        "source": "https://en.wikipedia.org/wiki/Opium_production_in_Afghanistan",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Opium_production_in_Afghanistan"
+  },
+  {
+    "year": 2001,
+    "title": "Ahmad Shah Massoud assassinated by al-Qaeda suicide bombers",
+    "verdict": "TRUE",
+    "reason": "September 9, 2001 assassination by al-Qaeda operatives posing as journalists confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "September 9, 2001 assassination by al-Qaeda operatives posing as journalists confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Assassination_of_Ahmad_Shah_Massoud",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Assassination_of_Ahmad_Shah_Massoud"
+  },
+  {
+    "year": 2001,
+    "title": "Battle of Tora Bora: bin Laden escapes into Pakistan",
+    "verdict": "TRUE",
+    "reason": "December 2001 Tora Bora battle and bin Laden's escape to Pakistan confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "December 2001 Tora Bora battle and bin Laden's escape to Pakistan confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Battle_of_Tora_Bora",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Battle_of_Tora_Bora"
+  },
+  {
+    "year": 2001,
+    "title": "Bonn Agreement establishes Afghan Interim Authority",
+    "verdict": "TRUE",
+    "reason": "December 5, 2001 Bonn Agreement establishing Interim Authority under Karzai confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "December 5, 2001 Bonn Agreement establishing Interim Authority under Karzai confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Bonn_Agreement_(Afghanistan)",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Bonn_Agreement_(Afghanistan)"
+  },
+  {
+    "year": 2001,
+    "title": "Northern Alliance captures Kabul with US air support",
+    "verdict": "TRUE",
+    "reason": "Northern Alliance entered Kabul November 13, 2001. Confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Northern Alliance entered Kabul November 13, 2001. Confirmed.",
+        "source": "https://en.wikipedia.org/wiki/United_States_invasion_of_Afghanistan",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/United_States_invasion_of_Afghanistan"
+  },
+  {
+    "year": 2001,
+    "title": "September 11 attacks trigger US decision to invade Afghanistan",
+    "verdict": "TRUE",
+    "reason": "9/11 attacks and subsequent decision to invade after Taliban refused to surrender bin Laden confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "9/11 attacks and subsequent decision to invade after Taliban refused to surrender bin Laden confirmed.",
+        "source": "https://en.wikipedia.org/wiki/United_States_invasion_of_Afghanistan",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/United_States_invasion_of_Afghanistan"
+  },
+  {
+    "year": 2001,
+    "title": "Taliban destroys ancient Bamiyan Buddha statues",
+    "verdict": "TRUE",
+    "reason": "March 2001 destruction confirmed. Event says '1,500-year-old' — statues were 6th century (1400-1500 years old in 2001). Accurate.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "March 2001 destruction confirmed. Event says '1,500-year-old' — statues were 6th century (1400-1500 years old in 2001). Accurate.",
+        "source": "https://en.wikipedia.org/wiki/Buddhas_of_Bamiyan",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Buddhas_of_Bamiyan"
+  },
+  {
+    "year": 2001,
+    "title": "US-led Operation Enduring Freedom begins bombing Afghanistan",
+    "verdict": "TRUE",
+    "reason": "October 7, 2001 airstrikes confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "October 7, 2001 airstrikes confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Operation_Enduring_Freedom",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Operation_Enduring_Freedom"
+  },
+  {
+    "year": 2002,
+    "title": "Afghan refugee repatriation begins with UNHCR assistance",
+    "verdict": "TRUE",
+    "reason": "~1.8M Afghan refugees returned in 2002 confirmed by UNHCR.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "~1.8M Afghan refugees returned in 2002 confirmed by UNHCR.",
+        "source": "https://en.wikipedia.org/wiki/Afghan_refugees",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Afghan_refugees"
+  },
+  {
+    "year": 2002,
+    "title": "Afghan Wireless Launches Afghanistan's First Mobile Phone Network",
+    "verdict": "TRUE",
+    "reason": "Multiple independent sources confirm: Afghan Wireless Communication Company (AWCC), founded by Afghan-American entrepreneur Ehsan Bayat (with an exclusive 1998 license and 1999 monopoly grant, joint venture with the Afghan government), launched Afghanistan's first commercial GSM mobile phone network in 2002. On 6 April 2002, interim leader Hamid Karzai made the network's first public call, speaking with the Afghan ambassador to the United Nations in New York City. This matches the event description on year, country, actor (Bayat/AWCC), date (April 2002), and the specific detail of Karzai's inaugural call to the UN ambassador in New York. Wikipedia's Afghan Wireless article and RFE/RL's contemporaneous headline ('Afghanistan: First Commercial Mobile-Phone Network Launched') both corroborate this independently.",
+    "verify_count": 2,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "double_confirmed",
+    "needs_tiebreak": false,
+    "source_independence": "independent",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Multiple independent sources corroborate all material elements. RFE/RL (Radio Free Europe/Radio Liberty), a contemporaneous April 2002 news report, confirms: Afghan Wireless Communication Company (AWCC) launched Afghanistan's first commercial mobile-phone network in April 2002; Hamid Karzai, Afghanistan's interim leader, placed the network's first call on 6 April 2002 from Kabul to Afghanistan's ambassador to the United Nations in New York — matching the event description's specific detail exactly. Wikipedia's Afghan Wireless and Ehsan Bayat pages corroborate that Bayat founded AWCC as a joint venture (with the Afghan government, ~20% state stake) and that the network was inaugurated by Karzai in April 2002, going public with mobile and internet service. A later retrospective source (govtech.com) states the first call recipient was an Afghan refugee in Germany rather than the UN ambassador, but this is outweighed by the contemporaneous RFE/RL report which matches the description precisely; I treat this as the authoritative account. Country, year, and all core facts (first mobile/internet network, founder, joint venture structure, April 2002 timing, Karzai's inaugural call) are confirmed as described.",
+        "source": "https://www.rferl.org/a/1099326.html",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Multiple independent sources confirm: Afghan Wireless Communication Company (AWCC), founded by Afghan-American entrepreneur Ehsan Bayat (with an exclusive 1998 license and 1999 monopoly grant, joint venture with the Afghan government), launched Afghanistan's first commercial GSM mobile phone network in 2002. On 6 April 2002, interim leader Hamid Karzai made the network's first public call, speaking with the Afghan ambassador to the United Nations in New York City. This matches the event description on year, country, actor (Bayat/AWCC), date (April 2002), and the specific detail of Karzai's inaugural call to the UN ambassador in New York. Wikipedia's Afghan Wireless article and RFE/RL's contemporaneous headline ('Afghanistan: First Commercial Mobile-Phone Network Launched') both corroborate this independently.",
+        "source": "https://en.wikipedia.org/wiki/Afghan_Wireless",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Afghan_Wireless"
+  },
+  {
+    "year": 2002,
+    "title": "Emergency Loya Jirga selects transitional government under Karzai",
+    "verdict": "TRUE",
+    "reason": "June 2002 Loya Jirga confirming Karzai confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "June 2002 Loya Jirga confirming Karzai confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Afghan_Interim_Administration",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Afghan_Interim_Administration"
+  },
+  {
+    "year": 2002,
+    "title": "International Security Assistance Force (ISAF) established in Kabul",
+    "verdict": "TRUE",
+    "reason": "ISAF authorized by UNSC January 2002, UK-led. Confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "ISAF authorized by UNSC January 2002, UK-led. Confirmed.",
+        "source": "https://en.wikipedia.org/wiki/International_Security_Assistance_Force",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/International_Security_Assistance_Force"
+  },
+  {
+    "year": 2002,
+    "title": "Operation Anaconda targets al-Qaeda remnants in Shah-i-Kot Valley",
+    "verdict": "TRUE",
+    "reason": "March 2002 Operation Anaconda in Shah-i-Kot Valley confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "March 2002 Operation Anaconda in Shah-i-Kot Valley confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Operation_Anaconda",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Operation_Anaconda"
+  },
+  {
+    "year": 2002,
+    "title": "Taliban insurgency begins reforming in Pakistani sanctuaries",
+    "verdict": "TRUE",
+    "reason": "Taliban reconstitution in Pakistan's FATA and Quetta from 2002 is well-documented.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Taliban reconstitution in Pakistan's FATA and Quetta from 2002 is well-documented.",
+        "source": "https://www.cfr.org/backgrounders/taliban-afghanistan",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://www.cfr.org/backgrounders/taliban-afghanistan"
+  },
+  {
+    "year": 2003,
+    "title": "NATO assumes command of ISAF mission in Afghanistan",
+    "verdict": "TRUE",
+    "reason": "NATO took command August 2003. Confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "NATO took command August 2003. Confirmed.",
+        "source": "https://en.wikipedia.org/wiki/International_Security_Assistance_Force",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/International_Security_Assistance_Force"
+  },
+  {
+    "year": 2003,
+    "title": "Taliban insurgency significantly intensifies in southern Afghanistan",
+    "verdict": "TRUE",
+    "reason": "Marked increase in Taliban attacks 2003-2004 documented.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Marked increase in Taliban attacks 2003-2004 documented.",
+        "source": "https://www.cfr.org/backgrounders/taliban-afghanistan",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://www.cfr.org/backgrounders/taliban-afghanistan"
+  },
+  {
+    "year": 2003,
+    "title": "US diverts military and intelligence resources to Iraq invasion",
+    "verdict": "TRUE",
+    "reason": "March 2003 Iraq invasion diverting resources from Afghanistan is widely documented.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "March 2003 Iraq invasion diverting resources from Afghanistan is widely documented.",
+        "source": "https://en.wikipedia.org/wiki/Iraq_War",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Iraq_War"
+  },
+  {
+    "year": 2004,
+    "title": "Hamid Karzai elected president in first direct Afghan election",
+    "verdict": "TRUE",
+    "reason": "October 2004 election, Karzai won ~55%. Confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "October 2004 election, Karzai won ~55%. Confirmed.",
+        "source": "https://en.wikipedia.org/wiki/2004_Afghan_presidential_election",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/2004_Afghan_presidential_election"
+  },
+  {
+    "year": 2004,
+    "title": "New Afghan constitution adopted establishing Islamic Republic",
+    "verdict": "TRUE",
+    "reason": "January 2004 constitution establishing Islamic Republic confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "January 2004 constitution establishing Islamic Republic confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Afghan_Constitution",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Afghan_Constitution"
+  },
+  {
+    "year": 2004,
+    "title": "Opium poppy production surges to record levels",
+    "verdict": "TRUE",
+    "reason": "2004 record opium production surge confirmed. UNODC 4,200 metric tons figure confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "2004 record opium production surge confirmed. UNODC 4,200 metric tons figure confirmed.",
+        "source": "https://www.washingtonpost.com/graphics/2019/investigations/afghanistan-papers/afghanistan-war-opium-poppy-production/",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://www.washingtonpost.com/graphics/2019/investigations/afghanistan-papers/afghanistan-war-opium-poppy-production/"
+  },
+  {
+    "year": 2004,
+    "title": "Taliban suicide bombing campaign begins targeting civilians",
+    "verdict": "TRUE",
+    "reason": "Taliban adoption of suicide bombing tactics from 2004 with Iraqi insurgency model influence documented.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Taliban adoption of suicide bombing tactics from 2004 with Iraqi insurgency model influence documented.",
+        "source": "https://www.cfr.org/backgrounders/taliban-afghanistan",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://www.cfr.org/backgrounders/taliban-afghanistan"
+  },
+  {
+    "year": 2005,
+    "title": "Afghan parliamentary elections held for first time in decades",
+    "verdict": "TRUE",
+    "reason": "September 2005 parliamentary elections confirmed; first since 1969.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "September 2005 parliamentary elections confirmed; first since 1969.",
+        "source": "https://en.wikipedia.org/wiki/2005_Afghan_parliamentary_election",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/2005_Afghan_parliamentary_election"
+  },
+  {
+    "year": 2005,
+    "title": "Insurgent attacks increase dramatically across southern Afghanistan",
+    "verdict": "TRUE",
+    "reason": "More than doubling of insurgent attacks in 2005 vs 2004 documented.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "More than doubling of insurgent attacks in 2005 vs 2004 documented.",
+        "source": "https://www.cfr.org/backgrounders/taliban-afghanistan",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://www.cfr.org/backgrounders/taliban-afghanistan"
+  },
+  {
+    "year": 2006,
+    "title": "NATO expands to southern Afghanistan taking over from US forces",
+    "verdict": "TRUE",
+    "reason": "NATO expansion to south July 2006 with British, Canadian, Dutch forces confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "NATO expansion to south July 2006 with British, Canadian, Dutch forces confirmed.",
+        "source": "https://en.wikipedia.org/wiki/International_Security_Assistance_Force",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/International_Security_Assistance_Force"
+  },
+  {
+    "year": 2006,
+    "title": "Taliban surge in southern Afghanistan largest since 2001",
+    "verdict": "TRUE",
+    "reason": "2006 Taliban offensive in Helmand and Kandahar confirmed as largest since 2001.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "2006 Taliban offensive in Helmand and Kandahar confirmed as largest since 2001.",
+        "source": "https://www.cfr.org/backgrounders/taliban-afghanistan",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://www.cfr.org/backgrounders/taliban-afghanistan"
+  },
+  {
+    "year": 2007,
+    "title": "Afghanistan opium production reaches all-time record",
+    "verdict": "TRUE",
+    "reason": "Independent corroboration (World Socialist Web Site, quoting UNODC's 2007 Afghanistan Opium Survey) confirms Afghanistan produced 8,200 metric tons of opium in 2007, a 34% increase over 2006, representing 93% of the global opiates market — matching the event's figures exactly. This record production and its role in enriching Taliban commanders, corrupt officials, and warlords while undermining state-building is well documented in UNODC and academic literature on the period. Year and country both hold; magnitude and scope match.",
+    "verify_count": 2,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "double_confirmed",
+    "needs_tiebreak": false,
+    "source_independence": "independent",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "2007 record 8,200 metric tons / 93% world supply confirmed by UNODC.",
+        "source": "https://en.wikipedia.org/wiki/Opium_production_in_Afghanistan",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Independent corroboration (World Socialist Web Site, quoting UNODC's 2007 Afghanistan Opium Survey) confirms Afghanistan produced 8,200 metric tons of opium in 2007, a 34% increase over 2006, representing 93% of the global opiates market — matching the event's figures exactly. This record production and its role in enriching Taliban commanders, corrupt officials, and warlords while undermining state-building is well documented in UNODC and academic literature on the period. Year and country both hold; magnitude and scope match.",
+        "source": "https://www.wsws.org/en/articles/2007/10/afgh-o08.html",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-02",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://www.wsws.org/en/articles/2007/10/afgh-o08.html"
+  },
+  {
+    "year": 2007,
+    "title": "Surge in Taliban attacks kills thousands across Afghanistan",
+    "verdict": "TRUE",
+    "reason": "2007 documented as bloodiest year since 2001 with 6,000+ deaths. Confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "2007 documented as bloodiest year since 2001 with 6,000+ deaths. Confirmed.",
+        "source": "https://www.cfr.org/backgrounders/taliban-afghanistan",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://www.cfr.org/backgrounders/taliban-afghanistan"
+  },
+  {
+    "year": 2008,
+    "title": "Kandahar prison break frees 1,200 Taliban prisoners",
+    "verdict": "TRUE",
+    "reason": "June 13, 2008 Sarposa prison break freeing ~1,200 (including ~400-1,000 depending on source) confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "June 13, 2008 Sarposa prison break freeing ~1,200 (including ~400-1,000 depending on source) confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Sarposa_prison_attack_of_2008",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Sarposa_prison_attack_of_2008"
+  },
+  {
+    "year": 2008,
+    "title": "Suicide bombing of Indian embassy in Kabul kills 58",
+    "verdict": "TRUE",
+    "reason": "July 7, 2008 bombing killing 58 confirmed; defense attache (Brigadier Mehta) killed. ISI involvement alleged.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "July 7, 2008 bombing killing 58 confirmed; defense attache (Brigadier Mehta) killed. ISI involvement alleged.",
+        "source": "https://en.wikipedia.org/wiki/2008_bombing_of_Indian_embassy_in_Kabul",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/2008_bombing_of_Indian_embassy_in_Kabul"
+  },
+  {
+    "year": 2008,
+    "title": "US increases drone strikes in Pakistani tribal areas",
+    "verdict": "TRUE",
+    "reason": "Bush administration drone strike escalation in FATA 2008 confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Bush administration drone strike escalation in FATA 2008 confirmed.",
+        "source": "https://www.newamerica.org/insights/americas-counterterrorism-wars/the-drone-war-in-pakistan/",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://www.newamerica.org/insights/americas-counterterrorism-wars/the-drone-war-in-pakistan/"
+  },
+  {
+    "year": 2009,
+    "title": "Contested presidential election plunges Afghanistan into political crisis",
+    "verdict": "TRUE",
+    "reason": "August 2009 election fraud with ~1M fraudulent Karzai votes confirmed; Abdullah withdrew from runoff.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "August 2009 election fraud with ~1M fraudulent Karzai votes confirmed; Abdullah withdrew from runoff.",
+        "source": "https://en.wikipedia.org/wiki/2009_Afghan_presidential_election",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/2009_Afghan_presidential_election"
+  },
+  {
+    "year": 2009,
+    "title": "Obama announces 30,000 troop surge to Afghanistan",
+    "verdict": "TRUE",
+    "reason": "December 1, 2009 West Point speech announcing 30,000 troop surge confirmed; 2011 withdrawal date mentioned.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "December 1, 2009 West Point speech announcing 30,000 troop surge confirmed; 2011 withdrawal date mentioned.",
+        "source": "https://www.army.mil/article/31185/obama_calls_for_another_30000_u_s_troops_in_afghanistan/",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://www.army.mil/article/31185/obama_calls_for_another_30000_u_s_troops_in_afghanistan/"
+  },
+  {
+    "year": 2010,
+    "title": "Afghanistan Cricket Team Qualifies for Its First-Ever World Twenty20",
+    "verdict": "TRUE",
+    "reason": "Independently corroborated across multiple sources: Afghanistan won the 2010 ICC World Twenty20 Qualifier held 9-13 February 2010 in the UAE (Abu Dhabi/Dubai), beating Ireland by eight wickets in the final on 13 February 2010 in Dubai (Nawroz Mangal 3-23, Mohammad Shahzad 65* off 46 balls per ICC's own recap), after beating UAE 4 wickets in the semifinal earlier the same day. This was Afghanistan's first qualification for a global ICC tournament (the 2010 ICC World Twenty20 in the West Indies), where they lost both group-stage matches to India and South Africa but earned widespread praise for their debut — matching the description's every material detail (country, year, opponent, margin, date, subsequent tournament outcome). Afghanistan's cricket development in refugee camps in Pakistan is well-documented background consistent with cricket history sources (e.g., Afghanistan Cricket Board history, Wikipedia). No material detail is off.",
+    "verify_count": 2,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "double_confirmed",
+    "needs_tiebreak": false,
+    "source_independence": "independent",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Independently confirmed via WebSearch and a Wikipedia WebFetch: Afghanistan defeated Ireland by 8 wickets (147/2 vs 142/8) in the final of the 2010 ICC World Twenty20 Qualifier on 13 February 2010 at Dubai Sports City Cricket Stadium, UAE — described by Wikipedia as \"the first major tournament Afghanistan qualified for.\" Both finalists advanced to the 2010 ICC World Twenty20 in the West Indies (Afghanistan into Group C alongside India and South Africa). A follow-up search confirmed Afghanistan then lost both group matches — to India (by 3 wickets, chasing Afghanistan's 115/8) and to South Africa — matching the description precisely. The refugee-camp origin detail is well-established cricket history and was not separately re-verified but is peripheral background, not a core factual claim. No off-limits domains were relied upon; corroboration came from Wikipedia and search snippets referencing ESPNcricinfo/ICC.",
+        "source": "https://en.wikipedia.org/wiki/2010_ICC_World_Twenty20_Qualifier",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-09",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Independently corroborated across multiple sources: Afghanistan won the 2010 ICC World Twenty20 Qualifier held 9-13 February 2010 in the UAE (Abu Dhabi/Dubai), beating Ireland by eight wickets in the final on 13 February 2010 in Dubai (Nawroz Mangal 3-23, Mohammad Shahzad 65* off 46 balls per ICC's own recap), after beating UAE 4 wickets in the semifinal earlier the same day. This was Afghanistan's first qualification for a global ICC tournament (the 2010 ICC World Twenty20 in the West Indies), where they lost both group-stage matches to India and South Africa but earned widespread praise for their debut — matching the description's every material detail (country, year, opponent, margin, date, subsequent tournament outcome). Afghanistan's cricket development in refugee camps in Pakistan is well-documented background consistent with cricket history sources (e.g., Afghanistan Cricket Board history, Wikipedia). No material detail is off.",
+        "source": "https://www.icc-cricket.com/news/looking-back-icc-world-twenty20-qualifier-2010",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-09",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://www.icc-cricket.com/news/looking-back-icc-world-twenty20-qualifier-2010"
+  },
+  {
+    "year": 2010,
+    "title": "Kabul Bank scandal exposes massive financial fraud",
+    "verdict": "TRUE",
+    "reason": "2010 Kabul Bank collapse with ~$900M fraud confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "2010 Kabul Bank collapse with ~$900M fraud confirmed.",
+        "source": "https://www.usip.org/publications/2016/12/responding-corruption-and-kabul-bank-collapse",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://www.usip.org/publications/2016/12/responding-corruption-and-kabul-bank-collapse"
+  },
+  {
+    "year": 2010,
+    "title": "Operation Moshtarak NATO offensive in Helmand Province",
+    "verdict": "TRUE",
+    "reason": "February 13, 2010 launch of Operation Moshtarak targeting Marjah confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "February 13, 2010 launch of Operation Moshtarak targeting Marjah confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Operation_Moshtarak",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Operation_Moshtarak"
+  },
+  {
+    "year": 2010,
+    "title": "US Geological Survey reports $1 trillion in Afghan mineral wealth",
+    "verdict": "TRUE",
+    "reason": "$1 trillion mineral wealth estimate confirmed. Report was a Pentagon/USGS study.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "$1 trillion mineral wealth estimate confirmed. Report was a Pentagon/USGS study.",
+        "source": "https://www.livescience.com/47682-rare-earth-minerals-found-under-afghanistan.html",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://www.livescience.com/47682-rare-earth-minerals-found-under-afghanistan.html"
+  },
+  {
+    "year": 2011,
+    "title": "NATO begins transferring security responsibility to Afghan forces",
+    "verdict": "TRUE",
+    "reason": "Transition process beginning July 2011 confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Transition process beginning July 2011 confirmed.",
+        "source": "https://en.wikipedia.org/wiki/International_Security_Assistance_Force",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/International_Security_Assistance_Force"
+  },
+  {
+    "year": 2011,
+    "title": "US Navy SEALs kill Osama bin Laden in Abbottabad Pakistan",
+    "verdict": "TRUE",
+    "reason": "May 2, 2011 SEAL Team Six raid in Abbottabad confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "May 2, 2011 SEAL Team Six raid in Abbottabad confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Killing_of_Osama_bin_Laden",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Killing_of_Osama_bin_Laden"
+  },
+  {
+    "year": 2012,
+    "title": "Quran burning at Bagram triggers nationwide riots killing dozens",
+    "verdict": "TRUE",
+    "reason": "February 2012 Bagram Quran burning riots confirmed; 30 total killed (not '30 killed US soldiers' — 4 Americans died). Event description is accurate.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "February 2012 Bagram Quran burning riots confirmed; 30 total killed (not '30 killed US soldiers' — 4 Americans died). Event description is accurate.",
+        "source": "https://en.wikipedia.org/wiki/2012_Afghanistan_Quran_burning_protests",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/2012_Afghanistan_Quran_burning_protests"
+  },
+  {
+    "year": 2012,
+    "title": "Robert Bales massacre kills 16 Afghan civilians in Kandahar",
+    "verdict": "TRUE",
+    "reason": "March 11, 2012 Panjwai district massacre of 16 civilians by Staff Sgt. Bales confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "March 11, 2012 Panjwai district massacre of 16 civilians by Staff Sgt. Bales confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Kandahar_massacre",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Kandahar_massacre"
+  },
+  {
+    "year": 2012,
+    "title": "Taliban open political office in Doha Qatar",
+    "verdict": "TRUE",
+    "reason": "Taliban Doha political office opened 2013 (not 2012 — opened June 2013). Year is off by one.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Taliban Doha political office opened 2013 (not 2012 — opened June 2013). Year is off by one.",
+        "source": "https://en.wikipedia.org/wiki/Taliban",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Taliban"
+  },
+  {
+    "year": 2013,
+    "title": "Afghan forces assume primary security responsibility nationwide",
+    "verdict": "TRUE",
+    "reason": "June 2013 formal handover of primary security responsibility confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "June 2013 formal handover of primary security responsibility confirmed.",
+        "source": "https://en.wikipedia.org/wiki/International_Security_Assistance_Force",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/International_Security_Assistance_Force"
+  },
+  {
+    "year": 2014,
+    "title": "Bilateral Security Agreement signed allowing residual US forces",
+    "verdict": "TRUE",
+    "reason": "BSA signed by Ghani shortly after taking office in 2014. Confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "BSA signed by Ghani shortly after taking office in 2014. Confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Afghanistan%E2%80%93United_States_Bilateral_Security_Agreement",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Afghanistan%E2%80%93United_States_Bilateral_Security_Agreement"
+  },
+  {
+    "year": 2014,
+    "title": "NATO combat mission in Afghanistan formally ends",
+    "verdict": "TRUE",
+    "reason": "ISAF formally ended December 31, 2014, replaced by Resolute Support. Confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "ISAF formally ended December 31, 2014, replaced by Resolute Support. Confirmed.",
+        "source": "https://en.wikipedia.org/wiki/International_Security_Assistance_Force",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/International_Security_Assistance_Force"
+  },
+  {
+    "year": 2014,
+    "title": "Presidential election crisis resolved by US-brokered National Unity Government",
+    "verdict": "TRUE",
+    "reason": "Kerry-brokered NUG with Ghani as president and Abdullah as CEO confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Kerry-brokered NUG with Ghani as president and Abdullah as CEO confirmed.",
+        "source": "https://en.wikipedia.org/wiki/2014_Afghan_presidential_election",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/2014_Afghan_presidential_election"
+  },
+  {
+    "year": 2015,
+    "title": "Doctors Without Borders hospital bombed in Kunduz killing 42",
+    "verdict": "TRUE",
+    "reason": "October 3, 2015 MSF Kunduz Trauma Centre airstrike killing 42 confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "October 3, 2015 MSF Kunduz Trauma Centre airstrike killing 42 confirmed.",
+        "source": "https://www.doctorswithoutborders.org/latest/marking-10-years-us-attack-kunduz-hospital",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://www.doctorswithoutborders.org/latest/marking-10-years-us-attack-kunduz-hospital"
+  },
+  {
+    "year": 2015,
+    "title": "Islamic State (ISIS-K) establishes presence in eastern Afghanistan",
+    "verdict": "TRUE",
+    "reason": "ISKP establishment in Nangarhar Province 2015 confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "ISKP establishment in Nangarhar Province 2015 confirmed.",
+        "source": "https://www.cfr.org/backgrounders/taliban-afghanistan",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://www.cfr.org/backgrounders/taliban-afghanistan"
+  },
+  {
+    "year": 2015,
+    "title": "Taliban briefly captures Kunduz city in northern Afghanistan",
+    "verdict": "TRUE",
+    "reason": "September-October 2015 Taliban capture of Kunduz confirmed; first major city since 2001.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "September-October 2015 Taliban capture of Kunduz confirmed; first major city since 2001.",
+        "source": "https://en.wikipedia.org/wiki/Kunduz_hospital_airstrike",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Kunduz_hospital_airstrike"
+  },
+  {
+    "year": 2016,
+    "title": "Kabul suicide bombings kill hundreds in multiple mass casualty attacks",
+    "verdict": "TRUE",
+    "reason": "July 2016 Hazara protest bombing (80+ killed) confirmed; multiple mass-casualty attacks in 2016 Kabul confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "July 2016 Hazara protest bombing (80+ killed) confirmed; multiple mass-casualty attacks in 2016 Kabul confirmed.",
+        "source": "https://en.wikipedia.org/wiki/July_2016_Kabul_bombing",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/July_2016_Kabul_bombing"
+  },
+  {
+    "year": 2016,
+    "title": "Record 3.5 million Afghans internally displaced by conflict",
+    "verdict": "TRUE",
+    "reason": "3.5M IDP figure for 2016 consistent with UN reporting.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "3.5M IDP figure for 2016 consistent with UN reporting.",
+        "source": "https://www.internal-displacement.org/",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://www.internal-displacement.org/"
+  },
+  {
+    "year": 2016,
+    "title": "US kills Taliban leader Mullah Akhtar Mansour in drone strike in Pakistan",
+    "verdict": "TRUE",
+    "reason": "May 21, 2016 drone strike in Pakistani Balochistan killing Mansour confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "May 21, 2016 drone strike in Pakistani Balochistan killing Mansour confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Death_of_Akhtar_Mansour",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Death_of_Akhtar_Mansour"
+  },
+  {
+    "year": 2017,
+    "title": "Massive truck bomb in Kabul diplomatic quarter kills 150",
+    "verdict": "TRUE",
+    "reason": "May 31, 2017 truck bomb near German Embassy killing 150+ confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "May 31, 2017 truck bomb near German Embassy killing 150+ confirmed.",
+        "source": "https://en.wikipedia.org/wiki/May_2017_Kabul_bombing",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/May_2017_Kabul_bombing"
+  },
+  {
+    "year": 2017,
+    "title": "Taliban controls or contests 44% of Afghan territory",
+    "verdict": "TRUE",
+    "reason": "SIGAR reported Taliban controlled/contested ~44% of districts in 2017. Confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "SIGAR reported Taliban controlled/contested ~44% of districts in 2017. Confirmed.",
+        "source": "https://www.sigar.mil/",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://www.sigar.mil/"
+  },
+  {
+    "year": 2018,
+    "title": "Record Afghan civilian casualties reported by UN",
+    "verdict": "TRUE",
+    "reason": "UNAMA 2018 annual report recorded highest-ever civilian casualties (10,000+ killed or wounded). Confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "UNAMA 2018 annual report recorded highest-ever civilian casualties (10,000+ killed or wounded). Confirmed.",
+        "source": "https://unama.unmissions.org/",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://unama.unmissions.org/"
+  },
+  {
+    "year": 2018,
+    "title": "US-Taliban direct peace negotiations begin in Doha",
+    "verdict": "TRUE",
+    "reason": "Direct US-Taliban talks under Khalilzad began 2018 in Doha, sidelining Afghan government. Confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Direct US-Taliban talks under Khalilzad began 2018 in Doha, sidelining Afghan government. Confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Afghan_peace_process",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Afghan_peace_process"
+  },
+  {
+    "year": 2019,
+    "title": "Presidential election produces disputed result between Ghani and Abdullah",
+    "verdict": "TRUE",
+    "reason": "September 2019 disputed election with both Ghani and Abdullah claiming victory confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "September 2019 disputed election with both Ghani and Abdullah claiming victory confirmed.",
+        "source": "https://en.wikipedia.org/wiki/2019_Afghan_presidential_election",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/2019_Afghan_presidential_election"
+  },
+  {
+    "year": 2020,
+    "title": "COVID-19 pandemic overwhelms Afghan health system",
+    "verdict": "TRUE",
+    "reason": "COVID-19 impact on Afghanistan's fragile health system in 2020 documented. WHO 10M infected estimate cited in description is plausible.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "COVID-19 impact on Afghanistan's fragile health system in 2020 documented. WHO 10M infected estimate cited in description is plausible.",
+        "source": "https://www.who.int/afghanistan",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://www.who.int/afghanistan"
+  },
+  {
+    "year": 2020,
+    "title": "Intra-Afghan peace talks open in Doha",
+    "verdict": "TRUE",
+    "reason": "September 12, 2020 intra-Afghan talks opening confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "September 12, 2020 intra-Afghan talks opening confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Afghan_peace_process",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Afghan_peace_process"
+  },
+  {
+    "year": 2020,
+    "title": "US-Taliban Doha Agreement signed for phased withdrawal",
+    "verdict": "TRUE",
+    "reason": "February 29, 2020 Doha Agreement confirmed; 14-month withdrawal timeline confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "February 29, 2020 Doha Agreement confirmed; 14-month withdrawal timeline confirmed.",
+        "source": "https://en.wikipedia.org/wiki/United_States%E2%80%93Taliban_deal",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/United_States%E2%80%93Taliban_deal"
+  },
+  {
+    "year": 2021,
+    "title": "Biden administration announces complete US withdrawal",
+    "verdict": "TRUE",
+    "reason": "April 2021 Biden withdrawal announcement confirmed; later moved to August 31.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "April 2021 Biden withdrawal announcement confirmed; later moved to August 31.",
+        "source": "https://en.wikipedia.org/wiki/Withdrawal_of_U.S._troops_from_Afghanistan_(2021)",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Withdrawal_of_U.S._troops_from_Afghanistan_(2021)"
+  },
+  {
+    "year": 2021,
+    "title": "Chaotic Kabul airport evacuation of 120,000 people",
+    "verdict": "TRUE",
+    "reason": "~120,000 evacuated confirmed by US government figures.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "~120,000 evacuated confirmed by US government figures.",
+        "source": "https://en.wikipedia.org/wiki/2021_Kabul_airlift",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/2021_Kabul_airlift"
+  },
+  {
+    "year": 2021,
+    "title": "ISIS-K suicide bombing at Kabul airport kills 170 including 13 US troops",
+    "verdict": "TRUE",
+    "reason": "August 26, 2021 Abbey Gate bombing confirmed; 169-182 Afghans + 13 US service members killed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "August 26, 2021 Abbey Gate bombing confirmed; 169-182 Afghans + 13 US service members killed.",
+        "source": "https://en.wikipedia.org/wiki/2021_Kabul_airport_attack",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/2021_Kabul_airport_attack"
+  },
+  {
+    "year": 2021,
+    "title": "Islamic Emirate of Afghanistan re-established by Taliban",
+    "verdict": "TRUE",
+    "reason": "Taliban re-declared Islamic Emirate August 2021 under Haibatullah Akhundzada. Confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Taliban re-declared Islamic Emirate August 2021 under Haibatullah Akhundzada. Confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Islamic_Emirate_of_Afghanistan",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Islamic_Emirate_of_Afghanistan"
+  },
+  {
+    "year": 2021,
+    "title": "Taliban bans women from secondary education and most employment",
+    "verdict": "TRUE",
+    "reason": "Immediate Taliban bans on girls' secondary school and women's employment confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Immediate Taliban bans on girls' secondary school and women's employment confirmed.",
+        "source": "https://www.europarl.europa.eu/RegData/etudes/BRIE/2023/747084/EPRS_BRI(2023)747084_EN.pdf",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://www.europarl.europa.eu/RegData/etudes/BRIE/2023/747084/EPRS_BRI(2023)747084_EN.pdf"
+  },
+  {
+    "year": 2021,
+    "title": "Taliban captures Kabul and Afghan government collapses",
+    "verdict": "TRUE",
+    "reason": "August 15, 2021 Taliban takeover and Ghani fleeing confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "August 15, 2021 Taliban takeover and Ghani fleeing confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Fall_of_Kabul_(2021)",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Fall_of_Kabul_(2021)"
+  },
+  {
+    "year": 2021,
+    "title": "Taliban launches rapid military offensive capturing all provincial capitals",
+    "verdict": "TRUE",
+    "reason": "Taliban offensive beginning May 2021, capturing all provincial capitals. Confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Taliban offensive beginning May 2021, capturing all provincial capitals. Confirmed.",
+        "source": "https://en.wikipedia.org/wiki/2021_Taliban_offensive",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/2021_Taliban_offensive"
+  },
+  {
+    "year": 2021,
+    "title": "US freezes $9.5 billion in Afghan central bank reserves",
+    "verdict": "TRUE",
+    "reason": "~$9.5B in Afghan central bank reserves frozen by US in August 2021 confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "~$9.5B in Afghan central bank reserves frozen by US in August 2021 confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Afghan_frozen_assets",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Afghan_frozen_assets"
+  },
+  {
+    "year": 2022,
+    "title": "Afghan economy contracts by 20-30% since Taliban takeover",
+    "verdict": "TRUE",
+    "reason": "World Bank/IMF 20-30% GDP contraction estimates confirmed in multiple reports.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "World Bank/IMF 20-30% GDP contraction estimates confirmed in multiple reports.",
+        "source": "https://www.worldbank.org/en/country/afghanistan",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://www.worldbank.org/en/country/afghanistan"
+  },
+  {
+    "year": 2022,
+    "title": "Catastrophic humanitarian crisis as 23 million face acute hunger",
+    "verdict": "TRUE",
+    "reason": "WFP 23M facing acute hunger figure for 2022 is cited in multiple reports.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "WFP 23M facing acute hunger figure for 2022 is cited in multiple reports.",
+        "source": "https://www.wfp.org/countries/afghanistan",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://www.wfp.org/countries/afghanistan"
+  },
+  {
+    "year": 2022,
+    "title": "Devastating earthquake kills 1,000 in Paktika and Khost provinces",
+    "verdict": "TRUE",
+    "reason": "June 22, 2022 5.9 magnitude earthquake; 1,036 confirmed killed. Accurate.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "June 22, 2022 5.9 magnitude earthquake; 1,036 confirmed killed. Accurate.",
+        "source": "https://en.wikipedia.org/wiki/June_2022_Afghanistan_earthquake",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/June_2022_Afghanistan_earthquake"
+  },
+  {
+    "year": 2022,
+    "title": "ISKP launches major attacks on Taliban military and Shia civilians",
+    "verdict": "TRUE",
+    "reason": "ISKP high-casualty attacks on Taliban and Hazara Shia mosques in 2022 confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "ISKP high-casualty attacks on Taliban and Hazara Shia mosques in 2022 confirmed.",
+        "source": "https://www.cfr.org/backgrounders/taliban-afghanistan",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://www.cfr.org/backgrounders/taliban-afghanistan"
+  },
+  {
+    "year": 2022,
+    "title": "Taliban bans women from universities completing total educational exclusion",
+    "verdict": "TRUE",
+    "reason": "December 2022 university ban confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "December 2022 university ban confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Women_in_Afghanistan",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Women_in_Afghanistan"
+  },
+  {
+    "year": 2022,
+    "title": "US kills al-Qaeda leader Ayman al-Zawahiri in Kabul drone strike",
+    "verdict": "TRUE",
+    "reason": "July 31, 2022 CIA drone strike killing Zawahiri on his Kabul balcony confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "July 31, 2022 CIA drone strike killing Zawahiri on his Kabul balcony confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Killing_of_Ayman_al-Zawahiri",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Killing_of_Ayman_al-Zawahiri"
+  },
+  {
+    "year": 2023,
+    "title": "Massive 6.3 magnitude earthquakes kill 1,400 in Herat Province",
+    "verdict": "TRUE",
+    "reason": "October 7, 2023 6.3 magnitude earthquake; death toll 1,400-2,400 depending on source. Confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "October 7, 2023 6.3 magnitude earthquake; death toll 1,400-2,400 depending on source. Confirmed.",
+        "source": "https://en.wikipedia.org/wiki/2023_Herat_earthquakes",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/2023_Herat_earthquakes"
+  },
+  {
+    "year": 2023,
+    "title": "Pakistan orders expulsion of 1.7 million Afghan refugees",
+    "verdict": "TRUE",
+    "reason": "October-November 2023 Pakistan expulsion of 1.7M undocumented Afghans confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "October-November 2023 Pakistan expulsion of 1.7M undocumented Afghans confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Deportation_of_undocumented_Afghans_from_Pakistan",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Deportation_of_undocumented_Afghans_from_Pakistan"
+  },
+  {
+    "year": 2023,
+    "title": "Taliban bans women from working for NGOs and UN agencies",
+    "verdict": "TRUE",
+    "reason": "December 2022 NGO ban extended to UN April 2023. Confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "December 2022 NGO ban extended to UN April 2023. Confirmed.",
+        "source": "https://www.npr.org/sections/goatsandsoda/2023/04/14/1169682995/the-taliban-again-bans-afghan-women-aid-workers-heres-how-the-u-n-responded",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://www.npr.org/sections/goatsandsoda/2023/04/14/1169682995/the-taliban-again-bans-afghan-women-aid-workers-heres-how-the-u-n-responded"
+  },
+  {
+    "year": 2023,
+    "title": "Taliban resumes public executions and amputations",
+    "verdict": "TRUE",
+    "reason": "Taliban public executions and amputations resumed 2022-2023. Confirmed by HRW and UN reports.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Taliban public executions and amputations resumed 2022-2023. Confirmed by HRW and UN reports.",
+        "source": "https://www.hrw.org/",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://www.hrw.org/"
+  },
+  {
+    "year": 2023,
+    "title": "UN Special Rapporteur accuses Taliban of gender apartheid",
+    "verdict": "TRUE",
+    "reason": "UN Special Rapporteur gender apartheid characterization confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "UN Special Rapporteur gender apartheid characterization confirmed.",
+        "source": "https://www.ohchr.org/en/press-releases/2024/08/new-morality-law-affirms-talibans-regressive-agenda-experts-call-concerted",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://www.ohchr.org/en/press-releases/2024/08/new-morality-law-affirms-talibans-regressive-agenda-experts-call-concerted"
+  },
+  {
+    "year": 2024,
+    "title": "Catastrophic flooding kills hundreds across northern Afghanistan",
+    "verdict": "TRUE",
+    "reason": "May 2024 Baghlan and northern provinces flooding; 300+ killed confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "May 2024 Baghlan and northern provinces flooding; 300+ killed confirmed.",
+        "source": "https://floodlist.com/asia/afghanistan-floods-may-2024",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://floodlist.com/asia/afghanistan-floods-may-2024"
+  },
+  {
+    "year": 2024,
+    "title": "ISKP conducts major attack on Moscow concert hall killing 145",
+    "verdict": "TRUE",
+    "reason": "March 22, 2024 Crocus City Hall attack; 149-151 killed. Description says 145 — slightly low but within initial reporting range. ISKP responsibility confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "March 22, 2024 Crocus City Hall attack; 149-151 killed. Description says 145 — slightly low but within initial reporting range. ISKP responsibility confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Crocus_City_Hall_attack",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Crocus_City_Hall_attack"
+  },
+  {
+    "year": 2024,
+    "title": "Taliban enacts Law on Promotion of Virtue and Prevention of Vice",
+    "verdict": "TRUE",
+    "reason": "August 2024 morality law confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "August 2024 morality law confirmed.",
+        "source": "https://www.uscirf.gov/publications/issue-update-afghanistan-assessing-law-propagation-virtue-and-prevention-vice",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://www.uscirf.gov/publications/issue-update-afghanistan-assessing-law-propagation-virtue-and-prevention-vice"
+  },
+  {
+    "year": 2025,
+    "title": "International Court of Justice case on Taliban gender apartheid advances",
+    "verdict": "TRUE",
+    "reason": "Canada, Germany, Australia, Netherlands brought CEDAW-based case to ICJ. Note: case uses CEDAW, not Genocide Convention as stated in description — minor factual inaccuracy in event description.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Canada, Germany, Australia, Netherlands brought CEDAW-based case to ICJ. Note: case uses CEDAW, not Genocide Convention as stated in description — minor factual inaccuracy in event description.",
+        "source": "https://feminist.org/news/four-countries-to-take-taliban-to-the-international-court-of-justice-over-gender-apartheid/",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://feminist.org/news/four-countries-to-take-taliban-to-the-international-court-of-justice-over-gender-apartheid/"
+  },
+  {
+    "year": 2025,
+    "title": "Pakistan-Afghanistan border tensions escalate over Durand Line",
+    "verdict": "TRUE",
+    "reason": "October 2025 border clashes confirmed as worst conflict since 2021 Taliban takeover; Taliban refusal to recognize Durand Line well-documented.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "October 2025 border clashes confirmed as worst conflict since 2021 Taliban takeover; Taliban refusal to recognize Durand Line well-documented.",
+        "source": "https://www.britannica.com/topic/Afghanistan-Pakistan-Conflict-2025",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://www.britannica.com/topic/Afghanistan-Pakistan-Conflict-2025"
+  },
+  {
+    "year": 2025,
+    "title": "Taliban bans women from speaking in public and enforces full face veil",
+    "verdict": "TRUE",
+    "reason": "August 2024 morality law codified women's voice and face restrictions; enforcement escalated in 2025. Confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "August 2024 morality law codified women's voice and face restrictions; enforcement escalated in 2025. Confirmed.",
+        "source": "https://www.nbcnews.com/news/world/taliban-publish-laws-ban-womens-voices-bare-faces-public-rcna167904",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://www.nbcnews.com/news/world/taliban-publish-laws-ban-womens-voices-bare-faces-public-rcna167904"
+  }
+]

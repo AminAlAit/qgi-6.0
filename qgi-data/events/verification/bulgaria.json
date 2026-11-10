@@ -1,0 +1,1659 @@
+[
+  {
+    "year": 1950,
+    "title": "Forced Collectivization of Agriculture Launched",
+    "verdict": "TRUE",
+    "reason": "Multiple independent sources corroborate: the Bulgarian Communist Party's collectivization drive shifted from gradual/voluntary to coercive/stricter in 1950, with collectivized arable land jumping from ~11-12% (1949) to 43% (end of 1950), accelerating under new premier Valko Chervenkov. Peasants were forced into TKZS cooperative farms via land seizures and punitive state-supply quotas. Resistance (including the Goryani underground and refusal to join collectives) was met with arrests, internment without trial, and deportation to labor camps (e.g., Belene, ~25,000 deported 1948-1953). The only minor imprecision is the '1957' completion date: independent sources put arable land in cooperatives at 86.5% by 1957 and the process 'declared complete' with ~90-92% by 1958 rather than 1957 — a small rounding/characterization gap ('virtually all' vs 86.5%) but not a material distortion of the core event, actor, or scope, so this does not warrant downgrading to PARTIAL.",
+    "verify_count": 2,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "double_confirmed",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "TKZS system confirmed; rapid collectivization 1950-1958; resistance met with arrests/Belene deportations confirmed.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Multiple independent sources corroborate: the Bulgarian Communist Party's collectivization drive shifted from gradual/voluntary to coercive/stricter in 1950, with collectivized arable land jumping from ~11-12% (1949) to 43% (end of 1950), accelerating under new premier Valko Chervenkov. Peasants were forced into TKZS cooperative farms via land seizures and punitive state-supply quotas. Resistance (including the Goryani underground and refusal to join collectives) was met with arrests, internment without trial, and deportation to labor camps (e.g., Belene, ~25,000 deported 1948-1953). The only minor imprecision is the '1957' completion date: independent sources put arable land in cooperatives at 86.5% by 1957 and the process 'declared complete' with ~90-92% by 1958 rather than 1957 — a small rounding/characterization gap ('virtually all' vs 86.5%) but not a material distortion of the core event, actor, or scope, so this does not warrant downgrading to PARTIAL.",
+        "source": "https://communistcrimes.org/en/countries/bulgaria",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-02",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://communistcrimes.org/en/countries/bulgaria"
+  },
+  {
+    "year": 1950,
+    "title": "Mass Expulsion of 155,000 Ethnic Turks to Turkey",
+    "verdict": "TRUE",
+    "reason": "Actual figure 154,393 — rounding to 155,000 acceptable. Year 1950-1951, bilateral agreement, property stripping all confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Actual figure 154,393 — rounding to 155,000 acceptable. Year 1950-1951, bilateral agreement, property stripping all confirmed.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
+    "year": 1951,
+    "title": "Belene Island Labor Camp System Expanded",
+    "verdict": "PARTIAL",
+    "reason": "Country/year and the core substance hold: Bulgaria's communist regime did intensify its labor-camp system around 1951 — in 1951 the Politburo increased the mandatory internment term from 6 months to 3-7 years, and Belene (opened 1949) was indeed the most notorious camp, holding political opponents, Agrarian/Democratic Party members, army officers, Orthodox and Protestant clergy, and (per some sources) some kulaks/farmers alongside intellectuals — closely matching the description's targeted groups. However, the magnitude claim \"10,000-15,000 political prisoners held at peak capacity\" is not supported and appears to conflate different figures: the camp's own planning documents envisaged capacity for up to ~3,000 inmates; the best-documented single-year peak (1952, height of Chervenkov's repressions) was 2,323 inmates officially, with one witness estimate of ~7,000 in 1952; the \"15,000+\" figure that does appear in sources (belene.camp memorial site) is explicitly a CUMULATIVE total of people sent through Belene over its entire ~1949-1987 existence, not a peak-capacity snapshot in any single year including 1951. So this is a real event with the year/country/actors correct, but the specific quantitative claim (peak capacity magnitude) is materially overstated by roughly 2-6x relative to documented single-year figures.",
+    "verify_count": 2,
+    "consensus_verdict": "PARTIAL",
+    "consensus_status": "double_negative",
+    "needs_tiebreak": false,
+    "source_independence": "weak",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "PARTIAL",
+        "reason": "Country, general narrative, and rough timing are confirmed by multiple independent sources: communist Bulgaria ran a network of ~100 forced-labour camps, Belene (on an island in the Danube) was the most notorious, conditions included starvation and forced labor, and targets included intellectuals, priests/pastors, kulaks, agrarians, monarchists and other perceived political opponents. 1951 specifically saw a hardening of the system (Bulgarian authorities raised maximum forced-labor sentences from 6 months to 3-7 years that year), consistent with continued 'expansion' of the camp system in the early-1950s growth period. However, the headline magnitude claim — '10,000-15,000 political prisoners held at peak capacity' — is materially wrong. Multiple sources (Wikipedia, beleneisland.org, belene.camp) agree the camp's DESIGNED/simultaneous capacity was ~3,000, and the actual documented peak simultaneous population was ~2,323 inmates in 1952 (per Bulgarian state archives) or a witness estimate of ~7,000 in 1952 — not 10,000-15,000. The 12,000-15,000+ figures that do appear in sources are CUMULATIVE totals of everyone who ever passed through the camp over 1949-1953 (12,000) or its entire 1949-1989 existence (est. 30,000; 'more than 15,000' per belene.camp), not a peak-capacity snapshot. This is a conflation of cumulative throughput with simultaneous peak population, inflating the peak figure roughly 3-5x. Year and country hold; the scale detail is off, so PARTIAL.",
+        "source": "https://en.wikipedia.org/wiki/Belene_labour_camp",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "PARTIAL",
+        "reason": "Country/year and the core substance hold: Bulgaria's communist regime did intensify its labor-camp system around 1951 — in 1951 the Politburo increased the mandatory internment term from 6 months to 3-7 years, and Belene (opened 1949) was indeed the most notorious camp, holding political opponents, Agrarian/Democratic Party members, army officers, Orthodox and Protestant clergy, and (per some sources) some kulaks/farmers alongside intellectuals — closely matching the description's targeted groups. However, the magnitude claim \"10,000-15,000 political prisoners held at peak capacity\" is not supported and appears to conflate different figures: the camp's own planning documents envisaged capacity for up to ~3,000 inmates; the best-documented single-year peak (1952, height of Chervenkov's repressions) was 2,323 inmates officially, with one witness estimate of ~7,000 in 1952; the \"15,000+\" figure that does appear in sources (belene.camp memorial site) is explicitly a CUMULATIVE total of people sent through Belene over its entire ~1949-1987 existence, not a peak-capacity snapshot in any single year including 1951. So this is a real event with the year/country/actors correct, but the specific quantitative claim (peak capacity magnitude) is materially overstated by roughly 2-6x relative to documented single-year figures.",
+        "source": "https://en.wikipedia.org/wiki/Belene_labour_camp",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Belene_labour_camp"
+  },
+  {
+    "year": 1951,
+    "title": "First Five-Year Plan Drives Heavy Industrialization",
+    "verdict": "FALSE",
+    "reason": "Kremikovtsi was part of the Fourth Five-Year Plan (1961-1965), not the First. Decision to build Kremikovtsi made 1956; construction started 1960; opened 1963. Attributing it to the First Five-Year Plan is materially wrong.",
+    "verify_count": 1,
+    "consensus_verdict": "FALSE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "FALSE",
+        "reason": "Kremikovtsi was part of the Fourth Five-Year Plan (1961-1965), not the First. Decision to build Kremikovtsi made 1956; construction started 1960; opened 1963. Attributing it to the First Five-Year Plan is materially wrong.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
+    "year": 1953,
+    "title": "Death of Stalin Triggers Limited De-Stalinization in Bulgaria",
+    "verdict": "TRUE",
+    "reason": "Stalin died March 1953; Chervenkov began loosening Stalinist controls under Soviet pressure; partial prisoner releases confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Stalin died March 1953; Chervenkov began loosening Stalinist controls under Soviet pressure; partial prisoner releases confirmed.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
+    "year": 1954,
+    "title": "Todor Zhivkov Elected BCP First Secretary",
+    "verdict": "TRUE",
+    "reason": "March 1954, Zhivkov elected First Secretary of Central Committee, youngest bloc leader at the time. Confirmed by Wikipedia and Britannica.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "March 1954, Zhivkov elected First Secretary of Central Committee, youngest bloc leader at the time. Confirmed by Wikipedia and Britannica.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
+    "year": 1955,
+    "title": "Bulgaria Admitted to the United Nations",
+    "verdict": "TRUE",
+    "reason": "December 14, 1955, as part of 16-member package deal via Security Council Resolution 109. All details confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "December 14, 1955, as part of 16-member package deal via Security Council Resolution 109. All details confirmed.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
+    "year": 1955,
+    "title": "Bulgaria Joins the Warsaw Pact",
+    "verdict": "TRUE",
+    "reason": "Bulgaria was a founding signatory on May 14, 1955. Confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Bulgaria was a founding signatory on May 14, 1955. Confirmed.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
+    "year": 1956,
+    "title": "Khrushchev's Secret Speech Accelerates Bulgarian De-Stalinization",
+    "verdict": "TRUE",
+    "reason": "Chervenkov lost PM post; Anton Yugov replaced him; Zhivkov criticized Chervenkov at April 1956 plenum. All confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Chervenkov lost PM post; Anton Yugov replaced him; Zhivkov criticized Chervenkov at April 1956 plenum. All confirmed.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
+    "year": 1962,
+    "title": "Kremikovtsi Steel Plant Opens as Communist Showcase",
+    "verdict": "FALSE",
+    "reason": "Year is wrong. Kremikovtsi Iron and Steel Works opened November 5, 1963, not 1962. Construction began 1960. Year-off by 1 = FALSE.",
+    "verify_count": 1,
+    "consensus_verdict": "FALSE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "FALSE",
+        "reason": "Year is wrong. Kremikovtsi Iron and Steel Works opened November 5, 1963, not 1962. Construction began 1960. Year-off by 1 = FALSE.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
+    "year": 1962,
+    "title": "Zhivkov Combines Party and State Leadership",
+    "verdict": "TRUE",
+    "reason": "November 19, 1962, Zhivkov elected PM. He held both First Secretary and PM roles until 1971 (then shifted to State Council Chairman). Confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "November 19, 1962, Zhivkov elected PM. He held both First Secretary and PM roles until 1971 (then shifted to State Council Chairman). Confirmed.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
+    "year": 1965,
+    "title": "April Plot Military Coup Attempt Against Zhivkov Foiled",
+    "verdict": "TRUE",
+    "reason": "April 1965 coup attempt by military officers and party members confirmed. Foiled April 8-12, 1965; conspirators imprisoned.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "April 1965 coup attempt by military officers and party members confirmed. Foiled April 8-12, 1965; conspirators imprisoned.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
+    "year": 1966,
+    "title": "Kozloduy Nuclear Power Plant Agreements Signed with USSR",
+    "verdict": "TRUE",
+    "reason": "Independent sources (Kozloduy NPP official history page, Bulgarian news agency BTA) confirm that on 15 July 1966 Bulgaria signed an intergovernmental agreement with the Soviet Union in Sofia for cooperation on design, construction, and operation of a nuclear power plant to be built on the Danube River near Kozloduy, driven by growing electricity demand. Unit 1 was commissioned into commercial operation in 1974, matching the event description exactly. This made Bulgaria one of the earliest Eastern Bloc nuclear power producers (Southeast Europe's first). All material details -- country, year, actor (USSR), location (Danube/Kozloduy), and the 1974 commercial-operation follow-on -- are corroborated.",
+    "verify_count": 2,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "double_confirmed",
+    "needs_tiebreak": false,
+    "source_independence": "independent",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Independent sources (BTA news archive, Wikipedia, World Nuclear Association, kznpp.org official plant history) confirm Bulgaria signed a cooperation agreement with the Soviet Union on July 15, 1966 in Sofia for construction of the Kozloduy Nuclear Power Plant on the Danube. The agreement covered Soviet-supplied VVER reactor design, equipment and specialist training. Unit 1 (VVER-440) achieved physical startup June 30, 1974 and grid connection July 24, 1974, making Bulgaria one of the earliest nuclear power producers in Eastern Europe/Southeast Europe. All material details (country, year, actors, purpose, 1974 commercial-operation detail) match the event description.",
+        "source": "https://www.bta.bg/en/news/archives/930785-july-15-1966-bulgaria-and-soviet-union-sign-nuclear-power-agreement",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-05",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Independent sources (Kozloduy NPP official history page, Bulgarian news agency BTA) confirm that on 15 July 1966 Bulgaria signed an intergovernmental agreement with the Soviet Union in Sofia for cooperation on design, construction, and operation of a nuclear power plant to be built on the Danube River near Kozloduy, driven by growing electricity demand. Unit 1 was commissioned into commercial operation in 1974, matching the event description exactly. This made Bulgaria one of the earliest Eastern Bloc nuclear power producers (Southeast Europe's first). All material details -- country, year, actor (USSR), location (Danube/Kozloduy), and the 1974 commercial-operation follow-on -- are corroborated.",
+        "source": "https://www.kznpp.org/en/about-us/location-and-history",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-05",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://www.kznpp.org/en/about-us/location-and-history"
+  },
+  {
+    "year": 1968,
+    "title": "Bulgaria Participates in Warsaw Pact Invasion of Czechoslovakia",
+    "verdict": "TRUE",
+    "reason": "Bulgaria was one of four Warsaw Pact nations that invaded August 20-21, 1968. Brezhnev Doctrine endorsement confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Bulgaria was one of four Warsaw Pact nations that invaded August 20-21, 1968. Brezhnev Doctrine endorsement confirmed.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
+    "year": 1971,
+    "title": "New Socialist Constitution Makes Zhivkov Head of State",
+    "verdict": "TRUE",
+    "reason": "1971 Zhivkov Constitution created State Council Chairman post; Zhivkov assumed it, combining with First Secretary role. Confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "1971 Zhivkov Constitution created State Council Chairman post; Zhivkov assumed it, combining with First Secretary role. Confirmed.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
+    "year": 1974,
+    "title": "Kozloduy Nuclear Plant Unit 1 Enters Commercial Operation",
+    "verdict": "TRUE",
+    "reason": "Unit 1 physically started June 30, 1974; connected to grid July 24, 1974; formally opened September 4, 1974. Confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Unit 1 physically started June 30, 1974; connected to grid July 24, 1974; formally opened September 4, 1974. Confirmed.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
+    "year": 1975,
+    "title": "Bulgaria Signs Helsinki Final Act",
+    "verdict": "TRUE",
+    "reason": "Bulgaria signed the Helsinki Final Act at the CSCE Conference in 1975. Confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Bulgaria signed the Helsinki Final Act at the CSCE Conference in 1975. Confirmed.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
+    "year": 1975,
+    "title": "Pravets Personal Computer Production Begins",
+    "verdict": "FALSE",
+    "reason": "Bulgaria's Pravets/Pravetz computer program did not begin in 1975. The first Bulgarian personal computer, the IMKO-1 (an Apple II clone), was developed starting in 1979 at the Institute for Technical Cybernetics and Robotics, with initial production in 1980 (about 50 test units). The famous mass-produced model, Pravetz 82, began serial manufacturing in 1982, after which Bulgaria did become a major computer supplier within Comecon. A 1975 date is also technically implausible since the Pravetz line cloned the Apple II, which was not released until 1977. The core narrative (Bulgaria became a significant Comecon computing supplier, informally dubbed 'Silicon Valley of the Eastern Bloc', widely used in the 1980s) is factually real, but the year is off by 4-5 years.",
+    "verify_count": 2,
+    "consensus_verdict": "FALSE",
+    "consensus_status": "double_negative",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "FALSE",
+        "reason": "Year is wrong. Pravets computer development began 1979; IMKO-1 prototype shown publicly 1981; mass production (Pravetz 82) started 1982. No production in 1975.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "FALSE",
+        "reason": "Bulgaria's Pravets/Pravetz computer program did not begin in 1975. The first Bulgarian personal computer, the IMKO-1 (an Apple II clone), was developed starting in 1979 at the Institute for Technical Cybernetics and Robotics, with initial production in 1980 (about 50 test units). The famous mass-produced model, Pravetz 82, began serial manufacturing in 1982, after which Bulgaria did become a major computer supplier within Comecon. A 1975 date is also technically implausible since the Pravetz line cloned the Apple II, which was not released until 1977. The core narrative (Bulgaria became a significant Comecon computing supplier, informally dubbed 'Silicon Valley of the Eastern Bloc', widely used in the 1980s) is factually real, but the year is off by 4-5 years.",
+        "source": "https://en.wikipedia.org/wiki/IMKO-1",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-02",
+          "method": "web_search"
+        },
+        "corrected_year": 1979
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/IMKO-1"
+  },
+  {
+    "year": 1978,
+    "title": "Georgi Markov Assassinated with Ricin Umbrella in London",
+    "verdict": "TRUE",
+    "reason": "September 7, 1978; ricin pellet injected into his leg via modified umbrella at London bus stop; died September 11. All confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "September 7, 1978; ricin pellet injected into his leg via modified umbrella at London bus stop; died September 11. All confirmed.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
+    "year": 1981,
+    "title": "Bulgaria Celebrates 1300th Anniversary of Statehood",
+    "verdict": "TRUE",
+    "reason": "1300-year celebrations of First Bulgarian Empire (681 AD) in 1981, orchestrated by Lyudmila Zhivkova. Confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "1300-year celebrations of First Bulgarian Empire (681 AD) in 1981, orchestrated by Lyudmila Zhivkova. Confirmed.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
+    "year": 1983,
+    "title": "Rila Monastery Inscribed as UNESCO World Heritage Site",
+    "verdict": "TRUE",
+    "reason": "Multiple independent sources (Wikipedia, Britannica, UNESCO WHC listing per search snippet) confirm Rila Monastery in Bulgaria was inscribed on the UNESCO World Heritage List in 1983 (specifically December 9, 1983, under criterion iv). It was founded in the 10th century by the hermit St John (Ivan) of Rila, was destroyed by fire in 1833 and rebuilt 1834-1862, and is widely described as a defining monument of the Bulgarian National Revival and a symbol of Slavic cultural/national identity preserved under centuries of Ottoman rule, remaining one of Bulgaria's most visited cultural and religious sites. All material details in the event description check out.",
+    "verify_count": 2,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "double_confirmed",
+    "needs_tiebreak": false,
+    "source_independence": "independent",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "The official UNESCO World Heritage Centre listing confirms Rila Monastery was inscribed on the World Heritage List on 9 December 1983 (criterion iv). Wikipedia and Britannica corroborate the founding by St John of Rila in the 10th century and the rebuild between 1834-1862 after a fire, matching every material detail in the event description (country, year, founder, rebuild dates, cultural significance as a Bulgarian National Revival monument).",
+        "source": "https://whc.unesco.org/en/list/216/",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-05",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Multiple independent sources (Wikipedia, Britannica, UNESCO WHC listing per search snippet) confirm Rila Monastery in Bulgaria was inscribed on the UNESCO World Heritage List in 1983 (specifically December 9, 1983, under criterion iv). It was founded in the 10th century by the hermit St John (Ivan) of Rila, was destroyed by fire in 1833 and rebuilt 1834-1862, and is widely described as a defining monument of the Bulgarian National Revival and a symbol of Slavic cultural/national identity preserved under centuries of Ottoman rule, remaining one of Bulgaria's most visited cultural and religious sites. All material details in the event description check out.",
+        "source": "https://en.wikipedia.org/wiki/Rila_Monastery",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-05",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Rila_Monastery"
+  },
+  {
+    "year": 1984,
+    "title": "Revival Process â€” Forced Renaming of 800,000 Ethnic Turks",
+    "verdict": "TRUE",
+    "reason": "Campaign started June 1984; over 800,000 forced name changes confirmed (estimates 720,000-820,000 Turks + Roma). Turkish language banned, arrests confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Campaign started June 1984; over 800,000 forced name changes confirmed (estimates 720,000-820,000 Turks + Roma). Turkish language banned, arrests confirmed.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
+    "year": 1986,
+    "title": "Chernobyl Fallout Reaches Bulgaria â€” Authorities Downplay Risk",
+    "verdict": "TRUE",
+    "reason": "April 1986 Chernobyl fallout reached Bulgaria; regime downplayed risk; suppressed independent assessment. Confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "April 1986 Chernobyl fallout reached Bulgaria; regime downplayed risk; suppressed independent assessment. Confirmed.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
+    "year": 1987,
+    "title": "Ruse Environmental Protest â€” First Major Public Dissent",
+    "verdict": "TRUE",
+    "reason": "Ruse protests against Romanian chemical plant chlorine emissions; first visible civil dissent; fed Ecoglasnost movement. Confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Ruse protests against Romanian chemical plant chlorine emissions; first visible civil dissent; fed Ecoglasnost movement. Confirmed.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
+    "year": 1989,
+    "title": "Ecoglasnost Protest at CSCE Conference Embarrasses Regime",
+    "verdict": "TRUE",
+    "reason": "October 1989 Sofia CSCE follow-up meeting; Ecoglasnost petition broadcast internationally. Confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "October 1989 Sofia CSCE follow-up meeting; Ecoglasnost petition broadcast internationally. Confirmed.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
+    "year": 1989,
+    "title": "Expulsion of 360,000 Ethnic Turks â€” Largest Postwar Forced Migration in Europe",
+    "verdict": "TRUE",
+    "reason": "May-August 1989, approximately 360,000 expelled. Described as Cold War Europe's largest ethnic cleansing. Turkey closed borders due to influx. All confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "May-August 1989, approximately 360,000 expelled. Described as Cold War Europe's largest ethnic cleansing. Turkey closed borders due to influx. All confirmed.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
+    "year": 1989,
+    "title": "Zhivkov Removed from Power After 35-Year Rule",
+    "verdict": "TRUE",
+    "reason": "November 10, 1989 (day after Berlin Wall fell); internal Politburo coup; Petar Mladenov led ouster. 35-year rule confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "November 10, 1989 (day after Berlin Wall fell); internal Politburo coup; Petar Mladenov led ouster. 35-year rule confirmed.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
+    "year": 1990,
+    "title": "Bulgaria Defaults on $11 Billion Foreign Debt",
+    "verdict": "TRUE",
+    "reason": "Multiple independent sources confirm that in March 1990, Bulgaria's government (under new PM Andrey Lukanov) declared a moratorium on foreign debt servicing/repayments, ceasing interest payments without warning, amid the collapse of the command economy and the Comecon trade bloc after decades of Western borrowing in the 1980s. A contemporary Christian Science Monitor report (Oct 1990) cites the foreign debt at $10.2 billion and explicitly states 'No interest payments have been paid since last March, when the government declared a moratorium on its debt servicing.' Other retrospective sources (guidebg.com) cite 'over $10 billion,' and Bulgaria's debt is documented at $11.25 billion by 1991 and $12.2 billion by 1992 (Richmond scholarship paper via search snippet), placing the commonly-cited $11 billion figure squarely within the range of contemporaneous and near-contemporaneous estimates of Bulgaria's external debt at the time of default. Country, year, and material facts (default/moratorium on Western-accumulated debt amid transition-era collapse) all match; the $11B figure is a reasonable rounding within the documented $10.2B-$12.2B range, not a material misstatement.",
+    "verify_count": 2,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "double_confirmed",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "March 1990 debt payments suspended by Lukanov government. ~$11B figure broadly consistent with sources (by 1992 debt was $12.2B). Confirmed.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Multiple independent sources confirm that in March 1990, Bulgaria's government (under new PM Andrey Lukanov) declared a moratorium on foreign debt servicing/repayments, ceasing interest payments without warning, amid the collapse of the command economy and the Comecon trade bloc after decades of Western borrowing in the 1980s. A contemporary Christian Science Monitor report (Oct 1990) cites the foreign debt at $10.2 billion and explicitly states 'No interest payments have been paid since last March, when the government declared a moratorium on its debt servicing.' Other retrospective sources (guidebg.com) cite 'over $10 billion,' and Bulgaria's debt is documented at $11.25 billion by 1991 and $12.2 billion by 1992 (Richmond scholarship paper via search snippet), placing the commonly-cited $11 billion figure squarely within the range of contemporaneous and near-contemporaneous estimates of Bulgaria's external debt at the time of default. Country, year, and material facts (default/moratorium on Western-accumulated debt amid transition-era collapse) all match; the $11B figure is a reasonable rounding within the documented $10.2B-$12.2B range, not a material misstatement.",
+        "source": "https://www.csmonitor.com/1990/1004/fbul.html",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-02",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://www.csmonitor.com/1990/1004/fbul.html"
+  },
+  {
+    "year": 1990,
+    "title": "First Multi-Party Elections Since 1946 â€” BSP Wins",
+    "verdict": "TRUE",
+    "reason": "June 1990 elections; BSP (renamed BCP) won parliamentary majority over UDF. Confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "June 1990 elections; BSP (renamed BCP) won parliamentary majority over UDF. Confirmed.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
+    "year": 1990,
+    "title": "Roundtable Talks Produce Agreement on Free Elections",
+    "verdict": "TRUE",
+    "reason": "Roundtable negotiations between BCP/BSP and UDF; agreements on free elections and constitutional reform confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Roundtable negotiations between BCP/BSP and UDF; agreements on free elections and constitutional reform confirmed.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
+    "year": 1991,
+    "title": "First Free Elections Under New Constitution â€” Center-Right Government",
+    "verdict": "TRUE",
+    "reason": "October 1991 elections; UDF narrowly won; Filip Dimitrov formed first non-communist government since 1944. Confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "October 1991 elections; UDF narrowly won; Filip Dimitrov formed first non-communist government since 1944. Confirmed.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
+    "year": 1991,
+    "title": "New Democratic Constitution Adopted",
+    "verdict": "TRUE",
+    "reason": "Adopted July 12, 1991 by 7th Grand National Assembly; parliamentary republic established. Confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Adopted July 12, 1991 by 7th Grand National Assembly; parliamentary republic established. Confirmed.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
+    "year": 1992,
+    "title": "Zhivkov Convicted of Embezzlement and Placed Under House Arrest",
+    "verdict": "TRUE",
+    "reason": "Zhivkov convicted of embezzlement and abuse of power; sentenced to house arrest. Confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Zhivkov convicted of embezzlement and abuse of power; sentenced to house arrest. Confirmed.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
+    "year": 1994,
+    "title": "Bulgaria's Golden Generation Reaches 1994 World Cup Semifinal",
+    "verdict": "TRUE",
+    "reason": "All material facts confirmed via independent search. Bulgaria beat defending champion Germany 2-1 in the 1994 World Cup quarterfinal (Stoichkov equalizer 76', Lechkov winner 79', after Matthäus penalty 49') — corroborated by ESPN, worldfootball.net, Wikipedia. Bulgaria then lost 2-1 to Italy in the semifinal (Roberto Baggio brace, Stoichkov penalty) — corroborated by ESPN and multiple retrospectives. This remains Bulgaria's best-ever World Cup finish (4th place), achieved under coach Dimitar Penev — confirmed by his Jan 2026 Washington Post obituary, which explicitly credits him with leading Bulgaria to the 1994 semifinals as its \"biggest success.\" Stoichkov finished the tournament with six goals and shared the Golden Boot with Russia's Oleg Salenko (both on 6 goals) — this is a minor nuance (award was shared, not sole) but does not misstate the magnitude (six goals is correct) and multiple reputable sources (goal.com, historyofsoccer.info) still describe Stoichkov as having \"earned/won\" the Golden Boot, so this is not treated as a material discrepancy. Stoichkov's 1994 Ballon d'Or win (awarded 20 Dec 1994, first Bulgarian winner) is independently confirmed via Wikipedia's 1994 Ballon d'Or page and multiple secondary sources. Year and country both hold.",
+    "verify_count": 2,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "double_confirmed",
+    "needs_tiebreak": false,
+    "source_independence": "independent",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Independently corroborated across multiple sources: Bulgaria beat defending champion Germany 2-1 in the 1994 World Cup quarterfinal (goals by Stoichkov and Letchkov, July 10, 1994), then lost 2-1 to Italy (Baggio brace) in the semifinal — Bulgaria's best-ever World Cup finish (4th place), under coach Dimitar Penev, with the squad remembered domestically as the \"Golden Generation.\" Stoichkov shared the tournament's Golden Boot with 6 goals (alongside Oleg Salenko) and separately won the 1994 Ballon d'Or, awarded Dec 20, 1994, on the strength of his club form and this World Cup run. All material details (country, year, opponents, scorelines, coach, awards) check out.",
+        "source": "https://www.fifa.com/en/articles/100-great-world-cup-moments-qatar-2022-32-bulgaria-letchkov-stoichkov-germany-1994",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-09",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "All material facts confirmed via independent search. Bulgaria beat defending champion Germany 2-1 in the 1994 World Cup quarterfinal (Stoichkov equalizer 76', Lechkov winner 79', after Matthäus penalty 49') — corroborated by ESPN, worldfootball.net, Wikipedia. Bulgaria then lost 2-1 to Italy in the semifinal (Roberto Baggio brace, Stoichkov penalty) — corroborated by ESPN and multiple retrospectives. This remains Bulgaria's best-ever World Cup finish (4th place), achieved under coach Dimitar Penev — confirmed by his Jan 2026 Washington Post obituary, which explicitly credits him with leading Bulgaria to the 1994 semifinals as its \"biggest success.\" Stoichkov finished the tournament with six goals and shared the Golden Boot with Russia's Oleg Salenko (both on 6 goals) — this is a minor nuance (award was shared, not sole) but does not misstate the magnitude (six goals is correct) and multiple reputable sources (goal.com, historyofsoccer.info) still describe Stoichkov as having \"earned/won\" the Golden Boot, so this is not treated as a material discrepancy. Stoichkov's 1994 Ballon d'Or win (awarded 20 Dec 1994, first Bulgarian winner) is independently confirmed via Wikipedia's 1994 Ballon d'Or page and multiple secondary sources. Year and country both hold.",
+        "source": "https://www.washingtonpost.com/sports/soccer/2026/01/03/bulgaria-coach-penev-death/84abc08c-e8ac-11f0-ae3e-837f914c795b_story.html",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-09",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://www.washingtonpost.com/sports/soccer/2026/01/03/bulgaria-coach-penev-death/84abc08c-e8ac-11f0-ae3e-837f914c795b_story.html"
+  },
+  {
+    "year": 1994,
+    "title": "Bulgarian Socialist Party Returns to Power â€” Statist Economic Reversal",
+    "verdict": "TRUE",
+    "reason": "BSP won 1994 elections; Zhan Videnov government reversed privatization; set up 1996-97 crisis. Confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "BSP won 1994 elections; Zhan Videnov government reversed privatization; set up 1996-97 crisis. Confirmed.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
+    "year": 1996,
+    "title": "Banking Collapse and Hyperinflation Devastate Economy",
+    "verdict": "PARTIAL",
+    "reason": "Core facts confirm for 1996: bank runs that began in late 1995 accelerated through 1996, and roughly one-third of the banking sector (commonly cited as 14 banks) failed/entered bankruptcy proceedings in 1996 — this matches \"more than a dozen banks failing simultaneously.\" A mid-1996 grain shortage did produce bread/flour shortages and rationing, and 1996 is widely regarded as the worst crisis of post-communist Bulgaria. However, two magnitude/timing details are materially off: (1) the lev's collapse from ~70.7:1 to 350:1 (Jan-Nov 1996) is an ~80% loss within calendar 1996 — the currency didn't cross the ~90%+ mark until it passed 3000:1 right at the turn of 1996/1997, so the full \"90 percent\" loss is really a late-1996-into-early-1997 event, not one completed within 1996; (2) \"hyperinflation reached 300 percent monthly\" overstates 1996 itself — year-on-year (Dec/Dec) inflation for 1996 was ~311%, but true monthly hyperinflation (Cagan-threshold, >50%/month) only began in Jan-Feb 1997, peaking at ~242% in February 1997, not 300% and not within 1996. So the description conflates the annual 1996 inflation figure with a monthly rate that actually belongs to early 1997. Country and the core banking-collapse event hold for 1996, but the hyperinflation-magnitude and full currency-collapse figures are drawn from the crisis's 1997 continuation rather than calendar 1996 itself.",
+    "verify_count": 2,
+    "consensus_verdict": "PARTIAL",
+    "consensus_status": "downgraded",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Banking system collapse 1996; lev lost ~90% value; hyperinflation peaked at 242% monthly (February 1997, not 300% as stated — minor figure discrepancy but within same crisis period). Bread shortages confirmed. Broadly verified.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "PARTIAL",
+        "reason": "Core facts confirm for 1996: bank runs that began in late 1995 accelerated through 1996, and roughly one-third of the banking sector (commonly cited as 14 banks) failed/entered bankruptcy proceedings in 1996 — this matches \"more than a dozen banks failing simultaneously.\" A mid-1996 grain shortage did produce bread/flour shortages and rationing, and 1996 is widely regarded as the worst crisis of post-communist Bulgaria. However, two magnitude/timing details are materially off: (1) the lev's collapse from ~70.7:1 to 350:1 (Jan-Nov 1996) is an ~80% loss within calendar 1996 — the currency didn't cross the ~90%+ mark until it passed 3000:1 right at the turn of 1996/1997, so the full \"90 percent\" loss is really a late-1996-into-early-1997 event, not one completed within 1996; (2) \"hyperinflation reached 300 percent monthly\" overstates 1996 itself — year-on-year (Dec/Dec) inflation for 1996 was ~311%, but true monthly hyperinflation (Cagan-threshold, >50%/month) only began in Jan-Feb 1997, peaking at ~242% in February 1997, not 300% and not within 1996. So the description conflates the annual 1996 inflation figure with a monthly rate that actually belongs to early 1997. Country and the core banking-collapse event hold for 1996, but the hyperinflation-magnitude and full currency-collapse figures are drawn from the crisis's 1997 continuation rather than calendar 1996 itself.",
+        "source": "https://www.bnb.bg/bnbweb/groups/public/documents/bnb_publication/discussion_199907_en.pdf",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-02",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://www.bnb.bg/bnbweb/groups/public/documents/bnb_publication/discussion_199907_en.pdf"
+  },
+  {
+    "year": 1997,
+    "title": "Currency Board Introduced â€” Lev Pegged to Deutsche Mark",
+    "verdict": "TRUE",
+    "reason": "Confirmed: on July 1, 1997, Bulgaria introduced a currency board arrangement pegging the lev to the Deutsche Mark at a fixed rate of 1000 leva to 1 DEM, eliminating central bank discretion over monetary policy. This followed a hyperinflation crisis where monthly inflation peaked at 242% in February 1997 and annualized inflation exceeded 2,000%. The currency board halted the crisis, inflation and interest rates fell rapidly, and the arrangement remained in place (later re-pegged to the euro in 1999 at the same effective rate) as the cornerstone of Bulgarian monetary policy. All material details (country, year, mechanism, ratio, effect) match the description.",
+    "verify_count": 2,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "double_confirmed",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "July 1, 1997; 1000:1 peg to Deutsche Mark; hyperinflation halted immediately. Re-pegged to euro January 4, 1999. Confirmed.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Confirmed: on July 1, 1997, Bulgaria introduced a currency board arrangement pegging the lev to the Deutsche Mark at a fixed rate of 1000 leva to 1 DEM, eliminating central bank discretion over monetary policy. This followed a hyperinflation crisis where monthly inflation peaked at 242% in February 1997 and annualized inflation exceeded 2,000%. The currency board halted the crisis, inflation and interest rates fell rapidly, and the arrangement remained in place (later re-pegged to the euro in 1999 at the same effective rate) as the cornerstone of Bulgarian monetary policy. All material details (country, year, mechanism, ratio, effect) match the description.",
+        "source": "https://www.bta.bg/en/news/archives/921311-july-1-1997-currency-board-takes-effect-pegging-lev-to-deutsche-mark",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-02",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://www.bta.bg/en/news/archives/921311-july-1-1997-currency-board-takes-effect-pegging-lev-to-deutsche-mark"
+  },
+  {
+    "year": 1997,
+    "title": "Mass Protests Storm Parliament â€” BSP Government Falls",
+    "verdict": "TRUE",
+    "reason": "January 1997 storming of National Assembly; BSP resigned; Ivan Kostov center-right government followed. Confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "January 1997 storming of National Assembly; BSP resigned; Ivan Kostov center-right government followed. Confirmed.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
+    "year": 1998,
+    "title": "Bulgarian Nurses Arrested in Libya on Fabricated HIV Charges",
+    "verdict": "FALSE",
+    "reason": "Year is wrong. Nurses were arrested February/March 1999, not 1998. The HIV infections allegedly occurred in 1998 but arrests were in 1999. Year-off by 1 = FALSE.",
+    "verify_count": 1,
+    "consensus_verdict": "FALSE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "FALSE",
+        "reason": "Year is wrong. Nurses were arrested February/March 1999, not 1998. The HIV infections allegedly occurred in 1998 but arrests were in 1999. Year-off by 1 = FALSE.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
+    "year": 1999,
+    "title": "EU Accession Negotiations Formally Opened",
+    "verdict": "TRUE",
+    "reason": "EU formally opened accession negotiations with Bulgaria in 1999. Confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "EU formally opened accession negotiations with Bulgaria in 1999. Confirmed.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
+    "year": 2001,
+    "title": "Former Tsar Simeon II Wins Elections and Becomes Prime Minister",
+    "verdict": "TRUE",
+    "reason": "NDSV swept June 2001 elections; Simeon Saxe-Coburg-Gotha became PM — first former monarch to return to executive power via democratic election. Confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "NDSV swept June 2001 elections; Simeon Saxe-Coburg-Gotha became PM — first former monarch to return to executive power via democratic election. Confirmed.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
+    "year": 2004,
+    "title": "Bulgaria Joins NATO",
+    "verdict": "TRUE",
+    "reason": "March 29, 2004 NATO accession confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "March 29, 2004 NATO accession confirmed.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
+    "year": 2005,
+    "title": "Bulgaria Signs EU Accession Treaty â€” Membership Set for 2007",
+    "verdict": "TRUE",
+    "reason": "Signed April 25, 2005 in Luxembourg; January 1, 2007 accession date. Confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Signed April 25, 2005 in Luxembourg; January 1, 2007 accession date. Confirmed.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
+    "year": 2006,
+    "title": "Bulgaria Shuts Down Kozloduy Reactors Under EU Accession Safety Terms",
+    "verdict": "TRUE",
+    "reason": "Multiple independent, authoritative sources confirm all material details. Bulgaria committed during EU accession negotiations to close the Soviet-era VVER-440 (V-230 design) reactors at Kozloduy that the EU had deemed non-upgradable. Units 1 and 2 closed by 31 December 2002; units 3 and 4 closed on 31 December 2006, in the final hours before Bulgaria's EU accession on 1 January 2007. EU compensation for the early closure of units 3 and 4 was raised to approximately €550 million (from an initial €200 million offer) once 2006 was agreed as the shutdown date. This matches the event description on year, country, actors, mechanism, and magnitude.",
+    "verify_count": 2,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "double_confirmed",
+    "needs_tiebreak": false,
+    "source_independence": "independent",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed via World Nuclear Association and corroborating search results (World Nuclear News, BTA, Wikipedia, EUR-Lex): Kozloduy units 1&2 (Soviet-era VVER-440 V-230 reactors, deemed non-upgradable by the EU) closed at the end of 2002; units 3&4 closed on 31 December 2006, both as conditions of Bulgaria's EU accession negotiations. A 2005 opinion poll showed 75% public support for keeping units 3&4 running despite the mandated shutdown. Bulgaria received €550 million in EU compensation for the early closures (increased from an initial €200 million offer). Bulgaria joined the EU on 1 January 2007. Every material detail in the event description is corroborated.",
+        "source": "https://world-nuclear.org/information-library/country-profiles/countries-a-f/bulgaria",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Multiple independent, authoritative sources confirm all material details. Bulgaria committed during EU accession negotiations to close the Soviet-era VVER-440 (V-230 design) reactors at Kozloduy that the EU had deemed non-upgradable. Units 1 and 2 closed by 31 December 2002; units 3 and 4 closed on 31 December 2006, in the final hours before Bulgaria's EU accession on 1 January 2007. EU compensation for the early closure of units 3 and 4 was raised to approximately €550 million (from an initial €200 million offer) once 2006 was agreed as the shutdown date. This matches the event description on year, country, actors, mechanism, and magnitude.",
+        "source": "https://www.world-nuclear-news.org/Articles/EU-accession-brings-early-reactor-closures",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://www.world-nuclear-news.org/Articles/EU-accession-brings-early-reactor-closures"
+  },
+  {
+    "year": 2007,
+    "title": "Bulgaria Joins the European Union",
+    "verdict": "TRUE",
+    "reason": "January 1, 2007 EU accession alongside Romania. Confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "January 1, 2007 EU accession alongside Romania. Confirmed.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
+    "year": 2007,
+    "title": "EU Cooperation and Verification Mechanism Imposed on Bulgaria",
+    "verdict": "TRUE",
+    "reason": "CVM established at accession in 2007; annual reports on judiciary, corruption, organized crime. Closed September 2023. Confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "CVM established at accession in 2007; annual reports on judiciary, corruption, organized crime. Closed September 2023. Confirmed.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
+    "year": 2008,
+    "title": "EU Suspends â‚¬500 Million in Bulgarian Structural Funds Over Corruption",
+    "verdict": "TRUE",
+    "reason": "EU suspended funds over corruption/financial mismanagement; actual amount withdrawn ~€220M (initial threat was €500M). Broadly verified; first such EU member suspension.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "EU suspended funds over corruption/financial mismanagement; actual amount withdrawn ~€220M (initial threat was €500M). Broadly verified; first such EU member suspension.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
+    "year": 2009,
+    "title": "Boyko Borisov and GERB Win Landslide Election",
+    "verdict": "TRUE",
+    "reason": "GERB won 2009 elections with ~40% of vote; Borisov former police chief and Sofia mayor. Confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "GERB won 2009 elections with ~40% of vote; Borisov former police chief and Sofia mayor. Confirmed.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
+    "year": 2009,
+    "title": "Russia-Ukraine Gas Dispute Cuts Bulgarian Gas Supply for Two Weeks",
+    "verdict": "TRUE",
+    "reason": "January 2009 gas cutoff through Ukraine affected Bulgaria for ~two weeks. Energy dependency and security debate confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "January 2009 gas cutoff through Ukraine affected Bulgaria for ~two weeks. Energy dependency and security debate confirmed.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
+    "year": 2012,
+    "title": "Burgas Airport Suicide Bombing Kills Six â€” Hezbollah Implicated",
+    "verdict": "TRUE",
+    "reason": "July 18, 2012; five Israeli tourists + one Bulgarian bus driver killed (six total); Hezbollah implicated; led to EU terrorist designation of Hezbollah military wing in 2013. Confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "July 18, 2012; five Israeli tourists + one Bulgarian bus driver killed (six total); Hezbollah implicated; led to EU terrorist designation of Hezbollah military wing in 2013. Confirmed.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
+    "year": 2013,
+    "title": "Mass Anti-Corruption Protests Topple Two Governments",
+    "verdict": "TRUE",
+    "reason": "Borisov resigned February 2013 over electricity/corruption; Oresharski cabinet faced months of daily protests starting June 2013 and resigned 2014. Confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Borisov resigned February 2013 over electricity/corruption; Oresharski cabinet faced months of daily protests starting June 2013 and resigned 2014. Confirmed.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
+    "year": 2014,
+    "title": "Bulgaria Blocks South Stream Pipeline Under EU and US Pressure",
+    "verdict": "TRUE",
+    "reason": "Bulgaria suspended then cancelled South Stream under EU/US pressure; Russia cancelled entire project. Confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Bulgaria suspended then cancelled South Stream under EU/US pressure; Russia cancelled entire project. Confirmed.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
+    "year": 2014,
+    "title": "Corporate Commercial Bank Collapse Freezes 200,000 Depositors",
+    "verdict": "TRUE",
+    "reason": "Well-corroborated by multiple independent sources. Corporate Commercial Bank (KTB/Corpbank), confirmed as Bulgaria's fourth-largest bank by assets (end of Nov 2013), suffered a bank run in June 2014 triggered by allegations of massive fraud and related-party lending — Forbes and Bulgarian outlets detail that ~72% of its 5.2bn BGN loan portfolio (3.7bn BGN) went to shell companies controlled by owner Tsvetan Vasilev and politically connected figures (Delyan Peevski, Ahmed Dogan). The BNB placed the bank under special administration after the run and withdrew its license on 6 Nov 2014, freezing depositor access for ~6 months. On depositor count: sources give ~250,000-300,000 individuals plus ~6,000 businesses holding guaranteed deposits (up to 196,000 BGN each), with 111,981 actually claiming payouts by 2019 — the description's \"200,000 depositors\" is within the credible range reported (close to but slightly under the commonly cited 250,000 figure) and is materially accurate as an order-of-magnitude/scope claim. Cost to the state: guaranteed deposits totaled ~3.686-3.7 billion leva (matches description's \"3.7 billion leva\" almost exactly), funded via a ~2bn leva state loan to the underfunded Deposit Insurance Fund. All core facts (country=Bulgaria, year=2014, bank identity, fraud/related-party lending mechanism, deposit freeze, ~3.7bn leva resolution cost) check out via independent sources (Wikipedia, Forbes, Mediapool.bg, Capital.bg), none of which are on the off-limits list.",
+    "verify_count": 2,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "double_confirmed",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "KTB (fourth largest bank) collapsed June 2014 after bank run; assets impaired by ~BGN 4.2B; thousands of depositors affected. ~200,000 figure consistent with sources. Confirmed.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Well-corroborated by multiple independent sources. Corporate Commercial Bank (KTB/Corpbank), confirmed as Bulgaria's fourth-largest bank by assets (end of Nov 2013), suffered a bank run in June 2014 triggered by allegations of massive fraud and related-party lending — Forbes and Bulgarian outlets detail that ~72% of its 5.2bn BGN loan portfolio (3.7bn BGN) went to shell companies controlled by owner Tsvetan Vasilev and politically connected figures (Delyan Peevski, Ahmed Dogan). The BNB placed the bank under special administration after the run and withdrew its license on 6 Nov 2014, freezing depositor access for ~6 months. On depositor count: sources give ~250,000-300,000 individuals plus ~6,000 businesses holding guaranteed deposits (up to 196,000 BGN each), with 111,981 actually claiming payouts by 2019 — the description's \"200,000 depositors\" is within the credible range reported (close to but slightly under the commonly cited 250,000 figure) and is materially accurate as an order-of-magnitude/scope claim. Cost to the state: guaranteed deposits totaled ~3.686-3.7 billion leva (matches description's \"3.7 billion leva\" almost exactly), funded via a ~2bn leva state loan to the underfunded Deposit Insurance Fund. All core facts (country=Bulgaria, year=2014, bank identity, fraud/related-party lending mechanism, deposit freeze, ~3.7bn leva resolution cost) check out via independent sources (Wikipedia, Forbes, Mediapool.bg, Capital.bg), none of which are on the off-limits list.",
+        "source": "https://www.mediapool.bg/krazhbata-na-veka-kakvo-se-sluchva-pet-godini-sled-sriva-na-ktb-news294713.html",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-02",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://www.mediapool.bg/krazhbata-na-veka-kakvo-se-sluchva-pet-godini-sled-sriva-na-ktb-news294713.html"
+  },
+  {
+    "year": 2016,
+    "title": "Pro-Russia Rumen Radev Elected President â€” GERB Government Resigns",
+    "verdict": "TRUE",
+    "reason": "Radev (BSP-backed, former Air Force Commander) won November 2016 presidential election; Borisov resigned immediately after defeat. Confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Radev (BSP-backed, former Air Force Commander) won November 2016 presidential election; Borisov resigned immediately after defeat. Confirmed.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
+    "year": 2018,
+    "title": "Journalist Viktoria Marinova Murdered â€” Press Freedom Alarm",
+    "verdict": "TRUE",
+    "reason": "Marinova murdered in Ruse, October 2018; investigating EU fund corruption; Bulgaria ranked last in EU on press freedom. Confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Marinova murdered in Ruse, October 2018; investigating EU fund corruption; Bulgaria ranked last in EU on press freedom. Confirmed.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
+    "year": 2020,
+    "title": "100-Day Anti-Corruption Protest Wave Demands Borisov Resignation",
+    "verdict": "TRUE",
+    "reason": "July 2020 protests lasting 100+ days; gold bars/cash image trigger; targeted government-oligarch-prosecutor connections. Confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "July 2020 protests lasting 100+ days; gold bars/cash image trigger; targeted government-oligarch-prosecutor connections. Confirmed.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
+    "year": 2020,
+    "title": "Bulgaria Joins ERM II â€” Euro Adoption Process Begins",
+    "verdict": "TRUE",
+    "reason": "Confirmed by multiple independent sources: Bulgaria (together with Croatia) formally joined the Exchange Rate Mechanism II (ERM II) on 10 July 2020, with the lev's central rate fixed at EUR 1 = BGN 1.95583 (the pre-existing currency board rate) within a standard ±15% fluctuation band. This is the official first step of the eurozone accession process. The description's claim that persistently elevated inflation delayed actual euro adoption beyond 2024 is also consistent with reporting — Bulgaria did not adopt the euro until it exited ERM II at end of 2025 to join on 1 January 2026, well beyond the originally hoped-for 2024 target. All material details (country, year, month, mechanism, institutional significance) check out.",
+    "verify_count": 2,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "double_confirmed",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "July 10, 2020 ERM II accession; lev locked to euro at 1.95583. Confirmed.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Confirmed by multiple independent sources: Bulgaria (together with Croatia) formally joined the Exchange Rate Mechanism II (ERM II) on 10 July 2020, with the lev's central rate fixed at EUR 1 = BGN 1.95583 (the pre-existing currency board rate) within a standard ±15% fluctuation band. This is the official first step of the eurozone accession process. The description's claim that persistently elevated inflation delayed actual euro adoption beyond 2024 is also consistent with reporting — Bulgaria did not adopt the euro until it exited ERM II at end of 2025 to join on 1 January 2026, well beyond the originally hoped-for 2024 target. All material details (country, year, month, mechanism, institutional significance) check out.",
+        "source": "https://www.consilium.europa.eu/en/press/press-releases/2020/07/10/communiques-by-the-erm-ii-parties-on-bulgaria-and-croatia/",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-02",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://www.consilium.europa.eu/en/press/press-releases/2020/07/10/communiques-by-the-erm-ii-parties-on-bulgaria-and-croatia/"
+  },
+  {
+    "year": 2020,
+    "title": "COVID-19 â€” Bulgaria Records Lowest Vaccination Rate in EU",
+    "verdict": "TRUE",
+    "reason": "First cases March 2020; Bulgaria had lowest EU vaccination rate throughout pandemic; high mortality compounding demographic crisis. Confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "First cases March 2020; Bulgaria had lowest EU vaccination rate throughout pandemic; high mortality compounding demographic crisis. Confirmed.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
+    "year": 2021,
+    "title": "Three Elections in One Year â€” Anti-Establishment Wave Fragments Parliament",
+    "verdict": "TRUE",
+    "reason": "Three elections: April 4, July 11, November 14, 2021. ITN (entertainer's party) and PP (technocratic) rose; GERB/BSP lost dominance. Confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Three elections: April 4, July 11, November 14, 2021. ITN (entertainer's party) and PP (technocratic) rose; GERB/BSP lost dominance. Confirmed.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
+    "year": 2022,
+    "title": "Bulgaria Vetoes North Macedonia's EU Accession Over Historical Disputes",
+    "verdict": "TRUE",
+    "reason": "Bulgaria maintained veto; lifted June 24, 2022 after French mediation/proposal. Ongoing bilateral conditionality disputes confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Bulgaria maintained veto; lifted June 24, 2022 after French mediation/proposal. Ongoing bilateral conditionality disputes confirmed.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
+    "year": 2022,
+    "title": "Russia Cuts Gas to Bulgaria â€” Energy Crisis After Ukraine Invasion",
+    "verdict": "TRUE",
+    "reason": "April 26, 2022 Gazprom cut gas after Bulgaria refused ruble payments. Bulgaria accelerated LNG and Azerbaijan alternatives. Confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "April 26, 2022 Gazprom cut gas after Bulgaria refused ruble payments. Bulgaria accelerated LNG and Azerbaijan alternatives. Confirmed.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
+    "year": 2023,
+    "title": "Bulgaria Partially Joins Schengen for Air and Sea Travel",
+    "verdict": "FALSE",
+    "reason": "Year is partially wrong. The Council decision was December 30, 2023, but air/sea Schengen took effect March 31, 2024 — not in 2023. Event assigns year 2023 to an event that operationally happened in 2024.",
+    "verify_count": 1,
+    "consensus_verdict": "FALSE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "FALSE",
+        "reason": "Year is partially wrong. The Council decision was December 30, 2023, but air/sea Schengen took effect March 31, 2024 — not in 2023. Event assigns year 2023 to an event that operationally happened in 2024.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
+    "year": 2024,
+    "title": "Bulgaria Achieves Full Schengen Area Membership",
+    "verdict": "FALSE",
+    "reason": "Year is wrong. Full land border Schengen membership took effect January 1, 2025, not January 2024. Year-off by 1 = FALSE.",
+    "verify_count": 1,
+    "consensus_verdict": "FALSE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "FALSE",
+        "reason": "Year is wrong. Full land border Schengen membership took effect January 1, 2025, not January 2024. Year-off by 1 = FALSE.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  }
+]

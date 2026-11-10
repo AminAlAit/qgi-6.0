@@ -1,0 +1,35 @@
+name: Validate
+
+on:
+  push:
+    branches: [main]
+    paths: ['events/**', 'registries/**', 'scripts/**', 'workflows/**', 'tests/**', '.github/workflows/**']
+  pull_request:
+    branches: [main]
+    paths: ['events/**', 'registries/**', 'scripts/**', 'workflows/**', 'tests/**', '.github/workflows/**']
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+      - name: Validate event JSON files
+        run: python scripts/validate_events.py
+      - name: Validate verification files
+        run: python scripts/validate_verification.py
+      - name: Validate candidate registry
+        run: python scripts/validate_registry.py
+      # JS<->Python consensus/normTitle parity lock (tests/consensus_vectors.json):
+      # both suites must run at merge time or the lock is decorative.
+      - name: Run verification/migration unit tests
+        run: |
+          pip install pytest
+          python -m pytest tests/test_migrate_verification_to_v2.py tests/test_validate_verification.py -q
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Run workflow-lib unit tests
+        run: node --test workflows/events/schemas.test.mjs

@@ -1,0 +1,1221 @@
+[
+  {
+    "year": 1990,
+    "title": "Student Protests Trigger End of One-Party Communist Rule",
+    "verdict": "TRUE",
+    "reason": "December 1990 student protests at University of Tirana confirmed. Party of Labour legalized opposition on 11 December 1990. 46-year figure correct (since 1944).",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "December 1990 student protests at University of Tirana confirmed. Party of Labour legalized opposition on 11 December 1990. 46-year figure correct (since 1944).",
+        "source": "https://en.wikipedia.org/wiki/Fall_of_communism_in_Albania",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Fall_of_communism_in_Albania"
+  },
+  {
+    "year": 1991,
+    "title": "Comprehensive Agrarian Reform Dismantles Collective Farms",
+    "verdict": "TRUE",
+    "reason": "Albania's \"Land Law\" (Law No. 7501), enacted 19 July 1991, dismantled the ~160 state farms and 492 agricultural cooperatives, distributing roughly 575,000-670,000 hectares of collective farmland to hundreds of thousands of rural households on an egalitarian per-capita basis. This created highly fragmented smallholdings (average ~1-1.3 ha split into 1.8-1.9 million separate plots), which is widely documented in the literature as undermining short-term productivity and mechanization while ending the state monopoly on land ownership. This matches the event description on country, year, and substance (legislation, dismantling collectives, fragmentation, productivity tradeoff, end of state land monopoly).",
+    "verify_count": 2,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "double_confirmed",
+    "needs_tiebreak": false,
+    "source_independence": "independent",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Land reform distributing collective farmland in 1991 is documented. Fragmentation of holdings confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Agriculture_in_Albania",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Albania's \"Land Law\" (Law No. 7501), enacted 19 July 1991, dismantled the ~160 state farms and 492 agricultural cooperatives, distributing roughly 575,000-670,000 hectares of collective farmland to hundreds of thousands of rural households on an egalitarian per-capita basis. This created highly fragmented smallholdings (average ~1-1.3 ha split into 1.8-1.9 million separate plots), which is widely documented in the literature as undermining short-term productivity and mechanization while ending the state monopoly on land ownership. This matches the event description on country, year, and substance (legislation, dismantling collectives, fragmentation, productivity tradeoff, end of state land monopoly).",
+        "source": "https://www.agter.org/bdf/en/corpus_chemin/fiche-chemin-75.html",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-02",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://www.agter.org/bdf/en/corpus_chemin/fiche-chemin-75.html"
+  },
+  {
+    "year": 1991,
+    "title": "First Multi-Party Elections Held After Decades of Communism",
+    "verdict": "TRUE",
+    "reason": "Elections held 31 March 1991 confirmed. Communist Party of Labour retained power with rural support confirmed. Minor note: assembly had 250 seats not specified in event.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Elections held 31 March 1991 confirmed. Communist Party of Labour retained power with rural support confirmed. Minor note: assembly had 250 seats not specified in event.",
+        "source": "https://en.wikipedia.org/wiki/1991_Albanian_parliamentary_election",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/1991_Albanian_parliamentary_election"
+  },
+  {
+    "year": 1991,
+    "title": "Mass Exodus to Italy as Thousands Flee Economic Collapse",
+    "verdict": "TRUE",
+    "reason": "Two waves confirmed: ~25,700 in March and ~20,000 in August 1991 (Vlora ship). 'Tens of thousands' figure is accurate. Both March and August crossings confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Two waves confirmed: ~25,700 in March and ~20,000 in August 1991 (Vlora ship). 'Tens of thousands' figure is accurate. Both March and August crossings confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Vlora_(ship)",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Vlora_(ship)"
+  },
+  {
+    "year": 1992,
+    "title": "Democratic Party Wins Landslide; Berisha Elected President",
+    "verdict": "TRUE",
+    "reason": "DP won 92 of 140 seats confirmed. Vote share was 62.3% (event says '62%' — acceptable rounding). Berisha elected president 9 April 1992 confirmed. '53 years' figure correct.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "DP won 92 of 140 seats confirmed. Vote share was 62.3% (event says '62%' — acceptable rounding). Berisha elected president 9 April 1992 confirmed. '53 years' figure correct.",
+        "source": "https://en.wikipedia.org/wiki/1992_Albanian_parliamentary_election",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/1992_Albanian_parliamentary_election"
+  },
+  {
+    "year": 1992,
+    "title": "Shock Therapy Economic Reforms and Mass Privatization Begin",
+    "verdict": "TRUE",
+    "reason": "Rapid economic liberalization by the new Democratic Party government in 1992 confirmed. IMF assistance and price deregulation documented.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Rapid economic liberalization by the new Democratic Party government in 1992 confirmed. IMF assistance and price deregulation documented.",
+        "source": "https://en.wikipedia.org/wiki/Economy_of_Albania",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Economy_of_Albania"
+  },
+  {
+    "year": 1994,
+    "title": "Albania Joins NATO Partnership for Peace Program",
+    "verdict": "TRUE",
+    "reason": "Albania signed Partnership for Peace on 23 February 1994 confirmed. Description of it as 'one of the first post-communist states' is broadly accurate. 15-year path to NATO membership correct (1994–2009).",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Albania signed Partnership for Peace on 23 February 1994 confirmed. Description of it as 'one of the first post-communist states' is broadly accurate. 15-year path to NATO membership correct (1994–2009).",
+        "source": "https://en.wikipedia.org/wiki/Albania%E2%80%93NATO_relations",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Albania%E2%80%93NATO_relations"
+  },
+  {
+    "year": 1994,
+    "title": "Constitutional Referendum Rejected by Voters",
+    "verdict": "TRUE",
+    "reason": "Referendum held 7 November 1994, rejected. Event says '54% of voters' against; actual figure was 56.4% against (43.6% in favour). Minor discrepancy but directionally correct.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Referendum held 7 November 1994, rejected. Event says '54% of voters' against; actual figure was 56.4% against (43.6% in favour). Minor discrepancy but directionally correct.",
+        "source": "https://en.wikipedia.org/wiki/1994_Albanian_constitutional_referendum",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/1994_Albanian_constitutional_referendum"
+  },
+  {
+    "year": 1996,
+    "title": "Contested Parliamentary Elections Marred by Fraud Allegations",
+    "verdict": "TRUE",
+    "reason": "May 1996 elections condemned by international observers and boycotted by opposition in second round confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "May 1996 elections condemned by international observers and boycotted by opposition in second round confirmed.",
+        "source": "https://en.wikipedia.org/wiki/1996_Albanian_parliamentary_election",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/1996_Albanian_parliamentary_election"
+  },
+  {
+    "year": 1997,
+    "title": "Pyramid Scheme Collapse Triggers Nationwide Civil Unrest",
+    "verdict": "TRUE",
+    "reason": "Independent, non-Wikipedia sources confirm every material element of the description. EBSCO Research Starters confirms: pyramid schemes declared bankruptcy in January 1997; liabilities/losses of $1.2 billion; almost 70% (roughly two-thirds) of the population held stock in the fraudulent companies; rioting killed about 2,000 people; and by spring 1997 the government lost control of the country with anarchy ruling most of the nation. Separate independent sources (globalsecurity.org, onwar.com, US State Dept 1997 human rights report) corroborate that the armed uprising was centered in and began in southern Albania (Vlorë, then Gjirokastër), with citizens storming and looting military armories/depots (over 650,000 small arms looted nationwide), and the entire south falling out of government control. All core facts (country=Albania, year=1997, magnitude=$1.2B/two-thirds population, ~2,000 deaths, southern armed revolt on military depots, near-total state breakdown) match the event description.",
+    "verify_count": 2,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "double_confirmed",
+    "needs_tiebreak": false,
+    "source_independence": "independent",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Collapse started January 1997 confirmed. $1.2 billion face value of liabilities confirmed. Two-thirds of population as investors confirmed. Over 2,000 deaths confirmed. Event says 'January 1997' for collapse trigger — accurate.",
+        "source": "https://en.wikipedia.org/wiki/Pyramid_schemes_in_Albania",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Independent, non-Wikipedia sources confirm every material element of the description. EBSCO Research Starters confirms: pyramid schemes declared bankruptcy in January 1997; liabilities/losses of $1.2 billion; almost 70% (roughly two-thirds) of the population held stock in the fraudulent companies; rioting killed about 2,000 people; and by spring 1997 the government lost control of the country with anarchy ruling most of the nation. Separate independent sources (globalsecurity.org, onwar.com, US State Dept 1997 human rights report) corroborate that the armed uprising was centered in and began in southern Albania (Vlorë, then Gjirokastër), with citizens storming and looting military armories/depots (over 650,000 small arms looted nationwide), and the entire south falling out of government control. All core facts (country=Albania, year=1997, magnitude=$1.2B/two-thirds population, ~2,000 deaths, southern armed revolt on military depots, near-total state breakdown) match the event description.",
+        "source": "https://www.ebsco.com/research-starters/politics-and-government/pyramid-investment-schemes-cause-albanian-government-fall",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-02",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://www.ebsco.com/research-starters/politics-and-government/pyramid-investment-schemes-cause-albanian-government-fall"
+  },
+  {
+    "year": 1997,
+    "title": "Socialist Party Wins Snap Elections; Berisha Forced to Resign",
+    "verdict": "TRUE",
+    "reason": "June 1997 elections won by Socialist Party under Fatos Nano confirmed. Berisha's resignation confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "June 1997 elections won by Socialist Party under Fatos Nano confirmed. Berisha's resignation confirmed.",
+        "source": "https://en.wikipedia.org/wiki/1997_Albanian_parliamentary_election",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/1997_Albanian_parliamentary_election"
+  },
+  {
+    "year": 1997,
+    "title": "UN-Authorized Operation Alba Restores Order",
+    "verdict": "TRUE",
+    "reason": "UN Security Council Resolution 1101 confirmed. Italy-led confirmed. Total deployment was 7,265 troops (event says '7,000 troops' — acceptable approximation). March 1997 deployment confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "UN Security Council Resolution 1101 confirmed. Italy-led confirmed. Total deployment was 7,265 troops (event says '7,000 troops' — acceptable approximation). March 1997 deployment confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Operation_Alba",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Operation_Alba"
+  },
+  {
+    "year": 1998,
+    "title": "Assassination of Opposition MP Azem Hajdari Triggers Violence",
+    "verdict": "TRUE",
+    "reason": "Assassination on 12 September 1998 in Tirana confirmed. Berisha supporters stormed government buildings confirmed. Hajdari was a DP MP confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Assassination on 12 September 1998 in Tirana confirmed. Berisha supporters stormed government buildings confirmed. Hajdari was a DP MP confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Azem_Hajdari",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Azem_Hajdari"
+  },
+  {
+    "year": 1998,
+    "title": "New Constitution Adopted by Referendum",
+    "verdict": "TRUE",
+    "reason": "Referendum on 22 November 1998 confirmed. Approved by 93.5% of voters with 50.6% turnout. Came into force 28 November 1998.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Referendum on 22 November 1998 confirmed. Approved by 93.5% of voters with 50.6% turnout. Came into force 28 November 1998.",
+        "source": "https://en.wikipedia.org/wiki/1998_Albanian_constitutional_referendum",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/1998_Albanian_constitutional_referendum"
+  },
+  {
+    "year": 1999,
+    "title": "Albania Absorbs 450,000 Kosovo Refugees During NATO Campaign",
+    "verdict": "TRUE",
+    "reason": "UNHCR figures range from ~435,000 to ~442,000; event states 450,000 — slight overstatement but within range of peak estimates. '14%' population increase is plausible given Albania population ~3M.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "UNHCR figures range from ~435,000 to ~442,000; event states 450,000 — slight overstatement but within range of peak estimates. '14%' population increase is plausible given Albania population ~3M.",
+        "source": "https://en.wikipedia.org/wiki/Kosovo_refugees_in_Albania",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Kosovo_refugees_in_Albania"
+  },
+  {
+    "year": 1999,
+    "title": "Albania Provides Logistical Support for NATO Kosovo Operations",
+    "verdict": "TRUE",
+    "reason": "Albania's role as staging area for NATO Kosovo operations confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Albania's role as staging area for NATO Kosovo operations confirmed.",
+        "source": "https://en.wikipedia.org/wiki/NATO_bombing_of_Yugoslavia",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/NATO_bombing_of_Yugoslavia"
+  },
+  {
+    "year": 2000,
+    "title": "Local Government Elections Test Decentralization Reforms",
+    "verdict": "TRUE",
+    "reason": "October 2000 local elections held under new constitutional framework confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "October 2000 local elections held under new constitutional framework confirmed.",
+        "source": "https://en.wikipedia.org/wiki/2000_Albanian_local_elections",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/2000_Albanian_local_elections"
+  },
+  {
+    "year": 2003,
+    "title": "Albania Begins Membership Action Plan with NATO",
+    "verdict": "FALSE",
+    "reason": "MAP was granted at the 1999 Washington Summit, not 2003. Event description acknowledges '1999' in the body but is filed under year 2003, which is misleading and factually wrong for the MAP start date. Year off by 4 years = FALSE.",
+    "verify_count": 1,
+    "consensus_verdict": "FALSE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "FALSE",
+        "reason": "MAP was granted at the 1999 Washington Summit, not 2003. Event description acknowledges '1999' in the body but is filed under year 2003, which is misleading and factually wrong for the MAP start date. Year off by 4 years = FALSE.",
+        "source": "https://en.wikipedia.org/wiki/Albania%E2%80%93NATO_relations",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Albania%E2%80%93NATO_relations"
+  },
+  {
+    "year": 2003,
+    "title": "SAA Negotiations with EU Formally Launched",
+    "verdict": "TRUE",
+    "reason": "Albania started SAA negotiations in 2003 confirmed. SAA signed June 2006, in force April 2009.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Albania started SAA negotiations in 2003 confirmed. SAA signed June 2006, in force April 2009.",
+        "source": "https://en.wikipedia.org/wiki/Accession_of_Albania_to_the_European_Union",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Accession_of_Albania_to_the_European_Union"
+  },
+  {
+    "year": 2005,
+    "title": "Berisha Returns as Prime Minister After Democratic Party Victory",
+    "verdict": "TRUE",
+    "reason": "DP won July 2005 elections, Berisha became PM confirmed. Eight years since 1997 pyramid crisis is accurate.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "DP won July 2005 elections, Berisha became PM confirmed. Eight years since 1997 pyramid crisis is accurate.",
+        "source": "https://en.wikipedia.org/wiki/2005_Albanian_parliamentary_election",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/2005_Albanian_parliamentary_election"
+  },
+  {
+    "year": 2005,
+    "title": "UNESCO Inscribes Historic Centres of Berat and Gjirokastra",
+    "verdict": "TRUE",
+    "reason": "UNESCO's official World Heritage Centre listing (whc.unesco.org/en/list/569) confirms Gjirokastra was inscribed in 2005 as a rare example of Ottoman-period architectural character in the Balkans, with Berat added as a site extension in 2008 (site renamed 'Historic Centres of Berat and Gjirokastra'). Independent sources (Wikipedia, RTSH English, worldheritagesite.org) corroborate: Berat's citadel (Kala) contains Byzantine churches (mainly 13th century) and Ottoman-era mosques, illustrating coexistence of religious/cultural communities; Gjirokastra features distinctive stone-roofed two-story houses from the 17th century. All material details in the description (year, country, both cities, architectural features, 2008 extension) match the authoritative UNESCO source and are echoed independently.",
+    "verify_count": 2,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "double_confirmed",
+    "needs_tiebreak": false,
+    "source_independence": "weak",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed via UNESCO World Heritage Centre listing (site #569) and corroborating Wikipedia summary: Gjirokastra was inscribed on the UNESCO World Heritage List in 2005 as a rare example of Ottoman-period Balkan architecture (stone-roofed 'city of stone'); Berat was added as a boundary/site extension in 2008, creating the serial property 'Historic Centres of Berat and Gjirokastra.' Both cities are documented as illustrating centuries of coexistence between religious and cultural communities under Ottoman rule, with Berat's hilltop citadel (Kala) containing Byzantine churches and Ottoman-era mosques. All material details in the event description (year, country, sites, architecture type, coexistence theme, extension timing) match authoritative sourcing.",
+        "source": "https://whc.unesco.org/en/list/569/",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-05",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "UNESCO's official World Heritage Centre listing (whc.unesco.org/en/list/569) confirms Gjirokastra was inscribed in 2005 as a rare example of Ottoman-period architectural character in the Balkans, with Berat added as a site extension in 2008 (site renamed 'Historic Centres of Berat and Gjirokastra'). Independent sources (Wikipedia, RTSH English, worldheritagesite.org) corroborate: Berat's citadel (Kala) contains Byzantine churches (mainly 13th century) and Ottoman-era mosques, illustrating coexistence of religious/cultural communities; Gjirokastra features distinctive stone-roofed two-story houses from the 17th century. All material details in the description (year, country, both cities, architectural features, 2008 extension) match the authoritative UNESCO source and are echoed independently.",
+        "source": "https://whc.unesco.org/en/list/569/",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-05",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://whc.unesco.org/en/list/569/"
+  },
+  {
+    "year": 2006,
+    "title": "Stabilisation and Association Agreement with EU Enters Force",
+    "verdict": "TRUE",
+    "reason": "SAA signed 12 June 2006 confirmed. Entered into force 1 April 2009 confirmed. Event year 2006 refers to the signing date, which is correct.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "SAA signed 12 June 2006 confirmed. Entered into force 1 April 2009 confirmed. Event year 2006 refers to the signing date, which is correct.",
+        "source": "https://en.wikipedia.org/wiki/Accession_of_Albania_to_the_European_Union",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Accession_of_Albania_to_the_European_Union"
+  },
+  {
+    "year": 2008,
+    "title": "Albania Recognizes Kosovo Independence",
+    "verdict": "TRUE",
+    "reason": "Kosovo declared independence 17 February 2008. Albania among first to recognize, confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Kosovo declared independence 17 February 2008. Albania among first to recognize, confirmed.",
+        "source": "https://en.wikipedia.org/wiki/International_recognition_of_Kosovo",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/International_recognition_of_Kosovo"
+  },
+  {
+    "year": 2009,
+    "title": "Albania Joins NATO as Full Member",
+    "verdict": "TRUE",
+    "reason": "Albania became NATO member on 1 April 2009 alongside Croatia confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Albania became NATO member on 1 April 2009 alongside Croatia confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Accession_of_Albania_to_NATO",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Accession_of_Albania_to_NATO"
+  },
+  {
+    "year": 2009,
+    "title": "Albania Submits Formal Application for EU Membership",
+    "verdict": "TRUE",
+    "reason": "Albania applied for EU membership on 28 April 2009 confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Albania applied for EU membership on 28 April 2009 confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Accession_of_Albania_to_the_European_Union",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Accession_of_Albania_to_the_European_Union"
+  },
+  {
+    "year": 2009,
+    "title": "Disputed 2009 Elections Trigger Political Deadlock",
+    "verdict": "TRUE",
+    "reason": "June 2009 elections, narrow DP victory, Socialist boycott and prolonged deadlock confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "June 2009 elections, narrow DP victory, Socialist boycott and prolonged deadlock confirmed.",
+        "source": "https://en.wikipedia.org/wiki/2009_Albanian_parliamentary_election",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/2009_Albanian_parliamentary_election"
+  },
+  {
+    "year": 2011,
+    "title": "Deadly Anti-Government Protests in Tirana",
+    "verdict": "TRUE",
+    "reason": "21 January 2011 protests, Republican Guard opened fire, four killed confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "21 January 2011 protests, Republican Guard opened fire, four killed confirmed.",
+        "source": "https://en.wikipedia.org/wiki/2011_Albanian_opposition_protests",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/2011_Albanian_opposition_protests"
+  },
+  {
+    "year": 2013,
+    "title": "Edi Rama Becomes Prime Minister After Socialist Victory",
+    "verdict": "TRUE",
+    "reason": "June 2013 election, Socialist-led Alliance for a European Albania won, Rama became PM confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "June 2013 election, Socialist-led Alliance for a European Albania won, Rama became PM confirmed.",
+        "source": "https://en.wikipedia.org/wiki/2013_Albanian_parliamentary_election",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/2013_Albanian_parliamentary_election"
+  },
+  {
+    "year": 2014,
+    "title": "Albania Granted EU Candidate Status",
+    "verdict": "TRUE",
+    "reason": "EU candidate status granted 23-24 June 2014 confirmed (General Affairs Council 24 June, endorsed by European Council shortly after). Event says '23 June' — the Council decision was 24 June; minor one-day discrepancy, VERIFIED.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "EU candidate status granted 23-24 June 2014 confirmed (General Affairs Council 24 June, endorsed by European Council shortly after). Event says '23 June' — the Council decision was 24 June; minor one-day discrepancy, VERIFIED.",
+        "source": "https://en.wikipedia.org/wiki/Accession_of_Albania_to_the_European_Union",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Accession_of_Albania_to_the_European_Union"
+  },
+  {
+    "year": 2014,
+    "title": "Comprehensive Territorial and Administrative Reform Enacted",
+    "verdict": "TRUE",
+    "reason": "Parliament passed law 115/2014 on 31 July 2014 reducing municipalities from 373 (or 384 total LGUs) to 61 confirmed. Event says 'from 373 to 61' — matches one variant of the source figures.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Parliament passed law 115/2014 on 31 July 2014 reducing municipalities from 373 (or 384 total LGUs) to 61 confirmed. Event says 'from 373 to 61' — matches one variant of the source figures.",
+        "source": "https://en.wikipedia.org/wiki/Administrative_divisions_of_Albania",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Administrative_divisions_of_Albania"
+  },
+  {
+    "year": 2016,
+    "title": "Landmark Justice Reform Amends 46 Constitutional Articles",
+    "verdict": "TRUE",
+    "reason": "Parliament adopted reform on 22 July 2016, amending 46 constitutional articles confirmed. Vote was unanimous confirmed. '25 years' most radical overhaul confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Parliament adopted reform on 22 July 2016, amending 46 constitutional articles confirmed. Vote was unanimous confirmed. '25 years' most radical overhaul confirmed.",
+        "source": "https://constitutionnet.org/news/strengthening-judiciary-albania-story-behind-success-2016-constitutional-reforms",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://constitutionnet.org/news/strengthening-judiciary-albania-story-behind-success-2016-constitutional-reforms"
+  },
+  {
+    "year": 2017,
+    "title": "Constitutional Court Becomes Non-Functional Due to Vetting Dismissals",
+    "verdict": "TRUE",
+    "reason": "Constitutional Court lost quorum from 2017 due to vetting dismissals confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Constitutional Court lost quorum from 2017 due to vetting dismissals confirmed.",
+        "source": "https://balkaninsight.com/2020/01/16/albanias-revived-constitutional-court-faces-backlog-of-cases/",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://balkaninsight.com/2020/01/16/albanias-revived-constitutional-court-faces-backlog-of-cases/"
+  },
+  {
+    "year": 2017,
+    "title": "Rama Re-elected as Socialist Party Wins Second Term",
+    "verdict": "TRUE",
+    "reason": "June 2017, Socialist Party commanding majority, Rama second term confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "June 2017, Socialist Party commanding majority, Rama second term confirmed.",
+        "source": "https://en.wikipedia.org/wiki/2017_Albanian_parliamentary_election",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/2017_Albanian_parliamentary_election"
+  },
+  {
+    "year": 2017,
+    "title": "Vetting Process Begins Dismissing Corrupt Judges and Prosecutors",
+    "verdict": "TRUE",
+    "reason": "Vetting became operational in 2017, majority of reviewed judges dismissed or resigned confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Vetting became operational in 2017, majority of reviewed judges dismissed or resigned confirmed.",
+        "source": "https://europeanwesternbalkans.com/2017/12/01/vetting-process-leap-forward-implementation-justice-reform-albania/",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://europeanwesternbalkans.com/2017/12/01/vetting-process-leap-forward-implementation-justice-reform-albania/"
+  },
+  {
+    "year": 2018,
+    "title": "Albania-Greece Maritime Border Agreement and Name Dispute Progress",
+    "verdict": "TRUE",
+    "reason": "Albania-Greece maritime boundary negotiations in 2018 confirmed. Connection to Prespa Agreement context is accurate.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Albania-Greece maritime boundary negotiations in 2018 confirmed. Connection to Prespa Agreement context is accurate.",
+        "source": "https://en.wikipedia.org/wiki/Albania%E2%80%93Greece_relations",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Albania%E2%80%93Greece_relations"
+  },
+  {
+    "year": 2019,
+    "title": "Magnitude 6.4 Earthquake Devastates Durres and Thumane",
+    "verdict": "TRUE",
+    "reason": "26 November 2019, magnitude 6.4, 51 killed, ~3,000 injured confirmed. '1 billion euros in damage' is consistent with reported figures. 'Deadliest in 99 years' confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "26 November 2019, magnitude 6.4, 51 killed, ~3,000 injured confirmed. '1 billion euros in damage' is consistent with reported figures. 'Deadliest in 99 years' confirmed.",
+        "source": "https://en.wikipedia.org/wiki/2019_Albania_earthquake",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/2019_Albania_earthquake"
+  },
+  {
+    "year": 2019,
+    "title": "Opposition Boycotts Parliament and Surrenders Mandates",
+    "verdict": "TRUE",
+    "reason": "DP MPs surrendered mandates February 2019 and boycotted parliament confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "DP MPs surrendered mandates February 2019 and boycotted parliament confirmed.",
+        "source": "https://en.wikipedia.org/wiki/2019_Albanian_opposition_protests",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/2019_Albanian_opposition_protests"
+  },
+  {
+    "year": 2020,
+    "title": "COVID-19 Pandemic Prompts State of Natural Disaster Declaration",
+    "verdict": "TRUE",
+    "reason": "Albania declared state of natural disaster March 2020 due to COVID-19 confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Albania declared state of natural disaster March 2020 due to COVID-19 confirmed.",
+        "source": "https://en.wikipedia.org/wiki/COVID-19_pandemic_in_Albania",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/COVID-19_pandemic_in_Albania"
+  },
+  {
+    "year": 2020,
+    "title": "EU Decides to Open Accession Negotiations with Albania",
+    "verdict": "TRUE",
+    "reason": "EU Council decided in March 2020 to open accession negotiations confirmed. Formal negotiations opened July 2022.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "EU Council decided in March 2020 to open accession negotiations confirmed. Formal negotiations opened July 2022.",
+        "source": "https://en.wikipedia.org/wiki/Accession_of_Albania_to_the_European_Union",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Accession_of_Albania_to_the_European_Union"
+  },
+  {
+    "year": 2021,
+    "title": "Rama Wins Historic Third Term with Parliamentary Supermajority",
+    "verdict": "TRUE",
+    "reason": "April 2021, Socialist Party won 74 of 140 seats, Rama's third consecutive term confirmed. '74 seats' is not a supermajority (requires 94/140); the event's 'supermajority' label is inaccurate but the factual seat count and third-term claim are correct.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "April 2021, Socialist Party won 74 of 140 seats, Rama's third consecutive term confirmed. '74 seats' is not a supermajority (requires 94/140); the event's 'supermajority' label is inaccurate but the factual seat count and third-term claim are correct.",
+        "source": "https://en.wikipedia.org/wiki/2021_Albanian_parliamentary_election",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/2021_Albanian_parliamentary_election"
+  },
+  {
+    "year": 2021,
+    "title": "US Designates Berisha as Persona Non Grata for Corruption",
+    "verdict": "TRUE",
+    "reason": "US State Department designated Berisha and family persona non grata on 19 May 2021 citing significant corruption confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "US State Department designated Berisha and family persona non grata on 19 May 2021 citing significant corruption confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Sali_Berisha",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Sali_Berisha"
+  },
+  {
+    "year": 2022,
+    "title": "First EU Accession Conference Opens Formal Negotiations",
+    "verdict": "TRUE",
+    "reason": "First intergovernmental accession conference held 19 July 2022 confirmed. Procedural link to North Macedonia confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "First intergovernmental accession conference held 19 July 2022 confirmed. Procedural link to North Macedonia confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Accession_of_Albania_to_the_European_Union",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Accession_of_Albania_to_the_European_Union"
+  },
+  {
+    "year": 2022,
+    "title": "Tirana Hosts EU-Western Balkans Summit",
+    "verdict": "TRUE",
+    "reason": "Summit held 6 December 2022 in Tirana confirmed. First time held in a Western Balkan country confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Summit held 6 December 2022 in Tirana confirmed. First time held in a Western Balkan country confirmed.",
+        "source": "https://en.wikipedia.org/wiki/2022_EU-Western_Balkans_summit",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/2022_EU-Western_Balkans_summit"
+  },
+  {
+    "year": 2023,
+    "title": "Berisha Placed Under House Arrest on Corruption Charges",
+    "verdict": "TRUE",
+    "reason": "House arrest ordered 30 December 2023 confirmed. Communication restricted to household members confirmed. 5.4 million euro figure confirmed. Son-in-law Jamarber Malltezi confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "House arrest ordered 30 December 2023 confirmed. Communication restricted to household members confirmed. 5.4 million euro figure confirmed. Son-in-law Jamarber Malltezi confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Sali_Berisha",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Sali_Berisha"
+  },
+  {
+    "year": 2023,
+    "title": "Vjosa River Declared Europe's First Wild River National Park",
+    "verdict": "TRUE",
+    "reason": "Multiple independent, authoritative sources confirm all material details: on 15 March 2023 the Albanian government declared the Vjosa River and its main tributaries Europe's first Wild River National Park (IUCN press release dated March 2023, corroborated by National Geographic, World Economic Forum, and Wikipedia). The protection covers ~400km of river/tributaries in the designation, while the Vjosa itself flows freely for 270km through Albania without dams or power stations. The designation followed years of collaboration between the Albanian government, IUCN, and the Save the Blue Heart of Europe campaign against planned hydropower dams. Over 1,100 species are documented in the river system. All figures (400km protected, 270km undammed, 1,100+ species, IUCN/Save the Blue Heart involvement, March 15 2023 date) match the event description exactly.",
+    "verify_count": 2,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "double_confirmed",
+    "needs_tiebreak": false,
+    "source_independence": "weak",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Multiple independent, authoritative sources confirm: on 15 March 2023, at a ceremony in Tepelena, Albania's PM Edi Rama and Environment Minister Mirela Kumbaro declared the Vjosa River and its main tributaries Europe's first Wild River National Park (IUCN Category II), protecting over 400 km of river channel in Phase I (12,727 hectares). This followed years of collaboration between the Albanian government, IUCN, and the Save the Blue Heart of Europe campaign (with Patagonia support) against planned hydropower dams. The area sustains over 1,100 species, matching the description. The one minor imprecision is the '270 kilometers through Albania' phrasing — independent sources (IUCN, Wikipedia) describe the Vjosa's ~270 km free-flowing course as running from its source in Greece's Pindus mountains to the Adriatic, with roughly 70% (~190 km) of that within Albania proper — but this exact 270km/'through Albania' simplification is itself a commonly repeated press shorthand, not a fabricated or materially wrong claim, and does not change the core facts of country, year, actors, or the park's designation. Core event is solidly TRUE.",
+        "source": "https://iucn.org/press-release/202303/vjosa-one-our-last-wild-rivers-becomes-europes-first-wild-river-national-park",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Multiple independent, authoritative sources confirm all material details: on 15 March 2023 the Albanian government declared the Vjosa River and its main tributaries Europe's first Wild River National Park (IUCN press release dated March 2023, corroborated by National Geographic, World Economic Forum, and Wikipedia). The protection covers ~400km of river/tributaries in the designation, while the Vjosa itself flows freely for 270km through Albania without dams or power stations. The designation followed years of collaboration between the Albanian government, IUCN, and the Save the Blue Heart of Europe campaign against planned hydropower dams. Over 1,100 species are documented in the river system. All figures (400km protected, 270km undammed, 1,100+ species, IUCN/Save the Blue Heart involvement, March 15 2023 date) match the event description exactly.",
+        "source": "https://iucn.org/press-release/202303/vjosa-one-our-last-wild-rivers-becomes-europes-first-wild-river-national-park",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://iucn.org/press-release/202303/vjosa-one-our-last-wild-rivers-becomes-europes-first-wild-river-national-park"
+  },
+  {
+    "year": 2024,
+    "title": "Albania Opens Cluster 4 EU Negotiating Chapters",
+    "verdict": "FALSE",
+    "reason": "Cluster 4 (Green Agenda and Sustainable Connectivity) was opened on 16 September 2025, not in 2024. Cluster 1 (Fundamentals) opened 15 October 2024. Year is off by 1 year = FALSE.",
+    "verify_count": 1,
+    "consensus_verdict": "FALSE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "FALSE",
+        "reason": "Cluster 4 (Green Agenda and Sustainable Connectivity) was opened on 16 September 2025, not in 2024. Cluster 1 (Fundamentals) opened 15 October 2024. Year is off by 1 year = FALSE.",
+        "source": "https://enlargement.ec.europa.eu/news/eu-opens-accession-negotiations-albania-green-and-sustainable-connectivity-policies-2025-09-16_en",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://enlargement.ec.europa.eu/news/eu-opens-accession-negotiations-albania-green-and-sustainable-connectivity-policies-2025-09-16_en"
+  },
+  {
+    "year": 2025,
+    "title": "Albania Opens Final EU Negotiating Cluster",
+    "verdict": "TRUE",
+    "reason": "Cluster 5 (Resources, Agriculture, Cohesion) opened 17 November 2025 confirmed. All clusters opened confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Cluster 5 (Resources, Agriculture, Cohesion) opened 17 November 2025 confirmed. All clusters opened confirmed.",
+        "source": "https://newunionpost.eu/2025/11/17/albania-open-eu-accession-negotiations/",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://newunionpost.eu/2025/11/17/albania-open-eu-accession-negotiations/"
+  }
+]
