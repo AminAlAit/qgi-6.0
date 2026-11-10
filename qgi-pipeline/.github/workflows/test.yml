@@ -1,0 +1,42 @@
+name: Unit tests
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'lambdas/**'
+      - 'batch/**'
+      - 'tests/**'
+      - 'requirements-test.txt'
+      - '.github/workflows/test.yml'
+  pull_request:
+    paths:
+      - 'lambdas/**'
+      - 'batch/**'
+      - 'tests/**'
+      - 'requirements-test.txt'
+
+jobs:
+  pytest:
+    runs-on: ubuntu-latest
+    # AWS_DEFAULT_REGION is required because several Lambda modules (e.g.
+    # `lambdas/pipeline-recipe-engine-finalize/lambda_function.py` lines
+    # 133-135 from #495/#496/#497) construct `boto3.client('athena' | 's3'
+    # | 'cloudwatch')` at module-load time. boto3 won't construct a client
+    # without a region. Module-level clients are an anti-pattern; until
+    # they're refactored to lazy/function-scoped, CI must provide a region
+    # so test collection (which imports the module) succeeds. No real AWS
+    # calls happen — tests mock at the boto3 client level.
+    env:
+      AWS_DEFAULT_REGION: eu-central-1
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+          cache: 'pip'
+          cache-dependency-path: requirements-test.txt
+      - name: Install test deps
+        run: pip install -q -r requirements-test.txt
+      - name: Run unit tests
+        run: python -m pytest tests/unit -q

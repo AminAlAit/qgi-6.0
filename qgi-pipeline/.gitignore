@@ -1,0 +1,34 @@
+__pycache__/
+*.pyc
+.env
+*.zip
+
+# Local data files (events, SCDIs, etc.) - too large for git
+data/
+
+# Secrets hygiene (#444) — never commit credentials or local editor/IDE config
+.env
+.env.*
+!.env.example
+.claude/launch.json
+.claude/settings.local.json
+.vscode/launch.json
+.vscode/settings.json
+.idea/
+.devcontainer/devcontainer.json.local
+
+# Private keys
+*.pem
+*.key
+*.p12
+id_rsa*
+credentials
+
+# AWS session files
+aws-session.sh
+mgmt-session.sh
+.aws-session.*
+
+# Cross-repo artifacts staged at docker-build time (#494 step 4).
+# Populated by CI or by `stage-qgi-data-assets.sh` for local builds.
+batch/qgi-vdem-ingest/_staged/
