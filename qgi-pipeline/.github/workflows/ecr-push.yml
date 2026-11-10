@@ -1,0 +1,251 @@
+name: ECR push — container images
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'batch/scdi-finder/**'
+      - 'batch/dscdi-finder/**'
+      - 'batch/indicator-fetcher/**'
+      - 'batch/indicator-fetcher-fao/**'
+      - 'batch/qgi-vdem-ingest/**'
+      - 'batch/recipe-fleet/**'
+  workflow_dispatch:
+    inputs:
+      image:
+        description: 'Which image to rebuild'
+        required: true
+        default: 'all'
+        type: choice
+        options: [all, scdi-finder, dscdi-finder, indicator-fetcher, indicator-fetcher-fao, qgi-vdem-ingest, recipe-fleet]
+
+jobs:
+  # ------------------------------------------------------------------
+  # Management-account push — scdi-finder + dscdi-finder only.
+  # Uses the existing github-actions-qgi-ecr-push role in 111111111111.
+  # Phase 1 fetchers (indicator-fetcher, fao, vdem-ingest) push to
+  # staging-account ECR only (see build-push-staging job below). The
+  # #152 Path A WB-fetcher management mirror was parked in 2025-Q4 and
+  # the TF source describing it was deleted in qgi-aws-tf PR #660
+  # (2026-05-11). Phase 2 B-stage images (scdi/dscdi-finder) correctly
+  # stay here because they're stateless compute pulled cross-account
+  # by staging + qa + prod from a shared-services ECR. See #635 + #663.
+  # ------------------------------------------------------------------
+  build-push-management:
+    runs-on: ubuntu-latest
+    permissions:
+      id-token: write
+      contents: read
+    env:
+      ECR_REGISTRY: 111111111111.dkr.ecr.eu-central-1.amazonaws.com
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+
+      - uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: arn:aws:iam::111111111111:role/github-actions-qgi-ecr-push
+          aws-region: eu-central-1
+
+      - uses: aws-actions/amazon-ecr-login@v2
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Detect changed image dirs
+        id: changed
+        run: |
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            case "${{ inputs.image }}" in
+              all)                   echo "scdi=1" >> "$GITHUB_OUTPUT"; echo "dscdi=1" >> "$GITHUB_OUTPUT" ;;
+              scdi-finder)           echo "scdi=1"    >> "$GITHUB_OUTPUT" ;;
+              dscdi-finder)          echo "dscdi=1"   >> "$GITHUB_OUTPUT" ;;
+              indicator-fetcher)     : ;; # Phase 1 fetchers push to staging only — see build-push-staging
+              indicator-fetcher-fao) : ;; # ditto
+              qgi-vdem-ingest)       : ;; # ditto
+              recipe-fleet)          : ;; # recipe-fleet lives in staging ECR only — see build-push-staging
+            esac
+          else
+            git diff --name-only HEAD~1 HEAD > /tmp/changed.txt
+            grep -q '^batch/scdi-finder/'       /tmp/changed.txt && echo "scdi=1"    >> "$GITHUB_OUTPUT" || true
+            grep -q '^batch/dscdi-finder/'      /tmp/changed.txt && echo "dscdi=1"   >> "$GITHUB_OUTPUT" || true
+          fi
+
+      - name: Build and push scdi-finder
+        if: steps.changed.outputs.scdi == '1'
+        run: |
+          IMAGE_TAG=${GITHUB_SHA::8}
+          IMAGE_REPO=$ECR_REGISTRY/qgi-pipeline-b-scdi-finder
+          docker buildx build --platform linux/arm64 -t $IMAGE_REPO:$IMAGE_TAG --push batch/scdi-finder/
+          docker buildx build --platform linux/arm64 -t $IMAGE_REPO:latest      --push batch/scdi-finder/
+
+      - name: Build and push dscdi-finder
+        if: steps.changed.outputs.dscdi == '1'
+        run: |
+          IMAGE_TAG=${GITHUB_SHA::8}
+          IMAGE_REPO=$ECR_REGISTRY/qgi-pipeline-b-dscdi-finder
+          docker buildx build --platform linux/arm64 -t $IMAGE_REPO:$IMAGE_TAG --push batch/dscdi-finder/
+          docker buildx build --platform linux/arm64 -t $IMAGE_REPO:latest      --push batch/dscdi-finder/
+
+
+  # ------------------------------------------------------------------
+  # Staging-account push — WB + FAO fetchers land in 222222222222 ECR
+  # where the Phase 1 JobDefs reference them via ${var.aws_account_id}.
+  # The `github-actions-qgi-ecr-push` role in staging was added in
+  # qgi-infra/modules/iam/main.tf (#241 Phase B), scoped to the three
+  # Phase 1/2 repos.
+  # ------------------------------------------------------------------
+  build-push-staging:
+    runs-on: ubuntu-latest
+    permissions:
+      id-token: write
+      contents: read
+    env:
+      ECR_REGISTRY: 222222222222.dkr.ecr.eu-central-1.amazonaws.com
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+
+      - uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: arn:aws:iam::222222222222:role/github-actions-qgi-ecr-push
+          aws-region: eu-central-1
+
+      - uses: aws-actions/amazon-ecr-login@v2
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Detect changed image dirs
+        id: changed
+        run: |
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            case "${{ inputs.image }}" in
+              all)                   echo "fetcher=1" >> "$GITHUB_OUTPUT"; echo "fao=1" >> "$GITHUB_OUTPUT"; echo "vdem=1" >> "$GITHUB_OUTPUT"; echo "recipe_fleet=1" >> "$GITHUB_OUTPUT" ;;
+              indicator-fetcher)     echo "fetcher=1"      >> "$GITHUB_OUTPUT" ;;
+              indicator-fetcher-fao) echo "fao=1"          >> "$GITHUB_OUTPUT" ;;
+              qgi-vdem-ingest)       echo "vdem=1"         >> "$GITHUB_OUTPUT" ;;
+              recipe-fleet)          echo "recipe_fleet=1" >> "$GITHUB_OUTPUT" ;;
+              scdi-finder)           : ;; # scdi-finder lives only in management ECR
+              dscdi-finder)          : ;; # dscdi-finder lives only in management ECR
+            esac
+          else
+            git diff --name-only HEAD~1 HEAD > /tmp/changed.txt
+            grep -q '^batch/indicator-fetcher/'     /tmp/changed.txt && echo "fetcher=1"      >> "$GITHUB_OUTPUT" || true
+            grep -q '^batch/indicator-fetcher-fao/' /tmp/changed.txt && echo "fao=1"          >> "$GITHUB_OUTPUT" || true
+            grep -q '^batch/qgi-vdem-ingest/'       /tmp/changed.txt && echo "vdem=1"         >> "$GITHUB_OUTPUT" || true
+            grep -q '^batch/recipe-fleet/'          /tmp/changed.txt && echo "recipe_fleet=1" >> "$GITHUB_OUTPUT" || true
+          fi
+
+      - name: Build and push indicator-fetcher (WB) — staging
+        if: steps.changed.outputs.fetcher == '1'
+        run: |
+          IMAGE_TAG=${GITHUB_SHA::8}
+          IMAGE_REPO=$ECR_REGISTRY/qgi-pipeline-a-indicator-fetcher
+          docker buildx build --platform linux/arm64 -t $IMAGE_REPO:$IMAGE_TAG --push batch/indicator-fetcher/
+          docker buildx build --platform linux/arm64 -t $IMAGE_REPO:latest      --push batch/indicator-fetcher/
+
+      - name: Build and push indicator-fetcher-fao (FAOSTAT) — staging
+        if: steps.changed.outputs.fao == '1'
+        run: |
+          IMAGE_TAG=${GITHUB_SHA::8}
+          IMAGE_REPO=$ECR_REGISTRY/qgi-pipeline-a-indicator-fetcher-fao
+          docker buildx build --platform linux/arm64 -t $IMAGE_REPO:$IMAGE_TAG --push batch/indicator-fetcher-fao/
+          docker buildx build --platform linux/arm64 -t $IMAGE_REPO:latest      --push batch/indicator-fetcher-fao/
+
+      # ----------------------------------------------------------------
+      # qgi-vdem-ingest (#494 step 4) — staging only.
+      # The Dockerfile expects three artifacts in batch/qgi-vdem-ingest/_staged/
+      # that come from the qgi-data repo at build time:
+      #   _staged/ingest_vdem.py
+      #   _staged/vdem_country_map.yaml
+      #   _staged/control-surface.xlsx
+      # We check out qgi-data alongside the qgi-pipeline checkout and copy
+      # them into place. Pinned to qgi-data:main here — the next ingest
+      # release will pick up whatever is on main at build time. If we ever
+      # need stricter version pinning, swap `ref: main` for a SHA.
+      # ----------------------------------------------------------------
+      - name: Check out qgi-data (V-Dem build only)
+        if: steps.changed.outputs.vdem == '1'
+        uses: actions/checkout@v4
+        with:
+          repository: AminAlAit/qgi-data
+          ref: main
+          path: __qgi-data
+          fetch-depth: 1
+
+      - name: Stage qgi-data assets + capture SHA for traceability label
+        if: steps.changed.outputs.vdem == '1'
+        id: stage_vdem
+        run: |
+          mkdir -p batch/qgi-vdem-ingest/_staged
+          cp __qgi-data/scripts/ingest_vdem.py            batch/qgi-vdem-ingest/_staged/ingest_vdem.py
+          cp __qgi-data/registries/vdem_country_map.yaml  batch/qgi-vdem-ingest/_staged/vdem_country_map.yaml
+          cp __qgi-data/indicators/control-surface.xlsx   batch/qgi-vdem-ingest/_staged/control-surface.xlsx
+          ls -lh batch/qgi-vdem-ingest/_staged/
+          # PR #8 review item 2: stamp the qgi-data commit SHA into the
+          # image as a LABEL so a built image is traceable back to the
+          # exact qgi-data version it bundles. The qgi-pipeline GITHUB_SHA
+          # alone doesn't carry this info.
+          QGI_DATA_SHA=$(git -C __qgi-data rev-parse HEAD)
+          echo "qgi_data_sha=$QGI_DATA_SHA" >> "$GITHUB_OUTPUT"
+          echo "[stage] qgi-data version: $QGI_DATA_SHA"
+
+      - name: Build and push qgi-vdem-ingest — staging
+        if: steps.changed.outputs.vdem == '1'
+        run: |
+          IMAGE_TAG=${GITHUB_SHA::8}
+          IMAGE_REPO=$ECR_REGISTRY/qgi-pipeline-a-vdem-ingest
+          QGI_DATA_SHA=${{ steps.stage_vdem.outputs.qgi_data_sha }}
+          docker buildx build --platform linux/arm64 \
+            --build-arg QGI_DATA_SHA="$QGI_DATA_SHA" \
+            -t $IMAGE_REPO:$IMAGE_TAG --push batch/qgi-vdem-ingest/
+          docker buildx build --platform linux/arm64 \
+            --build-arg QGI_DATA_SHA="$QGI_DATA_SHA" \
+            -t $IMAGE_REPO:latest      --push batch/qgi-vdem-ingest/
+
+      # ----------------------------------------------------------------
+      # qgi-recipe-fleet (#130) — staging only.
+      # The Dockerfile uses --build-context qgi-ml to vendor scripts,
+      # src, and data/shape_inputs_v2 from the qgi-ml repo at build time.
+      # We check out qgi-ml alongside the qgi-pipeline checkout and pass
+      # it as the named build context. Pinned to qgi-ml:main — the next
+      # image build picks up whatever is on main at build time. Swap
+      # `ref: main` for a SHA if stricter version-pinning is needed.
+      # The qgi-ml HEAD SHA is stamped into the image as a LABEL via
+      # QGI_ML_SHA so every image is traceable to the exact qgi-ml
+      # version it bundles (mirrors the qgi-vdem-ingest QGI_DATA_SHA
+      # pattern above).
+      # ----------------------------------------------------------------
+      - name: Check out qgi-ml (recipe-fleet build only)
+        if: steps.changed.outputs.recipe_fleet == '1'
+        uses: actions/checkout@v4
+        with:
+          repository: AminAlAit/qgi-ml
+          ref: main
+          path: __qgi-ml
+          fetch-depth: 1
+
+      - name: Capture qgi-ml SHA for traceability label
+        if: steps.changed.outputs.recipe_fleet == '1'
+        id: stage_recipe_fleet
+        run: |
+          QGI_ML_SHA=$(git -C __qgi-ml rev-parse HEAD)
+          echo "qgi_ml_sha=$QGI_ML_SHA" >> "$GITHUB_OUTPUT"
+          echo "[stage] qgi-ml version: $QGI_ML_SHA"
+
+      - name: Build and push qgi-recipe-fleet — staging
+        if: steps.changed.outputs.recipe_fleet == '1'
+        run: |
+          IMAGE_TAG=${GITHUB_SHA::8}
+          IMAGE_REPO=$ECR_REGISTRY/qgi-recipe-fleet
+          QGI_ML_SHA=${{ steps.stage_recipe_fleet.outputs.qgi_ml_sha }}
+          docker buildx build --platform linux/arm64 \
+            --build-context qgi-ml=__qgi-ml \
+            --build-arg QGI_ML_SHA="$QGI_ML_SHA" \
+            -t $IMAGE_REPO:$IMAGE_TAG --push batch/recipe-fleet/
+          docker buildx build --platform linux/arm64 \
+            --build-context qgi-ml=__qgi-ml \
+            --build-arg QGI_ML_SHA="$QGI_ML_SHA" \
+            -t $IMAGE_REPO:latest      --push batch/recipe-fleet/
