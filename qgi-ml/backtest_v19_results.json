@@ -1,0 +1,278 @@
+{
+  "version": "V1.9",
+  "curated_only": false,
+  "n_countries": 214,
+  "tiers": [
+    "S",
+    "M",
+    "L",
+    "XL"
+  ],
+  "tier_ranges": {
+    "S": [
+      3,
+      8
+    ],
+    "M": [
+      9,
+      20
+    ],
+    "L": [
+      21,
+      40
+    ],
+    "XL": [
+      41,
+      999
+    ]
+  },
+  "validation": {
+    "cutoff": 2015,
+    "platt_params": {
+      "S": [
+        0.5,
+        0.0
+      ],
+      "M": [
+        0.5,
+        0.0
+      ],
+      "L": [
+        0.5,
+        0.0
+      ],
+      "XL": [
+        0.5,
+        0.5
+      ]
+    },
+    "thresholds": {
+      "S": 0.43,
+      "M": 0.432,
+      "L": 0.415,
+      "XL": 0.444
+    },
+    "metrics": {
+      "S": {
+        "f1": 0.6352,
+        "f2": 0.7538,
+        "precision": 0.5032,
+        "recall": 0.8611,
+        "auprc": 0.5458,
+        "ndcg_at_20": 0.7201,
+        "ndcg_at_50": 0.6819,
+        "lift": 1.11,
+        "brier_skill_score": 0.017,
+        "precision_at_10": 0.8,
+        "precision_at_50": 0.64,
+        "precision_at_100": 0.69,
+        "lift_at_10": 1.77,
+        "lift_at_50": 1.41,
+        "lift_at_100": 1.52,
+        "lift_at_200": 1.4,
+        "coverage": 1.0,
+        "base_rate": 0.4531,
+        "n_predictions": 1737,
+        "n_ground_truth": 1015,
+        "n_total": 2240
+      },
+      "M": {
+        "f1": 0.6281,
+        "f2": 0.7421,
+        "precision": 0.5,
+        "recall": 0.8443,
+        "auprc": 0.5352,
+        "ndcg_at_20": 0.6806,
+        "ndcg_at_50": 0.613,
+        "lift": 1.08,
+        "brier_skill_score": 0.0089,
+        "precision_at_10": 0.6,
+        "precision_at_50": 0.6,
+        "precision_at_100": 0.63,
+        "lift_at_10": 1.3,
+        "lift_at_50": 1.3,
+        "lift_at_100": 1.36,
+        "lift_at_200": 1.38,
+        "coverage": 1.0,
+        "base_rate": 0.4626,
+        "n_predictions": 1714,
+        "n_ground_truth": 1015,
+        "n_total": 2194
+      },
+      "L": {
+        "f1": 0.6248,
+        "f2": 0.733,
+        "precision": 0.5015,
+        "recall": 0.8286,
+        "auprc": 0.5357,
+        "ndcg_at_20": 0.5197,
+        "ndcg_at_50": 0.5985,
+        "lift": 1.01,
+        "brier_skill_score": -0.0291,
+        "precision_at_10": 0.6,
+        "precision_at_50": 0.64,
+        "precision_at_100": 0.63,
+        "lift_at_10": 1.21,
+        "lift_at_50": 1.29,
+        "lift_at_100": 1.27,
+        "lift_at_200": 1.25,
+        "coverage": 1.0,
+        "base_rate": 0.4954,
+        "n_predictions": 1677,
+        "n_ground_truth": 1015,
+        "n_total": 2049
+      },
+      "XL": {
+        "f1": 0.7287,
+        "f2": 0.8278,
+        "precision": 0.6075,
+        "recall": 0.9103,
+        "auprc": 0.5935,
+        "ndcg_at_20": 0.5235,
+        "ndcg_at_50": 0.5643,
+        "lift": 1.01,
+        "brier_skill_score": -0.0398,
+        "precision_at_10": 0.6,
+        "precision_at_50": 0.52,
+        "precision_at_100": 0.59,
+        "lift_at_10": 1.0,
+        "lift_at_50": 0.87,
+        "lift_at_100": 0.98,
+        "lift_at_200": 0.92,
+        "coverage": 1.0,
+        "base_rate": 0.6006,
+        "n_predictions": 1521,
+        "n_ground_truth": 1015,
+        "n_total": 1690
+      }
+    }
+  },
+  "test": {
+    "cutoff": 2020,
+    "metrics": {
+      "S": {
+        "f1": 0.4493,
+        "f2": 0.671,
+        "precision": 0.2897,
+        "recall": 1.0,
+        "auprc": 0.3769,
+        "ndcg_at_20": 0.8631,
+        "ndcg_at_50": 0.7723,
+        "lift": 1.0,
+        "brier_skill_score": -0.2153,
+        "precision_at_10": 1.0,
+        "precision_at_50": 0.72,
+        "precision_at_100": 0.54,
+        "lift_at_10": 3.45,
+        "lift_at_50": 2.49,
+        "lift_at_100": 1.86,
+        "lift_at_200": 1.6,
+        "coverage": 1.0,
+        "base_rate": 0.2897,
+        "n_predictions": 2240,
+        "n_ground_truth": 649,
+        "n_total": 2240
+      },
+      "M": {
+        "f1": 0.4567,
+        "f2": 0.6776,
+        "precision": 0.2959,
+        "recall": 1.0,
+        "auprc": 0.3727,
+        "ndcg_at_20": 0.7625,
+        "ndcg_at_50": 0.6761,
+        "lift": 1.0,
+        "brier_skill_score": -0.2003,
+        "precision_at_10": 0.8,
+        "precision_at_50": 0.62,
+        "precision_at_100": 0.54,
+        "lift_at_10": 2.7,
+        "lift_at_50": 2.1,
+        "lift_at_100": 1.82,
+        "lift_at_200": 1.52,
+        "coverage": 1.0,
+        "base_rate": 0.2959,
+        "n_predictions": 2193,
+        "n_ground_truth": 649,
+        "n_total": 2193
+      },
+      "L": {
+        "f1": 0.4804,
+        "f2": 0.698,
+        "precision": 0.3161,
+        "recall": 1.0,
+        "auprc": 0.3988,
+        "ndcg_at_20": 0.9276,
+        "ndcg_at_50": 0.6883,
+        "lift": 1.0,
+        "brier_skill_score": -0.1568,
+        "precision_at_10": 1.0,
+        "precision_at_50": 0.6,
+        "precision_at_100": 0.52,
+        "lift_at_10": 3.16,
+        "lift_at_50": 1.9,
+        "lift_at_100": 1.64,
+        "lift_at_200": 1.5,
+        "coverage": 1.0,
+        "base_rate": 0.3161,
+        "n_predictions": 2053,
+        "n_ground_truth": 649,
+        "n_total": 2053
+      },
+      "XL": {
+        "f1": 0.5554,
+        "f2": 0.7575,
+        "precision": 0.3845,
+        "recall": 1.0,
+        "auprc": 0.4195,
+        "ndcg_at_20": 0.5884,
+        "ndcg_at_50": 0.5814,
+        "lift": 1.0,
+        "brier_skill_score": -0.2401,
+        "precision_at_10": 0.5,
+        "precision_at_50": 0.56,
+        "precision_at_100": 0.51,
+        "lift_at_10": 1.3,
+        "lift_at_50": 1.46,
+        "lift_at_100": 1.33,
+        "lift_at_200": 1.17,
+        "coverage": 1.0,
+        "base_rate": 0.3845,
+        "n_predictions": 1688,
+        "n_ground_truth": 649,
+        "n_total": 1688
+      }
+    },
+    "persistence": {
+      "f1": 0.2922,
+      "f2": 0.2576,
+      "precision": 0.3762,
+      "recall": 0.2388,
+      "auprc": 0.5562,
+      "ndcg_at_20": 0.7352,
+      "ndcg_at_50": 0.6133,
+      "lift": 0.53,
+      "brier_skill_score": -2.2048,
+      "precision_at_10": 0.9,
+      "precision_at_50": 0.54,
+      "precision_at_100": 0.41,
+      "lift_at_10": 1.26,
+      "lift_at_50": 0.75,
+      "lift_at_100": 0.57,
+      "lift_at_200": 0.54,
+      "coverage": 0.4547,
+      "base_rate": 0.7163,
+      "n_predictions": 412,
+      "n_ground_truth": 649,
+      "n_total": 906
+    },
+    "aggregate_f1": 0.481,
+    "beats_persistence": true
+  },
+  "data_delta": {
+    "events_source": "verified-only (#374) — 89 countries with TRUE-only adjudicated events",
+    "indicators": "WB (69) + FAO FS (5) = 74 indicators",
+    "pipeline_run": "full-pipeline-run-20260420T235454 (71 min, SUCCEEDED 2026-04-21 03:06 local)",
+    "scoring_model": "V1.8 statistical (z-score per country + RRF + drama weights + category-stratified thresholds) — unchanged from V1.8.1"
+  }
+}

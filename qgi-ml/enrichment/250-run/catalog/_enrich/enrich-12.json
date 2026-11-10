@@ -1,0 +1,400 @@
+[
+  {
+    "code": "UNHCR_RECOG_RATE",
+    "why": "High refugee recognition rates signal that receiving countries accept the origin country as genuinely dangerous, providing an internationally-adjudicated, externally-validated measure of persecution or conflict severity. This is distinct from raw refugee counts — it captures legitimacy of threat, making it a clean instability signal with low reporting-bias.",
+    "country_coverage": 120,
+    "coverage_confidence": "medium",
+    "year_start": 1990,
+    "year_end": 2024,
+    "coverage_note": "Only countries with meaningful asylum claim volumes produce stable rates; very small origin countries have high variance from small denominators; coverage improves markedly post-2000.",
+    "trends": [
+      {
+        "trend_id": "civil_war_and_insurgency",
+        "lift_bucket": "High",
+        "lift_pct": "+8-14%",
+        "reason": "Recognition rate spikes are near-contemporaneous with armed conflict escalation and credibly lead refugee stock indicators, giving the model an internationally-validated signal of conflict severity."
+      },
+      {
+        "trend_id": "political_repression",
+        "lift_bucket": "High",
+        "lift_pct": "+7-12%",
+        "reason": "Persecution-based refugee status is specifically adjudicated on political/religious repression grounds, making recognition rate a quasi-independent cross-country measure of state repression intensity."
+      },
+      {
+        "trend_id": "human_rights_violation",
+        "lift_bucket": "Medium",
+        "lift_pct": "+4-8%",
+        "reason": "Countries with sustained high recognition rates systematically correlate with documented human rights abuses; adds external validation orthogonal to V-Dem expert scores."
+      },
+      {
+        "trend_id": "migration_and_refugees",
+        "lift_bucket": "High",
+        "lift_pct": "+10-16%",
+        "reason": "Most directly aligned trend — recognition rate captures the legitimacy and international acceptance dimension of displacement flows, complementing stock/flow volume indicators."
+      },
+      {
+        "trend_id": "political_violence",
+        "lift_bucket": "Medium",
+        "lift_pct": "+4-7%",
+        "reason": "Sub-threshold violence driving asylum claims without triggering full conflict coding; recognition rate picks up this grey zone."
+      }
+    ]
+  },
+  {
+    "code": "v2exembez",
+    "why": "Executive embezzlement directly measures the diversion of public resources for private gain at the top of the political hierarchy — the most destabilizing form of corruption because it erodes fiscal capacity, signals impunity, and triggers elite defection and popular grievance simultaneously. It complements composite corruption indices by isolating executive-specific theft rather than averaging across institutions.",
+    "country_coverage": 180,
+    "coverage_confidence": "high",
+    "year_start": 1900,
+    "year_end": 2024,
+    "coverage_note": "V-Dem expert survey coverage; early decades (pre-1950) thinner for smaller states but coverage is broad from 1970 onward.",
+    "trends": [
+      {
+        "trend_id": "political_corruption",
+        "lift_bucket": "High",
+        "lift_pct": "+10-18%",
+        "reason": "Most directly aligned indicator — executive embezzlement is the core behavioral signal for the political corruption Trend and likely enters the greedy top features."
+      },
+      {
+        "trend_id": "executive_power_consolidation",
+        "lift_bucket": "High",
+        "lift_pct": "+8-13%",
+        "reason": "Embezzlement typically accelerates as executives consolidate power and eliminate institutional checks; captures the rent-extraction dimension of consolidation trajectories."
+      },
+      {
+        "trend_id": "military_coup",
+        "lift_bucket": "Medium",
+        "lift_pct": "+4-8%",
+        "reason": "Coup literature consistently finds elite defection driven by executive corruption; embezzlement is a measurable precursor to loss of military/elite coalition loyalty."
+      },
+      {
+        "trend_id": "political_repression",
+        "lift_bucket": "Medium",
+        "lift_pct": "+3-7%",
+        "reason": "Regimes engaged in embezzlement typically suppress accountability mechanisms, linking executive theft to broader repression patterns."
+      }
+    ]
+  },
+  {
+    "code": "FR.INR.RISK",
+    "why": "The risk premium on lending (lending rate minus T-bill rate) measures the spread between bank lending costs and the risk-free rate, capturing banking sector perceived credit risk and financial system stress in real time. When this spread widens sharply it signals deteriorating bank-borrower conditions that precede credit crunches, bank failures, and associated economic contractions.",
+    "country_coverage": 100,
+    "coverage_confidence": "medium",
+    "year_start": 1980,
+    "year_end": 2023,
+    "coverage_note": "WB WDI coverage is patchier than broader macroeconomic indicators — many low-income and transition economies lack T-bill markets; coverage strongest for middle-income and emerging market countries post-1990.",
+    "trends": [
+      {
+        "trend_id": "banking_and_financial_crisis",
+        "lift_bucket": "High",
+        "lift_pct": "+8-15%",
+        "reason": "Risk premium is a near-real-time market signal of banking stress; spread widening reliably leads banking crisis onset and provides information distinct from balance-sheet NPL ratios."
+      },
+      {
+        "trend_id": "currency_crisis",
+        "lift_bucket": "Medium",
+        "lift_pct": "+5-9%",
+        "reason": "Financial stress captured by lending spreads frequently co-moves with currency pressure episodes; adds a credit-channel signal to complement exchange rate and reserve indicators."
+      },
+      {
+        "trend_id": "economic_recession",
+        "lift_bucket": "Medium",
+        "lift_pct": "+4-8%",
+        "reason": "Credit tightening via elevated risk premium is a classic transmission mechanism from financial stress to broader economic contraction."
+      },
+      {
+        "trend_id": "monetary_policy_change",
+        "lift_bucket": "Low",
+        "lift_pct": "+2-4%",
+        "reason": "Spread dynamics partially reflect monetary policy regime shifts; marginal orthogonal signal relative to headline interest rate indicators."
+      }
+    ]
+  },
+  {
+    "code": "v2x_regime_amb",
+    "why": "The Regimes of the World Ambiguous Cases indicator flags countries in hybrid or borderline regime categories — the exact zone where regime transitions are most likely to occur in either direction. Ambiguous regimes have the highest variance in near-term political trajectory, making this a leading signal for both democratization and autocratization events.",
+    "country_coverage": 180,
+    "coverage_confidence": "high",
+    "year_start": 1900,
+    "year_end": 2024,
+    "coverage_note": "V-Dem coverage from 1900; broad cross-national coverage; the ambiguous-case coding is conceptually sparse in years with clear regime types but precisely targeted when it fires.",
+    "trends": [
+      {
+        "trend_id": "democratic_transition",
+        "lift_bucket": "High",
+        "lift_pct": "+9-15%",
+        "reason": "Ambiguous regime status directly flags the transitional zone where democratic transitions originate; fires reliably in the run-up windows of historical transitions."
+      },
+      {
+        "trend_id": "military_coup",
+        "lift_bucket": "High",
+        "lift_pct": "+7-12%",
+        "reason": "Hybrid regimes with ambiguous legitimacy are the modal setting for coup attempts; ambiguous coding captures the institutional fragility that enables coups."
+      },
+      {
+        "trend_id": "executive_power_consolidation",
+        "lift_bucket": "Medium",
+        "lift_pct": "+5-9%",
+        "reason": "Autocratization often begins in ambiguous regimes where formal democratic institutions exist but norms are weak; signals the entry point for consolidation trajectories."
+      },
+      {
+        "trend_id": "elections_and_voting",
+        "lift_bucket": "Medium",
+        "lift_pct": "+4-7%",
+        "reason": "Ambiguous regimes typically hold contested or flawed elections; the indicator fires around election-related instability windows."
+      },
+      {
+        "trend_id": "constitutional_change",
+        "lift_bucket": "Low",
+        "lift_pct": "+2-4%",
+        "reason": "Constitutional changes are common tools for resolving or entrenching regime ambiguity; modest marginal signal beyond direct regime-change indicators."
+      }
+    ]
+  },
+  {
+    "code": "v2svinlaut",
+    "why": "International Autonomy measures the degree to which a government operates free from external constraints — low autonomy signals dependency relationships, conditionality, or foreign domination that fundamentally alter political risk dynamics. Countries with low autonomy are structurally exposed to foreign intervention, externally-induced regime change, and sanctions-driven instability.",
+    "country_coverage": 180,
+    "coverage_confidence": "high",
+    "year_start": 1900,
+    "year_end": 2024,
+    "coverage_note": "V-Dem expert survey; good coverage from 1945 onward; colonial-era coding less reliable for very small or administered territories.",
+    "trends": [
+      {
+        "trend_id": "foreign_intervention",
+        "lift_bucket": "High",
+        "lift_pct": "+9-16%",
+        "reason": "Low international autonomy is the direct structural condition enabling foreign intervention; this indicator captures the target country's vulnerability, making it likely to enter greedy top features for this Trend."
+      },
+      {
+        "trend_id": "sanctions_and_arms_embargo",
+        "lift_bucket": "Medium",
+        "lift_pct": "+5-9%",
+        "reason": "Countries with low autonomy are disproportionately sanction targets or dependent on patron states that impose conditionality; autonomy captures the power asymmetry sanctions exploit."
+      },
+      {
+        "trend_id": "bilateral_treaty",
+        "lift_bucket": "Medium",
+        "lift_pct": "+4-7%",
+        "reason": "Low-autonomy states enter asymmetric bilateral treaties under external pressure; the indicator signals the structural dependence context in which treaty events occur."
+      },
+      {
+        "trend_id": "peacekeeping_and_peace_process",
+        "lift_bucket": "Medium",
+        "lift_pct": "+4-7%",
+        "reason": "Peacekeeping missions are overwhelmingly deployed in low-autonomy states where external actors can project force or conditionality; captures host-state receptivity."
+      },
+      {
+        "trend_id": "military_coup",
+        "lift_bucket": "Low",
+        "lift_pct": "+2-4%",
+        "reason": "Externally-backed coups are a subset of coups; low autonomy slightly elevates coup probability via patron-client dynamics but the effect is secondary."
+      }
+    ]
+  },
+  {
+    "code": "FS-003",
+    "why": "The FIES moderate-or-severe food insecurity prevalence captures the share of population experiencing meaningful dietary access gaps, bridging the gap between mild food stress and outright famine — the band where food-driven social unrest and political grievance are most likely to emerge. It is demand-side, survey-based, and captures income shocks faster than production-side agricultural indicators.",
+    "country_coverage": 140,
+    "coverage_confidence": "medium",
+    "year_start": 2014,
+    "year_end": 2023,
+    "coverage_note": "FIES suite only available from 2014 when FAO began the global rollout; coverage improving annually but short time series limits historical backfill; partial coverage in high-income countries (low relevance).",
+    "trends": [
+      {
+        "trend_id": "drought_and_famine",
+        "lift_bucket": "High",
+        "lift_pct": "+10-18%",
+        "reason": "Most directly aligned — moderate/severe food insecurity prevalence is the early-warning population-level signal that precedes famine declarations and drought-driven crises."
+      },
+      {
+        "trend_id": "mass_protest",
+        "lift_bucket": "High",
+        "lift_pct": "+8-13%",
+        "reason": "Food price and access shocks are a primary proximate driver of mass protest in low/middle income countries; FIES captures accumulated grievance before a protest tipping point."
+      },
+      {
+        "trend_id": "humanitarian_crisis",
+        "lift_bucket": "High",
+        "lift_pct": "+9-14%",
+        "reason": "Food insecurity is a core component of humanitarian crisis declarations; the FIES measure provides a consistent cross-country quantification of crisis depth."
+      },
+      {
+        "trend_id": "poverty_and_inequality_crisis",
+        "lift_bucket": "Medium",
+        "lift_pct": "+5-9%",
+        "reason": "Food insecurity co-moves with and often precedes broader poverty crises; adds a consumption-access dimension orthogonal to income-based poverty measures."
+      },
+      {
+        "trend_id": "social_policy_reform",
+        "lift_bucket": "Low",
+        "lift_pct": "+2-4%",
+        "reason": "High food insecurity creates political pressure for social protection reforms; the link is real but indirect and often lagged."
+      }
+    ]
+  },
+  {
+    "code": "v2x_veracc",
+    "why": "Vertical Accountability captures the quality of electoral and party-based mechanisms through which citizens can sanction or replace governments — when this deteriorates, incumbents become insulated from voter punishment, correlating strongly with democratic backsliding, electoral violence, and protest-driven instability. Declining vertical accountability is a robust leading indicator of regime change trajectories.",
+    "country_coverage": 180,
+    "coverage_confidence": "high",
+    "year_start": 1900,
+    "year_end": 2024,
+    "coverage_note": "V-Dem expert survey; strong historical coverage; the indicator is most meaningful in competitive political systems — coding exists but has less discriminating power in fully closed autocracies.",
+    "trends": [
+      {
+        "trend_id": "elections_and_voting",
+        "lift_bucket": "High",
+        "lift_pct": "+9-15%",
+        "reason": "Vertical accountability is explicitly constructed from electoral quality components; its decline captures the structural deterioration in electoral integrity that precedes contested or rigged elections."
+      },
+      {
+        "trend_id": "democratic_transition",
+        "lift_bucket": "High",
+        "lift_pct": "+8-13%",
+        "reason": "Both democratization and de-democratization episodes involve measurable shifts in vertical accountability; the indicator captures the trend-level movement shape that precedes transition events."
+      },
+      {
+        "trend_id": "executive_power_consolidation",
+        "lift_bucket": "Medium",
+        "lift_pct": "+5-9%",
+        "reason": "Consolidation systematically undermines electoral accountability; vertical accountability decline is a measurable, gradual precursor to consolidation events."
+      },
+      {
+        "trend_id": "mass_protest",
+        "lift_bucket": "Medium",
+        "lift_pct": "+4-8%",
+        "reason": "When vertical channels (elections) are blocked, citizens substitute with horizontal pressure (protest); declining vertical accountability predicts protest substitution dynamics."
+      },
+      {
+        "trend_id": "constitutional_change",
+        "lift_bucket": "Low",
+        "lift_pct": "+2-4%",
+        "reason": "Constitutional changes affecting electoral rules are a tool for manipulating vertical accountability; marginal signal beyond the electoral-specific sub-components."
+      }
+    ]
+  },
+  {
+    "code": "UCDP_SB_ONSET",
+    "why": "State-Based Conflict Onset is a binary leading indicator specifically coded for new conflict initiation — distinct from ongoing conflict presence — capturing the moment when organized violence crosses the threshold. As a leading rather than contemporaneous signal it is methodologically superior for ML feature engineering in Trends predicting conflict events, avoiding the circularity of using ongoing-conflict flags as predictors of conflict-type events.",
+    "country_coverage": 150,
+    "coverage_confidence": "high",
+    "year_start": 1989,
+    "year_end": 2023,
+    "coverage_note": "UCDP conflict-affected countries only; countries with no conflict history have zero variance — the indicator adds value in the relevant risk-exposed pool; binary, so no scaling issues.",
+    "trends": [
+      {
+        "trend_id": "civil_war_and_insurgency",
+        "lift_bucket": "High",
+        "lift_pct": "+12-20%",
+        "reason": "Onset is the most direct structural precursor to civil war — it captures the initiation event before the conflict has accumulated sufficient deaths to dominate other indicators; likely a top greedy feature."
+      },
+      {
+        "trend_id": "interstate_war",
+        "lift_bucket": "High",
+        "lift_pct": "+8-14%",
+        "reason": "State-based conflict onset encompasses interstate conflict initiation; onset coding precedes intensity escalation, providing a leading signal for interstate war events."
+      },
+      {
+        "trend_id": "political_violence",
+        "lift_bucket": "High",
+        "lift_pct": "+9-15%",
+        "reason": "New conflict onset is the formalization of political violence into organized armed activity; captures the threshold-crossing moment most relevant to the political violence Trend."
+      },
+      {
+        "trend_id": "military_coup",
+        "lift_bucket": "Medium",
+        "lift_pct": "+4-8%",
+        "reason": "Conflict onset and coup risk are co-determined by institutional fragility; onset in neighboring contexts also elevates coup probability via regional contagion."
+      },
+      {
+        "trend_id": "humanitarian_crisis",
+        "lift_bucket": "Medium",
+        "lift_pct": "+5-9%",
+        "reason": "New conflict onset is the primary trigger for acute humanitarian crises; onset coding provides earlier signal than displacement or fatality counts."
+      }
+    ]
+  },
+  {
+    "code": "v2jupoatck",
+    "why": "Government attacks on the judiciary measure a specifically destabilizing form of institutional erosion — the executive undermining the last formal check on its own behavior. Judicial attacks are a hallmark of autocratization trajectories and correlate with subsequent escalation to broader repression, constitutional manipulation, and loss of rule of law, making this a reliable leading indicator across several political risk Trends.",
+    "country_coverage": 180,
+    "coverage_confidence": "high",
+    "year_start": 1900,
+    "year_end": 2024,
+    "coverage_note": "V-Dem expert survey; global coverage; indicator fires episodically so country-years with attacks are a minority — but the signal is highly discriminating when it does fire.",
+    "trends": [
+      {
+        "trend_id": "political_repression",
+        "lift_bucket": "High",
+        "lift_pct": "+9-14%",
+        "reason": "Judicial attacks systematically accompany or precede broader repression campaigns; the judiciary is typically targeted early in repression escalation to remove legal recourse."
+      },
+      {
+        "trend_id": "executive_power_consolidation",
+        "lift_bucket": "High",
+        "lift_pct": "+10-16%",
+        "reason": "Judicial attacks are a canonical consolidation tool — removing judicial independence is a near-universal step in the executive power consolidation playbook; likely top greedy feature for this Trend."
+      },
+      {
+        "trend_id": "constitutional_change",
+        "lift_bucket": "Medium",
+        "lift_pct": "+5-9%",
+        "reason": "Executives attacking the judiciary frequently follow up with constitutional changes to formalize their dominance over courts; provides a leading signal for constitutional event windows."
+      },
+      {
+        "trend_id": "human_rights_violation",
+        "lift_bucket": "Medium",
+        "lift_pct": "+5-8%",
+        "reason": "Judicial independence collapse removes the institutional safeguard for human rights; attacks predict subsequent deterioration in human rights protections."
+      },
+      {
+        "trend_id": "democratic_transition",
+        "lift_bucket": "Low",
+        "lift_pct": "+2-4%",
+        "reason": "Judicial attacks signal de-democratization trajectories; marginal signal for genuine transition events since it captures the erosion rather than the inflection point itself."
+      }
+    ]
+  },
+  {
+    "code": "IHDI",
+    "why": "The Inequality-Adjusted HDI penalizes the headline HDI score for the distributional spread of health, education, and income achievements simultaneously — capturing how deeply unequal a country's development gains are in a single index. The IHDI discount (HDI minus IHDI) provides a direct measure of welfare inequality that combines multiple deprivation dimensions and correlates strongly with social mobilization and political grievance preconditions.",
+    "country_coverage": 170,
+    "coverage_confidence": "high",
+    "year_start": 1990,
+    "year_end": 2022,
+    "coverage_note": "UNDP HDR coverage; requires distributional data for all three HDI components — a few small or data-sparse countries are excluded; reported every 1-2 years with interpolated values.",
+    "trends": [
+      {
+        "trend_id": "poverty_and_inequality_crisis",
+        "lift_bucket": "High",
+        "lift_pct": "+9-15%",
+        "reason": "IHDI directly quantifies the inequality penalty on human development — when the discount from HDI to IHDI is large it signals that gains are concentrated, the primary precondition for inequality-driven political crisis."
+      },
+      {
+        "trend_id": "mass_protest",
+        "lift_bucket": "High",
+        "lift_pct": "+7-12%",
+        "reason": "Cross-national evidence consistently links high human development inequality to elevated protest propensity; IHDI captures the multi-dimensional grievance base that motivates large-scale mobilization."
+      },
+      {
+        "trend_id": "social_policy_reform",
+        "lift_bucket": "Medium",
+        "lift_pct": "+4-8%",
+        "reason": "High inequality and low IHDI create political pressure for redistributive social policy reforms; the indicator signals the structural demand for reform that precedes policy change events."
+      },
+      {
+        "trend_id": "democratic_transition",
+        "lift_bucket": "Medium",
+        "lift_pct": "+4-7%",
+        "reason": "Persistent high inequality weakens regime legitimacy; IHDI captures the structural inequality that co-occurs with democratic demand in middle-income contexts."
+      },
+      {
+        "trend_id": "labor_action",
+        "lift_bucket": "Low",
+        "lift_pct": "+2-4%",
+        "reason": "Income inequality component of IHDI links to labour market grievances; modest marginal signal given that wage-specific indicators capture labour action drivers more directly."
+      }
+    ]
+  }
+]

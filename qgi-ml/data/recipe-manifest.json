@@ -1,0 +1,302 @@
+{
+  "schema_version": "1",
+  "thresholds": {
+    "runnable_min_npos": 60,
+    "thin_min_npos": 8
+  },
+  "counts": {
+    "runnable": 44,
+    "thin": 22,
+    "skip": 0,
+    "total": 66
+  },
+  "runnable_recipes": [
+    "elections_and_voting,bilateral_treaty,civil_war_and_insurgency,government_formation,constitutional_change",
+    "political_repression,democratic_transition,mass_protest,multilateral_agreement,peacekeeping_and_peace_process",
+    "fiscal_policy_change,terrorist_attack,political_violence,human_rights_violation,economic_recession",
+    "military_coup,migration_and_refugees,foreign_intervention,territorial_disputes,military_policy_and_reform",
+    "political_corruption,epidemic_and_pandemic,human_rights_reform,regional_integration,energy_policy",
+    "transitional_justice,natural_disaster,trade_agreement,executive_power_consolidation,diplomatic_rupture",
+    "infrastructure_project,sanctions_and_arms_embargo,interstate_war,economic_liberalization,agricultural_policy",
+    "ethnic_and_communal_conflict,banking_and_financial_crisis,labor_action,currency_crisis,economic_nationalization",
+    "economic_growth_milestone,monetary_policy_change,religious_and_social_movement,technology_breakthrough"
+  ],
+  "thin_recipes": [
+    "environmental_policy,cultural_and_heritage,sport_and_international_event,foreign_aid_and_development,oil_and_gas",
+    "flood_and_cyclone,social_policy_reform,humanitarian_crisis,resource_conflict,decentralization_and_federalism",
+    "education_and_research,poverty_and_inequality_crisis,drought_and_famine,foreign_direct_investment,economic_recovery",
+    "industrial_policy,public_health_reform,earthquake,trade_dispute,climate_agreement",
+    "education_reform,digital_policy"
+  ],
+  "detail": {
+    "runnable": [
+      {
+        "recipe_id": "elections_and_voting",
+        "n_pos": 811
+      },
+      {
+        "recipe_id": "bilateral_treaty",
+        "n_pos": 554
+      },
+      {
+        "recipe_id": "civil_war_and_insurgency",
+        "n_pos": 499
+      },
+      {
+        "recipe_id": "government_formation",
+        "n_pos": 495
+      },
+      {
+        "recipe_id": "constitutional_change",
+        "n_pos": 392
+      },
+      {
+        "recipe_id": "political_repression",
+        "n_pos": 365
+      },
+      {
+        "recipe_id": "democratic_transition",
+        "n_pos": 342
+      },
+      {
+        "recipe_id": "mass_protest",
+        "n_pos": 318
+      },
+      {
+        "recipe_id": "multilateral_agreement",
+        "n_pos": 266
+      },
+      {
+        "recipe_id": "peacekeeping_and_peace_process",
+        "n_pos": 243
+      },
+      {
+        "recipe_id": "fiscal_policy_change",
+        "n_pos": 228
+      },
+      {
+        "recipe_id": "terrorist_attack",
+        "n_pos": 228
+      },
+      {
+        "recipe_id": "political_violence",
+        "n_pos": 226
+      },
+      {
+        "recipe_id": "human_rights_violation",
+        "n_pos": 220
+      },
+      {
+        "recipe_id": "economic_recession",
+        "n_pos": 210
+      },
+      {
+        "recipe_id": "military_coup",
+        "n_pos": 194
+      },
+      {
+        "recipe_id": "migration_and_refugees",
+        "n_pos": 178
+      },
+      {
+        "recipe_id": "foreign_intervention",
+        "n_pos": 161
+      },
+      {
+        "recipe_id": "territorial_disputes",
+        "n_pos": 161
+      },
+      {
+        "recipe_id": "military_policy_and_reform",
+        "n_pos": 158
+      },
+      {
+        "recipe_id": "political_corruption",
+        "n_pos": 157
+      },
+      {
+        "recipe_id": "epidemic_and_pandemic",
+        "n_pos": 153
+      },
+      {
+        "recipe_id": "human_rights_reform",
+        "n_pos": 148
+      },
+      {
+        "recipe_id": "regional_integration",
+        "n_pos": 137
+      },
+      {
+        "recipe_id": "energy_policy",
+        "n_pos": 135
+      },
+      {
+        "recipe_id": "transitional_justice",
+        "n_pos": 125
+      },
+      {
+        "recipe_id": "natural_disaster",
+        "n_pos": 114
+      },
+      {
+        "recipe_id": "trade_agreement",
+        "n_pos": 108
+      },
+      {
+        "recipe_id": "executive_power_consolidation",
+        "n_pos": 101
+      },
+      {
+        "recipe_id": "diplomatic_rupture",
+        "n_pos": 98
+      },
+      {
+        "recipe_id": "infrastructure_project",
+        "n_pos": 96
+      },
+      {
+        "recipe_id": "sanctions_and_arms_embargo",
+        "n_pos": 93
+      },
+      {
+        "recipe_id": "interstate_war",
+        "n_pos": 91
+      },
+      {
+        "recipe_id": "economic_liberalization",
+        "n_pos": 87
+      },
+      {
+        "recipe_id": "agricultural_policy",
+        "n_pos": 78
+      },
+      {
+        "recipe_id": "ethnic_and_communal_conflict",
+        "n_pos": 76
+      },
+      {
+        "recipe_id": "banking_and_financial_crisis",
+        "n_pos": 72
+      },
+      {
+        "recipe_id": "labor_action",
+        "n_pos": 71
+      },
+      {
+        "recipe_id": "currency_crisis",
+        "n_pos": 69
+      },
+      {
+        "recipe_id": "economic_nationalization",
+        "n_pos": 68
+      },
+      {
+        "recipe_id": "economic_growth_milestone",
+        "n_pos": 67
+      },
+      {
+        "recipe_id": "monetary_policy_change",
+        "n_pos": 65
+      },
+      {
+        "recipe_id": "religious_and_social_movement",
+        "n_pos": 62
+      },
+      {
+        "recipe_id": "technology_breakthrough",
+        "n_pos": 61
+      }
+    ],
+    "thin": [
+      {
+        "recipe_id": "environmental_policy",
+        "n_pos": 55
+      },
+      {
+        "recipe_id": "cultural_and_heritage",
+        "n_pos": 51
+      },
+      {
+        "recipe_id": "sport_and_international_event",
+        "n_pos": 44
+      },
+      {
+        "recipe_id": "foreign_aid_and_development",
+        "n_pos": 43
+      },
+      {
+        "recipe_id": "oil_and_gas",
+        "n_pos": 42
+      },
+      {
+        "recipe_id": "flood_and_cyclone",
+        "n_pos": 40
+      },
+      {
+        "recipe_id": "social_policy_reform",
+        "n_pos": 40
+      },
+      {
+        "recipe_id": "humanitarian_crisis",
+        "n_pos": 38
+      },
+      {
+        "recipe_id": "resource_conflict",
+        "n_pos": 38
+      },
+      {
+        "recipe_id": "decentralization_and_federalism",
+        "n_pos": 37
+      },
+      {
+        "recipe_id": "education_and_research",
+        "n_pos": 28
+      },
+      {
+        "recipe_id": "poverty_and_inequality_crisis",
+        "n_pos": 25
+      },
+      {
+        "recipe_id": "drought_and_famine",
+        "n_pos": 23
+      },
+      {
+        "recipe_id": "foreign_direct_investment",
+        "n_pos": 20
+      },
+      {
+        "recipe_id": "economic_recovery",
+        "n_pos": 19
+      },
+      {
+        "recipe_id": "industrial_policy",
+        "n_pos": 18
+      },
+      {
+        "recipe_id": "public_health_reform",
+        "n_pos": 18
+      },
+      {
+        "recipe_id": "earthquake",
+        "n_pos": 15
+      },
+      {
+        "recipe_id": "trade_dispute",
+        "n_pos": 15
+      },
+      {
+        "recipe_id": "climate_agreement",
+        "n_pos": 14
+      },
+      {
+        "recipe_id": "education_reform",
+        "n_pos": 12
+      },
+      {
+        "recipe_id": "digital_policy",
+        "n_pos": 8
+      }
+    ],
+    "skip": []
+  }
+}

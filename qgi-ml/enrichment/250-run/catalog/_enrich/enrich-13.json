@@ -1,0 +1,412 @@
+[
+  {
+    "code": "OWID_POP_YOUNG",
+    "why": "A high share of 15-24 year-olds creates a large pool of economically marginalized, politically activated youth — a robust cross-national predictor of mass mobilization and insurgency onset. It captures the structural demographic pressure that precedes protest waves, labor unrest, and recruitment into armed groups.",
+    "country_coverage": 195,
+    "coverage_confidence": "high",
+    "year_start": 1950,
+    "year_end": 2023,
+    "coverage_note": "UN WPP via OWID; near-universal coverage including small states; projections extend to 2100 but historical series used.",
+    "trends": [
+      {
+        "trend_id": "mass_protest",
+        "lift_bucket": "High",
+        "lift_pct": "+6-12%",
+        "reason": "Youth bulge is one of the most replicated structural correlates of protest mobilization; strong prior for entering top features."
+      },
+      {
+        "trend_id": "civil_war_and_insurgency",
+        "lift_bucket": "High",
+        "lift_pct": "+5-10%",
+        "reason": "Large youth cohorts provide recruitment pool for insurgencies; well-established in conflict-onset literature."
+      },
+      {
+        "trend_id": "labor_action",
+        "lift_bucket": "Medium",
+        "lift_pct": "+3-7%",
+        "reason": "Youth unemployment concentration amplifies industrial unrest; mediating variable but plausible top-40 entry."
+      },
+      {
+        "trend_id": "poverty_and_inequality_crisis",
+        "lift_bucket": "Medium",
+        "lift_pct": "+3-6%",
+        "reason": "Youth bulge strains education/labor absorption, feeding inequality crises; orthogonal signal from income measures."
+      },
+      {
+        "trend_id": "political_violence",
+        "lift_bucket": "Medium",
+        "lift_pct": "+4-8%",
+        "reason": "Demographic pressure correlates with sub-threshold political violence episodes; plausible contributor alongside conflict indicators."
+      }
+    ]
+  },
+  {
+    "code": "v2exl_legitideol",
+    "why": "Ideological legitimation measures how much a regime rests on a state ideology (Marxism, Islamism, nationalism) rather than democratic consent or personal loyalty — regimes with brittle ideological foundations face acute instability when that ideology loses credibility. This signal captures a distinct legitimacy pathway to regime crisis that is orthogonal to corruption or repression indices.",
+    "country_coverage": 180,
+    "coverage_confidence": "high",
+    "year_start": 1900,
+    "year_end": 2024,
+    "coverage_note": "V-Dem standard coverage; expert-coded so some thin-state coverage is less reliable pre-1950.",
+    "trends": [
+      {
+        "trend_id": "executive_power_consolidation",
+        "lift_bucket": "High",
+        "lift_pct": "+5-10%",
+        "reason": "Ideological legitimation is a classic consolidation tool; strongly discriminates regimes that centralize power under a state doctrine."
+      },
+      {
+        "trend_id": "democratic_transition",
+        "lift_bucket": "High",
+        "lift_pct": "+5-9%",
+        "reason": "Ideological legitimacy collapse is a leading precursor to transition; distinct from election-based accountability signals."
+      },
+      {
+        "trend_id": "military_coup",
+        "lift_bucket": "Medium",
+        "lift_pct": "+3-7%",
+        "reason": "Ideologically-driven regimes face loyalty fragility within the military when ideology is challenged; plausible top-40 entry."
+      },
+      {
+        "trend_id": "mass_protest",
+        "lift_bucket": "Medium",
+        "lift_pct": "+3-6%",
+        "reason": "Ideological delegitimation often triggers mass protest waves; adds a legitimacy-pathway signal distinct from economic grievance."
+      },
+      {
+        "trend_id": "political_repression",
+        "lift_bucket": "Low",
+        "lift_pct": "+1-4%",
+        "reason": "Ideological regimes tend toward repression but correlation with other repression indicators is high; marginal independent contribution."
+      }
+    ]
+  },
+  {
+    "code": "NE.GDI.TOTL.KD.ZG",
+    "why": "Gross capital formation growth captures the investment pulse of an economy — sharp declines signal a confidence crisis, credit crunch, or political uncertainty feeding back into the real economy before recession indicators fully register. For QGI, it provides a leading-edge economic stress signal that can discriminate between structural decline and cyclical contractions preceding crisis events.",
+    "country_coverage": 175,
+    "coverage_confidence": "high",
+    "year_start": 1960,
+    "year_end": 2023,
+    "coverage_note": "WB WDI standard; data sparse for some small states and conflict-affected countries in early decades; post-1980 coverage is broad.",
+    "trends": [
+      {
+        "trend_id": "economic_recession",
+        "lift_bucket": "High",
+        "lift_pct": "+6-11%",
+        "reason": "Investment collapse is a direct component of recession dynamics; expected to rank highly in top-40 for this Trend."
+      },
+      {
+        "trend_id": "banking_and_financial_crisis",
+        "lift_bucket": "High",
+        "lift_pct": "+5-10%",
+        "reason": "Financial crises are preceded and reinforced by investment pullbacks; strong empirical link via credit-investment channel."
+      },
+      {
+        "trend_id": "currency_crisis",
+        "lift_bucket": "Medium",
+        "lift_pct": "+3-7%",
+        "reason": "Sharp capital formation drops often coincide with or precede currency crises via confidence and FDI channels."
+      },
+      {
+        "trend_id": "fiscal_policy_change",
+        "lift_bucket": "Medium",
+        "lift_pct": "+3-6%",
+        "reason": "Public investment changes drive GCF swings; fiscal austerity cycles are reflected here, adding texture beyond revenue/deficit signals."
+      },
+      {
+        "trend_id": "foreign_direct_investment",
+        "lift_bucket": "Low",
+        "lift_pct": "+2-4%",
+        "reason": "FDI is a sub-component of GCF; some overlap but total GCF adds domestic investment signal; marginal orthogonality."
+      }
+    ]
+  },
+  {
+    "code": "v2jucomp",
+    "why": "Compliance with judiciary measures whether executive actors actually abide by court rulings — a low score indicates that formal judicial checks have been hollowed out, revealing a regime willing to override institutional constraints. This captures a leading indicator of rule-of-law breakdown that precedes repression escalation, constitutional crises, and authoritarian consolidation.",
+    "country_coverage": 180,
+    "coverage_confidence": "high",
+    "year_start": 1900,
+    "year_end": 2024,
+    "coverage_note": "V-Dem expert-coded; standard global coverage; reliability improves post-1950 as expert pools densify.",
+    "trends": [
+      {
+        "trend_id": "executive_power_consolidation",
+        "lift_bucket": "High",
+        "lift_pct": "+6-12%",
+        "reason": "Non-compliance with courts is a primary mechanism of power consolidation; expected strong top-40 entry."
+      },
+      {
+        "trend_id": "political_repression",
+        "lift_bucket": "High",
+        "lift_pct": "+5-10%",
+        "reason": "Judicial non-compliance enables repression with impunity; strong causal prior and distinct from civil liberties indices."
+      },
+      {
+        "trend_id": "constitutional_change",
+        "lift_bucket": "High",
+        "lift_pct": "+5-9%",
+        "reason": "Constitutional rewrites often accompany or follow executive defiance of courts; mechanistically linked."
+      },
+      {
+        "trend_id": "transitional_justice",
+        "lift_bucket": "Medium",
+        "lift_pct": "+3-6%",
+        "reason": "Judicial non-compliance histories create transitional justice demands post-regime change; plausible leading signal."
+      },
+      {
+        "trend_id": "human_rights_violation",
+        "lift_bucket": "Medium",
+        "lift_pct": "+3-7%",
+        "reason": "Institutions that ignore court rulings enable human rights abuses; adds accountability-channel signal to abuse indices."
+      }
+    ]
+  },
+  {
+    "code": "OWID_PRESSFREEDOM",
+    "why": "The RSF Press Freedom Index measures the operating environment for journalists — repression of media is both a symptom of governance deterioration and an active mechanism that suppresses the information environment needed for accountability. For QGI, it captures a media-freedom pathway to instability distinct from direct political repression indicators.",
+    "country_coverage": 180,
+    "coverage_confidence": "high",
+    "year_start": 2002,
+    "year_end": 2024,
+    "coverage_note": "RSF coverage starts 2002; near-universal country coverage since ~2010 but shorter time series limits pre-2002 historical depth.",
+    "trends": [
+      {
+        "trend_id": "political_repression",
+        "lift_bucket": "High",
+        "lift_pct": "+6-11%",
+        "reason": "Press freedom crackdowns are a key repression mechanism; expected strong top-40 performance for this Trend."
+      },
+      {
+        "trend_id": "executive_power_consolidation",
+        "lift_bucket": "High",
+        "lift_pct": "+5-10%",
+        "reason": "Capturing or shutting down independent media is a standard consolidation tactic; mechanistically linked."
+      },
+      {
+        "trend_id": "human_rights_violation",
+        "lift_bucket": "High",
+        "lift_pct": "+5-9%",
+        "reason": "Journalist harassment and media closure are human rights violations per se; strong face validity and empirical signal."
+      },
+      {
+        "trend_id": "democratic_transition",
+        "lift_bucket": "Medium",
+        "lift_pct": "+4-8%",
+        "reason": "Press freedom trends lead or lag democratization; adds information-environment signal distinct from electoral variables."
+      },
+      {
+        "trend_id": "political_corruption",
+        "lift_bucket": "Medium",
+        "lift_pct": "+3-6%",
+        "reason": "Corruption thrives when investigative journalism is suppressed; orthogonal anti-corruption accountability signal."
+      }
+    ]
+  },
+  {
+    "code": "FB.BNK.NPLS.ZS",
+    "why": "Non-performing loan ratios signal latent insolvency stress within the banking system before it erupts into open crisis — high NPLs constrain credit supply, amplify recessions, and can trigger depositor panic and government bailout demands. It provides the balance-sheet deterioration signal that precedes banking crises in the QGI event catalog.",
+    "country_coverage": 160,
+    "coverage_confidence": "medium",
+    "year_start": 1998,
+    "year_end": 2023,
+    "coverage_note": "WB WDI; coverage improves markedly after 2000; sparse for low-income and fragile states; some gaps in early 2000s for transition economies.",
+    "trends": [
+      {
+        "trend_id": "banking_and_financial_crisis",
+        "lift_bucket": "High",
+        "lift_pct": "+8-14%",
+        "reason": "NPL ratio is the direct balance-sheet precursor of banking crises; among the strongest single predictors in financial distress literature."
+      },
+      {
+        "trend_id": "economic_recession",
+        "lift_bucket": "High",
+        "lift_pct": "+5-10%",
+        "reason": "High NPLs depress credit and amplify recessions; strong empirical link via credit-growth suppression channel."
+      },
+      {
+        "trend_id": "currency_crisis",
+        "lift_bucket": "Medium",
+        "lift_pct": "+4-8%",
+        "reason": "Banking stress and currency crises are frequently twin; NPLs add banking-channel signal to macro indicators."
+      },
+      {
+        "trend_id": "fiscal_policy_change",
+        "lift_bucket": "Medium",
+        "lift_pct": "+3-6%",
+        "reason": "Bank recapitalization pressures force fiscal adjustments; adds financial-sector feedback signal."
+      },
+      {
+        "trend_id": "economic_liberalization",
+        "lift_bucket": "Low",
+        "lift_pct": "+1-3%",
+        "reason": "Post-liberalization credit booms often generate NPL cycles; marginal orthogonal signal for this Trend."
+      }
+    ]
+  },
+  {
+    "code": "v2x_cspart",
+    "why": "Civil society participation measures the breadth and depth of autonomous citizen organization beyond the state — high participation creates accountability buffers that restrain executive overreach, while a collapse in civil society is a leading indicator of democratic backsliding and repression. It captures the societal resilience dimension that mediates between grievances and political outcomes.",
+    "country_coverage": 180,
+    "coverage_confidence": "high",
+    "year_start": 1900,
+    "year_end": 2024,
+    "coverage_note": "V-Dem standard global coverage; expert-coded composite; more reliable post-1950 as organizational data improves.",
+    "trends": [
+      {
+        "trend_id": "democratic_transition",
+        "lift_bucket": "High",
+        "lift_pct": "+5-10%",
+        "reason": "Civil society is a primary driver of democratization; strong theoretical and empirical prior for top-40 entry in this Trend."
+      },
+      {
+        "trend_id": "mass_protest",
+        "lift_bucket": "High",
+        "lift_pct": "+5-9%",
+        "reason": "Civil society organizations are the organizational backbone of protest movements; directly predictive of mobilization capacity."
+      },
+      {
+        "trend_id": "political_repression",
+        "lift_bucket": "High",
+        "lift_pct": "+5-9%",
+        "reason": "Civil society suppression IS repression; decline in this index reliably precedes or accompanies repression escalation."
+      },
+      {
+        "trend_id": "human_rights_reform",
+        "lift_bucket": "Medium",
+        "lift_pct": "+3-7%",
+        "reason": "Civil society advocacy drives human rights reform agendas; adds agency-side signal to institutional indicators."
+      },
+      {
+        "trend_id": "social_policy_reform",
+        "lift_bucket": "Low",
+        "lift_pct": "+2-4%",
+        "reason": "Strong civil society pushes social policy reform but correlation with other governance indicators is high; marginal independent lift."
+      }
+    ]
+  },
+  {
+    "code": "UCDP_YEARS_SINCE_LAST_CONFLICT",
+    "why": "Years since last active conflict is a canonical recurrence-risk proxy — post-conflict societies face elevated relapse risk that decays over time, and this derived counter captures the duration of the peace interval that existing conflict intensity measures miss entirely. It adds a temporal memory signal that is mechanistically orthogonal to current violence levels.",
+    "country_coverage": 150,
+    "coverage_confidence": "medium",
+    "year_start": 1989,
+    "year_end": 2023,
+    "coverage_note": "Derived from UCDP GED/PRIO-ACD; only covers countries with at least one observed conflict episode; conflict-naive countries require a zero/null treatment convention.",
+    "trends": [
+      {
+        "trend_id": "civil_war_and_insurgency",
+        "lift_bucket": "High",
+        "lift_pct": "+6-12%",
+        "reason": "Post-conflict relapse is the dominant pattern in civil war literature; this counter directly encodes recurrence window risk."
+      },
+      {
+        "trend_id": "peacekeeping_and_peace_process",
+        "lift_bucket": "High",
+        "lift_pct": "+5-10%",
+        "reason": "Peace processes are triggered by conflict recency; years since conflict is a leading determinant of peace mission deployment."
+      },
+      {
+        "trend_id": "political_violence",
+        "lift_bucket": "High",
+        "lift_pct": "+5-9%",
+        "reason": "Sub-threshold violence risks are elevated in the post-conflict window; temporal memory signal unique in the pool."
+      },
+      {
+        "trend_id": "foreign_intervention",
+        "lift_bucket": "Medium",
+        "lift_pct": "+3-7%",
+        "reason": "Foreign interventions cluster in early post-conflict windows; conflict recency is a plausible trigger signal."
+      },
+      {
+        "trend_id": "transitional_justice",
+        "lift_bucket": "Medium",
+        "lift_pct": "+3-6%",
+        "reason": "Transitional justice mechanisms are deployed in post-conflict periods; years since conflict anchors the timeline."
+      }
+    ]
+  },
+  {
+    "code": "v2mecrit",
+    "why": "Whether print and broadcast media critically cover the government measures the real independence of the fourth estate — beyond formal press freedom, this captures actual editorial behavior, revealing whether journalists exercise accountability or practice self-censorship. It provides a behavioral media-independence signal that complements structural press freedom indices.",
+    "country_coverage": 180,
+    "coverage_confidence": "high",
+    "year_start": 1900,
+    "year_end": 2024,
+    "coverage_note": "V-Dem expert-coded; standard global coverage; more reliable in modern era where media environments are better observed.",
+    "trends": [
+      {
+        "trend_id": "political_repression",
+        "lift_bucket": "High",
+        "lift_pct": "+5-10%",
+        "reason": "Media self-censorship under threat is a repression indicator; behavioral signal that leads formal press freedom declines."
+      },
+      {
+        "trend_id": "political_corruption",
+        "lift_bucket": "High",
+        "lift_pct": "+5-9%",
+        "reason": "Corruption thrives in media silence; critical media is the accountability watchdog — its absence directly enables corruption."
+      },
+      {
+        "trend_id": "executive_power_consolidation",
+        "lift_bucket": "High",
+        "lift_pct": "+4-9%",
+        "reason": "Neutering critical media is a standard consolidation step; behavioral editorial capture precedes formal media takeover."
+      },
+      {
+        "trend_id": "democratic_transition",
+        "lift_bucket": "Medium",
+        "lift_pct": "+3-7%",
+        "reason": "Media critical of incumbents facilitates democratic transitions; adds information-environment agency signal."
+      },
+      {
+        "trend_id": "human_rights_violation",
+        "lift_bucket": "Low",
+        "lift_pct": "+2-4%",
+        "reason": "Correlation with other rights/repression variables is high; marginal independent contribution for human rights Trend."
+      }
+    ]
+  },
+  {
+    "code": "OWID_STATECAP_ADMIN",
+    "why": "Administrative state capacity measures government ability to deliver services through skilled, impartial bureaucracies — a foundational pillar of stability that determines whether fiscal resources translate into public goods or patronage, and whether formal policies are actually implemented. It captures the bureaucratic implementation gap that distinguishes fragile from resilient states independent of resource levels.",
+    "country_coverage": 177,
+    "coverage_confidence": "medium",
+    "year_start": 1960,
+    "year_end": 2015,
+    "coverage_note": "Hanson & Sigman Bayesian latent variable model; series ends at 2015 — significant staleness for recent regime changes; no updates planned, limiting utility for post-2015 events.",
+    "trends": [
+      {
+        "trend_id": "humanitarian_crisis",
+        "lift_bucket": "High",
+        "lift_pct": "+5-10%",
+        "reason": "Low administrative capacity is the primary determinant of humanitarian crisis response failure; strong structural predictor."
+      },
+      {
+        "trend_id": "poverty_and_inequality_crisis",
+        "lift_bucket": "High",
+        "lift_pct": "+5-9%",
+        "reason": "Bureaucratic failure to deliver services and enforce redistribution drives persistent poverty; orthogonal to income-level signals."
+      },
+      {
+        "trend_id": "fiscal_policy_change",
+        "lift_bucket": "Medium",
+        "lift_pct": "+3-7%",
+        "reason": "Fiscal reforms succeed or fail based on administrative implementation capacity; adds state-effectiveness signal."
+      },
+      {
+        "trend_id": "democratic_transition",
+        "lift_bucket": "Medium",
+        "lift_pct": "+3-6%",
+        "reason": "Administrative capacity underpins election administration quality and post-transition institutional consolidation."
+      },
+      {
+        "trend_id": "economic_liberalization",
+        "lift_bucket": "Low",
+        "lift_pct": "+2-4%",
+        "reason": "Liberalization reforms require administrative capacity to implement; marginal orthogonal signal alongside governance composites."
+      }
+    ]
+  }
+]
