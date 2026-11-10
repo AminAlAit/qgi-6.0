@@ -1,4 +1,4 @@
-# qgi-frontend
+﻿# qgi-frontend
 
 Next.js 16 / React 19 / TypeScript app for **QG Intelligence** (Quantitative Geopolitical Intelligence). Live at **[qgintelligence.com](https://qgintelligence.com)**, deployed on Vercel (auto-deploy on push to `main`).
 

@@ -1,4 +1,4 @@
-# QGI 6.0 Component Archive — Trajectory Engine & Econometric R&D (`qgi-ml`, 2026)
+﻿# QGI 6.0 Component Archive — Trajectory Engine & Econometric R&D (`qgi-ml`, 2026)
 
 > **[Historical Component Archive — Consolidated into `AminAlAit/qgi-6.0`]**
 > This repository preserves the standalone component history of `AminAlAit/qgi-ml` from **QGI 6.0**.
