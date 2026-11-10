@@ -1,4 +1,4 @@
-# qgi-aws-tf
+﻿# qgi-aws-tf
 
 Terraform hub repository for Amin's AWS organisation and the QGI (Quantitative Geopolitical Intelligence) pipeline infrastructure.
 
