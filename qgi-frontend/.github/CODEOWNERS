@@ -1,0 +1,41 @@
+# CODEOWNERS — sensitive paths that require review (#442)
+#
+# GitHub auto-requests review from listed owners on any PR that touches
+# the matching paths. Currently single-owner (@AminAlAit) — when a second
+# reviewer joins, list both with a slash so EITHER can approve.
+#
+# Order matters: later patterns override earlier ones. Keep specific
+# paths AFTER catch-alls so the specific owner wins.
+
+# Default: any change is reviewed by Amin
+*                                       @AminAlAit
+
+# ── Authentication + session handling ────────────────────────────────────
+# Auth bugs are tier-1 security blast radius. Every change here gets a
+# careful read; #445 was a near-miss (silent 500 instead of 403).
+/lib/auth.ts                            @AminAlAit
+/lib/auth-config.ts                     @AminAlAit
+/middleware.ts                          @AminAlAit
+/app/api/auth/                          @AminAlAit
+
+# ── Scoring + data shape contracts ───────────────────────────────────────
+# Drift between frontend types and pipeline output is what produced the
+# "stale V1.8.1 label" + "stale country counts" bug clusters (#428, #431).
+# Every change here gets cross-checked against the pipeline regen.
+/lib/country-risks.ts                   @AminAlAit
+/lib/country-risks.schema.ts            @AminAlAit
+/lib/site-stats.ts                      @AminAlAit
+/data/country-risks.json                @AminAlAit
+/data/indexes.json                      @AminAlAit
+
+# ── CI / branch protection / GitHub config itself ────────────────────────
+# Anything that loosens the safety net needs a deliberate review, not a
+# rubber-stamp.
+/.github/                               @AminAlAit
+/.lighthouserc.js                       @AminAlAit
+/.linkinatorrc.json                     @AminAlAit
+
+# ── Infrastructure-adjacent frontend code ────────────────────────────────
+/lib/athena.ts                          @AminAlAit
+/lib/dashboard-cache.ts                 @AminAlAit
+/lib/indicator-values.ts                @AminAlAit

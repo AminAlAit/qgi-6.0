@@ -1,0 +1,52 @@
+#!/usr/bin/env sh
+# QGI pre-push hook (#454) — last line of defense before code reaches GitHub.
+#
+# Two protections:
+#   1. Block direct push to main. Forces a feature-branch + PR workflow.
+#      The repo is private + on Free plan, so GitHub server-side branch
+#      protection is unavailable; this hook substitutes locally.
+#   2. Run typecheck + the full vitest suite. Catches what lint-staged
+#      can't (cross-file type errors + integration tests) before CI
+#      burns minutes on a guaranteed-failing run.
+#
+# To bypass in a genuine emergency: git push --no-verify.
+# Reach for that only when you've already convinced yourself the local
+# failure is wrong (e.g. flaky filesystem). DO NOT use --no-verify to
+# unstick yourself from a real test failure.
+
+# ── Block push to main ─────────────────────────────────────────────────────
+protected_branch="main"
+current_branch="$(git symbolic-ref --short HEAD 2>/dev/null || echo detached)"
+
+# Read the refs being pushed from stdin (git supplies these to pre-push).
+# Format: "<local ref> <local sha> <remote ref> <remote sha>" per line.
+# We block if the REMOTE ref is refs/heads/main, regardless of local branch
+# (catches `git push origin HEAD:main` too).
+while read -r local_ref local_sha remote_ref remote_sha; do
+  case "$remote_ref" in
+    refs/heads/main)
+      echo "[pre-push] Refusing direct push to main."
+      echo "[pre-push] Open a PR from a feature branch instead:"
+      echo "[pre-push]   git checkout -b feature/<topic>"
+      echo "[pre-push]   git push -u origin feature/<topic>"
+      echo "[pre-push]   gh pr create"
+      echo "[pre-push] Bypass with --no-verify only in emergencies."
+      exit 1
+      ;;
+  esac
+done
+
+# ── Run typecheck + tests ──────────────────────────────────────────────────
+echo "[pre-push] Running typecheck..."
+npm run typecheck || {
+  echo "[pre-push] Typecheck failed. Push aborted."
+  exit 1
+}
+
+echo "[pre-push] Running vitest suite..."
+npm test -- --run || {
+  echo "[pre-push] Tests failed. Push aborted."
+  exit 1
+}
+
+echo "[pre-push] All local checks passed."

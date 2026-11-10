@@ -1,0 +1,88 @@
+name: E2E (Playwright)
+
+# Runs the Playwright end-to-end suite. Two modes:
+#   - PR + main push: builds the app locally, starts `npm run dev`, tests
+#     against http://localhost:3000 inside the runner.
+#   - (future) Scheduled run against a Vercel preview URL for pre-prod
+#     smoke — enable by setting the `vercel-preview-url-step` output.
+#
+# Related tickets:
+#   #439 — this workflow + the spec files under tests/e2e/
+#   #440 — Next.js typed routes + Zod schema contracts
+#   #441 — Lighthouse CI + linkinator
+#   #442 — Branch protection + required checks
+
+on:
+  push:
+    branches: [main]
+    paths-ignore:
+      - "**/*.md"
+      - ".gitignore"
+      - ".claude/**"
+      - "qgi-docs/**"
+      - "**/*.png"
+      - "**/*.jpg"
+      - "LICENSE"
+  pull_request:
+    branches: [main]
+    paths-ignore:
+      - "**/*.md"
+      - ".gitignore"
+      - ".claude/**"
+      - "qgi-docs/**"
+      - "**/*.png"
+      - "**/*.jpg"
+      - "LICENSE"
+
+# #454: cancel-in-progress so a rapid `git push` doesn't stack 5-min
+# Playwright runs.
+concurrency:
+  group: e2e-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  e2e:
+    name: Playwright
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Install Playwright browsers
+        run: npx playwright install --with-deps chromium
+
+      - name: Build app
+        run: npm run build
+        env:
+          NODE_OPTIONS: --max-old-space-size=6144
+          NEXT_TELEMETRY_DISABLED: "1"
+          # Mirror Vercel staging: auth disabled + dev grants pro tier so
+          # gated routes return data instead of 403. Without these, the
+          # auth wrapper bounces all data routes to /login and Playwright
+          # waits forever on a redirect.
+          SKIP_AUTH: "true"
+          SKIP_AUTH_GROUPS: "pro"
+
+      - name: Run Playwright tests
+        run: npx playwright test
+        env:
+          CI: "true"
+          SKIP_AUTH: "true"
+          SKIP_AUTH_GROUPS: "pro"
+
+      - name: Upload Playwright report on failure
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: playwright-report
+          path: playwright-report/
+          retention-days: 7

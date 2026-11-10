@@ -1,0 +1,12 @@
+#!/usr/bin/env sh
+# QGI pre-commit hook — catches what CI catches, before the push.
+#
+# Runs lint-staged on staged files only (fast) — this is what
+# keeps CI green and prevents the Vercel-fail email loops Amin
+# was getting. See AminAlAit/qgi-aws-tf#355.
+#
+# To bypass in a genuine emergency: git commit --no-verify.
+# Do not use --no-verify for routine work — fix the lint/format
+# error and re-commit. The hook is here to protect you.
+
+npx lint-staged

@@ -1,0 +1,68 @@
+name: Synthetic monitoring
+
+# Runs the smallest, fastest Playwright spec (`tests/e2e/synthetic/smoke.spec.ts`)
+# against qgintelligence.com on a 15-minute cron. Catches the regression class
+# CI can't see — prod went down between deploys (Vercel cache expired, S3
+# object overwritten, pipeline regenerated wrong shape).
+#
+# Default failure surface: the workflow run is red. GitHub Actions sends
+# Amin an email by default. Wiring Sentry / Slack / SES is the #443 Part A
+# follow-up once Sentry org is provisioned.
+#
+# Intentionally lighter than the regular e2e workflow:
+#   - one project (chromium), one node version
+#   - timeouts +50% to absorb cold-CDN ranges
+#   - skipped on PRs / branch pushes — only the cron + manual dispatch
+#
+# Related tickets: #443 (this), #391 (Sentry promo), #417 (the 2-day
+# /countries outage that motivated synthetic monitoring in the first place).
+
+on:
+  schedule:
+    # Hourly. Original spec was every 15 minutes, but #454 caps Actions
+    # spend at $0/mo on the private Free repo. Hourly = ~1,080 mins/mo;
+    # 15-minute would have been ~4,320 mins/mo and blown the 2,000-min
+    # free tier 2× over. Once #453 unfreezes (Pro upgrade) we can bump
+    # back to 15-minute or 30-minute cadence.
+    - cron: "0 * * * *"
+  workflow_dispatch: {}
+
+# Don't pile up runs if a previous one is still going. Only one synthetic
+# run at a time per branch.
+concurrency:
+  group: synthetic-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  smoke:
+    name: Prod smoke (qgintelligence.com)
+    runs-on: ubuntu-latest
+    timeout-minutes: 6
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Install Playwright (chromium only)
+        run: npx playwright install --with-deps chromium
+
+      - name: Run synthetic smoke suite
+        run: npx playwright test tests/e2e/synthetic --project=chromium
+        env:
+          PLAYWRIGHT_BASE_URL: "https://qgintelligence.com"
+          CI: "true"
+
+      - name: Upload Playwright report on failure
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: synthetic-report-${{ github.run_id }}
+          path: playwright-report/
+          retention-days: 7
